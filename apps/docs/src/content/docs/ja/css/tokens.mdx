@@ -1,0 +1,699 @@
+---
+title: 'Tokens'
+description: ...
+sidebar:
+  order: 2
+---
+
+import { MemoBadge, DammyText, Reference } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { ColorDemos, FzDemos, LhDemos, LtsDemos, SpacingDemos, ShadowDemos,BoxShadowDemos, RadiusDemos } from "~/demos/tokens.jsx";
+import { Lism, Box, Text, Stack, Flex, Columns, Frame, Alert, Note, Tabs, TabItem, Spacer } from '@loos/lism-astro';
+
+
+export const ColorBadge = ({color, label}) => {
+	return <span className='-d:f -ai:c -gap:em3'>
+			<Lism skipState tag='span' className='has--size -d:ib' size='1.5em' bgc={color} bdrs='s' bxsh='1' />
+			<code>{label || color}</code>
+		</span>;
+}
+
+
+## トークンの命名規則
+
+|分類|形式|例|
+|---|---|---|
+|カラー|`--{color}`,<br />`--{colorToken}-{variant}`|`--base`, `--base-2`,<br />`--blue`|
+|トークン|`--{token}--{variant}`|`--fz--s`,<br />`--shadow--1`|
+
+
+## COLOR
+
+### 基本トークン
+
+|基本トークン|変数|クラス|
+|---|---|---|
+|<ColorBadge color='base' />|`--base`|`.-c:base`,<br/>`.-bgc:base`|
+|<ColorBadge color='base-2' />|`--base-2`|`.-bgc:base-2`|
+|<ColorBadge color='base-3' />|`--base-3`|`.-bgc:base-3`|
+|<ColorBadge color='content' />|`--content`|`.-c:content`,<br/>`.-bgc:content`|
+|<ColorBadge color='content-2' />|`--content-2`|`.-c:content-2`|
+|<ColorBadge color='content-3' />|`--content-3`|`.-c:content-3`|
+|<ColorBadge color='main' />|`--main`|`.-c:main`,<br/>`.-bgc:main`|
+|<ColorBadge color='accent' />|`--accent`|`.-c:accent`,<br/>`.-bgc:accent`|
+|<ColorBadge color='accent-2' />|`--accent-2`|`.-c:accent-2`,<br/>`.-bgc:accent-2`|
+|<ColorBadge color='accent-3' />|`--accent-3`|`.-c:accent-3`,<br/>`.-bgc:accent-3`|
+
+<Preview>
+	<PreviewTitle>contentカラー</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<Box><DammyText /></Box>
+		<Box c='content-2'><DammyText /></Box>
+		<Box c='content-3'><DammyText /></Box>
+	</PreviewArea>
+</Preview>
+
+<Preview>
+	<PreviewTitle>baseカラー</PreviewTitle>
+	<PreviewArea p={20} isFlow={false}>
+		<Box bgc='base' p='box'><DammyText /></Box>
+		<Box bgc='base-2' p='box'><DammyText /></Box>
+		<Box bgc='base-3' p='box'><DammyText /></Box>
+	</PreviewArea>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box bgc='base-2' bd bdc='base-3' p='box'><DammyText /></Box>
+		<Box bgc='base-3' c='content-3' p='box'><DammyText /></Box>
+		<Box bgc='content' c='base' p='box'><DammyText /></Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Box bgc='base-2' bd bdc='base-3' p='box'>...</Box>
+		<Box bgc='base-3' c='content-3' p='box'>...</Box>
+		<Box bgc='content' c='base' p='box'>...</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="l--box -bgc:base-2 -bd: -p:box" style="--bdc:var(--base-3)">...</div>
+		<div class="l--box -bgc:base-3 -c:content-3 -p:box">...</div>
+		<div class="l--box -bgc:content -c:base -p:box">...</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### パレットトークン
+
+|パレットトークン|変数|クラス|
+|---|---|---|
+|<ColorBadge color='red' />|`--red`|`.-boxcolor:red`|
+|<ColorBadge color='orange' />|`--orange`|`.-boxcolor:orange`|
+|<ColorBadge color='yellow' />|`--yellow`|`.-boxcolor:yellow`|
+|<ColorBadge color='green' />|`--green`|`.-boxcolor:green`|
+|<ColorBadge color='blue' />|`--blue`|`.-boxcolor:blue`|
+|<ColorBadge color='purple' />|`--purple`|`.-boxcolor:purple`|
+|<ColorBadge color='pink' />|`--pink`|`.-boxcolor:pink`|
+|<ColorBadge color='black' />|`--black`|`.-boxcolor:black`|
+|<ColorBadge color='white' />|`--white`|`.-boxcolor:white`|
+
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box boxcolor='blue' bd p='box'>
+			<DammyText length='codes' />
+		</Box>
+		<Alert preset='alert'><DammyText length='codes' /></Alert>
+		<Note preset='note' heading='Note'><DammyText length='codes' /></Note>
+		<Box bgc='green:15%' c='blue:50%' p='box'>
+			<DammyText />
+		</Box>
+	</PreviewArea>
+</Preview>
+
+
+
+## Typography
+
+### FONT.SIZE
+
+|トークン|変数|クラス|初期値|
+|---|---|---|---|
+|`2xs`|`--fz--2xs`|`.-fz:2xs`||
+|`xs`|`--fz--xs`|`.-fz:xs`||
+|`s`|`--fz--s`|`.-fz:s`||
+|`m`|`--fz--m`|`.-fz:m`|`1em`|
+|`l`|`--fz--l`|`.-fz:l`||
+|`xl`|`--fz--xl`|`.-fz:xl`||
+|`2xl`|`--fz--2xl`|`.-fz:2xl`||
+|`3xl`|`--fz--3xl`|`.-fz:3xl`||
+|`4xl`|`--fz--4xl`|`.-fz:4xl`||
+|`5xl`|`--fz--5xl`|`.-fz:5xl`||
+|`r`|`--fz--r`|`.-fz:r`|`1rem`|
+
+{/* <Alert preset="info">
+	Memo:スケーリングは 4xl くらいまでにして、5xlのとこは `here` などのセマンティックトークンにしてもよさそう。2xsとかも?
+</Alert> */}
+
+
+
+
+<Preview>
+	<PreviewTitle>Demo</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<Box ovx="auto">
+			<FzDemos />
+		</Box>
+	</PreviewArea>
+</Preview>
+
+
+
+### スケーリングについて
+
+Lism では、フォントサイズのスケーリングには数学的に美しいとされるスケーリング理論に基づいて定義することを推奨しています。  
+デフォルトでは、**分子8の調和数列**ベースで設計しています。
+
+```scss
+:root{
+	--fz--5xl: calc(1em * 8 / 2);
+	--fz--4xl: calc(1em * 8 / 3);
+	--fz--3xl: calc(1em * 8 / 4);
+	--fz--2xl: calc(1em * 8 / 5);
+	--fz--xl: calc(1em * 8 / 6);
+	--fz--l: calc(1em * 8 / 7);
+	--fz--m: 1em;
+	--fz--s: calc(1em * 8 / 9);
+	--fz--xs: calc(1em * 8 / 10);
+	--fz--2xs: calc(1em * 8 / 11);
+}
+```
+
+<Reference>
+参考: [音楽、数学、タイポグラフィ](https://standard.shiftbrain.com/blog/music-math-typography)
+</Reference>
+
+分子 7~9 あたりで選ぶのがおすすめです。
+
+{/* <Alert preset="info">
+	英語は分子`8`、 日本語は分子`9`でスケーリングするのが良さそう。
+</Alert> */}
+
+
+<script src='/typo.js' />
+
+<Tabs>
+	<TabItem label='分子7'>
+		<Frame aspect="16/9">
+			<Preview>
+				<PreviewArea isFlow='s' className='fzDemo typo-7'>
+					<FzDemos />
+				</PreviewArea>
+			</Preview>
+		</Frame>
+	</TabItem>
+	<TabItem label='分子8'>
+		<Frame aspect="16/9">
+		<Preview>
+			<PreviewArea isFlow='s' className='fzDemo typo-8'>
+				<FzDemos />
+			</PreviewArea>
+		</Preview>
+		</Frame>
+	</TabItem>
+	<TabItem label='分子9'>
+		<Frame aspect="16/9">
+		<Preview>
+			<PreviewArea isFlow='s' className='fzDemo typo-9'>
+				<FzDemos />
+			</PreviewArea>
+		</Preview>
+		</Frame>
+	</TabItem>
+</Tabs>
+
+
+### FONT.LH (line-height)
+
+base値をセットし、それに対して小さい・大きいで段階的に用意。
+
+|トークン|変数|クラス|初期値|
+|---|---|---|---|
+|`1`||`.-lh:1`|`1`|
+|`root`|`--lh--root`|`.-lh:root`|`1.75`|
+|`xs`|`--lh--xs`|`.-lh:xs`|`calc({root} - 0.25)`|
+|`s`|`--lh--s`|`.-lh:s`|`calc({root} - 0.125)`|
+|`l`|`--lh--l`|`.-lh:l`|`calc({root} + 0.125)`|
+|`xl`|`--lh--xl`|`.-lh:xl`|`calc({root} + 0.25)`|
+
+
+<Alert preset="info">
+base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおすすめ。（英語なら `1.5`, `1.625` あたりがおすすめ）
+</Alert>
+
+<Tabs>
+	<TabItem label='日本語'>
+	<Preview>
+		<PreviewTitle>Demo</PreviewTitle>
+		<PreviewArea p={20} isFlow='s'>
+			<LhDemos lang='ja' />
+			{/* <DammyText lang='ja' length='m' lh='1'/>
+			<DammyText lang='ja' length='m' lh='1.125'/>
+			<DammyText lang='ja' length='m' lh='1.25'/>
+			<DammyText lang='ja' length='m' lh='1.375'/>
+			<DammyText lang='ja' length='m' lh='1.5'/>
+			<DammyText lang='ja' length='m' lh='1.625'/>
+			<DammyText lang='ja' length='m' lh='1.75'/>
+			<DammyText lang='ja' length='m' lh='1.875'/>
+			<DammyText lang='ja' length='m' lh='2'/> */}
+		</PreviewArea>
+	</Preview>
+	</TabItem>
+	<TabItem label='English'>
+	<Preview>
+	<PreviewTitle>Demo</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<LhDemos lang='en' />
+	</PreviewArea>
+</Preview>
+	</TabItem>
+</Tabs>
+
+
+
+{/* ### Headings の font-size, line-height について
+<Preview>
+	<PreviewTitle>Headings</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<div class="l--stack -gap:30">
+			<h1>Heading 1: <DammyText tag='span' lang='ja' /></h1>
+			<h2>Heading 2: <DammyText tag='span' lang='ja' /></h2>
+			<h3>Heading 3: <DammyText tag='span' lang='ja' /></h3>
+			<h4>Heading 4: <DammyText tag='span' lang='ja' /></h4>
+			<h5>Heading 5: <DammyText tag='span' lang='ja' /></h5>
+			<h6>Heading 6: <DammyText tag='span' lang='ja' /></h6>
+			<hr />
+			<p>Paragraph: <DammyText tag='span' lang='ja' /></p>
+		</div>
+	</PreviewArea>
+</Preview> */}
+
+
+### FONT.LTS (letter spacing)
+
+
+
+{/* |トークン|変数|クラス|初期値|
+|---|---|---|---|
+|`-2`|`--lts---2`|`-lts:`|`-0.5em`|
+|`-1`|`--lts---1`|`-lts:`|`-0.025em`|
+|`0`|`--lts--0`|`-lts:`|`0em`|
+|`1`|`--lts--1`|`-lts:`|`0.025em`|
+|`2`|`--lts--2`|`-lts:`|`0.05em`|
+|`3`|`--lts--3`|`-lts:`|`0.075em`|
+|`4`|`--lts--4`|`-lts:`|`0.1em`|
+|`5`|`--lts--5`|`-lts:`|`0.25em`|
+|`6`|`--lts--6`|`-lts:`|`0.5em`| */}
+
+{/* <Preview>
+	<PreviewTitle>Demo</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<p><Text tag="code" w="2em">-2</Text> : <Text tag="span" lts="-2">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">-1</Text> : <Text tag="span" lts="-1">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">0</Text> : <Text tag="span" lts="0">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">1</Text> : <Text tag="span" lts="1">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">2</Text> : <Text tag="span" lts="2">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">3</Text> : <Text tag="span" lts="3">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">4</Text> : <Text tag="span" lts="4">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">5</Text> : <Text tag="span" lts="5">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+		<p><Text tag="code" w="2em">6</Text> : <Text tag="span" lts="6">Lorem Ipsum, 12345, ダミーの文字列</Text></p>
+	</PreviewArea>
+</Preview> */}
+
+|トークン|変数|クラス|初期値
+|---|---|---|---|
+|`root`|`--lts--root`|`-lts:root`|`normal`|
+|`s`|`--lts--s`|`-lts:s`|`-0.025em`|
+|`l`|`--lts--l`|`-lts:l`|`0.025em`|
+|`xl`|`--lts--xl`|`-lts:xl`|`0.05em`|
+
+<Preview>
+	<PreviewTitle>Demo</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<LtsDemos />
+	</PreviewArea>
+</Preview>
+
+
+
+### FONT.FF (font-family)
+
+|トークン|変数|クラス|初期値|
+|---|---|---|---|
+|`sans`|`--ff--sans`|`.-ff:sans`|<small>`-apple-system, 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',Meiryo, sans-serif, 'Segoe UI Emoji'`</small>|
+|`serif`|`--ff--serif`|`.-ff:serif`|<small>`serif`</small>|
+|`mono`|`--ff--mono`|`.-ff:mono`|<small>`Menlo, Consolas, monaco, monospace`</small>|
+|`emoji`|`--ff--emoji`|`.-ff:emoji`|<small>`'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji','Segoe UI Symbol'`</small>|
+
+{/* |base|--ff--base|--ff--sans|
+|heading|--ff--heading|--ff--sans| */}
+
+<Preview>
+	<PreviewTitle>Demo</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<DammyText ff='sans' />
+		<DammyText ff='serif' />
+		<DammyText ff='mono' />
+		<Text ff='emoji'>💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Text ff='sans'>...</Text>
+	<Text ff='serif'>...</Text>
+	<Text ff='mono'>...</Text>
+	<Text ff='emoji'>💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+{/* ## Customize
+
+以下が初期値です。
+スタイルシートにコピーして別の値へカスタマイズしてください。
+
+```css filename="your css"
+@layer lism-init {
+	:root{
+		...
+	}
+
+``` */}
+
+
+
+## `SPACE` トークン
+
+`SPACE`トークンは、次の2種類があります。
+
+|種類|<span class="-whs:nw">変数</span>|説明|
+|---|---|---|
+|`SPACE.S`|`--s--VAL`|レイアウトの役割としての余白や、コンテンツ間の余白をコントロールするために設計されたトークン。<br />デフォルトでは`rem`単位で、フィボナッチ数に基づいて計算されています。|
+|`SPACE.EM`|`--em--VAL`|ボックス内の余白や文字とアイコン要素の間隔など、その要素自体のテキストサイズに合わせて微調整したい時に使用するトークン。`em`単位。|
+
+
+{/* paddingやmargin, gap等で利用できます。(p,py,px,pl,pr,pt,pb,m,my,mx,ml,mr,mt,mb,gap,colg,rowg,top,left,bottom,right,inset) */}
+
+
+### `SPACE.S` トークン
+
+|トークン値|変数|デフォルト値|
+|---|---|---|
+|`5`|`--s--5`|`0.25rem`|
+|`10`|`--s--10`|`0.375rem`|
+|`20`|`--s--20`|`0.625rem`|
+|`30`|`--s--30`|`1rem`|
+|`40`|`--s--40`|`1.625rem`|
+|`50`|`--s--50`|`2.625rem`|
+|`60`|`--s--60`|`4.25rem`|
+|`70`|`--s--70`|`6.875rem`|
+|`80`|`--s--80`|`11.125rem`|
+|`90`|`--s--90`|`18rem`|
+
+<Preview>
+	<PreviewTitle>DEMO</PreviewTitle>
+	<PreviewArea p={20} isFlow='s' resize>
+		<SpacingDemos spaces={[
+			1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90
+		]} isValueLabel />
+	</PreviewArea>
+</Preview>
+
+
+フィボナッチ数列 ((0, 1,) 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...) に基づいたスケーリングを採用しています。  
+デフォルトでは`1 = 0.125rem`, `2 = 0.25rem` として計算し、`0.25rem`から順にトークン化しています。
+
+{/* - ~~`1 = 0.25`, `2 = 0.5` として計算~~
+	- 1=s10, 2=s20, 3=s30, 5=s40, 8=s50, 13=s60,...
+	- 5, 15, 25, ...など、`5`の倍数は前後の値の中間値となるように計算 */}
+
+
+#### 対応するUtilityクラス
+
+paddingやmarginの全方向・全トークンに対してクラスを用意すると膨大になってしまうので、デフォルトでは主要なものに対してのみでクラスを用意しています。
+
+
+デフォルトでは、`-mbs:{SPACE}`, `-p:{SPACE}`, `-[py|px]:{SPACE}`, `-gap:{SPACE}` のみ用意しています。<MemoBadge>検討中</MemoBadge>
+
+また、それぞれクラスを用意しているのは `50` としています。<MemoBadge>検討中</MemoBadge>
+
+{/* <Note preset="note">
+- ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...?
+</Note> */}
+
+
+### `SPACE.EM` トークン
+
+|トークン値|変数|デフォルト値|
+|---|---|---|
+|`1`|`--em--1`|`0.125em`|
+|`2`|`--em--2`|`0.25em`|
+|`3`|`--em--3`|`0.375em`|
+|`5`|`--em--5`|`0.5em`|
+|`7`|`--em--7`|`0.75em`|
+|`10`|`--em--10`|`1em`|
+|`15`|`--em--15`|`1.5em`|
+|`20`|`--em--20`|`2em`|
+|`25`|`--em--25`|`2.5em`|
+|`30`|`--em--30`|`3em`|
+
+<Preview>
+	<PreviewTitle>DEMO</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<SpacingDemos spaces={['em1','em2','em3','em5','em7','em10','em15','em20','em25','em30']} isValueLabel />
+	</PreviewArea>
+</Preview>
+
+#### 対応するUtilityクラス
+
+こちらも、主要なものに対してのみクラスを用意しています。
+
+デフォルトでは、 `-p:{EM}`, `-[py|px]:{EM}`, `-gap:{EM}` のみ用意しています。<MemoBadge>要検討</MemoBadge>
+
+{/* <Note preset="note">
+- ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...?
+</Note> */}
+
+
+{/* ## カスタマイズ方法
+
+### プリセット数を増やしたい場合
+
+例えば、`100` まで用意したいとします。
+
+数値指定の時はすべて `--s--` 変数として出力されるようにはなっていますので、
+`--s--100` を自前のCSSファイルに定義しておけば、あとはコンポーネントで`p="100"`のようにして利用することができます。
+
+※ ユーティリティクラスとして出力されるようにしたい場合は`config`の上書きが追加で必要です。
+
+
+### 採用するスケーリングを変えたい場合
+
+デフォルトで採用しているスケーリングが好みではない場合、それぞれのCSS変数を上書きしてください。
+
+いくつかスケーリングの例を用意していますので、それを参考にしてください。
+
+
+
+#### フィボナッチ数に基づいた計算例
+
+<Preview>
+	<PreviewTitle>`1=0.25`で計算</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<FiboCalcDemos unit={0.25}/>
+	</PreviewArea>
+</Preview>
+
+
+#### 等比数列に基づいた計算例
+
+音階の純正律や平均律を元にした比率や、黄金比 1.618 などを採用するとよいかもしれません。
+
+以下、`s50`=`2rem` を基準にして計算します。
+
+<Preview>
+	<PreviewTitle>比率 `1.62` (≒ 黄金比率) の例</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<RatioCalcDemos ratio={1.62} />
+	</PreviewArea>
+</Preview>
+
+<Preview>
+	<PreviewTitle>比率 `1.5` (完全五度) の例</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<RatioCalcDemos ratio={1.5} />
+	</PreviewArea>
+</Preview>
+
+
+#### ハイブリッド型
+
+<Preview>
+	<PreviewTitle>前半をフィボナッチ数列、後半を完全5度(`1.5`)の等比数列</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<SpacingDemos spaces={[
+			'0rem',
+			'0.25rem',
+			'0.5rem',
+			'0.75rem',
+			'1.25rem',
+			'2rem',
+			'3rem',
+			'4.5rem',
+			'6.75rem',
+			'10.125rem',
+			'15.2rem', // 15.188
+		]} />
+	</PreviewArea>
+</Preview>
+
+<Preview>
+	<PreviewTitle>前半50までをフィボナッチ数列 `.125`、後半を完全5度(`1.5`)の等比数列</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<SpacingDemos spaces={[
+			'0rem',
+			'0.25rem',
+			'0.375rem',
+			'0.625rem',
+			'1rem',
+			'1.625rem', 
+			'2.625rem',
+			'4.25rem',
+			'6.375rem',
+			'9.5rem',
+			'14.325rem',
+		]} />
+	</PreviewArea>
+</Preview> */}
+
+## `SIZE` トークン
+
+コンテンツサイズ用のトークンです。
+
+|トークン値|変数|クラス|
+|---|---|---|
+|`s`|`--size--s`|`.is--constrained:s`|
+|`m`|`--size--m`|`.is--constrained`|
+|`l`|`--size--l`|`.is--constrained:l`|
+
+## `RADIUS` トークン
+
+<Preview>
+	<PreviewTitle>radius: `1` ~ `5`, `99`</PreviewTitle>
+	<PreviewArea p={40}>
+		<Columns cols={[3, 6]} gap={40}>
+			<RadiusDemos />
+		</Columns>
+	</PreviewArea>
+</Preview>
+
+
+## `SHADOW` トークン
+
+
+<Alert preset='warning'>
+box-shadow は少し特殊で、ユーティリティクラス内で複数のshadow用変数が組み合わされています。
+</Alert>
+
+
+|構成変数|初期値|
+|---|---|
+|`--shColor`|`hsl(215 8% 8% / 8%)`|
+|`--shSize-0`|`0.5px 1px 1px 0`|
+|`--shSize-1`|`1px 2px 3px 0`|
+|`--shSize-2`|`2px 4px 7px 0`|
+|`--shSize-3`|`4px 8px 15px 0`|
+|`--shSize-4`|`8px 16px 31px 0`|
+
+
+{/* <Preview>
+	<PreviewTitle>shadows</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Columns cols={[2, 3, 5]} gap={50}>
+			<ShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
+		</Columns>
+	</PreviewArea>
+</Preview> */}
+
+
+`bxsh`は、`1` ~ `4`, `-1` ~ `-4` までの値に対してユーティリティクラスを用意していますが、内部では2段階のshadowを組み合わせることでより立体的で美しいシャドウを表現できるようになっています。
+
+<Preview>
+	<PreviewTitle>bxshクラス</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Columns cols={[2, 4, 4]} gap={50}>
+			<BoxShadowDemos shadows={[ 1, 2, 3, 4 ]}/>
+		</Columns>
+	</PreviewArea>
+		<PreviewCode slot='tab' label='CSS'>
+```css
+/* 内部の構成イメージ */
+.-bxsh\:1 {box-shadow: var(--shSize-0) var(--shColor), var(--shSize-1) var(--shColor)}
+.-bxsh\:2 {box-shadow: var(--shSize-1) var(--shColor), var(--shSize-2) var(--shColor)}
+.-bxsh\:3 {box-shadow: var(--shSize-2) var(--shColor), var(--shSize-3) var(--shColor)}
+.-bxsh\:4 {box-shadow: var(--shSize-3) var(--shColor), var(--shSize-4) var(--shColor)}
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="-bxsh:1">...</div>
+		<div class="-bxsh:2">...</div>
+		<div class="-bxsh:3">...</div>
+		<div class="-bxsh:4">...</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Columns cols={[2, 4, 4]} gap={50}>
+			<BoxShadowDemos shadows={[ -1, -2, -3, -4 ]}/>
+		</Columns>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='CSS'>
+```css
+/* 内部の構成イメージ */
+.-bxsh\:-1 {box-shadow: inset var(--shSize-0) var(--shColor), inset var(--shSize-1) var(--shColor)}
+.-bxsh\:-2 {box-shadow: inset var(--shSize-1) var(--shColor), inset var(--shSize-2) var(--shColor)}
+.-bxsh\:-3 {box-shadow: inset var(--shSize-2) var(--shColor), inset var(--shSize-3) var(--shColor)}
+.-bxsh\:-4 {box-shadow: inset var(--shSize-3) var(--shColor), inset var(--shSize-4) var(--shColor)}
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="-bxsh:-1">...</div>
+		<div class="-bxsh:-2">...</div>
+		<div class="-bxsh:-3">...</div>
+		<div class="-bxsh:-4">...</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### シャドウカラーの上書き
+
+bxshユーティリティの構成変数である `--shColor` を上書き指定することで、シャドウカラーを変更することができます。
+
+{/* color-mix(in srgb, blue, transparent 80%) */}
+<Preview>
+	<PreviewTitle>`--shColor`の上書き</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='40' >...</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--shColor:"
+		<div class="l--box -bxsh:3 -p:40" style="--shColor:rgb(100 100 200 / 20%)"> … </div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* `shadowHsl`も指定したい */}
+
+
+
+
+{/* `shadowHsl`も指定したい */}
+
+
+{/* ## hover クラス
+
+## border クラス */}

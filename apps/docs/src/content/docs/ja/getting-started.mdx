@@ -1,0 +1,151 @@
+---
+title: 'Getting Started'
+description: '...'
+---
+
+import { Badge, Alert, Tabs, TabItem } from '@loos/lism-astro';
+import { SmileyXEyes } from "@phosphor-icons/react";
+import { MemoBadge } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+## Installation
+
+Lismは2通りの使い方ができます。
+
+### 1. CSS設計を導入したいだけの場合
+
+HTMLで組むシンプルなサイトであれば、CDN経由でCSSを読み込むだけで利用できます。
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/@lism-ui/core/dist/css/all.css" rel="stylesheet" />
+```
+
+もちろん、CSSファイルをダウンロードして読み込んでもOKです。
+
+### 2. パッケージを使ってLism UI をフル活用する場合
+
+ReactやAstroで専用のコンポーネントを使用するためには、コアパッケージをインストールする必要があります。
+
+<Tabs>
+	<TabItem label='npm'>
+		```bash frame="none"
+		npm i @lism-ui/core
+		```
+	</TabItem>
+	<TabItem label='pnpm'>
+		```bash frame="none"
+		pnpm add @lism-ui/core
+		```
+	</TabItem>
+		<TabItem label='yarn'>
+		```bash frame="none"
+		yarn add @lism-ui/core
+		```
+	</TabItem>
+</Tabs>
+
+
+### CSSの読み込み
+
+例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。
+
+```js
+import '@loos/lism-core/css/all.css';
+```
+
+
+### Purgeする
+
+ビルド環境の調整ができる場合は、[PurgeCSS](https://purgecss.com/)を利用して、必要なCSSだけを抽出することができます。<MemoBadge>未検証</MemoBadge>
+
+
+
+## Using Components
+
+```jsx
+import { Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, ... } from '@loos/lism-core';
+
+// ...
+<Box p={20} bgc='base-2'>
+	<Text fz="l">Lorem ipsum text...</Text>
+</Box>
+// ...
+```
+
+{/* <Reference></Reference> */}
+
+## 特定の環境に合わせた コンポーネントの読み込み
+
+### Next.js (App Router)
+
+{/* Next.js の **app ルーティング**を使用している場合、`<Accordion>`や`<Tab>`を使うには`"use client"`の記述が必要になりますが、 */}
+
+
+{/* <Alert preset="info"> */}
+`@loos/lism-next`パッケージを追加すると、Lism コンポーネントに関する`"use client"`の記述を省略することができるようになります。
+{/* </Alert> */}
+
+<small>（`"use client"`が必要なものにはすでに記述された状態でimportできるようになります。）</small>
+
+
+```bash frame="none" filename="Add package"
+npm i @loos/lism-next
+```
+
+<Alert preset="warning">
+パッケージから直接コンポーネントのソースコードをimportできるようにするため、`next.config.js`の`transpilePackages`に`"@loos/lism-next"`を追加してください。
+</Alert>
+
+
+```js filename="next.config.js"
+const nextConfig = {
+	transpilePackages: ["@loos/lism-next"],
+	// ...
+};
+
+module.exports = nextConfig;
+```
+
+
+これらの準備により、`<Tabs>`などの`"use client"`が必要なコンポーネントも簡単に利用できるようになります。  
+（Boxなどの普通のコンポーネントも、`@loos/lism-next`から同時にimportできます。）
+
+```js
+import { Box, Tabs, TabItem } from '@loos/lism-next';
+
+<Tabs>
+	<TabItem label='tab1'>
+		<Box>...</Box>
+	</TabItem>
+	<TabItem label='tab2'>
+		<Box>...</Box>
+	</TabItem>
+</Tabs>
+```
+
+
+
+### Astro
+
+`.jsx`ファイルではなく、`.astro`ファイルでもコンポーネントを配布しています。<MemoBadge>準備中</MemoBadge>
+
+```bash frame="none"
+npm i @loos/lism-astro
+```
+
+```js
+import { Box, ... } from '@loos/lism-astro';
+```
+
+一部のコンポーネントは、ReactとAstroで利用方法が変わるので注意してください。（各コンポーネントの解説ページで個別に説明していく予定です。）
+
+{/* 
+## lism.config のセッティング
+
+Lism Propsのカスタマイズなどを行うためのファイルです。  
+トークン値のカスタマイズや、どの値をユーティリティクラス化するかを設定できます。<MemoBadge>未実装</MemoBadge>
+
+```js filename="lism.config.js"
+...
+``` */}

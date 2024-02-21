@@ -1,0 +1,301 @@
+---
+title: 'Gradient'
+description: ...
+sidebar:
+  order: 15
+---
+
+import { Columns, Box, Frame, Flex, Cluster } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+`gradient`で背景にグラデーションをつけることができます。
+
+文字列またはオブジェクト形式で指定できます。
+
+## 文字列での指定
+
+`gradient`の指定が文字列の場合、下記の2パターンに分かれます。
+
+- 基本的には、インラインスタイルで `background-image` に指定された値が出力されます。
+- 登録済みのプリセット名と一致するか、またはLism Propの共通ルールで`u:`から始まる文字列は、ユーティリティクラスとして出力されます。
+
+### グラデーション値を指定
+
+<Preview>
+	<PreviewTitle>値を直書き</PreviewTitle>
+	<PreviewArea resize p={20}>
+	<Columns gap={20} fz='xs' itemMinW="12rem">
+		<Frame
+			aspect="16/9"
+			gradient="linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"
+		/>
+		<Frame
+			aspect="16/9"
+			gradient="conic-gradient(#000 0%, #fff 100%)"
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3,7}
+		<Frame
+			aspect="16/9"
+			gradient="linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"
+		/>
+		<Frame
+			aspect="16/9"
+			gradient="conic-gradient(#000 0%, #fff 100%)"
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### ユーティリティクラスの指定
+
+`gradient`に渡した文字列が事前に登録しているプリセット値と一致する場合、`.-gradient:{utilityName}`クラスとして出力されます。
+
+ただし、現状コアで登録しているのは `blackToBottom` のみです。
+
+{/* 空白も , もない文字列→ユーティリティクラス化？ */}
+
+
+<Preview>
+	<PreviewTitle>`blackToBottom`を使う</PreviewTitle>
+	<PreviewArea resize p={20}>
+	<Frame aspect='cinema' gradient='blackToBottom'/>
+	</PreviewArea>
+	<PreviewCode label='React,Astro' slot='tab'>
+		```jsx "gradient='blackToBottom'"
+		<Frame aspect='cinema' gradient='blackToBottom'/>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```jsx "-gradient:blackToBottom"
+		<div class="is--frame -aspect:cinema -gradient:blackToBottom"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### 独自ユーティリティクラスの追加
+
+`gradient='u:sunset'`を指定することで、`-gradient:sunset`クラスが出力されます。
+
+次のようにCSSを追記します。
+
+<Preview>
+	<PreviewTitle>`gradient="sunset"`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect='cinema' gradient='u:sunset'/>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+```css
+/* まずは以下のようなCSSを追記しておく */
+.-gradient\:sunset{
+	background: linear-gradient(
+		to top,
+		#a24525 0%,
+		#dd723c 15%,
+		#d7b97b 40%,
+		#a2b2b9 55%,
+		#5a718c 80%,
+		#36557e 100%
+	);
+}
+```
+	</PreviewCode>
+	<PreviewCode label='React,Astro' slot='tab'>
+		```jsx "gradient='u:sunset'"
+		<Frame aspect='cinema' gradient='u:sunset'/>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```jsx "-gradient:sunset"
+		<div class="is--frame -aspect:cinema -gradient:sunset"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+## オブジェクトでの指定
+
+オブジェクト指定では、以下のプロパティを指定できます。
+
+- `type`: `linear` | `radial` | `repeating-linear` | `repeating-radial` | `conic`
+- `angle`: `45deg`, `to left`など、カラー入力前に指定できるアングル値。`type` によって何が有効か値かは異なります。
+- `colors`: `,`が含まれていないければ `var(--gradColor--xxx)` 変数として出力され、それ以外の場合はそのまま出力されます。
+
+### 各成分の指定
+
+`type`, `angle`, `colors`を個別に指定します。
+
+<Preview>
+	<PreviewTitle>オブジェクト指定</PreviewTitle>
+	<PreviewArea resize p={20}>
+	<Columns gap={20} fz='xs' itemMinW="12rem">
+		<Frame
+			aspect="16/9"
+			gradient={{
+				angle: '35deg',
+				colors: '#ff9a9e 0%, #fad0c4 99%, #fad0c4 100%'
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'radial',
+				angle: 'circle at top right',
+				colors: 'yellow, #f06d06 50%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'repeating-linear',
+				angle: '45deg',
+				colors: '#3f87a6, #ebf8e1 20%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'conic',
+				angle: 'from -45deg',
+				colors: '#fff, #000, #fff',
+			}}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "gradient="
+		<Frame
+			aspect="16/9"
+			gradient={{
+				angle: '35deg',
+				colors: '#ff9a9e 0%, #fad0c4 99%, #fad0c4 100%'
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'radial',
+				angle: 'circle at top right',
+				colors: 'yellow, #f06d06 50%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'repeating-linear',
+				angle: '45deg',
+				colors: '#3f87a6, #ebf8e1 20%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'conic',
+				angle: 'from -45deg',
+				colors: '#fff, #000, #fff',
+			}}
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### color変数を指定する
+
+オブジェクト指定時、`colors`で指定した値に`,`がない場合、`var(--gradColor--{colors})` として出力されます。  
+事前にカラー変数を定義しておくことで、同じカラーセットを流用して異なるグラデーションを作成することができます。
+
+Lismが標準で用意しているのは`--gradColor--toBlack`のみです。
+
+<Preview>
+	<PreviewTitle>Lismで用意している`toBlack`を指定する</PreviewTitle>
+	<PreviewArea resize p={20}>
+	<Columns gap={20} fz='s'>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to right', colors: 'toBlack' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'toBlack' }}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "colors: 'toBlack'"
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to right', colors: 'toBlack' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'toBlack' }}
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### 独自変数を用意する
+
+<Preview>
+	<PreviewTitle>別途用意した場合の例</PreviewTitle>
+	<PreviewArea resize p={20}>
+	<Columns gap={20} fz='s'>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '45deg', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to bottom', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '-45deg', colors: 'denseWater' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'denseWater' }}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "colors: 'lime'" colors: 'denseWater'
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '45deg', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to bottom', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '-45deg', colors: 'denseWater' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'denseWater' }}
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+上記の例では、以下のように追加で変数を定義しているものを呼び出しています。
+
+```css
+:root {
+	--gradColor--lime: #abecd6 0%, #fbed96 100%;
+	--gradColor--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
+}
+```
+
+

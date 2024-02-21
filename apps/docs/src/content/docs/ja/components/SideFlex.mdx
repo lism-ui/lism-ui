@@ -1,0 +1,195 @@
+---
+title: 'SideFlex'
+description: ...
+---
+import { SideFlex, FlexItem, Alert } from '@loos/lism-astro';
+import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+**片方の横幅を固定し、もう一方の要素が伸縮する**ような 2カラムレイアウト を作成します。
+
+かつ、**設定した幅を下回ると自動で** 1カラム に切り替わります。
+
+<Alert preset="point">
+つまり、メディアクエリやコンテナクエリに依存せずに横並びと縦並びの切り替えを行うことができます。
+</Alert>
+
+
+## Props
+
+| プロパティ | 説明 | デフォルト値 |
+|---|---|---|
+| `side` <PropBadge type="attr">`data-side`</PropBadge> | 最初の要素と最後の要素のどちらをサイド要素として扱うか.<br/>`last` or `first` | `last` |
+| `sideW` <PropBadge type="cssvar">`--side--w`</PropBadge> | Side要素の横幅 | `auto` |
+| `fluidMinW` <PropBadge type="cssvar">`--fluid--minW`</PropBadge>| もう一方の流動する要素が維持する最小幅 |`50%`|
+
+{/* --theOther--minW, --content--minW, --fluid--minW */}
+
+その他、[`<Flex>`で使えるProps](/ja/components/flex#props)が使えます。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { SideFlex } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { SideFlex } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+SideFlex直下の2つの子要素のうち、どちらの要素をSide要素として扱うかを`side`(`data-side`)で指定します。
+
+{/* `side='first'`にすると、inline-**start** の方向（ltr言語では左側）に Side要素が、  
+逆に、`side='last'`にすると、inline-**end** の方向（ltr言語では右側）に Side要素が配置されます。 */}
+
+<Preview>
+	<PreviewTitle>
+		`data-side='last'`で、`sideW="12rem"`にセット
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideFlex side='last' sideW='12rem' gap={20} >
+			<FlexItem bd='guide'>
+				<DammyText />
+			</FlexItem>
+			<FlexItem bd>Side Content</FlexItem>
+		</SideFlex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {5} "side='last'"
+		<SideFlex side='last' sideW='12rem' gap={20}>
+			<FlexItem>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</FlexItem>
+			<FlexItem bd>Side Content</FlexItem>
+		</SideFlex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {5} "data-side=\"last\""
+		<div class="l--sideFlex -gap:20" data-side="last" style="--side--w:12rem;">
+			<div>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="-bd:">Side Content</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`data-side='first'`、`sideW="8rem"`, `fluidMinW="30rem"`にセット
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideFlex side='first' sideW='8rem' fluidMinW='30rem' gap={20}>
+			<FlexItem bd>Side Content</FlexItem>
+			<FlexItem bd='guide'>
+				<DammyText />
+			</FlexItem>
+		</SideFlex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React'>
+		```jsx {2} "side='first'"
+		<SideFlex side='first' sideW='8rem' fluidMinW='30rem' gap={20}>
+			<FlexItem bd>Side Content</FlexItem>
+			<FlexItem>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</FlexItem>
+		</SideFlex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {2} "data-side=\"first\""
+		<div class="l--sideFlex -gap:20" data-side="first" style="--side--w:8rem;--fluid--minW:30rem">
+			<div class="-bd:">Side Content</div>
+			<div>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 反転
+
+`-fxd:rr`クラス（`flex-direction:row-reverse`）を併用することで、並び順を反転させることができます。
+
+<Preview>
+	<PreviewTitle>
+		`data-side='last'`で `row-reverse`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideFlex side='last' fxd='rr' sideW='12rem' gap={20}>
+			<FlexItem bd='guide'>
+				<DammyText />
+			</FlexItem>
+			<FlexItem bd>Side Content</FlexItem>
+		</SideFlex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "fxd='rr'"
+		<SideFlex side='last' fxd='rr' sideW='12rem' gap={20}>
+			<FlexItem>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</FlexItem>
+			<FlexItem bd>Side Content</FlexItem>
+		</SideFlex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-fxd:rr"
+		<div class="l--sideFlex -fxd:rr -gap:20" data-side="last" style="--side--w:12rem;">
+			<div>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="-bd:">Side Content</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`data-side='first'`で `row-reverse`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideFlex side='first' fxd='rr' sideW='12rem' gap={20}>
+			<FlexItem bd>Side Content</FlexItem>
+			<FlexItem bd='guide'>
+				<DammyText />
+			</FlexItem>
+		</SideFlex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "fxd='rr'"
+		<SideFlex side='first' fxd='rr' sideW='12rem' gap={20}>
+			<FlexItem bd>Side Content</FlexItem>
+			<FlexItem>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</FlexItem>
+		</SideFlex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-fxd:rr"
+		<div class="l--sideFlex -fxd:rr -gap:20" data-side="first" style="--side--w:12rem;">
+			<div class="-bd:">Side Content</div>
+			<div>
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+

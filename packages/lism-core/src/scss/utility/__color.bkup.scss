@@ -1,0 +1,67 @@
+/* stylelint-disable */
+
+//カラー系
+[class*='-c:'] { color: var(--c) !important }
+.-c\:main { --c: var(--main) }
+// .-c\:accent { --c: var(--accent) }
+.-c\:content { --c: var(--content) }
+.-c\:content-2 { --c: var(--content-2) }
+.-c\:content-3 { --c: var(--content-3) }
+.-c\:base { --c: var(--base) }
+// .-c\:base-2 { --c: var(--base-2) }
+// .-c\:base-3 { --c: var(--base-3) }
+
+// .-c\:pale { --c: green; }
+// .-c\:opposite { --c: var(--c--opposite); }
+
+
+// .-c\:current{--c: currentColor;}
+
+[class*='-bgc:'] {background-color: var(--bgc) !important}
+.-bgc\:base { --bgc: var(--base) }
+.-bgc\:base-2 { --bgc: var(--base-2) }
+.-bgc\:base-3 { --bgc: var(--base-3) }
+.-bgc\:content { --bgc: var(--content) }
+.-bgc\:main {--bgc: var(--main);}
+// // .-bgc\:accent {--bgc: var(--accent);}
+.-bgc\:t {--bgc: transparent;}
+
+// .-bgc\:pale {--bgc: red;}
+// .-bgc\:opposite {--bgc: var(--bgc--opposite)}
+// .-bgc\:i {
+// 	--bgc: inherit;
+// }
+
+
+
+// .-keycolor\:main { --keycolor: var(--main) }
+// .-keycolor\:accent { --keycolor: var(--accent) }
+// .-keycolor\:gray { --keycolor: var(--gray) }
+// .-keycolor\:red { --keycolor: var(--red) }
+// .-keycolor\:orange { --keycolor: var(--orange) }
+// .-keycolor\:yellow { --keycolor: var(--yellow) }
+// .-keycolor\:green { --keycolor: var(--green) }
+// .-keycolor\:blue { --keycolor: var(--blue) }
+// .-keycolor\:purple { --keycolor: var(--purple) }
+// .-keycolor\:pink { --keycolor: var(--pink) }
+
+// ミックスkカラーutility
+// @supports (color: color-mix(in srgb, #000, #fff)) {
+.-c\:mix {
+	--c-mixbase: var(--content);
+	// --c-mixcolor: var(--keycolor);
+	--c-mixper: var(--cbox-mixper--txt);
+	--c: color-mix(in srgb, var(--c-mixbase), var(--c-mixcolor) var(--c-mixper));
+}
+.-bgc\:mix {
+	--bgc-mixbase: transparent;
+	// --bgc-mixcolor: var(--keycolor);
+	--bgc-mixper: var(--cbox-mixper--bg);
+	--bgc: color-mix(in srgb, var(--bgc-mixbase), var(--bgc-mixcolor) var(--bgc-mixper));
+}
+.-bdc\:mix {
+	--bdc-mixbase: transparent;
+	// --bdc-mixcolor: var(--keycolor);
+	--bdc-mixper: var(--cbox-mixper--bdc);
+	--bdc: color-mix(in srgb, var(--bdc-mixbase), var(--bdc-mixcolor) var(--bdc-mixper));
+}

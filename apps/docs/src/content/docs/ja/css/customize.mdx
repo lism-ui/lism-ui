@@ -1,0 +1,80 @@
+---
+title: 'Customize'
+description: ...
+---
+
+import { Box, Flex, Alert } from "@loos/lism-astro";
+import { Preview, PreviewArea, PreviewCode, PreviewTitle } from "~/components/Preview";
+
+SCSSの変数を上書きすることで、出力するCSSのカスタマイズが可能です。
+
+```scss
+
+// ブレイクポイントの変更
+@use '../path/to/@loos/lism-core/scss/query' with (
+	$break-points: (
+		'sm': '360px',
+	)
+);
+
+// prop クラスの設定変更
+@use '../path/to/@loos/lism-core/scss/setting' with (
+	$prop_class_data: (
+		'w': (
+			// importantを付ける
+			important: 1,
+			// @lg のユーティリティクラスも出力する
+			bp: (
+				lg: 1,
+			),
+		),
+
+
+		'h': (
+			// mdのユーティリティクラスを出力しない
+			bp: (
+				md: 0,
+			),
+			// bp対応クラスを出力しない
+			// bp: 0,
+		),
+	)
+);
+
+// lism-cssの読み込み
+@use '../path/to/@loos/lism-core/scss/all';
+
+```
+
+---
+
+
+<Preview>
+	<PreviewTitle>test</PreviewTitle>
+	<PreviewArea resize>
+	<Box p={[20, 40, 50]} bd w={['50%', '70%', '95%']}>
+		...
+	</Box>
+	</PreviewArea>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>その他、`gap`や`w`でもBP指定可能な様子</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Flex gap={[30, 40]}>
+			<Box w={['auto', null, '25%']}>コンテンツ</Box>
+			<Box>コンテンツ</Box>
+			<Box>コンテンツ</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Flex gap={[30, 40]}>
+		<Box w={['auto', null, '25%']}>コンテンツ</Box>
+		<Box>コンテンツ</Box>
+		<Box>コンテンツ</Box>
+	</Flex>
+	```
+	</PreviewCode>
+</Preview>

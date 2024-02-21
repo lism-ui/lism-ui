@@ -1,0 +1,130 @@
+import { ShapeDivider, Box } from '@loos/lism-core';
+import { DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+<Preview>
+	<PreviewTitle>ShapeDivider</PreviewTitle>
+	<PreviewArea resize alignfull>
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip level={4}/>
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow1" c="white" level={4}/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip level={4}/>
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow1" c="white" level={4}/>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>ShapeDivider</PreviewTitle>
+	<PreviewArea resize alignfull>
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip level={-4}/>
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow1" c="white" level={-4}/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip level={-4}/>
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow1" c="white" level={-4}/>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>ShapeDivider</PreviewTitle>
+	<PreviewArea resize alignfull>
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip w="4em" h="2em" ml="auto" mr="auto" />
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow1" c="white" isFlip w="4em" h="2em" ml="auto" mr="auto" />
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>ShapeDivider</PreviewTitle>
+	<PreviewArea resize alignfull>
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="25%" isFlip />
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="-25%" />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="25%" isFlip />
+			<Box isFlow py={40} px={40}>...</Box>
+			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="-25%" />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>ShapeDivider</PreviewTitle>
+	<PreviewArea resize alignfull>
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow3" c="white" level={2} isFlip />
+			<Box isFlow py={40} px={40}>
+				<DammyText />
+				<DammyText length="l" />
+			</Box>
+			<ShapeDivider shape="arrow3" c="white" level={-2} />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box alignfull bgc="#e5e5e5" c="black">
+			<ShapeDivider shape="arrow3" c="white" level={2} isFlip />
+			<Box isFlow py={40} px={40}>...</Box>
+			<ShapeDivider shape="arrow3" c="white" level={-2} />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>

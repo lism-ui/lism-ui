@@ -1,0 +1,33 @@
+import { Frame,Center,Text,Flex,Button, Box } from '@loos/lism-core';
+import { DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+<Preview>
+	<PreviewArea p={10}>
+		<Frame aspect='16/9' hasGutter bgc='base-2'>
+			<Center minH='100'>
+				<Text tag='h1' fz='3xl' ff='serif' lts='l' lh='xs'>Lism UI</Text>
+				<Text c='content-2' fz='s'>The dammy description text...</Text>
+				<Flex gap={20} mbs={40}>
+					<Button href='###' bdrs='m'>Docs</Button>
+					<Button href='###' variant='outline' bdrs='m'>Buy</Button>
+				</Flex>
+			</Center>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Frame aspect='16/9' hasGutter bgc='base-2'>
+			<Center minH='100'>
+				<Text tag='h1' fz='3xl' ff='serif' lts='l' lh='xs'>Lism UI</Text>
+				<Text c='content-2' fz='s'>The dammy description text...</Text>
+				<Flex gap={20} mbs={40}>
+					<Button href='###' bdrs='m'>Docs</Button>
+					<Button href='###' variant='outline' bdrs='m'>Buy</Button>
+				</Flex>
+			</Center>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>

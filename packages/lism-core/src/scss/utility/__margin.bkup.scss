@@ -1,0 +1,92 @@
+// @use '../query' as query;
+@use '../setting' as setting;
+
+/* stylelint-disable */
+
+// --------------------
+
+// [class*="..."] にする...？
+// .-hoge--m:  → -m: にひっかかるので注意
+
+// all
+.-m\: { margin: var(--m) !important }
+.-m\:0{ margin: 0 !important }
+.-m\:a{ margin: auto !important }
+
+// x, y
+.-mx\: { margin-inline: var(--mx) !important }
+.-my\: { margin-block: var(--my) !important }
+.-mx\:0{margin-inline: 0 !important}
+.-my\:0{margin-block: 0 !important} 
+.-mx\:a{margin-inline: auto !important}
+.-my\:a{margin-block: auto !important}
+
+// sides
+.-mt\: { margin-top: var(--mt) !important }
+.-mb\: { margin-bottom: var(--mb) !important }
+.-ml\: { margin-left: var(--ml) !important }
+.-mr\: { margin-right: var(--mr) !important }
+
+
+.-mis\: { margin-inline-start: var(--mis) !important}
+[class*="-mbs:"] { margin-block-start: var(--mbs) !important}
+
+.-mt\:a{margin-top: auto !important}
+.-mb\:a{margin-bottom: auto !important}
+.-ml\:a{margin-left: auto !important}
+.-mr\:a{margin-right: auto !important}
+.-mis\:a{margin-inline-start: auto;}
+.-mbs\:a{--mbs: auto;}
+.-mt\:0{margin-top: 0 !important}
+.-mb\:0{margin-bottom: 0 !important}
+.-ml\:0{margin-left: 0 !important}
+.-mr\:0{margin-right: 0 !important}
+.-mis\:0{margin-inline-start: 0;}
+.-mbs\:0{--mbs: 0;}
+
+
+@each $s in setting.$util_spaces {
+	// .-m\:#{$s} {--m: var(--s--#{$s});}
+	// .-mis\:#{$s} { --mis: var(--s--#{$s});}
+
+	// flowレイアウトで使うので mbs はユーティリティ用意する
+	.-mbs\:#{$s} { --mbs: var(--s--#{$s});}
+}
+
+
+// @include query.bp-up('sm'){
+// 	.-m\@sm { margin: var(--m--sm) !important }
+// 	.-mx\@sm { margin-inline: var(--mx--sm) !important }
+// 	.-my\@sm { margin-block: var(--my--sm) !important }
+// 	// .-mt\@sm { margin-top: var(--mt--sm) !important }
+// 	// .-mr\@sm { margin-right: var(--mr--sm) !important }
+// 	// .-mb\@sm { margin-bottom: var(--mb--sm) !important }
+// 	// .-ml\@sm { margin-left: var(--ml--sm) !important }
+// 	.-mis\@sm { margin-inline-start: var(--mis--sm) !important }
+// 	.-mbs\@sm { margin-block-start: var(--mbs--sm) !important }
+// }
+
+// @include query.bp-up('md'){
+// 	.-m\@md { margin: var(--m--md) !important }
+// 	.-mx\@md { margin-inline: var(--mx--md) !important }
+// 	.-my\@md { margin-block: var(--my--md) !important }
+// 	// .-mt\@md { margin-top: var(--mt--md) !important }
+// 	// .-mr\@md { margin-right: var(--mr--md) !important }
+// 	// .-mb\@md { margin-bottom: var(--mb--md) !important }
+// 	// .-ml\@md { margin-left: var(--ml--md) !important }
+// 	.-mis\@md { margin-inline-start: var(--mis--md) !important }
+// 	.-mbs\@md { margin-block-start: var(--mbs--md) !important }
+// }
+
+// @include query.bp-up('lg'){
+// 	.-m\@lg { margin: var(--m--lg) !important }
+// 	.-mx\@lg { margin-inline: var(--mx--lg) !important }
+// 	.-my\@lg { margin-block: var(--my--lg) !important }
+// 	// .-mt\@lg { margin-top: var(--mt--lg) !important }
+// 	// .-mr\@lg { margin-right: var(--mr--lg) !important }
+// 	// .-mb\@lg { margin-bottom: var(--mb--lg) !important }
+// 	// .-ml\@lg { margin-left: var(--ml--lg) !important }
+// 	.-mis\@lg { margin-inline-start: var(--mis--lg) !important }
+// 	.-mbs\@lg { margin-block-start: var(--mbs--lg) !important }
+// }
+

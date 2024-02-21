@@ -1,0 +1,15 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { getFlexItemProps } from '@loos/lism-core/raw/Flex/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const { layout, ...props } = Astro.props || {};
+const LismComponent = layout || Lism;
+---
+
+<LismComponent {...getFlexItemProps(props)}>
+	<slot />
+</LismComponent>

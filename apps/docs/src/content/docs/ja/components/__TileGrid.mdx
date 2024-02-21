@@ -1,0 +1,95 @@
+---
+title: 'TileGrid'
+description: ...
+---
+import { Alert, TileGrid, Columns } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+**子要素が指定した最小幅を下回らないように自動で折り返しされる**グリッドレイアウトを作成します。
+
+<Alert preset="info">
+カラムの折返しタイミングがブレイクポイントに依存しません。
+</Alert>
+
+ただし、カラム数は**1列ずつしか変わらない**（ 4列→2列 とかはできず、4列→3列→2列になる ) ので、カラム数を具体的に指定したい場合は [`<Columns>`](/docs/components/Columns) を使ってください。
+
+<Preview>
+	<PreviewTitle>対応するHTML構造</PreviewTitle>
+	<PreviewCode>
+	```jsx
+	<div class="l--tileGrid">...</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+{/* Memo: clampをプリセット用意したいsizeプリセット使えるようにして、text-s-fluid とか用意する？ */}
+
+
+## 主なprops
+
+- `itemMinW`: 子要素が最低限維持する幅. デフォルト値は `20rem` (要検討)
+- その他、[`<Grid>`で使えるprops](/ja/components/grid#props)が使えます。
+	- `gap`の初期値を `20` にセットしています。
+
+
+## Import
+
+```js
+import { TileGrid } from '@loos/lism-core';
+```
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>
+		デフォルト (`itemMinW`=`16rem`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<TileGrid lismState={["has--itemGuide"]}>
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+		</TileGrid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<TileGrid>
+			...
+		</TileGrid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		子要素の最低限維持する幅を`12rem`に
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<TileGrid itemMinW="12rem" lismState={["has--itemGuide"]}>
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+		</TileGrid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {1}
+		<TileGrid itemMinW="12rem">
+			...
+		</TileGrid>
+		```
+	</PreviewCode>
+</Preview>

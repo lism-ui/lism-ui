@@ -1,0 +1,32 @@
+// gap値は横幅計算等に使用することもあるので、 row, colm それぞれに変数データをもたせている。
+//    ( fxb = calc(width - colmg) みたいな使い方をしたい時がある )
+// ただし、 --gap は 単一値（row と colm が同じ値）のみ指定する必要がある。
+//    → コンポーネント側で、gap="1em 2em" のように分割指定されていれば、変数を自動で分けるように処理している。
+
+// .has--gap,
+.is--flex,
+.is--grid {
+	// 入れ子になっても影響受けないように変数リセット
+	--gap: var(--s--50); // ここで初期値与えるべきかは要検討
+
+	// --gap 指定あればそれを受け取るし、row,colの直接指定も可能
+	--rowg: var(--gap);
+	--colmg: var(--gap);
+
+	// --gap_Q{x} があればそっちを、なければ row, colm を引き継ぐ。
+	// かつ、--row|col_Q{x} の直接指定が最優先
+	--rowg--sm: var(--rowg);
+	--colmg--sm: var(--colmg);
+	--rowg--xs: var(--gap--xs, var(--rowg--sm));
+	--colmg--xs: var(--gap--xs, var(--colmg--sm));
+
+	gap: var(--rowg) var(--colmg);
+
+	@container (max-width: 720px) {
+		gap: var(--rowg--sm) var(--colmg--sm);
+	}
+
+	@container (max-width: 440px) {
+		gap: var(--rowg--xs) var(--colmg--xs);
+	}
+}

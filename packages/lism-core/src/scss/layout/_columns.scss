@@ -1,0 +1,35 @@
+@use '../query' as query;
+
+// --------------------
+// カラム
+// 他のgrid 要素を指定することはない & flex か grid かパッと判断できないので個別にモジュール化。
+// --------------------
+.l--columns {
+	// --gtc: var(--gtc);
+	display: grid;
+	grid-template-columns: repeat(var(--cols--val), minmax(0, 1fr));
+
+	// 各ブレイクポイント用の変数に伝搬していく
+	--cols: 1; // 初期値
+	// --_sm_cols: var(--cols);
+	--cols--sm: var(--cols);
+	--cols--md: var(--cols--sm);
+	--cols--lg: var(--cols--md);
+	// --cols--xl: var(--cols--lg);
+
+	--cols--val: var(--cols);
+	@include query.bp-up('sm') {
+		--cols--val: var(--cols--sm);
+	}
+	@include query.bp-up('md') {
+		--cols--val: var(--cols--md);
+	}
+	@include query.bp-up('lg') {
+		--cols--val: var(--cols--lg);
+	}
+	// @include query.bp-up('xl') {
+	// 	--cols--val: var(--cols--xl);
+	// }
+}
+
+// -repeat: 1;

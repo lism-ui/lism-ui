@@ -1,0 +1,38 @@
+// @import ならこれでいける
+// $test: red;
+// @import './setting';
+// @import './test';
+
+// @use './setting' with (
+// 	$test: red
+// );
+// @use './test';
+
+// $points: (
+// 	'sm': '(min-width: 300px)',
+// 	'md': '(min-width: 720px)',
+// 	'lg': '(min-width: 960px)'
+// 	'xl': '(min-width: 1200px)',
+// 	// 'xxl': '(min-width: 1400px)',
+// 	'under-sm': 'not (min-width: 480px)',
+// 	'under-md': 'not (min-width: 720px)',
+// 	'under-lg': 'not (min-width: 960px)',
+// );
+
+// @パッケージ でインポートできるのは Astro だから？
+// @use '@loos/lism-core/scss/query' with (
+// 	$break-points: (
+// 		'sm': '360px',
+// 	)
+// );
+
+@use '@loos/lism-core/scss/setting' as lism-setting with (
+	$prop_class_data: (
+		'w': (
+			important: 1,
+			bp: 0,
+		),
+	)
+);
+
+@use '@loos/lism-core/scss/all';

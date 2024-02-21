@@ -1,0 +1,539 @@
+---
+title: 'Layer'
+description: ...
+---
+
+
+import { Media, FilterLayer, MediaLayer, Stack, Alert, Note, Text, Box, Layer, Columns, Center, Frame } from '@loos/lism-core';
+// import Image from "next/image";
+import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+`position:absolute`で要素を階層的に配置するためのモジュールです。
+
+
+## 主なProps
+
+
+| プロパティ | 説明 | 有効な値|
+|---|---|---|
+| `position`| Layerの配置位置をキーワードで指定します。指定された値に合わせて、top,left などの位置プロパティが適用されます。|`'{X} {Y}'`形式で、それぞれ`left`,`right`,`top`,`bottom`,`center` が使えます。|
+
+{/* | `data-size` | サイズに関する調整をキーワードで指定できます。| `contain`| */}
+
+
+また、insetオブジェクト内に指定する必要のあるプロパティを直接指定できるようにしています。
+
+|Prop|CSS|
+|---|---|
+|`inset`|`inset`|
+|`t`|`top`|
+|`b`|`bottom`|
+|`l`|`left`|
+|`r`|`right`|
+|`is`|`inset-inline-start`|
+|`ie`|`inset-inline-end`|
+|`bs`|`inset-block-start`|
+|`be`|`inset-block-end`|
+
+{/* |Prop|CSS|
+|---|---|
+|`translate`|`translate`|
+|`rotate`|`rotate`|
+|`scale`|`scale`|
+|`transform`|`transform`|
+|`transformOrigin`|`transformOrigin`|
+|`clipPath`|`clipPath`|
+|`backdropFilter`|`backdropFilter`| */}
+
+### 注意点
+
+<Alert preset="warning">
+Layerの親要素を `position:relative` にしておく必要があることに注意してください。
+</Alert>
+
+`hasLayer`を親コンポーネントに指定すると(`.has--layer`クラスを付与します）、`position:relative`になります。
+
+{/* 
+---
+
+<Note preset="note" heading="ブロック化した時のmemo...">
+- Layer配置時に自動で親ブロックに `.has--layer` or `.-pos:r` を追加するようにしたい。(Layerブロックから親要素へアクセスしてsetAtttibutes）
+- ~~できれば、削除されたときに親ブロックからそのクラスは削除したい。~~  
+	→ 「まだ必要なのに消えてしまう」ケースも起こりうるので、削除はなし。
+- エディター側では 常に親要素・兄弟要素に被っていると編集ができないので、「relative モード」的なものを用意して `absolute` を一時的に解除して他のブロックの編集ができるようにしたい。
+- 子ブロックとしてしか使えないようにしたい。
+</Note>
+
+--- */}
+
+## Import
+
+```js
+import { Layer } from '@loos/lism-core';
+```
+
+## Usage
+
+`inset`,`t`,`b`,`l`,`r`,... などで直接位置を指定できます。
+
+<Alert preset='info'>
+inset系のプロパティで、用意されているユーティリティクラスを使用した時は、数値部分を文字列でを指定してください。
+</Alert>
+
+たとえば、`-t:0` を使用するためには `t={0}` ではなく `t='0'` と指定してください。(数値はSPACEトークンとして解析されてしまうため)
+
+<Preview>
+	<PreviewTitle>
+		`inset='0'`で親要素全体に広げる
+	</PreviewTitle>
+	<PreviewArea resize p={10}>
+		<Box hasLayer py={40} className='has--layerGuide'>
+			<Text fz='4xl' fw='bold' ta='c' lts='l'>BG</Text>
+			<Layer inset='0'>
+				<p>Layer Contents</p>
+			</Layer>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "inset='0'"
+		<Box hasLayer py={40}>
+			<p>...BG...</p>
+			<Layer inset='0'>
+				<p>Layer Contents</p>
+			</Layer>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-inset:0"
+		<div class="l--box has--layer -py:40">
+			<p>...BG...</p>
+			<div class="l--layer -inset:0">
+				<p>Layer Contents</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`t`, `l` に SPACEトークンを指定する
+	</PreviewTitle>
+	<PreviewArea resize p={10}>
+		<Box hasLayer py={40} className='has--layerGuide'>
+			<Text fz='4xl' fw='bold' ta='c' lts='l'>BG</Text>
+			<Layer t={20} l={20}>
+				<p>Layer Contents</p>
+			</Layer>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Layer t={20} l={20}>
+			<p>Layer Contents</p>
+		</Layer>
+		```
+	</PreviewCode>
+		<PreviewCode slot='tab' label='HTML'>
+		```html "-inset:0"
+		<div class="l--layer" style="left:var(--s--20);top:var(--s--20)">
+			<p>Layer Contents</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### positionの指定
+
+export const LayerPositionsDemo = () => {
+	return (
+		<Columns cols={[1, 3]}>
+			{[
+				"left top",
+				"center top",
+				"right top",
+				"left center",
+				"center",
+				"right center",
+				"left bottom",
+				"center bottom",
+				"right bottom",
+			].map((position) => (
+				<Box key={position} hasLayer py={40} bgc='base-2'>
+					<Text fz="4xl" fw="bold" ta="c" opacity=".1">BG</Text>
+					<Layer position={position} bgc="purple:10%" bd="guide">
+						<Text fz="s" p={10} lh="1.5">"{position}"</Text>
+					</Layer>
+				</Box>
+			))}
+		</Columns>
+	);
+}
+
+<Preview>
+	<PreviewTitle>
+		`position`の指定による配置の違い
+	</PreviewTitle>
+	<PreviewArea p={10}>
+		<LayerPositionsDemo />
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "position=\{position\}"
+		<Box hasLayer py={40} bgc='base-2'>
+			<Text fz='xl' fw='bold' ta='c' opacity='.1'>BG</Text>
+			<Layer position={position} bgc='purple:10%' bd='guide'>
+				<Text fz='xs' p={10} lh='1.5'>...</Text>
+			</Layer>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+{/* ### `overflow:auto` がデフォルトの挙動です。
+
+`<Layer>`(`.l--layer`)は `overflow:auto` が適用されており、親要素よりコンテンツの高さが高くなる場合は縦方向にスクロール可能になります。
+
+<Preview>
+	<PreviewTitle>
+		コンテンツが長い場合
+	</PreviewTitle>
+	<PreviewArea resize p={10}>
+		<Box hasLayer py={60} className='has--layerGuide'>
+			<Text fz="4xl" fw="bold" ta="c" lts='l'>BG</Text>
+			<Layer size="cover" isFlow p='box'>
+				<DammyText />
+				<DammyText length='l' />
+				<DammyText length='xl' />
+			</Layer>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Layer size="cover" isFlow p='box'>
+			...
+		</Layer>
+		```
+	</PreviewCode>
+</Preview>
+ */}
+
+{/* 
+#### `data-size='contain'` の挙動について
+
+`dat-size='contain'`を指定すると、親のサイズを超えないようになり,内部のコンテンツはスクロール可能になります。
+
+<Preview>
+	<PreviewTitle>
+		`data-size='contain'`の指定なしの場合.
+	</PreviewTitle>
+	<PreviewArea resize px={30} py={60}>
+		<Box hasLayer py={50} className='has--layerGuide'>
+			<Text fz='4xl' fw='bold' ta='c' lts='l'>BG</Text>
+			<Layer position='center' w='75%' p='box'>
+				<DammyText length='l' />
+			</Layer>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Layer position='center' w='75%' p='box'>
+			...
+		</Layer>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`data-size='contain'`の指定ありの場合
+	</PreviewTitle>
+	<PreviewArea resize px={30} py={60}>
+		<Box hasLayer py={50} className='has--layerGuide'>
+			<Text fz='4xl' fw='bold' ta='c' lts='l'>BG</Text>
+			<Layer position='center' data-size='contain' p='box' w='75%'>
+				<DammyText length='l' />
+			</Layer>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		
+			...
+		
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+## Variants
+
+### `MediaLayer`
+
+**メディア（画像・動画）を親要素サイズに合わせてabsolute配置する**ための`<Layer>`の拡張コンポーネントです。
+
+内部では`<Layer variant='media' isFrame>`が指定され`.l--layer--media`と`.is--frame`クラスが追加で出力されます。
+
+
+#### Props
+
+また、`<MediaLayer>`は、Propsの処理が`<Layer>`とは少し異なります。
+
+| プロパティ | 説明 |
+|---|---|
+| `src` | `src`が指定されていれば子要素にメディアを表示します。|
+| `media`| `src`が指定されている場合の、そのメディアのHTMLタグ、またはコンポーネントを指定できます。デフォルトは`'img'`です。|
+| `width`, `height`,`alt`, `loading`, `decoding`,`hover` | `src`が指定されている場合、これらのプロパティはメディア側に振り分けられます。|
+| `mediaProps`|上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。|
+
+
+{/* |`loop`, `muted`, `controls`, `autoplay`, `playsinline`, `poster` | `src`が指定されていて`media`が`'video'`の場合にこれらのプロパティはメディア側に振り分けられます。| */}
+
+<Alert preset='info'>
+ただし、**子要素を配置する場合**、これらは全て無視されます。
+</Alert>
+
+
+#### Usage
+
+<Preview>
+	<PreviewTitle>
+		`MediaLayer`に画像用のpropsを指定する
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect='cinema'>
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {2} "src" "MediaLayer"
+		<Frame aspect='cinema'>
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html {2-4} "l--layer--media" "-obf:cv"
+		<div class="is--frame -aspect:cinema">
+			<div class="l--layer l--layer--media is--frame">
+				<img loading="lazy" decoding="async" src="/img.jpg" width="960" height="640">
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* #### `children`でメディアを渡す */}
+
+{/* `children`でメディアを渡す場合は、object-fitの自動付与はされません。 */}
+
+<Preview>
+	<PreviewTitle>`children`でメディアを渡す</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect='cinema'>
+			<MediaLayer objectPosition='top'>
+				<img src='/img/img-3.jpg' alt='' width='960' height='640' />
+			</MediaLayer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3} "MediaLayer"
+		<Frame aspect='cinema'>
+			<MediaLayer objectPosition='top'>
+				<img src='/img/img-3.jpg' alt='' width='960' height='640' />
+			</MediaLayer>
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html {2-4} "l--layer--media" "-obf:cv"
+		<div class="is--frame -aspect:cinema">
+			<div class="l--layer l--layer--media is--frame" style="--objectPosition:top">
+				<img loading="lazy" decoding="async" src="/img.jpg" width="960" height="640">
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+{/* <Preview>
+	<PreviewTitle>
+		`next/image`を使う例
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema">
+			<Image src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<Frame aspect="cinema">
+			<Image src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+		```
+	</PreviewCode>
+</Preview> */}
+
+##### `next/image`を使う例
+
+```jsx "media={Image}"
+import Image from 'next/image';
+
+<Frame aspect='16/9'>
+	<MediaLayer media={Image} src="/img.jpg" alt="" width='960' height='640' />
+</Frame>
+
+// or
+
+<Frame aspect='16/9'>
+	<MediaLayer>
+		<Image src='/img.jpg' alt='' width='960' height='640' />
+	</MediaLayer>
+</Frame>
+```
+
+
+##### Astroの Image を使う場合
+
+`Image`を`as`プロパティから渡すとエラーになってしまうので注意してください。
+
+<Reference>
+参考: [\<Media\> - as が使えないケースについて](/ja/components/media/#as-が使えないケースについて)
+</Reference>
+
+```astro "Image"
+---
+import { Image } from 'astro:assets';
+---
+
+<Frame aspect='cinema'>
+	<MediaLayer>
+		<Image src='/img.jpg' alt='' width='960' height='640' />
+	</MediaLayer>
+</Frame>
+```
+
+### FilterLayer
+
+**背景にエフェクト効果を加える**ための、`<Layer>`の拡張コンポーネントです。
+
+内部では`<Layer variant='filter'>`が指定され`.l--layer--filter`クラスが出力されます。
+
+また、`<MediaLayer>`は、Propsの処理が`<Layer>`とは少し異なり、`backdrop-filter`の主要なプロパティをオブジェクトで指定できるようになっています。
+
+
+#### Props
+
+| プロパティ | 説明 |
+|---|---|
+| `blur`,`contrast`,`brightness`,`grayscale`,`hue-rotate`,`invert`,`saturate`,`sepia`, | これらをまとめて `css.backdropFilter` に受け渡します。|
+| `backdropFilter`|`css.backdropFilter`に直接値を渡します。`FILTER`トークンを指定する時にはこちらを使います。こちらの指定があるとき、上記の個別指定は無視されます。|
+
+
+#### Usage
+
+<Preview>
+	<PreviewTitle>
+		背景にブラーをかける
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box pos='r' p='box:l'>
+			<Text fz='2xl' fw='bold' ta='center'>Background</Text>
+			<FilterLayer blur='3px' brightness='1.1' />
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3}
+		<Box pos='r' p='box:l'>
+			<Text fz='2xl' fw='bold' ta='center'>Background</Text>
+			<FilterLayer blur='3px' brightness='1.1' />
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html {3} "l--layer--media" "-obf:cv"
+		<div class="l--box -pos:r -p:box:l">
+			<p class=" -fz:2xl -fw:bold -ta:c">Background</p>
+			<div class="l--layer l--layer--filter" style="backdrop-filter:blur(3px) brightness(1.1)"></div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		画像の色味を変える
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer brightness={1.2} contrast={0.8} grayscale={1}/>
+			<Layer position='bottom right' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer contrast='1.2' sepia='25%' />
+			<Layer position='bottom right' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer ml='auto' invert='1' grayscale='20%' w='50%' />
+			<Layer position='bottom center' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3,8,13}
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer brightness={1.2} contrast={0.8} grayscale={1}/>
+			<Layer position='bottom right' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer contrast='1.2' sepia='25%' />
+			<Layer position='bottom right' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect='cinema'>
+			<img src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer ml='auto' invert='1' grayscale='20%' w='50%' />
+			<Layer position='bottom center' p='box:s' c='white' fz='xs' opacity='0.8'>Photo by xxxxxx.</Layer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`FILTER`トークンを使う
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect='cinema'>
+			<Media src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer backdropFilter='blur' />
+		</Frame>
+		<Frame aspect='cinema'>
+			<Media src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer backdropFilter='lighten' />
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3,7} "'blur'" "'lighten'"
+		<Frame aspect='cinema'>
+			<Media src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer backdropFilter='blur' />
+		</Frame>
+		<Frame aspect='cinema'>
+			<Media src='/img.jpg' alt='' width='960' height='640' />
+			<FilterLayer backdropFilter='lighten' />
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>

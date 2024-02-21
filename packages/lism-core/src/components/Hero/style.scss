@@ -1,0 +1,49 @@
+:root {
+	--h--fixedTop: 0px;
+	--h--fullscreen: calc(100vh - var(--h--fixedTop));
+}
+
+.c--hero {
+	// --minH: auto;
+	// min-height: var(--minH);
+	position: relative;
+
+	// + .alignfull {
+	// 	margin-block-start: 0;
+	// }
+
+	// > .l--divider {
+	// 	z-index: 1;
+	// }
+
+	// > :not([class*='l--layer']) {
+	// 	z-index: 1;
+	// }
+
+	// あとでユーティリティで。
+	&[data-fullscreen='1'] {
+		--minH: var(--h--fullscreen, 100vh);
+		min-height: var(--minH);
+		// min-height: 100vh;
+	}
+}
+[data-pos='top'] {
+	// grid-row: 2;
+}
+
+[data-pos='center'] {
+	// コンポーネントの py で指定すると上書きが少々ややこしくなる
+	// padding-block: var(--s--50);
+}
+[data-pos='bottom'] {
+	// grid-row: 4;
+}
+.c--hero__content {
+	position: relative;
+	z-index: 1;
+	// width: 100%;
+}
+
+// .c--hero__content.l--grid > .is--container\:s {
+// 	margin-inline: 0;
+// }

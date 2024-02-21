@@ -1,0 +1,66 @@
+@use '../query' as query;
+
+/* stylelint-disable */
+// .-ord\:1 { order: 1 }
+// .-ord\:0 { order: 0 }
+// .-ord\:-1 { order: -1 }
+
+// fxf flex-flow: row wrap;
+// .-fxf\: {
+// 	// --fxw: nowrap;// --fxd: row;// --fxf: var(--fxd) var(--fxw);
+// 	flex-flow: var(--fxf);
+// }
+
+
+// l--flex or fxf の 専用プロパティ。
+
+// flex-wrap
+// .-fxw\: { flex-wrap: var(--fxw) }
+.-fxw\:w { flex-wrap: wrap }
+// .-fxw\:nw { flex-wrap: nowrap } // default
+
+// flex-direction
+// .-fxd\: { flex-direction: var(--fxd) }
+.-fxd\:c { flex-direction: column }
+.-fxd\:cr { flex-direction: column-reverse }
+.-fxd\:r { flex-direction: row }
+.-fxd\:rr { flex-direction: row-reverse }
+
+
+// is--flexItem?
+.-fx\:{ flex: var(--fx)}
+.-fx\:1{ flex: 1 }
+
+.-fxsh\: { flex-shrink: var(--fxsh) }
+.-fxsh\:0 { flex-shrink: 0 }
+// .-fxsh\:1 { flex-shrink: 1 }
+
+.-fxg\: { flex-grow: var(--fxg) }
+.-fxg\:1 { flex-grow: 1 }
+// .-fxg\:0 { flex-grow: 0 }
+
+.-fxb\: { flex-basis: var(--fxb) }
+// .-fxb\:100 {flex-basis:100%}
+// .-fxb\:a {flex-basis:auto}
+
+// fxw, fxb は調整したいことも多いのでデフォルトでBP対応。
+// 検討: 一括指定の fx, fxf だけ用意しておけばとりあえず全部対応できるのでは？（不要な上書きが発生しまうデメリットあり）
+@include query.bp-up('sm') {
+	// .-fxf\@sm { flex-flow: var(--fxf--sm); }
+	.-fxw\@sm { flex-wrap: var(--fxw--sm); }
+	// .-fxd\@sm { flex-direction: var(--fxd--sm); }
+	
+	// .-fx\@sm{ flex: var(--fx--sm)}
+	.-fxb\@sm { flex-basis: var(--fxb--sm); }
+	// .-fxg\@sm { flex-grow: var(--fxg--sm); }
+	// .-fxsh\@sm { flex-shrink: var(--fxsh--sm); }
+	
+}
+@include query.bp-up('md') {
+	.-fxw\@md { flex-wrap: var(--fxw--md); }
+	.-fxb\@md { flex-basis: var(--fxb--md); }
+}
+@include query.bp-up('lg') {
+	.-fxw\@lg { flex-wrap: var(--fxw--lg); }
+	.-fxb\@lg { flex-basis: var(--fxb--lg); }
+}

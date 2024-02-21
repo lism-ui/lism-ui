@@ -1,0 +1,423 @@
+---
+title: 'CSS Methodology'
+description: ...
+sidebar:
+  order: 1
+---
+
+import { Box, Alert,Flex } from "@loos/lism-astro";
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+LismがどのようなCSS設計になっているかを説明します。
+
+{/* 重要なポイントは以下の通りです。
+
+- CSSの階層構造をあらかじめ定義 (詳細度の複雑化を防ぐ)
+- デザイントークンを使い回す (メンテナンス性・一貫性をの向上)
+- 用途ごとに細分化されたクラスを使い回す（可読性・再利用性の向上） */}
+{/* - 利用頻度の少ないCSSはインラインスタイルでもOKとする */}
+
+
+
+## CSSの階層構造
+
+詳細度が複雑になりがちな問題への対策として、LismではCSSの階層構造を明確に定義しています。
+{/* 
+|Layer|役割|最大詳細度|
+|---|---|---|
+|Settings|SASSの設定変数, mixinなど直接スタイルに吐き出されないもの。||
+|Base|トークンのセット, Reset CSS, HTML要素に対する基本スタイルの定義。|0-0-1|
+|State|多数のモジュールに対してつけ外しできるような、汎用性の高いクラス。|0-1-0|
+|Layout|レイアウトの構成単位となるようなクラス。|0-1-0|
+|Element|デザイン要素として最小単位となるような役割を持つクラス。|0-1-0|
+|Component|その他、より具体的な役割を持つコンポーネント。|0-1-0|
+|Props|CSSプロパティティに紐づいたクラス。|0-1-0 !|
+|Utility|その他の例外的なユーティリティクラス。|| */}
+
+<table className="table--solid">
+	<thead>
+		<tr>
+			<th colSpan={2}>Layer</th>
+			<th>役割</th>
+			<th>最大詳細度</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colSpan={2}>Settings</td>
+			<td>SASSの設定変数, mixinなど直接スタイルに吐き出されないもの。</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td rowSpan={3} style={{verticalAlign: 'top'}}>Base</td>
+			<td>Reset</td>
+			<td>reset CSS</td>
+			<td rowSpan={3}>0-0-1</td>
+		</tr>
+		<tr>
+			<td>Tokens</td>
+			<td>`:root`でのトークン定義</td>
+		</tr>
+		<tr>
+			<td>HTML</td>
+			<td>HTML要素に対するスタイルの初期セット</td>
+		</tr>
+		<tr>
+			<td rowSpan={3}>Layout</td>
+			<td>Design State</td>
+			<td rowSpan={3}>基本的なレイアウト構成要素</td>
+			<td rowSpan={3}>0-1-0</td>
+		</tr>
+		<tr>
+			<td>Layout Module</td>
+		</tr>
+		<tr>
+			<td>Element Module</td>
+		</tr>
+		<tr>
+			<td colSpan='2'>Component</td>
+			<td>具体的な役割を持つコンポーネント. 基本的にレイアウトクラスと組み合わせて利用することを前提とする。</td>
+			<td>0-1-0</td>
+		</tr>
+		{/* <tr>
+			<td>Block</td>
+		</tr> */}
+		{/* <tr>
+			<td colSpan={2}>Format</td>
+			<td>書式スタイル</td>
+			<td>0-1-0</td>
+		</tr> */}
+		<tr>
+			<td rowSpan='2'>Utility</td>
+			<td>Props</td>
+			<td>CSSプロパティティに紐づいたクラス。</td>
+			<td rowSpan='2'>0-1-0 !</td>
+		</tr>
+		<tr>
+			<td>Others</td>
+			<td>その他のユーティリティクラス。</td>
+		</tr>
+	</tbody>
+</table>
+
+
+基本的に、最大詳細度を超えないようにセレクタを調整してこの順番で読み込みます。
+
+<Alert preset='info'>例外的にあえて"最大詳細度"を超えてセレクタを定義する場合もあります。絶対的なルールではありません。</Alert>
+
+{/* それぞれカスケードレイヤー（`@layer`）を定義して読み込むようにすれば、詳細度をあまり気にせずに書けるようになります。
+<MemoBadge>好きな方を選べるように、2パターンでCSSを作成予定。</MemoBadge> */}
+
+## デザイントークン
+
+タイポグラフィ、余白、カラー、シャドウなど、主要なプロパティに対して段階的なプリセット値やセマンティックなキーワードでCSSカスタムプロパティを定義しています。
+
+トークンを流用することで、サイトを通してデザインに**一貫性**が生まれ、使用しているプロパティの**意図**も第三者が読み取れるようになります。
+
+あとからサイト全体を微調整する必要が出てきてもトークンの値を変更するだけでよくなり、**メンテナンス性**も高まります。
+
+<Reference>
+詳しくは[トークン解説ページ](/ja/css/tokens/)を参照してください。
+</Reference>
+
+
+## クラス設計
+
+Lismでは、レイアウト・デザインの構成要素を細分化していくつかの種類に分類しています。
+
+
+### Module 系 クラス
+
+|分類|形式|例|
+|---|---|---|
+|Layout Module<HelpText>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
+|Element Module<HelpText>デザインの構成要素として最小単位となるようなもの</HelpText>|`.e--{elemName}`|`.e--avatar`,`.e--icon`|
+|Component Module<HelpText>その他、具体的な役割を持ったコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--button`|
+
+{/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
+<small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}
+
+<Alert preset="info">
+Component は、`.c--`系のクラスを使うだけでデザインが完結するわけではなく、`l--`や`e--`, Prop Utility などと組み合わせて使用する前提のものが多くなっています。
+</Alert>
+
+
+#### 子要素を持つ場合
+
+子要素も含めて一つのモジュールとして機能するものは、子要素側のクラスぬいは BEMでの Element にあたる文字列をクラスに付け加えます。
+
+- 形式: `.c--{componentName}__{elementName}`
+- 例: `.c--hoge__item`
+
+
+#### バリエーションスタイル(Modifier) を用意する場合
+
+モジュールのバリエーションスタイルを定義する場合、BEMでの Modifier を付け加えたクラスを作成します。
+
+- 形式:`.{prefix}--{name}--{variant}`
+- 例: `.c--button--outline`
+
+基本的には元となる`.{pefix}--{name}`も併記し、CSSコードの重複を避けるようにして運用してください。
+
+
+### State クラス
+
+|分類|形式|例|
+|---|---|---|
+|Design State<HelpText>状態として付け外しできるようなデザイン機能を持つもの</HelpText>|`.is\|has--{stateName}`|`.is--flow`, `has--divider`|
+|Temporary State<HelpText>js操作等によって付け外しされるようなクラス</HelpText>|`.-{state}`|`.-active`, `.-opened`|
+
+Design State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
+
+また、Design State のバリエーションは `.[is|has]--{stateName}:{modifier}` としています。
+
+- 例: `.is--flow:s`, `.is--container:l`
+
+
+### Prop Utility
+
+特定のCSSプロパティに対応するユーティリティクラスを定義しています。  
+基本的にはそれぞれのクラスが単一のCSSプロパティをコントロールするためのになっていますが、例外もあります。
+
+{/* 
+3. ユーティリティクラス
+	- 主要なプロパティに対して、よく使われる値やトークンに合わせたユーティリティクラスを定義しています。
+	- 汎用的な値はクラスのセットだけで完了できるように。
+	- ブレイクポイントへの対応もユーティリティクラスが重要な役割を担っています。 */}
+
+Prop Utility には以下の3種類の形式があります。
+
+|形式|説明|例|
+|---|---|---|
+|`.-{prop}:{token\|value}`| トークンや主要な値を利用するためのユーティリティクラス(\*1) |`.-fz:l`, `.-ta:c`|
+|`.-{prop}:`| 変数 `--{prop}:` を受け取るためのクラス(\*2) |`.-p:`, `.-fz:`|
+|`.-{prop}[:\|@bp]`| 変数 `--{prop}[--bp]` を受け取るためのクラス(\*3) |`.-p@sm`, `.-p@md`|
+
+
+{/* `{value}`部分について
+- 小数点が付いた値 → `.`のままで。(CSS側で`\`使う必要あり)
+	- 例: `.-prop:1.5`
+- ネガティブ(マイナス)値の表記もそのままで。
+	- 例: `.-prop:-1` */}
+
+<Alert preset="warning">
+	<div class="-fz:s">
+	\*1: 全てのトークンにユーティリティクラスがデフォルトで用意されているわけではありません。  
+	\*2: 全てのCSSプロパティに対応するクラスがデフォルトで用意されているわけではありません。  
+	\*3: ブレークポイントに対応したクラスがデフォルトで用意されているものは一部のプロパティのみです。
+	</div>
+</Alert>
+
+
+<PreviewTitle>先ほどの表で例に出したクラスは、以下のように定義されています。</PreviewTitle>
+
+```css
+.-ta\:c { text-align: center; }
+.-fz\:l { font-size: var(--fz--l); }
+
+.-p\:{ padding: var(--p); }
+@container (min-width: 480px) {
+	.-p\@sm\:{ padding: var(--p--sm); }
+}
+@container (min-width: 720px) {
+	.-p\@md\:{ padding: var(--p--md); }
+}
+```
+
+<HelpText>（厳密には少し異なるものもありますが、イメージとしてはこんな感じです。）</HelpText>
+
+<Alert preset="check">
+これにより、Lism では**クラスと変数を書くだけでレスポンシブデザイン**を実現できるようになっています。
+</Alert>
+
+<Preview>
+	<PreviewTitle>実際の活用例は次の通りです。</PreviewTitle>
+	<PreviewCode label="HTML" slot="tab">
+```html
+<!-- ↓ プリセット値の活用 -->
+<div class="-p:20">...</div>
+
+<!-- ↓ レスポンシブ対応 -->
+<div class="-p:20 -p@sm -p@md" style="--p--sm:var(--s--30);--p--md:var(--s--40);">
+	...
+</div>
+```
+	</PreviewCode>
+	<PreviewCode label="Component" slot="tab">
+```jsx
+// ↓ プリセット値の活用
+<Box p="20">...</Box>
+
+// ↓ レスポンシブ対応
+<Box p={[20, 30, 40]}>
+	...
+</Box>
+```
+	</PreviewCode>
+</Preview>
+
+
+{/* さらに、[ReactやAstro用のコンポーネント](/docs/components/)を活用することで、以下のように非常にシンプルに記述できるようにもなります。
+
+```jsx
+// ↓ プリセット値の活用
+<Box p="20">...</Box>
+
+// ↓ レスポンシブ対応
+<Box p={[20, 30, 40]}>...</Box>
+``` */}
+
+
+{/* #### CSS変数の命名規則
+
+|分類|形式|例|
+|---|---|---|
+|プロパティ|`--{propKey}[--{bp}]`<br/><small>ローカルなスコープでプロパティ管理するため変数</small>|`--fz`,`--w--md`|
+|スコープ付き|`--{scope}--{propKey}`<br/><small>ローカルなスコープでプロパティ管理するため変数</small>|`--item--minW`| */}
+
+
+{/* - ケバブケース?キャメルケース？<MemoBadge>検討中</MemoBadge>
+	- --flowGap, --contentSize, --mediaScale, --mediaFilter, --lismVar, --shadowProps
+	- --flow-gap, --content-size, --media-scale, --media-filter, --lism-var, --shadow-props
+	- １文字省略形はキャメルでつなぐ (`--maxW`, `--minH` とか)
+- 本当は メディアクエリは`--@sm`とかで記述したいが、`@`はCSS変数名では使えない。 */}
+
+
+
+
+{/* ※ prop:val ではないユーティリティどうする？ `.u--cf` ...? */}
+
+
+{/* <Alert preset='point'>
+上記のUtilityクラスクラスは、**それ単体に対してスタイルが適用される**ものに対して使用し、
+「特定のモジュールに関する状態のバリエーション」を示すものは `.-` 始まりor`data`属性で管理する。
+</Alert> */}
+
+
+
+### その他の推奨規則
+
+Lismパッケージに内蔵されているクラスではありませんが、次のような感じで命名すると統一感でると思います。
+
+|分類|形式|例|
+|---|---|---|
+|ユーティリティクラス|`.u--{utilityName}`|`.u--hoge`|
+|ユニーククラス|`.uq--{uniqueName}`|`.uq--hoge`|
+|エリア名|`.a--{areaName}`|`.a--header`,<br />`.a--sidebar`,<br />`.a--article`|
+|ページの分類|`.p--{type}--{id\|slug}`|`.p--front`, `.p--archive`, `.p--post--{id}`, `.p--page--{slug}`|
+|テキスト装飾|`.t--{textFormat}`|`.t--marker`|
+{/* |ゾーニング|`.z--{areaName}`|`.z--header`,<br />`.z--sidebar`,<br />`.z--article`| */}
+
+
+
+## ブレークポイント
+
+前提として、Lismは**コンテナクエリ**を採用しており、メディアクエリではないことに注意してください。
+
+
+
+### サイズ表記とデフォルトの設定値
+
+ブレイクポイントはモバイルファーストで定義しており、数値としては480px~1200pxまでの240px刻みで設定しています。
+
+|サイズ表記|デフォルトの設定値|
+|---|---|
+|`sm`|`width >= 480px`|
+|`md`|`width >= 720px`|
+|`lg`|`width >= 960px`|
+|(`xl`)|`width >= 1220px`|
+
+<Alert preset="info">
+(xlサイズのサポートは、別途SCSSの設定の上書きが必要)
+</Alert>
+
+
+これらの定義済みポイントは、SCSSであれば次のようにして簡単に利用できます。
+
+{/* `@use`で`@loos/lism-core/scss/query`をインポートして、`query.cq()`を使ってください。 */}
+
+```scss
+@use '../path/to/node_modules/@loos/lism-core/scss/query' as query;
+
+@include query.cq('sm') {
+	// your styles...
+}
+```
+
+{/* 
+### カスタマイズ方法
+
+#### プロパティの値をブレイクポイントで切り替える方法
+
+Lismでは、ブレイクポイントでCSSを切り替えるための記法を次のように定義しています。
+
+<Preview>
+	<PreviewTitle>プロパティ単体のレスポンシブ対応コード</PreviewTitle>
+	<PreviewCode label="HTML" slot="tab">
+```html
+<div class="-{prop}@{bp}" style="--{prop}--{bp}: {value}">...</div>
+```
+	</PreviewCode>
+	<PreviewCode label="CSS" slot="tab">
+```css
+.-prop\:{ padding: var(--prop); }
+@container (min-width: 480px) {
+	.-prop\@sm\:{ padding: var(--prop--sm); }
+}
+@container (min-width: 720px) {
+	.-prop\@md\:{ padding: var(--prop--md); }
+}
+@container (min-width: 960px) {
+	.-prop\@lg\:{ padding: var(--prop--lg); }
+}
+```
+	</PreviewCode>
+	<PreviewCode label="Sass" slot="tab">
+```scss
+@use '../.../node_modules/@loos/lism-core/scss/query' as query;
+
+.-prop\:{ padding: var(--prop); }
+@include query.cq('sm') {
+	.-prop\@sm\:{ padding: var(--prop--sm); }
+}
+@include query.cq('md') {
+	.-prop\@md\:{ padding: var(--prop--md); }
+}
+@include query.cq('lg') {
+	.-prop\@lg\:{ padding: var(--prop--lg); }
+}
+```
+	</PreviewCode>
+</Preview>
+
+
+<Alert preset="info">
+主要なCSSプロパティについては、この形式でLismのパッケージ内のCSSで定義されていますが、未対応のものは自分でCSSを追記する必要があります。
+</Alert> */}
+
+
+
+## 補足：単語の省略について
+
+基本的には[Emmetの省略形](https://docs.emmet.io/cheat-sheet/) で統一するようにしています。
+
+- `font-size` → `fz`
+- `background-color` → `bgc`
+- `text-align:center`に対応するクラス → `.-ta:c`
+
+Emmet で明確に定義されていないものは、それっぽく省略しています。
+	- `object-fit` → `obf`
+	- `row-gap` → `rowg`
+	- `place-self` → `pslf`
+
+また、次のように例外 (Emmetと違うもの、Emmetっぽくないもの)もあります。
+
+- `gap`
+	- Emmet では `g` だが、`grid` を連想してしまうのと、そのままでも3文字と少ないのでそのまま`gap`としています。
+- `colg`: (`column-gap`)
+	- Emmet では `colmg` だが、`column`→`col`, `columns` → `cols` とLism全体で揃えている。
+- `aslf`, `jslf`
+	- Emmet では`as`, `js`になるが `as` は Lism Prop と被り、`js`は javascript が思い浮かぶので、少し変形しています。
+- `-fxw:nw`(`flex-wrap:nowrap`)
+	- Emmetに従えば `fxw:n`だが、`whs:nw`(`white-space: nowrap`) と揃えています。

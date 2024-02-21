@@ -1,0 +1,12 @@
+---
+import { LismProps } from '../types';
+import { FlexItem } from '../Flex';
+import { getAccLabelProps } from '@loos/lism-core/raw/Accordion/getProps';
+
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<FlexItem {...getAccLabelProps(props)}>
+	<slot />
+</FlexItem>

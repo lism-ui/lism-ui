@@ -1,0 +1,123 @@
+---
+title: 'Decorator'
+description: ...
+---
+
+import { Decorator,Box,Flex,FlexItem,Grid,GridItem } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+コンテンツを装飾するための空要素を出力するためのコンポーネントです。
+
+
+
+## Props
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Decorator } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Decorator } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>Call</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid className='c--callout c--callout--left' ta='l'>
+			<Decorator
+				size='1.25em'
+				bd='left'
+				rotate='45deg'
+				transformOrigin='left bottom'
+				mr='auto'
+			/>
+			<Box p='box:s'>
+				<DammyText length='m' />
+			</Box>
+			<Decorator
+				size='1.25em'
+				bd='left'
+				rotate='-45deg'
+				transformOrigin='left top'
+				mr='auto'
+			/>
+		</Grid>
+		<Flex
+			className='c--balloon c--balloon--left'
+			variant='ltr'
+			ai='center'
+			provide={{ bdc: 'currentColor', bgc: 'base' }}
+		>
+		<Decorator
+				as={FlexItem}
+				l='1px'
+				size='0.875em'
+				bd
+				consume='bdc bgc'
+				css={{
+					rotate: '45deg',
+					translate: '50%',
+					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
+				}}
+			/>
+			<FlexItem p='box' bdrs='m' w='fit-content' bd consume='bdc bgc'>
+				<DammyText />
+			</FlexItem>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+		<Grid ta='l'>
+			<Decorator
+				size='1.25em'
+				bd='left'
+				rotate='45deg'
+				transformOrigin='left bottom'
+				mr='auto'
+			/>
+			<Box p='box:s'>
+				<DammyText length='m' />
+			</Box>
+			<Decorator
+				size='1.25em'
+				bd='left'
+				rotate='-45deg'
+				transformOrigin='left top'
+				mr='auto'
+			/>
+		</Grid>
+		<Flex
+			variant='ltr'
+			ai='center'
+			provide={{ bdc: 'currentColor', bgc: 'base' }}
+		>
+		<Decorator
+				as={FlexItem}
+				l='1px'
+				size='0.875em'
+				bd
+				consume='bdc bgc'
+				css={{
+					rotate: '45deg',
+					translate: '50%',
+					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
+				}}
+			/>
+			<FlexItem p='box' bdrs='m' w='fit-content' bd consume='bdc bgc'>
+				<DammyText />
+			</FlexItem>
+		</Flex>
+	```
+	</PreviewCode>
+</Preview>

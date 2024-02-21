@@ -1,0 +1,105 @@
+---
+title: 'Avatar'
+description: ...
+---
+import { Cluster, Avatar, Media } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+アバター画像用のコンポーネントです。
+
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`size`| アバターのサイズを指定します。|
+|`name`| アバターの名前を指定します。`alt`属性に出力されます。|
+|`src`| `src`が指定されていれば子要素にメディアを表示します。(`children`がある場合は無視されます。)|
+|`mediaProps`| 上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。|
+
+{/* - 画像パスのプリセットを呼び出せるようにしたい <MemoBadge>未実装</MemoBadge>
+- `placeholder`で画像じゃなくて一文字とかで表示できるようにしたい <MemoBadge>未実装</MemoBadge> */}
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Avatar } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Avatar } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Avatar src="/img/avatar01.jpg" name='name' size='5em'/>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Avatar src="/img/avatar01.jpg" name='name' size='5em'/>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="e--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:5em">
+			<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>サイズ変更</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" />
+			<Avatar size='4em' name='avatar-name' src="/img/avatar02.jpg" />
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "size="
+		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" />
+		<Avatar size='4em' name='avatar-name' src="/img/avatar02.jpg" />
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "--size:"
+		<div class="e--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:5em">
+			<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
+		</div>
+		<div class="e--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:4em">
+			<img src="/img/avatar02.jpg" alt="name" width="100%" height="100%" decoding="async">
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>カスタマイズ例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd={{w:'2px', c:'pink:80%'}}/>
+			<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd={{w:'2px', c: 'white'}}/>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd={{w:'2px', c:'pink:80%'}}/>
+		<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd={{w:'2px', c: 'white'}}/>
+		```
+	</PreviewCode>
+</Preview>

@@ -1,0 +1,14 @@
+---
+import { LismProps } from '../types';
+import { getLismProps } from '@loos/lism-core/lib';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const { as, passProps, tag, ...props } = Astro.props || {};
+const JSX = as || tag || 'div';
+---
+
+<JSX {...getLismProps(props)} {...passProps}>
+	<slot />
+</JSX>

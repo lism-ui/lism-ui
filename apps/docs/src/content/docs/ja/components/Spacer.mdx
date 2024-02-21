@@ -1,0 +1,109 @@
+---
+title: 'Spacer'
+description: ...
+---
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Spacer, Alert, Box, Flex } from '@loos/lism-core';
+
+
+スペースを確保するためのモジュールです。
+
+
+## Props
+
+{/* - `w`: `width`の値を指定できます。
+- `h`: `height`の値を指定できます。 */}
+
+<Alert preset="info">
+`<Space>`では、`w`と`h`に対してSPACEトークンの値が使えます。
+</Alert>
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Spacer } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Spacer } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>`<Spacer>`の使用例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<p>Content...</p>
+		<Spacer h="100px" />
+		<p>Content...</p>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {2}
+		<p>Content...</p>
+		<Spacer h="100px" />
+		<p>Content...</p>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<p>Content...</p>
+		<div class="l--spacer -h:" style="--h:100px" aria-hidden="true"></div>
+		<p>Content...</p>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`SPACE`トークンを使う例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<p>Box</p>
+		<Spacer h={60} />
+		<p>Box</p>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {2}
+		<p>Box</p>
+		<Spacer h={60} />
+		<p>Box</p>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<p>Content...</p>
+		<div class="l--spacer -h:" style="--h:var(--s--60)" aria-hidden="true"></div>
+		<p>Content...</p>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>横方向のスペーサーの例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Flex gap={10}>
+			<Box p='box' bd>Box</Box>
+			<Spacer w={50} />
+			<Box p='box' bd>Box</Box>
+			<Box p='box' bd>Box</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "w="
+		<Flex gap={10}>
+			<Box p='box' bd>Box</Box>
+			<Spacer w={50} />
+			<Box p='box' bd>Box</Box>
+			<Box p='box' bd>Box</Box>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>

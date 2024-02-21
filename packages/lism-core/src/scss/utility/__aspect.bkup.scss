@@ -1,0 +1,36 @@
+[class*='-aspect\:'] {
+	aspect-ratio: var(--aspect);
+}
+
+// 2.35：1（cinema）, 16：10 (WXGA)
+.-aspect\:16\/9 {
+	--aspect: 16/9;
+}
+.-aspect\:4\/3 {
+	--aspect: 4/3;
+}
+.-aspect\:3\/2 {
+	--aspect: 3/2;
+}
+.-aspect\:2\/1 {
+	--aspect: 2/1;
+}
+.-aspect\:1\/1 {
+	--aspect: 1/1;
+}
+
+.-aspect\:golden {
+	--aspect: 16.18/10;
+}
+.-aspect\:silver {
+	--aspect: 14.14/10;
+}
+.-aspect\:bronze {
+	--aspect: 33.03/10;
+}
+.-aspect\:ogp {
+	--aspect: 1.91/1;
+}
+.-aspect\:cinema {
+	--aspect: 2.35/1;
+}

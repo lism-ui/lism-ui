@@ -1,0 +1,20 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { Icon } from '../Icon';
+import { SideFlex } from '../Flex';
+import getProps from '@loos/lism-core/raw/Alert/getProps';
+
+// const _default = defaultProps?.Alert || {};
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+const { alertProps, iconProps, bodyProps } = getProps(props);
+---
+
+<SideFlex side='first' {...alertProps}>
+	{iconProps.icon && <Icon {...iconProps} />}
+	<Lism {...bodyProps}><slot /></Lism>
+</SideFlex>

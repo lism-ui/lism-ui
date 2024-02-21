@@ -1,0 +1,144 @@
+---
+title: 'Columns'
+description: ...
+---
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Box, Columns } from '@loos/lism-core';
+import { PropBadge } from "~/components";
+
+指定した列数でカラムレイアウトを作成します。
+
+
+## Props
+
+| プロパティ | 説明 | デフォルト値 |
+|---|---|---|
+| `cols` <PropBadge type="cssvar">`--cols`</PropBadge> | 列数を指定します。ブレイクポイント指定も可能です。 | `2` |
+
+{/* - `cols`: 列数を指定します。ブレイクポイント指定も可能です。 */}
+その他、[`<Grid>`で使えるprops](/ja/components/grid#props)が使えます。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Columns } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Columns } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>
+		2列の`<Columns>`
+	</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Columns cols={2} gap={20}>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+		</Columns>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "cols={2}"
+		<Columns cols={2} gap={20}>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+		</Columns>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--cols:2"
+		<div class="l--columns -gap:20" style="--cols:2">
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		1列 → sm:2列 → md:3列
+	</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Columns cols={[1, 2, 3]} gap={20}>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+		</Columns>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "cols={[1, 2, 3]}"
+		<Columns cols={[1, 2, 3]} gap={20}>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+		</Columns>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--cols:1;--cols--sm:2;--cols--md:3"
+		<div class="l--columns -gap:20" style="--cols:1;--cols--sm:2;--cols--md:3">
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		2列 → `@md`:4列
+	</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Columns cols={[2, null, 4]} gap={20}>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+			<Box bgc='base-2' p="box">Box</Box>
+		</Columns>
+	</PreviewArea>
+
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "cols={[2, null, 4]}"
+		<Columns cols={[2, null, 4]} gap={20}>
+			...
+		</Columns>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--cols:2;--cols--md:4"
+		<div class="l--columns -gap:20" style="--cols:2;--cols--md:4">
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+

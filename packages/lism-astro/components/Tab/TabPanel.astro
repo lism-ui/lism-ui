@@ -1,0 +1,23 @@
+---
+import { LismProps } from '../types';
+import { GridItem } from '../Grid';
+
+export interface Props extends LismProps {
+	isActive?: boolean;
+	tabID?: string | number;
+	index?: number;
+}
+const { lismClass = {}, tabID = '', index = 0, isActive, ...props } = Astro.props;
+lismClass.c = 'c--tabs_panel';
+const controlId = `${tabID}-${index}`;
+---
+
+<GridItem
+	id={controlId}
+	lismClass={lismClass}
+	role='tabpanel'
+	aria-hidden={isActive ? 'false' : 'true'}
+	{...props}
+>
+	<slot />
+</GridItem>

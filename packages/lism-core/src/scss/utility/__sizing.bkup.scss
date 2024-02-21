@@ -1,0 +1,45 @@
+// @use '../query' as query;
+/* stylelint-disable */
+
+// [class*="-xxx:"] を使うと ユーティリティに important 不要になる
+
+// .-w\:,
+.-w\: { width: var(--w) }
+.-w\:fit { width: fit-content}
+.-w\:100 { width: 100% }
+// .-w\:75 { width: 75% }
+// .-w\:50 { width: 50% }
+// .-w\:25 { width: 25% }
+
+// .-h\:,
+.-h\: { height: var(--h) }
+.-h\:100 {  height: 100% }
+.-h\:fit {  height: fit-content }
+// .-h\:un {  height: unset}
+.-h\:screen {  height: 100vh; height: 100dvh; }
+// .-h\:screen { height: calc(100vw - var(--sbar)) }
+
+
+// max-is, max-w, max-h ?
+.-maxW\: { max-width: var(--maxW) }
+.-maxW\:100 {max-width: 100%;}
+// .-maxW\:un {max-width: unset;}
+
+.-maxH\: { max-height: var(--maxH) }
+.-maxH\:100 {max-height: 100%;}
+// .-maxH\:un {max-height: unset;}
+
+// min
+.-minW\: { min-width: var(--minW) }
+.-minW\:100 {min-width: 100%;}
+
+.-minH\: { min-height: var(--minH) }
+.-minH\:100 {min-height: 100%;}
+
+// .-minW\:un {min-width: unset;}
+// .-minH\:un {min-height: unset;}
+
+// コンテンツサイズ用
+// .-maxIs\:s{ max-inline-size: var(--size--s) }
+// .-maxIs\:m{ max-inline-size: var(--size--m) }
+

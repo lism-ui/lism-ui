@@ -1,0 +1,143 @@
+---
+title: 'Note'
+description: ...
+---
+
+import {  Alert, Note, Tabs, TabItem, Spacer } from '@loos/lism-astro';
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+
+export const NoteDemos = ({ variant }) => {
+	const PRESETS = ['alert', 'point', 'warning', 'check', 'info', 'help', 'note'];
+	return (
+		<>
+			{PRESETS.map((preset) => {
+				return (
+					<Note heading='Note default' variant={variant} preset={`${preset}`} key={preset}>
+						<DammyText length='codes' lang='ja'/>
+					</Note>
+				);
+			})}
+		</>
+	);
+};
+
+## 主なprops
+
+- heading
+- `isFlow`: `__body`に渡されます
+
+<MemoBadge>Memo:</MemoBadge>
+NoteHeader, NoteBody にわける？ → preset で色とアイコンの一括指定ができなくなる（ContextやChildren処理が必要）
+## Import
+
+```js
+import { Note } from '@loos/lism-core';
+```
+
+## Usage
+
+<Preview>
+	<PreviewTitle>
+		デフォルト
+	</PreviewTitle>
+	<PreviewArea p={20}>
+		<Note>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Note>
+		<p>Lorem ipsum text...</p>
+	</Note>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`heading`を指定
+	</PreviewTitle>
+	<PreviewArea p={20}>
+		<Note heading='Heading text...'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note heading='Heading text...'>
+			<p>Lorem ipsum text...</p>
+		</Note>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`isFlow`を指定
+	</PreviewTitle>
+	<PreviewArea p={20}>
+		<Note heading='Heading text...' isFlow='s'>
+			<p>Lorem ipsum text...</p>
+			<DammyText />
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note heading='Heading text...' isFlow='s'>
+			<p>Lorem ipsum text...</p>
+			<p>Lorem ipsum text...</p>
+		</Note>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`icon`を指定 (iconを使う場合、headingが必須)
+	</PreviewTitle>
+	<PreviewArea p={20}>
+		<Note heading='Heading text...' icon='note'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note heading='Heading text...' icon='note'>
+			...
+		</Note>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`boxcolor`を指定
+	</PreviewTitle>
+	<PreviewArea p={20}>
+		<Note heading='Heading text...' icon='note' boxcolor='blue'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note heading='Heading text...' icon='note' boxcolor='blue'>
+			...
+		</Note>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### Presets
+
+Alertと同じプリセットが使用可能。
+
+<Preview>
+	<PreviewArea p={20}>
+		<NoteDemos />
+	</PreviewArea>
+</Preview>

@@ -1,0 +1,158 @@
+@use '../query' as query;
+
+/* stylelint-disable */
+
+/*
+gtc, gtr, gta は、l--grid では変数で受け取る
+
+
+parent側のBP対応: → 今はgtc, gtr, gtaのみ。 gtもいるか...?
+item側: row/column だけ BP対応。（areaは親側でエリアを組み替えればOK、かつ、row/columnにもエリア名を指定できるので不要と判断。)
+*/
+
+// --------------------
+// grid
+// --------------------
+
+// --------------------
+// grid-template (l--grid で定義している)
+// --------------------
+// [dir='rtl'] での上書きを変数でできるので grid ではなく、gt でやっている。
+.-gt\: { grid-template: var(--gt); }
+.-gt\:side\:s, .-gt\:side\:l { grid-template: 'side .' / auto 1fr; }
+.-gt\:side\:e, .-gt\:side\:r { grid-template: '. side' / 1fr auto; }
+// l--grid--2col? → l--sidSwap でできるのでは
+
+// center が広がるタイプの 3列/3行レイアウト
+// .-gt\:3row { grid-template: 'start' 'center' 1fr 'end' / 100%}
+// .-gt\:3col { grid-template: 'start center end' / auto 1fr auto; }
+
+// --------------------
+// grid-template-props
+// --------------------
+.-gta\: { grid-template-areas: var(--gta); }
+.-gtc\: { grid-template-columns: var(--gtc); }
+.-gtr\: { grid-template-rows: var(--gtr); }
+
+
+// .-gta\:3col\:ltr,
+// .-gta\:3col {grid-template-areas: 'start center end';}
+// .-gta\:3row {grid-template-areas: 'start' 'center' 'end';}
+
+// .-gtc\:a1a { grid-template-columns: auto 1fr auto }
+// .-gtr\:a1a { grid-template-rows: auto 1fr auto }
+
+// --------------------
+// grid-auto-
+// -------------------- 
+// .-gaf\: { grid-auto-flow: var(--gaf); }
+// default: row
+// .-gaf\:rd { grid-auto-flow: row dense; }
+// .-gaf\:c { grid-auto-flow: column; }
+// .-gaf\:cd { grid-auto-flow: column dense; }
+
+// styleでいいか？
+// .-gac\: { grid-auto-columns: var(--gac); }
+// .-gar\: { grid-auto-rows: var(--gar); }
+
+
+// --------------------
+// grid-item系
+// --------------------
+// bpサポートあるので変数
+.-ga\:{ grid-area: var(--ga) }
+.-ga\:side {grid-area: side;}
+.-ga\:s{ grid-area: start; }
+.-ga\:e{ grid-area: end; }
+.-ga\:c{ grid-area: center; }
+// .-ga\:fix{ grid-area: fix; }
+// .-ga\:l{ grid-area: left; }
+// .-ga\:r{ grid-area: right; }
+// .-ga\:t{ grid-area: top; }
+// .-ga\:b{ grid-area: bottom; }
+
+// start
+// end
+// .-ga\:head{--ga: head; }
+// .-ga\:foot{--ga: foot; }
+// .-ga\:body{--ga: body; }
+
+// :where(.-gr\:){--grs: auto;--gre: auto;}
+// .-gr\:{ grid-row: var(--grs) / var(--gre) }
+
+// grid-row
+// :where(.-gr\:){
+// 	--grs: auto;
+// 	--gre: auto;
+// 	--gr: var(--grs) / var(--gre);
+// }
+// .-gr\:{
+// 	grid-row: var(--gr);
+// }
+// .-grs\:-1{ --grs: -1 }
+// .-grs\:1{ --grs: 1 }
+// .-grs\:2{ --grs: 2 }
+// .-grs\:3{ --grs: 3 }
+// .-gre\:-1{ --gre: -1 }
+
+
+// grid-row
+// memo: grsで開始位置、greで終了位置を指定する。gre側のspanが使えるような設計にする。
+// 最後から 2つ → grid-row: span 2 / -1
+
+.-gr\:{ grid-row: var(--gr) } // [class*="-gr:"]{ grid-row: var(--gr); }
+.-gr\:span2{ grid-row: span 2 / span 2 }
+.-gr\:full{ grid-row: 1 / -1 }
+.-gr\:1{ grid-row: 1 }
+.-gr\:2{ grid-row: 2 }
+.-gr\:3{ grid-row: 3 }
+
+// .-grs\:1{ grid-row-start: 1 }
+// .-grs\:2{ grid-row-start: 2 }
+// .-grs\:3{ grid-row-start: 3 }
+
+.-gre\:-1{ grid-row-end: -1 }
+// .-gre\:span2{ grid-row-end: span 2}
+
+
+// grid-column
+// [class*="-gc:"]{ grid-column: var(--gc); }
+.-gc\:{ grid-column: var(--gc) }
+.-gc\:span2{ grid-column: span 2 / span 2 }
+.-gr\:full{ grid-column: 1 / -1 }
+.-gc\:1{ grid-column: 1 }
+.-gc\:2{ grid-column: 2 }
+.-gc\:3{ grid-column: 3 }
+.-gce\:-1{ grid-column-end: -1 }
+
+
+// -gt:@sm:, -gt:@sm 
+
+
+// gt@sm すると　全部上書きしてしまう.--gtc, --gt をわけて使うならgtは使わないようにする必要がある。
+// gtc 変える なら gtr も変えることがほとんどだろうから、gt でやってもらう? → RatioGridはgtcのみでコントロールしているので必要。
+// ただし、gta は独立して管理できるようにする。
+@include query.bp-up('sm') {
+	.-gt\@sm { grid-template: var(--gt--sm) }
+	.-gta\@sm { grid-template-areas: var(--gta--sm) }
+	.-gtc\@sm { grid-template-columns: var(--gtc--sm) }
+	.-gtr\@sm { grid-template-rows: var(--gtr--sm) }
+	.-gc\@sm { grid-column: var(--gc--sm) }
+	.-gr\@sm { grid-row: var(--gr--sm) }
+}
+@include query.bp-up('md') {
+	.-gt\@md { grid-template: var(--gt--md) }
+	.-gta\@md { grid-template-areas: var(--gta--md) }
+	.-gtc\@md { grid-template-columns: var(--gtc--md) }
+	.-gtr\@md { grid-template-rows: var(--gtr--md) }
+	.-gc\@md { grid-column: var(--gc--md) }
+	.-gr\@md { grid-row: var(--gr--md) }
+}
+@include query.bp-up('lg') {
+	.-gt\@lg { grid-template: var(--gt--lg) }
+	.-gta\@lg { grid-template-areas: var(--gta--lg) }
+	.-gtc\@lg { grid-template-columns: var(--gtc--lg) }
+	.-gtr\@lg { grid-template-rows: var(--gtr--lg) }
+	.-gc\@lg { grid-column: var(--gc--lg) }
+	.-gr\@lg { grid-row: var(--gr--lg) }
+}

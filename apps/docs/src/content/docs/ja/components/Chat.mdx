@@ -1,0 +1,90 @@
+---
+title: 'Chat'
+description: ...
+---
+
+
+import { Chat } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+- `<Chat>`
+- Lismクラス: `.b--chatBubble`
+
+
+## Memo
+
+- `@loos/lism-core` に入れるようなものではないかも..?
+- カラー指定について考える
+
+
+## Import
+
+```js
+import { Chat } from '@loos/lism-core';
+```
+
+{/* ChatBody, ChatAvatar */}
+
+## Usage
+
+<Preview>
+	<PreviewTitle>Speak</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Chat name="太郎" icon="/img/onepiece01_luffy.png">
+			<DammyText length="m" />
+		</Chat>
+		<Chat name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
+			<DammyText />
+			<DammyText length="m" />
+		</Chat>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Chat name="太郎" icon="/img/onepiece01_luffy.png">
+			<DammyText length="m" />
+		</Chat>
+		<Chat name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
+			<DammyText />
+			<DammyText length="m" />
+		</Chat>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>Thinking</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Chat type="think" name="太郎" icon="/img/onepiece01_luffy.png">
+			<DammyText length="m" />
+		</Chat>
+		<Chat type="think" name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
+			<DammyText />
+			<DammyText length="m" />
+		</Chat>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>Box</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Chat type="box" name="太郎" icon="/img/onepiece01_luffy.png">
+			<DammyText length="m" />
+		</Chat>
+		<Chat type="box" name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
+			<DammyText />
+			<DammyText length="m" />
+		</Chat>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>

@@ -1,0 +1,104 @@
+:root {
+	--accordion--duration: 0.25s;
+}
+
+[data-icon='accordion-toggle'] {
+	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M20.1,7.6L12,15.7L3.9,7.6c-0.2-0.2-0.5-0.2-0.7,0L2.4,8.4c-0.2,0.2-0.2,0.5,0,0.7l8.1,8.1l1.5,1.5l1.5-1.5l8.1-8.1 c0.2-0.2,0.2-0.5,0-0.7l-0.8-0.8C20.6,7.4,20.3,7.4,20.1,7.6z"/></svg>');
+
+	background-color: currentColor;
+	mask: var(--mask-image) no-repeat 50% 50% / contain;
+}
+
+.c--accordion {
+	--isOpened: 0;
+	--duration: var(--accordion--duration);
+	overflow: clip; // bdrs考慮
+
+	// 開いた時
+	&.-opened {
+		--isOpened: 1;
+	}
+}
+
+.c--accordion__header {
+	cursor: pointer;
+	// align-items: center;
+	// justify-content: space-between;
+	min-height: 3.25em;
+	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうので 内側へ
+
+	/* Safariで表示されるデフォルトの三角形アイコンを消します */
+	&::-webkit-details-marker {
+		display: none;
+	}
+}
+
+// .c--accordion__label {
+// 	flex: 1;
+// }
+
+.c--accordion__body {
+	display: grid;
+	grid-template-rows: 1fr;
+	transition-property: padding-block, opacity, grid-template-rows;
+	transition-duration: var(--duration);
+}
+
+.c--accordion__inner {
+	overflow: hidden; // ※ 正常な animation に必須
+}
+
+// 閉じている時
+.c--accordion:not(.-opened) {
+	> .c--accordion__body {
+		opacity: 0.1;
+		grid-template-rows: 0fr;
+		padding-block: 0 !important;
+	}
+}
+
+// アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
+.c--accordion__icon {
+	:where(&) {
+		background-color: transparent;
+	}
+
+	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
+	> .e--icon {
+		// grid-area: icon;
+		transition: rotate 0.25s;
+		rotate: calc(0deg - var(--isOpened) * 180deg);
+	}
+	> [data-to='open'] {
+		opacity: calc(1 - var(--isOpened));
+	}
+	> [data-to='close'] {
+		opacity: calc(0 + var(--isOpened));
+		position: absolute;
+		rotate: calc(180deg - var(--isOpened) * 180deg);
+	}
+}
+
+// [data-clickable="icon"] のとき
+:where(.c--accordion__icon[data-role='trigger']) {
+	padding: 0.375em;
+	border: solid 1px currentColor;
+	border-radius: var(--radius--xs);
+}
+
+.c--accordion__header:has([data-role='trigger']) {
+	pointer-events: none;
+}
+
+.c--accordion__label > a,
+.c--accordion__icon {
+	pointer-events: auto;
+}
+// .-opened > .c--accordion__header > .c--accordion__icon {
+// 	transform: rotate(180deg);
+
+// 	// [data-icon-type="plus"] > .-opened でちゃんと指定したいがCSS長くなるのでdata指定なしでいく
+// 	// &::after {
+// 	// 	opacity: 0;
+// 	// }
+// }

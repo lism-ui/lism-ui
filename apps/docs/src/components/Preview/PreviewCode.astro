@@ -1,0 +1,25 @@
+---
+import { TabItem, Lism } from '@loos/lism-astro';
+
+// Propsの定義
+interface Props {
+	label?: string;
+	[prop: string]: any;
+}
+const { label, ...props } = Astro.props || {};
+---
+
+{
+	label && (
+		<TabItem label={label} {...props}>
+			<slot />
+		</TabItem>
+	)
+}
+{
+	!label && (
+		<Lism className='c--preview_code' {...props}>
+			<slot />
+		</Lism>
+	)
+}

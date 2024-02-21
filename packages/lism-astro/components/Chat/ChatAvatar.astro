@@ -1,0 +1,11 @@
+---
+import { LismProps } from '../types';
+import { Avatar } from '../Avatar';
+import { getAvatarProps } from '@loos/lism-core/raw/Chat/getProps';
+
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+---
+
+<Avatar _lismClass={['c--chat__icon']} {...getAvatarProps(props)} />

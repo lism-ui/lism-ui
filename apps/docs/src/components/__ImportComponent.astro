@@ -1,0 +1,13 @@
+---
+import { Text } from '@loos/lism-astro';
+
+interface Props {
+	componentName: string;
+}
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+---
+
+<Preview>
+	<PreviewTitle>import</PreviewTitle>
+	<PreviewCode slot='tab' label='React'>```jsx ```</PreviewCode>
+</Preview>

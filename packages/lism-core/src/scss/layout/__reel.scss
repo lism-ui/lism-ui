@@ -1,0 +1,41 @@
+@use '../query' as query;
+
+// base値がinlineスタイルなので、importantで上書きする必要がある。→ だったら変数上書きではなく普通にプロパティ名　sで指定すべき...？
+@include query.cq('under-md') {
+	// is--reel@sp
+	.is--reel\@under-md {
+		--item--w: 16em;
+		overflow-x: auto;
+		// overflow-y: hidden;
+
+		display: grid !important;
+		grid-auto-flow: column;
+		grid-auto-columns: var(--item--w);
+		grid-template-columns: unset !important;
+		grid-template-rows: unset !important;
+	}
+}
+
+// @include query.cq('under-md') {
+// 	.is--reel[data-unreel='md'] {
+
+// 		--item--w: 16em; // 初期値要検討
+
+// 		display: flex;
+// 		overflow-x: auto;
+// 		scroll-snap-type: x mandatory;
+
+// 		// あとで.is--itemにする。
+// 		> * {
+// 			// flex: 0 0 auto;
+// 			flex: none;
+// 			flex-basis: var(--item--w);
+// 			// box-sizing: content-box;
+// 			// display: flex;
+// 			scroll-snap-align: start;
+// 		}
+
+// 	}
+// }
+
+// scrollable

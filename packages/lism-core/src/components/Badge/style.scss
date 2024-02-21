@@ -1,0 +1,34 @@
+:where(.c--badge) {
+	display: inline-flex; // 文中でもpaddingが効くように
+	font-size: var(--fz--xs);
+	border-radius: var(--radius--xs);
+}
+
+// -boxcolor とセットで使う
+.c--badge {
+	// --boxcolor: var(--content);
+	// --c: var(--boxcolor);
+	// --bdc: transparent;
+	// --bgc: transparent;
+	--cbox-mixper--txt: 50%;
+	// color: var(--c);
+	// background-color: var(--bgc);
+	border: solid 1px var(--bdc); // サイズ揃えるために常にborderを指定
+	padding-inline: var(--em--5);
+}
+
+.c--badge--fill {
+	--cbox-c: var(--base);
+	--cbox-bgc: var(--boxcolor);
+	// --c: var(--base);
+	// --bgc: var(--boxcolor);
+
+	--cbox-bdc: transparent;
+}
+.c--badge--outline {
+	--cbox-c: var(--boxcolor);
+	--cbox-bdc: var(--boxcolor);
+	--cbox-bgc: transparent;
+}
+// .c--badge--subtle {
+// }

@@ -1,0 +1,20 @@
+---
+import { LismProps } from '../types';
+import { getLismProps } from '@loos/lism-core/lib';
+import getProps from '@loos/lism-core/raw/Icon/getProps';
+import SVG from './SVG.astro';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+let { lismClass = {}, passProps = {}, variant, isInline, ...props } = Astro.props || {};
+
+const hasChildren = Astro.slots.has('default');
+
+let { IconTag, iconProps, otherProps } = getProps(props, hasChildren);
+if (IconTag === '_SVG_') IconTag = SVG;
+---
+
+<IconTag {...getLismProps(otherProps)} {...iconProps} {...passProps}>
+	{hasChildren && <slot />}
+</IconTag>

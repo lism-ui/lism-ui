@@ -1,0 +1,31 @@
+/*
+  resetした上で、 各要素の標準スタイルを定義する
+*/
+// base
+@use './base/index' as base;
+
+// layout
+@use './layout/index' as layout;
+
+// element
+@use './element/index' as element;
+
+// objects
+@use './component/index' as component;
+
+// utility
+@use './utility/index' as utility;
+
+// あとで切り分ける
+@use './rtl.scss';
+
+// [data-has-lism-error] {
+// 	color: red;
+// 	text-decoration: dashed underline;
+// }
+
+// .is--end {
+// 	margin-block-start: auto !important;
+// 	margin-block-end: 0 !important;
+// 	place-self: end;
+// }

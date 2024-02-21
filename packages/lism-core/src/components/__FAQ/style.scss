@@ -1,0 +1,17 @@
+// :root {}
+
+// ddへのブラウザのデフォルトスタイルがあたってしまうのを防ぐ
+// :where(.b--faq__a) {
+// 	margin: 0;
+// }
+
+// :where(.b--faq) {}
+// [data-icon='Q']::before {
+// 	font-family: Arial, sans-serif;
+// 	content: 'Q.';
+// }
+
+// [data-icon='A']::before {
+// 	font-family: Arial, sans-serif;
+// 	content: 'A.';
+// }

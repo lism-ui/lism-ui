@@ -1,0 +1,26 @@
+---
+import { LismProps } from '../types';
+import { Flex } from '../Flex';
+import AccordionLabel from './AccordionLabel.astro';
+import AccordionIcon from './AccordionIcon.astro';
+import { getAccHeadProps } from '@loos/lism-core/raw/Accordion/getProps';
+
+interface Props extends LismProps {}
+
+const { label, icon, iconProps, ...props } = Astro.props || {};
+
+const hasSlot = Astro.slots.has('default');
+---
+
+<Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
+	{
+		hasSlot ? (
+			<slot />
+		) : (
+			<>
+				<AccordionLabel>{label || ''}</AccordionLabel>
+				<AccordionIcon icon={icon} iconProps={iconProps} />
+			</>
+		)
+	}
+</Flex>

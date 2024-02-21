@@ -1,0 +1,74 @@
+
+/* stylelint-disable */
+// .-pi\:c{place-items: center;}
+// .-pi\:s{place-items: start;}
+// .-pi\:e{place-items: end;}
+// .-pc\:c{place-content: center;}
+// .-pc\:s{place-content: start;}
+// .-pc\:e{place-content: end;}
+// .-ps\:c{place-content: center;}
+// .-ps\:s{place-content: start;}
+// .-ps\:e{place-content: end;}
+
+
+// align-items
+// .-ai\:{align-items: var(--ai);}
+.-ai\:c{align-items: center;}
+.-ai\:s{align-items: start;}
+.-ai\:e{align-items: end;}
+.-ai\:fs{align-items: flex-start;}
+.-ai\:fe{align-items: flex-end;}
+.-ai\:str{align-items: stretch;}
+
+// justify-items
+// .-ji\:{justify-items: var(--ji);}
+.-ji\:c{justify-items: center;}
+.-ji\:s{justify-items: start;}
+.-ji\:e{justify-items: end;}
+.-ji\:fs{justify-items: flex-start;}
+.-ji\:fe{justify-items: flex-end;}
+.-ji\:str{justify-items: stretch;}
+
+
+// justify-content
+// .-jc\:{justify-content: var(--jc);}
+.-jc\:c{justify-content: center;}
+.-jc\:s{justify-content: start;}
+.-jc\:e{justify-content: end;}
+.-jc\:fs{justify-content: flex-start;}
+.-jc\:fe{justify-content: flex-end;}
+.-jc\:sb{justify-content: space-between;}
+
+// align-content
+// .-ac\:{align-content: var(--ac);}
+.-ac\:c{align-content: center;}
+.-ac\:s{align-content: start;}
+.-ac\:e{align-content: end;}
+.-ac\:fs{align-content: flex-start;}
+.-ac\:fe{align-content: flex-end;}
+.-ac\:sb{align-content: space-between;}
+
+
+// self系
+.-aslf\:c{align-self: center;}
+.-aslf\:s{align-self: start;}
+.-aslf\:e{align-self: end;}
+.-aslf\:fs{align-self: flex-start;}
+.-aslf\:fe{align-self: flex-end;}
+// self-start, self-end ?
+
+.-jslf\:c{justify-self: center;}
+.-jslf\:s{justify-self: start;}
+.-jslf\:e{justify-self: end;}
+.-jslf\:fs{justify-self: flex-start;}
+.-jslf\:fe{justify-self: flex-end;}
+
+// rtl言語でも左右を反転させない時に使える
+// .-ji\:l{justify-items: left;}
+// .-ji\:r{justify-items: right;}
+// .-jc\:l{justify-content: left;}
+// .-jc\:r{justify-content: right;}
+
+//　↓ ml:a , mr:a で左右よせはできる
+// .-js\:l{justify-self: left;}
+// .-js\:r{justify-self: right;}

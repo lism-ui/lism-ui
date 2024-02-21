@@ -1,0 +1,18 @@
+@use '../setting' as setting;
+
+/* stylelint-disable */
+
+// [class*='-gap:'] {gap: var(--gap);}
+.-gap\: {gap: var(--colg);}
+.-colg\: {column-gap: var(--colg);}
+.-rowg\: {row-gap: var(--rowg);}
+
+.-gap\:0 {--gap: 0;}
+
+@each $s in setting.$util_spaces {
+	.-gap\:#{$s} {gap: var(--s--#{$s});}
+}
+
+@each $em in setting.$util_em_tokens {
+	.-gap\:em#{$em} {gap: var(--em--#{$em});}
+}

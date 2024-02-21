@@ -1,0 +1,122 @@
+---
+title: 'Delimiter'
+description: ...
+---
+
+import { Text, Cluster, Delimiter } from '@loos/lism-core';
+import { Reference, MemoBadge, PropBadge } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+テキストレベルの小さな要素を区切るための要素に使用するコンポーネントです。
+
+デフォルトで`<span>`タグで出力されます。  
+また、等幅フォント（<PropBadge type="cssvar">`--ff--mono`</PropBadge>）が適用されるため、記号でデータを区切る際に便利になっています。
+
+
+## Props
+
+特に専用のプロパティはありません。
+
+{/* が、親に<PropBadge type="cssvar">`--delimiter--c`</PropBadge>を指定することで、デリミタのカラーを一括で変更することができます。 */}
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Delimiter } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Delimiter } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>Delimiterの例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Text>
+			<span>Lorem ipsum</span>
+			<Delimiter> / </Delimiter>
+			<span>Dolor</span>
+			<Delimiter> / </Delimiter>
+			<span>Sit amet</span>
+			<Delimiter> / </Delimiter>
+			<span>Consectetur</span>
+		</Text>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx
+	<Text>
+		<span>Lorem ipsum</span>
+		<Delimiter> / </Delimiter>
+		<span>Dolor</span>
+		<Delimiter> / </Delimiter>
+		<span>Sit amet</span>
+		<Delimiter> / </Delimiter>
+		<span>Consectetur</span>
+	</Text>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx
+	<p>
+		<span>Lorem ipsum</span>
+		<span class="e--delimiter"> / </span>
+		<span>Dolor</span>
+		<span class="e--delimiter"> / </span>
+		<span>Sit amet</span>
+		<span class="e--delimiter"> / </span>
+		<span>Consectetur</span>
+	</p>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>provide/consume を使ってデリミタのカラーを一括で変更する</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20} provide={{c: 'accent'}}>
+			<span >Lorem ipsum</span>
+			<Delimiter consume="c">▶</Delimiter>
+			<span >Dolor</span>
+			<Delimiter consume="c">▶</Delimiter>
+			<span >Sit amet</span>
+			<Delimiter consume="c">▶</Delimiter>
+			<span >Consectetur</span>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx "provide" "consume"
+	<Cluster gap={20} provide={{c: 'accent'}}>
+		<span >Lorem ipsum</span>
+		<Delimiter consume="c">▶</Delimiter>
+		<span >Dolor</span>
+		<Delimiter consume="c">▶</Delimiter>
+		<span >Sit amet</span>
+		<Delimiter consume="c">▶</Delimiter>
+		<span >Consectetur</span>
+	</Cluster>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx "--pass--c" "data-lism-consume=\"c\""
+	<div class="l--flex l--flex--cluster -gap:20" style="--pass--c:var(--accent)">
+		<span>Lorem ipsum</span>
+		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span>Dolor</span>
+		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span>Sit amet</span>
+		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span>Consectetur</span>
+	</div>
+	```
+	</PreviewCode>
+</Preview>

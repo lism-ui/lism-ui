@@ -1,0 +1,117 @@
+---
+title: Lism UI
+description: CSSフレームワーク
+template: splash
+hero:
+  tagline: 独自設計CSSフレームワークを元にしたコンポーネントライブラリ
+  image:
+    file: ../../../assets/test-02.png
+  actions:
+    - text: ドキュメント
+      link: /ja/overview/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub
+      link: https://starlight.astro.build
+      icon: external
+---
+
+import { Lism, Container, Button, Stack, Text, Columns, Spacer } from  '@loos/lism-astro';
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import DemoLismComponent from '~/demos/demo-lism-component.mdx';
+
+import '~/styles/front-page.scss';
+
+export const POINTS = [
+	{
+		icon: null,
+		title: 'レイアウトモジュール',
+		desc: `
+			WEBサイトでよく使われるデザイン要素を細分化したものをモジュール化しています。
+		`,
+	},
+	{
+		icon: null,
+		title: 'デザインステート',
+		desc: `
+			複数のモジュールに対して状態として付与できるようなデザイン機能を切り分けて定義しています。
+		`,
+	},
+	{
+		icon: null,
+		title: 'デザイントークン',
+		desc: `
+			事前にデザイントークンをCSS変数で定義し、それらを流用することでサイト全体の一貫性を保ちます。
+		`,
+	},
+	{
+		icon: null,
+		title: 'レスポンシブなユーティリティ設計',
+		desc: `
+			主要なCSSプロパティに対応したユーティリティクラスがあり、さらに重要なプロパティはレスポンシブ対応できる設計になっています。
+		`,
+	},
+	// {
+	// 	icon: null,
+	// 	title: 'あくまでHTML&CSS',
+	// 	desc: 'Lismはただの設計理論。専用コンポーネントでそれを手軽に利用できるようにしていますが、素のHTMLコーディングにも活用できます。',
+	// },
+	// {
+	// 	icon: null,
+	// 	title: '専用コンポーネント',
+	// 	desc: 'Lism設計に基づいたコンポーネントを使うことでより手軽なWEBサイト制作を可能にします。',
+	// },
+	// {
+	// 	icon: null,
+	// 	title: '軽量',
+	// 	desc: `
+	// 		全てのユーティリティクラスをインポートしても、軽量です。
+	// 	`,
+	// },
+	// {
+	// 	icon: null,
+	// 	title: 'WordPressフレンドリー',
+	// 	desc: `
+	// 		ビルド処理が必須ではないので、WordPressでの制作にも採用可能です。（専用テーマも準備中です）
+	// 	`,
+	// },
+];
+
+
+
+{/* <Box className='a--content' py={40}>
+	<Box className='a--article' tag='article'> */}
+<Container size='m' isFlow hasGutter>
+	<h2>独自のCSS設計</h2>
+
+	<Columns cols={[2, 2, 3]} gap={[40,50]}>
+		{POINTS.map((point, i) => {
+			return (
+				<Stack key={i} gap={30}>
+					<Text fz='l'>
+						{point.title}
+					</Text>
+					<Text fz='s' c='content-2'>{point.desc}</Text>
+				</Stack>
+			);
+		})}
+	</Columns>
+
+	<h2>専用コンポーネント</h2>
+	<p>上記のような独自のCSS設計を手軽に扱えるように、ReactやAstroで利用できるコンポーネントを無償で提供しています。</p>
+
+	<PreviewTitle>専用のコンポーネントはこんな感じで使います</PreviewTitle>
+	<DemoLismComponent />
+
+	<h2>その他の特徴</h2>
+
+	- どこでも利用可能: Lism UIのコアはただのCSS設計理論。ゼロビルドでも使えるので、素のHTMLコーディングやWordPressにも活用できます。
+	- 軽量: 高い柔軟性を持ちながらも、全てのユーティリティクラスをインポートしても軽量です。
+	- モダンCSSの活用: CSS変数の活用はもちろんのこと、コンテナクエリ、`color-mix`間数、`:has`セレクタ等も採用しています。
+	- 日本発: 日本人が開発しているので、日本語のドキュメントやサポートが充実しています。
+
+	<Spacer h='40' />
+	<Button href='ja/overview/' leftIcon='book-open'>ドキュメントを読む</Button>
+
+</Container>

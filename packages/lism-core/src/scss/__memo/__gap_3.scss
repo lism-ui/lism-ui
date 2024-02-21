@@ -1,0 +1,25 @@
+// シンプルに rowg/colmg だけを使うパターン。
+// ソース上は gap でまとめれるとこも分割してCSS変数が吐き出されてしまう。
+
+.is--flex,
+.is--grid {
+	// 初期値
+	--rowg: var(--s--50);
+	--colmg: var(--s--50);
+
+	// @
+	--rowg--sm: var(--rowg);
+	--colmg--sm: var(--colmg);
+	--rowg--xs: var(--rowg--sm);
+	--colmg--xs: var(--colmg--sm);
+
+	gap: var(--rowg) var(--colmg);
+
+	@container (max-width: 720px) {
+		gap: var(--rowg--sm) var(--colmg--sm);
+	}
+
+	@container (max-width: 440px) {
+		gap: var(--rowg--xs) var(--colmg--xs);
+	}
+}

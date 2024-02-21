@@ -1,0 +1,29 @@
+// theme , プロジェクトで読み込むようなスタイル郡
+
+// root定義
+@forward './base/root';
+@forward './system';
+// @forward './root/space';
+@forward './root/typography';
+// @forward './root/typography-auto-h';
+@forward './root/typography-manual';
+
+// State
+@forward './state';
+
+// Utility
+@forward './utility';
+
+// adminbarの高さ,ヘッダー要素などの高さを考慮してstickyさせる。
+.is--sticky {
+	// --wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height, 0px);
+	// headerに付けたときはadmin-bar だけを考慮すればいいが、 a--main内部のときはhedderの高さ（headerが固定されていれば）も考慮する
+}
+
+//html系
+
+// dl{}
+// dt{}
+dd {
+	margin-inline-start: var(--s--50);
+}

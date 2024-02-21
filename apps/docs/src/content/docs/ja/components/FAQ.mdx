@@ -1,0 +1,186 @@
+---
+title: 'FAQ'
+description: ...
+---
+
+
+import { Alert, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@loos/lism-core';
+// import Script from 'next/script';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+Q&Aの構築例を紹介します。
+
+
+## Usage
+
+{/* クラスつけるなら
+- .b--faq
+- .b--faq__item
+	- .b--faq__header
+		- .b--faq__question
+	- .b--faq__body
+	- .b--faq__answer */}
+
+<Preview>
+	<PreviewTitle>Boxの例 1</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Stack className='b--faq' tag='dl' gap={20}>
+			<Stack tag='div' gap={30}>
+				<Flex tag='dt' gap='em10' ai='c'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
+					{/* <Icon emoji='Q' fz='xl' /> */}
+					<Text tag='span' fw='bold'>
+						Lorem question 1
+					</Text>
+				</Flex>
+				<Flex tag='dd' gap='em10'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
+					{/* <Icon emoji='A' fz='xl' size='auto' lh='2'/> */}
+					<Lism isFlow='s'>
+						<DammyText length="l" />
+					</Lism>
+				</Flex>
+			</Stack>
+			<Divider />
+			<Stack tag='div' gap={30}>
+				<Flex tag='dt' gap='em10' ai='c'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
+					<Text tag='span' fw='bold'>
+						Lorem question 2
+					</Text>
+				</Flex>
+				<Flex tag='dd' gap='em10'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
+					<Lism isFlow='s'>
+						<DammyText length="l" />
+					</Lism>
+				</Flex>
+			</Stack>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Stack className='b--faq' tag='dl' gap={20}>
+			<Stack tag='div' gap={30}>
+				<Flex tag='dt' gap='em10' ai='c'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
+					<Text tag='span' fw='bold'>
+						Lorem question 1
+					</Text>
+				</Flex>
+				<Flex tag='dd' gap='em10'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
+					<Lism isFlow='s'>
+						<DammyText length="l" />
+					</Lism>
+				</Flex>
+			</Stack>
+			<Divider />
+			<Stack tag='div' gap={30}>
+				<Flex tag='dt' gap='em10' ai='c'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
+					<Text tag='span' fw='bold'>
+						Lorem question 2
+					</Text>
+				</Flex>
+				<Flex tag='dd' gap='em10'>
+					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
+					<Lism isFlow='s'>
+						<DammyText length="l" />
+					</Lism>
+				</Flex>
+			</Stack>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
+
+<Alert preset="info">
+※ `b--`クラスは別に不要ですが。何か命名するとしたらこうかな？という一例です。
+※ この例では、`data-icon='A'`は、Qと同じ幅で余白をあけるために配置しています。
+</Alert>
+
+<Alert preset="note">
+Memo: ブロック化した時、"Q." はテキスト普通におくのではなく、`::before`で。（CSSでいじりやすくする）
+</Alert>
+
+
+### アコーディオンタイプ
+
+{/* <Script src='/js/acc.js' type="module"/> */}
+
+`isAccordion` を指定するとアコーディオンになります。
+
+<Preview>
+	<PreviewTitle>Boxの例 1</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<AccordionGroup gap={10} className='b--faq'>
+			<Accordion className='b--faq__item'>
+				<AccordionHeader p="box" bgc='base-2'>
+					{/* <Icon data-icon='Q' fz='xl'>Q.</Icon> */}
+					<Icon tag='span' c='base' bgc='content' bdrs='full' p='em3' ff='emoji' fz='l' lh='1' aria-hidden='true'>Q</Icon>
+					
+					<AccordionLabel>
+						Lorem question 1 ロレム・イプサムの座り雨、トマ好き学習エリット？
+					</AccordionLabel>
+					<AccordionIcon />
+				</AccordionHeader>
+				<AccordionBody p="box">
+					<p>
+						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
+					</p>
+				</AccordionBody>
+			</Accordion>
+			<Accordion className='b--faq__item'>
+				<AccordionHeader p="box" bgc='base-2'>
+					<Icon data-icon='Q' fz='xl'>Q.</Icon>
+					<AccordionLabel>
+						Lorem question 2 ロレム・イプサムの座り雨、トマ好き学習エリット？
+					</AccordionLabel>
+					<AccordionIcon />
+				</AccordionHeader>
+				<AccordionBody p="box">
+					<p>
+						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
+					</p>
+				</AccordionBody>
+			</Accordion>
+		</AccordionGroup>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<AccordionGroup gap={10} className='b--faq'>
+			<Accordion className='b--faq__item'>
+				<AccordionHeader p="box" bgc='base-2'>
+					<Icon data-icon='Q' fz='xl'>Q.</Icon>
+					<AccordionLabel>
+						Lorem question 1 ロレム・イプサムの座り雨、トマ好き学習エリット？
+					</AccordionLabel>
+					<AccordionIcon />
+				</AccordionHeader>
+				<AccordionBody p="box">
+					<p>
+						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
+					</p>
+				</AccordionBody>
+			</Accordion>
+			<Accordion className='b--faq__item'>
+				<AccordionHeader p="box" bgc='base-2'>
+					<Icon data-icon='Q' fz='xl'>Q.</Icon>
+					<AccordionLabel>
+						Lorem question 2 ロレム・イプサムの座り雨、トマ好き学習エリット？
+					</AccordionLabel>
+					<AccordionIcon />
+				</AccordionHeader>
+				<AccordionBody p="box">
+					<p>
+						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
+					</p>
+				</AccordionBody>
+			</Accordion>
+		</AccordionGroup>
+		```
+	</PreviewCode>
+</Preview>
+

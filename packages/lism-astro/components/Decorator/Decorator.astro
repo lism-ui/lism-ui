@@ -1,0 +1,13 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import getProps from '@loos/lism-core/raw/Decorator/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Lism skipState {...getProps(props)} aria-hidden='true'>
+	<slot />
+</Lism>

@@ -1,0 +1,93 @@
+:where(.c--button) {
+	--keycolor: var(--content);
+	--icon--scale: 1.25; // offsetとバランス合わせる
+	--icon--offset: 0%; //25%;
+
+	// default(fill)用
+	--bgc: transparent;
+	--bdc: transparent; // reverse用
+	--c: currentColor; // filledColor?
+
+	border-radius: var(--radius--xs);
+	line-height: var(--lh--xs);
+	padding: 0.375em 0.875em; // bdrs=full を考慮すると 1em くらいあった方がいいが...
+	gap: var(--em--5);
+	min-block-size: 2.75em;
+}
+
+// py は小さめにして、minHで最低限の高さを確保.
+.c--button {
+	--link-td: none; // pタグ内にくるかもしれないので
+	align-items: center;
+	width: fit-content;
+	color: var(--c);
+	background-color: var(--bgc);
+	border: solid 1px var(--bdc); // アウトラインと並べたときにサイズに差がでないように
+}
+
+// .c--button:where(.-hov\:reverse):hover {
+// 	color: var(--hov--c);
+// 	background-color: var(--hov--bgc);
+// 	// border-color: var(--hov--bdc);
+// }
+
+// デフォルトスタイル
+// .c--button:not([class*='c--button--'])
+.c--button--fill {
+	--c: var(--base);
+	--bgc: var(--keycolor);
+	--bdc: var(--bgc);
+	// --hov--bgc: transparent;
+}
+
+// c--button--style
+.c--button--outline {
+	--c: var(--keycolor);
+	// --bgc: transparent;
+	--bdc: var(--keycolor);
+	--hov--c: var(--base);
+	// --hov--bdc: var(--keycolor);
+}
+
+// c--button--style
+.c--button--ghost {
+	--c: var(--keycolor);
+	// --bgc: transparent;
+	// --bdc: transparent;
+	--hov--c: var(--base);
+}
+
+// .c--button.l--grid,
+.c--button:where(.l--grid) {
+	--gtc: 1em 1fr 1em; // アイコン部分を固定幅にすることで、テキストを常に中央に配置
+}
+
+// :where(.l--grid) > .c--button__text {
+// 	justify-self: center;
+// }
+
+:where(.c--button) > .e--icon {
+	scale: var(--icon--scale);
+	// flex-shrink: 0; // → .e--icon についてる
+}
+
+.c--button__leftIcon {
+	translate: calc(0px - var(--icon--offset));
+}
+.c--button__rightIcon {
+	translate: calc(0px - var(--icon--offset));
+}
+
+// .c--button__icon で統一するならこっち
+// :where(.c--button > .e--icon) {
+// 	&:only-child {
+// 		--icon--offset: 0;
+// 	}
+// 	&:first-child {
+// 		translate: calc(0px - var(--icon--offset));
+// 	}
+// 	// &[data-position='right']
+// 	&:last-child {
+// 		translate: var(--icon--offset);
+// 	}
+// }

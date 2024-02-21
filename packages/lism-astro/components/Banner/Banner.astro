@@ -1,0 +1,30 @@
+---
+import { Lism, Frame, LinkBox, FilterLayer } from '@loos/lism-core';
+import { MediaLayer } from '../MediaLayer/index.js';
+
+const { flowGap, media, filter, ...props } = Astro.props || {};
+
+const theProps = props;
+if (props.ratio) theProps.as = Frame;
+let Component = null;
+if (props.href) {
+	Component = LinkBox;
+} else {
+	Component = Lism;
+}
+
+// memo: mediaは slot でもOK
+---
+
+<Component blockClass='b--banner' {...props}>
+	<!-- {
+		Astro.slots.has('media') && (
+			<MediaLayer>
+				<slot name='media' />
+			</MediaLayer>
+		)
+	} -->
+	{!!media && <MediaLayer {...media} />}
+	{filter && <FilterLayer {...filter} />}
+	<slot />
+</Component>

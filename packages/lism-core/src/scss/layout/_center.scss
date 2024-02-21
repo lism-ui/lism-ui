@@ -1,0 +1,22 @@
+.l--center {
+	display: grid;
+	place-content: center;
+	place-items: center;
+}
+
+// :is(.l--center__, .l--center--x, .l--center--y) {
+// 	display: flex;
+// 	flex-direction: column;
+// }
+// :is(.l--center__, .l--center--x) {
+// 	align-items: center;
+// }
+
+// :is(.l--center__, .l--center--y) {
+// 	> :first-child {
+// 		margin-top: auto;
+// 	}
+// 	> :last-child {
+// 		margin-bottom: auto;
+// 	}
+// }

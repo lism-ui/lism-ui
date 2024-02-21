@@ -1,0 +1,96 @@
+---
+title: 'Media'
+description: ...
+---
+import { Alert, Media, MediaLayer, Banner } from "@loos/lism-astro";
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+メディア用に少し特殊な処理が加えられているコンポーネントで、`<Lism>`と同様のPropsを受け取れます。
+
+デフォルトで`<img>`タグが出力されるようになっていたり、`css.objectFit`,`css.objectPosition` をそのまま受け取れるようになっています。
+
+<PreviewTitle>例</PreviewTitle>
+```jsx
+<Media src="/img.jpg" alt="" width='960' height='640' objectFit='cover' />
+
+// ↓ 以下と同じ
+
+<Lism tag="img" src="/img.jpg" alt="" width='960' height='640' css={{objectFit:'cover'}}/>
+```
+{/* 
+## Props
+
+- `tag`: htmlタグを指定できます。デフォルトは`<img>`です。
+- `as`: 展開したいコンポーネントを指定できます。(例: `Next.js`の`Image>`コンポーネントなど） */}
+
+
+## Import
+
+```js
+import { Media } from '@Media/core';
+```
+
+## Usage
+
+<Preview>
+	<PreviewTitle>使用例: 画像</PreviewTitle>
+	{/* <PreviewArea>
+		<Media src="/img.jpg" alt="" width='960' height='640' />
+	</PreviewArea> */}
+	<PreviewCode>
+		```jsx
+		<Media src="/img.jpg" alt="" width='960' height='640' />
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>Mediaの例2: `as`でnextの`Image`を渡す</PreviewTitle>
+	{/* <PreviewArea resize p={20}>
+		<Media as={Image} src="/img.jpg" alt="" width='960' height='640' />
+	</PreviewArea> */}
+<PreviewCode>
+```jsx
+import Image from 'next/image';
+
+<Media as={Image} src="/img.jpg" alt="" width='960' height='640' />
+```
+</PreviewCode>
+</Preview>
+
+
+
+## as が使えないケースについて
+
+
+<Alert preset='alert'>
+Astro の `<Image>` を`as`で渡そうとすると、Astro(TypeScript?)のチェックに引っかかり、「Image missing required "alt" property.」エラーが出てしまいます。
+</Alert>
+
+Astro の `<Image>` に対してLism Propsを使用したい場合は、[`getLismProps()`](/ja/props/lism-props/#getlismprops)を使用するか、Lism CSSに従ってクラスとスタイルを直接記述してください。
+
+<Preview>
+<PreviewCode slot="tab" label="getLismPropsを使う">
+```astro
+---
+import { Image } from 'astro:assets';
+import { getLismProps } from '@loos/lism-core/lib';
+---
+
+<Image {...getLismProps({ p: 20, bd: true })} src="/img.jpg" alt="" width='960' height='640' />
+```
+</PreviewCode>
+<PreviewCode slot="tab" label="クラスやスタイルを書く">
+```astro
+---
+import { Image } from 'astro:assets';
+---
+
+<Image class="-p:20 -bd:" src="/img.jpg" alt="" width='960' height='640' />
+```
+</PreviewCode>
+</Preview>

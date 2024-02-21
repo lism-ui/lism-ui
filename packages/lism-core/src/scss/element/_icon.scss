@@ -1,0 +1,43 @@
+:where(.e--icon:not([width])) {
+	width: 1em;
+	height: 1em;
+}
+
+.e--icon {
+	--scale: 1;
+	scale: var(--scale);
+	display: inline-flex;
+	vertical-align: middle; //下にスペースができるのを防ぐ
+	flex-shrink: 0; // Alertなど、アイコンはflex直下の子要素にしたい場合が多いので、指定しておく
+	// width: 1em;
+	// height: 1em;
+
+	// emoji 考慮
+	font-family: var(--ff--emoji);
+	line-height: 1;
+	place-content: center; // justify-content: center;
+	place-items: center; // align-items: center;
+}
+
+.e--icon--inline {
+	--scale: 1.125; // inlineアイコンはデフォルト状態で少し拡大表示
+	vertical-align: -0.125em;
+	margin-inline: calc(1em * (var(--scale) - 1) / 2);
+	// line-height: inherit;
+}
+
+// → has--size 　で?
+.e--icon:where([data-icon]) {
+	--size: 1em;
+	width: var(--size);
+	height: var(--size);
+}
+
+// .e--icon[data-icon='accordion-toggle'] {
+// 	background-color: currentColor;
+// 	clip-path: polygon(50% 76%, 10% 25%, 90% 25%);
+// }
+
+// :where(.e--icon).-mask\: {
+// 	background-color: currentColor;
+// }

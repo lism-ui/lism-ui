@@ -1,0 +1,15 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { getAccBodyProps } from '@loos/lism-core/raw/Accordion/getProps';
+
+interface Props extends LismProps {}
+const props = Astro.props || {};
+const { bodyProps, innerProps } = getAccBodyProps(props);
+---
+
+<Lism {...bodyProps}>
+	<Lism {...innerProps}>
+		<slot />
+	</Lism>
+</Lism>

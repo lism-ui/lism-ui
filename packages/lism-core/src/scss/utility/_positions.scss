@@ -1,0 +1,60 @@
+/* stylelint-disable */
+
+// prop: pos
+// Layer の基点を作るためにrelativeにしたいことがある
+
+.-pos\:r{position: relative;}
+.-pos\:a{position: absolute;}
+// .-pos\:sttc{position: static;}
+// .-pos\:f{position: fixed;}
+// .-pos\:stck{position: sticky;}
+
+.-z\:-1{z-index: -1;}
+.-z\:0{z-index: 0;}
+.-z\:1{z-index: 1;}
+
+.-inset\:0{inset: 0;}
+.-inset\:center {
+	translate: -50% -50%;
+	left: 50%;
+	top: 50%;
+}
+.-inset\:centerX {
+	translate: -50%;
+	left: 50%;
+}
+.-inset\:centerY {
+	translate: 0 -50%;
+	top: 50%;
+}
+
+.-t\:0{top: 0;}
+.-t\:50{top: 50%;}
+.-t\:100{top:100%;}
+
+.-l\:0{left: 0;}
+.-l\:50{left: 50%;}
+.-l\:100{left:100%;}
+
+.-r\:0{right: 0;}
+.-r\:50{right: 50%;}
+.-r\:100{right:100%;}
+
+.-b\:0{bottom: 0;}
+.-b\:50{bottom: 50%;}
+.-b\:100{bottom:100%;}
+
+.-iis\:0{inset-inline-start: 0;}
+.-iis\:100{inset-inline-start:100%;}
+.-iie\:0{inset-inline-end: 0;}
+.-iie\:100{inset-inline-end:100%;}
+
+// .-ibs\:0{inset-block-start: 0;}
+// .-ibs\:100{inset-block-start:100%;}
+// .-ibe\:0{inset-block-end: 0;}
+// .-ibe\:100{inset-block-end:100%;}
+
+
+
+
+

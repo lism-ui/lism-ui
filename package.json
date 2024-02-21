@@ -1,0 +1,58 @@
+{
+	"name": "lism",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"start": "turbo run start",
+		"lint": "turbo run lint",
+		"clean": "turbo run clean"
+	},
+	"workspaces": [
+		"packages/*",
+		"apps/*"
+	],
+	"keywords": [
+		"framework",
+		"css-framework",
+		"wordpress",
+		"react",
+		"front-end",
+		"design-system"
+	],
+	"private": true,
+	"author": {
+		"name": "ddryo",
+		"url": "https://github.com/ddryo"
+	},
+	"homepage": "https://...",
+	"license": "MIT",
+	"devDependencies": {
+		"autoprefixer": "^10.4.17",
+		"cross-env": "^7.0.3",
+		"css-mqpacker": "^7.0.0",
+		"cssnano": "^6.0.3",
+		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-react": "^7.33.2",
+		"npm-check-updates": "^16.14.14",
+		"postcss": "^8.4.33",
+		"postcss-merge-at-rules": "^1.0.1",
+		"prettier": "^3.2.4",
+		"prettier-plugin-astro": "^0.13.0",
+		"sass": "^1.70.0",
+		"stylelint": "^15.11.0",
+		"stylelint-config-rational-order": "^0.1.2",
+		"stylelint-config-recommended-scss": "^14.0.0",
+		"stylelint-prettier": "^4.1.0",
+		"turbo": "^1.11.3"
+	},
+	"packageManager": "pnpm@8.6.11",
+	"engines": {
+		"pnpm": ">=8.0"
+	}
+}

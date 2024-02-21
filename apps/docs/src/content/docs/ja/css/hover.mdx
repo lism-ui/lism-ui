@@ -1,0 +1,440 @@
+---
+title: 'Hover'
+description: ...
+sidebar:
+  order: 15
+---
+
+import { Alert, Flex, Button, Media, MediaLayer, FilterLayer, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@loos/lism-core";
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+export const PreviewBoxs = ({hover, ...attrs}) => {
+	const DEMO_BOX = [
+		{ ariaLabel: 'グレー系のコンテンツでのテスト', bgc: 'base-2', bd: '-' },
+		{ ariaLabel: '黒系のコンテンツでのテスト', bgc: 'content', c: 'base' },
+	];
+	return (
+		<Columns cols={[2]} gap={20}>
+			{DEMO_BOX.map((boxProps, i) => {
+				return (
+					<LinkBox key={i} href='###' hover={hover} p='box' {...boxProps} {...attrs}>
+						<Text fz='fluid'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+					</LinkBox>
+				);
+			})}
+		</Columns>
+	);
+}
+
+
+`hover`にhover時の挙動を指定できます。
+
+
+## Points
+
+- 文字列を指定すると、ユーティリティクラス `.-hov:xxx` を出力します。。
+	- `-hov:fade`, `-hov:shadow` などいくつかユーティリティクラスを標準で用意しています。
+	- `,`で区切りで複数のユーティリティクラスを指定することができます。
+	- `-hov:pass`と`-hov:get:xxx`を組み合わせることで、子要素にもホバー効果をつけることができるようになっています。
+- オブジェクトでの指定
+	- `hover={{c, bgc, bdc, bxsh }}` でhover時のプロパティの変化を詳細に指定できます。
+- 配列での指定
+	- `hover={['foo', 'bar', {...}]}`で複数のユーティリティクラスや、ユーティリティクラスとオブジェクト形式での指定を併用することができます。
+
+
+
+{/* ## ユーティリティプリセット
+
+`'fade'`, `'dark'`, `'shadow'`, `'up'`, `'scale'` */}
+
+
+## Usage
+
+
+### 文字列指定
+
+`hover`プロパティにユーティリティクラス用の文字列を指定する例を紹介します。
+
+<Preview>
+	<PreviewTitle>`hover='fade'`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover='fade'/>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover="
+	<LinkBox hover='fade' href='###' p='box'>
+		...
+	</LinkBox>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:"
+	<a class="is--linkBox -hov:fade -p:box -bgc:base-2 -bd:" href="###">
+		...
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`hover='bxsh:4'`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover='bxsh:4'/>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover="
+	<LinkBox hover='bxsh:4' href='###' p='box'>
+		...
+	</LinkBox>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:"
+	<a class="is--linkBox -hov:bxsh:4 -p:box -bgc:base-2 -bd:" href="###">
+		...
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>`hover='up'`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover='up'/>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover="
+	<LinkBox hover='up' href='###' p='box'>
+		...
+	</LinkBox>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:"
+	<a class="is--linkBox -hov:up -p:box -bgc:base-2 -bd:" href="###">
+		...
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>`hover='up,bxsh:3'`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover='up,bxsh:3'/>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover="
+	<LinkBox hover='up,bxsh:3' href='###' p='box'>
+		...
+	</LinkBox>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:"
+	<a class="is--linkBox -hov:up -hov:bxsh:3 -p:box -bgc:base-2 -bd:" href="###">
+		...
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+{/* 
+<Preview>
+	<PreviewTitle>`hover="dark"`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover="dark"/>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<LinkBox href="###" p="box" hover="dark">
+		...
+	</LinkBox>
+	```
+	</PreviewCode>
+</Preview> */}
+
+
+{/* bright? */}
+
+
+### オブジェクトでの指定
+
+`c`,`bgc`,`bdc`,`bxsh`, `shColor`, `filter` に変化後の値を指定することができ、より柔軟にhover時の挙動を指定できます。
+
+<Preview>
+	<PreviewTitle>`bgc`を`'main'`, `c`を`'white'`に変化させる</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' bgc='base-2' p='box' hover={{ bgc:'main', c:'white'}}>
+			<Text>LinkBox.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover=" "bgc:'main'" "c:'white'"
+		<LinkBox href='###' hover={{ bgc:'main', c:'white'}} bgc='base-2' p='box'>
+			...
+		</LinkBox>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:bgc" "-hov:c" "--hov--bgc" "--hov--c"
+	<a
+		class="is--linkBox -hov:bgc -hov:c -bgc:base-2 -p:box"
+		style="--hov--bgc:var(--main);--hov--c:var(--white)"
+		href="###"
+	>...</a>
+	```
+	</PreviewCode>
+</Preview>
+
+{/* hsl(25 50% 50% / 20%),rgb(250 50 50 / 20%)' */}
+<Preview>
+	<PreviewTitle>Shadow</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' hover='bxsh:4' bgc='base-2' p='box'>
+			<Text>LinkBox.</Text>
+			<Text>shadow 0 から shadow つける</Text>
+		</LinkBox>
+		<LinkBox href='###' hover='bxsh:0' bxsh='4' bgc='base-2' p='box'>
+			<Text>LinkBox.</Text>
+			<Text>hoverで shadow0</Text>
+		</LinkBox>
+		<LinkBox href='###' hover={{ bxsh: '2', shColor: 'blue:20%'}} bxsh='4' bgc='base-2' p='box'>
+			<Text>LinkBox.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+		<LinkBox href='###' hover={{ bxsh: '4', shColor: 'red:20%'}} bxsh='0 0 8px rgb(0 0 0 / 25%)' bgc='base-2' p='box'>
+			<Text>カスタムシャドウからプリセット.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+		<LinkBox href='###' hover={{ bxsh: '0 0 16px'}} bxsh='0 0 4px' bgc='base-2' p='box'>
+			<Text>カスタムシャドウ→カスタムシャドウ</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx "hover=" "bxsh:'2'" "bxsh='4'"
+		<LinkBox href='###' hover={{ shSize:'1'}} bxsh='4' bgc='base-2' p='box' >...</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+（shColorの指定はプリセット使用時のみ有効です。）
+
+{/* <HelpText>bxshのトークン値は変数があるわけではなく、ユーティリティクラスが用意されているだけであることに注意してください。</HelpText> */}
+
+<Preview>
+	<PreviewTitle>Shadow (inset)</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' hover={{ bxsh:'-1' }} bxsh='-3' bgc='base-2' p='box'>
+			<Text>LinkBox.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx "hover=" "bxsh:" "bxsh='-3'"
+		<LinkBox href='###' hover={{ bxsh:'-1' }} bxsh='-3' bgc='base-2' p='box'>...</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>ブラーをかける</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' hover={{ filter:'blur(2px)' }} p='box' bd>
+			<Text>LinkBox.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx "hover=" "filter:'blur(2px)'"
+		<LinkBox href='###' hover={{ filter:'blur(2px)' }} p='box' bd>...</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+
+{/* #### 初期値を利用する
+
+既に紹介している `shadow`も実はこれにあたりますが、オブジェクト指定できる項目の一部には初期値が設定されています。
+
+<Preview>
+	<PreviewTitle>`bgc`</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox
+			href='###'
+			p='box'
+			hover='bgc,shadow'
+		>
+			<Text>LinkBox.</Text>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx {5}
+		<LinkBox
+			href='###'
+			bgc='base-2'
+			p='box'
+			hover={{ bgc:'main', c:'white'}}
+		>...</LinkBox>
+	```
+	</PreviewCode>
+</Preview> */}
+
+
+### 配列での指定
+
+配列で複数の値の組み合わせが可能です。
+
+<Preview>
+	<PreviewTitle>`hover={[ 'shadow', 'up' ]}`</PreviewTitle>
+	<PreviewArea p={40}>
+		<PreviewBoxs hover={[ 'shadow', 'up' ]}/>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<LinkBox href='###' p='box' hover={[ 'shadow', 'up' ]}>...</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`'up'`, `'shadow'` に加え、オブジェクトで `c`, `bdc`, `bgc` を指定</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' hover={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]} bd bdw='1px' p='box'>
+			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx {3}
+		<LinkBox
+			href='###'
+			hover={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]}
+			bd
+			bdw='1px'
+			p='box'
+		>
+			...
+		</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+
+### 子要素へのホバー効果
+
+`.-hov:pass`, `.-hov:get:xxx`(`get:show`, `get:hide`, `get:zoom`の3種類が標準で用意されています) を使います。
+
+{/* `.-hov:pass`は、ホバー時に`--isHover`変数が切り替わるようになっています。 */}
+
+<Preview>
+	<PreviewTitle>`get:show` を使う</PreviewTitle>
+	<PreviewArea p={20}>
+		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
+			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
+			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
+				<Text p='box' c='white'>View More</Text>
+			</Layer>
+		</Banner>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "hover='pass'" "hover='get:show'"
+		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
+			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
+			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
+				<Text p='box' c='white'>View More</Text>
+			</Layer>
+		</Banner>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:pass" "-hov:get:show"
+	<a class="c--banner is--frame -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<div class="l--layer l--layer--media">
+			<img class="-obf:cv" loading="lazy" decoding="async" src="/img/img-1.jpg" width="960" height="640">
+		</div>
+		<div class="l--layer l--layer--filter -hov:get:show -bgc:" style="backdrop-filter:blur(4px);--bgc:hsl(var(--hsl--black) / 20%)"></div>
+		<div class="l--layer -hov:get:show -bgc: -bdrs:l -trnslt:-50 -l:50 -t:50" style="--bgc:hsl(var(--hsl--black) / 50%)">
+			<p class="-p:box -c:" style="--c:var(--white)">View More</p>
+		</div>
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`hover=get:zoom` を使う</PreviewTitle>
+	<PreviewArea p={20}>
+		<Banner href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
+			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+		</Banner>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "hover='pass'" "hover='get:zoom'"
+		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+		</Banner>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:pass" "-hov:get:zoom"
+	<a class="c--banner is--frame -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<div class="l--layer l--layer--media">
+			<img class="-hov:get:zoom -obf:cv" loading="lazy" decoding="async" src="/img/img-2.jpg" width="960" height="640">
+		</div>
+	</a>
+	```
+	</PreviewCode>
+</Preview>
+
+
+### reverse
+
+`reverse`は、`--c`と`--bgc`を入れ替えます。（基本的には`<Button>`で使用します.）
+
+<Preview>
+	<PreviewTitle>`hover='reverse'`</PreviewTitle>
+	<PreviewArea p={40}>
+		<LinkBox href='###' hover='reverse' c='content' bgc='base-2' p='box' >
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<LinkBox href='###' hover='reverse' c='content' bgc='base-2' p='box' >
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	</LinkBox>
+	```
+	</PreviewCode>
+</Preview>
+
+
+### カスタムUtility
+
+予め用意されているユーティリティ用のプリセット値以外を指定した時も、その文字列がユーティリティクラス名として出力されます。
+例えば、`hover='hoge'`とすると`.-hov:hoge`が出力されます。
+
+これにより、自身でユーティリティクラスを作成してより自由にhover効果を適用可能です。
+
+
+```jsx
+<LinkBox hover='hoge'>
+	...
+</LinkBox>
+```
+
+↓ CSS
+
+```css
+.-hov\:hoge:hover {
+	/* ...自由にスタイルを... */
+}
+```

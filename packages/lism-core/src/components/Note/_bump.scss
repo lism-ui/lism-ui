@@ -1,0 +1,13 @@
+// [data-variant='bump']
+.c--note--bump {
+	:where(&) {
+		border: solid 1px var(--bdc);
+		background-color: transparent;
+	}
+	:where(& > .c--note__head) {
+		background-color: var(--base);
+		margin-inline: var(--s--30);
+		padding-inline: 0.5em;
+		// border-radius: 4px;
+	}
+}

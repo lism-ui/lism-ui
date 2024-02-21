@@ -1,0 +1,38 @@
+// @layer lism-init {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: var(--fw--bold);
+	font-size: var(--fz);
+	line-height: var(--lh);
+	font-family: var(--ff--heading);
+}
+
+h1 {
+	--fz: var(--fz--3xl);
+	--lh: var(--lh--xs);
+}
+h2 {
+	--fz: var(--fz--2xl);
+	--lh: var(--lh--xs);
+}
+h3 {
+	--fz: var(--fz--xl);
+	--lh: var(--lh--s);
+}
+h4 {
+	--fz: var(--fz--l);
+	--lh: var(--lh--s);
+}
+h5 {
+	--fz: var(--fz--m);
+	// --lh: var(--lh--s);
+}
+h6 {
+	--fz: var(--fz--s);
+}
+
+// ---------------------------------------------------------------------

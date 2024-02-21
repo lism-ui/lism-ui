@@ -1,0 +1,100 @@
+@use '../query' as query;
+
+// --------------------
+// Reel
+// flex か grid かパッと判断できない&切り替わるので、個別にモジュール化。
+// 他の flex , grid 要素を指定することもない。
+// --------------------
+
+// :root {
+// 	--is--unreel: 0;
+// }
+.c--reel {
+	// --is--unreel: 1;
+	--item--w: var(--size--item);
+	--snap: start;
+	--p: 0;
+
+	// display: flex;
+	overflow: auto;
+	scroll-snap-type: both mandatory;
+	scroll-behavior: smooth; // idリンクでスクロールされる
+	scroll-padding: var(--p); // paddingと合わせる
+
+	// unreel時用
+	&:where([data-unreel]) {
+		--gtc: repeat(auto-fit, minmax(min(var(--item--w), 100%), 1fr));
+	}
+
+	&:where([data-snap='center']) {
+		--snap: center;
+	}
+	// &:where([data-direction='vertical']) {
+	// 	--direction: center;
+	// }
+
+	> * {
+		flex: 0 0 var(--item--w);
+		scroll-snap-align: var(--snap);
+	}
+
+	// 子要素に対してしか使えない
+	// @container style(--is--unreel: 0) {
+	// 	color: red !important;
+	// }
+}
+
+// unreel → tileグリッドに切り替え. 別レイアウトが必要であればgtcで。
+@include query.bp-up('sm') {
+	.c--reel[data-unreel='sm'] {
+		display: grid;
+		grid: none / var(--gtc);
+		overflow-x: revert;
+	}
+}
+@include query.bp-up('md') {
+	.c--reel[data-unreel='md'] {
+		display: grid;
+		grid: none / var(--gtc);
+		overflow-x: revert;
+	}
+}
+
+// スクロールバーのカスタマイズ
+/*
+.c--reel[data-scrollbar='custom'] {
+	--scrollbar--thumb-color: #fff;
+	--scrollbar--track-color: #000;
+	--scrollbar--height: 1rem;
+	// overflow-x: scroll;
+
+	// 以下、 Firefox用
+	scrollbar-color: var(--scrollbar--thumb-color) var(--scrollbar--track-color);
+	scrollbar-width: var(--scrollbar--height);
+
+	&:not(.no-bar) {
+		// JSでクラス切り替えしてスクロールバーが存在する時のみ指定するのが本当はよい?
+		padding-bottom: var(--s--10);
+	}
+
+	&.no-bar {
+		scrollbar-width: none;
+	}
+	&::-webkit-scrollbar {
+		height: var(--scrollbar--height);
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar--thumb-color);
+		background-image: linear-gradient(
+			var(--scrollbar--track-color) 0,
+			var(--scrollbar--track-color) 0.25rem,
+			var(--scrollbar--thumb-color) 0.25rem,
+			var(--scrollbar--thumb-color) 0.75rem,
+			var(--scrollbar--track-color) 0.75rem
+		);
+	}
+	&::-webkit-scrollbar-track {
+		background-color: var(--scrollbar--track-color);
+	}
+}
+*/

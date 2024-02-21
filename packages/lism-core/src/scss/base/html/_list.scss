@@ -1,0 +1,32 @@
+/*
+
+listについて
+	- 前提: ul,ol をむやみに使用しないように注意する。
+	- list-styleはデフォルトの挙動に従う。必要なところだけで list-style: none;
+*/
+
+// where の方がいいか？
+:is(ul, ol) {
+	// 子要素含めてすべて変更したい時 → CSS変数を使う
+	padding-inline-start: var(--list-pis, 0);
+	list-style: var(--list-style, revert);
+
+	//  flex, grid ではデフォルトで打ち消す？
+	// &:where(.l--flex, .l--grid) {
+	// 	--list-pis: 0;
+	// 	--list-style: none;
+	// }
+}
+// li {
+// 	margin-block: var(--em--1);
+// }
+
+/*
+	dl
+*/
+// dd {
+// 	margin-inline-start: var(--s--40);
+// }
+// dl > dt:not(:first-child) {
+// 	margin-block-start: 0.5em;
+// }

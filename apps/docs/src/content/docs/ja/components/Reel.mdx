@@ -1,0 +1,332 @@
+---
+title: 'Reel'
+description: ...
+---
+
+import { Reel, Frame, Box, FlexItem, Cluster } from '@loos/lism-core';
+import { PropBadge } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+コンテンツを横スクロールで表示するコンポーネントです。
+
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+| `itemW`<br /><PropBadge type="cssvar">`--item--w`</PropBadge> | 各アイテムのサイズを指定できます。 |
+| `snap`<br /><PropBadge type="cssvar">`--snap`</PropBadge> | snap |
+| `unreel` | 横スクロールを解除するブレイクポイントを指定できます。（`sm`, `md`を標準ではサポートしています) |
+
+
+{/* ### 検討事項MEMO
+
+- スクロールバーの色調整機能?
+- scroll-snap-alignあたりの設定
+- スクロール可能であることを視覚的に表示する機能をつける？(端にシャドウ)
+- ブロック化した時
+	- 子要素はBox or 画像・動画だけにする？
+	- もしくは、専用の子ブロック（BOX拡張）のみにするか */}
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Reel } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Reel } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+
+## Usage
+
+export const ReelContents = () => {
+	// 6つ同じBoxを繰り返す
+
+	return (
+		<>
+			{Array.from({length: 6}, (v, i) => i).map((i) => {
+				// 偶数かどうか
+				const isEven = i % 2 === 0;
+				return <Box bgc={isEven ? 'base-2' : 'base-3'} p="box" key={i}>
+					<p>Box</p>
+				</Box>
+			})}
+		</>
+	);
+}
+
+export const ReelImages = ({ hasID, isV, ...props }) => {
+	const aspect = isV ? '3/4' : '16/9';
+	const imgPath = isV ? '/img/img-v' : '/img/img-';
+	return (
+		<>
+			{Array.from({length: 6}, (v, i) => i).map((i) => {
+				const isEven = i % 2 === 0;
+				const src = isEven ? imgPath + '1.jpg' : imgPath + '2.jpg';
+				return <Frame id={hasID ? `image-${i}` : ''} ascpect={aspect} key={i} {...props}>
+					<img src={src} alt='' loading='lazy' width='960' height='640' />
+				</Frame>
+			})}
+		</>
+	);
+}
+
+<Preview>
+	<PreviewTitle>
+		`<Reel>`デフォルト
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel>
+			<ReelContents />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Reel>
+			<Box p='box' bgc='base-2'>Box</Box>
+			<Box p='box' bgc='base-2'>Box</Box>
+			...
+		</Reel>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="l--reel" tabindex="0">
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			<div class="l--box -bgc:base-2 -p:box">Box</div>
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`itemW`で子要素の横幅を指定する
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel itemW="45%" gap={20}>
+			<ReelImages />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "itemW="
+		<Reel itemW="45%" gap={20}>
+			<img src='...' alt='' width='960' height='640' />
+			<img src='...' alt='' width='960' height='640' />
+			...
+		</Reel>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--item--w:"
+		<div class="l--reel -gap:20" style="--item--w:45%" tabindex="0">
+			<img src="..." alt="" width="960" height="640" />
+			<img src="..." alt="" width="960" height="640" />
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`snap="center"`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel itemW="40%" snap="center" gap={20}>
+			<ReelImages />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "snap="
+		<Reel itemW="45%" snap="center" gap={20}>
+			<img src='...' alt='' width='960' height='640' />
+			<img src='...' alt='' width='960' height='640' />
+			...
+		</Reel>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "data-snap="
+		<div class="l--reel -gap:20" style="--item--w:45%" data-snap="center" tabindex="0">
+			<img src="..." alt="" width="960" height="640" />
+			<img src="..." alt="" width="960" height="640" />
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### ナビゲーションをつける
+
+reel要素にidを付けてアンカーリンク用意すると、ナビゲーションになります。
+
+<Preview>
+	<PreviewTitle>
+		ボタンナビゲーションをつける
+	</PreviewTitle>
+	<PreviewArea p={20} isShadow={false} isFlow='s'>
+		<Reel itemW='60%' snap='center' gap={20}>
+			<ReelImages hasID/>
+		</Reel>
+		<Cluster gap={20} jc='c' lh='1'>
+			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>1</FlexItem>
+			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>2</FlexItem>
+			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>3</FlexItem>
+			<FlexItem tag='a' href='#image-4' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>4</FlexItem>
+			<FlexItem tag='a' href='#image-5' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>5</FlexItem>
+			<FlexItem tag='a' href='#image-6' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>6</FlexItem>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Reel itemW='40%' snap='center' gap={20}>''
+			<Frame id='image-1' ascpect='16/9'>
+				<img src='...' alt='' loading='lazy' width='960' height='640' />
+			</Frame>
+			<Frame id='image-2' ascpect='16/9'>
+				<img src='...' alt='' loading='lazy' width='960' height='640' />
+			</Frame>
+			<Frame id='image-3' ascpect='16/9'>
+				<img src='...' alt='' loading='lazy' width='960' height='640' />
+			</Frame>
+			...
+		</Reel>
+		<Cluster gap={20} jc='c' lh='1'>
+			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>1</FlexItem>
+			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>2</FlexItem>
+			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hover='bgc'>3</FlexItem>
+			...
+		</Cluster>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 縦向きのリール
+
+<Preview>
+	<PreviewTitle>
+		`isVertical`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box maxW='24rem' mx='a'>
+			<Reel isVertical itemW='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} gap={30}>
+				<ReelImages isV bdrs='m' />
+			</Reel> 
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "isVertical"
+		<Reel isVertical itemW='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} gap={30}>
+			<Frame aspect='3/4' bdrs='m'>
+				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
+			</Frame>
+			<Frame aspect='3/4' bdrs='m'>
+				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
+			</Frame>
+			...
+		</Reel>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 大きい画面サイズでReelを解除する
+
+`unreel`でブレイクポイントを指定(`sm`, `md`を標準ではサポートしています)することで、そのポイントを超えるとReelではなく、`<Grid variant='tile'>`と同じようなレイアウトに切り替わります。
+
+`flex`から`grid`に切り替わるので、[`grid`プロパティ](/docs/props/grid)(`grid-template-gtc`など)を指定して、レイアウトを調整することもできます。(Reel時にgrid用のプロパティは影響しない)
+
+
+<Preview>
+	<PreviewTitle>@mdでReel解除</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel unreel='md' gap={20}>
+			<ReelImages />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Reel unreel='md' gap={20}>
+			...
+		</Reel>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>@smでReel解除, itemW 指定あり</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel unreel='sm' itemW='12rem' gap={20}>
+			<ReelImages />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Reel unreel='sm' gap={20}>
+			...
+		</Reel>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>@smでReel解除し、2:3の比率でコンテンツを表示</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel unreel='sm' gap={20} grid={{gtc: '2fr 3fr'}}>
+			<ReelContents />
+		</Reel>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Reel unreel='sm' gap={20} grid={{gtc: '2fr 3fr'}}>
+			...
+		</Reel>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* ### スクロールバーの強調表示 */}
+
+{/* `showScrollbar="always"`(`[data-show-scrollbar='always']`)で常にスクロールバーを表示することができます。 */}
+
+{/* <Preview>
+	<PreviewTitle>
+		子要素の数が少ない例
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Reel gap={20} showScrollbar="always">
+			<Box bgc='base-2' p="box:s">
+				<p>Lorem ipsum, dolor sit amet.</p>
+			</Box>
+			<Box bgc='base-2' p="box:s">
+				<p>Lorem ipsum, dolor sit amet.</p>
+				<p>consectetur adipisicing elit.</p>
+			</Box>
+			<Box bgc='base-2' p="box:s">
+				<p>Quisquam, voluptatum.</p>
+			</Box>
+		</Reel>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		```
+	</PreviewCode>
+</Preview> */}

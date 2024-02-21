@@ -1,0 +1,210 @@
+---
+title: 'LinkBox'
+description: ...
+---
+import { Stack, Note, Alert, LinkBox, OverlayLink, Text, Spacer } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+// import Link from "next/link";
+
+ボックス全体がリンクになったモジュールです。
+
+## Props
+
+
+| プロパティ | 説明 |
+|---|---|
+|`href`|リンク先を指定できます。|
+|`layout`|指定したLismコンポーネントでLinkBoxを展開できます。|
+|`target`|target属性を指定できます。|
+|`rel`|rel属性を指定できます|
+|`openNewTab`|trueにすると、target="_blank"とrel="noopener noreferrer"が自動で付与されます。|
+|`setHiddenLink`|`true`にすると、LinkBox内部に隠しリンク要素が出力されます。|
+|`linkLabel`|`setHiddenLink`を指定した時に、リンクの読み上げテキストを指定できます。|
+
+{/* |`as`|外部コンポーネントでLinkBoxを展開できます。|
+|`passProps`|外部コンポーネントに渡すpropsを指定できます。| */}
+
+
+## Import
+
+```js
+import { LinkBox, OverlayLink } from '@loos/lism-core';
+```
+
+
+## Usage
+
+LinkBoxは、次の3通りの使い方ができます。
+
+1. `<LinkBox>`自体を`<a>`タグにする。
+2. `<LinkBox>`が`<div>`で、内部に`e--overlayLink`を配置する。
+3. `<LinkBox>`が`<div>`で、内部に`e--hiddenLink`を配置する。
+
+<Alert preset='info'>
+2, 3 では、LinkBox内部に別のリンクも配置できます。
+</Alert>
+
+### `<LinkBox>`自体を`<a>`タグにする
+
+<Preview>
+	<PreviewTitle id='boxlink01'>
+		LinkBoxにhrefを指定すると`<LinkBox>`自体が`<a>`タグになります。
+	</PreviewTitle>
+	<PreviewArea resize p={10}>
+		<LinkBox href='#boxlink01' p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>Heading text</Text>
+			<DammyText length='m' c='content-2' lh='s' mbs={20} />
+			<Text fz='s' c='content-2' ta='r' lh='1' mbs={5}>MORE →</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {1} "href="
+		<LinkBox href='#boxlink01' p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>Heading text</Text>
+			<Text c='content-2' lh='s' mbs={20}>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
+			</Text>
+			<Text fz='s' c='content-2' ta='r' mbs={10}>MORE →</Text>
+		</LinkBox>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<a class="is--linkBox -hov:fade -p:box:l -bgc:base -bd: -bdc:divider -bdrs:l" href="#boxlink01">
+			<p class="-fz:xl -fw:bold">Heading text</p>
+			<p class="-c:content-2 -lh:s -mbs:20">Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.</p>
+			<p class="-fz:s -c:content-2 -ta:r -lh:1 -mbs:5">MORE →</p>
+		</a>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 内部に`e--overlayLink`を配置する
+
+LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力され、  
+内部のアンカー要素に`.e--overlayLink`を併用することで`.is--linkBox`全体をリンクにすることができます。
+
+<Alert preset='info'>
+この時、LinkBoxの内部に別のリンクを配置できます。
+</Alert>
+
+<Preview>
+	<PreviewTitle id='boxlink02'>LinkBoxにhrefを指定せず、中にoverlayLinkを配置する</PreviewTitle>
+	<PreviewArea p={30}>
+		<LinkBox p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>
+				<OverlayLink href='#boxlink02'>Heading Link</OverlayLink>
+			</Text>
+			<DammyText length='m' c='content-2' lh='s' mbs={20} />
+			<Text mbs={10} id='inner-link'>
+				<a href='#inner-link'>Inner Link</a>
+			</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {1, 3, 9} "OverlayLink"
+		<LinkBox p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>
+				<OverlayLink href='#boxlink02'>Heading Link</OverlayLink>
+			</Text>
+			<Text c='content-2' lh='s' mbs={20}>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
+			</Text>
+			<Text mbs={10} id='inner-link02'>
+				<a href='#inner-link02'>Inner Link</a>
+			</Text>
+		</LinkBox>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {1,3,9} "e--overlayLink"
+		<div class="is--linkBox -hov:fade -p:box:l -bgc:base -bd: -bdc:divider -bdrs:l">
+			<p class="-fz:xl -fw:bold">
+				<a class="e--overlayLink" href="#boxlink02">Heading Link</a>
+			</p>
+			<p class="-c:content-2 -lh:s -mbs:20">
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
+			</p>
+			<p class="-mbs:10" id="inner-link">
+				<a href="#inner-link">Inner Link</a>
+			</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Note preset='info' isFlow='s'>
+`e--overlayLink`にフォーカスした時のアウトラインをLinkBox全体に広げたい場合は、次のようなCSSを追記してください。
+
+```css
+@supports selector(:has(*)) {
+	.is--linkBox:has(.e--overlayLink:focus-visible) {
+		outline: auto 1px;
+		outline: auto 1px -webkit-focus-ring-color;
+	}
+	.e--overlayLink:focus {
+		outline: 0;
+	}
+}
+```
+</Note>
+
+### 内部に`e--hiddenLink`を配置する
+
+`setHiddenLink`を指定すると、ボックスを`<a>`タグにせず、内部に隠しリンク要素を出力します。
+
+<Alert preset='info'>
+この場合、`linkLabel`を使ってリンクの読み上げテキストを指定するようにしてください。(`aria-label`として出力されます）
+</Alert>
+
+<Preview>
+	<PreviewTitle id='boxlink03'>`setHiddenLink`</PreviewTitle>
+	<PreviewArea p={30}>
+		<LinkBox href='#boxlink03' setHiddenLink linkLabel='リンクだよ' p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>Heading Text</Text>
+			<DammyText length='m' c='content-2' lh='s' mbs={20} />
+			<Text mbs={10} id='inner-link03'>
+				<a href='#inner-link03'>Inner Link</a>
+			</Text>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {1,7} "setHiddenLink"
+		<LinkBox href='#boxlink03' setHiddenLink linkLabel='リンクだよ' p='box:l' bgc='base' bdc='divider' bd bdrs='4'>
+			<Text fz='xl' fw='bold'>Heading Text</Text>
+			<Text c='content-2' lh='s' mbs={20}>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
+			</Text>
+			<Text mbs={10} id='inner-link03'>
+				<a href='#inner-link03'>Inner Link</a>
+			</Text>
+		</LinkBox>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {2,8} "e--hiddenLink"
+		<div class="is--linkBox -hov:fade -p:box:l -bgc:base -bd: -bdc:divider -bdrs:l">
+			<a class="e--hiddenLink is--skipFlow" href="#boxlink03" aria-label='リンクだよ'></a>
+			<p class="-fz:xl -fw:bold">Heading Text</p>
+			<p class="-c:content-2 -lh:s -mbs:20">
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
+			</p>
+			<p class="-mbs:10" id="inner-link03">
+				<a href="#inner-link03">Inner Link</a>
+			</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Spacer h='50' />
+{/* ## openNewTab
+... */}
+
+
+{/* as と layout の 併用 */}
+

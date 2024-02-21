@@ -1,0 +1,372 @@
+---
+title: 'Tabs'
+description: ...
+---
+
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Tabs, TabItem, Tab, TabList, TabPanel } from '@loos/lism-astro';
+
+## Props
+
+{/* - `<Tabs>`
+	- `keepHeight` が true の場合、タブの高さを固定する（切り替えた時に高さが動かないようにする）
+	- `defaultIndex`で最初に開くタブを指定できる
+	- `tabId`: tabID.指定しなければランダム生成されます。(ページ内で一意の値の指定である必要があります。)
+- `<TabItem>`
+	- `index`: (必須) タブのindex番号 */}
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Tab, TabItem } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Tab, TabItem } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+初期props: gap=10, variant='line'
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Tabs>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+
+タブリストの各ボタンテキストは`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
+
+<Preview mbs='20'>
+	<PreviewCode slot='tab' label='React'>
+		```jsx
+		<TabItem label={<>Lorem text<small>small text</small></>}>
+			...
+		</TabItem>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+		```jsx "slot='label'"
+		<TabItem>
+			<Fragment slot='label'>Lorem text<small>small text</small></Fragment>
+			...
+		</TabItem>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>タブリストのセンター寄せ</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs variant='line' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "ji='center'"
+		<Tabs variant='line' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`variant='box'`</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs variant='box' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "variant='box'"
+		<Tabs variant='box' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 高さが変わらないようにする
+
+タブを切り替えた時、デフォルトでは、表示されるコンテンツ量が変わることでタブ全体の高さも変わります。  
+`<Tabs>`に `keepHeight`(`data-tabs="keep-height"`) を指定すると、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs keepHeight>
+			<TabItem label="tab1">
+				<DammyText />
+			</TabItem>
+			<TabItem label="tab2">
+				<DammyText length="xl" />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "keepHeight"
+		<Tabs keepHeight>
+			<TabItem label="tab1">
+				<p>...</p>
+			</TabItem>
+			<TabItem label="tab2">
+				<p>...</p>
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 最初に開いておくタブ番号を指定する
+
+`<Tabs>`に `defaultIndex` を指定すると、最初に開いておくタブ番号を指定できます。  
+(インデックス番号は`0`から始まります。)
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs defaultIndex={1}>
+			<TabItem label="tab1" isFlow='s'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label="tab2" isFlow='s'>
+				<p>index:1</p>
+				<DammyText length="l" />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "defaultIndex="
+		<Tabs defaultIndex={1}>
+			<TabItem label="tab1" isFlow='s'>
+				<p>index:0</p>
+				<p>...</p>
+			</TabItem>
+			<TabItem label="tab2" isFlow='s'>
+				<p>index:1</p>
+				<p>...</p>
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+### 縦並び
+
+<Preview>
+	<PreviewArea p={30} resize>
+		<Tabs isVertical keepHeight>
+			<TabItem label='title1' isFlow='s'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label='title2' isFlow='s'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+</Preview>
+
+<Preview>
+	<PreviewArea p={30} resize>
+		<Tabs variant='box' isVertical keepHeight ai='s' ji='c'>
+			<TabItem label='title1' isFlow='s'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label='title2' isFlow='s'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+</Preview>
+
+
+
+
+### Tabパネル（コンテンツ部分）に対するpropsの指定
+
+
+`<Tabs>`に listProps, panelProps を指定でき、それぞれリスト部分とパネル部分に対するpropsを指定できます。
+{/* btnProps? */}
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'em10', isFlow:'s'}}>
+			<TabItem label='tab1'>
+				<DammyText />
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'em10', isFlow:'s'}}>
+			<TabItem label='tab1'>
+				<DammyText />
+				<DammyText length='m' />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* reactコンポーネントでは、`<TabItem>`に対して対応するpanelのpropsを個別に指定できます。
+
+<Preview>
+	<PreviewCode>
+		```jsx "p='20' isFlow" "p='20' c='content-2'"
+		<Tabs>
+			<TabItem label='tab1' p='20' isFlow>
+				...
+			</TabItem>
+			<TabItem label='tab2' p='20' c='content-2'>
+				...
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+### TabItemを使わない書き方
+
+より細かいprops指定が必要な場合、`<TabItem>`を使わずに、`<TabList>`,`<Tab>`,`<TabPanel>`を使って書くこともできます。
+
+ただし、ReactとAstroでは少し書き方が異なるので注意してください。
+
+{/* <Preview>
+	<PreviewArea p={30}>
+		<Tabs>
+			<TabList>
+				<Tab tabID='hoge' isActive index={0}>tab1</Tab>
+				<Tab tabID='hoge' index={1}>tab2</Tab>
+			</TabList>
+			<TabPanel tabID='hoge' isActive index={0}>
+				<DammyText />
+			</TabPanel>
+			<TabPanel tabID='hoge' index={1}>
+				<DammyText length='l' />
+			</TabPanel>
+		</Tabs>
+	</PreviewArea>
+</Preview> */}
+
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+		```jsx "defaultIndex" "index"
+		<Tabs defaultIndex={0}>
+			<TabList>
+				<Tab index={0}>tab1</Tab>
+				<Tab index={1}>tab2</Tab>
+			</TabList>
+			<TabPanel index={0}>
+				<DammyText />
+			</TabPanel>
+			<TabPanel index={1}>
+				<DammyText length='l' />
+			</TabPanel>
+		</Tabs>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+		```jsx "isActive" "index" "tabID"
+		<Tabs>
+			<TabList>
+				<Tab tabID='the-tabid' isActive index={0}>tab1</Tab>
+				<Tab tabID='the-tabid' index={1}>tab2</Tab>
+			</TabList>
+			<TabPanel tabID='the-tabid' isActive index={0}>
+				<DammyText />
+			</TabPanel>
+			<TabPanel tabID='the-tabid' index={1}>
+				<DammyText length='l' />
+			</TabPanel>
+		</Tabs>
+		```
+	</PreviewCode>
+</Preview>
+
+
+## 要検討Memo
+
+- アコーディオンと同様に、isFlow をデフォルトセットする？
+
+- 縦並びの時、スマホではアコーディオン？ or ドロップダウンメニュー化してもいいかもしれない。
+- ナビ部分の横スクロールどうする？
+	- スクロールするときは数が多い時→「テキストに応じる」幅の時にautoにしておけばよいか。
+- ナビ部分の設定値どうするか
+	- アイコン
+	- ボタン幅 fillにするか、テキストに応じるか。
+		- 最低限維持する幅 minW (auto幅用)
+		- 最大幅（fill用）
+		- を、クエリサイズごとに？
+	- ボタン間のギャップ

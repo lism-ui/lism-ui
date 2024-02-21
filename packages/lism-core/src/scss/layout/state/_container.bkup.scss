@@ -1,0 +1,118 @@
+// 内部のコンテンツ幅を制御する。
+:is(.is--constrained, [class*='is--constrained:']) {
+	container-type: inline-size;
+	> * {
+		max-inline-size: min(100%, var(--contentSize));
+		margin-inline: auto;
+	}
+
+	// 左寄せ・右寄せ?
+	// > :where(.alignleft, .alignright)
+}
+
+// それぞれの直下要素( > * ) に対してスタイルをセットした方が、ネスト時の影響をなくせるが、constrainedのネストが多様されることは少ないと思うので、一旦親側の変数管理のみで実装。
+.is--constrained {
+	--contentSize: var(--size--m);
+	--size--wide: var(--size--l);
+}
+.is--constrained\:s {
+	--contentSize: var(--size--s);
+	--size--wide: var(--size--m);
+}
+.is--constrained\:l {
+	--contentSize: var(--size--l);
+	--size--wide: 100%;
+}
+// .is--constrained\:
+
+// is--container かつ is--constrained を考慮するか？
+
+// コンテナクエリの基点としつつ、コンテンツ幅を揃えるためのラッパー要素に使う。
+// Note: .is--constrained より後にかく。
+:is(.is--container, [class*='is--container:']) {
+	container-type: inline-size;
+	margin-inline: auto;
+	inline-size: 100%; // gridやflex内での挙動を考慮。（container-type:inline-sizeだと横幅つぶれる）
+	max-inline-size: var(--containerSize);
+}
+
+.is--container {
+	--containerSize: var(--size--m);
+}
+.is--container\:s {
+	--containerSize: var(--size--s);
+}
+.is--container\:l {
+	--containerSize: var(--size--l);
+}
+// .is--container\:full {max-inline-size: 100%;} // これは → .is--container.alignfull でできる
+
+// Note: 詳細度は flow より強く、ユーティリティより弱く。(flowの後で定義し、0-1-0 を超えないように)
+:where(.is--fullwide) + .is--fullwide {
+	margin-block-start: 0;
+}
+
+// Note: .is--container より後にかく。
+// :is(.alignfull, .is--fullwide),
+.is--fullwide {
+	// container-type: inline-size;
+	max-inline-size: 100%;
+
+	:where(.has--gutter) > & {
+		// --contentSize 変数は min()で100%と比較してるので、直接セット
+		max-inline-size: calc(100% + var(--gutter) * 2);
+		margin-inline: calc(var(--gutter) * -1);
+	}
+}
+
+// :is(.alignwide, .is--wide)
+.is--wide {
+	// container-type: inline-size;
+	max-inline-size: var(--size--wide, 100%);
+}
+
+// .has--gutter\:s {
+// 	padding-inline: var(--gutter--s);
+// }
+
+// @property が使える環境であればコンテナのさらに親要素の幅を参照できるので、containerを1段階飛び出せる。
+// ↓ @property の疑似サポートチェック
+//   - @propety : chirome(85~),edge(85~),opera(71~),Samsung(14~)
+//   - content-visibility : chirome(85~),edge(85~),opera(71~), safari:x,firefox:x, Samsung(14~)
+//   - <length> lh : Safari(16.4~), Firefox(120~121 ?), Chrome,Edge(109~), Opera(95~), Samsung(21~)
+// ↓
+// @supports (content-visibility: auto) or (top: 0lh)
+@supports (content-visibility: auto) or (top: 0lh) {
+	// cqw を算出値で保持するために登録済みカスタムプロパティとして定義
+	@property --size--full {
+		syntax: '<length-percentage>';
+		initial-value: 100%;
+		inherits: true;
+	}
+
+	:is(.is--container, [class*='is--container:']) {
+		--size--full: 100cqw; // is--container が配置された時点での 100cqw をセット
+
+		// > :is(.alignfull, .is--fullwide),
+		> .is--fullwide {
+			max-inline-size: var(--size--full);
+			margin-inline: calc(50% - var(--size--full) / 2);
+		}
+	}
+
+	// bodyにコンテナ適用して直下要素に100cqwをセットできればいいが、コンテナ内の fixed要素の挙動が変わるので廃止。
+	// @property --size--screenW {
+	// 	syntax: '<length-percentage>';
+	// 	initial-value: 100vw;
+	// 	inherits: true;
+	// }
+	// body {
+	// 	--size--screenW: 100cqw;
+	// }
+	// .alignscreen {
+	// 	max-inline-size: var(--size--screenW);
+	// 	margin-inline: calc(50% - var(--size--screenW) / 2);
+	// }
+}
+
+// b--container{}

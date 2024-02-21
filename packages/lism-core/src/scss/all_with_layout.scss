@@ -1,0 +1,18 @@
+/*
+  resetした上で、 各要素の標準スタイルを定義する
+*/
+// @layout 使う場合
+@use 'sass:meta';
+@layer lism-base {
+	@include meta.load-css('base');
+}
+
+// @use './base.scss';
+// @use './elements.scss';
+// @use './system.scss';
+
+// @use './layout-modules.scss';
+// @use './core-modules.scss';
+// @use './block-modules.scss';
+
+// @use './utility.scss';

@@ -1,0 +1,556 @@
+---
+title: 'Card'
+description: ...
+---
+
+import { Box, TileGrid, Card, CardMedia, CardBody, Alert, Badge, Grid, Stack, Text, FlexItem, OverlayLink, Layer, FilterLayer, Button, Columns, Media } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+// import Image from 'next/image';
+
+カード型でコンテンツを表示できるコンポーネントです。 全体をリンク化することも可能です。
+
+{/* ## 構造概要 */}
+{/* 
+```jsx
+<Card>
+	<CardMedia>
+		<img src='...' />
+	</CardMedia>
+	<CardBody>
+		...Content...
+	</CardBody>
+</Card>
+``` */}
+{/* 
+<Preview>
+	<PreviewTitle>対応するHTML構造</PreviewTitle>
+	<PreviewCode>
+		```jsx
+		<div class='c--card [l--stack|l--flex]'>
+			<div class='c--card__media is--frame'>
+				<img src='...' />
+			</div>
+			<div class='c--card__body l--stack'>
+				...Content...
+			</div>
+		</div>
+
+		or
+
+		<a class='c--card [l--stack|l--flex] is--linkBox' href='###'>
+			<div class='c--card__media is--frame'>
+				<img src='...' />
+			</div>
+			<div class='c--card__body l--stack'>
+				...Content...
+			</div>
+		</a>
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+## Props
+
+- `Card`: 内部で`Stack`が使用されています。
+	- `isFlex`: 横並びにできます。`<Stack>`ではなく`<Flex>`で構成されるようになります。
+	- `href`:
+	- `hover`
+- `CardMedia`: `Frame`が内部で使用されています。
+	- `aspect`: メディア比率
+	- `w`: `isFlex`が指定されている場合、`<CardMedia>`の幅を指定できます。
+- `CardBody`
+
+radiusのデフォルト、`1`にする？
+
+
+## Import
+
+```js
+import { Card, CardMedia, CardBody } from '@loos/lism-core';
+```
+
+
+{/* <Preview>
+	<PreviewTitle>比率指定なしのバナーリンク</PreviewTitle>
+	<PreviewArea p={20} resize>
+		<Box fz='fluid'>
+			<DammyText  />
+		</Box>
+	</PreviewArea>
+</Preview> */}
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>シンプルなカード</PreviewTitle>
+	<PreviewArea p={30}>
+		<Card maxW='xs'>
+			<CardMedia aspect='2/1'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>Card Title</h3>
+				<DammyText lang='ja' length='m' />
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Card>
+		<CardMedia aspect='2/1'>
+			<Media src='/img.jpg' alt='' width='960' height='640' />
+		</CardMedia>
+		<CardBody>
+			<h3 className='-fz:l'>Card Title</h3>
+			<DammyText />
+		</CardBody>
+	</Card>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>リンクあり</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Card href='#card-demo' bdrs='l' maxW='xs'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>Card Title A</h3>
+				<DammyText />
+				<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Card href='#card-demo' bdrs='l'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody lh='s'>
+				<h3 className='-fz:l'>Card Title A</h3>
+				<p>...text...</p>
+				<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>リンクあり(OverlayLinkを使う例）</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Card isLinkBox bdrs='l' maxW='xs'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' bdrs='xl' hover='up' insets={{t:'20', r:'20'}}>Category</Badge>
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>
+					<OverlayLink href='#card-link'>Card Heading(Link)</OverlayLink>
+				</h3>
+				<DammyText />
+				<Text ta='right' mt='auto' fz='s'><a href='#inner-link'>Bottom Link</a></Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Card isLinkBox bdrs='l' maxW='xs'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>
+					<OverlayLink href='#card-link'>Card Heading(Link)</OverlayLink>
+				</h3>
+				<DammyText />
+				<Text ta='right' mt='auto' fz='s'><a href='#inner-link'>Bottom Link</a></Text>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>リンクあり(hiddenLinkを使う例）</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Card href='###' setHiddenLink bdrs='l' maxW='xs'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' bdrs='xl' hover='up' insets={{t:'20', r:'20'}}>Category</Badge>
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>Card Heading</h3>
+				<DammyText />
+				<Text ta='right' mt='auto' fz='s'><a href='#inner-link'>Bottom Link</a></Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Card href='###' setHiddenLink bdrs='l' maxW='xs'>
+			<CardMedia aspect='16/9'>
+				<Media src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>Card Heading</h3>
+				<DammyText />
+				<Text ta='right' mt='auto' fz='s'><a href='#inner-link'>Bottom Link</a></Text>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>メディア側にBadge追加, hoverを変えてみる</PreviewTitle>
+	<PreviewArea p={30}>
+		<TileGrid itemMinW='20rem' gap={20}>
+			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'pass']}>
+				<CardMedia aspect='2/1'>
+					<Media src='/img.jpg' alt='' width='960' height='640' />
+					<FilterLayer brightness='110%' hover='get:show' />
+					<Badge variant='fill' boxcolor='black' pos='absolute' insets={{t:'0', r:'0'}}>Category</Badge>
+				</CardMedia>
+				<CardBody lh='s'>
+					<h3 className='-fz:l'>Card Title A</h3>
+					<DammyText />
+					<Text ta='right' mt='auto' pt='10' fz='s'>Bottom Text</Text>
+				</CardBody>
+			</Card>
+			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'pass']}>
+				<CardMedia aspect='2/1'>
+					<Media src='/img.jpg' alt='' width='960' height='640' />
+					<FilterLayer brightness='110%' hover='get:show' />
+					<Badge variant='fill' boxcolor='black' pos='absolute' insets={{t:'0', r:'0'}}>Category</Badge>
+				</CardMedia>
+				<CardBody lh='s'>
+					<h3 className='-fz:l'>Card Title B</h3>
+					<DammyText length='m' />
+					<Text ta='right' mt='auto' pt='10' fz='s'>Bottom Text</Text>
+				</CardBody>
+			</Card>
+		</TileGrid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2, 4,5}
+		<TileGrid itemMinW='20rem' gap={20}>
+			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'mediaBright']}>
+				<CardMedia aspect='2/1'>
+					<Media src='/img.jpg' alt='' width='960' height='640' />
+					<Badge variant='fill' boxcolor='black' pos='absolute' insets={{t:'0', r:'0'}}>Category</Badge>
+				</CardMedia>
+				<CardBody lh='s'>
+					<h3 className='-fz:l'>Card Title A</h3>
+					<DammyText />
+					<Text ta='right' mt='auto' pt='10' fz='s'>Bottom Text</Text>
+				</CardBody>
+			</Card>
+			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'mediaBright']}>
+				...
+			</Card>
+			<Card>...</Card>
+		</TileGrid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+### 横並び
+
+`isFlex` を指定すると、`<Card>`が`<Stack>`ではなく`<Flex>`で構成されるようになります。
+
+<Preview>
+	<PreviewTitle>横並びカード</PreviewTitle>
+	<PreviewArea p={20}>
+			<Card isFlex href='###'>
+				<CardMedia>
+					<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
+				</CardMedia>
+				<CardBody>
+					<h3 className='-fz:l'>Card Title</h3>
+					<DammyText/>
+					<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
+				</CardBody>
+			</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {1}
+		<Card isFlex>
+			<CardMedia>
+				...
+			</CardMedia>
+			<CardBody>
+				...
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>横並びの方向を 逆順にして、リンクも設定する</PreviewTitle>
+	<PreviewArea p={30}>
+			<Card isFlex direction='row-reverse' href='###'>
+				<CardMedia>
+					<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
+				</CardMedia>
+				<CardBody>
+					<h3 className='-fz:l'>Card Title</h3>
+					<DammyText/>
+					<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
+				</CardBody>
+			</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "direction='row-reverse'"
+		<Card isFlex direction='row-reverse' href='###'>
+			<CardMedia>
+				...
+			</CardMedia>
+			<CardBody>
+				...
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### 横並び時のメディアサイズについて
+
+`<CardMedia>`に対して `w`で横幅、`aspect`でアスペクト比率を指定することでサイズを調整できます。（`w`の初期値は`50%`になっています）
+
+<Alert preset='info'>
+横並び時、`.c--card__media` は `min-height:100%`になっており、コンテンツよりもメディアの縦幅が大きくなる場合のみ指定したアスペクト比が保持されます。
+</Alert>
+
+<Preview>
+	<PreviewTitle>`w:32%`, `aspect:3/4`, 位置反転</PreviewTitle>
+	<PreviewArea p={20} maxW='40em' resize>
+		<Card isFlex>
+			<CardMedia w='32%' aspect='3/4'>
+				<img src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>Card Title</h3>
+				<DammyText/>
+				<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<Card isFlex>
+			<CardMedia w='32%' aspect='3/4'>
+				...
+			</CardMedia>
+			<CardBody>
+				...
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>横並びカードをColumnsで配置テスト</PreviewTitle>
+	<PreviewArea p={20} resize>
+		<Columns cols={[1, null, 2]} gap={20}>
+			<Card isFlex>
+				<CardMedia w='40%'>
+					<img src='/img.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody gap={10} lh='s'>
+					<h3 className='-fz:l'>Card Title</h3>
+					<DammyText/>
+					<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
+				</CardBody>
+			</Card>
+			<Card isFlex>
+				<CardMedia w='40%'>
+					<img src='/img.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody gap={10} lh='s'>
+					<h3 className='-fz:l'>Card Title</h3>
+					<DammyText/>
+					<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
+				</CardBody>
+			</Card>
+		</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Columns cols={[1, null, 2]} gap={20}>
+			<Card isFlex>
+				<CardMedia w='40%' media={...} />
+				<CardBody>
+					...
+				</CardBody>
+			</Card>
+			<Card isFlex>
+				<CardMedia w='40%' media={...} />
+				<CardBody>
+					...
+				</CardBody>
+			</Card>
+		</Columns>
+		```
+	</PreviewCode>
+</Preview>
+
+{/* <Preview>
+	<PreviewTitle>rtl言語でのテスト</PreviewTitle>
+	<PreviewArea p={20} maxW='40em'>
+		<Card isFlex dir='rtl'>
+			<CardMedia w='40%'>
+				<img src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
+				<p>هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.</p>
+				<FlexItem fz='s' aslf='fe' mt='auto'>النص السفلي</FlexItem>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Card isFlex dir='rtl'>
+			<CardMedia w='40%'>
+				<img src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody>
+				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
+				<p>هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.</p>
+				<FlexItem fz='s' aslf='fe' mt='auto'>النص السفلي</FlexItem>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+### コンテンツを画像に被せる
+
+<Preview>
+	<PreviewTitle>画像の上にコンテンツを</PreviewTitle>
+	<PreviewArea p={30}>
+		<Card bxsh='3' maxW='xs' bdrs='l'>
+			<CardMedia aspect='16/9'>
+				<img src='/img.jpg' alt='' width='960' height='640' />
+				<FilterLayer bgc='rgba(255,255,255,0.5)' blur='1px' brightness={1.2}/>
+			</CardMedia>
+			<CardBody as={Layer} inset='0' >
+				<Stack h='100%' gap={20}>
+					<h3 className='-fz:l'>Card Title</h3>
+					<DammyText />
+					<Button href='#button-test' bdrs='full' hover='fade' mt='auto' flexItem={{aslf:'fe'}}>Button</Button>
+				</Stack>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>画像の上にコンテンツを</PreviewTitle>
+	<PreviewArea p={30}>
+		<Card href='#card-test' bxsh='3' maxW='xs'>
+			<CardMedia aspect='4/3'>
+				<img src='/img.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody as={Layer} position='bottom' w='100%' size='contain' z='0'>
+				<FilterLayer bgc='rgba(255,255,255,0.6)' blur='3px' brightness={1.2} z='-1'/>
+				<Stack h='100%' gap={10}>
+					<h3 className='-fz:r'>Card Title</h3>
+					<DammyText fz='s'/>
+				</Stack>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		```
+	</PreviewCode>
+</Preview>
+
+
+## カスタマイズ例
+
+hoverエフェクトを自作する
+
+<Preview>
+	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
+	<PreviewArea p={30}>
+		<TileGrid itemMinW='20rem' gap={20}>
+			<Card href='#card-demo' bdrs='s' hover='pass'>
+				<CardMedia aspect='4/3'>
+					<img src='/img.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody as={Layer} position='bottom' w='100%' p={0} size='contain'>
+					<FilterLayer blur='4px' brightness={1.1}/>
+					<Box pos='relative' z='1' p='box' bgc='rgba(255,255,255,0.5)' c='black'>
+						<h3 className='-fz:r'>Card Title A</h3>
+						<Grid hover='get:slideUp'>
+							<Box ov='hidden'>
+								<DammyText  py={10} fz='s' lh='1.5' opacity='.7' />
+							</Box>
+						</Grid>
+						<Text fz='s' opacity='.7'>2000.01.01 / Author</Text>
+					</Box>
+				</CardBody>
+			</Card>
+			<Card href='#card-demo' bdrs='s' hover='pass'>
+				<CardMedia aspect='4/3'>
+					<img src='/img.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody as={Layer} position='bottom' w='100%' p={0} size='contain'>
+					<FilterLayer blur='4px' brightness={1.1}/>
+					<Box pos='relative' z='1' p='box' bgc='rgba(255,255,255,0.5)' c='black'>
+						<h3 className='-fz:r'>Card Title A</h3>
+						<Grid hover='get:slideUp'>
+							<Box ov='hidden'>
+								<DammyText  py={10} fz='s' lh='1.5' opacity='.7' />
+							</Box>
+						</Grid>
+						<Text fz='s' opacity='.7'>2000.01.01 / Author</Text>
+					</Box>
+				</CardBody>
+			</Card>
+		</TileGrid>
+
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		```
+	</PreviewCode>
+</Preview>
+
+`'contentUp'`を指定しているので、 `.-hov:contentUp` が出力されます。
+このクラスに対して、下記のCSSを追加して上記のDEMOを実装しています。
+
+```scss
+.c--card.-hov\:contentUp .c--card__hiddenArea{
+	--gtr: 0fr;
+	opacity: 0;
+	transition: opacity .25s, grid-template-rows .25s;
+}
+
+.c--card.-hov\:contentUp:hover .c--card__hiddenArea{
+	--gtr: 1fr;
+	opacity: 1;
+}
+```

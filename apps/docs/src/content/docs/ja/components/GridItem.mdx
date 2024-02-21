@@ -1,0 +1,106 @@
+---
+title: 'GridItem'
+description: ...
+---
+
+import { Center, Grid, GridItem } from '@loos/lism-core';
+import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+
+**Gridの子要素**のためのコンポーネントです。  
+[`<Grid>`](/ja/components/grid/)と組み合わせて活用してください。
+
+
+## Props
+
+{/* | プロパティ | 説明 | デフォルト値 |
+|---|---|---|
+|`as` | 別コンポーネントとして展開できます。 | | */}
+
+
+また、[`gridItem`オブジェクト内で指定できるプロパティ](/ja/props/css-props/#grid--flex) をコンポーネントに直接指定できるようになっています。
+
+|Prop|CSS|
+|---|---|
+|`ga`|`grid-area`|
+|`gc`|`grid-column`|
+|`gr`|`grid-row`|
+|`gcs`|`grid-column-start`|
+|`grs`|`grid-row-start`|
+|`gce`|`grid-column-end`|
+|`gre`|`grid-row-end`|
+
+
+このほか、`aslf`(`align-self`)など。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Grid, GridItem } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Grid, GridItem } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+
+## Usage
+
+{/* <Grid
+	gaf='column'
+>
+	<GridItem px={20} bgc='base-2'>L</GridItem>
+	<GridItem px={20} bgc='base-2' order='3'>Center</GridItem>
+	<GridItem px={20} bgc='base-2' order='2'>R</GridItem>
+</Grid> */}
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid
+			gtc='repeat(3, 1fr)'
+			gtr='repeat(3, 1fr)'
+		>
+			<GridItem p='box' bgc='base-2'>item1</GridItem>
+			<GridItem p='box' bgc='base-2'>item2</GridItem>
+			<GridItem p='box' bgc='base-3' gc='span2'>item3</GridItem>
+			<GridItem p='box' bgc='base-2'>item4</GridItem>
+			<GridItem p='box' bgc='base-2'>item5</GridItem>
+			<GridItem layout={Center} gc='3' gr='1 / -1' p='box' bgc='blue'>item6</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "gc='span2'" "gc='3'" "gr='1 / -1'"
+		<Grid
+			gtc='repeat(3, 1fr)'
+			gtr='repeat(3, 1fr)'	
+		>
+			<GridItem p='box' bgc='base-2'>item1</GridItem>
+			<GridItem p='box' bgc='base-2'>item2</GridItem>
+			<GridItem p='box' bgc='base-3' gc='span2'>item3</GridItem>
+			<GridItem p='box' bgc='base-2'>item4</GridItem>
+			<GridItem p='box' bgc='base-2'>item5</GridItem>
+			<GridItem layout={Center} gc='3' gr='1 / -1' p='box' bgc='blue'>item6</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-gc:" "--gr:"
+		<div class="l--grid" style="--gtc:repeat(3, 1fr);--gtr:repeat(3, 1fr)">
+			<div class="-p:20 -bgc:base-2">item1</div>
+			<div class="-p:20 -bgc:base-2">item2</div>
+			<div class="-p:20 -bgc:base-3 -gc:span2">item3</div>
+			<div class="-p:20 -bgc:base-2">item4</div>
+			<div class="-p:20 -bgc:base-2">item5</div>
+			<div class="-p:20 -bgc: -gc:3 -gr:" style="--bgc:var(--blue);--gr:1 / -1">item6</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>

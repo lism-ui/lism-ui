@@ -1,0 +1,57 @@
+// これらは、fx系プロパティを使うときに、-fxw: 等のクラスは不要
+.l--flex,
+.l--stack,
+.l--cluster {
+	--fxw: nowrap;
+	--fxd: row;
+	--isRow: 1;
+	flex-flow: var(--fxd) var(--fxw);
+	display: flex;
+}
+
+// l--flex--stack?
+.l--stack {
+	--isRow: 0;
+	--fxd: column;
+}
+
+// l--flex--cluster
+.l--cluster {
+	--item--minW: auto;
+	--fxw: wrap;
+	align-items: baseline;
+
+	// item--itemMinW ? -children:minW: ?
+	> * {
+		min-width: var(--item--minW);
+	}
+}
+
+// .l--flex--ltr {
+// 	--fxd: row;
+// }
+.l--flex--rtl {
+	--fxd: row-reverse;
+}
+
+// point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
+// memo: flex-grow は 変数指定だと挙動が変になる。
+.l--sideFlex {
+	display: flex;
+	flex-wrap: wrap;
+	--side--w: auto;
+	--fluid--minW: 50%;
+
+	&[data-side='first'] > :first-child,
+	&[data-side='last'] > :last-child {
+		flex-basis: var(--side--w);
+		flex-grow: 1; // fxg を 0 にすると、折り返されたときに広がらないので 1 にする必要がある
+	}
+
+	&[data-side='first'] > :last-child,
+	&[data-side='last'] > :first-child {
+		flex-basis: 0;
+		flex-grow: 9999999; // できるだけ fix側を 指定値ピッタリに近づける
+		min-width: min(100%, var(--fluid--minW)); // このサイズが折り返しポイント
+	}
+}

@@ -1,0 +1,213 @@
+/* https://github.com/withastro/starlight/tree/main/packages/starlight/style */
+@import './demo';
+@import './preview';
+@import './theme';
+// @import './hero';
+
+// 以下ではデフォルトのカラム幅を広げ、ページタイトルのテキストサイズを大きくしています。
+:root {
+	--sl-content-width: 50rem;
+	--codeBlock--radius: 0 0 var(--radius--s) var(--radius--s);
+	--sl-sidebar-width: 15rem;
+}
+
+#starlight__sidebar {
+	--sl-color-bg-sidebar: transparent;
+}
+
+// リストスタイルの除去
+.sidebar-content,
+.right-sidebar {
+	--list-pis: 0;
+	--list-style: none;
+}
+
+.c--badge--subtle > code {
+	background-color: transparent;
+	font: inherit;
+	padding: 0;
+}
+
+// コードブロック
+.expressive-code {
+	--ec-frm-frameBoxShdCssVal: var(--shadow--3);
+	/* --ec-codeBg: #fff;
+	--code-background: #fff; */
+
+	> .frame {
+		--ec-frm-frameBoxShdCssVal: none;
+	}
+
+	> .frame > pre {
+		border: none !important;
+	}
+
+	> .frame > pre > code {
+		font-family: var(--ff--mono);
+		// font-size: 0.875rem;
+		line-height: 1.625;
+	}
+
+	.c--note & {
+		> .frame {
+			background: var(--code-background);
+			background: color-mix(in srgb, var(--code-background), transparent 50%);
+			box-shadow:
+				inset var(--shSize--0) var(--shColor),
+				inset var(--shSize--1) var(--shColor);
+		}
+		> .frame > pre {
+			background: none;
+		}
+	}
+
+	.c--note__body > &:last-child {
+		padding-bottom: 0.5em;
+	}
+
+	.ec-line.ec-line mark {
+		--tmInlineBgCol: rgba(138, 145, 150, 0.1);
+		// --tmInlineBrdCol: #4d70bcd0;
+		--tmInlineBrdCol: hsla(207, 43%, 47%, 0.8);
+		// --ec-tm-inlMarkerBrdWd: 1.5px;
+	}
+	.ec-line.mark.mark {
+		--tmLineBgCol: rgba(147, 153, 155, 0.15);
+	}
+
+	// .ec-line mark,
+	// .ec-line ins,
+	// .ec-line del {
+	// 	--tmBrdL: var(--ec-tm-inlMarkerBrdWd);
+	// 	--tmBrdR: var(--ec-tm-inlMarkerBrdWd);
+	// 	--tmRadL: var(--ec-tm-inlMarkerBrdRad);
+	// 	--tmRadR: var(--ec-tm-inlMarkerBrdRad);
+	// 	margin-inline: 0.025rem;
+	// 	padding-inline: var(--ec-tm-inlMarkerPad);
+	// 	border-radius: var(--tmRadL) var(--tmRadR) var(--tmRadR) var(--tmRadL);
+	// 	background: var(--tmInlineBgCol);
+	// 	background-clip: padding-box;
+	// }
+
+	// 	.expressive-code .ec-line.mark,
+	// 	.expressive-code .ec-line.ins,
+	// 	.expressive-code .ec-line.del {
+	// 		position: relative;
+	// 		background: var(--tmLineBgCol);
+	// 		min-width: calc(100% - var(--ec-tm-lineMarkerAccentMarg));
+	// 		margin-inline-start: var(--ec-tm-lineMarkerAccentMarg);
+	// 		border-inline-start: var(--ec-tm-lineMarkerAccentWd) solid var(--tmLineBrdCol);
+	// 		padding-inline-start: calc(
+	// 			var(--ec-codePadInl) - var(--ec-tm-lineMarkerAccentMarg) - var(
+	// 					--ec-tm-lineMarkerAccentWd
+	// 				)
+	// 		) !important;
+	// 	}
+}
+
+// セル内のコードで、かつそれが唯一な要素であればは折り返さない
+td:first-child > code:only-child {
+	white-space: nowrap;
+}
+
+:where(.has--itemGuide > *) {
+	border: 1px dashed hsla(0, 0%, 63%, 0.4);
+	padding: 0 4px;
+}
+
+// td > code {
+// 	display: inline-flex;
+// }
+
+/* memo: 狭いブラウザ幅での目次、文字検索した時に展開してきて邪魔になってしまうので、最大高さを低くした方がいいかも */
+
+.right-sidebar-container {
+	position: sticky;
+	z-index: var(--sl-z-index-toc);
+	top: var(--sl-nav-height);
+}
+
+.sidebar {
+	._link:not([aria-current='page']) {
+		color: inherit;
+		opacity: 0.8;
+		&:hover {
+			opacity: 1;
+			background-color: var(--base-3);
+		}
+	}
+	._subtitle {
+		display: block;
+		pointer-events: none;
+		color: inherit;
+		// margin-left: -0.5em;
+		padding: 0.75em 0 0.5em;
+		font-size: var(--sl-text-sm);
+	}
+	._divider {
+		padding-block: 0.5em;
+		padding-inline: 0.5em 0;
+
+		> span {
+			display: block;
+			border-top: 1px solid var(--sl-color-hairline-light);
+		}
+	}
+}
+
+// .sl-container {
+// 	// width: 100%;
+// 	// max-width: 100%;
+// 	border: solid 4px yellow;
+// }
+
+// .sidebar {
+// 	border: solid 4px blue;
+// }
+
+// .main-frame {
+// 	border: solid 4px pink;
+// }
+
+// .content-panel {
+// 	border: solid 4px red;
+// }
+:where(.has--layerGuide) {
+	&.has--layer {
+		background: rgba(220, 220, 220, 0.25);
+	}
+	&.has--layer > p {
+		color: rgba(120, 120, 120, 0.2);
+	}
+	.l--layer {
+		// bgc="hsl(268 50% 80% / 0.2)" bd="guide"
+		background: hsl(268 50% 80% / 0.2);
+		border: dashed 1px hsla(268, 10%, 70%, 0.25);
+		padding: 2px 4px;
+	}
+}
+
+.-gradient\:sunset {
+	// background-image: linear-gradient(
+	// 	to bottom,
+	// 	#416dc7 10%,
+	// 	#5383e5 40%,
+	// 	#f18271 75%,
+	// 	#f7d978 100%
+	// );
+	background: linear-gradient(
+		to top,
+		#a24525 0%,
+		#dd723c 15%,
+		#d7b97b 40%,
+		#a2b2b9 55%,
+		#5a718c 80%,
+		#36557e 100%
+	);
+}
+
+:root {
+	/* // グラデーション用のカラープリセット */
+	--gradColor--lime: #abecd6 0%, #fbed96 100%;
+	--gradColor--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
+}

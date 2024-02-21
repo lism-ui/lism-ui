@@ -1,0 +1,136 @@
+---
+title: 'DecorationBox'
+description: ...
+---
+
+import { Grid, Flex, GridItem, FlexItem, Decorator, Box } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+装飾ボックスの作成例を紹介します。
+
+
+{/* 対応クラスは`.c--decoBox--{variant}`。  
+(基本的にどういう装飾を行うかの指定が必須で`.c--decoBox`に何かスタイルがあるわけではないので、modifier付きクラス単体で使う） */}
+
+
+{/* ## Props
+variant, subvariant に対しての 各Props をプリセット登録できるようにする予定。プリセット登録せずに装飾内容を指定する場合は `data` に直接指定する。
+
+## Import
+
+```js
+import { DecoBox } from '@loos/lism-core';
+``` */}
+
+## Usage
+
+
+### call
+
+<Preview>
+	<PreviewTitle>Call</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid className='c--callout c--callout--left' ta='l'>
+			<Decorator
+				hasSize
+				size='1.25em'
+				bd='left'
+				rotate='45deg'
+				transformOrigin='left bottom'
+				mr='auto'
+			/>
+			<Box p='box:s'>
+				<DammyText length='m' />
+			</Box>
+			<Decorator
+				hasSize
+				size='1.25em'
+				bd='left'
+				rotate='-45deg'
+				transformOrigin='left top'
+				mr='auto'
+			/>
+		</Grid>
+		<Grid className='c--callout c--callout--right' as={Grid} ta='r'>
+			<Decorator
+				hasSize
+				size='1.25em'
+				bd='right'
+				rotate='-45deg'
+				transformOrigin='right bottom'
+				ml='auto'
+			/>
+			<Box p='box:s'>
+				<DammyText length='s' />
+			</Box>
+			<Decorator
+				hasSize
+				size='1.25em'
+				bd='right'
+				rotate='45deg'
+				transformOrigin='right top'
+				ml='auto'
+			/>
+		</Grid>
+
+		<Flex variant='ltr' className='c--callout c--callout--top' jc='center' ta='c'>
+			<Decorator
+				as={FlexItem}
+				fxsh='0'
+				hasSize
+				size='1.25em'
+				bd='top'
+				rotate='-45deg'
+				transformOrigin='right top'
+			/>
+			<FlexItem px='em10' py='em2'>
+				<DammyText length='s' />
+			</FlexItem>
+			<Decorator
+				as={FlexItem}
+				fxsh='0'
+				hasSize
+				size='1.25em'
+				bd='top'
+				rotate='45deg'
+				transformOrigin='left top'
+			/>
+		</Flex>
+		<Flex
+			variant='ltr'
+			className='c--callout c--callout--bottom'
+			jc='center'
+			ai='fe'
+			ta='c'
+		>
+			<Decorator
+				as={FlexItem}
+				fxsh='0'
+				hasSize
+				size='1.25em'
+				bd='bottom'
+				rotate='45deg'
+				transformOrigin='right bottom'
+			/>
+			<FlexItem px='em10' py='em2' fxg=''>
+				<DammyText length='l' />
+			</FlexItem>
+			<Decorator
+				as={FlexItem}
+				fxsh='0'
+				hasSize
+				size='1.25em'
+				bd='bottom'
+				rotate='-45deg'
+				transformOrigin='left bottom'
+			/>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	...
+	```
+	</PreviewCode>
+</Preview>
+

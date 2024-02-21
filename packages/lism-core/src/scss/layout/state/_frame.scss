@@ -1,0 +1,19 @@
+.is--frame {
+	// display: block;
+	position: relative;
+	overflow: clip;
+	--objectPosition: center;
+	// overflow-y: auto;
+
+	// width: 100%;
+	// height: auto; // stretch されないように
+	// object-fit: cover;
+
+	> :where(img, video, picture) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: var(--objectPosition);
+		// display: block;
+	}
+}

@@ -1,0 +1,47 @@
+@use 'sass:map';
+
+// xs sm md lg xl xxl
+// 240刻み
+$break-points: () !default;
+$query-type: 'container' !default;
+
+$break-points: map.merge(
+	(
+		'sm': '480px',
+		'md': '720px',
+		'lg': '960px',
+		// 'xl': '1200px',
+		// 'xxl': '1400px',
+	),
+	$break-points
+);
+
+@mixin bp-up($size) {
+	$bp: map.get($break-points, $size);
+	@if $query-type == 'container' {
+		@container (min-width: #{$bp}) {
+			@content;
+		}
+	} @else {
+		@media (min-width: #{$bp}) {
+			@content;
+		}
+	}
+}
+@mixin bp-down($size) {
+	$bp: map.get($break-points, $size);
+	@if $query-type == 'container' {
+		@container not (min-width: #{$bp}) {
+			@content;
+		}
+	} @else {
+		@media not (min-width: #{$bp}) {
+			@content;
+		}
+	}
+}
+
+// 600px未満
+// @media not all and (min-width: 600px) {
+// 	@content;
+// }

@@ -1,0 +1,395 @@
+---
+title: 'Button'
+description: ...
+---
+
+import { DammyText,PropBadge } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Alert, Box, Button, IconButton, Icon, Cluster, MediaLayer, FilterLayer } from '@loos/lism-core';
+import {
+	ArrowFatDown,
+	ArrowRight,
+	ShoppingCartSimple,
+	ArrowCircleRight,
+} from "@phosphor-icons/react";
+
+ボタンを表示するコンポーネントです。
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`keycolor`| ボタンのカラー。[`COLOR`トークン](/ja/css/tokens/#color)の他、任意のカラーコードを指定できます。|
+|`variant`| ボタンの表示スタイル。`outline`、`ghost`の2種類を用意しています。|
+|<PropBadge>`Button`</PropBadge><br/>`leftIcon`, `rightIcon` | ボタンテキストの左右に表示するアイコンを指定できます。|
+|<PropBadge>`Button`</PropBadge><br/>`isGrid`| テキストとアイコンの並びがgridレイアウトになり、アイコンを端に寄せることができます。|
+|<PropBadge>`IconButton`</PropBadge><br/>`icon`| `icon`に指定するとアイコンのみ表示される。|
+{/* |`hover`| デフォルトは`fade`が指定されています。| */}
+
+
+{/* <Alert preset="info">
+Astroでアイコンの受け渡しどうする...。（jsxコンポーネントであれば問題なし。）
+</Alert> */}
+
+
+
+{/* ## 注意点
+Common Props の `w`, `h` ではなく、`width`, `height` を使ってください。 */}
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Button, IconButton } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Button, IconButton } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "gray"];
+
+## Usage
+
+### Buttonの基本スタイル
+
+<Preview>
+	<PreviewTitle>各`variant`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' variant='fill'>Fill</Button>
+			<Button href='###' variant='outline'>Outline</Button>
+			<Button href='###' variant='ghost'>Text</Button>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "variant"
+		<Button href='###'>Fill Button</Button>
+		<Button href='###' variant="outline">Outline Button</Button>
+		<Button href='###' variant="ghost">Text Button</Button>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "c--button--fill" "c--button--outline" "c--button--ghost"
+		<a class="c--button c--button--fill l--flex -hov:fade" href="###">
+			<span class="c--button__text">Fill</span>
+		</a>
+		<a class="c--button c--button--outline l--flex -hov:fade" href="###">
+			<span class="c--button__text">Outline</span>
+		</a>
+		<a class="c--button c--button--ghost l--flex -hov:fade" href="###">
+			<span class="c--button__text">Text</span>
+		</a>
+		```
+	</PreviewCode>
+</Preview>
+
+(`variant`を指定しなければ`'fill'`になります。)
+
+
+<Preview>
+	<PreviewTitle>左にアイコン</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
+			<Button href='###' leftIcon={ShoppingCartSimple} variant="outline">Button</Button>
+			<Button href='###' leftIcon={ShoppingCartSimple} variant="ghost">Button</Button>
+		</Cluster>
+	</PreviewArea>
+<PreviewCode slot='tab' label='React, Astro'>
+```jsx "leftIcon"
+import { ShoppingCartSimple } from "@phosphor-icons/react";
+
+<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html {2}
+		<a class="c--button c--button--fill l--flex -hov:fade" href="###">
+			<svg class="c--button__leftIcon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+			<span class="c--button__text">Button</span>
+		</a>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>アイコンを右に</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' rightIcon={ArrowRight}>Button</Button>
+			<Button href='###' rightIcon={ArrowRight} variant="outline">Button</Button>
+			<Button href='###' rightIcon={ArrowRight} variant="ghost">Button</Button>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "rightIcon"
+	<Button href='###' rightIcon={ArrowRight}>Button</Button>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html {3}
+		<a class="c--button c--button--fill l--flex -hov:fade" href="###">
+			<span class="c--button__text">Button</span>
+			<svg class="c--button__rightIcon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+		</a>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+#### `isGrid`でアイコンを端に寄せる
+
+ボタンに幅を指定した時に、`isGrid`を併用することでアイコンを端に寄せることもできます。  
+{/* (`[data-icon-position="edge"]`とかdata属性にすべきか...？prop名は要検討) */}
+
+
+<Preview>
+	<PreviewTitle>`isGrid`</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={20}>
+			<Button isGrid href='###' leftIcon={ShoppingCartSimple} minW='15em'>Button</Button>
+			<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
+			<Button isGrid href='###' leftIcon={ShoppingCartSimple} rightIcon={ArrowRight} minW='15em'>Button</Button>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "isGrid"
+		<Button isGrid href='###' leftIcon={ShoppingCartSimple} minW='15em'>Button</Button>
+		<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
+		<Button isGrid href='###' leftIcon={ShoppingCartSimple} rightIcon={ArrowRight} minW='15em'>Button</Button>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "l--grid" "-gc:2" "-jslf:c"
+		<a class="c--button c--button--fill l--grid -hov:fade -minW:" style="--minW:15em" href="###">
+			<svg class="c--button__leftIcon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+			<span class="c--button__text -gc:2 -jslf:c">Button</span>
+		</a>
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### `iconOffset`でアイコンの位置を微調整する
+
+`iconOffset`の指定(`data-icon-offset`属性) によって、`translate`でアイコンの位置を微調整できます。
+
+<Preview>
+	<PreviewTitle>`iconOffset`の比較</PreviewTitle>
+	<PreviewArea resize p={20} isFlow='s'>
+		<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
+		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
+		<Button href='###' iconOffset="-20%" leftIcon={ShoppingCartSimple}>Button</Button>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "iconOffset"
+		<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
+		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
+		<Button href='###' iconOffset="-20%" leftIcon={ShoppingCartSimple}>Button</Button>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "--icon--offset"
+		<a class="c--button c--button--fill l--flex -hov:fade" style="--icon--offset:20%" href="###">
+			<svg class="c--button__leftIcon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+			<span class="c--button__text">Button</span>
+		</a>
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+{/* hover時に変化させたい */}
+
+
+### `IconButton` - アイコンのみのボタン
+
+クラスとしては同じ`.c--button`がベースですが、コンポーネントとしては`IconButton`を別に用意しています。
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<IconButton href='###' icon={ShoppingCartSimple} /> 
+	</PreviewArea>
+<PreviewCode slot='tab' label='React, Astro'>
+```jsx
+import { ShoppingCartSimple } from "@phosphor-icons/react";
+
+<Button href='###' icon={ShoppingCartSimple} />
+```
+</PreviewCode>
+<PreviewCode slot='tab' label='HTML'>
+	```html
+	<a class="c--button  c--button--fill l--flex -hov:fade" href="###">
+		<svg class="c--button__icon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+	</a>
+	...
+	```
+</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>子要素に`Icon`を配置してもOKです。</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<IconButton hover='up'>
+				<Icon icon={ShoppingCartSimple} weight='fill'/>
+			</IconButton>
+			{/* <IconButton href='###' icon={ArrowFatDown} hover="bxsh:4" variant="outline" />
+			<IconButton href='###' icon={ArrowRight} hover={{bgc:'base-3'}} variant="ghost" /> */}
+		</Cluster>
+	</PreviewArea>
+<PreviewCode>
+```jsx {2}
+<IconButton hover='up'>
+	<Icon icon={ShoppingCartSimple} weight='fill'/>
+</IconButton>
+```
+</PreviewCode>
+</Preview>
+
+
+### サイズの調整
+
+p, fz, w などの基本Propで調整できます。  
+(data-size=s,l, など専用のPropを作るか検討中。)
+
+<Preview>
+	<PreviewTitle>小さいサイズのボタン</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' keycolor='purple' fz='xs' p={10} leftIcon={ArrowRight}>Button</Button>
+			<IconButton href='###' fz='xs' p={10} px={20} icon={ShoppingCartSimple} />
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "fz=" "p=" "px=" "py="
+		<Button href='###' keycolor='purple' fz='xs' p={10} leftIcon={ArrowRight}>Button</Button>
+		<IconButton href='###' fz='xs' py={10} px={20} icon={ShoppingCartSimple} />
+		```
+	</PreviewCode>
+</Preview>
+
+
+### hover="reverse"
+
+Buttonでは、`-hov:reverse`との相性が良くなるように調整を加えています。
+
+`-hov:reverse`は、基本的には、 `--c`と`--bgc`を入れ替えるようになっていますが、Buttonでは、以下のような挙動になります。
+
+- `c--button--fill` で使うと、背景色が透明になり、文字色がホバー前の背景色になります。さらにボーダーも出現します。
+- `c--button--outline`, `c--button--ghost` で使うと、文字色 が `var(--base)`へ変化し, 背景色がホバー前の文字色になります。
+
+<Preview>
+	<PreviewTitle>`hover='reverse'`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' hover='reverse'>Fill</Button>
+			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
+			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Cluster gap={20}>
+			<Button href='###' hover='reverse'>Fill</Button>
+			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
+			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
+		</Cluster>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>keycolor指定ありでのreverse</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Cluster gap={20}>
+			<Button href='###' hover='reverse' keycolor='blue'>Button</Button>
+			<Button href='###' hover='reverse' variant='outline' keycolor='pink'>Button</Button>
+			<Button href='###' hover='reverse' variant='ghost' bgc='base-2'>Button</Button>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+<Alert preset='warning'>
+テキストカラー反転してるようなエリアでは、真っ白になったり真っ黒になったりすることに注意が必要です。その場合、ホバー時の文字色を明示的に指定してください。
+</Alert>
+
+<Preview>
+	<PreviewTitle>NG例: 真っ白になってしまう</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box p='40' hasLayer c='base'>
+			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<FilterLayer blur='4px' z='-1'/>
+			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+			<DammyText />
+			<Cluster mbs={30} gap={20}>
+				<Button href='###' keycolor='base' hover='reverse' variant='outline'>Button</Button>
+				<Button href='###' c='base' hover='reverse' variant='ghost'>Button</Button>
+			</Cluster>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>解決策</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box p='40' hasLayer c='base'>
+			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<FilterLayer blur='4px' z='-1'/>
+			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+			<DammyText />
+			<Cluster mbs={30} gap={20}>
+				<Button href='###' keycolor='base' hover={['reverse', { c:'content' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hover={['reverse', { c:'content' }]} variant='ghost'>Button</Button>
+			</Cluster>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>白黒反転エリアでのテスト</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box p='40' hasLayer c='base'>
+			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<FilterLayer blur='4px' z='-1'/>
+			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+			<DammyText />
+			<Cluster mbs={30} gap={20}>
+				<Button href='###' hover='reverse' variant='fill'>Button</Button>
+				<Button href='###' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
+				<Button href='###' bgc='base' c='content' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
+			</Cluster>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+

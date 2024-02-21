@@ -1,0 +1,477 @@
+---
+title: 'NavMenu'
+description: ...
+---
+
+import { NavMenu, NavMenuItem, NavMenuLink, Badge, Icon, Spacer, Box} from '@loos/lism-core';
+import { Accordion,
+	AccordionBody,
+	AccordionHeader,
+	AccordionLabel,
+	AccordionIcon } from '@loos/lism-astro';
+import { FolderSimple } from "@phosphor-icons/react";
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+
+## Props
+
+- `provide.p`でpaddingを一括コントロールできます。
+
+
+## Import
+
+```js
+import { NavMenu } from '@loos/lism-core';
+```
+
+
+## Usage
+
+export const Items = ({ length = 3, ...props }) => {
+	// const array = Array.from({length:3});
+	return (
+		<>
+			{[...Array(length)].map((i) => {
+				return <NavMenuItem key={i}>
+					<NavMenuLink href={`#menu${i+1}`} {...props}>Lorem item</NavMenuLink>
+				</NavMenuItem>;
+			})}
+		</>
+	);
+
+	// return array.map((v,i) => {
+	// 	return <p key={i}>aaa</p>;
+	// 	// <NavMenuItem key={i}>
+	// 	// 	<NavMenuLink href={`#menu${i+1}`} {...props}>Lorem item</NavMenuLink>
+	// 	// </NavMenuItem> 
+	// });
+};
+
+export const DemoBadge = ({ num = "10", ml = "auto" }) => {
+	return (
+		<Badge fz="12px" ml={ml} fw="400" color="dimgray">
+			{num}
+		</Badge>
+	);
+};
+
+<Preview>
+	<PreviewTitle>NavMenuの例</PreviewTitle>
+	<PreviewArea p={20}>
+		<NavMenu>
+			<Items />
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<NavMenu>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			...
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>`hasDivider`と上下ボーダーを指定</PreviewTitle>
+	<PreviewArea p={20}>
+		<NavMenu hasDivider bd='block'>
+			<Items />
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<NavMenu hasDivider bd='block'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			...
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>ボックススタイルにしてprovideでpadding指定</PreviewTitle>
+	<PreviewArea p={20}>
+		<NavMenu hasDivider bd provide={{ p: 'em10' }}>
+			<Items />
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<NavMenu hasDivider bd provide={{ p: 'em10' }}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>アイコンやバッジを使った例</PreviewTitle>
+	<PreviewArea p={20}>
+		<NavMenu hasDivider bd>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+					<Badge fw='700' variant='outline' ms='auto'>
+						New
+					</Badge>
+				</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+				</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+				</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		import { FolderSimple } from "@phosphor-icons/react";
+
+		<NavMenu hasDivider bd>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+					<Badge fz='12px' fw='700' variant='outline' ms='auto'>
+						New
+					</Badge>
+				</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+				</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3' gap={20}>
+					<Icon icon={FolderSimple} />
+					Lorem item
+				</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### メニューのネスト
+
+<Preview>
+	<PreviewTitle>メニューのネスト</PreviewTitle>
+	<PreviewArea p={20}>
+		<NavMenu hasDivider bd="block">
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Has Child</NavMenuLink>
+				<NavMenu hasDivider bd="top" nestLevel={1}>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu1'>Lorem item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu2'>Lorem item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu3'>Has Child</NavMenuLink>
+						<NavMenu hasDivider bd="top" nestLevel={2}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu4'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu5'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<NavMenu hasDivider bd="block">
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Has Child</NavMenuLink>
+				<NavMenu hasDivider bd="top" nestLevel={1}>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu1'>Lorem item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu2'>Lorem item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu3'>Has Child</NavMenuLink>
+						<NavMenu hasDivider bd="top" nestLevel={2}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu4'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu5'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### ネストしたメニューをアコーディオンで展開
+
+<Preview>
+	<PreviewTitle>展開メニューにリンクなし</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<NavMenu bd='block'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} minH='0' hover='-'>
+						<AccordionLabel>
+							<NavMenuLink>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon />
+					</AccordionHeader>
+					<AccordionBody p={0}>
+						<NavMenu nestLevel={1}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {9-26}
+		<NavMenu bd='block'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} minH='0' hover='-'>
+						<AccordionLabel>
+							<NavMenuLink>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon />
+					</AccordionHeader>
+					<AccordionBody p={0}>
+						<NavMenu nestLevel={1}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>メニューはリンクのままアコーディオン化（アイコンクリックで展開）</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<NavMenu bd='block'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} minH='0'>
+						<AccordionLabel>
+							<NavMenuLink href='#menu3'>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon isTrigger />
+					</AccordionHeader>
+					<AccordionBody p={0}>
+						<NavMenu nestLevel={1}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {14}
+		<NavMenu bd='block'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} minH='0'>
+						<AccordionLabel>
+							<NavMenuLink href='#menu3'>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon isTrigger />
+					</AccordionHeader>
+					<AccordionBody p={0}>
+						<NavMenu nestLevel={1}>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 横並び
+
+<Preview>
+	<PreviewTitle>横並び</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box minH="20rem">
+		<NavMenu isFlex hasDivider provide={{ p: 'em7 em10' }}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} gap={0} minH='0'>
+						<AccordionLabel>
+							<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon isTrigger size='.875em' />
+					</AccordionHeader>
+					<AccordionBody p={0} bxsh={3} pos="absolute" bgc="base">
+						<NavMenu nestLevel={1} hasDivider>
+							<NavMenuItem>
+								<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#menu3'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<NavMenu
+			isFlex 
+			hasDivider
+			provide={{ p: 'em7 em10' }}
+		>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<Accordion>
+					<AccordionHeader py={0} pl={0} gap={0} minH='0'>
+						<AccordionLabel>
+							<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+						</AccordionLabel>
+						<AccordionIcon isTrigger size='.875em' />
+					</AccordionHeader>
+					<AccordionBody p={0} bxsh={3} pos="absolute" bgc="base">
+						<NavMenu nestLevel={1} hasDivider>
+							<NavMenuItem>
+								<NavMenuLink href='#menu1'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#menu2'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#menu3'>Lorem item</NavMenuLink>
+							</NavMenuItem>
+						</NavMenu>
+					</AccordionBody>
+				</Accordion>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>

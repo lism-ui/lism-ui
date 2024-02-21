@@ -1,0 +1,16 @@
+---
+import { LismProps } from '../types';
+import { getLismProps, separateLinkProps } from '@loos/lism-core/lib';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { as, passProps, ...props } = Astro.props || {};
+
+const { linkProps, otherProps } = separateLinkProps(props);
+const lismProps = getLismProps(otherProps, { hover: 'fade' });
+const JSX = as || 'a';
+---
+
+<JSX {...linkProps} {...lismProps} {...passProps}>
+	<slot />
+</JSX>

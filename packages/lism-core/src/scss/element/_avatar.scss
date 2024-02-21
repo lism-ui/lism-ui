@@ -1,0 +1,11 @@
+:where(.c--avatar) {
+	--size: auto;
+}
+.c--avatar {
+	inline-size: var(--size);
+	display: inline-flex;
+	// aspect-ratio: 1/1;
+	// width: var(--size);
+	// height: var(--size);
+	// overflow: hidden;
+}

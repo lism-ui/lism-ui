@@ -1,0 +1,181 @@
+---
+title: 'MediaLayer'
+description: ...
+---
+
+import { Layer, MediaLayer, FilterLayer, Frame, Media, Center } from '@loos/lism-core';
+// import './css/layer.css'
+// import Image from "next/image";
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+**メディア（画像・動画）を親要素サイズに合わせて配置する**ための、[`<Layer>`](/docs/components/Layer)の拡張コンポーネントです。
+
+<Preview>
+	<PreviewTitle>対応するHTML構造</PreviewTitle>
+	<PreviewCode>
+	```jsx
+	<div class="l--layer l--layer--media">...</div>
+	```
+	</PreviewCode>
+</Preview>
+
+{/* 親サイズにフィットするサイズで`object-fit` なメディア（画像・動画）を配置するレイヤー。 */}
+
+
+## Props
+
+{/* - `z`: `z-index`を指定できます。 */}
+- `media`: メディア用のHTMLタグ、またはコンポーネントを指定できます。デフォルトは`'img'`です。
+- 以下のメディア用Attrsは自動でメディア側へ振り分けられます。
+	- `src`, `width`, `height`, `alt`, `loading`, `decoding`
+	- `loop`, `muted`, `controls`, `autoplay`, `playsinline`, `poster`
+	- `hover`
+	- `objectFit`
+	- `objectPosition`
+- `mediaProps`: `src`等の自動で振り分けされる属性以外もmediaに対して何か指定したい場合は、`mediaProps`にオブジェクトで指定してください。
+
+ただし、`children`でメディアを渡す場合、これらは全て無視されます。
+
+{/* <Alert preset="info">
+`<MediaLayer><img ... /></MediaLayer>` のように子要素(`children`)にそのままメディアを渡すこともできます。  
+この時、`<MediaLayer>`に指定するpropsは全て`<Layer>`に渡り、`media`は無視されます。
+</Alert> */}
+
+
+## Import
+
+```js
+import { MediaLayer } from '@loos/lism-core';
+```
+
+
+## Usage
+
+`MediaLayer`に直接メディアデータを渡す場合、自動でobject-fitに`cover`が指定されます。
+
+<Preview>
+	<PreviewTitle>
+		`MediaLayer`に画像用のpropsを指定する
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame h="200px">
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Frame h="200px">
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### `children`でメディアを渡す
+
+`children`でメディアを渡す場合は、object-fitの自動付与はされません。
+
+<Preview>
+	<PreviewTitle>
+		例
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema" bgc="#fff" bxsh='2'>
+			<MediaLayer p={10}>
+				<Media src="/img.jpg" alt="" width={960} height={640} objectFit="cover" />
+			</MediaLayer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3}
+		<Frame aspect="cinema" bgc="#fff" bxsh='2'>
+			<MediaLayer p={10}>
+				<Media src="/img.jpg" alt="" width={960} height={640} objectFit="cover" />
+			</MediaLayer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`next/image`を使う例
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema">
+			{/* <MediaLayer media={Image} src="/img.jpg" alt="" width='960' height='640' /> */}
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<Frame aspect="cinema">
+			<MediaLayer media={Image} src="/img.jpg" alt="" width='960' height='640' />
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 画像の上にコンテンツを重ねる例
+
+<Preview>
+	<PreviewTitle>
+		MediaLayerを`z="-1"`でコンテンツの下へ
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema">
+			<MediaLayer z="-1" src="/img.jpg" alt="" width='960' height='640' />
+			<FilterLayer z="-1" bgc="black:.4" />
+			<Center size="cover" c="white" gap="20" p="box">
+				<DammyText length="xs" />
+			</Center>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+```jsx
+<Frame aspect="cinema">
+	<MediaLayer z="-1" src="/img.jpg" alt="" width='960' height='640' />
+	<FilterLayer z="-1" bgc="black:.4" />
+	<Center size="cover" c="white" gap="20" p="box">
+		<p>...</p>
+	</Center>
+</Frame>
+```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>
+		コンテンツもLayerで囲む
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema">
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+			<FilterLayer bgc="black:.4" />
+			<Layer inset="0">
+				<Center size="cover" c="white" gap="20" p="box">
+					<DammyText length="l" />
+				</Center>
+			</Layer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Frame aspect="cinema">
+			<MediaLayer src="/img.jpg" alt="" width='960' height='640' />
+			<FilterLayer bgc="black:.4" />
+			<Layer inset="0">
+				<Center size="cover" c="white" gap="20" p="box">
+					<DammyText length="l" />
+				</Center>
+			</Layer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+

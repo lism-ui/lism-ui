@@ -1,0 +1,77 @@
+/* stylelint-disable */
+
+.-td\:n{text-decoration: none;}
+.-td\:u{text-decoration: underline;}
+
+.-lis\:n{list-style: none;}
+
+// .-filter\:darker{
+// 	filter: brightness(0.95);
+// }
+// .-filter\:lighter{
+// 	filter: brightness(1.05);
+// }
+
+// overflow
+// .-ov\:v{overflow: visible;}
+.-ov\:h{overflow: hidden;}
+.-ov\:a{overflow: auto;}
+.-ov\:c{overflow: clip;}
+// .-ov\:s{overflow: scroll;}
+
+.-ovx\:a{overflow-x: auto;}
+.-ovx\:c{overflow-x: clip;}
+.-ovx\:h{overflow-x: hidden;}
+
+.-ovy\:a{overflow-y: auto;}
+.-ovy\:c{overflow-y: clip;}
+.-ovy\:h{overflow-y: hidden;}
+
+
+.-obf\:cn{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.-obf\:cv{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.-v\:h{visibility: hidden;}
+.-v\:v{visibility: visible;}
+
+
+
+// prop: ovw
+// 単語中でも折り返しさせる
+.-ovw\:any{overflow-wrap: anywhere;} // ※ ovw は emmetの正式定義ではない.
+// .-wob\:bw{word-break: break-word;} // 非推奨. -ovw:any と同じ
+
+
+// --------------------
+// その他
+// --------------------
+// clear float
+// .-cf::after {
+// 	display: block;
+// 	clear: both;
+// 	width: 0;
+// 	height: 0;
+// 	content: "";
+// }
+
+
+// 折返し禁止
+// .i--nowrap,
+.-whs\:nw {
+	white-space: nowrap;
+}
+// .-whs\:p{
+// 	white-space: pre;
+// }
+// .-whs\:pw{
+// 	white-space: pre-wrap;
+// }

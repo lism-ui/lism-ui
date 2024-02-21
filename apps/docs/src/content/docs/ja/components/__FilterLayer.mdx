@@ -1,0 +1,149 @@
+---
+title: 'FilterLayer'
+description: ...
+---
+
+import { Columns, Layer, Media, MediaLayer, FilterLayer, Frame } from '@loos/lism-core';
+// import Image from "next/image";
+// import './css/layer.css'
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+**背景にエフェクト効果を加える**ための、[`<Layer>`](/docs/components/Layer)の拡張モジュール。
+
+`backdrop-filter`の主要なプロパティをオブジェクトで指定できるようになっています。
+
+<Preview>
+	<PreviewTitle>対応するHTML構造</PreviewTitle>
+	<PreviewCode>
+	```jsx
+	<div class="l--layer l--layer--filter">...</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+## Props
+- `backdropFilter`の個別指定
+	- `blur`,
+	- `contrast`,
+	- `brightness`,
+	- `grayscale`,
+	- `hue-rotate`,
+	- `invert`,
+	- `saturate`,
+	- `sepia`,
+- `backdropFilter` : `css.backdropFilter`に直接値を渡します。filterトークンを指定する時にはこちらを使います。
+- texture?
+
+
+<Alert preset="info">
+backdropFilterの指定がある時、blur, brightnessなどの個別指定は無視されます。
+</Alert>
+
+## Import
+
+```js
+import { FilterLayer } from '@loos/lism-core';
+```
+
+
+## Usage
+
+
+<Preview className="">
+	<PreviewTitle>
+		背景にブラーをかける
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Stack pos="relative" p={20} gap={20}>
+			<Text fz="4xl" fw="bold" ta="center">BACKGROUND</Text>
+			<DammyText />
+			<FilterLayer blur="3px" brightness="1.1" />
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3}
+		<Stack pos="relative" p={20} gap={20}>
+			<Text fz="4xl" fw="bold" ta="center">BACKGROUND</Text>
+			<DammyText />
+			<FilterLayer blur="3px" brightness="1.1" />
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview className="">
+	<PreviewTitle>
+		画像の色味を変える
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Columns>
+			<Frame aspect="16/9">
+				<Media src="/img.jpg" alt="" width='960' height='640' />
+				<FilterLayer brightness={1.2} contrast={0.8} grayscale={1}/>
+				<Layer position="bottom right" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+			</Frame>
+			<Frame aspect="16/9">
+				<Media src="/img.jpg" alt="" width="960" height="640" />
+				<FilterLayer contrast="1.2" sepia="25%" />
+				<Layer position="bottom right" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+			</Frame>
+		</Columns>
+		<Frame aspect="16/9">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer ml="auto" invert="1" grayscale="20%" w="50%" />
+			<Layer position="bottom center" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3,8,13}
+		<Frame aspect="16/9">
+			<Media src="/img.jpg" alt="" width='960' height='640' />
+			<FilterLayer brightness={1.2} contrast={0.8} grayscale={1}/>
+			<Layer position="bottom right" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect="16/9">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer contrast="1.2" sepia="25%" />
+			<Layer position="bottom right" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+		</Frame>
+		<Frame aspect="16/9">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer ml="auto" invert="1" grayscale="20%" w="50%" />
+			<Layer position="bottom center" p='box:s' c="white" fz="xs" opacity="0.8">Photo by xxxxxx.</Layer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview className="">
+	<PreviewTitle>
+		filterトークン
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame aspect="cinema">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer backdropFilter='blur' />
+		</Frame>
+		<Frame aspect="cinema">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer backdropFilter='lighten' />
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3,7}
+		<Frame aspect="cinema">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer backdropFilter='blur' />
+		</Frame>
+		<Frame aspect="cinema">
+			<Media src="/img.jpg" alt="" width="960" height="640" />
+			<FilterLayer backdropFilter='lighten' />
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>

@@ -1,0 +1,32 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+// import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import SidebarSublist from './SidebarSublist.astro';
+
+const { sidebar } = Astro.props;
+
+// sidebar.forEach((data: any) => {
+// 	if (data.label === 'Components') {
+// 		console.log('sidebar', data.entries);
+// 		data.entries.forEach((entry: any) => {
+// 			// console.log('entry', entry);
+
+// 			// entry.hrefが###を含む場合
+// 			if (entry.href && entry.href.includes('###')) {
+// 				entry.attrs = {
+// 					...entry.attrs,
+// 					'aria-hidden': 'true',
+// 				};
+// 				console.log(entry);
+// 			}
+// 		});
+// 	}
+// });
+---
+
+<SidebarSublist sublist={sidebar} />
+<div class='md:sl-hidden'>
+	<MobileMenuFooter {...Astro.props} />
+</div>

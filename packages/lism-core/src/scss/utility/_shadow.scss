@@ -1,0 +1,77 @@
+/* stylelint-disable */
+
+[class*="-bxsh\:"]{
+	// 一方の指定で動くように。
+	--_shSize: 0 0 0;
+	--shSize: 0 0 0;
+	--bxsh: var(--_shSize) var(--shColor), var(--shSize) var(--shColor);
+	box-shadow: var(--bxsh);
+}
+// [class*="-bxsh\:"]{
+// 	--bxsh: var(--shSize-) var(--shColor), var(--shSize) var(--shColor);
+// 	box-shadow: var(--bxsh);
+// }
+[class*="hov:bxsh:"]:hover {
+	// 非ホバー時の --bxsh が カスタム値でも動作するように変数分けて再度指定。
+	--hov--bxsh: var(--_shSize) var(--shColor), var(--shSize) var(--shColor);
+	box-shadow: var(--hov--bxsh);
+}
+// [class*="bxsh\:-"]{
+// 	--bxsh: inset var(--shSize-) var(--shColor), inset var(--shSize) var(--shColor);
+// }
+
+// .-bxsh\: {box-shadow: var(--bxsh);}
+.-bxsh\:0,
+.-hov\:bxsh\:0:hover {box-shadow: none;}
+
+// .-bxsh\:1 {box-shadow: var(--shSize-1), var(--shSize-2);}
+// .-bxsh\:2 {box-shadow: var(--shSize-2), var(--shSize-3);}
+// .-bxsh\:3 {box-shadow: var(--shSize-3), var(--shSize-4);}
+// .-bxsh\:4 {box-shadow: var(--shSize-4), var(--shSize-5);}
+
+// .-bxsh\:2 {box-shadow: var(--shSize-2) var(--shColor), var(--shSize-3) var(--shColor);}
+// .-bxsh\:3 {box-shadow: var(--shSize-3) var(--shColor), var(--shSize-4) var(--shColor);}
+// .-bxsh\:4 {box-shadow: var(--shSize-4) var(--shColor), var(--shSize-5) var(--shColor);}
+
+
+.-bxsh\:1,
+.-hov\:bxsh\:1:hover {
+	--_shSize: var(--shSize--0);
+	--shSize: var(--shSize--1);
+}
+.-bxsh\:2,
+.-hov\:bxsh\:2:hover {
+	--_shSize: var(--shSize--1);
+	--shSize: var(--shSize--2);
+}
+.-bxsh\:3,
+.-hov\:bxsh\:3:hover {
+	--_shSize: var(--shSize--2);
+	--shSize: var(--shSize--3);
+}
+.-bxsh\:4,
+.-hov\:bxsh\:4:hover {
+	--_shSize: var(--shSize--3);
+	--shSize: var(--shSize--4);
+}
+
+.-bxsh\:-1,
+.-hov\:bxsh\:-1:hover {
+	--_shSize: inset var(--shSize--0);
+	--shSize: inset var(--shSize--1);
+}
+.-bxsh\:-2,
+.-hov\:bxsh\:-2:hover {
+	--_shSize: inset var(--shSize--1);
+	--shSize: inset var(--shSize--2);
+}
+.-bxsh\:-3,
+.-hov\:bxsh\:-3:hover {
+	--_shSize: inset var(--shSize--2);
+	--shSize: inset var(--shSize--3);
+}
+.-bxsh\:-4,
+.-hov\:bxsh\:-4:hover {
+	--_shSize: inset var(--shSize--3);
+	--shSize: inset var(--shSize--4);
+}

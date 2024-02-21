@@ -1,0 +1,57 @@
+{
+	"name": "@loos/lism-core",
+	"version": "0.0.4",
+	"description": "",
+	"author": {
+		"name": "ddryo",
+		"url": "https://github.com/ddryo"
+	},
+	"license": "MIT",
+	"keywords": [
+		"framework",
+		"css-framework",
+		"react",
+		"front-end",
+		"design-system"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build && npm run build:css",
+		"build:vite": "vite build",
+		"build:css": "node scss-builder.js",
+		"preview": "vite preview"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"files": [
+		"dist",
+		"src"
+	],
+	"exports": {
+		".": "./dist/index.js",
+		"./*": "./dist/*",
+		"./scss/*": "./src/scss/*",
+		"./src/*": "./src/*",
+		"./raw/*": "./src/components/*",
+		"./lib": "./src/lib/index.js"
+	},
+	"homepage": "https://www.lism.style",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ddryo/lism-test.git",
+		"directory": "packages/lism-core"
+	},
+	"bugs": {
+		"url": "https://github.com/ddryo/lism-test/issues"
+	},
+	"devDependencies": {
+		"@svgr/rollup": "^8.0.1",
+		"vite": "^4.3.9",
+		"vite-plugin-svgr": "^3.2.0",
+		"vite-react-jsx": "^1.1.2"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0"
+	},
+	"sideEffects": false
+}

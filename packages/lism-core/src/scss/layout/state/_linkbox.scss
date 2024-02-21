@@ -1,0 +1,106 @@
+// :where(.is--linkBox) {
+// 	display: block;
+// }
+
+.is--linkBox {
+	display: block;
+	position: relative;
+	color: inherit;
+	pointer-events: auto;
+	cursor: pointer;
+	isolation: isolate; // 内部のz-index順位と外部のz-indexを混同させない。
+
+	// text-decoration: none;
+
+	// :where(&:not(a)) > * {
+	// 	pointer-events: none;
+	// 	position: relative;
+	// 	z-index: 1;
+	// }
+
+	// 入れ子になる a も含めて対象にして初期値セット。hiddenLink と overlayLink 側でz-indexなど一部上書きをして調整。
+	:where(&) a {
+		pointer-events: auto; // カードメディア内のタグラベルをクリックできるようにする場合などに必要
+		position: relative; // isolation: isolate;
+		z-index: 1;
+	}
+}
+
+.e--hiddenLink {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.e--overlayLink {
+	position: static;
+	color: inherit;
+	--link-td: none; // text-decoration: none;
+
+	&::before {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		// display: block;
+		content: '';
+	}
+}
+
+// position relative な要素が上にきてしまう
+.e--hiddenLink ~ .is--frame {
+	pointer-events: none;
+}
+
+/*
+	linkBoxが a 以外の div　などのとき、直下の overlayLink と組み合わせて全体をクリックできるようにしつつ、内部にある他の a はクリックできるようにする
+	1. overlayLinkは標準で z:0 で配置される。
+	2. その他の兄弟要素を relative にして z関係を有効にし、pointer-events: none でクリックを無効化し、背後のリンクをクリックできるようにする。
+		（この時、兄弟要素を z:1 にすることで、overlayLink が最後に来ても動作するようにしているが、先頭配置のみを考慮するなら z指定は不要。）
+	3. 内部のリンク要素は pointer-events: auto でクリックを有効化
+*/
+
+// 詳細度 0 で。
+// :where(.is--linkBox:not(a)) > * {
+// 	pointer-events: none;
+// 	position: relative;
+// 	z-index: 1;
+// }
+
+// .has--overlayLink {
+
+// 	> * {
+// 		// pointer-events: none;
+// 		// position: relative;
+// 		// z-index: 1;
+// 	}
+
+// 	a:not(.e--overlayLink) {
+// 		// pointer-events: auto;
+// 		// position: relative;
+// 		// z-index: 1;
+// 		isolation: isolate;
+// 	}
+// }
+
+// リンクは基本クリックできるように、明示的に指定しておく。
+// .is--linkBox a でより確実にクリッカブルにできるが、先祖セレクタになってしまうのでresetに任せる。
+// a {
+// 	pointer-events: auto;
+// }
+
+// .is--linkBox a {
+// 	pointer-events: auto;
+// }
+
+// .is--linkBox {
+// 	color: inherit;
+// 	text-decoration: none;
+// 	position: relative;
+// 	cursor: pointer;
+// }
+// [data-linkBox='div'] > [data-linkBox='a'] {
+// 	position: absolute;
+// 	z-index: -1;
+// 	visibility: hidden;
+// 	pointer-events: none;
+// }

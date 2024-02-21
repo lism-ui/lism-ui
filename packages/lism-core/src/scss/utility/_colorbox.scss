@@ -1,0 +1,46 @@
+// @supports (color: color-mix(in srgb, #000, #fff)) {
+:root {
+	// --mixcolorspace: srgb
+	--cbox-mixper--bg: 4%;
+	--cbox-mixper--bdc: 15%;
+	--cbox-mixper--txt: 20%;
+	--cbox-mixper--link: 60%;
+	// --cbox-mixbase--bg: var(--base); //transparent;
+	// --cbox-mixbase--c: var(--content);
+}
+
+/* stylelint-disable */
+
+// パレットカラーだけに限定すれば、hsl(var(--color / alpha )) でいけるが...。
+// → ただしその場合は半透明にすることしかできないので、どちらにせよ微妙。
+[class*="-boxcolor:"]{
+	// c,bdc は 変数セットのみ
+	// --c: var(--cbox-c, var(--content));
+	--bdc: var(--cbox-bdc, var(--base-3));
+	color: var(--cbox-c, var(--content));
+	background-color: var(--cbox-bgc, var(--base-2));
+}
+@supports (color: color-mix(in srgb, #000, #fff)) {
+	// --boxcolor 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
+	:where([class*="-boxcolor:"]){
+		--cbox-c: color-mix( in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--txt));
+		--cbox-bgc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bg));
+		--cbox-bdc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bdc));
+		// --cbox-c--link を使いたい時もあるので、--link-c への直接セットはしない。(color-mix未対応のブラウザを考慮）
+		--cbox-c--link: color-mix( in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--link));
+		--link-c: var(--cbox-c--link);
+
+		// --shadowColor:
+		// --code-c: var(--link-c);
+		// --code-bgc: color-mix(in srgb, transparent, currentColor 4%);
+	}
+}
+
+// cbox, boxcolor
+// is--cbox
+// is--colored
+// 特定の値（からー）が必要なので、 state クラスではなく prop ステートか...?
+$colors: "red", "orange", "yellow", "green", "blue", "purple", "pink", "gray", "black", "white";
+@each $c in $colors {
+	.-boxcolor\:#{$c}{--boxcolor: var(--#{$c})}
+}

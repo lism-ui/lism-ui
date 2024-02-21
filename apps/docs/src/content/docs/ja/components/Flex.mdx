@@ -1,0 +1,263 @@
+---
+title: 'Flex'
+description: ...
+---
+import { Flex, Text, Alert } from '@loos/lism-astro';
+import { Reference, MemoBadge, PropBadge } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+コンテンツを**Flexレイアウトで配置する**ためのコンポーネントです。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Flex } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Flex } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Props
+
+
+Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/css-props/#grid--flex) をコンポーネントに直接指定できるようになっています。
+
+|Prop|CSS|
+|---|---|
+|`fxw`|`flex-wrap`|
+|`fxd`|`flex-direction`|
+|`gap`|`gap`|
+|`rowg`|`row-gap`|
+|`colg`|`column-gap`|
+|`ai`|`align-items`|
+|`ac`|`align-content`|
+|`ji`|`justify-items`|
+|`jc`|`justify-content`|
+
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>`<Flex>`</PreviewTitle>
+	<PreviewArea p={40}>
+		<Flex className='has--itemGuide'>
+			<div>Item</div>
+			<div>Item</div>
+			<div>Item</div>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx
+	<Flex>
+		<div>Item</div>
+		<div>Item</div>
+		<div>Item</div>
+	</Flex>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx
+	<div class="l--flex">
+		<div>Item</div>
+		<div>Item</div>
+		<div>Item</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>flexオプションの指定</PreviewTitle>
+	<PreviewArea resize p={40}>
+		<Flex gap={30} fxw='wrap' jc="center" className='has--itemGuide'>
+			<div>Flex Content</div>
+			<div>Flex Content</div>
+			<div>Flex Content</div>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx
+	<Flex fxw='wrap' jc='center' gap={20}>
+		<div>Item</div>
+		<div>Item</div>
+		<div>Item</div>
+	</Flex>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx
+	<div class="l--flex -fxw:w -gap:30 -jc:c">
+		<div>Item</div>
+		<div>Item</div>
+		<div>Item</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+### Flexの要素が横に飛び出してしまう場合の対処法
+
+改行位置がない長い文字列があると、画面幅が狭い時に要素が外側へはみ出してしまうことがあります。
+
+そのような場合は、原因となる要素に`.-ovw:any`（`overflow-wrap: anywhere` のユーティリティクラス）を付けてください。
+
+
+<Preview>
+	<PreviewTitle>
+		画面幅が狭い時に横にはみ出す例(resizeして確認してください)
+	</PreviewTitle>
+	<PreviewArea resize p={40}>
+		<Flex gap={20} className='has--itemGuide'>
+			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
+			<p>AAA</p>
+			<p>BBB</p>
+			<p>CCC</p>
+		</Flex>
+	</PreviewArea>
+	
+	<PreviewCode>
+		```jsx
+		<Flex gap={20}>
+			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
+			<p>AAA</p>
+			<p>BBB</p>
+			<p>CCC</p>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		はみ出す原因となるテキストに `-ovw:any` を適用
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Flex gap={20} className='has--itemGuide'>
+			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
+			<p>AAA</p>
+			<p>BBB</p>
+			<p>CCC</p>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx
+		<Flex gap={20}>
+			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
+			<Text>AAA</Text>
+			<Text>BBB</Text>
+			<Text>CCC</Text>
+		</Flex>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx
+	<div class="l--flex -gap:20">
+		<p className="-ovw:any">LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
+		<p>AAA</p>
+		<p>BBB</p>
+		<p>CCC</p>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+{/* ## Flex Item について
+Flexの子要素に対するFlexオプションを指定する方法は以下のページを参考にしてください。
+
+<Reference>
+[Flex Props - flexitemの指定](/docs/props/flex#flexitemの指定)
+</Reference> */}
+
+
+### ltrでもrtlでも同じ方向で揃える
+
+`variant="ltr"`を指定すると `l--flex--ltr` が付与され、`dir="rtl"`ではdirectionが反転されるようになります。
+
+これにより、`ltr`でも`rtl`でも左から順に要素が並ぶようになります。
+
+<Alert preset="info">
+ただし、`dir="rtl"`をhtmlに指定してrtl言語であることを明示的にしておく必要があります。
+</Alert>
+
+
+<Preview>
+	<PreviewTitle>ltr言語での動作</PreviewTitle>
+	<PreviewArea p={40}>
+		<div dir="ltr">
+			<Flex className='has--itemGuide' variant='ltr' gap={20}>
+				<div>content-1</div>
+				<div>content-2</div>
+				<div>content-3</div>
+			</Flex>
+		</div>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "variant='ltr'"
+	<div dir="ltr">
+		<Flex variant='ltr' gap={20}>
+			<div>content-1</div>
+			<div>content-2</div>
+			<div>content-3</div>
+		</Flex>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx "l--flex--ltr"
+	<div dir="ltr">
+		<div class="l--flex l--flex--ltr">
+			<div>content-1</div>
+			<div>content-2</div>
+			<div>content-3</div>
+		</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>rtl言語での動作</PreviewTitle>
+	<PreviewArea p={40}>
+		<div dir="rtl">
+			<Flex className='has--itemGuide' variant='ltr' gap={20}>
+				<div>المحتوى-1</div>
+				<div>المحتوى-2</div>
+				<div>المحتوى-3</div>
+			</Flex>
+		</div>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "variant='ltr'"
+	<div dir="rtl">
+		<Flex variant='ltr' gap={20}>
+			<div>المحتوى-1</div>
+			<div>المحتوى-2</div>
+			<div>المحتوى-3</div>
+		</Flex>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx "l--flex--ltr"
+	<div dir="rtl">
+		<div class="l--flex l--flex--ltr">
+			<div>المحتوى-1</div>
+			<div>المحتوى-2</div>
+			<div>المحتوى-3</div>
+		</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>

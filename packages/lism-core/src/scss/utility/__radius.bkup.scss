@@ -1,0 +1,27 @@
+/* stylelint-disable */
+
+
+// bdrs は変数管理した方が便利
+[class*="-bdrs:"]{
+	border-radius: var(--bdrs);
+}
+.-bdrs\:0{--bdrs: 0;}
+// .-bdrs\:1{--bdrs: 1px;}
+.-bdrs\:xs{--bdrs: var(--radius--xs)}
+.-bdrs\:s{--bdrs: var(--radius--s)}
+.-bdrs\:m{--bdrs: var(--radius--m)}
+.-bdrs\:l{--bdrs: var(--radius--l)}
+.-bdrs\:xl{--bdrs: var(--radius--xl)}
+.-bdrs\:full{--bdrs: var(--radius--full)}
+
+// .-bdrs\:l→ leftと勘違いしていまいそう。（bdrsは left 単体はないよ）
+
+// .-bdtlrs\:0 {border-top-left-radius: 0;}
+// .-bdtrrs\:0 {border-top-right-radius: 0;}
+// .-bdbrrs\:0 {border-bottom-right-radius: 0;}
+// .-bdblrs\:0 {border-bottom-left-radius: 0;}
+
+.-bdssrs\:0 {border-start-start-radius: 0;}
+.-bdsers\:0 {border-start-end-radius: 0;}
+.-bdeers\:0 {border-end-end-radius: 0;}
+.-bdesrs\:0 {border-end-start-radius: 0;}

@@ -1,0 +1,17 @@
+---
+import { LismProps } from '../types';
+export interface Props extends LismProps {
+	label: string | number;
+}
+const { label = '' } = Astro.props;
+---
+
+<lism-placeholder-tabitem>
+	<lism-placeholder-tablabel>
+		{Astro.slots.has('label') && <slot name='label' />}
+		{!Astro.slots.has('label') && label}
+	</lism-placeholder-tablabel>
+	<lism-placeholder-tabpanel>
+		<slot />
+	</lism-placeholder-tabpanel>
+</lism-placeholder-tabitem>

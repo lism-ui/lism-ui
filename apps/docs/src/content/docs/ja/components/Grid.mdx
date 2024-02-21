@@ -1,0 +1,490 @@
+---
+title: 'Grid'
+description: ...
+---
+
+import { Alert, Grid, GridItem, Center } from '@loos/lism-core';
+import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+
+
+コンテンツを**Gridレイアウトで配置する**ためのコンポーネントです。  
+[`<GridItem>`](/ja/components/griditem/)と組み合わせて使うとより便利です。
+
+{/* `<Grid>` は `<Box>`に[`isGrid`](/docs/layout-system/is-grid)を指定した状態のコンポーネントで、`<Box isGrid>`と同等です。 */}
+
+
+## Props
+
+| プロパティ | 説明 | デフォルト値 |
+|---|---|---|
+| `variant`<br/><PropBadge type="attr">`.l--grid--{variant}`</PropBadge> | コンポーネントのバリエーションを指定できます。 | |
+| `ratio` | `1fr 1fr`などの比率グリッドを`1:1`のようにして指定できます。<br/>（`gtc`として扱われます） | |
+| `itemMinW`<br/><PropBadge type="cssvar">`--item--minW`</PropBadge> | （`variant='tile'`の時のみ有効）<br/>子要素の最小幅を指定できます。 | `16rem` |
+
+
+
+また、Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/props/css-props/#grid--flex) をコンポーネントに直接指定できるようになっています。
+
+|Prop|CSS|
+|---|---|
+|`gd`|`grid`|
+|`gt`|`grid-template`|
+|`gta`|`grid-template-gta`|
+|`gtc`|`grid-template-gtc`|
+|`gtr`|`grid-template-rows`|
+
+
+このほか、`gap`, `ai`(`align-items`), `ji`(`justify-items`)など。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Grid, GridItem } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Grid, GridItem } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gt='80px / 1fr 2fr 1fr' gap='10' className="has--itemGuide">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Grid gt='80px / 1fr 2fr 1fr' gap='10'>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</Grid>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="l--grid -gap:10" style="--gt:80px / 1fr 2fr 1fr">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>GridItemの活用</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc='repeat(4, 1fr)' gap='10' className="has--itemGuide">
+			<GridItem>1</GridItem>
+			<GridItem gc='span 2'>2</GridItem>
+			<GridItem>3</GridItem>
+			<GridItem gc='1 / -1'>4</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Grid gtc='repeat(4, 1fr)' gap='10'>
+			<GridItem>1</GridItem>
+			<GridItem gc='span 2'>2</GridItem>
+			<GridItem>3</GridItem>
+			<GridItem gc='1 / -1'>4</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="l--grid -gap:10" style="--gt:80px / 1fr 2fr 1fr">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+### 注意点
+
+Grid(`.l--grid`)は、それ自体が`--gt`, `--gtc`, `--gtr`を変数として持っています。
+
+```css
+.l--grid {
+	--gtc: none;
+	--gtr: none;
+	--gt: var(--gtr) / var(--gtc);
+	grid-template: var(--gt);
+	display: grid;
+}
+```
+
+変数だけでもレイアウトの調整ができるようになっていますが、`--gt`を指定すると`--gtc`, `--gtr`を上書きする形になってしまうので注意が必要です。
+
+<Alert preset='alert'>
+基本的には、`--gt`を使うときは`--gtc`, `--gtr`は使わないでください。
+</Alert>
+
+
+
+どうしても両方指定したい場合は、`.-gtc:`、`-gtr:`、`-gta:`クラスも併用してください。
+
+
+<Alert preset='check'>
+コンポーネントでは、`gt`、`gtc`、`gtr`は基本的には変数のみが出力され、必要な場合はProp Utilityクラスも自動で出力されます。
+</Alert>
+
+
+
+### 比率指定グリッド
+
+{/* `ratio="N:N[...:N]"`形式で指定すると、`gtc="Nfr Nfr[... Nfr]"`に変換します。
+
+```jsx
+<Grid ratio='1:2'>...</Grid>
+// ↓
+// ↓ 内部的には以下のように処理されます。
+// ↓
+<Grid gtc='1fr 2fr'>...</Grid>
+``` */}
+
+
+<Preview>
+	<PreviewTitle>
+		1:2の比率でコンテンツを表示
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc='1fr 2fr' className='has--itemGuide'>
+			<GridItem bgc='blue:10%'>1</GridItem>
+			<GridItem bgc='purple:10%'>2</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid gtc='1fr 2fr'>
+			<GridItem bgc='blue:10%'>1</GridItem>
+			<GridItem bgc='purple:10%'>2</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+<br />
+
+<Preview>
+	<PreviewTitle>
+		1:1:1の比率グリッドで 1:2, 2:1 で順番にコンテンツを表示
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc='1fr 1fr 1fr' gap={10}>
+			<GridItem px={20} bgc='base-2'>1</GridItem>
+			<GridItem px={20} bgc='base-3' gc='span2'>2</GridItem>
+			<GridItem px={20} bgc='base-3' gc='span2'>3</GridItem>
+			<GridItem px={20} bgc='base-2'>4</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "gtc='1fr 1fr 1fr'" "gc='span2'"
+		<Grid gtc='1fr 1fr 1fr' gap={10}>
+			<GridItem px={20} bgc='base-2'>1</GridItem>
+			<GridItem px={20} bgc='base-3' gc='span2'>2</GridItem>
+			<GridItem px={20} bgc='base-3' gc='span2'>3</GridItem>
+			<GridItem px={20} bgc='base-2'>4</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* `ratio`のブレイクポイント指定は`gtc`のブレイクポイント指定に変換されます。 */}
+
+<Preview>
+	<PreviewTitle>
+		1:2 → `@md` で 1:2:1:2 で比率を切り替える
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc={['1fr 2fr', null, '1fr 2fr 1fr 2fr']} gap={10}>
+			<GridItem bgc='base-2'>1</GridItem>
+			<GridItem bgc='base-3'>2</GridItem>
+			<GridItem bgc='base-2'>3</GridItem>
+			<GridItem bgc='base-3'>4</GridItem>
+			<GridItem bgc='base-2'>5</GridItem>
+			<GridItem bgc='base-3'>6</GridItem>
+			<GridItem bgc='base-2'>7</GridItem>
+			<GridItem bgc='base-3'>8</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid gtc={['1fr 2fr', null, '1fr 2fr 1fr 2fr']} gap={10}>
+			<GridItem bgc='base-2'>1</GridItem>
+			<GridItem bgc='base-3'>2</GridItem>
+			<GridItem bgc='base-2'>3</GridItem>
+			<GridItem bgc='base-3'>4</GridItem>
+			<GridItem bgc='base-2'>5</GridItem>
+			<GridItem bgc='base-3'>6</GridItem>
+			<GridItem bgc='base-2'>7</GridItem>
+			<GridItem bgc='base-3'>8</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+## Variants
+
+### `variant='tile'`
+
+**子要素が指定した幅より小さくならないように自動で折り返しされる**タイルグリッドを作成します。
+
+<Alert preset="info">
+カラムの折返しタイミングがブレイクポイントではなくコンテンツサイズに依存します。
+</Alert>
+
+ただし、カラム数は**1列ずつしか変わらない**（ 4列→2列 とかはできず、4列→3列→2列になる ) ので、カラム数を具体的に指定したい場合は [`<Columns>`](/ja/components/columns) を使ってください。
+
+<Preview>
+	<PreviewTitle>
+		デフォルト (`itemMinW`=`16rem`)
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid variant='tile' className="has--itemGuide">
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid variant='tile'>
+			...
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		子要素の最低限維持する幅を`10rem`に
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid variant="tile" itemMinW="10rem" className="has--itemGuide">
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {1}
+		<Grid variant="tile" itemMinW="10rem">
+			...
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### `variant='3col'`
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid variant='3col'>
+			<GridItem p='box:s' bgc='base-2'>L</GridItem>
+			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
+			<GridItem p='box:s' bgc='base-2'>R</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {1}
+		<Grid variant='3col'>
+			<GridItem p='box:s' bgc='base-2'>L</GridItem>
+			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
+			<GridItem p='box:s' bgc='base-2'>R</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+### `variant='3row'`
+
+{/* start,center,endで area名もつけるか,単純にgtc, gtrで指定するか。 */}
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid variant='3row' minH='15rem'>
+			<GridItem p='box:s' bgc='base-2'>L</GridItem>
+			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
+			<GridItem p='box:s' bgc='base-2'>R</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {1}
+		<Grid variant='3row' minH='15rem'>
+			<GridItem p='box:s' bgc='base-2'>L</GridItem>
+			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
+			<GridItem p='box:s' bgc='base-2'>R</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+## その他の例 (memo)
+
+<Preview>
+	<PreviewTitle>ブレイクポイントでエリア位置を切り替える</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid
+			gt={[
+				`'main main'
+				 'left right' / 1fr 1fr`,
+				null,
+				`'left main right'
+				 'left main right' / 8em 1fr 8em`
+			]}
+			gap={20}
+		>
+			<GridItem ga='left' p='box:s' bgc='base-3'>Left</GridItem>
+			<GridItem ga='main' p='box:s' bgc='base-2'>
+				<DammyText length='l' />
+			</GridItem>
+			<GridItem ga='right' p='box:s' bgc='base-3'>Right</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Grid
+			gt={[
+				`'main main'
+				 'left right' / 1fr 1fr`,
+				null,
+				`'left main right'
+				 'left main right' / 8em 1fr 8em`
+			]}
+			gap={20}
+		>
+			<GridItem ga='left' p='box:s' bgc='base-3'>Left</GridItem>
+			<GridItem ga='main' p='box:s' bgc='base-2'><DammyText length='l' /></GridItem>
+			<GridItem ga='right' p='box:s' bgc='base-3'>Right</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div
+			class="l--grid -gt@md -gap:20"
+			style="--gt:'main main' 'left right' / 1fr 1fr;--gt--md:'left main right' 'left main right' / 8em 1fr 8em"
+		>
+			<div class="-p:box:s -bgc:base-3 -ga:" style="--ga:left">Left</div>
+			<div class="-p:box:s -bgc:base-2 -ga:" style="--ga:main">
+				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident libero, eum nulla sunt, porro sed dicta. Impedit ullam eveniet obcaecati minima.</p>
+			</div>
+			<div class="-p:box:s -bgc:base-3 -ga:" style="--ga:right">Right</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+{/* <PreviewTitle>gtではなくgta,gtcで書くと次のようになります</PreviewTitle>
+```jsx
+<Grid
+	gta={[
+		`'main main'
+			'left right'`,
+		null,
+		`'left main right'
+			'left main right'`
+	]}
+	gtc={[`1fr 1fr`, null, `8em 1fr 8em` ]}
+>...</Grid>
+``` */}
+
+
+
+{/* ### repeat */}
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc='1fr auto 1fr'>
+			<GridItem layout={Center} p={20} bgc='base-2'>item1</GridItem>
+			<GridItem layout={Center} p={20} bgc='base-2'>item2</GridItem>
+			<GridItem layout={Center} p={20} bgc='base-3'>item3</GridItem>
+			<GridItem layout={Center} p={20} bgc='base-3'>item4</GridItem>
+			<GridItem layout={Center} p={20} bgc='base-2'>item5</GridItem>
+			<GridItem layout={Center} p={20} bgc='base-2'>item6</GridItem>
+			<GridItem layout={Center} p={20} bgc='blue' gc='2' gr='1 / span 3'>center</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Grid gtc='1fr auto 1fr'>
+		<GridItem layout={Center} p={20} bgc='base-2'>item1</GridItem>
+		<GridItem layout={Center} p={20} bgc='base-2'>item2</GridItem>
+		<GridItem layout={Center} p={20} bgc='base-3'>item3</GridItem>
+		<GridItem layout={Center} p={20} bgc='base-3'>item4</GridItem>
+		<GridItem layout={Center} p={20} bgc='base-2'>item5</GridItem>
+		<GridItem layout={Center} p={20} bgc='base-2'>item6</GridItem>
+		<GridItem layout={Center} p={20} bgc='blue' gc='2' gr='1 / span 3'>center</GridItem>
+	</Grid>
+	```
+	</PreviewCode>
+</Preview>
+
+{/* --repeat-c,repeat-c */}
+{/* RepeatGrid cols={3} rows={3} : 数字なら サイズは 1fr */}
+{/* RepeatGrid cols='3,40px' rows={3}  */}
+
+<Preview>
+	<PreviewTitle>1列 → 2列 → 幅200pxで3列かつ、中央よせ</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap={20} className='has--itemGuide'>
+			<DammyText/>
+			<DammyText/>
+			<DammyText/>
+			<DammyText/>
+			<DammyText/>
+			<DammyText/>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap={20}>
+		...
+	</Grid>
+	```
+	</PreviewCode>
+</Preview>

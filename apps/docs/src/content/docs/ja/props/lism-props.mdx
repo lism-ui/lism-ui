@@ -1,0 +1,168 @@
+---
+title: 'Lism Props'
+description: ...
+sidebar:
+  order: 1
+---
+
+import { Box, Flex, Alert, Note } from "@loos/lism-astro";
+import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+Lismが配布しているReactやAstro用のコンポーネントでは、Lism CSSの設計に合わせて、専用のプロパティ("Lism Props" と呼びます)が受け取れるようになっています。
+
+
+|種別||
+|---|---|
+|State Props|[Design State](/ja/css/design-state/) に分類されるクラスを出力するためのプロパティ|
+|CSS Props|[Prop Utilities](/ja/css/prop-utility/) に分類されるクラスを出力するためのプロパティ|
+
+
+## State Props
+
+たとえば、`is--flow`クラスに対応する State Propsは`isFlow`です。
+
+```jsx
+<Box isFlow>
+	<div>contents...</div>
+	<div>contents...</div>
+</Box>
+```
+
+[Design State](/ja/css/design-state/) 一覧ページにそれぞれ対応する State Props の使用例も記載していますので、詳しくはそちらを参照してください。
+
+
+## CSS Props
+
+[Prop Utilities](/ja/css/prop-utility/) に分類されるユーティリティクラスなどを簡単に指定できるようになっています。
+
+一部のCSSプロパティはユーティリティクラスが用意されていなくても指定できるようになっており、インラインスタイルとして出力することもできます。
+
+詳しくは [CSS Props](/ja/props/css-props/) の一覧ページを参照してください。
+
+## getLismProps()
+
+Lismコンポーネント以外にもLism Propsを活用するための関数、`getLismProps()`も用意されています。 
+
+
+例えば、下記 ①、② はそれぞれ同じ出力になります。
+
+```jsx
+// ①
+<Box p='20' bgc='base-2' fz='xl'>text</Box>
+
+// ②
+<div {...getLismProps({className:'l--box', p:'20', fz:'xl'})}>text</div>
+```
+
+
+引数に渡したオブジェクトを解析し、Lism Props として処理できるものを`className`と`style`に変換して返します。
+
+
+- 引数:  Lism Props として解析したいプロパティをオブジェクトで指定します。
+- 返り値: `className`, `style` を含むオブジェクトです。Lismで処理できないPropsがあった場合はそのまま返ってきます。
+
+下記のようにして使用できます。
+
+<PreviewTitle>例</PreviewTitle>
+```jsx
+import { getLismProps } from '@loos/lism-core/lib';
+
+const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
+```
+
+<PreviewTitle>返り値</PreviewTitle>
+```js
+{
+	className: 'foo -fz:l -p:30 -p@sm',
+	style: {'--p--sm':'var(--s--40)'},
+}
+```
+
+{/* // const { className, style, ...otherProps} = getLismProps(exampleProps); */}
+
+<Note heading='注意点' preset='warning' isFlow='s'>
+	`getLismProps`をスプレッド構文で展開する際、classNameとstyleが含まれることに注意してください。  
+	例えば、次のようにclassNameの指定を分離すると、classNameが上書きされてしまいます。
+
+	<PreviewTitle>NG</PreviewTitle>
+	```jsx
+	<div className='foo' {...getLismProps({p:'20', fz:'xl'})}>text</div>
+	```
+</Note>
+
+
+## Core Component Props
+
+その他、Lismコンポーネントの挙動を調整するために使用できるプロパティがあります。
+
+### as
+
+Lismコンポーネントを別のコンポーネントとして展開することができます。
+
+他の Lism Props を解析して class, style を生成し、その他のPropsと合わせて`as`で指定したコンポーネントに渡します。
+
+Lismコンポーネント以外に対しても Lism Props を使いたい時に活用してください。
+
+<Preview>
+	<PreviewTitle>例、Lismの`<Media>`コンポーネントをNext.jsの`<Image>`で展開する</PreviewTitle>
+	<PreviewCode>
+```jsx
+import Image from 'next/image';
+
+<Media as={Image} src='...' bxsh='2' bdrs='3' />
+```
+	</PreviewCode>
+</Preview>
+
+
+
+### passProps
+
+`as`で指定したコンポーネント側で確実に受け取ってほしいPropsを指定できます。
+
+`as`で指定したコンポーネントが受け取れるPropsと、Lism Props の名前が被っていた場合、Lism側での処理が優先されるので、それを回避する際に活用してください。
+
+たとえば、`<Hoge>` というコンポーネントが`size`というプロパティを受け取れる時、以下のようにすると Lism Props の`size`として優先的に処理されてしまいます。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewCode>
+```jsx
+<Lism as={Hoge} size='...' p='em10' fz='l'>...</Lism>
+```
+	</PreviewCode>
+</Preview>
+
+Hoge コンポーネント側で`size`を受け取るためには、以下のように`passProps`で指定する必要があります。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewCode>
+```jsx
+<Lism as={Hoge} passProps={{size:'...'}} p='em10' fz='l'>...</Lism>
+```
+	</PreviewCode>
+</Preview>
+
+
+### tag
+
+Lism Componentが出力するHTMLのタグを指定できます。
+
+
+<Preview>
+	<PreviewTitle>例: `<Text>`を`span`で出力する</PreviewTitle>
+	<PreviewCode>
+```jsx
+<Text tag='span' fz='l'>...</Text>
+```
+	</PreviewCode>
+</Preview>
+
+
+### variant
+
+モジュールクラスのバリエーションを指定できます。
+
+`l--box--{variant}` というようなクラスが出力できます。

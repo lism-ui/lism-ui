@@ -1,0 +1,127 @@
+/* 参考
+	ress https://github.com/filipelinhares/ress/blob/master/ress.css
+	https://elad2412.github.io/the-new-css-reset/
+*/
+
+/* 方針
+	reset.cssの段階では、できるだけブラウザの標準スタイルに従う感じで。
+	→ 主要なタグは、reset.css とは別に トークンなどを使って初期スタイルをセットする。
+
+	- box-sizing: border-box; にセット
+	- margin はすべて 0
+	- padding は そのまま
+*/
+
+// @layer lism-reset {
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/* Reset `margin` of all elements */
+* {
+	margin: 0;
+	/* padding: 0; */
+}
+
+html {
+	-moz-tab-size: 4;
+	tab-size: 4;
+
+	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
+	text-size-adjust: none;
+
+	/*  テキストのレンダリングを改善 → font によっては薄くなりすぎるのでナシ */
+	/* -webkit-font-smoothing: antialiased; */
+}
+
+:where(svg, img) {
+	/* 親要素をはみ出さないように */
+	max-inline-size: 100%;
+
+	/* 隙間ができるのを防ぐ。( インラインな img, svg を考慮し、 display はいじらない。) */
+	vertical-align: middle;
+}
+
+/* かつ、画像はアスペクト比を保持。 (svg に適用してしまうと width, height属性が効かない） */
+img {
+	block-size: auto;
+}
+
+/* img 以外のメディア系も飛び出さないように。 ( audio, embed, object にも必要か...? ) */
+iframe,
+audio,
+picture,
+video {
+	display: block;
+
+	// max-width: 100%;
+	max-inline-size: 100%;
+}
+
+iframe {
+	border: none;
+}
+
+/* ルビのサイズ統一 */
+rt {
+	font-size: 50%;
+}
+
+/* テキストのオーバーフローを回避 */
+:is(p, h1, h2, h3, h4, h5, h6) {
+	overflow-wrap: break-word;
+}
+
+/* フォーム要素のフォントとカラーをリセット */
+:is(input, button, textarea, select) {
+	font: inherit;
+	color: inherit;
+}
+
+/* テキストエリアの水平リサイズを無効に */
+textarea {
+	resize: vertical;
+}
+
+/* Remove the inheritance of text transform in Edge, Firefox, and IE.  */
+button,
+select {
+	text-transform: none;
+}
+
+/* rangeコントロールの位置調整　→ flexで並べて使えばよい */
+
+/* [type='range'] {vertical-align: middle;} */
+
+/*
+	カーソル pointer
+*/
+/* pointer */
+button,
+label,
+select,
+summary,
+// [type='button'],
+// [type='reset'],
+// [type='submit'],
+// :where([role='option']),
+:where([type='radio'], [type='checkbox'], [role='button'], [aria-controls]) {
+	cursor: pointer;
+}
+
+/* disabled をよりわかりやすく */
+:disabled {
+	cursor: not-allowed;
+}
+
+/* Specify the progress cursor of updating elements */
+[aria-busy='true'] {
+	cursor: progress;
+}
+
+/* fill指定のない svg にテキストカラーを継承させる */
+svg:where(:not([fill])) {
+	fill: currentcolor;
+}

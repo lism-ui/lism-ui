@@ -1,0 +1,93 @@
+@use '../query' as query;
+
+// gt, gta, gtc, gtr は、l--grid では変数で受け取れる
+// gt, gtc を 併記すると gtcが適用されないので注意が必要。→ あくまで内部的なものとしてコンポーネントで指定されたら個別クラスをつける？
+.l--grid {
+	// 初期値セット
+	// --gta: none;
+	--gtc: none;
+	--gtr: none;
+	--gt: var(--gtr) / var(--gtc);
+
+	display: grid;
+	grid-template: var(--gt);
+
+	// gta などは、gd,gtと併記した時に上書きできるようにしたい。
+	// grid-template-areas: var(--gta);
+	// grid-template-columns: var(--gtc);
+	// grid-template-rows: var(--gtr);
+	// gap: var(--gap);
+}
+
+.l--grid--3col {
+	--gtc: auto 1fr auto;
+}
+.l--grid--3row {
+	--gtr: auto 1fr auto;
+}
+// .l--grid--gt {
+// 	--gt: none;
+// 	display: grid;
+// 	grid-template: var(--gt);
+// }
+
+// --------------------
+// 比率固定グリッド
+// --------------------
+.l--grid--ratio {
+	--gtc: 1fr 1fr; // 初期値
+
+	// display: grid;
+	// grid-template-columns: var(--gtc);
+}
+
+// --------------------
+// TileGrid
+// --------------------
+.l--grid--tile {
+	// display: grid;
+	--item--minW: var(--size--item); // var(--contentSize--xs)
+
+	// auto-fill or auto-fit : 親の幅に対してアイテムが少ない時に、引き伸ばすか、伸ばさないか
+	--gtc: repeat(auto-fit, minmax(min(var(--item--minW), 100%), 1fr));
+}
+
+// --------------------
+// SideSwap
+// --------------------
+// 一応 area名は . ではなく . で、子要素から指定できるようにしている。
+.l--grid--swap {
+	--sideW: auto;
+	--gt: '.' 'side' / auto;
+
+	// top指定がある時
+	&:where([data-side~='top']) {
+		--gt: 'side' '.' / auto;
+	}
+
+	// 横並び (horizontal) 時のプロパティ
+	--gt--hz: 'side .' / var(--sideW) 1fr;
+
+	&:where([data-side~='end']) {
+		--gt--hz: '. side' / 1fr var(--sideW);
+	}
+}
+
+.l--grid--swap:where(.-gt\@sm) {
+	--gt--sm: var(--gt--hz);
+}
+.l--grid--swap:where(.-gt\@md) {
+	--gt--md: var(--gt--hz);
+}
+
+// .l--grid--swap[data-bp='sm'] {
+// 	@include query.bp-up('sm') {
+// 		--gt: var(--gt--hz);
+// 	}
+// }
+
+// .l--grid--swap[data-bp='md'] {
+// 	@include query.bp-up('md') {
+// 		--gt: var(--gt--hz);
+// 	}
+// }

@@ -1,0 +1,13 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { getGridProps } from '@loos/lism-core/raw/Grid/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+let props = Astro.props;
+---
+
+<Lism {...getGridProps(props)}>
+	<slot />
+</Lism>

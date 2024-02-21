@@ -1,0 +1,12 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import getProps from '@loos/lism-core/raw/Delimiter/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+---
+
+<Lism skipState tag='span' {...getProps(props)}><slot /></Lism>

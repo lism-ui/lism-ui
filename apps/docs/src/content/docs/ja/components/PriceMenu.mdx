@@ -1,0 +1,44 @@
+---
+title: 'PriceMenu'
+description: ...
+---
+
+import { Stack, Grid, Text, Decorator, Divider } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+
+
+<Preview>
+	<PreviewTitle>コード</PreviewTitle>
+	<PreviewArea resize p={30} nogrid>
+		<Stack className='b--priceMenu' gap={30} fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>とても美味しいトマトソースのスパゲッティ</Text>
+				{/* <Decorator h='1px' minW='1.5em' bd='block-start' bdc='divider' /> */}
+				<Divider />
+				<Text whs='nowrap'>1,000円</Text>
+			</Grid>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>美味しいドリンク</Text>
+				<Divider />
+				<Text whs='nowrap'>500円</Text>
+			</Grid>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Stack className='b--priceMenu' gap={30} fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>とても美味しいトマトソースのスパゲッティ</Text>
+				<Divider />
+				<Text whs='nowrap'>1,000円</Text>
+			</Grid>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>美味しいドリンク</Text>
+				<Divider />
+				<Text whs='nowrap'>500円</Text>
+			</Grid>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>

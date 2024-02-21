@@ -1,0 +1,49 @@
+---
+title: ガイドの例
+description: A guide in my new Starlight docs site.
+---
+
+Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
+Writing a good guide requires thinking about what your users are trying to do.
+
+## Further reading
+
+- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+
+
+aaa`<Joge>`aa
+
+```jsx {5}
+<LinkBox
+	href="#link"
+	bgc='base-2'
+	p="box"
+	hover={{ bgc: 'main', c:'white'}}
+>...</LinkBox>
+```
+
+
+```scss {5}
+.-hov\:get\:show {
+	opacity: 0;
+	visibility: hidden;
+
+	.-hov\:pass:hover & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+.-hov\:get\:hide {
+	opacity: calc(1 - 1 * var(--is-hover, 0));
+}
+.-hov\:get\:zoom {
+	scale: calc(1 + 0.1 * var(--is-hover, 0));
+}
+
+```
+
+<div class="not-content">
+aa`<Joge>`aa
+	<p>Starlightのデフォルトのコンテンツスタイルに影響を受けません。</p>
+	<p>Starlightのデフォルトのコンテンツスタイルに影響を受けません。</p>
+</div>

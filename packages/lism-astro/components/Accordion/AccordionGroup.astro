@@ -1,0 +1,10 @@
+---
+import { LismProps } from '../types';
+import { Stack } from '../Flex';
+import { getAccGroupProps } from '@loos/lism-core/raw/Accordion/getProps';
+
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Stack {...getAccGroupProps(props)}><slot /></Stack>

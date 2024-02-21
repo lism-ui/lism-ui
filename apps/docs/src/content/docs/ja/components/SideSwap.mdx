@@ -1,0 +1,214 @@
+---
+title: 'SideSwap'
+description: ...
+---
+import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { SideSwap, GridItem, Alert, Note } from '@loos/lism-astro';
+
+
+**片方の横幅を固定し、もう一方の要素が伸縮する**ような 2カラムレイアウト を作成します。
+
+かつ、**指定したブレイクポイントで** 1カラム に切り替わり、1カラム時に固定幅のサイド要素が上側・下側のどちらに配置されるかも指定できるコンポーネントです。
+
+<Note preset="note">
+<Fragment slot="heading"><a href="/ja/components/sideflex">{`<SideFlex>`}</a>と異なる点</Fragment>
+- 折返しタイミングをコンテナクエリで制御します。
+{/* - 縦並びになった時に、サイド要素が上に来るか下にくるかをコントロールできます。 */}
+</Note>
+
+
+## Props
+
+| プロパティ | 説明 | デフォルト値 / 有効な値 |
+|---|---|---|
+| `side` <PropBadge type="attr">`data-side`</PropBadge>| Side要素の位置 |`end bottom` / `start`, `end`, `top`, `bottom`|
+| `sideW` <PropBadge type="cssvar">`--sideW`</PropBadge> | Side要素の横幅 | `auto` |
+| `bp` <PropBadge type="attr">`data-bp`</PropBadge>| レイアウト切り替えポイント| `sm` / `sm`または`md` |
+
+
+その他、[`<Grid>`で使えるprops](/ja/components/grid#props)が使えます。
+
+{/* `none`や`modal` */}
+
+{/* ## 使用時の注意点 */}
+
+
+{/* ( memo → ブロック化する時は、`isSide`付きの`<GridItem>`になっている専用の子ブロックを用意する。) */}
+{/* Memo: grid-areaで場所を指定する理由: → DOM自体の順番を自由にできるため。（大きいサイドバー要素を左に固定するけどDOMの順番はあとに回したい、ということがある。） */}
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React,Astro'>
+```jsx
+import { SideSwap } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { SideSwap } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Alert preset="info">
+子要素の1つに `grid-area:side`(`.-ga:side`) の指定が必須です.
+</Alert>
+{/* サイド要素に対して`<GridItem ga='side'>`を使うか、`gridItem={{ga:"side"}}`を使用してください。 */}
+
+{/* side要素には、`.is--side`クラスの指定が必須です。  
+（`<GridItem>` に `isSide` を指定すると、`.is--side` が付与されます。） */}
+
+
+<Preview>
+	<PreviewTitle>
+		初期値で利用
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideSwap>
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side' bd>SideItem</GridItem>
+		</SideSwap>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React,Astro'>
+		```jsx "side=" "ga='side'"
+		<SideSwap>
+			<GridItem>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "data-side=" "-ga:side" "-gt@sm"
+		<div class="l--grid l--grid--swap -gt@sm" data-side="end bottom">
+			<div>Fluid area</div>
+			<div class="-ga:side">SideItem</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		`side='start bottom'`, `sideW=12em`, `bp=md` を指定
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideSwap side='start bottom' sideW='16em' bp='md' gap={20}>
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side' bd>SideItem</GridItem>
+		</SideSwap>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React,Astro'>
+		```jsx
+		<SideSwap side='start bottom' sideW='16em' bp='md' gap={20}>
+			<GridItem>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--grid l--grid--swap -gt@md -gap:20" data-side="start bottom" style="--sideW:16em">
+			<div>Fluid area</div>
+			<div class="-ga:side">SideItem</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### `side`指定パターン一覧
+
+export const SideSwapDemos = () => {
+	return (
+		<>
+			{['start top', 'start bottom', 'end top', 'end bottom'].map((datSide) => (
+				<Preview key={datSide}>
+					<PreviewTitle><code>side="{datSide}"</code></PreviewTitle>
+					<PreviewArea resize p={20}>
+						<SideSwap side={datSide} gap={20}>
+							<GridItem bd='guide'>Fluid area</GridItem>
+							<GridItem ga='side' bd>SideItem</GridItem>
+						</SideSwap>
+					</PreviewArea>
+				</Preview>
+			))}
+		</>
+	);
+}
+
+<SideSwapDemos />
+
+
+### 並び切り替えポイントの指定
+
+`bp="{bpName}"`で指定できます。（デフォルトは`sm`.）
+
+<Alert preset="note">
+`sm`, `md`をデフォルトでサポートしていますが、`lg`などを指定することで`data-bp="lg"`を出力させることができるので、CSSを追加していただければお好きなポイントで切り替えるようにカスタマイズすることもできます。
+</Alert>
+
+<Preview>
+	<PreviewTitle>`@sm`(デフォルト)</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideSwap side='end top' bp='sm'>
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side' bd>SideItem</GridItem>
+		</SideSwap>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<SideSwap side='end top' bp='sm'>
+			<GridItem>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`@md`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideSwap side='end top' bp='md'>
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side' bd>SideItem</GridItem>
+		</SideSwap>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<SideSwap side='end top' bp='md'>
+			<GridItem>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* <Preview>
+	<PreviewTitle>`@lg`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<SideSwap side="end top" bp="lg">
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<SideSwap side="end top" bp="lg">
+			<GridItem bd='guide'>Fluid area</GridItem>
+			<GridItem ga='side'>SideItem</GridItem>
+		</SideSwap>
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+{/* ### カスタムブレイクポイントの指定
+コンポーネントライブラリでどう実装するか検討中... */}

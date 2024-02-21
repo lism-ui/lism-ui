@@ -1,0 +1,55 @@
+---
+title: 'Box'
+description: ...
+---
+
+import { Box } from '@loos/lism-astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+// import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+
+
+コンテンツをグループ化するためのシンプルなコンポーネントです。
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Box } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Box } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>Boxの例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Box isFlow='s' p='box' bgc='base-2' bxsh='1' bdrs='s'>
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit fugit, numquamdicta repellat ipsa autem eos iure ducimus.</p>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Box isFlow='s' p='box' bgc='base-2' bxsh='1' bdrs='s'>
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit fugit, numquamdicta repellat ipsa autem eos iure ducimus.</p>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="l--box is--flow:s -p:box -bgc:base-2 -bxsh:1 -bdrs:s">
+			<h3>Heading</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit fugit, numquamdicta repellat ipsa autem eos iure ducimus.</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>

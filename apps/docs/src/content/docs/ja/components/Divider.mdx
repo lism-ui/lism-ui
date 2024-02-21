@@ -1,0 +1,178 @@
+---
+title: 'Divider'
+description: ...
+---
+
+import { Divider, Flex, Container, Stack, Tabs, TabItem } from '@loos/lism-core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+{/* 境界線 */}
+
+## Props
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Divider } from '@loos/lism-core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Divider } from '@loos/lism-astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Stack gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+			<Divider />
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3}
+		<Stack gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+			<Divider />
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+		</Stack>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {3-5}
+		<div class="l--stack -gap:20">
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+			<div class="c--divider l--flex -ai:c">
+				<div class="e--deco -fx:1" aria-hidden="true"></div>
+			</div>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>labelあり</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Stack gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+			<Divider label='Label' />
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3} "label="
+		<Stack gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+			<Divider label='Label' />
+			<p class='-bgc:base-2 -py:50 -ta:c'>Content</p>
+		</Stack>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {3-7} "<span>Label</span>"
+		<div class="l--stack -gap:20">
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+			<div class="c--divider l--flex -fz:s -c:content-3 -gap:em7 -ai:c">
+				<div class="e--deco -fx:1" aria-hidden="true"></div>
+				<span>Label</span>
+				<div class="e--deco -fx:1" aria-hidden="true"></div>
+			</div>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 縦方向
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Flex ai='c' gap={30}>
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+			<Divider fxd='column' />
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3} "fxd='column'"
+		<Flex ai='c' gap={30}>
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+			<Divider fxd='column' />
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+		</Flex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>labelあり</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Flex ai='c' gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+			<Divider fxd='column' label='Label' />
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3} "fxd='column'" "label="
+		<Flex ai='c' gap={20}>
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+			<Divider fxd='column' label='Label' />
+			<p class='-bgc:base-2 -py:50 -ta:c -fx:1'>Content</p>
+		</Flex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>
+
+
+### カラーカスタマイズ
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20} isFlow={false}>
+		<Stack gap={20}>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+			<Divider  label='Label' c='blue' bdc="blue:70%" bdw="2px" fw='bold'/>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx {3}
+		<Stack gap={20}>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+			<Divider  label='Label' c='blue' bdc="blue:70%" bdw="2px" fw='bold'/>
+			<p class="-bgc:base-2 -py:50 -ta:c">Content</p>
+		</Stack>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		...
+		```
+	</PreviewCode>
+</Preview>

@@ -1,0 +1,248 @@
+.c--preview {
+	&:not(:first-child),
+	+ * {
+		margin-top: var(--s--50);
+	}
+	// &:not(:last-child) {
+	// 	margin-bottom: var(--s--50);
+	// }
+}
+
+.c--preview_title {
+	display: flex;
+	align-items: center;
+	gap: var(--em--5);
+	// margin-block-start: var(--s--50);
+
+	+ * {
+		margin-top: var(--s--10) !important;
+	}
+
+	> .__decorator {
+		background-color: var(--base-3);
+		height: 1.5em;
+		width: 1.5em;
+		border-radius: 2px;
+	}
+}
+
+.c--preview_area {
+	--bdc: var(--codeBlock--bgc);
+	transition: none !important;
+
+	position: relative;
+	container-type: inline-size;
+	border: solid 4px var(--bdc);
+	border-radius: 2px;
+
+	&:not(:first-child) {
+		margin-top: var(--s--50);
+	}
+
+	> * {
+		--fz--root: clamp(0.875rem, 0.7rem + 0.8cqw, 1rem); // 350 ~ 600で変動
+		font-size: var(--fz--root);
+	}
+}
+
+.c--preview_inner {
+	--bg-bdc: var(--codeBlock--bgc); // gridの線
+	position: relative;
+	container-type: inline-size;
+	border-radius: 2px;
+
+	&.-bg\:grid {
+		--grid-color: rgba(185, 185, 185, 0.08); //hsl(var(--hs--bc) 50% / 12%);
+	}
+
+	&.is--resize {
+		min-width: min(100%, 320px);
+		max-width: 100%;
+		overflow-y: auto;
+		resize: horizontal;
+		margin: 0 auto;
+		// box-shadow: inset 0 0 8px -2px var(--preview--resize-bdc);
+
+		&:after {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 14px;
+			height: 14px;
+			display: block;
+			border-inline-start: 1px dotted var(--preview--resize-bdc);
+			border-top: 1px dotted var(--preview--resize-bdc);
+			border-start-start-radius: 12px;
+			content: '';
+		}
+	}
+}
+
+.c--preview_help {
+	// transform: translateY(calc(4px + 100%));
+	z-index: 1;
+	margin: 0.875em;
+	font-size: 11px;
+	backdrop-filter: blur(2px);
+	background-color: var(--preview--help-bg);
+	border: 1px solid var(--preview--resize-bdc);
+
+	// .b--demoBox:has(.b--demoBox__code) & {
+	// 	transform: translateY(100%);
+	// }
+
+	opacity: 0;
+	visibility: hidden;
+
+	.c--preview_inner:hover & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.c--preview_area + .c--preview_code {
+	margin-block-start: -4px;
+	background-color: var(--codeBlock--bgc);
+	overflow: hidden;
+	border-radius: var(--codeBlock--radius);
+
+	&.c--tabs .expressive-code {
+		translate: 0 -0.5em;
+	}
+
+	pre {
+		border-radius: 0;
+		// border-start-start-radius: 0;
+		// border-start-end-radius: 0;
+	}
+}
+
+.fzDemo {
+	.c--preview_title {
+		padding: 1.5rem;
+	}
+	// :is(p, h1, h2, h3, h4, h5, h6),
+	.is--lipsum {
+		position: relative;
+	}
+}
+
+.typo-1\.25 {
+	--fzRatio: 1.25; // https://typescale.com/
+	--fz--2xs: calc(var(--fz--xs) / var(--fzRatio));
+	--fz--xs: calc(var(--fz--s) / var(--fzRatio));
+	--fz--s: calc(var(--fz--m) / var(--fzRatio));
+	--fz--m: 1em;
+	--fz--l: calc(var(--fz--m) * var(--fzRatio));
+	--fz--xl: calc(var(--fz--l) * var(--fzRatio));
+	--fz--2xl: calc(var(--fz--xl) * var(--fzRatio));
+	--fz--3xl: calc(var(--fz--2xl) * var(--fzRatio));
+	--fz--4xl: calc(var(--fz--3xl) * var(--fzRatio));
+	--fz--5xl: calc(var(--fz--4xl) * var(--fzRatio));
+}
+.typo-1\.2 {
+	--fzRatio: 1.2; // https://typescale.com/
+	--fz--2xs: calc(var(--fz--xs) / var(--fzRatio));
+	--fz--xs: calc(var(--fz--s) / var(--fzRatio));
+	--fz--s: calc(var(--fz--m) / var(--fzRatio));
+	--fz--m: 1em;
+	--fz--l: calc(var(--fz--m) * var(--fzRatio));
+	--fz--xl: calc(var(--fz--l) * var(--fzRatio));
+	--fz--2xl: calc(var(--fz--xl) * var(--fzRatio));
+	--fz--3xl: calc(var(--fz--2xl) * var(--fzRatio));
+	--fz--4xl: calc(var(--fz--3xl) * var(--fzRatio));
+	--fz--5xl: calc(var(--fz--4xl) * var(--fzRatio));
+}
+
+.typo-6 {
+	// 分子6. 最後はでかくなりすぎるので手動調整。（12分数ででてくる値から選別）
+	--fz--5xl: 5em;
+	--fz--4xl: 4em;
+	--fz--3xl: calc(1em * 6 / 2); // 3em
+	--fz--2xl: calc(1em * 6 / 3);
+	--fz--xl: calc(1em * 6 / 4);
+	--fz--l: calc(1em * 6 / 5);
+	--fz--s: calc(1em * 6 / 7);
+	--fz--xs: calc(1em * 6 / 8);
+	--fz--2xs: calc(1em * 6 / 9);
+}
+
+.typo-8 {
+	--fz--5xl: calc(1em * 8 / 2);
+	--fz--4xl: calc(1em * 8 / 3);
+	--fz--3xl: calc(1em * 8 / 4);
+	--fz--2xl: calc(1em * 8 / 5);
+	--fz--xl: calc(1em * 8 / 6);
+	--fz--l: calc(1em * 8 / 7);
+	--fz--s: calc(1em * 8 / 9);
+	--fz--xs: calc(1em * 8 / 10);
+	--fz--2xs: calc(1em * 8 / 11);
+}
+.typo-9 {
+	--fz--5xl: calc(1em * 9 / 3); // 3
+	--fz--4xl: calc(1em * 9 / 4);
+	--fz--3xl: calc(1em * 9 / 5);
+	--fz--2xl: calc(1em * 9 / 6);
+	--fz--xl: calc(1em * 9 / 7);
+	--fz--l: calc(1em * 9 / 8);
+	--fz--s: calc(1em * 9 / 10);
+	--fz--xs: calc(1em * 9 / 11);
+	--fz--2xs: calc(1em * 9 / 12);
+}
+
+.typo-7 {
+	// 5xl は 7emででかすぎるので手動調整
+	--fz--5xl: 5em;
+	--fz--4xl: calc(1em * 7 / 2);
+	--fz--3xl: calc(1em * 7 / 3);
+	--fz--2xl: calc(1em * 7 / 4);
+	--fz--xl: calc(1em * 7 / 5);
+	--fz--l: calc(1em * 7 / 6);
+	// --fz--m: calc(1em * 7 / 7);
+	--fz--s: calc(1em * 7 / 8);
+	--fz--xs: calc(1em * 7 / 9);
+	--fz--2xs: calc(1em * 7 / 10);
+}
+
+.typo-12 {
+	// 分子6. だとでかくなりすぎるので12で計算して選別するパターン
+	--fz--5xl: calc(1em * 12 / 3); // 3
+	--fz--4xl: calc(1em * 12 / 4);
+	--fz--3xl: calc(1em * 12 / 6);
+	--fz--2xl: calc(1em * 12 / 8);
+	--fz--xl: calc(1em * 12 / 9);
+	--fz--l: calc(1em * 12 / 10);
+	// --fz--m: calc(1em * 12 / 12);
+	--fz--s: calc(1em * 12 / 14);
+	--fz--xs: calc(1em * 12 / 15);
+	--fz--2xs: calc(1em * 12 / 16);
+}
+
+// .is--linkBox[href="/"]{
+// 	opacity: .4;
+// }
+
+.-setFz.-setFz {
+	font-size: 1.2em;
+}
+.-setFzVar.-setFzVar {
+	--fz: 1.2em;
+}
+.-setLh.-setLh {
+	line-height: 1.2;
+}
+.-setLhVar.-setLhVar {
+	--lh: 1.2;
+}
+.setLhParent {
+	--lh: 1.2;
+	line-height: 1.2;
+	// --ls--lh--min: 1em;//下限も下げる
+}
+.setLhParent--onlyVar {
+	--lh: 1.2;
+	// --ls--lh--min: 1em;//下限も下げる
+}
+.setLhParent--onlyProp {
+	line-height: 1.2;
+}

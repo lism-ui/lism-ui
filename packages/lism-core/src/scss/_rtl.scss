@@ -1,0 +1,28 @@
+// rtl サポート
+[dir='rtl'] {
+	// flip:rtl とか用意する...?
+	// .flip:rtl.flip:X
+	.c--chat--start > .c--chat__body > .e--deco {
+		transform: scaleX(-1);
+	}
+	.c--chat--end > .c--chat__body > .e--deco {
+		transform: scaleX(1);
+	}
+
+	// rtlでも左右を反転させない
+	.l--flex--ltr {
+		--fxd: row-reverse;
+	}
+	.l--flex--rtl {
+		--fxd: row;
+	}
+	.-gt\:fix\:l {
+		--gt: 'nofix fix' / 1fr auto;
+	}
+	.-gt\:fix\:r {
+		--gt: 'fix nofix' / auto 1fr;
+	}
+	// .-gta\:3col\:ltr {
+	// 	--gta: 'end center start';
+	// }
+}
