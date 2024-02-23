@@ -1,6 +1,6 @@
 {
 	"name": "@lism-ui/core",
-	"version": "0.0.4",
+	"version": "0.0.3",
 	"description": "",
 	"author": {
 		"name": "ddryo",
@@ -32,8 +32,7 @@
 		"./*": "./dist/*",
 		"./scss/*": "./src/scss/*",
 		"./src/*": "./src/*",
-		"./raw/*": "./src/components/*",
-		"./lib": "./src/lib/index.js"
+		"./raw/*": "./src/components/*"
 	},
 	"homepage": "https://www.lism.style",
 	"repository": {

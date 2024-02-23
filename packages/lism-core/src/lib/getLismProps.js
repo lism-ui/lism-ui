@@ -1,4 +1,3 @@
-// import { isPresetValue, getMaybeUtilValue, getMaybeCssVar } from './index.js';
 import { PROPS, CONTEXT_PROPS } from '../config';
 import isPresetValue from './isPresetValue';
 import getMaybeUtilValue from './getMaybeUtilValue';

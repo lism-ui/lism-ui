@@ -1,4 +1,5 @@
-import { isPresetValue, getMaybeCssVar } from './index.js';
+import isPresetValue from './isPresetValue';
+import getMaybeCssVar from './getMaybeCssVar';
 
 const LAYOUT_STATE = {
 	// 'is--container': {
