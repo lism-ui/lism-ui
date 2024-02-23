@@ -2,7 +2,6 @@
 import { LismProps } from '../types';
 import { Media } from '../Lism';
 import { Frame } from '../Frame';
-// import { separateMediaAttrs } from '@lism-ui/core/lib';
 import getProps from '@lism-ui/core/raw/Avatar/getProps';
 
 // Propsの定義
@@ -15,22 +14,22 @@ const { avatarProps, mediaProps } = getProps(props);
 ---
 
 {
-    hasSlot ? (
-        <Frame skipState {...avatarProps}>
-            <slot />
-        </Frame>
-    ) : (
-        <Frame skipState {...avatarProps}>
-            {
-                <Media
-                    src={src}
-                    alt={name}
-                    width='100%'
-                    height='100%'
-                    decoding='async'
-                    {...mediaProps}
-                />
-            }
-        </Frame>
-    )
+	hasSlot ? (
+		<Frame skipState {...avatarProps}>
+			<slot />
+		</Frame>
+	) : (
+		<Frame skipState {...avatarProps}>
+			{
+				<Media
+					src={src}
+					alt={name}
+					width='100%'
+					height='100%'
+					decoding='async'
+					{...mediaProps}
+				/>
+			}
+		</Frame>
+	)
 }

@@ -1,6 +1,3 @@
-// import { objMap, isNumStr } from '../../lib/helper';
-// import { getBpData } from '../../lib';
-
 // gt + gtc, gtr の併用がなければ、コンテキストをセットして変数だけの出力にする
 export function getGridContext(gridProps = {}) {
 	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
@@ -24,7 +21,6 @@ export function getGridContext(gridProps = {}) {
 // 	return value;
 // }
 
-// import { isEmptyObj, filterEmptyObj } from '../../lib/helper';
 export function mergeGridContextProps(props) {
 	if (null == props.grid) props.grid = {};
 

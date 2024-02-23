@@ -1,6 +1,7 @@
 // import React from 'react';
 import { Lism } from '../Lism';
-import { getBpData, getMaybeCssVar } from '../../lib';
+import getBpData from '../../lib/getBpData';
+import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
 // 縦書きの時どうする？
 export default function Spacer({ lismClass = {}, variant, w, h, ...props }) {

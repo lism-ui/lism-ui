@@ -1,12 +1,13 @@
 // import { isPresetValue, getMaybeUtilValue, getMaybeCssVar } from './index.js';
+import { PROPS, CONTEXT_PROPS } from '../config';
 import isPresetValue from './isPresetValue';
 import getMaybeUtilValue from './getMaybeUtilValue';
 import getMaybeCssVar from './getMaybeCssVar';
-
-import { PROPS, CONTEXT_PROPS } from '../config';
-import { joinAtts, isEmptyObj, filterEmptyObj } from './helper';
 import getBpData from './getBpData';
 import getStateProps from './getStateProps';
+import joinAtts from './helper/joinAtts';
+import isEmptyObj from './helper/isEmptyObj';
+import filterEmptyObj from './helper/filterEmptyObj';
 
 // const isBaseBP = (bp) => {
 // 	return '_' === bp;

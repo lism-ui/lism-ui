@@ -1,4 +1,4 @@
-import { separateMediaAttrs } from '../../lib';
+import separateMediaAttrs from '../separateMediaAttrs';
 
 export default function getAvatarProps({
 	_lismClass = [],

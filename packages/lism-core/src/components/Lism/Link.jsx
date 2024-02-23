@@ -1,4 +1,5 @@
-import { getLismProps, separateLinkProps } from '../../lib';
+import getLismProps from '../../lib/getLismProps';
+import separateLinkProps from '../separateLinkProps';
 
 export default function Link({ as, passProps = {}, ...props }) {
 	const { linkProps, otherProps } = separateLinkProps(props);

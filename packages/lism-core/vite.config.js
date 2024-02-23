@@ -71,15 +71,17 @@ export default defineConfig({
 				preserveModules: true, // モジュールツリーの構造を保持する
 				preserveModulesRoot: 'src',
 				entryFileNames: ({ name: fileName }) => {
+					console.log('fileName', fileName);
 					//fileName に components が含まれているかチェックする
-					if (fileName.indexOf('components') !== -1) {
-						// 重複するディレクトリ構造を削除する
-						const componentPath = deleteDuplicateDir(fileName);
-						return `${componentPath}/index.js`;
-					} else {
-						// console.log('fileName', fileName);
-						return `${fileName}.js`;
-					}
+					// if (fileName.indexOf('components') !== -1) {
+					// 	// 重複するディレクトリ構造を削除する
+					// 	const componentPath = deleteDuplicateDir(fileName);
+					// 	return `${componentPath}/index.js`;
+					// } else {
+					// 	// console.log('fileName', fileName);
+					// 	return `${fileName}.js`;
+					// }
+					return `${fileName}.js`;
 					// return `${fileName}/index.js`;
 				},
 			},

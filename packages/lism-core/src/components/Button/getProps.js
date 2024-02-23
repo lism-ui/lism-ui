@@ -1,5 +1,3 @@
-// import { separateLinkProps } from '../../lib';
-
 export function getButtonProps({
 	_lismClass = [],
 	variant = 'fill',

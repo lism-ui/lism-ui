@@ -1,6 +1,7 @@
 ---
 import { LismProps } from '../types';
-import { getLismProps, separateLinkProps } from '@lism-ui/core/lib';
+import getLismProps from '@lism-ui/core/lib/getLismProps';
+import separateLinkProps from '@lism-ui/core/components/separateLinkProps';
 
 // Propsの定義
 interface Props extends LismProps {}
@@ -12,5 +13,5 @@ const JSX = as || 'a';
 ---
 
 <JSX {...linkProps} {...lismProps} {...passProps}>
-    <slot />
+	<slot />
 </JSX>

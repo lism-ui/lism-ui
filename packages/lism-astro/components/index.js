@@ -24,7 +24,7 @@ export { Note } from './Note';
 export { Tabs, TabItem, Tab, TabList, TabPanel } from './Tab';
 // export * from './Banner';
 // export * from './Layer';
-// export { Layer, MediaLayer } from './Layer';
+export { Layer, MediaLayer } from './Layer';
 export {
 	Accordion,
 	AccordionGroup,

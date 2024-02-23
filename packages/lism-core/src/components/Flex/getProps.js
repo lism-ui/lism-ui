@@ -1,4 +1,3 @@
-// import { isEmptyObj, filterEmptyObj } from '../../lib/helper';
 export function mergeFlexContextProps(props) {
 	if (null == props.flex) props.flex = {};
 

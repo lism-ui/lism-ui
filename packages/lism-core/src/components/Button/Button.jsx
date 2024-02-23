@@ -3,7 +3,7 @@ import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 import { Icon } from '../Icon';
 import { getButtonProps } from './getProps';
-import { separateLinkProps } from '../../lib';
+import separateLinkProps from '../separateLinkProps';
 
 // variant
 export default function Button({ leftIcon, rightIcon, children, ...props }) {

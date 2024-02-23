@@ -1,4 +1,5 @@
-import { getInsetProps, getEffectProps } from '../../lib';
+import getEffectProps from '../getEffectProps';
+import getInsetProps from '../getInsetProps';
 
 export default function ({ _lismClass = [], variant, lismState = [], hasSize, index, ...props }) {
 	props = getEffectProps(getInsetProps(props));

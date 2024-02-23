@@ -1,7 +1,7 @@
 // import React from 'react';
 import { Lism } from '../Lism';
 import { Flex } from '../Flex';
-import { getMaybeCssVar } from '../../lib';
+import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
 export default function NavMenu({
 	lismClass = {},

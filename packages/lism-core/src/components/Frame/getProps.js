@@ -1,5 +1,3 @@
-// import { getMaybeCssVar } from '../../lib';
-
 export default function getFrameProps({
 	lismStyle = {},
 	lismState = [],

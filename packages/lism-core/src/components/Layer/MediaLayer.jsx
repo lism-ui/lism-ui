@@ -2,7 +2,7 @@
 import Layer from './Layer';
 import { Media } from '../Lism';
 import { Frame } from '../Frame';
-import { separateMediaAttrs } from '../../lib';
+import separateMediaAttrs from '../separateMediaAttrs';
 
 // memo: picture対応
 export default function MediaLayer({ media = 'img', hover, children, ...props }) {

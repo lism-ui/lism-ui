@@ -1,15 +1,6 @@
-import { filterEmptyObj } from './helper';
+import filterEmptyObj from '../lib/helper/filterEmptyObj';
 
-export const separateLinkProps = (props) => {
-	let { href, target, openNewTab, rel, ...otherProps } = props;
-	target = target || openNewTab ? '_blank' : null;
-	if (target === '_blank' && !rel) rel = 'noopener noreferrer';
-
-	const linkProps = { href, target, rel };
-	return { linkProps, otherProps };
-};
-
-export function separateMediaAttrs({
+export default function separateMediaAttrs({
 	src,
 	alt,
 	width,

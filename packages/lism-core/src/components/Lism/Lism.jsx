@@ -1,4 +1,4 @@
-import { getLismProps } from '../../lib';
+import getLismProps from '../../lib/getLismProps';
 
 /**
  * Lism Propsを処理できるだけのコンポーネント

@@ -7,5 +7,3 @@ export { default as getMaybeUtilValue } from './getMaybeUtilValue';
 export { default as getMaybeCssVar } from './getMaybeCssVar';
 
 export * from './getStateProps';
-export * from './getContextProps';
-export * from './separateProps';

@@ -1,5 +1,5 @@
 import { Lism } from '../Lism';
-import { separateLinkProps } from '../../lib';
+import separateLinkProps from '../separateLinkProps';
 
 export default function LinkBox({
 	layout,

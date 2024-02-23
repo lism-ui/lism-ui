@@ -1,4 +1,5 @@
-import { getInsetProps, getEffectProps } from '../../lib';
+import getEffectProps from '../getEffectProps';
+import getInsetProps from '../getInsetProps';
 
 // l,r,t,b, translate をそのまま受け取れる
 export function getLayerPositions(position) {
