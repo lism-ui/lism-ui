@@ -3,7 +3,7 @@
  */
 
 // Memo: 取り急ぎ、コアのものを全部 export しつつ、.astro で用意できたものから上書きしていく。
-export * from '@loos/lism-core'; // core はReact であることに注意。
+export * from '@lism-ui/core'; // core はReact であることに注意。
 
 export { Lism, Text, Media, Link } from './Lism';
 export { Box } from './Box';

@@ -1,4 +1,4 @@
-import { Badge } from '@loos/lism-core';
+import { Badge } from '@lism-ui/core';
 
 export const MemoBadge = ({ children, color = 'orange', ...props }) => {
 	return (

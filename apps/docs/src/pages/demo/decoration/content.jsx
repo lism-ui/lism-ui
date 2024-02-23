@@ -1,4 +1,4 @@
-import { Spacer, Decorator, Grid, Flex, GridItem, FlexItem, Component } from '@loos/lism-core';
+import { Spacer, Decorator, Grid, Flex, GridItem, FlexItem, Component } from '@lism-ui/core';
 import { DammyText } from '~/components';
 import DecoBox from './DecoBox';
 

@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Box, Flex, Alert, Note } from "@loos/lism-astro";
+import { Box, Flex, Alert, Note } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -66,7 +66,7 @@ Lismコンポーネント以外にもLism Propsを活用するための関数、
 
 <PreviewTitle>例</PreviewTitle>
 ```jsx
-import { getLismProps } from '@loos/lism-core/lib';
+import { getLismProps } from '@lism-ui/core/lib';
 
 const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
 ```

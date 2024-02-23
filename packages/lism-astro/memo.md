@@ -1,6 +1,6 @@
-devDependenciesに@loos/lism-coreいれとかないと読み込めない。
+devDependenciesに@lism-ui/coreいれとかないと読み込めない。
 
-完全に dependencies にして、 @loos/lism-astro だけ入れてもらってもいいかも？
+完全に dependencies にして、 @lism-ui/astro だけ入れてもらってもいいかも？
 
 ## astro:jsx について
 

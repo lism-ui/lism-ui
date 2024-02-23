@@ -1,4 +1,4 @@
-import { Box, Text, Stack, Frame, Center, Grid } from '@loos/lism-core';
+import { Box, Text, Stack, Frame, Center, Grid } from '@lism-ui/core';
 import { DammyText } from '~/components';
 
 export const ColorDemos = ({ colors = [] }) => {

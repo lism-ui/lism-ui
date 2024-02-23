@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-import { Container, Lism } from '@loos/lism-core';
+import { Container, Lism } from '@lism-ui/core';
 export default function OneColumn({ title = '', children }) {
 	return (
 		<Lism tag='main' className='a--main' py={50}>

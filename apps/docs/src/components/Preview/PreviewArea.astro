@@ -1,19 +1,19 @@
 ---
-import { Lism, Layer, Icon } from '@loos/lism-astro';
+import { Lism, Layer, Icon } from '@lism-ui/astro';
 import { ArrowDownRight } from '@phosphor-icons/react';
 
 // Propsの定義
 interface Props {
-	as?: any;
-	tag?: string;
+    as?: any;
+    tag?: string;
 }
 const {
-	resize,
-	nogrid = false,
-	bg = 'u:grid',
-	isFlow = true,
-	p = 'em2',
-	...props
+    resize,
+    nogrid = false,
+    bg = 'u:grid',
+    isFlow = true,
+    p = 'em2',
+    ...props
 } = Astro.props || {};
 
 const lismState = [];
@@ -21,25 +21,25 @@ if (resize) lismState.push('is--resize');
 ---
 
 <Lism className='c--preview_area'>
-	<Lism
-		className='c--preview_inner'
-		lismState={lismState}
-		isFlow={isFlow}
-		bg={!nogrid && bg}
-		p={p}
-		bxsh='-1'
-		{...props}
-	>
-		<slot />
-		{
-			resize && (
-				<Layer
-					className='c--preview_help -d:f -lh:1 -p:em5 -gap:em3 -bdrs:xs'
-					position='bottom right'
-				>
-					リサイズ可能 <Icon as={ArrowDownRight} weight='fill' />
-				</Layer>
-			)
-		}
-	</Lism>
+    <Lism
+        className='c--preview_inner'
+        lismState={lismState}
+        isFlow={isFlow}
+        bg={!nogrid && bg}
+        p={p}
+        bxsh='-1'
+        {...props}
+    >
+        <slot />
+        {
+            resize && (
+                <Layer
+                    className='c--preview_help -d:f -lh:1 -p:em5 -gap:em3 -bdrs:xs'
+                    position='bottom right'
+                >
+                    リサイズ可能 <Icon as={ArrowDownRight} weight='fill' />
+                </Layer>
+            )
+        }
+    </Lism>
 </Lism>

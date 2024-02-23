@@ -2,7 +2,7 @@
 import Layer from './Layer.astro';
 import { Media } from '../Lism';
 import { Frame } from '../Frame';
-import { separateMediaAttrs } from '@loos/lism-core/lib';
+import { separateMediaAttrs } from '@lism-ui/core/lib';
 
 const { media = 'img', hover, ...props } = Astro.props || {};
 
@@ -10,13 +10,13 @@ const { mediaAttrs, otherProps } = separateMediaAttrs(props);
 ---
 
 {
-	Astro.slots.has('default') ? (
-		<Frame layout={Layer} hover={hover} {...otherProps}>
-			<slot />
-		</Frame>
-	) : (
-		<Frame layout={Layer} {...otherProps}>
-			<Media as={media} hover={hover} loading='lazy' decoding='async' {...mediaAttrs} />
-		</Frame>
-	)
+    Astro.slots.has('default') ? (
+        <Frame layout={Layer} hover={hover} {...otherProps}>
+            <slot />
+        </Frame>
+    ) : (
+        <Frame layout={Layer} {...otherProps}>
+            <Media as={media} hover={hover} loading='lazy' decoding='async' {...mediaAttrs} />
+        </Frame>
+    )
 }

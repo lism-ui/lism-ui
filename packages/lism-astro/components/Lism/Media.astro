@@ -1,13 +1,13 @@
 ---
 import { LismProps } from '../types';
-import { getLismProps, getMediaProps } from '@loos/lism-core/lib';
+import { getLismProps, getMediaProps } from '@lism-ui/core/lib';
 
 // Propsの定義
 interface Props extends LismProps {
-	// src?: string;
-	// alt?: string;
-	// width?: string | number;
-	// height?: string | number;
+    // src?: string;
+    // alt?: string;
+    // width?: string | number;
+    // height?: string | number;
 }
 const { as, passProps, tag, ...props } = Astro.props || {};
 
@@ -15,5 +15,5 @@ const JSX = as || tag || 'img';
 ---
 
 <JSX {...getLismProps(getMediaProps(props))} {...passProps}>
-	<slot />
+    <slot />
 </JSX>

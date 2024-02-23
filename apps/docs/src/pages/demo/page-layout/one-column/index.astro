@@ -3,31 +3,31 @@ import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
 import DemoHeader from '../DemoHeader.astro';
 import DemoFooter from '../DemoFooter.astro';
 import DemoContent from '../DemoContent.astro';
-import { Container, Lism, Stack } from '@loos/lism-astro';
+import { Container, Lism, Stack } from '@lism-ui/astro';
 
 // <!-- <OneColumn title='1 column ariticle page.'>...content...</OneColumn> -->
 ---
 
 <DemoPageLayout>
-	<Stack id='wrap' minH='100vh'>
-		<DemoHeader />
-		<Lism tag='main' className='z--main' py={50} flexItem={{ fx: 1 }}>
-			<Lism tag='article' className='z--article' py={50}>
-				<Container tag='header' className='z--article__header' hasGutter>
-					<h1>Page Title</h1>
-				</Container>
+    <Stack id='wrap' minH='100vh'>
+        <DemoHeader />
+        <Lism tag='main' className='z--main' py={50} flexItem={{ fx: 1 }}>
+            <Lism tag='article' className='z--article' py={50}>
+                <Container tag='header' className='z--article__header' hasGutter>
+                    <h1>Page Title</h1>
+                </Container>
 
-				<Container className='z--article__content' size='m' hasGutter isFlow mbs='60'>
-					<DemoContent />
-				</Container>
+                <Container className='z--article__content' size='m' hasGutter isFlow mbs='60'>
+                    <DemoContent />
+                </Container>
 
-				<Container tag='aside' className='z--article__aside' size='m' hasGutter mbs='60'>
-					<Lism bgc='base-2' p='50'>
-						<div>Comment area, etc...</div>
-					</Lism>
-				</Container>
-			</Lism>
-		</Lism>
-		<DemoFooter />
-	</Stack>
+                <Container tag='aside' className='z--article__aside' size='m' hasGutter mbs='60'>
+                    <Lism bgc='base-2' p='50'>
+                        <div>Comment area, etc...</div>
+                    </Lism>
+                </Container>
+            </Lism>
+        </Lism>
+        <DemoFooter />
+    </Stack>
 </DemoPageLayout>

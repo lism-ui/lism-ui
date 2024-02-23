@@ -12,8 +12,8 @@
   "dependencies": {
     "@astrojs/react": "^3.0.0",
     "@astrojs/starlight": "^0.15.0",
-    "@loos/lism-astro": "workspace:*",
-    "@loos/lism-core": "workspace:*",
+    "@lism-ui/astro": "workspace:*",
+    "@lism-ui/core": "workspace:*",
     "@phosphor-icons/react": "^2.0.10",
     "astro": "^4.0.1",
     "react": "^18.2.0",

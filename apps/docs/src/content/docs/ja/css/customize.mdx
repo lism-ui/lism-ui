@@ -3,7 +3,7 @@ title: 'Customize'
 description: ...
 ---
 
-import { Box, Flex, Alert } from "@loos/lism-astro";
+import { Box, Flex, Alert } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewCode, PreviewTitle } from "~/components/Preview";
 
 SCSSの変数を上書きすることで、出力するCSSのカスタマイズが可能です。
@@ -11,14 +11,14 @@ SCSSの変数を上書きすることで、出力するCSSのカスタマイズ�
 ```scss
 
 // ブレイクポイントの変更
-@use '../path/to/@loos/lism-core/scss/query' with (
+@use '../path/to/@lism-ui/core/scss/query' with (
 	$break-points: (
 		'sm': '360px',
 	)
 );
 
 // prop クラスの設定変更
-@use '../path/to/@loos/lism-core/scss/setting' with (
+@use '../path/to/@lism-ui/core/scss/setting' with (
 	$prop_class_data: (
 		'w': (
 			// importantを付ける
@@ -42,7 +42,7 @@ SCSSの変数を上書きすることで、出力するCSSのカスタマイズ�
 );
 
 // lism-cssの読み込み
-@use '../path/to/@loos/lism-core/scss/all';
+@use '../path/to/@lism-ui/core/scss/all';
 
 ```
 

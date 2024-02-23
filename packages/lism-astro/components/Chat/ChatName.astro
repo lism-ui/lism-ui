@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import { getNameProps } from '@loos/lism-core/raw/Chat/getProps';
+import { getNameProps } from '@lism-ui/core/raw/Chat/getProps';
 
 interface Props extends LismProps {}
 
@@ -9,5 +9,5 @@ const props = Astro.props || {};
 ---
 
 <Lism skipState _lismClass={['c--chat__name']} {...getNameProps(props)}>
-	<slot />
+    <slot />
 </Lism>

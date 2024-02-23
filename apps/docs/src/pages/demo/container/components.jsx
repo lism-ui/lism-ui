@@ -1,4 +1,4 @@
-import { Box, Badge, Text } from '@loos/lism-core';
+import { Box, Badge, Text } from '@lism-ui/core';
 
 export function TipCode({ text, children, color = 'gray', ...props }) {
 	// <TipCode text='is--container' color='orange' />

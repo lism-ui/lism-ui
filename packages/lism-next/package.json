@@ -1,5 +1,5 @@
 {
-	"name": "@loos/lism-next",
+	"name": "@lism-ui/next",
 	"version": "0.0.3",
 	"description": "",
 	"main": "components/index.js",
@@ -17,10 +17,10 @@
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
-		"@loos/lism-core": "workspace:*"
+		"@lism-ui/core": "workspace:*"
 	},
 	"peerDependencies": {
-		"@loos/lism-core": ">=0.0.1"
+		"@lism-ui/core": ">=0.0.1"
 	},
 	"sideEffects": false
 }

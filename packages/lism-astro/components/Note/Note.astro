@@ -3,7 +3,7 @@ import { Lism } from '../Lism';
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 
-import getProps from '@loos/lism-core/raw/Note/getProps';
+import getProps from '@lism-ui/core/raw/Note/getProps';
 
 const { isFlow, heading, ...otherProps } = Astro.props || {};
 const props = getProps(otherProps);
@@ -11,22 +11,22 @@ const props = getProps(otherProps);
 const { icon, iconProps = {}, headProps = {}, bodyProps = {}, ...noteProps } = props;
 
 if ('Flex' === headProps.as) {
-	headProps.as = Flex;
+    headProps.as = Flex;
 }
 
 const hasHeading = heading || Astro.slots.has('heading');
 ---
 
 <Lism {...noteProps}>
-	{
-		hasHeading && (
-			<Lism skipState _lismClass={['c--note__head']} fw='bold' {...headProps}>
-				{icon && <Icon _lismClass={['c--note__icon']} icon={icon} {...iconProps} />}
-				<span class='c--note__heading'>{heading || <slot name='heading' />}</span>
-			</Lism>
-		)
-	}
-	<Lism _lismClass={['c--note__body']} isFlow={isFlow} {...bodyProps}>
-		<slot />
-	</Lism>
+    {
+        hasHeading && (
+            <Lism skipState _lismClass={['c--note__head']} fw='bold' {...headProps}>
+                {icon && <Icon _lismClass={['c--note__icon']} icon={icon} {...iconProps} />}
+                <span class='c--note__heading'>{heading || <slot name='heading' />}</span>
+            </Lism>
+        )
+    }
+    <Lism _lismClass={['c--note__body']} isFlow={isFlow} {...bodyProps}>
+        <slot />
+    </Lism>
 </Lism>

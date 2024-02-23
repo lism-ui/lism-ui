@@ -1,5 +1,5 @@
 {
-	"name": "@loos/lism-astro",
+	"name": "@lism-ui/astro",
 	"version": "0.0.1",
 	"description": "",
 	"main": "components/index.js",
@@ -21,10 +21,10 @@
 		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
-		"@loos/lism-core": "workspace:*"
+		"@lism-ui/core": "workspace:*"
 	},
 	"peerDependencies": {
-		"@loos/lism-core": ">=0.0.1",
+		"@lism-ui/core": ">=0.0.1",
 		"astro": ">=3.0.0"
 	}
 }

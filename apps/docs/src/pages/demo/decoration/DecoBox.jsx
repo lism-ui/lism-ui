@@ -3,7 +3,7 @@ import {
 	Decorator,
 	Lism,
 	// DecoBox,
-} from '@loos/lism-core';
+} from '@lism-ui/core';
 import PRESETS from './presets';
 
 export default function DecoBox({

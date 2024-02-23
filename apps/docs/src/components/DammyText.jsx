@@ -1,4 +1,4 @@
-import { Text } from '@loos/lism-core';
+import { Text } from '@lism-ui/core';
 
 const LOREM_TEXT = {
 	ja: {

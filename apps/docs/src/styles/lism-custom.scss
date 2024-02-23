@@ -20,13 +20,13 @@
 // );
 
 // @パッケージ でインポートできるのは Astro だから？
-// @use '@loos/lism-core/scss/query' with (
+// @use '@lism-ui/core/scss/query' with (
 // 	$break-points: (
 // 		'sm': '360px',
 // 	)
 // );
 
-@use '@loos/lism-core/scss/setting' as lism-setting with (
+@use '@lism-ui/core/scss/setting' as lism-setting with (
 	$prop_class_data: (
 		'w': (
 			important: 1,
@@ -35,4 +35,4 @@
 	)
 );
 
-@use '@loos/lism-core/scss/all';
+@use '@lism-ui/core/scss/all';

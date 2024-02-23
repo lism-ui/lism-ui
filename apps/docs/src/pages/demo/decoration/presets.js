@@ -4,7 +4,7 @@ import {
 	Flex,
 	FlexItem,
 	// DecoBox,
-} from '@loos/lism-core';
+} from '@lism-ui/core';
 
 export default {
 	// stripe:{

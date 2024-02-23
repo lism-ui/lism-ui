@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-import { Container, Box, SideFlex, FlexItem } from '@loos/lism-core';
+import { Container, Box, SideFlex, FlexItem } from '@lism-ui/core';
 
 const DefaultSidebar = () => {
 	return (

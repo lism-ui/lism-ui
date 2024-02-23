@@ -11,13 +11,13 @@ rm -rf .next/cache
 
 next.js 13 以降の app ルーター使用時、Reat Hook を使ったコンポーネントを使う際に "use client"; の記述が必要。
 
-※ "@loos/lism-test/components" から直接インポートしてもらうようにすると Lism 側で書いておけば必要なくなる?
+※ "@lism-ui/test/components" から直接インポートしてもらうようにすると Lism 側で書いておけば必要なくなる?
 →ビルド時にエラーがでた。が、無視しても問題なさそう...？
 
 ただし、/components から直接ソース読み込む場合、`next.config.js` で下記の設定が必要だった
 
 ```
-transpilePackages: ['@loos/lism-test'],
+transpilePackages: ['@lism-ui/test'],
 ```
 
 # Prettier と Eslint についてのメモ

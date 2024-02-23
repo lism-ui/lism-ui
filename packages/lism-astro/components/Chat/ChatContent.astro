@@ -3,30 +3,30 @@ import { LismProps } from '../types';
 import { Lism } from '../Lism';
 import { Decorator } from '../Decorator';
 
-import { getContentProps, getDecoProps } from '@loos/lism-core/raw/Chat/getProps';
+import { getContentProps, getDecoProps } from '@lism-ui/core/raw/Chat/getProps';
 
 interface Props extends LismProps {}
 
 let {
-	direction = 'start',
-	variant = 'speak',
-	isFlow,
-	contentProps = {},
-	...props
+    direction = 'start',
+    variant = 'speak',
+    isFlow,
+    contentProps = {},
+    ...props
 } = Astro.props || {};
 ---
 
 <Lism _lismClass={['c--chat__body']} {...props}>
-	{
-		('speak' === variant || 'think' === variant) && (
-			<Decorator {...getDecoProps(direction, variant)} />
-		)
-	}
-	<Lism
-		_lismClass={['c--chat__content']}
-		isFlow={isFlow}
-		{...getContentProps(direction, variant, contentProps)}
-	>
-		<slot />
-	</Lism>
+    {
+        ('speak' === variant || 'think' === variant) && (
+            <Decorator {...getDecoProps(direction, variant)} />
+        )
+    }
+    <Lism
+        _lismClass={['c--chat__content']}
+        isFlow={isFlow}
+        {...getContentProps(direction, variant, contentProps)}
+    >
+        <slot />
+    </Lism>
 </Lism>

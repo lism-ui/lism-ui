@@ -3,8 +3,8 @@ title: 'Icon'
 description: ...
 ---
 
-import { Alert, Spacer, Cluster, Icon, Center } from '@loos/lism-core';
-import presetIcons from '@loos/lism-core/src/components/Icon/presets';
+import { Alert, Spacer, Cluster, Icon, Center } from '@lism-ui/core';
+import presetIcons from '@lism-ui/core/src/components/Icon/presets';
 import { Reference, MemoBadge, PropBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
@@ -56,12 +56,12 @@ export const PrestIcons = () => {
 <Preview>
 	<PreviewCode slot='tab' label='React'>
 ```jsx
-import { Icon } from '@loos/lism-core';
+import { Icon } from '@lism-ui/core';
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
 ```jsx
-import { Icon } from '@loos/lism-astro';
+import { Icon } from '@lism-ui/astro';
 ```
 	</PreviewCode>
 </Preview>
@@ -179,7 +179,7 @@ import { Cat } from "@phosphor-icons/react";
 
 ### プリセットアイコンを呼び出す
 
-`@loos/lism-core`に内包しているアイコンがいくつかあり、それらのアイコン名を`preset`に指定すると呼び出すことができます。  
+`@lism-ui/core`に内包しているアイコンがいくつかあり、それらのアイコン名を`preset`に指定すると呼び出すことができます。  
 （[Phosphor Icons](https://phosphoricons.com/) を使っています。）
 
 `preset`とアイコンの対応表は次の通りです。

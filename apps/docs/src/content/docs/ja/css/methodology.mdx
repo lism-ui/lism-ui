@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Box, Alert,Flex } from "@loos/lism-astro";
+import { Box, Alert,Flex } from "@lism-ui/astro";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -335,10 +335,10 @@ Lismパッケージに内蔵されているクラスではありませんが、�
 
 これらの定義済みポイントは、SCSSであれば次のようにして簡単に利用できます。
 
-{/* `@use`で`@loos/lism-core/scss/query`をインポートして、`query.cq()`を使ってください。 */}
+{/* `@use`で`@lism-ui/core/scss/query`をインポートして、`query.cq()`を使ってください。 */}
 
 ```scss
-@use '../path/to/node_modules/@loos/lism-core/scss/query' as query;
+@use '../path/to/node_modules/@lism-ui/core/scss/query' as query;
 
 @include query.cq('sm') {
 	// your styles...
@@ -375,7 +375,7 @@ Lismでは、ブレイクポイントでCSSを切り替えるための記法を�
 	</PreviewCode>
 	<PreviewCode label="Sass" slot="tab">
 ```scss
-@use '../.../node_modules/@loos/lism-core/scss/query' as query;
+@use '../.../node_modules/@lism-ui/core/scss/query' as query;
 
 .-prop\:{ padding: var(--prop); }
 @include query.cq('sm') {

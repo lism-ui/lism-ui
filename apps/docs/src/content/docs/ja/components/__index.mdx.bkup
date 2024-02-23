@@ -5,7 +5,7 @@ description: '...'
 
 # Overview
 
-import { Columns, Box, Cluster } from '@loos/lism-core';
+import { Columns, Box, Cluster } from '@lism-ui/core';
 import Link from "next/link";
 
 export const Components = [

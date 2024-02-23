@@ -1,6 +1,6 @@
 ---
 import { LismProps } from '../types';
-import { getLismProps } from '@loos/lism-core/lib';
+import { getLismProps } from '@lism-ui/core/lib';
 
 // Propsの定義
 interface Props extends LismProps {}
@@ -10,5 +10,5 @@ const JSX = as || tag || 'div';
 ---
 
 <JSX {...getLismProps(props)} {...passProps}>
-	<slot />
+    <slot />
 </JSX>

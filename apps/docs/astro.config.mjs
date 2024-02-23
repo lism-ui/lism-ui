@@ -21,8 +21,8 @@ export default defineConfig({
 			defaultLocale: 'root',
 			locales,
 			customCss: [
-				// '@loos/lism-core/css/all.css',
-				'@loos/lism-core/scss/all.scss',
+				// '@lism-ui/core/css/all.css',
+				'@lism-ui/core/scss/all.scss',
 				// './src/styles/lism-custom.scss', // カスタムCSSファイルへの相対パス
 
 				// ドキュメントサイトCSS
@@ -56,10 +56,10 @@ export default defineConfig({
 	],
 	vite: {
 		// ssr: {
-		// 	noExternal: ['@loos/lism-core'],
+		// 	noExternal: ['@lism-ui/core'],
 		// },
 		resolve: {
-			// dedupe: ['@loos/lism-core'],
+			// dedupe: ['@lism-ui/core'],
 			alias: {
 				// react: path.join(__dirname, 'node_modules/react'),
 				'~/': '/src/',

@@ -1,12 +1,12 @@
 ---
 import { LismProps } from '../types';
 import Flex from './Flex.astro';
-import { getClusterProps } from '@loos/lism-core/raw/Flex/getProps';
+import { getClusterProps } from '@lism-ui/core/raw/Flex/getProps';
 
 interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
 <Flex _flex='cluster' {...getClusterProps(props)}>
-	<slot />
+    <slot />
 </Flex>
