@@ -1,12 +1,12 @@
 export default {
-	// root: {
-	// 	label: 'English',
-	// 	lang: 'en',
-	// },
-	// 英語のドキュメントは`src/content/docs/en/`に置きます。
-	en: {
+	root: {
 		label: 'English',
+		lang: 'en',
 	},
+	// 英語のドキュメントは`src/content/docs/en/`に置きます。
+	// en: {
+	// 	label: 'English',
+	// },
 	// 日本語のドキュメントは`src/content/docs/ja/`に置きます。
 	ja: {
 		label: '日本語',

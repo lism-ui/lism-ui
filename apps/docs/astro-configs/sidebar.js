@@ -300,9 +300,9 @@ export default [
 	// },
 
 	{
-		label: 'Reference',
+		label: 'Page Layout',
 		autogenerate: {
-			directory: 'reference',
+			directory: 'page-layout',
 		},
 	},
 ];

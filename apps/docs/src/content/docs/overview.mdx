@@ -1,0 +1,71 @@
+---
+title: 'Overview'
+description: ...
+---
+
+import { Box, Text, Center, Button, Flex, Frame } from "@loos/lism-astro";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import DemoLismComponent from '~/demos/demo-lism-component.mdx';
+
+# Overview
+
+"**Lism UI**" は、WEBサイト制作を効率化するためのフレームワークプロジェクトです。  
+独自の**CSS設計理論**（Lism CSS）と、それを元にした**コンポーネント集ライブラリ**（Lism Components）を提供しています。
+
+<Box p='box' boxcolor='blue' bd bdrs='s'>
+	WEBサイトの完成度8割までをサクサク作れる軽量なフレームワーク
+</Box>
+
+を目標にしており、WEBサイトで一般的によく使われるレイアウト・デザイン要素を細分化し、汎用的に使い回せるようになっています。
+
+{/* サイトの骨組みは Lism UI で効率よく組めるため、あとは、そのサイトに合わせた最後の磨き上げの部分にだけ集中できます。 */}
+
+車輪の再発明にかかる時間をなくし、**より本質的なクリエイティブ活動に時間を使って下さい**。
+
+
+## Lism CSS
+
+Lism CSS では、CSSを以下の概念に分類して設計しています。
+
+<Box p="box" bgc='base-2'>
+	- Design Tokens
+	- Design State
+	- Layout Modules
+	- Object Modules
+	- Prop Utilities
+</Box>
+
+これらを活用することで、**少量のCSSで柔軟なデザインを組める**ようになっています。
+
+CSS設計に関しては、[Every Layout](https://every-layout.dev/) + [Bootstrap](https://getbootstrap.com/) を 混ぜ合わせたようなイメージです。
+
+
+## Lism Components
+
+そのLism CSSを簡単に扱えるようにした専用のコンポーネント集がLism Componentsです。
+
+[Chakra UI](https://chakra-ui.com/) や [MUI](https://mui.com/) のような使い心地で各モジュールを扱えるようになります。
+
+<PreviewTitle>専用のコンポーネントはこんな感じで使います</PreviewTitle>
+<DemoLismComponent/>
+
+
+
+{/* ## 車輪の再発明からの解放
+
+似たようなCSS、似たようなHTML、似たようなコンポーネント、を何度も1から書いていくのはもうおしまいにしましょう。
+
+柔軟性があり、軽量で、どんなプロジェクトにも導入できるフレームワークがここにあります。 */}
+
+
+
+## Inspirations
+
+- [Every Layout](https://every-layout.dev/) : "**レイアウトプリミティブ**"という考え方をLismでもベースに取り入れています。
+- [daisyUI](https://daisyui.com/) : カラートークンの設計やコンポーネントの豊富さが非常に参考になりました。
+- [SmartHR Design System](https://smarthr.design/products/design-tokens/) : デザイントークン設計が非常に参考になりました。
+- [Chakra UI](https://chakra-ui.com/),  [MUI](https://mui.com/) : コンポーネントの使用感が非常に参考になりました。
+- [Open Props](https://open-props.style/#shadows) : シンプルで潔いCSS変数の命名規則が非常に参考になりました。
+- [Tailwind CSS](https://tailwindcss.com/) : CSSをクラス化するという考え方が非常に参考になりました。
+
+{/* Chakra, Tailwind, Bootstrap, などのフレームワークも参考にしています。 */}

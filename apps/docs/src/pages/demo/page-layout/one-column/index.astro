@@ -1,21 +1,33 @@
 ---
 import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
-import OneColumn from '~/layouts/one-column.jsx';
-import { Container, Flow, Spacer } from '@loos/lism-astro';
+import DemoHeader from '../DemoHeader.astro';
+import DemoFooter from '../DemoFooter.astro';
+import DemoContent from '../DemoContent.astro';
+import { Container, Lism, Stack } from '@loos/lism-astro';
+
+// <!-- <OneColumn title='1 column ariticle page.'>...content...</OneColumn> -->
 ---
 
 <DemoPageLayout>
-	<header>DEMO Header</header>
-	<OneColumn title='1 column ariticle page.'>
-		<Flow>
-			<p>
-				ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
-			</p>
-			<ul>
-				<li>list</li>
-				<li>list</li>
-				<li>list</li>
-			</ul>
-		</Flow>
-	</OneColumn>
+	<Stack id='wrap' minH='100vh'>
+		<DemoHeader />
+		<Lism tag='main' className='z--main' py={50} flexItem={{ fx: 1 }}>
+			<Lism tag='article' className='z--article' py={50}>
+				<Container tag='header' className='z--article__header' hasGutter>
+					<h1>Page Title</h1>
+				</Container>
+
+				<Container className='z--article__content' size='m' hasGutter isFlow mbs='60'>
+					<DemoContent />
+				</Container>
+
+				<Container tag='aside' className='z--article__aside' size='m' hasGutter mbs='60'>
+					<Lism bgc='base-2' p='50'>
+						<div>Comment area, etc...</div>
+					</Lism>
+				</Container>
+			</Lism>
+		</Lism>
+		<DemoFooter />
+	</Stack>
 </DemoPageLayout>

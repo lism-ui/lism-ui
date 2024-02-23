@@ -1,0 +1,31 @@
+---
+import { Box, Frame, Center, Button } from '@loos/lism-astro';
+
+interface Props {
+	[key: string]: any;
+}
+const { url, ...props } = Astro.props;
+---
+
+<Frame aspect='4/3'>
+	<Frame className='c--scalePreview' aspect='4/3' bxsh='4' bdrs='m' bd bdw='3px' {...props}>
+		<iframe src={url} width='800' height='600'></iframe>
+	</Frame>
+</Frame>
+
+<Center>
+	<Button href={url} openNewTab>大きい画面で見る</Button>
+</Center>
+
+<style is:global>
+	.c--scalePreview {
+		max-width: unset;
+		width: 160%;
+		transform: scale(0.625);
+		transform-origin: 0 0;
+	}
+	.c--scalePreview > iframe {
+		width: 100%;
+		height: 100%;
+	}
+</style>

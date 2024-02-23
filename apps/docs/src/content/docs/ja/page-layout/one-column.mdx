@@ -1,0 +1,47 @@
+---
+title: 1カラムレイアウト
+description: 1カラムレイアウトの実装例を紹介します。
+sidebar:
+  order: 1
+---
+
+import { Lism } from '@loos/lism-core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import PreviewFrame from '~/components/PreviewFrame.astro'
+
+Lismで1カラムページの全体レイアウトを組む場合の例を紹介します。
+
+<Preview>
+	<PreviewTitle>コード</PreviewTitle>
+	<PreviewCode>
+	```jsx
+	<body>
+		<Stack id='wrap' minH='100vh'>
+			<YourHeader />
+			<Lism tag='main' className='z--main' py={50} flexItem={{ fx: 1 }}>
+				<Lism tag='article' className='z--article' py={50}>
+					<Container tag='header' className='z--article__header' hasGutter>
+						<h1>Page Title</h1>
+					</Container>
+
+					<Container className='z--article__content' size='m' hasGutter isFlow mbs='60'>
+						<YourContent />
+					</Container>
+
+					<Container tag='aside' className='z--article__aside' size='m' hasGutter mbs='60'>
+						<Lism bgc='base-2' p='50'>
+							<div>Comment area, etc...</div>
+						</Lism>
+					</Container>
+				</Lism>
+			</Lism>
+			<YourFooter />
+		</Stack>
+	</body>
+	```
+	</PreviewCode>
+</Preview>
+
+<PreviewTitle>プレビュー</PreviewTitle>
+<PreviewFrame url='/demo/page-layout/one-column/' />
+

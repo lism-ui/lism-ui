@@ -1,0 +1,61 @@
+---
+title: 2カラムレイアウト
+description: 2カラムレイアウトの実装例を紹介します。
+sidebar:
+  order: 2
+---
+
+import { Lism } from '@loos/lism-core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import PreviewFrame from '~/components/PreviewFrame.astro'
+
+
+Lismで2カラムページの全体レイアウトを組む場合の例を紹介します。
+
+<Preview>
+	<PreviewTitle>コード</PreviewTitle>
+	<PreviewCode>
+	```jsx
+	<body>
+		<Stack id='wrap' minH='100vh'>
+			<YourHeader />
+			<Container className='z--content' hasGutter size='m' py={50} flexItem={{ fx: 1 }}>
+				<SideFlex side='last' sideW='240px' fluidMinW='40em' gap={50}>
+					<Container tag='main' className='z--main' bd='guide'>
+						<article class='z--article'>
+							<Lism tag='header' className='z--article__header'>
+								<h1>Page Title</h1>
+							</Lism>
+
+							<Lism isFlow mbs='60'>
+								<YourContent />
+							</Lism>
+
+							<Lism tag='aside' class='z--article__aside' mbs='60'>
+								<Lism bgc='base-2' p='50'>
+									<div>Comment area, etc...</div>
+								</Lism>
+							</Lism>
+						</article>
+					</Container>
+					<Container tag='aside' isFlow bd='guide'>
+						<p>Sidebar contents...</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+						<p>
+							Deleniti cum nostrum nemo, accusantium eius est ut voluptatibus excepturi
+							unde repudiandae ea dolore odio laborum corrupti, totam perspiciatis odit.
+							Laboriosam, amet.
+						</p>
+					</Container>
+				</SideFlex>
+			</Container>
+			<YourFooter />
+		</Stack>
+	</body>
+	```
+	</PreviewCode>
+</Preview>
+
+<PreviewTitle>プレビュー</PreviewTitle>
+<PreviewFrame url='/demo/page-layout/two-columns/' />
+

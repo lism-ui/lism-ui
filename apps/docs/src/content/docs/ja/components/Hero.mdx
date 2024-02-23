@@ -5,10 +5,12 @@ description: ...
 
 import { Box, Grid, Text, Layer,Stack, MediaLayer, FilterLayer, Hero, HeroContent, Center, Frame, Button } from '@loos/lism-core';
 import { ShapeDivider } from '@loos/lism-astro';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Reference, MemoBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import PreviewFrame from "~/components/PreviewFrame.astro";
 
 広いコンテンツエリアを作成するためのモジュールで、デフォルトでの単体使用では、ただの`isFullwide`な`Stack`です。
+
 
 `<Hero>`内に`<HeroContent>`を使うことで、上・中央・下寄せでコンテンツを配置できます。をコントロールできるようになります。
 
@@ -331,11 +333,4 @@ Hero 自体の高さを固定していい場合は、普通に Hero の高さを
 
 ## 別ページで確認する
 
-<Frame aspect='4/3' className='scalePreview' bxsh='4' bdrs='m' bd bdw='3px'>
-	<Frame tag='iframe' src='/demo/hero' aspect='4/3' width='1600' height='900' />
-</Frame>
-
-<Center>
-<Button href='/demo/hero' target="_blank" rel='noopener noreferrer'>大きい画面で見る</Button>
-</Center>
-
+<PreviewFrame url='/demo/hero' />

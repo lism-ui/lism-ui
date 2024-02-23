@@ -18,7 +18,7 @@ export default defineConfig({
 		starlight({
 			title: 'Lism UI',
 			// このサイトのデフォルト言語として英語を設定します。
-			defaultLocale: 'ja', // root
+			defaultLocale: 'root',
 			locales,
 			customCss: [
 				// '@loos/lism-core/css/all.css',
