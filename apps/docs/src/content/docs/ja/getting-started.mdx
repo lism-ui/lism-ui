@@ -93,8 +93,8 @@ import { Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, 
 npm i @lism-ui/next
 ```
 
-<Alert preset="warning">
-パッケージから直接コンポーネントのソースコードをimportできるようにするため、`next.config.js`の`transpilePackages`に`"@lism-ui/next"`を追加してください。
+<Alert preset='warning'>
+`@lism-ui/next`から`@lism-ui/core`のコードを ンポートできるようにするため、`next.config.js`の`transpilePackages`に`"@lism-ui/next"`を追加してください。
 </Alert>
 
 
@@ -128,17 +128,41 @@ import { Box, Tabs, TabItem } from '@lism-ui/next';
 
 ### Astro
 
-`.jsx`ファイルではなく、`.astro`ファイルでもコンポーネントを配布しています。<MemoBadge>準備中</MemoBadge>
+`@lism-ui/astro`パッケージを追加すると、`.jsx`ファイルではなく、`.astro`ファイルでもコンポーネントを利用できるようになります。<MemoBadge>一部準備中</MemoBadge>
+
+以下のパッケージを追加でインストールしてください。
 
 ```bash frame="none"
 npm i @lism-ui/astro
 ```
 
 ```js
-import { Box, ... } from '@lism-ui/astro';
+import { Stack, Flex } from '@lism-ui/astro';
 ```
 
-一部のコンポーネントは、ReactとAstroで利用方法が変わるので注意してください。（各コンポーネントの解説ページで個別に説明していく予定です。）
+
+<Alert preset='warning'>
+`@lism-ui/astro`から`@lism-ui/core`のコードをインポートできるようにするため、`astro.config.js`の`vite.ssr.noExternal`に`"@lism-ui/core"`を追加してください。
+</Alert>
+
+```js filename="astro.config.js"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  // ...other settings 
+  vite: {
+    ssr: {
+      noExternal: ["@lism-ui/core"],
+    },
+  },
+});
+```
+
+この記述がないと、"**Cannot use import statement outside a module**" というエラーが発生します。  
+<small>（パッケージ配布方法の改善で対応できるかどうか調整中です...）</small>
+
+
+また、一部のコンポーネントは、ReactとAstroで利用方法が変わるので注意してください。（各コンポーネントの解説ページで個別に説明していく予定です。）
 
 {/* 
 ## lism.config のセッティング

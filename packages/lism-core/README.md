@@ -1,6 +1,6 @@
 ## Installation
 
-For details, see [Docs](https://www.lism.style/)
+For details, see [Docs](https://lism-ui.com/)
 
 ### 1. Installation
 

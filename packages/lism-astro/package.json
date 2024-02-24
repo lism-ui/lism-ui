@@ -17,8 +17,7 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"@types/node": "^20.5.9",
-		"uuid": "^9.0.1"
+		"@types/node": "^20.5.9"
 	},
 	"devDependencies": {
 		"@lism-ui/core": "workspace:*"
