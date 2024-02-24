@@ -17,6 +17,11 @@ export default defineConfig({
 		// mdx(), // 基本はmarkdownを継承する
 		starlight({
 			title: 'Lism UI',
+			// logo: {
+			// 	src: './src/assets/my-logo.svg',
+			// replacesTitle: true,
+			// },
+			// favicon: '/images/favicon.svg',
 			// このサイトのデフォルト言語として英語を設定します。
 			defaultLocale: 'root',
 			locales,
@@ -30,7 +35,10 @@ export default defineConfig({
 			],
 			sidebar,
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/lism-ui/lism-ui',
+			},
+			editLink: {
+				baseUrl: 'https://github.com/lism-ui/lism-ui/tree/main/apps/docs',
 			},
 			// コードブロックのカスタマイズ: https://starlight.astro.build/ja/reference/configuration/#expressivecode
 			expressiveCode: {

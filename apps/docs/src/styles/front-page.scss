@@ -52,3 +52,8 @@ h1#_top {
 // * {
 // 	color: red !important;
 // }
+
+// トップページの編集リンクは消す
+footer > .meta {
+	display: none;
+}
