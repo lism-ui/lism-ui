@@ -11,11 +11,11 @@ const { mediaAttrs, otherProps } = separateMediaAttrs(props);
 
 {
 	Astro.slots.has('default') ? (
-		<Frame layout={Layer} hover={hover} {...otherProps}>
+		<Frame layout={Layer} variant='media' hover={hover} {...otherProps}>
 			<slot />
 		</Frame>
 	) : (
-		<Frame layout={Layer} {...otherProps}>
+		<Frame layout={Layer} variant='media' {...otherProps}>
 			<Media as={media} hover={hover} loading='lazy' decoding='async' {...mediaAttrs} />
 		</Frame>
 	)

@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import { getAccBodyProps } from '@lism-ui/core/raw/Accordion/getProps';
+import { getAccBodyProps } from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 const props = Astro.props || {};
@@ -9,7 +9,7 @@ const { bodyProps, innerProps } = getAccBodyProps(props);
 ---
 
 <Lism {...bodyProps}>
-    <Lism {...innerProps}>
-        <slot />
-    </Lism>
+	<Lism {...innerProps}>
+		<slot />
+	</Lism>
 </Lism>

@@ -1,10 +1,11 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import getProps from '@lism-ui/core/raw/Box/getProps.ts';
+import getProps from '@lism-ui/core/components/Box/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
+const props = Astro.props || {};
 ---
 
-<Lism {...getProps(Astro.props || {})}><slot /></Lism>
+<Lism {...getProps(props)}><slot /></Lism>

@@ -1,0 +1,13 @@
+---
+import { LismProps } from '../types';
+import { Flex } from '../Flex';
+import { Icon } from '../Icon';
+import { getIconButtonProps } from '@lism-ui/core/components/Button/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { icon, ...props } = Astro.props || {};
+const hasSlot = Astro.slots.has('default');
+---
+
+<Flex {...getIconButtonProps(props)}>{hasSlot ? <slot /> : <Icon icon={icon} />}</Flex>

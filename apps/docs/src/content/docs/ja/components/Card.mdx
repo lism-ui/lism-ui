@@ -3,7 +3,7 @@ title: 'Card'
 description: ...
 ---
 
-import { Box, TileGrid, Card, CardMedia, CardBody, Alert, Badge, Grid, Stack, Text, FlexItem, OverlayLink, Layer, FilterLayer, Button, Columns, Media } from '@lism-ui/core';
+import { Box, Grid, Card, CardMedia, CardBody, Alert, Badge, Stack, Text, FlexItem, OverlayLink, Layer, FilterLayer, Button, Columns, Media } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 // import Image from 'next/image';
@@ -213,7 +213,7 @@ import { Card, CardMedia, CardBody } from '@lism-ui/core';
 <Preview>
 	<PreviewTitle>メディア側にBadge追加, hoverを変えてみる</PreviewTitle>
 	<PreviewArea p={30}>
-		<TileGrid itemMinW='20rem' gap={20}>
+		<Grid variant='tile' itemMinW='20rem' gap={20}>
 			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'pass']}>
 				<CardMedia aspect='2/1'>
 					<Media src='/img.jpg' alt='' width='960' height='640' />
@@ -238,11 +238,11 @@ import { Card, CardMedia, CardBody } from '@lism-ui/core';
 					<Text ta='right' mt='auto' pt='10' fz='s'>Bottom Text</Text>
 				</CardBody>
 			</Card>
-		</TileGrid>
+		</Grid>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {2, 4,5}
-		<TileGrid itemMinW='20rem' gap={20}>
+		<Grid variant='tile' itemMinW='20rem' gap={20}>
 			<Card href='#card-demo' bdrs='xs' hover={['bxsh:4', 'up', 'mediaBright']}>
 				<CardMedia aspect='2/1'>
 					<Media src='/img.jpg' alt='' width='960' height='640' />
@@ -258,7 +258,7 @@ import { Card, CardMedia, CardBody } from '@lism-ui/core';
 				...
 			</Card>
 			<Card>...</Card>
-		</TileGrid>
+		</Grid>
 		```
 	</PreviewCode>
 </Preview>
@@ -450,7 +450,7 @@ import { Card, CardMedia, CardBody } from '@lism-ui/core';
 				<img src='/img.jpg' alt='' width='960' height='640' />
 				<FilterLayer bgc='rgba(255,255,255,0.5)' blur='1px' brightness={1.2}/>
 			</CardMedia>
-			<CardBody as={Layer} inset='0' >
+			<CardBody layout={Layer} inset='0' >
 				<Stack h='100%' gap={20}>
 					<h3 className='-fz:l'>Card Title</h3>
 					<DammyText />
@@ -472,7 +472,7 @@ import { Card, CardMedia, CardBody } from '@lism-ui/core';
 			<CardMedia aspect='4/3'>
 				<img src='/img.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody as={Layer} position='bottom' w='100%' size='contain' z='0'>
+			<CardBody layout={Layer} position='bottom' w='100%' size='contain' z='0'>
 				<FilterLayer bgc='rgba(255,255,255,0.6)' blur='3px' brightness={1.2} z='-1'/>
 				<Stack h='100%' gap={10}>
 					<h3 className='-fz:r'>Card Title</h3>
@@ -495,12 +495,12 @@ hoverエフェクトを自作する
 <Preview>
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
 	<PreviewArea p={30}>
-		<TileGrid itemMinW='20rem' gap={20}>
+		<Grid variant='tile' itemMinW='20rem' gap={20}>
 			<Card href='#card-demo' bdrs='s' hover='pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody as={Layer} position='bottom' w='100%' p={0} size='contain'>
+				<CardBody layout={Layer} position='bottom' w='100%' p={0} size='contain'>
 					<FilterLayer blur='4px' brightness={1.1}/>
 					<Box pos='relative' z='1' p='box' bgc='rgba(255,255,255,0.5)' c='black'>
 						<h3 className='-fz:r'>Card Title A</h3>
@@ -517,7 +517,7 @@ hoverエフェクトを自作する
 				<CardMedia aspect='4/3'>
 					<img src='/img.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody as={Layer} position='bottom' w='100%' p={0} size='contain'>
+				<CardBody layout={Layer} position='bottom' w='100%' p={0} size='contain'>
 					<FilterLayer blur='4px' brightness={1.1}/>
 					<Box pos='relative' z='1' p='box' bgc='rgba(255,255,255,0.5)' c='black'>
 						<h3 className='-fz:r'>Card Title A</h3>
@@ -530,7 +530,7 @@ hoverエフェクトを自作する
 					</Box>
 				</CardBody>
 			</Card>
-		</TileGrid>
+		</Grid>
 
 	</PreviewArea>
 	<PreviewCode>

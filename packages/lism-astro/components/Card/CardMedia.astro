@@ -1,0 +1,11 @@
+---
+import { LismProps } from '../types';
+import { Frame } from '../Frame';
+import { getCardMediaProps } from '@lism-ui/core/components/Card/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Frame {...getCardMediaProps(props)}><slot /></Frame>

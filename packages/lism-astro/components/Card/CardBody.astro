@@ -1,0 +1,12 @@
+---
+import { LismProps } from '../types';
+import { Stack } from '../Flex';
+import { getCardBodyProps } from '@lism-ui/core/components/Card/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { layout, ...props } = Astro.props || {};
+const Component = layout || Stack;
+---
+
+<Component {...getCardBodyProps(props)}><slot /></Component>

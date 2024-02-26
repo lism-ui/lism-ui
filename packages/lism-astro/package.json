@@ -1,6 +1,6 @@
 {
 	"name": "@lism-ui/astro",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "",
 	"main": "components/index.js",
 	"type": "module",
@@ -9,9 +9,10 @@
 	},
 	"files": [
 		"components"
-	],
+	],	
 	"exports": {
-		".": "./components/index.js"
+		".": "./components/index.js",
+		"./*": "./components/*"
 	},
 	"keywords": [],
 	"author": "",

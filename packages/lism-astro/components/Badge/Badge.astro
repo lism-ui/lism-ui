@@ -1,0 +1,11 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import getProps from '@lism-ui/core/components/Badge/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Lism {...getProps(props)}><slot /></Lism>

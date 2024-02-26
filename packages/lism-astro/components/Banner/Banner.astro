@@ -1,30 +1,10 @@
 ---
-import { Lism, Frame, LinkBox, FilterLayer } from '@lism-ui/core';
-import { MediaLayer } from '../MediaLayer/index.js';
+import { Frame } from '../Frame';
+import getProps from '@lism-ui/core/components/Banner/getProps';
 
-const { flowGap, media, filter, ...props } = Astro.props || {};
-
-const theProps = props;
-if (props.ratio) theProps.as = Frame;
-let Component = null;
-if (props.href) {
-    Component = LinkBox;
-} else {
-    Component = Lism;
-}
-
-// memo: mediaは slot でもOK
+const props = Astro.props || {};
 ---
 
-<Component blockClass='b--banner' {...props}>
-    <!-- {
-		Astro.slots.has('media') && (
-			<MediaLayer>
-				<slot name='media' />
-			</MediaLayer>
-		)
-	} -->
-    {!!media && <MediaLayer {...media} />}
-    {filter && <FilterLayer {...filter} />}
-    <slot />
-</Component>
+<Frame {...getProps(props)}>
+	<slot />
+</Frame>

@@ -1,12 +1,12 @@
 ---
 import { LismProps } from '../types';
 import { FlexItem } from '../Flex';
-import { getAccLabelProps } from '@lism-ui/core/raw/Accordion/getProps';
+import { getAccLabelProps } from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
 <FlexItem {...getAccLabelProps(props)}>
-    <slot />
+	<slot />
 </FlexItem>

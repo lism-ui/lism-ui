@@ -68,3 +68,36 @@ export function getLayerProps(props) {
 	layerProps._lismClass = _lismClass;
 	return layerProps;
 }
+
+const FILTERS = [
+	'blur',
+	'contrast',
+	'brightness',
+	'drop-shadow',
+	'grayscale',
+	'hue-rotate',
+	'invert',
+	// 'opacity',
+	'saturate',
+	'sepia',
+];
+
+export function getFilterLayerProps({ css = {}, ...props }) {
+	const backdropFilters = [];
+
+	if (null != css.backdropFilter) {
+		FILTERS.forEach((filterName) => {
+			if (props[filterName]) {
+				backdropFilters.push(`${filterName}(${props[filterName]})`);
+				delete props[filterName];
+			}
+		});
+
+		if (backdropFilters.length > 0) {
+			css.backdropFilter = backdropFilters.join(' ');
+		}
+	}
+
+	props.css = css;
+	return props;
+}

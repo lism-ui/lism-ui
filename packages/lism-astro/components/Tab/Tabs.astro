@@ -5,28 +5,28 @@ import { Grid } from '../Grid';
 import TabList from './TabList.astro';
 import Tab from './Tab.astro';
 import TabPanel from './TabPanel.astro';
-import { uuidv4 } from '../../helper/index.js';
+import { uuidv4 } from '../helper/index.js';
 import transformTabitems from './transformTabitems.js';
-import getTabProps from '@lism-ui/core/raw/Tabs/getProps';
+import getTabProps from '@lism-ui/core/components/Tabs/getProps';
 
 // import TheTab from './TheTab.astro';}
 // slotsについて: https://docs.astro.build/ja/reference/api-reference/#astroslots
 
 // Propsの定義
 interface Props extends LismProps {
-    uuid?: string | number;
-    defaultIndex?: string | number;
+	uuid?: string | number;
+	defaultIndex?: string | number;
 }
 // propsの取得
 const {
-    lismClass = {},
-    lismStyle = {},
-    variant = 'line',
-    defaultIndex = 0,
-    uuid,
-    // listProps = {},
-    // panelProps = {},
-    ...props
+	lismClass = {},
+	lismStyle = {},
+	variant = 'line',
+	defaultIndex = 0,
+	uuid,
+	// listProps = {},
+	// panelProps = {},
+	...props
 } = Astro.props || {};
 
 // 生成したhtmlを格納する配列
@@ -34,9 +34,9 @@ const tabID = uuid ? uuid : uuidv4();
 
 // 子要素の方から順番に処理されていくので、文字列処理でデータを抽出する。(より厳密に処理するなら、rehype などでHTMLをパースして処理を行った方がいいかも)
 const { btns, panels } = transformTabitems(
-    await Astro.slots.render('default'),
-    tabID,
-    defaultIndex
+	await Astro.slots.render('default'),
+	tabID,
+	defaultIndex
 );
 
 lismClass.c = 'c--tabs';
@@ -44,49 +44,49 @@ if (variant) lismClass.c += ` c--tabs--${variant}`;
 
 const { tabProps, listProps, panelProps } = getTabProps(props, variant);
 if ('Stack' === listProps.as) {
-    listProps.as = Stack;
+	listProps.as = Stack;
 }
 
 const hasItems = btns.length > 0;
 ---
 
 <Grid lismClass={lismClass} gap='em10' {...tabProps}>
-    {
-        hasItems ? (
-            <>
-                <TabList {...listProps}>
-                    {btns.map((btn, index) => {
-                        return (
-                            <Tab tabID={tabID} index={index} isActive={btn.isActive}>
-                                <Fragment set:html={btn.content} />
-                            </Tab>
-                        );
-                    })}
-                </TabList>
-                {panels.map((panel, index) => {
-                    return (
-                        <TabPanel
-                            tabID={tabID}
-                            index={index}
-                            isActive={panel.isActive}
-                            {...panelProps}
-                        >
-                            <Fragment set:html={panel.content} />
-                        </TabPanel>
-                    );
-                })}
-            </>
-        ) : (
-            <slot />
-        )
-    }
+	{
+		hasItems ? (
+			<>
+				<TabList {...listProps}>
+					{btns.map((btn, index) => {
+						return (
+							<Tab tabID={tabID} index={index} isActive={btn.isActive}>
+								<Fragment set:html={btn.content} />
+							</Tab>
+						);
+					})}
+				</TabList>
+				{panels.map((panel, index) => {
+					return (
+						<TabPanel
+							tabID={tabID}
+							index={index}
+							isActive={panel.isActive}
+							{...panelProps}
+						>
+							<Fragment set:html={panel.content} />
+						</TabPanel>
+					);
+				})}
+			</>
+		) : (
+			<slot />
+		)
+	}
 </Grid>
 
 <script>
-    // import setEvent from './setEvent';
-    import setEvent from '@lism-ui/core/raw/Tabs/setEvent';
-    const tabsAll = document.querySelectorAll('.c--tabs');
-    tabsAll.forEach((tabs) => {
-        setEvent(tabs);
-    });
+	// import setEvent from './setEvent';
+	import setEvent from '@lism-ui/core/components/Tabs/setEvent';
+	const tabsAll = document.querySelectorAll('.c--tabs');
+	tabsAll.forEach((tabs) => {
+		setEvent(tabs);
+	});
 </script>

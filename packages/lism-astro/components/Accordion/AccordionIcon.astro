@@ -2,23 +2,23 @@
 import { LismProps } from '../types';
 import { FlexItem } from '../Flex';
 import { Icon } from '../Icon'; // .astroに書き換えたいが複雑なので後回し
-import { getAccIconProps } from '@lism-ui/core/raw/Accordion/getProps';
+import { getAccIconProps } from '@lism-ui/core/components/Accordion/getProps';
 
 // Propsの定義
 interface Props extends LismProps {
-    icon?: string;
-    size?: string;
-    iconProps?: Object;
+	icon?: string;
+	size?: string;
+	iconProps?: Object;
 }
 
 const {
-    icon = 'accordion-toggle', // accordion-toggle
-    size,
-    iconProps = {},
-    ...props
+	icon = 'accordion-toggle', // accordion-toggle
+	size,
+	iconProps = {},
+	...props
 } = Astro.props || {};
 ---
 
 <FlexItem {...getAccIconProps(props)}>
-    {Astro.slots.has('default') ? <slot /> : <Icon icon={icon} size={size} {...iconProps} />}
+	{Astro.slots.has('default') ? <slot /> : <Icon icon={icon} size={size} {...iconProps} />}
 </FlexItem>

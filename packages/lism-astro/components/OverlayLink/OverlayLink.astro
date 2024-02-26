@@ -1,0 +1,10 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import getOverlayLinkProps from '@lism-ui/core/components/OverlayLink/getProps';
+
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Lism {...getOverlayLinkProps(props)}><slot /></Lism>

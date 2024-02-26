@@ -1,0 +1,24 @@
+---
+import { LismProps } from '../types';
+import { Flex, Stack } from '../Flex';
+import { LinkBox } from '../LinkBox';
+import { getCardProps } from '@lism-ui/core/components/Card/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { isFlex, ...props } = Astro.props || {};
+
+let CardLayout = isFlex ? Flex : Stack;
+---
+
+{
+	props.href ? (
+		<LinkBox layout={CardLayout} {...getCardProps(props)}>
+			<slot />
+		</LinkBox>
+	) : (
+		<CardLayout {...getCardProps(props)}>
+			<slot />
+		</CardLayout>
+	)
+}

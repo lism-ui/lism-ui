@@ -3,7 +3,7 @@ import { LismProps } from '../types';
 import { Flex } from '../Flex';
 import AccordionLabel from './AccordionLabel.astro';
 import AccordionIcon from './AccordionIcon.astro';
-import { getAccHeadProps } from '@lism-ui/core/raw/Accordion/getProps';
+import { getAccHeadProps } from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 
@@ -13,14 +13,14 @@ const hasSlot = Astro.slots.has('default');
 ---
 
 <Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
-    {
-        hasSlot ? (
-            <slot />
-        ) : (
-            <>
-                <AccordionLabel>{label || ''}</AccordionLabel>
-                <AccordionIcon icon={icon} iconProps={iconProps} />
-            </>
-        )
-    }
+	{
+		hasSlot ? (
+			<slot />
+		) : (
+			<>
+				<AccordionLabel>{label || ''}</AccordionLabel>
+				<AccordionIcon icon={icon} iconProps={iconProps} />
+			</>
+		)
+	}
 </Flex>

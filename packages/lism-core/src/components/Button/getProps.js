@@ -1,3 +1,5 @@
+import separateLinkProps from '../separateLinkProps';
+
 export function getButtonProps({
 	_lismClass = [],
 	variant = 'fill',
@@ -10,13 +12,10 @@ export function getButtonProps({
 	_lismClass.push('c--button');
 	if (variant) _lismClass.push(` c--button--${variant}`);
 
-	if (iconOffset) {
-		style['--icon--offset'] = iconOffset;
-	}
-
 	const defaultProps = {
 		_lismClass,
-		style,
+		skipState: true,
+		tag: 'a',
 		hover: 'fade',
 		// gap: 'em5',
 		// py: 'em3',
@@ -24,6 +23,18 @@ export function getButtonProps({
 		// jc: 'center',
 		// ai: 'center',
 	};
+	const defaultTextProps = {
+		skipState: true,
+		tag: 'span',
+		_lismClass: ['c--button__text'],
+	};
+
+	const { linkProps, otherProps } = separateLinkProps(props);
+
+	if (iconOffset) {
+		style['--icon--offset'] = iconOffset;
+	}
+	otherProps.style = style;
 
 	// const leftIconProps = { 'data-position': 'left' };
 	// const rightIconProps = { 'data-position': 'right' };
@@ -34,16 +45,20 @@ export function getButtonProps({
 		// rightIconProps.gridItem = { gce: -1 };
 	}
 
-	return { btnProps: Object.assign(defaultProps, props), textProps };
+	return {
+		btnProps: Object.assign(linkProps, defaultProps, otherProps),
+		textProps: Object.assign(defaultTextProps, textProps),
+	};
 }
 
-export function getIconButtonProps({ _lismClass = [], variant = 'fill', style = {}, ...props }) {
+export function getIconButtonProps({ _lismClass = [], variant = 'fill', ...props }) {
 	_lismClass.push('c--button');
 	if (variant) _lismClass.push(` c--button--${variant}`);
 
 	const defaultProps = {
 		_lismClass,
-		style,
+		skipState: true,
+		tag: 'a',
 		hover: 'fade',
 		// gap: 'em5',
 		// py: 'em3',

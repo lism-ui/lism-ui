@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import getLismProps from '@lism-ui/core/lib/getLismProps';
-import { getAccProps } from '@lism-ui/core/raw/Accordion/getProps';
+import { getAccProps } from '@lism-ui/core/components/Accordion/getProps';
 
 // Propsの定義
 interface Props extends LismProps {
@@ -16,7 +16,7 @@ const props = Astro.props || {};
 
 <script>
 	// import setEvent from './setEvent';
-	import setEvent from '@lism-ui/core/raw/Accordion/setEvent';
+	import setEvent from '@lism-ui/core/components/Accordion/setEvent';
 	const accs = document.querySelectorAll('.c--accordion');
 	accs.forEach((acc) => {
 		setEvent(acc);

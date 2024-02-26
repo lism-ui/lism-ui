@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import { getGridItemProps } from '@lism-ui/core/raw/Grid/getProps';
+import { getGridItemProps } from '@lism-ui/core/components/Grid/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
@@ -11,5 +11,5 @@ const LismComponent = layout || Lism;
 ---
 
 <LismComponent {...getGridItemProps(props)}>
-    <slot />
+	<slot />
 </LismComponent>

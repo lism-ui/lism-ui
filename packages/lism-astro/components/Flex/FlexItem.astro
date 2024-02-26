@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import { getFlexItemProps } from '@lism-ui/core/raw/Flex/getProps';
+import { getFlexItemProps } from '@lism-ui/core/components/Flex/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
@@ -11,5 +11,5 @@ const LismComponent = layout || Lism;
 ---
 
 <LismComponent {...getFlexItemProps(props)}>
-    <slot />
+	<slot />
 </LismComponent>

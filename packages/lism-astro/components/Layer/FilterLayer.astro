@@ -1,0 +1,8 @@
+---
+import Layer from './Layer.astro';
+import { getFilterLayerProps } from '@lism-ui/core/components/Layer/getProps';
+
+const props = Astro.props || {};
+---
+
+<Layer variant='filter' {...getFilterLayerProps(props)} />

@@ -1,3 +1,5 @@
+import getBpData from '../../lib/getBpData';
+
 // gt + gtc, gtr の併用がなければ、コンテキストをセットして変数だけの出力にする
 export function getGridContext(gridProps = {}) {
 	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
@@ -102,4 +104,27 @@ export function getGridItemProps(props) {
 	});
 
 	return props;
+}
+
+export function getSideSwapProps({
+	style = {},
+	sideW,
+	side = 'end bottom', // "start top"|"start bottom"|"end top"|"end bottom"
+	bp = 'sm',
+	gt = {},
+	...props
+}) {
+	if (undefined !== sideW) {
+		style['--sideW'] = sideW;
+	}
+
+	props.gt = getBpData(gt);
+	props.gt[bp] = '-';
+
+	// if (customBreakPoint) {
+	// 	blockProps['data-break'] = 'custom';
+	// 	blockProps['data-custom-break'] = customBreakPoint;
+	// }
+
+	return Object.assign(props, { 'data-side': side, style });
 }
