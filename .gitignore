@@ -1,6 +1,5 @@
 # 一旦除外
 apps/wp-theme
-apps/playgrounds
 
 # production
 build/
