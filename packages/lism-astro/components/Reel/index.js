@@ -1,1 +1,1 @@
-export { default as OverlayLink } from './OverlayLink.astro';
+export { default as Reel } from './Reel.astro';
