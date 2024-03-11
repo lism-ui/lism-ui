@@ -5,9 +5,10 @@
 
 .-pos\:r{position: relative;}
 .-pos\:a{position: absolute;}
-// .-pos\:sttc{position: static;}
-// .-pos\:f{position: fixed;}
-// .-pos\:stck{position: sticky;}
+.-pos\:s{position: static;}
+.-pos\:f{position: fixed;}
+.-pos\:sticky{position: sticky;}
+
 
 .-z\:-1{z-index: -1;}
 .-z\:0{z-index: 0;}

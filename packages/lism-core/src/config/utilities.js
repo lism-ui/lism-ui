@@ -75,7 +75,10 @@ export default {
 
 	pos: {
 		relative: 'r',
-		absolute: 'a', //fixed: 'f'
+		absolute: 'a',
+		static: 's',
+		fixed: 'f',
+		sticky: 'sticky',
 	},
 	inset: { '0%': '0' }, // inset は 0% だけ
 	insets: { '0%': '0', '50%': '50', '100%': '100' }, // top,left,right,bottom 用
