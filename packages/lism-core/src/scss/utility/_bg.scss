@@ -66,8 +66,10 @@
 	:where(&) {
 		--bg-glass--blur: 16px;
 		--bxsh: 0 0 0 transparent;
-		color: #fff;
-		text-shadow: 0.5px 1px rgb(0 0 0 / 0.1);
+		// color: #fff;
+		// text-shadow:
+		// 	-1px -2px 0.25em rgb(255 255 255 / 0.2),
+		// 	1px 2px 0.25em rgb(0 0 0 / 0.2);
 	}
 
 	// shadowユーティリティに負けないように important.
@@ -78,8 +80,8 @@
 	// background-color: transparent;
 	// background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
 
-	backdrop-filter: brightness(1.15) contrast(0.95) blur(var(--bg-glass--blur));
-	// backdrop-filter: brightness(1.1) contrast(1) blur(var(--bg-glass--blur));
+	// backdrop-filter: brightness(1.1) blur(var(--bg-glass--blur));
+	backdrop-filter: brightness(1.15) contrast(0.97) blur(var(--bg-glass--blur));
 }
 
 // gradient={token, angle, from, to}
