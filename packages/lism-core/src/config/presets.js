@@ -18,7 +18,6 @@ export default {
 		'base',
 		'content-2',
 		'content-3',
-		//'pale', 'opposite',
 		'mix',
 	],
 	bgc: [
@@ -28,9 +27,6 @@ export default {
 		'base-2',
 		'base-3',
 		'content',
-		// 'pale',
-		// 'strong',
-		// 'opposite',
 		'mix',
 	],
 	bdc: [

@@ -1,6 +1,5 @@
 ---
-import { Box, Frame, Center } from '@lism-ui/astro';
-import { Button } from '@lism-ui/core';
+import { Frame, Center, Button } from '@lism-ui/astro';
 
 interface Props {
 	[key: string]: any;
@@ -9,7 +8,7 @@ const { url, ...props } = Astro.props;
 ---
 
 <Frame aspect='4/3'>
-	<Frame className='c--scalePreview' aspect='4/3' bxsh='4' bdrs='m' bd bdw='3px' {...props}>
+	<Frame className='c--scalePreview' aspect='4/3' bxsh='4' bdrs='m' bd bdw='4px' {...props}>
 		<iframe src={url} width='800' height='600'></iframe>
 	</Frame>
 </Frame>
