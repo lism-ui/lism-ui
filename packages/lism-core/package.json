@@ -1,6 +1,6 @@
 {
 	"name": "@lism-ui/core",
-	"version": "0.0.5",
+	"version": "0.0.7",
 	"description": "",
 	"author": {
 		"name": "ddryo",
@@ -23,7 +23,8 @@
 	},
 	"files": [
 		"dist",
-		"src/scss"
+		"src/scss",
+		"src/**/style.scss"
 	],
 	"type": "module",
 	"main": "./dist/index.js",
