@@ -6,37 +6,37 @@ export function getLayerPositions(position) {
 	const props = {};
 	if (position === 'center' || position === 'center center') {
 		props.inset = 'center';
-		// props.l = '50%';
-		// props.t = '50%';
+		// props.left = '50%';
+		// props.top = '50%';
 		// props.translate = '-50% -50%';
 	} else if (position) {
 		let hasX = false;
 		let hasY = false;
 
 		if (position.indexOf('left') !== -1) {
-			props.l = '0';
+			props.left = '0';
 			hasX = true;
 		} else if (position.indexOf('right') !== -1) {
-			props.r = '0';
+			props.right = '0';
 			hasX = true;
 		}
 
 		if (position.indexOf('top') !== -1) {
-			props.t = '0';
+			props.top = '0';
 			hasY = true;
 		} else if (position.indexOf('bottom') !== -1) {
-			props.b = '0';
+			props.bottom = '0';
 			hasY = true;
 		}
 
 		if (position.indexOf('center') !== -1) {
 			if (hasY) {
 				props.inset = 'centerX';
-				// props.l = '50%';
+				// props.left = '50%';
 				// props.translate = '-50%';
 			} else if (hasX) {
 				props.inset = 'centerY';
-				// props.t = '50%';
+				// props.top = '50%';
 				// props.translate = '0 -50%';
 			}
 		}

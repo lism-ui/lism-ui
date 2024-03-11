@@ -146,13 +146,16 @@ export default {
 	ovy: { style: 'overflowY', utils: 'ov' },
 	aspect: { presets: 1 },
 
+	pos: { style: 'position', utils: 1 },
 	z: { style: 'zIndex', presets: 1 },
-	pos: { style: 'position', utils: 1, presets: ['static', 'sticky'] },
+	top: { ...insetsProps, style: 1, utilKey: 't' },
+	left: { ...insetsProps, style: 1, utilKey: 'l' },
+	right: { ...insetsProps, style: 1, utilKey: 'r' },
+	bottom: { ...insetsProps, style: 1, utilKey: 'b' },
 	inset: { style: 1, utils: 1, presets: 1, converter: 'space' },
 	insets: { map: 1 },
 
 	// isolation
-
 	// flip: {},
 
 	// Spacing
@@ -300,10 +303,10 @@ export const CONTEXT_PROPS = {
 	},
 
 	insets: {
-		t: { ...insetsProps, style: 'top' },
-		l: { ...insetsProps, style: 'left' },
-		r: { ...insetsProps, style: 'right' },
-		b: { ...insetsProps, style: 'bottom' },
+		// t: { ...insetsProps, style: 'top' },
+		// l: { ...insetsProps, style: 'left' },
+		// r: { ...insetsProps, style: 'right' },
+		// b: { ...insetsProps, style: 'bottom' },
 		is: {
 			style: 'insetInlineStart',
 			utilKey: 'iis',

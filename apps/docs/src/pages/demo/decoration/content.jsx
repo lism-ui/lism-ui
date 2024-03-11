@@ -1,4 +1,4 @@
-import { Spacer, Decorator, Grid, Flex, GridItem, FlexItem, Component } from '@lism-ui/core';
+import { Spacer, Decorator, Grid, Flex, GridItem, FlexItem } from '@lism-ui/core';
 import { DammyText } from '~/components';
 import DecoBox from './DecoBox';
 
@@ -14,7 +14,7 @@ export default function content() {
 			>
 				<Decorator
 					as={FlexItem}
-					l='1px'
+					left='1px'
 					// z='1'
 					hasSize
 					size='0.875em'
@@ -47,7 +47,7 @@ export default function content() {
 					bd
 					consume='bdc bgc'
 					// ga='side'
-					r='1px'
+					right='1px'
 					// z='1'
 					my='1.5em'
 					css={{
@@ -74,7 +74,7 @@ export default function content() {
 					bd
 					consume='bdc bgc bdw'
 					grs='1'
-					t='var(--bdw)'
+					top='var(--bdw)'
 					mx='1.5em'
 					css={{
 						rotate: '45deg',
@@ -100,7 +100,7 @@ export default function content() {
 					bd
 					consume='bdc bgc bdw'
 					grs='2'
-					b='var(--bdw)'
+					bottom='var(--bdw)'
 					mx='1.5em'
 					css={{
 						rotate: '45deg',

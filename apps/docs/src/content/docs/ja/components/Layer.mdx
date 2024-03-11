@@ -73,7 +73,7 @@ import { Layer } from '@lism-ui/core';
 
 ## Usage
 
-`inset`,`t`,`b`,`l`,`r`,... などで直接位置を指定できます。
+`inset`,`top`,`bottom`,`left`,`right`,... などで直接位置を指定できます。
 
 <Alert preset='info'>
 inset系のプロパティで、用意されているユーティリティクラスを使用した時は、数値部分を文字列でを指定してください。
@@ -118,19 +118,19 @@ inset系のプロパティで、用意されているユーティリティクラ
 
 <Preview>
 	<PreviewTitle>
-		`t`, `l` に SPACEトークンを指定する
+		`top`, `left` に SPACEトークンを指定する
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
 		<Box hasLayer py={40} className='has--layerGuide'>
 			<Text fz='4xl' fw='bold' ta='c' lts='l'>BG</Text>
-			<Layer t={20} l={20}>
+			<Layer top={20} left={20}>
 				<p>Layer Contents</p>
 			</Layer>
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<Layer t={20} l={20}>
+		<Layer top={20} left={20}>
 			<p>Layer Contents</p>
 		</Layer>
 		```
