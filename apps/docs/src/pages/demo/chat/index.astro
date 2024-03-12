@@ -37,7 +37,7 @@ import { DammyText } from '~/components';
 		<Box c='blue:50%' bd p='box'>
 			<DammyText length='codes' />
 		</Box>
-		<Box
+		<!-- <Box
 			boxcolor='blue'
 			c='mix'
 			bgc='mix'
@@ -52,7 +52,7 @@ import { DammyText } from '~/components';
 			}}
 		>
 			<DammyText length='codes' />
-		</Box>
+		</Box> -->
 
 		<!--  -->
 		<hr />
@@ -74,38 +74,6 @@ import { DammyText } from '~/components';
 			avatar='/img/avatar01.jpg'
 		>
 			<DammyText length='codes' />
-		</Chat>
-
-		<hr />
-		<hr />
-		<h2>Customize例</h2>
-		<hr />
-		<Chat avatar='/img/onepiece01_luffy.png' name='ルフィ' contentProps={{ bdrs: 'xl' }}>
-			<DammyText length='xs' lang='ja' />
-		</Chat>
-		<Chat
-			direction='end'
-			avatar='/img/onepiece01_luffy.png'
-			name='ルフィ'
-			contentProps={{ bdrs: 'l' }}
-		>
-			<DammyText length='xs' lang='ja' />
-		</Chat>
-
-		<h2>variant='box'</h2>
-		<Chat variant='box'>
-			<ChatAvatar src='/img/onepiece01_luffy.png' />
-			<ChatName>ルフィ</ChatName>
-			<ChatContent type='box'>
-				<DammyText length='m' lang='ja' />
-			</ChatContent>
-		</Chat>
-		<Chat variant='box' direction='end'>
-			<ChatAvatar src='/img/onepiece06_chopper.png' />
-			<ChatName>チョッパー</ChatName>
-			<ChatContent type='box' direction='end' bdrs='m'>
-				<DammyText length='m' lang='ja' />
-			</ChatContent>
 		</Chat>
 	</Lism>
 </DemoPageLayout>
