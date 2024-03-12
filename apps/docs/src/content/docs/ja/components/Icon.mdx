@@ -3,7 +3,7 @@ title: 'Icon'
 description: ...
 ---
 
-import { Alert, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
+import { Flex, Alert, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
@@ -20,8 +20,8 @@ export const PrestIcons = () => {
 			{Object.keys(presetIcons).map((iconName) => {
 				return (
 					<tr key={iconName}>
-						<td><code>"{iconName}"</code></td>
-						<td><Icon preset={iconName} fz="xl" /></td>
+						<td><code>"lism:{iconName}"</code></td>
+						<td><Icon icon={`lism:${iconName}`} fz="xl" /></td>
 					</tr>
 				);
 			})}
@@ -37,17 +37,20 @@ export const PrestIcons = () => {
 
 | プロパティ | 説明 |
 |---|---|
-| `preset` | プリセットアイコン名を指定できます。 |
-| `as` | 使用したい外部のアイコンコンポーネントを指定できます。 |
-| `passProps` | 外部のアイコンコンポーネントに渡すpropsを指定できます。 |
-| `name`| `data-icon`属性に指定されたアイコン名を出力します。 |
-| `icon`| 値によって、`as`, `preset`, `name` のいずれかとして扱われます。 |
+| `as` | 外部のアイコンコンポーネントを指定して呼び出せます。 |
+| `asProps` | 外部のアイコンコンポーネントに渡すpropsを指定できます。 |
+| `icon` | アイコンを指定できます。指定した内容によって出力が変わります。 |
+| `emoji`| emoji用のクラスを付与して、指定した絵文字をそのまま出力します。 |
 | `isInline` | 指定すると、`.e--icon--inline`クラスも同時に出力されます。 |
-| `size` | プリセットアイコンを呼び出す場合、`width`, `height`として出力されます。 `as`でコンポーネントを指定している場合Lism Props ではなくコンポーネントに渡されます。それ以外の場合、Lism Propsとして処理され、css変数で出力されます。|
+| `size` | プリセットアイコンを呼び出す場合に、`width`, `height`として出力されます。 `as`で外部コンポーネントを指定している場合Lism Props ではなくその外部コンポーネントに渡されます。それ以外の場合は、Lism Propsとして処理されます。|
 | `scale` <PropBadge type="cssvar">--scale</PropBadge>| アイコンの scale を指定できます。css変数で出力されます。 |
 | `label` <PropBadge type="attr">aria-label</PropBadge>| `aria-label`として出力します。指定があれば`role="img"`が同時に出力され、指定がない場合は`aria-hidden="true"`が出力されます。 |
 
-{/* | `emoji`| 子要素としてそのまま出力されます。 | */}
+
+{/* | `preset` | プリセットアイコン名を指定できます。 | */}
+{/* | `as` | 使用したい外部のアイコンコンポーネントを指定できます。 |
+| `name`| `data-icon`属性に指定されたアイコン名を出力します。 | */}
+
 
 
 ## Import
@@ -68,35 +71,66 @@ import { Icon } from '@lism-ui/astro';
 
 ## Usage
 
-### svgの中身を直接記述する
+`<Icon>`は、`icon`に指定した内容によって出力が変わります。
+
+### プリセット登録済みのアイコンを呼び出す
+
+Lismパッケージ内にはいくつかsvgアイコンを内包しています。  
+`icon='lism:{icon-name}'`とすることで、それらのアイコンを呼び出すことができます。  
+（[Phosphor Icons](https://phosphoricons.com/) を使わせていただいています。）
+
+`preset`とアイコンの対応表は次の通りです。
+
+<PrestIcons/>
 
 <Preview>
-	<PreviewTitle>`path`などをそのまま子要素に渡す</PreviewTitle>
+	<PreviewTitle>プリセット指定例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Icon label="Phosphor Icons のロゴ" size="3em" c="red" viewBox="0 0 256 256">
-			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
-		</Icon>
+		<Cluster gap={20}>
+			<Icon icon="lism:lightbulb" fz="xl" />
+			<Icon icon="lism:warning" fz="xl" />
+			<Icon icon="lism:help" fz="xl" />
+		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode>
 		```jsx
-		<Icon label="Phosphor Icons のロゴ" size="3em" c="red" viewBox="0 0 256 256">
-			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
-		</Icon>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```jsx "--size:"
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="e--icon -c:" style="--c:var(--red)">
-			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
-		</svg>
+		<Cluster gap={20}>
+			<Icon icon="lism:lightbulb" fz="xl" />
+			<Icon icon="lism:warning" fz="xl" />
+			<Icon icon="lism:help" fz="xl" />
+		</Cluster>
 		```
 	</PreviewCode>
 </Preview>
 
 
+### data-icon属性にアイコン名を出力する
+
+`icon` にそれ以外の文字列を指定した場合、`data-icon`属性に指定した文字列が出力され、CSS側でアイコンを描画できるようになります。
+
+例えば、`name="foo"`を指定すると `data-icon="foo"`が出力されますので、そのセレクタを使ってCSSで自由に描画してください。
+
+{/* また、`name`が`mask-`で始まる場合は `--mask-image` にsvgを渡せるようになっています。  
+lism-core には、アコーディオン用に`"mask-accordion-toggle"`のみ用意しています。
+
+<Preview>
+	<PreviewTitle>`"mask-accordion-toggle"`</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Icon name="mask-accordion-toggle" fz="2xl" />
+	</PreviewArea>
+	<PreviewCode>
+```jsx
+<Icon name="mask-accordion-toggle" fz="2xl" />
+```
+	</PreviewCode>
+</Preview> */}
+
+
 ### 外部のパッケージを利用する方法
 
-`React Icons`,`@phosphor-icons/react`などのパッケージを利用する方法を見ていきます。
+`icon`または`as`に外部コンポーネントを指定することで、外部のアイコンパッケージを利用することができます。(`icon`は文字列以外のデータを`as`にそのまま渡すような処理になっています)
+
+これにより、`React Icons`,`@phosphor-icons/react`などのアイコンパッケージを`<Icon>`を通して利用することができます。
 
 <Alert preset='warning'>
 AstroでReact製のアイコンパッケージを利用する場合、別途Astro側でReactを有効化する必要があることに注意してください。
@@ -104,7 +138,7 @@ AstroでReact製のアイコンパッケージを利用する場合、別途Astr
 
 <Spacer h={10}/>
 
-ここでは例として、以下のように`Cat`というアイコンをインポートしているとします。
+ここでは例として、以下のように`Cat`というPhosphorアイコンをインポートしているとします。
 
 ```jsx
 import { Cat } from "@phosphor-icons/react";
@@ -112,32 +146,32 @@ import { Cat } from "@phosphor-icons/react";
 
 
 <Preview>
-	<PreviewTitle>コンポーネントを`as`に指定する</PreviewTitle>
+	<PreviewTitle>外部コンポーネントを`as`に指定する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Icon as={Cat} weight="fill" size="3em" c="black" />
+		<Icon icon={Cat} weight="fill" size="3em" c="black" />
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "as="
-		<Icon as={Cat} weight="fill" size="3em" c="black" />
+		```jsx "icon={Cat}"
+		<Icon icon={Cat} weight="fill" size="3em" c="black" />
 		```
 	</PreviewCode>
 </Preview>
 
 
-この例では、`weight`と`size`は外部コンポーネント側へ渡され、`c`はLism Propsとして処理されます。
-<HelpText>（`size`はLism Propsでも用意されていますが、`as`の指定がある時は外部コンポーネント側へ渡されるように特別に処理されています。）</HelpText>
+{/* この例では、`weight`と`size`は外部コンポーネント側へ渡され、`c`はLism Propsとして処理されます。 */}
+<HelpText>（`size`はLism Propsでも用意されていますが、外部コンポーネントの指定がある時は外部コンポーネント側へ渡されるように特別に処理されています。）</HelpText>
 
 
-[`passProps`](/ja/props/lism-props/#passprops) を利用することで、明示的に外部コンポーネント側へプロパティを渡すことができます。
+[`asProps`](/ja/props/lism-props/#passprops) を利用することで、明示的に外部コンポーネント側へプロパティを渡すことができます。
 
 <Preview>
-	<PreviewTitle>コンポーネント用のプロパティを`passProps`に指定する</PreviewTitle>
+	<PreviewTitle>外部コンポーネント用のプロパティを`asProps`に指定する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Icon as={Cat} passProps={{ weight:"fill", size:"3em" }} c="black" />
+		<Icon as={Cat} asProps={{ weight:"fill", size:"3em" }} c="black" />
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "as=" "passProps="
-		<Icon as={Cat} passProps={{ weight:"fill", size:"3em" }} c="black" />
+		```jsx "as=" "asProps="
+		<Icon as={Cat} asProps={{ weight:"fill", size:"3em" }} c="black" />
 		```
 	</PreviewCode>
 </Preview>
@@ -176,83 +210,58 @@ import { Cat } from "@phosphor-icons/react";
 </Preview> */}
 
 
-### プリセットアイコンを呼び出す
 
-`@lism-ui/core`に内包しているアイコンがいくつかあり、それらのアイコン名を`preset`に指定すると呼び出すことができます。  
-（[Phosphor Icons](https://phosphoricons.com/) を使っています。）
+### svgを直接記述する
 
-`preset`とアイコンの対応表は次の通りです。
-
-<PrestIcons/>
+`tag`に`svg` を渡すことで、`Icon`は`<svg>`で出力されます。  子要素にそのまま`path`などを配置してsvgを描画できます。
 
 <Preview>
-	<PreviewTitle>プリセット指定例</PreviewTitle>
+	<PreviewTitle>`path`などをそのまま子要素に渡す</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
-			<Icon preset="lightbulb" fz="xl" />
-			<Icon preset="warning" fz="xl" />
-			<Icon preset="help" fz="xl" />
-		</Cluster>
+		<Icon tag='svg' label="Phosphor Icons のロゴ" size="3em" c="red" viewBox="0 0 256 256">
+			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
+		</Icon>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<Cluster gap={20}>
-			<Icon preset="lightbulb" fz="xl" />
-			<Icon preset="warning" fz="xl" />
-			<Icon preset="help" fz="xl" />
-		</Cluster>
+		<Icon tag='svg' label="Phosphor Icons のロゴ" size="3em" c="red" viewBox="0 0 256 256">
+			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
+		</Icon>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "--size:"
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="e--icon -c:" style="--c:var(--red)">
+			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
+		</svg>
 		```
 	</PreviewCode>
 </Preview>
 
 
-### data-name属性にアイコン名を出力する
-
-`name` を指定すると、`data-name`属性に指定した文字列が出力され、CSS側でアイコンを描画できるようになります。
-
-例えば、`name="foo"`を指定すると `data-icon="foo"`が出力されます。
-
-{/* また、`name`が`mask-`で始まる場合は `--mask-image` にsvgを渡せるようになっています。  
-lism-core には、アコーディオン用に`"mask-accordion-toggle"`のみ用意しています。
-
-<Preview>
-	<PreviewTitle>`"mask-accordion-toggle"`</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Icon name="mask-accordion-toggle" fz="2xl" />
-	</PreviewArea>
-	<PreviewCode>
-```jsx
-<Icon name="mask-accordion-toggle" fz="2xl" />
-```
-	</PreviewCode>
-</Preview> */}
-
-
-
-{/* ### 絵文字の指定
+### 絵文字の指定
 
 <Preview>
 	<PreviewTitle>絵文字を使う</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex>
-			<Icon as={Cat} weight="fill" size="2em" c="black" />
+		<Flex gap='20'>
 			<Icon emoji="✍️" fz="2em" />
 			<Icon emoji="💡" fz="2em" />
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label="React">
 		```jsx
-		<Icon emoji="✍️" fz="2rem" />
-		<Icon emoji="💡" fz="2rem" />
+		<Icon emoji="✍️" fz="rem" />
+		<Icon emoji="💡" fz="rem" />
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label="HTML">
 		```html
-		<span aria-hidden="true" class="e--icon -fz:" style="--fz: 2rem;">✍️</span>
-		<span aria-hidden="true" class="e--icon -fz:" style="--fz: 2rem;">💡</span>
+		<span aria-hidden="true" class="e--icon e--icon--emoji -fz:" style="--fz:2em;">✍️</span>
+		<span aria-hidden="true" class="e--icon e--icon--emoji -fz:" style="--fz:2em;">💡</span>
 		```
 	</PreviewCode>
-</Preview> */}
+</Preview>
 
 
 ## インラインアイコン

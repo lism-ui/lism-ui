@@ -1,62 +1,62 @@
 export default {
 	note: {
-		icon: 'note',
+		icon: 'lism:note',
 		color: 'gray',
 		label: 'Note:',
 	},
 	alert: {
-		icon: 'alert',
+		icon: 'lism:alert',
 		color: 'red',
 		label: 'Alert:',
 	},
 	danger: {
-		icon: 'ban',
+		icon: 'lism:ban',
 		color: 'red',
 		label: 'Danger:',
 	},
 	warning: {
-		icon: 'warning',
+		icon: 'lism:warning',
 		color: 'yellow',
 		label: 'Warning:',
 	},
 	check: {
-		icon: 'check',
+		icon: 'lism:check',
 		color: 'green',
 		label: 'Check:',
 	},
 	success: {
-		icon: 'check',
+		icon: 'lism:check',
 		color: 'green',
 		label: 'Success:',
 	},
 	help: {
-		icon: 'help',
+		icon: 'lism:help',
 		color: 'purple',
 		label: 'Help:',
 	},
 	// reference
 	reference: {
-		icon: 'book-open',
+		icon: 'lism:book-open',
 		color: 'pink',
 		label: 'Reference:',
 	},
 	point: {
-		icon: 'lightbulb',
+		icon: 'lism:lightbulb',
 		color: 'orange',
 		label: 'Point:',
 	},
 	info: {
-		icon: 'info',
+		icon: 'lism:info',
 		color: 'blue',
 		label: 'Info:',
 	},
 	good: {
-		icon: 'good',
+		icon: 'lism:good',
 		color: 'green',
 		label: 'Good:',
 	},
 	bad: {
-		icon: 'bad',
+		icon: 'lism:bad',
 		color: 'blue',
 		label: 'Bad:',
 	},

@@ -2,15 +2,19 @@ import getProps from './getProps';
 import getLismProps from '../../lib/getLismProps';
 import SVG from './SVG';
 
-export default function Icon({ passProps = {}, children, ...props }) {
-	const hasChildren = !!children;
+export default function Icon({ asProps = {}, children, ...props }) {
+	// const hasChildren = !!children;
 
-	let { IconTag, iconProps, otherProps } = getProps(props, hasChildren);
-	if (IconTag === '_SVG_') IconTag = SVG;
+	let { IconComponent, iconTag, iconProps, emoji, otherProps } = getProps(props);
+
+	let TheComponent = IconComponent || iconTag;
+	if (TheComponent === 'svg') {
+		TheComponent = SVG;
+	}
 
 	return (
-		<IconTag {...getLismProps(otherProps)} {...passProps} {...iconProps}>
-			{children}
-		</IconTag>
+		<TheComponent {...getLismProps(otherProps)} {...asProps} {...iconProps}>
+			{emoji || children}
+		</TheComponent>
 	);
 }

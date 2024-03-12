@@ -1,31 +1,42 @@
 import presets from './presets';
 
-export default function getProps(
-	{
-		_lismClass = [],
-		isInline,
-		variant,
-		// asProps = {}, // lismProps として処理しないデータ
-		as,
-		scale,
-		size,
-		name,
-		preset,
-		icon,
-		label,
-		style = {},
-		...otherProps
-	},
-	hasChildren
-) {
+/*
+Icon の出力パターン
+1. icon = preset で登録されたアイコン名 と一致する場合 → <svg> で出力
+2. icon = 1に該当しない、かつ文字列の場合→ data-icon 属性にアイコン名が出力される。（CSSでアイコンを描画できるようになっている）
+3. icon = 1,2にも該当しない場合 → 外部コンポーネントとして呼び出す（asでの指定と一緒）
+2. tag=svg で指定された場合 → <svg> で出力し、childrenはそのまま返す。（<path> などを渡して使えるようにする）
+2. as が指定された場合 → asで渡される外部コンポーネントを呼び出す
+*/
+export default function getProps({
+	_lismClass = [],
+	isInline,
+	variant,
+	// asProps = {}, // lismProps として処理しないデータ
+	as,
+	tag,
+	scale,
+	size,
+	emoji,
+	// name,
+	// preset,
+	icon,
+	dataIcon,
+	label,
+	style = {},
+	...otherProps
+}) {
 	_lismClass.push('e--icon');
 	if (isInline) _lismClass.push('e--icon--inline');
+	if (emoji) _lismClass.push('e--icon--emoji');
 	if (variant) _lismClass.push(`e--icon--${variant}`);
 	otherProps._lismClass = _lismClass;
 
 	if (scale) style['--scale'] = scale;
 	otherProps.style = style;
 
+	let IconComponent = as || null;
+	let iconTag = tag || 'span';
 	const iconProps = {};
 	// label の有無でaria属性を変える
 	if (label) {
@@ -35,16 +46,20 @@ export default function getProps(
 		iconProps['aria-hidden'] = 'true';
 	}
 
-	let IconTag = as || 'span';
+	// let iconTag = as || 'span';
 
-	// icon で指定された場合、 name, as に振り分ける
+	// icon で指定された内容によって出力を変える
+	let presetName = '';
 	if (icon) {
-		if (typeof icon === 'string' && presets[icon]) {
-			preset = icon;
-		} else if (typeof icon === 'string') {
-			name = icon;
-		} else if (icon && typeof icon !== 'string') {
-			IconTag = icon;
+		// icon が lism: で始まる場合 → プリセットアイコンを呼び出す
+		if (typeof icon === 'string') {
+			if (icon.startsWith('lism:')) {
+				presetName = icon.replace('lism:', '');
+			} else {
+				dataIcon = icon;
+			}
+		} else if (icon) {
+			IconComponent = icon;
 		}
 	}
 
@@ -54,30 +69,32 @@ export default function getProps(
 	// }
 
 	// プリセットアイコンが取得できるか
-	const iconData = presets[preset] || null;
-
-	if (null != iconData) {
-		// プリセットアイコンが取得できる場合
-		IconTag = '_SVG_';
-		iconProps.viewBox = iconData?.viewBox;
-		iconProps.path = iconData?.path;
-	} else if (hasChildren) {
-		// childrenがある場合 → <svg> として描画（childrenに <path> などを渡して使えるように）
-		IconTag = '_SVG_';
+	if (presetName) {
+		const presetIconData = presets[presetName] || null;
+		if (null != presetIconData) {
+			iconTag = 'svg';
+			iconProps.viewBox = presetIconData?.viewBox;
+			iconProps.path = presetIconData?.path;
+		}
 	}
 
+	//  else if (hasChildren) {
+	// 	// childrenがある場合 → <svg> として描画（childrenに <path> などを渡して使えるように）
+	// 	iconTag = 'svg';
+	// }
+
 	// 外部コンポーネントを呼び出す場合
-	if (IconTag !== 'span') {
+	if (null != IconComponent || 'svg' === iconTag) {
 		// sizeが指定されていれば 外部コンポーネント側に渡す
 		if (size) iconProps.size = size;
 	}
 	// span[data-icon] で出力する場合
-	else if (name) {
-		iconProps['data-icon'] = name;
+	else if (dataIcon) {
+		iconProps['data-icon'] = dataIcon;
 
 		// props.lismState = ['has--size'];
 		if (size) otherProps.size = size; // size は lismProps として処理
 	}
 
-	return { IconTag, iconProps, otherProps };
+	return { IconComponent, iconTag, iconProps, emoji, otherProps };
 }

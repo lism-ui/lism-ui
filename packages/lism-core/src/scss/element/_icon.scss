@@ -11,7 +11,9 @@
 	flex-shrink: 0; // Alertなど、アイコンはflex直下の子要素にしたい場合が多いので、指定しておく
 	// width: 1em;
 	// height: 1em;
+}
 
+.e--icon--emoji {
 	// emoji 考慮
 	font-family: var(--ff--emoji);
 	line-height: 1;
