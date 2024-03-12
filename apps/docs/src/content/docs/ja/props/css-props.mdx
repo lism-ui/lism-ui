@@ -167,27 +167,22 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|pos|position|-|`r`, `a`|-|
-|inset|inset|`SPACE`|`0`,`center`|-|
-|z|z-index|-|`-1`, `0`, `1`|-|
+|`pos`|`position`|-|`r`,`a`,`s`,`f`,`sticky`|-|
+|`inset`|`inset`|`SPACE`|`0`,`center`|-|
+|`top`|`top`|`SPACE`|`0`,`50`,`100`|-|
+|`left`|`left`|`SPACE`|`0`,`50`,`100`|-|
+|`right`|`right`|`SPACE`|`0`,`50`,`100`|-|
+|`bottom`|`bottom`|`SPACE`|`0`,`50`,`100`|-|
+|`z`|`z-index`|-|`-1`, `0`, `1`|-|
 
 さらに、以下のものは `insets` オブジェクト内で指定することができます。
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`t`|`top`|`SPACE`|`0`,`50`,`100`|-|
-|`l`|`left`|`SPACE`|`0`,`50`,`100`|-|
-|`r`|`right`|`SPACE`|`0`,`50`,`100`|-|
-|`b`|`bottom`|`SPACE`|`0`,`50`,`100`|-|
 |`is`|`inset-inline-start`|`SPACE`|`0`|-|
 |`ie`|`inset-inline-end`|`SPACE`|`0`|-|
 |`bs`|`inset-block-start`|`SPACE`|-|-|
 |`be`|`inset-block-end`|`SPACE`|-|-|
-
-{/* |top|top|-|`0`,`100`|-|
-|left|left|-|`0`,`100`|-|
-|right|right|-|`0`,`100`|-|
-|bottom|bottom|-|`0`,`100`|-| */}
 
 
 ## Grid & Flex

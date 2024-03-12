@@ -5,13 +5,13 @@ import separateLinkProps from '@lism-ui/core/components/separateLinkProps';
 
 // Propsの定義
 interface Props extends LismProps {}
-const { as, passProps, ...props } = Astro.props || {};
+const { as, asProps, ...props } = Astro.props || {};
 
 const { linkProps, otherProps } = separateLinkProps(props);
 const lismProps = getLismProps(otherProps, { hover: 'fade' });
 const JSX = as || 'a';
 ---
 
-<JSX {...linkProps} {...lismProps} {...passProps}>
+<JSX {...linkProps} {...lismProps} {...asProps}>
 	<slot />
 </JSX>

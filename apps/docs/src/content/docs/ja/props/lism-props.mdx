@@ -117,11 +117,10 @@ import Image from 'next/image';
 
 
 
-### passProps
+### asProps
 
-`as`で指定したコンポーネント側で確実に受け取ってほしいPropsを指定できます。
-
-`as`で指定したコンポーネントが受け取れるPropsと、Lism Props の名前が被っていた場合、Lism側での処理が優先されるので、それを回避する際に活用してください。
+Lism側での処理をスキップしたいpropsを指定できます。  
+`as`で指定したコンポーネントが受け取れるPropsと、Lism Props の名前が被っていた場合、Lism側での処理が優先されてしまうので、それを回避する際に活用できます。
 
 たとえば、`<Hoge>` というコンポーネントが`size`というプロパティを受け取れる時、以下のようにすると Lism Props の`size`として優先的に処理されてしまいます。
 
@@ -134,13 +133,13 @@ import Image from 'next/image';
 	</PreviewCode>
 </Preview>
 
-Hoge コンポーネント側で`size`を受け取るためには、以下のように`passProps`で指定する必要があります。
+Hoge コンポーネント側で`size`を受け取るためには、以下のように`asProps`で指定する必要があります。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewCode>
 ```jsx
-<Lism as={Hoge} passProps={{size:'...'}} p='em10' fz='l'>...</Lism>
+<Lism as={Hoge} asProps={{size:'...'}} p='em10' fz='l'>...</Lism>
 ```
 	</PreviewCode>
 </Preview>
