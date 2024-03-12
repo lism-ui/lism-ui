@@ -3,8 +3,7 @@ title: 'Hero'
 description: ...
 ---
 
-import { Box, Grid, Text, Layer,Stack, MediaLayer, FilterLayer, Hero, HeroContent, Center, Frame, Button } from '@lism-ui/core';
-import { ShapeDivider } from '@lism-ui/astro';
+import { Box, Grid, Text, Layer, Stack, MediaLayer, FilterLayer, Hero, HeroContent, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
 import { Reference, MemoBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import PreviewFrame from "~/components/PreviewFrame.astro";
@@ -134,7 +133,7 @@ ShapeDividerを使う場合は、`Hero`の直下に(`HeroContent`の兄弟要素
 <Preview>
 	<PreviewTitle>With ShapeDivider</PreviewTitle>
 	<PreviewArea resize>
-		<Hero bd minH='50vh'>
+		<Hero minH='50vh'>
 			<ShapeDivider shape='wave3' c='content-3' isFlip />
 			<HeroContent type='center'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
@@ -145,7 +144,7 @@ ShapeDividerを使う場合は、`Hero`の直下に(`HeroContent`の兄弟要素
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "\<ShapeDivider"
-		<Hero bd minH='50vh'>
+		<Hero minH='50vh'>
 			<ShapeDivider shape='wave3' c='content-3' isFlip />
 			<HeroContent type='center'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
