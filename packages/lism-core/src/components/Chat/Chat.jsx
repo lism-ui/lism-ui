@@ -36,7 +36,6 @@ export default function Chat({
 		<Grid
 			_lismClass={_lismClass}
 			lismState={lismState}
-			data-dir={direction}
 			{...getProps(direction, variant)}
 			{...props}
 		>

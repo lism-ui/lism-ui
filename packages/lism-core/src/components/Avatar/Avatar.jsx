@@ -18,15 +18,7 @@ export default function Avatar({ children, name, src, ...props }) {
 
 	return (
 		<Frame skipState {...avatarProps}>
-			<Media
-				src={src}
-				alt={name}
-				width='100%'
-				height='100%'
-				decoding='async'
-				// objectFit='cover'
-				{...mediaProps}
-			/>
+			<Media src={src} alt={name} {...mediaProps} />
 		</Frame>
 	);
 }

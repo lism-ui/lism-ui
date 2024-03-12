@@ -31,13 +31,7 @@ const hasFooter = footer || Astro.slots.has('footer');
 // const hasAvatar = avatar || Astro.slots.has('avatar');
 ---
 
-<Grid
-	_lismClass={_lismClass}
-	lismState={lismState}
-	data-dir={direction}
-	{...getProps(direction, variant)}
-	{...props}
->
+<Grid _lismClass={_lismClass} lismState={lismState} {...getProps(direction, variant)} {...props}>
 	{hasName && <ChatName>{name || <slot name='name' />}</ChatName>}
 	{avatar && <ChatAvatar src={avatar} />}
 	<ChatContent

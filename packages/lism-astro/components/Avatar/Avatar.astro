@@ -20,16 +20,7 @@ const { avatarProps, mediaProps } = getProps(props);
 		</Frame>
 	) : (
 		<Frame skipState {...avatarProps}>
-			{
-				<Media
-					src={src}
-					alt={name}
-					width='100%'
-					height='100%'
-					decoding='async'
-					{...mediaProps}
-				/>
-			}
+			{<Media src={src} alt={name} {...mediaProps} />}
 		</Frame>
 	)
 }

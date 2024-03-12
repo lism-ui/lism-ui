@@ -10,7 +10,6 @@
 .c--alert {
 	--boxcolor: var(--gray);
 	--fluid--minW: 16rem; // .l--fluidFix より優先度高くなるように注意
-	// --icon--size: 1.4em; //var(--fz--xl); //1.375em;
 	// --bdc: var(--boxcolor);
 	align-items: center;
 	border: solid 1px var(--bdc); // .-boxcolor 側で定義している --bdc そのまま使う

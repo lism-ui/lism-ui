@@ -3,88 +3,109 @@ title: 'Chat'
 description: ...
 ---
 
-
-import { Chat } from '@lism-ui/core';
+import { Chat } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
-- `<Chat>`
-- Lismクラス: `.b--chatBubble`
 
+## Props
 
-## Memo
+| プロパティ | 説明 |
+|---|---|
+| `avatar` | チャットアバター画像のsrcを指定します。 |
+| `name` | チャットに表示する名前を指定します。 |
+| `variant` | チャットタイプを指定できます。`speak` または `think` が有効です|
+| `direction` | チャットの表示位置を指定します。`start`または`end`を指定します。 |
+| `boxcolor` | チャットの背景色を指定します。|
+| `footer` | チャット本文の下に表示するフッターテキストを指定できます。 |
 
-- `@lism-ui/core` に入れるようなものではないかも..?
-- カラー指定について考える
 
 
 ## Import
 
-```js
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
 import { Chat } from '@lism-ui/core';
 ```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Chat } from '@lism-ui/astro';
+```
+	</PreviewCode>
+</Preview>
 
-{/* ChatBody, ChatAvatar */}
 
 ## Usage
 
+
 <Preview>
-	<PreviewTitle>Speak</PreviewTitle>
+	<PreviewTitle>`variant='speak'`</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Chat name="太郎" icon="/img/onepiece01_luffy.png">
-			<DammyText length="m" />
+		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+			<DammyText length='codes' />
 		</Chat>
-		<Chat name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
-			<DammyText />
-			<DammyText length="m" />
+		<Chat direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='red' footer='Color:red'>
+			<DammyText length='codes' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat name="太郎" icon="/img/onepiece01_luffy.png">
-			<DammyText length="m" />
+		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+			<p>Lorem ipsum...</p>
 		</Chat>
-		<Chat name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
-			<DammyText />
-			<DammyText length="m" />
+		<Chat direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='red' footer='Color:red'>
+			<p>Lorem ipsum...</p>
 		</Chat>
 		```
 	</PreviewCode>
 </Preview>
 
 <Preview>
-	<PreviewTitle>Thinking</PreviewTitle>
+	<PreviewTitle>`variant='think'`</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Chat type="think" name="太郎" icon="/img/onepiece01_luffy.png">
-			<DammyText length="m" />
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+			<DammyText length='codes' />
 		</Chat>
-		<Chat type="think" name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
-			<DammyText />
-			<DammyText length="m" />
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+			<DammyText length='codes' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		...
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+			<p>Lorem ipsum...</p>
+		</Chat>
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+			<p>Lorem ipsum...</p>
+		</Chat>
 		```
 	</PreviewCode>
 </Preview>
 
+
+### Astroでのslotの活用
+
+Astroでは、name,footerをslotで指定することが可能です。
 
 <Preview>
-	<PreviewTitle>Box</PreviewTitle>
+	<PreviewTitle>`slot`の使用例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Chat type="box" name="太郎" icon="/img/onepiece01_luffy.png">
-			<DammyText length="m" />
-		</Chat>
-		<Chat type="box" name="太郎" icon="/img/onepiece06_chopper.png" direction='right'>
-			<DammyText />
-			<DammyText length="m" />
+		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+			<i slot='name'>Taro</i>
+			<DammyText length='codes' />
+			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		...
+		```jsx "slot='name'" "slot='footer'"
+		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+			<i slot='name'>Taro</i>
+			<p>Lorem ipsum...</p>
+			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
+		</Chat>
 		```
 	</PreviewCode>
 </Preview>
+
