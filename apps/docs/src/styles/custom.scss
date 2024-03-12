@@ -72,9 +72,7 @@
 		> .frame {
 			background: var(--code-background);
 			background: color-mix(in srgb, var(--code-background), transparent 50%);
-			box-shadow:
-				inset var(--shSize--0) var(--shColor),
-				inset var(--shSize--1) var(--shColor);
+			box-shadow: var(--sh--i1);
 		}
 		> .frame > pre {
 			background: none;

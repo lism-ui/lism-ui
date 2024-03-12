@@ -29,7 +29,7 @@ export default {
 	// p: ['box', 'box:s', 'box:l'],
 
 	radius: ['full', '2xl', 'xl', 'l', 'm', 's', 'xs'],
-	shadow: ['-1', '-2', '-3', '-4', '1', '2', '3', '4'],
+	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],
 
 	// size:['container', 'container:s', 'container:l'],
 	size: ['xs', 's', 'm', 'l', 'xl', 'item', 'screenW'], // --size--xxx トークン

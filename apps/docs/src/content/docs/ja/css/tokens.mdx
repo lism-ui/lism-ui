@@ -106,18 +106,86 @@ export const ColorBadge = ({color, label}) => {
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box boxcolor='blue' bd p='box'>
-			<DammyText length='codes' />
-		</Box>
-		<Alert preset='alert'><DammyText length='codes' /></Alert>
-		<Note preset='note' heading='Note'><DammyText length='codes' /></Note>
-		<Box bgc='green:15%' c='blue:50%' p='box'>
-			<DammyText />
-		</Box>
+		<Box c='blue' p='box'><DammyText /></Box>
+		<Box bgc='red' c='white' p='box'><DammyText /></Box>
 	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--box -c: -p:box" style="--c:var(--blue)">...</div>
+		<div class="l--box -bgc: -c: -p:box" style="--bgc:var(--red);--c:var(--white)">...</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Box c='blue' p='box'>...</Box>
+		<Box bgc='red' c='white' p='box'>...</Box>
+		```
+	</PreviewCode>
 </Preview>
 
 
+パレットトークンについては、`-boxcolor:`と組み合わせた専用クラスも用意されています。  
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box boxcolor='green' p='box'><DammyText /></Box>
+		<Box boxcolor='blue' bd p='box'><DammyText /></Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--box -boxcolor:green -p:box">...</div>
+		<div class="l--box -boxcolor:blue -bd: -p:box">...</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Box boxcolor='green' p='box'>...</Box>
+		<Box boxcolor='blue' bd p='box'>...</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Reference>
+	[boxcolorについて詳しくはこちら→](/ja/css/boxcolor/)
+</Reference>
+
+### パレットカラーの不透明度の指定
+
+パレットトークンは、その元となるhslの値も変数として用意されているため。次のようにして不透明度の指定が可能です。
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box bgc='black:40%' c='white' p='box'><DammyText /></Box>
+		<Box bgc='green:10%' c='blue:75%' p='box'><DammyText /></Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div
+			class="l--box -bgc: -c: -p:box"
+			style="--bgc:hsl(var(--hsl-black) / 40%);--c:var(--white)"
+		>...</div>
+		<div
+			class="l--box -bgc: -c: -p:box"
+			style="--bgc:hsl(var(--hsl-green) / 10%);--c:hsl(var(--hsl-blue) / 75%)"
+		>...</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx
+		<Box bgc='black:40%' c='white' p='box'>
+			...
+		</Box>
+		<Box bgc='green:10%' c='blue:75%' p='box'>
+			...
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+		
 
 ## Typography
 
@@ -411,7 +479,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 	<PreviewTitle>DEMO</PreviewTitle>
 	<PreviewArea p={20} isFlow='s' resize>
 		<SpacingDemos spaces={[
-			1, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90
+			5, 10, 20, 30, 40, 50, 60, 70, 80, 90
 		]} isValueLabel />
 	</PreviewArea>
 </Preview>
@@ -588,55 +656,60 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 ## `SHADOW` トークン
 
 
-<Alert preset='warning'>
+{/* <Alert preset='warning'>
 box-shadow は少し特殊で、ユーティリティクラス内で複数のshadow用変数が組み合わされています。
-</Alert>
+</Alert> */}
+
+|トークン値|変数|クラス|
+|---|---|---|
+|`0`|-|`-bxsh:0`|
+|`1`|`--sh--1`|`-bxsh:1`|
+|`2`|`--sh--2`|`-bxsh:2`|
+|`3`|`--sh--3`|`-bxsh:3`|
+|`4`|`--sh--4`|`-bxsh:4`|
+|`5`|`--sh--5`|`-bxsh:5`|
+|`-1`|`--sh--i1`|`-bxsh:-1`|
+|`-2`|`--sh--i2`|`-bxsh:-2`|
+|`-3`|`--sh--i3`|`-bxsh:-3`|
+
+`--sh--{token}`の値の中身は、次の変数で構成されます。
 
 
 |構成変数|初期値|
 |---|---|
-|`--shColor`|`hsl(215 8% 8% / 8%)`|
-|`--shSize-0`|`0.5px 1px 1px 0`|
-|`--shSize-1`|`1px 2px 3px 0`|
-|`--shSize-2`|`2px 4px 7px 0`|
-|`--shSize-3`|`4px 8px 15px 0`|
-|`--shSize-4`|`8px 16px 31px 0`|
+|`--sh-size--0`|`0.5px 1px 2px 0`|
+|`--sh-size--1`|`1px 2px 4px 0`|
+|`--sh-size--2`|`2px 4px 8px 0`|
+|`--sh-size--3`|`4px 8px 16px 0`|
+|`--sh-size--4`|`8px 16px 32px 0`|
+|`--sh-size--5`|`16px 32px 64px 0`|
+|`--sh-hsl`|`215 8% 12%`|
+|`--sh-a`|`8%`|
 
-
-{/* <Preview>
-	<PreviewTitle>shadows</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Columns cols={[2, 3, 5]} gap={50}>
-			<ShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
-		</Columns>
-	</PreviewArea>
-</Preview> */}
-
-
-`bxsh`は、`1` ~ `4`, `-1` ~ `-4` までの値に対してユーティリティクラスを用意していますが、内部では2段階のshadowを組み合わせることでより立体的で美しいシャドウを表現できるようになっています。
+{/* `bxsh`は、`1` ~ `4`, `-1` ~ `-4` までの値に対してユーティリティクラスを用意していますが、内部では2段階のshadowを組み合わせることでより立体的で美しいシャドウを表現できるようになっています。 */}
 
 <Preview>
 	<PreviewTitle>bxshクラス</PreviewTitle>
 	<PreviewArea p={40} nogrid>
-		<Columns cols={[2, 4, 4]} gap={50}>
-			<BoxShadowDemos shadows={[ 1, 2, 3, 4 ]}/>
+		<Columns cols={[3 , 5, 5]} gap={50}>
+			<BoxShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
 		</Columns>
 	</PreviewArea>
-		<PreviewCode slot='tab' label='CSS'>
-```css
-/* 内部の構成イメージ */
-.-bxsh\:1 {box-shadow: var(--shSize-0) var(--shColor), var(--shSize-1) var(--shColor)}
-.-bxsh\:2 {box-shadow: var(--shSize-1) var(--shColor), var(--shSize-2) var(--shColor)}
-.-bxsh\:3 {box-shadow: var(--shSize-2) var(--shColor), var(--shSize-3) var(--shColor)}
-.-bxsh\:4 {box-shadow: var(--shSize-3) var(--shColor), var(--shSize-4) var(--shColor)}
-```
-	</PreviewCode>
+	{/* <PreviewCode slot='tab' label='CSS'>
+		```css
+		.-bxsh\:1 {box-shadow: var(--sh-size--0) var(--sh-color), var(--sh-size--1) var(--sh-color)}
+		.-bxsh\:2 {box-shadow: var(--sh-size--1) var(--sh-color), var(--sh-size--2) var(--sh-color)}
+		.-bxsh\:3 {box-shadow: var(--sh-size--2) var(--sh-color), var(--sh-size--3) var(--sh-color)}
+		.-bxsh\:4 {box-shadow: var(--sh-size--3) var(--sh-color), var(--sh-size--4) var(--sh-color)}
+		```
+	</PreviewCode> */}
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div class="-bxsh:1">...</div>
 		<div class="-bxsh:2">...</div>
 		<div class="-bxsh:3">...</div>
 		<div class="-bxsh:4">...</div>
+		<div class="-bxsh:5">...</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -645,54 +718,41 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 <Preview>
 	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
 	<PreviewArea p={40} nogrid>
-		<Columns cols={[2, 4, 4]} gap={50}>
-			<BoxShadowDemos shadows={[ -1, -2, -3, -4 ]}/>
+		<Columns cols={[3 , 5, 5]} gap={50}>
+			<BoxShadowDemos shadows={[ -1, -2, -3 ]}/>
 		</Columns>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='CSS'>
-```css
-/* 内部の構成イメージ */
-.-bxsh\:-1 {box-shadow: inset var(--shSize-0) var(--shColor), inset var(--shSize-1) var(--shColor)}
-.-bxsh\:-2 {box-shadow: inset var(--shSize-1) var(--shColor), inset var(--shSize-2) var(--shColor)}
-.-bxsh\:-3 {box-shadow: inset var(--shSize-2) var(--shColor), inset var(--shSize-3) var(--shColor)}
-.-bxsh\:-4 {box-shadow: inset var(--shSize-3) var(--shColor), inset var(--shSize-4) var(--shColor)}
-```
-	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div class="-bxsh:-1">...</div>
 		<div class="-bxsh:-2">...</div>
 		<div class="-bxsh:-3">...</div>
-		<div class="-bxsh:-4">...</div>
 		```
 	</PreviewCode>
 </Preview>
 
-
+{/* 
 ### シャドウカラーの上書き
 
-bxshユーティリティの構成変数である `--shColor` を上書き指定することで、シャドウカラーを変更することができます。
+bxshユーティリティの構成変数である `--sh-color` を上書き指定することで、シャドウカラーを変更することができます。
 
-{/* color-mix(in srgb, blue, transparent 80%) */}
 <Preview>
-	<PreviewTitle>`--shColor`の上書き</PreviewTitle>
+	<PreviewTitle>`--sh-color`の上書き</PreviewTitle>
 	<PreviewArea p={40} nogrid>
-		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='40' >...</Box>
+		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx "--shColor:"
-		<div class="l--box -bxsh:3 -p:40" style="--shColor:rgb(100 100 200 / 20%)"> … </div>
+		```html "--sh-color:"
+		<div class="l--box -bxsh:3 -p:30" style="--sh-color:rgb(100 100 200 / 20%)"> … </div>
 		```
 	</PreviewCode>
-</Preview>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "--sh-color:"
+		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
+		```
+	</PreviewCode>
+</Preview> */}
 
-
-{/* `shadowHsl`も指定したい */}
-
-
-
-
-{/* `shadowHsl`も指定したい */}
 
 
 {/* ## hover クラス

@@ -1,0 +1,91 @@
+/* stylelint-disable */
+
+// --sh-color 上書き可能にするパターン
+
+[class*="-bxsh\:"]{
+	// 一方の指定で動くように。
+	--sh-size--base: 0 0 0;
+	--sh-size: 0 0 0;
+	--bxsh: var(--sh-size--base) var(--sh-color), var(--sh-size) var(--sh-color);
+	box-shadow: var(--bxsh);
+}
+// [class*="-bxsh\:"]{
+// 	--bxsh: var(--sh-size-) var(--sh-color), var(--sh-size) var(--sh-color);
+// 	box-shadow: var(--bxsh);
+// }
+[class*="hov:bxsh:"]:hover {
+	// 非ホバー時の --bxsh が カスタム値でも動作するように変数分けて再度指定。
+	--hov--bxsh: var(--sh-size--base) var(--sh-color), var(--sh-size) var(--sh-color);
+	box-shadow: var(--hov--bxsh);
+}
+// [class*="bxsh\:-"]{
+// 	--bxsh: inset var(--sh-size-) var(--sh-color), inset var(--sh-size) var(--sh-color);
+// }
+
+// s,m,l,xl,2xl,...
+
+// .-bxsh\: {box-shadow: var(--bxsh);}
+.-bxsh\:0,
+.-hov\:bxsh\:0:hover {box-shadow: none;}
+
+// .-bxsh\:1 {box-shadow: var(--sh-size-1), var(--sh-size-2);}
+// .-bxsh\:2 {box-shadow: var(--sh-size-2), var(--sh-size-3);}
+// .-bxsh\:3 {box-shadow: var(--sh-size-3), var(--sh-size-4);}
+// .-bxsh\:4 {box-shadow: var(--sh-size-4), var(--sh-size-5);}
+
+// .-bxsh\:2 {box-shadow: var(--sh-size-2) var(--sh-color), var(--sh-size-3) var(--sh-color);}
+// .-bxsh\:3 {box-shadow: var(--sh-size-3) var(--sh-color), var(--sh-size-4) var(--sh-color);}
+// .-bxsh\:4 {box-shadow: var(--sh-size-4) var(--sh-color), var(--sh-size-5) var(--sh-color);}
+
+.-bxsh\:1,
+.-hov\:bxsh\:1:hover {
+	--sh-size--base: var(--sh-size--0);
+	--sh-size: var(--sh-size--1);
+}
+.-bxsh\:2,
+.-hov\:bxsh\:2:hover {
+	--sh-size--base: var(--sh-size--1);
+	--sh-size: var(--sh-size--2);
+}
+.-bxsh\:3,
+.-hov\:bxsh\:3:hover {
+	--sh-size--base: var(--sh-size--2);
+	--sh-size: var(--sh-size--3);
+}
+.-bxsh\:4,
+.-hov\:bxsh\:4:hover {
+	--sh-size--base: var(--sh-size--3);
+	--sh-size: var(--sh-size--4);
+}
+
+.-bxsh\:5,
+.-hov\:bxsh\:5:hover {
+	--sh-size--base: var(--sh-size--4);
+	--sh-size: var(--sh-size--5);
+}
+
+.-bxsh\:-1,
+.-hov\:bxsh\:-1:hover {
+	--sh-size--base: inset var(--sh-size--0);
+	--sh-size: inset var(--sh-size--1);
+}
+.-bxsh\:-2,
+.-hov\:bxsh\:-2:hover {
+	--sh-size--base: inset var(--sh-size--1);
+	--sh-size: inset var(--sh-size--2);
+}
+.-bxsh\:-3,
+.-hov\:bxsh\:-3:hover {
+	--sh-size--base: inset var(--sh-size--2);
+	--sh-size: inset var(--sh-size--3);
+}
+// .-bxsh\:-4,
+// .-hov\:bxsh\:-4:hover {
+// 	--sh-size--base: inset var(--sh-size--3);
+// 	--sh-size: inset var(--sh-size--4);
+// }
+// .-bxsh\:-5,
+// .-hov\:bxsh\:-5:hover {
+// 	--sh-size--base: inset var(--sh-size--4);
+// 	--sh-size: inset var(--sh-size--5);
+// }

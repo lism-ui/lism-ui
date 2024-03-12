@@ -165,17 +165,26 @@
 	// --------------------
 	// パレットカラー
 	// --------------------
-	--black: hsl(0 0% 0%);
-	--white: hsl(0 0% 100%);
-	--gray: hsl(210 12% 40%);
-
-	--red: hsl(4 72% 50%);
-	--orange: hsl(28 76% 50%);
-	--yellow: hsl(46 76% 48%);
-	--green: hsl(145, 80%, 40%);
-	--blue: hsl(205 76% 50%);
-	--purple: hsl(258 72% 50%);
-	--pink: hsl(325 72% 50%);
+	--hsl-black: 0 0% 0%;
+	--hsl-white: 0 0% 100%;
+	--hsl-gray: 210 12% 40%;
+	--hsl-red: 4 72% 50%;
+	--hsl-orange: 28 76% 50%;
+	--hsl-yellow: 46 76% 48%;
+	--hsl-green: 145 80% 40%;
+	--hsl-blue: 205 76% 50%;
+	--hsl-purple: 258 72% 50%;
+	--hsl-pink: 325 72% 50%;
+	--black: hsl(var(--hsl-black));
+	--white: hsl(var(--hsl-white));
+	--gray: hsl(var(--hsl-gray));
+	--red: hsl(var(--hsl-red));
+	--orange: hsl(var(--hsl-orange));
+	--yellow: hsl(var(--hsl-yellow));
+	--green: hsl(var(--hsl-green));
+	--blue: hsl(var(--hsl-blue));
+	--purple: hsl(var(--hsl-purple));
+	--pink: hsl(var(--hsl-pink));
 
 	// --------------------
 	// basic カラー
@@ -341,30 +350,57 @@
 	// --bxsh:'
 	// --shadow--alpha: 8%;
 	// --shadow--hsl: 215 8% 10%;
-
-	--shColor: hsl(215 8% 8% / 8%);
+	// --sh-color: hsl(215 8% 16% / 10%);
+	--sh-hsl: 215 8% 12%;
+	--sh-a: 8%;
+	// --sh-a--base: 5%;
+	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));
+	// --sh-color: hsl(var(--sh-hsl) / var(--sh-a));
 
 	// shadow:
 	//    x:yのオフセット比率は一定に保つ. デフォルトは 1:2 の比率。
 	//    差は倍になっていく
-	--shSize--0: 0.5px 1px 1px 0;
-	--shSize--1: 1px 2px 3px 0;
-	--shSize--2: 2px 4px 7px 0;
-	--shSize--3: 4px 8px 15px 0;
-	--shSize--4: 8px 16px 31px 0;
+	--sh-size--0: 0.5px 1px 2px 0;
+	--sh-size--1: 1px 2px 4px 0;
+	--sh-size--2: 2px 4px 8px 0;
+	--sh-size--3: 4px 8px 16px 0;
+	--sh-size--4: 8px 16px 32px 0;
+	--sh-size--5: 16px 32px 64px 0;
 
-	// カラー変数込みで変数をセットしてしまうと、--shColor がこの時点で固定されてしまう。
-	// --shSize-1: 0.5px 1px 1px 0 var(--shColor);
+	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
+	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);
 
-	// --bxsh-1: var(--shSize-0), var(--shSize-1);
-	// --bxsh-2: var(--shSize-1), var(--shSize-2);
-	// --bxsh-3: var(--shSize-2), var(--shSize-3);
-	// --bxsh-4: var(--shSize-3), var(--shSize-4);
+	--sh--1: var(--sh-size--0) hsl(var(--sh-hsl) / var(--sh-a)),
+		var(--sh-size--1) hsl(var(--sh-hsl) / calc(var(--sh-a) + 4%));
+	--sh--2: var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
+		var(--sh-size--2) hsl(var(--sh-hsl) / calc(var(--sh-a) + 5%));
+	--sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
+		var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
+	--sh--4: var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a)),
+		var(--sh-size--4) hsl(var(--sh-hsl) / calc(var(--sh-a) + 8%));
+	--sh--5: var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a)),
+		var(--sh-size--5) hsl(var(--sh-hsl) / calc(var(--sh-a) + 12%));
 
-	// --bxsh--1: inset var(--shSize-0), inset var(--shSize-1);
-	// --bxsh--2: inset var(--shSize-1), inset var(--shSize-2);
-	// --bxsh--3: inset var(--shSize-2), inset var(--shSize-3);
-	// --bxsh--4: inset var(--shSize-3), inset var(--shSize-4);
+	--sh--i1: inset var(--sh-size--0) hsl(var(--sh-hsl) / var(--sh-a)),
+		inset var(--sh-size--1) hsl(var(--sh-hsl) / calc(var(--sh-a) + 4%));
+	--sh--i2: inset var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
+		inset var(--sh-size--2) hsl(var(--sh-hsl) / calc(var(--sh-a) + 5%));
+	--sh--i3: inset var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
+		inset var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
+
+	// --sh--2: var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
+	// 	var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a));
+	// --sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
+	// 	var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a));
+	// --sh--4: var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a)),
+	// 	var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a));
+	// --sh--5: var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a)),
+	// 	var(--sh-size--5) hsl(var(--sh-hsl) / var(--sh-a));
+
+	// --bxsh--1: inset var(--sh-size--0), inset var(--sh-size--1);
+	// --bxsh--2: inset var(--sh-size--1), inset var(--sh-size--2);
+	// --bxsh--3: inset var(--sh-size--2), inset var(--sh-size--3);
+	// --bxsh--4: inset var(--sh-size--3), inset var(--sh-size--4);
 
 	/* ------------------------------------------------------------
 	  filter
@@ -377,7 +413,7 @@
 
 @supports (content-visibility: auto) or (top: 0lh) {
 	// cqw を算出値で保持するために登録済みカスタムプロパティとして定義
-	// @property --shColor {
+	// @property --sh-color {
 	// 	syntax: '<color>';
 	// 	initial-value: hsl(215 8% 8% / 8%);
 	// 	inherits: false;

@@ -31,19 +31,23 @@
 // ------------------------------------------------------------
 // shadow
 // ------------------------------------------------------------
-// :where(.-hov\:bxsh) {
-// 	--hov--shSize: var(--shSize, 0 0 0);
-// 	--hov--shSize02: var(--shSize02, 0 0 0);
-// 	--hov--bxsh: var(--hov--shSize) var(--shColor), var(--hov--shSize02) var(--shColor);
+// .-hov\:shadow\: {
+// 	box-shadow: var(--sh--4);
 // }
+:where(.-hov\:bxsh) {
+	--hov--bxsh: var(--sh--4);
+}
+.-hov\:bxsh:hover {
+	box-shadow: var(--hov--bxsh);
+}
+
 // .-hov\:bxsh:hover {
 // 	// shadowユーティリティに負けないように important
 // 	box-shadow: var(--hov--bxsh) !important;
 // }
-
-.-hov\:shColor:hover {
-	--shColor: var(--hov--shColor);
-}
+// .-hov\:shColor:hover {
+// 	--sh-color: var(--hov--sh-color);
+// }
 
 // ------------------------------------------------------------
 // プリセット

@@ -34,7 +34,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 ## Points
 
 - 文字列を指定すると、ユーティリティクラス `.-hov:xxx` を出力します。。
-	- `-hov:fade`, `-hov:shadow` などいくつかユーティリティクラスを標準で用意しています。
+	- `-hov:fade`, `-hov:bxsh` などいくつかユーティリティクラスを標準で用意しています。
 	- `,`で区切りで複数のユーティリティクラスを指定することができます。
 	- `-hov:pass`と`-hov:get:xxx`を組み合わせることで、子要素にもホバー効果をつけることができるようになっています。
 - オブジェクトでの指定
@@ -46,7 +46,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 
 {/* ## ユーティリティプリセット
 
-`'fade'`, `'dark'`, `'shadow'`, `'up'`, `'scale'` */}
+`'fade'`, `'dark'`, `'bxsh'`, `'up'`, `'scale'` */}
 
 
 ## Usage
@@ -78,20 +78,20 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 </Preview>
 
 <Preview>
-	<PreviewTitle>`hover='bxsh:4'`</PreviewTitle>
+	<PreviewTitle>`hover='bxsh'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<PreviewBoxs hover='bxsh:4'/>
+		<PreviewBoxs hover='bxsh'/>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx "hover="
-	<LinkBox hover='bxsh:4' href='###' p='box'>
+	<LinkBox hover='bxsh' href='###' p='box'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:bxsh:4 -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:bxsh -p:box -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -121,21 +121,23 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 </Preview>
 
 
+#### カンマ区切りで複数指定
+
 <Preview>
-	<PreviewTitle>`hover='up,bxsh:3'`</PreviewTitle>
+	<PreviewTitle>`hover='up,bxsh'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<PreviewBoxs hover='up,bxsh:3'/>
+		<PreviewBoxs hover='up,bxsh'/>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx "hover="
-	<LinkBox hover='up,bxsh:3' href='###' p='box'>
+	<LinkBox hover='up,bxsh' href='###' p='box'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:up -hov:bxsh:3 -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:up -hov:bxsh -p:box -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -163,7 +165,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 
 ### オブジェクトでの指定
 
-`c`,`bgc`,`bdc`,`bxsh`, `shColor`, `filter` に変化後の値を指定することができ、より柔軟にhover時の挙動を指定できます。
+`c`,`bgc`,`bdc`,`bxsh`,`filter` に変化後の値を指定することができ、より柔軟にhover時の挙動を指定できます。
 
 <Preview>
 	<PreviewTitle>`bgc`を`'main'`, `c`を`'white'`に変化させる</PreviewTitle>
@@ -193,51 +195,48 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 
 {/* hsl(25 50% 50% / 20%),rgb(250 50 50 / 20%)' */}
 <Preview>
-	<PreviewTitle>Shadow</PreviewTitle>
+	<PreviewTitle>hover時のbxshの強さを指定する</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hover='bxsh:4' bgc='base-2' p='box'>
-			<Text>LinkBox.</Text>
-			<Text>shadow 0 から shadow つける</Text>
+		<LinkBox href='###' hover={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
+			<p>bxsh:2→hoverで5</p>
 		</LinkBox>
-		<LinkBox href='###' hover='bxsh:0' bxsh='4' bgc='base-2' p='box'>
-			<Text>LinkBox.</Text>
-			<Text>hoverで shadow0</Text>
+		<LinkBox href='###' hover={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='box'>
+			<p>bxsh:3→hoverで0</p>
 		</LinkBox>
-		<LinkBox href='###' hover={{ bxsh: '2', shColor: 'blue:20%'}} bxsh='4' bgc='base-2' p='box'>
-			<Text>LinkBox.</Text>
-			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
+
+		{/* <LinkBox href='###' hover='bxsh' bgc='base-2' p='box'>
+			<Text>0→bxsh4 つける</Text>
 		</LinkBox>
-		<LinkBox href='###' hover={{ bxsh: '4', shColor: 'red:20%'}} bxsh='0 0 8px rgb(0 0 0 / 25%)' bgc='base-2' p='box'>
+		<LinkBox href='###' hover='bxsh' bxsh='2' bgc='base-2' p='box'>
+			<Text>2→hoverでbxsh5</Text>
+		</LinkBox> */}
+		{/* <LinkBox href='###' hover={{ bxsh: '4'}} bxsh='0 0 8px rgb(0 0 0 / 25%)' bgc='base-2' p='box'>
 			<Text>カスタムシャドウからプリセット.</Text>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-		</LinkBox>
-		<LinkBox href='###' hover={{ bxsh: '0 0 16px'}} bxsh='0 0 4px' bgc='base-2' p='box'>
-			<Text>カスタムシャドウ→カスタムシャドウ</Text>
-			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-		</LinkBox>
+		</LinkBox> */}
 	</PreviewArea>
-	<PreviewCode>
-	```jsx "hover=" "bxsh:'2'" "bxsh='4'"
-		<LinkBox href='###' hover={{ shSize:'1'}} bxsh='4' bgc='base-2' p='box' >...</LinkBox>
+	<PreviewCode slot='tab' label='React, Astro'>
+	```jsx "hover=" "bgc:'main'" "c:'white'"
+		<LinkBox href='###' hover={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
+			<p>bxsh:2→hoverで5</p>
+		</LinkBox>
+		<LinkBox href='###' hover={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='box'>
+			<p>bxsh:3→hoverで0</p>
+		</LinkBox>
 	```
 	</PreviewCode>
-</Preview>
-
-（shColorの指定はプリセット使用時のみ有効です。）
-
-{/* <HelpText>bxshのトークン値は変数があるわけではなく、ユーティリティクラスが用意されているだけであることに注意してください。</HelpText> */}
-
-<Preview>
-	<PreviewTitle>Shadow (inset)</PreviewTitle>
-	<PreviewArea p={40}>
-		<LinkBox href='###' hover={{ bxsh:'-1' }} bxsh='-3' bgc='base-2' p='box'>
-			<Text>LinkBox.</Text>
-			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx "hover=" "bxsh:" "bxsh='-3'"
-		<LinkBox href='###' hover={{ bxsh:'-1' }} bxsh='-3' bgc='base-2' p='box'>...</LinkBox>
+	<PreviewCode slot='tab' label='HTML'>
+	```html "-hov:bxsh" "--hov--bxsh"
+	<a
+		href="###"
+		class="is--linkBox -hov:bxsh -bxsh:2 -bgc:base-2 -p:box"
+		style="--hov--bxsh:var(--sh--5)"
+	>...</a>
+	<a
+		href="###"
+		class="is--linkBox -hov:bxsh -bxsh:3 -bgc:base-2 -p:box"
+		style="--hov--bxsh:none"
+	>...</a>
 	```
 	</PreviewCode>
 </Preview>
@@ -261,7 +260,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 
 {/* #### 初期値を利用する
 
-既に紹介している `shadow`も実はこれにあたりますが、オブジェクト指定できる項目の一部には初期値が設定されています。
+既に紹介している `bxsh`も実はこれにあたりますが、オブジェクト指定できる項目の一部には初期値が設定されています。
 
 <Preview>
 	<PreviewTitle>`bgc`</PreviewTitle>
@@ -269,7 +268,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 		<LinkBox
 			href='###'
 			p='box'
-			hover='bgc,shadow'
+			hover='bgc,bxsh'
 		>
 			<Text>LinkBox.</Text>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
@@ -293,19 +292,19 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 配列で複数の値の組み合わせが可能です。
 
 <Preview>
-	<PreviewTitle>`hover={[ 'shadow', 'up' ]}`</PreviewTitle>
+	<PreviewTitle>`hover={[ 'bxsh', 'up' ]}`</PreviewTitle>
 	<PreviewArea p={40}>
-		<PreviewBoxs hover={[ 'shadow', 'up' ]}/>
+		<PreviewBoxs hover={[ 'bxsh', 'up' ]}/>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<LinkBox href='###' p='box' hover={[ 'shadow', 'up' ]}>...</LinkBox>
+	<LinkBox href='###' p='box' hover={[ 'bxsh', 'up' ]}>...</LinkBox>
 	```
 	</PreviewCode>
 </Preview>
 
 <Preview>
-	<PreviewTitle>`'up'`, `'shadow'` に加え、オブジェクトで `c`, `bdc`, `bgc` を指定</PreviewTitle>
+	<PreviewTitle>`'up'` に加え、オブジェクトで `c`, `bdc`, `bgc` を指定</PreviewTitle>
 	<PreviewArea p={40}>
 		<LinkBox href='###' hover={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]} bd bdw='1px' p='box'>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>

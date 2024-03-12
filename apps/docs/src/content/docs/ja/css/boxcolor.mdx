@@ -5,8 +5,64 @@ sidebar:
   order: 15
 ---
 
-import { Alert, Flex, Button, Media, MediaLayer, FilterLayer, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
+import { Chat, Alert, Flex, Button, Media, MediaLayer, FilterLayer, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
-...
+Lismでは、カラーボックスを簡単に作成できる`.-boxcolor:`クラスを用意しています。
+
+| 形式 | 説明 |
+|---|---|
+| `-boxcolor:{color}` | パレットトークンはそれぞれ専用のユーティリティクラスが用意されています。 |
+| `-boxcolor:` | `--boxcolor`変数に好きなカラーを指定できます。 |
+
+
+指定したキーカラーを元に、文字色・背景色・ボーダー色を `color-mix()` で生成します。
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='box:l'>
+		<Box boxcolor='blue' p='box'><DammyText length='codes' /></Box>
+		<Box boxcolor='red' p='box'><DammyText length='codes' /></Box>
+		<Box boxcolor='#688f04' p='box'><DammyText length='codes' /></Box>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+	```html
+		<div class='l--box -boxcolor:blue -p:box'>...</div>
+		<div class='l--box -boxcolor:red -p:box'>...</div>
+		<div class='l--box -boxcolor:red -p:box' style='--boxcolor:#688f04'>...</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx
+		<Box boxcolor='blue' p='box'>...</Box>
+		<Box boxcolor='red' p='box'>...</Box>
+		<Box boxcolor='#688f04' p='box'>...</Box>
+	```
+	</PreviewCode>
+</Preview>
+
+ボーダーカラーは `--bdc`へのセットのみなので`.-boxcolor:`だけでボーダーが表示されるわけではありません。
+
+<Preview>
+	<PreviewTitle>ボーダーとの組み合わせ例</PreviewTitle>
+	<PreviewArea resize p='box:l'>
+		<Box boxcolor='purple' p='box' bd bdw='4px'><DammyText length='codes' /></Box>
+		<Box boxcolor='#688f04' p='box' bd><DammyText length='codes' /></Box>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+	```html
+		<div class='l--box -boxcolor:purple -p:box -bd:' style='--bdw:4px'>...</div>
+		<div class='l--box -boxcolor: -p:box -bd:' style='--boxcolor:#688f04'>...</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx
+		<Box boxcolor='purple' p='box' bd bdw='4px'>...</Box>
+		<Box boxcolor='#688f04' p='box' bd>...</Box>
+	```
+	</PreviewCode>
+</Preview>

@@ -34,7 +34,7 @@ const HOV_PROPS = {
 	},
 	bxsh: {
 		converter: 'shadow',
-		presets: 'shadow', //['0', '1', '2', '3', '4'],
+		// presets: 'shadow', //['0', '1', '2', '3', '4'],
 	},
 	// shSize: {
 	// 	utilKey: 'bxsh',
@@ -44,10 +44,9 @@ const HOV_PROPS = {
 	// 	utilKey: 'bxsh',
 	// 	converter: 'shadowSize',
 	// },
-	shColor: {
-		converter: 'color',
-		// utilKey: 'bxsh',
-	},
+	// shColor: {
+	// 	converter: 'color',
+	// },
 };
 
 // const PROP_FULL_NAMES = {
@@ -413,16 +412,16 @@ class LismPropsData {
 		}
 
 		//converter color の時の特殊処理
-		if (converter === 'color' && typeof val === 'string') {
-			// color が ":数値%" で終わるかどうか
-			if (val.endsWith('%')) {
-				const [colorValue, mixper] = val.split(':');
-				this.addUtil(`${utilName}mix`);
-				this.addStyle(`--${name}-mixcolor`, getMaybeCssVar(colorValue, 'color', name));
-				this.addStyle(`--${name}-mixper`, mixper);
-				return;
-			}
-		}
+		// if (converter === 'color' && typeof val === 'string') {
+		// 	// color が ":数値%" で終わるかどうか
+		// 	if (val.endsWith('%')) {
+		// 		const [colorValue, mixper] = val.split(':');
+		// 		this.addUtil(`${utilName}mix`);
+		// 		this.addStyle(`--${name}-mixcolor`, getMaybeCssVar(colorValue, 'color', name));
+		// 		this.addStyle(`--${name}-mixper`, mixper);
+		// 		return;
+		// 	}
+		// }
 
 		// converter(getMaybe...)があればそれを通す
 		if (converter) {
@@ -501,11 +500,15 @@ class LismPropsData {
 				let value = hoverData[propName];
 
 				// データ取得
-				const { presets = [], converter = '', utilKey = '' } = HOV_PROPS[propName] || {};
-				if (isPresetValue(presets, value)) {
-					this.addUtil(`-hov:${utilKey || propName}:${value}`);
-					return;
-				}
+				const {
+					//presets = [],
+					converter = '',
+					utilKey = '',
+				} = HOV_PROPS[propName] || {};
+				// if (isPresetValue(presets, value)) {
+				// 	this.addUtil(`-hov:${utilKey || propName}:${value}`);
+				// 	return;
+				// }
 				if (converter) {
 					value = getMaybeCssVar(value, converter, propName);
 				}

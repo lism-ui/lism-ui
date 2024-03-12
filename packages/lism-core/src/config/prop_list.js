@@ -132,9 +132,8 @@ export default {
 	// radius: { name: 'bdrs', presets: 'radius', converter: 'radius' },
 
 	bxsh: { presets: 'shadow', converter: 'shadow' },
-	shColor: { converter: 'color', style: '--shColor' },
 	// shadow: { name: 'bxsh', presets: 'shadow', converter: 'shadow' },
-	// shadowColor
+	// shColor: { converter: 'color', style: '--sh-color' },
 
 	//display
 	d: { utils: 1 },
