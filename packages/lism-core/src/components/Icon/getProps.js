@@ -12,14 +12,11 @@ export default function getProps({
 	_lismClass = [],
 	isInline,
 	variant,
-	// asProps = {}, // lismProps として処理しないデータ
 	as,
 	tag,
 	scale,
 	size,
 	emoji,
-	// name,
-	// preset,
 	icon,
 	dataIcon,
 	label,
@@ -85,15 +82,12 @@ export default function getProps({
 
 	// 外部コンポーネントを呼び出す場合
 	if (null != IconComponent || 'svg' === iconTag) {
-		// sizeが指定されていれば 外部コンポーネント側に渡す
+		// size は 外部コンポーネント側に渡す
 		if (size) iconProps.size = size;
 	}
 	// span[data-icon] で出力する場合
 	else if (dataIcon) {
 		iconProps['data-icon'] = dataIcon;
-
-		// props.lismState = ['has--size'];
-		if (size) otherProps.size = size; // size は lismProps として処理
 	}
 
 	return { IconComponent, iconTag, iconProps, emoji, otherProps };

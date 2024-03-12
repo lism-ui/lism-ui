@@ -2,8 +2,8 @@
 	--size: auto;
 }
 .c--avatar {
-	inline-size: var(--size);
 	display: inline-flex;
+	inline-size: var(--size);
 	// aspect-ratio: 1/1;
 	// width: var(--size);
 	// height: var(--size);

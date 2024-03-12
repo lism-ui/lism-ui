@@ -16,7 +16,6 @@ export default function content() {
 					as={FlexItem}
 					left='1px'
 					// z='1'
-					hasSize
 					size='0.875em'
 					bd
 					consume='bdc bgc'
@@ -42,7 +41,6 @@ export default function content() {
 				</FlexItem>
 				<Decorator
 					as={FlexItem}
-					hasSize
 					size='0.875em'
 					bd
 					consume='bdc bgc'
@@ -69,7 +67,6 @@ export default function content() {
 				</GridItem>
 				<Decorator
 					as={GridItem}
-					hasSize
 					size='0.875em'
 					bd
 					consume='bdc bgc bdw'
@@ -95,7 +92,6 @@ export default function content() {
 				</GridItem>
 				<Decorator
 					as={GridItem}
-					hasSize
 					size='0.875em'
 					bd
 					consume='bdc bgc bdw'

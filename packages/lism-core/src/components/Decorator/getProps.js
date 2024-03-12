@@ -1,19 +1,15 @@
 import getEffectProps from '../getEffectProps';
 import getInsetProps from '../getInsetProps';
 
-export default function ({ _lismClass = [], variant, lismState = [], hasSize, index, ...props }) {
+export default function ({ _lismClass = [], variant, size, style = {}, ...props }) {
 	props = getEffectProps(getInsetProps(props));
 
 	_lismClass.push('e--deco');
 	if (variant) _lismClass.push(`e--deco--${variant}`);
 	props._lismClass = _lismClass;
 
-	if (hasSize) lismState.push('has--size');
-	props.lismState = lismState;
-
-	if (null != index) {
-		props['data-index'] = index;
-	}
+	if (size) style['--size'] = size;
+	props.style = style;
 
 	// aria-hidden='true'、デフォルトでつける？
 

@@ -5,7 +5,7 @@
 
 // @use './layout-modules.scss';
 
-// @forward '../../components/Avatar/style.scss';
+@forward '../../components/Avatar/style.scss';
 @forward '../../components/Badge/style.scss';
 @forward '../../components/Button/style.scss';
 @forward '../../components/Delimiter/style.scss';

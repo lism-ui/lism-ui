@@ -59,7 +59,6 @@ export default {
 		decoratorProps: {
 			// bgc: 'currentColor',
 			as: GridItem,
-			hasSize: true,
 			size: '.5em',
 			ga: 'side',
 			variant: 'pipipi',

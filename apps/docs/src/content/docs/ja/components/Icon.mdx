@@ -42,7 +42,7 @@ export const PrestIcons = () => {
 | `icon` | アイコンを指定できます。指定した内容によって出力が変わります。 |
 | `emoji`| emoji用のクラスを付与して、指定した絵文字をそのまま出力します。 |
 | `isInline` | 指定すると、`.e--icon--inline`クラスも同時に出力されます。 |
-| `size` | プリセットアイコンを呼び出す場合に、`width`, `height`として出力されます。 `as`で外部コンポーネントを指定している場合Lism Props ではなくその外部コンポーネントに渡されます。それ以外の場合は、Lism Propsとして処理されます。|
+| `size` | プリセットアイコンを呼び出す場合、`width`, `height`として出力されます。|
 | `scale` <PropBadge type="cssvar">--scale</PropBadge>| アイコンの scale を指定できます。css変数で出力されます。 |
 | `label` <PropBadge type="attr">aria-label</PropBadge>| `aria-label`として出力します。指定があれば`role="img"`が同時に出力され、指定がない場合は`aria-hidden="true"`が出力されます。 |
 
@@ -110,20 +110,23 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 
 例えば、`name="foo"`を指定すると `data-icon="foo"`が出力されますので、そのセレクタを使ってCSSで自由に描画してください。
 
-{/* また、`name`が`mask-`で始まる場合は `--mask-image` にsvgを渡せるようになっています。  
-lism-core には、アコーディオン用に`"mask-accordion-toggle"`のみ用意しています。
 
 <Preview>
-	<PreviewTitle>`"mask-accordion-toggle"`</PreviewTitle>
+	<PreviewTitle>`"accordion-toggle"`</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Icon name="mask-accordion-toggle" fz="2xl" />
+		<Icon icon="accordion-toggle" fz="2rem" />
 	</PreviewArea>
 	<PreviewCode>
 ```jsx
-<Icon name="mask-accordion-toggle" fz="2xl" />
+<Icon icon="accordion-toggle" fz="2xl" />
 ```
 	</PreviewCode>
-</Preview> */}
+</Preview> 
+
+{/* また、`name`が`mask-`で始まる場合は `--mask-image` にsvgを渡せるようになっています。  
+lism-core には、アコーディオン用に`"mask-accordion-toggle"`のみ用意しています。
+
+*/}
 
 
 ### 外部のパッケージを利用する方法
@@ -159,7 +162,7 @@ import { Cat } from "@phosphor-icons/react";
 
 
 {/* この例では、`weight`と`size`は外部コンポーネント側へ渡され、`c`はLism Propsとして処理されます。 */}
-<HelpText>（`size`はLism Propsでも用意されていますが、外部コンポーネントの指定がある時は外部コンポーネント側へ渡されるように特別に処理されています。）</HelpText>
+{/* <HelpText>（`size`はLism Propsでも用意されていますが、外部コンポーネントの指定がある時は外部コンポーネント側へ渡されるように特別に処理されています。）</HelpText> */}
 
 
 [`asProps`](/ja/props/lism-props/#passprops) を利用することで、明示的に外部コンポーネント側へプロパティを渡すことができます。

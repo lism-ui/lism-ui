@@ -80,7 +80,6 @@ export default {
 	maxH: { utils: 'maxSize', converter: 'size' },
 	minW: { utils: 'minSize', converter: 'size' },
 	minH: { utils: 'minSize', converter: 'size' },
-	size: { style: '--size', converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
 	c: { presets: 1, converter: 'color' },

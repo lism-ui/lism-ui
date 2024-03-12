@@ -28,11 +28,10 @@
 	// line-height: inherit;
 }
 
-// → has--size 　で?
+// data-icon のサイズはフォントサイズでコントロールする
 .e--icon:where([data-icon]) {
-	--size: 1em;
-	width: var(--size);
-	height: var(--size);
+	width: 1em;
+	height: 1em;
 }
 
 // .e--icon[data-icon='accordion-toggle'] {
