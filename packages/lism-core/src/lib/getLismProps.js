@@ -76,7 +76,7 @@ class LismPropsData {
 			style = {},
 			lismClass,
 			_lismClass = [],
-			lismVar,
+			// lismVar,
 			provide,
 			consume,
 			skipState,
@@ -115,24 +115,16 @@ class LismPropsData {
 		// propリストのセット
 		// this.setPropList(useFlexProps, useGridProps, useItemProps, useLog);
 
-		// if (flex) {
-		// 	this.setContextProps('flex', flex);
+		// if (lismVar) {
+		// 	this.addUtil('-lismVar:');
+		// 	const { _: baseValue, ...bpValues } = getBpData(lismVar);
+		// 	if (baseValue != null) {
+		// 		this.addStyle('--lism', baseValue);
+		// 	}
+		// 	Object.keys(bpValues).forEach((bp) => {
+		// 		this.addStyle(`--lism--${bp}`, bpValues[bp]);
+		// 	});
 		// }
-		// if (grid) {
-		// 	// grid系propを処理
-		// 	this.setContextProps('grid', grid);
-		// }
-
-		if (lismVar) {
-			this.addUtil('-lismVar:');
-			const { _: baseValue, ...bpValues } = getBpData(lismVar);
-			if (baseValue != null) {
-				this.addStyle('--lism', baseValue);
-			}
-			Object.keys(bpValues).forEach((bp) => {
-				this.addStyle(`--lism--${bp}`, bpValues[bp]);
-			});
-		}
 
 		// propsの処理
 		if (!isEmptyObj(others)) {
