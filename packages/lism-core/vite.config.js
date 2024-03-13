@@ -28,11 +28,13 @@ import svgr from 'vite-plugin-svgr'; // svg を React Component として import
 // }
 
 // front用のスクリプトファイルのビルドは要検討
+
+// ファイルパスは大文字・小文字まで一致しないと Vercel でこけるので注意。
 const entries = {
 	index: resolve(__dirname, 'src/components/index.js'),
-	// ↓ scripts.jsのビルドと、setEvent.js もこれでビルドされる
-	'scripts/tabs': resolve(__dirname, 'src/components/tabs/script.js'),
-	'scripts/accordion': resolve(__dirname, 'src/components/accordion/script.js'),
+	// ↓ scripts.jsのビルドと、setEvent.js もこれでビルドされる.
+	'scripts/tabs': resolve(__dirname, 'src/components/Tabs/script.js'),
+	'scripts/accordion': resolve(__dirname, 'src/components/Accordion/script.js'),
 };
 
 // build.lib を設定すると でライブラリモードになる。
