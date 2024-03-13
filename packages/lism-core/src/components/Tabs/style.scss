@@ -1,36 +1,36 @@
-@use '../query' as query;
+@use '../../scss/query' as query;
 
 // l--grid--gt
 .c--tabs {
 	// position: relative;
-	--active--c: var(--content);
-	--active--bgc: transparent;
+	--active-c: var(--content);
+	--active-bgc: transparent;
 	--gt: 'list' 'panel' / 100%;
-	--tab--r: 0;
+	--tab-radii: 0;
 	// grid-template: var(--gt);
 	// max-width: 100% !important;
 	// width: 100% !important;
 	// gap: var(--em--10);
 }
 
-.c--tabs_list {
+.c--tabs__list {
 	grid-area: list;
 	position: relative;
 }
 
-.c--tabs_tab {
+.c--tabs__tab {
 	display: block;
-	padding: var(--em--5) var(--em--10);
-	border-radius: var(--tab--r);
+	padding: var(--em--4) var(--em--8);
+	border-radius: var(--tab-radii);
 
 	&[aria-selected='true'] {
-		color: var(--active--c);
-		background-color: var(--active--bgc);
+		color: var(--active-c);
+		background-color: var(--active-bgc);
 	}
 	// &[aria-selected='false'] {}
 }
 
-.c--tabs_panel {
+.c--tabs__panel {
 	// position: relative;
 	grid-area: panel;
 	width: 100%;
@@ -41,13 +41,13 @@
 
 // ovx='auto' の時にmarginネガティブだとアウトなので、borderではなくbox-shadowで表現する。
 :where(.c--tabs--line) {
-	> .c--tabs_list {
+	> .c--tabs__list {
 		--shadowOfset: 0 2px; // inset 0 -2px
 		--tab--shadowColor: transparent;
 		box-shadow: var(--shadowOfset) 0 0 var(--base-3);
 	}
 	// タブはそんな頻出するものではないので、文字数削減を優先して子孫セレクタ使う。
-	.c--tabs_tab {
+	.c--tabs__tab {
 		box-shadow: var(--shadowOfset) 0 0 var(--tab--shadowColor);
 	}
 
@@ -57,22 +57,22 @@
 }
 
 .c--tabs--box {
-	--bdrs: var(--radius--xs);
-	--active--bgc: var(--base);
+	--bdrs: var(--radius--s);
+	--active-bgc: var(--base);
 
-	> .c--tabs_list {
-		// .c--tabs_list 事態のradiusより少しだけ小さくする
-		--tab--r: calc(var(--bdrs, 0) - 0.125em);
+	> .c--tabs__list {
+		// .c--tabs__list 事態のradiusより少しだけ小さくする
+		--tab-radii: calc(var(--bdrs, 0) - 0.125em);
 	}
 
 	[aria-selected='true'] {
-		box-shadow: var(--shadow-1);
+		box-shadow: var(--sh--1);
 	}
 }
 
-// .c--tabs_list--lifted {
+// .c--tabs__list--lifted {
 // 	--bdw: 1px;
-// 	// > .c--tabs_tab  {}
+// 	// > .c--tabs__tab  {}
 
 // 	> [aria-selected='false'] {
 // 		border-bottom: var(--bdw) solid var(--base-3);
@@ -108,7 +108,7 @@
 
 		// 縦並びの時・ memo: rtl対応必要
 		// :where(.c--tabs--line)[data-tabs~='vertical'] {
-		> .c--tabs_list {
+		> .c--tabs__list {
 			--shadowOfset: 2px 0; // .c--tabs--line用
 			--fxd: column;
 		}

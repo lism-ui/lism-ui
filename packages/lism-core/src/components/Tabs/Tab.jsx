@@ -8,7 +8,7 @@ export default function Tab({
 	//isActive, controlId,
 	...props
 }) {
-	lismClass.c = 'c--tabs_tab'; // c--tabBtn
+	lismClass.c = 'c--tabs__tab'; // c--tabBtn
 	const { tabId, activeIndex, setActiveIndex } = React.useContext(TabContext);
 
 	const isActive = activeIndex === index;

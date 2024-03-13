@@ -8,7 +8,7 @@ export interface Props extends LismProps {
 	index?: number;
 }
 const { lismClass = {}, tabID = '', index = 0, isActive, ...props } = Astro.props;
-lismClass.c = 'c--tabs_panel';
+lismClass.c = 'c--tabs__panel';
 const controlId = `${tabID}-${index}`;
 ---
 

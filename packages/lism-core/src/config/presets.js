@@ -1,7 +1,7 @@
 import TOKENS from './tokens';
 
 const spacingPresets = ['0', '5', '10', '20', '30', '40', '50'];
-const emPresets = ['em1', 'em2', 'em3', 'em5', 'em7', 'em10', 'em15', 'em20', 'em25', 'em30'];
+const emPresets = ['em1', 'em2', 'em3', 'em4', 'em6', 'em8', 'em10', 'em12', 'em14', 'em16'];
 
 // ユーティリティクラス化するキーワード
 export default {
@@ -54,8 +54,8 @@ export default {
 
 	// ユーティリティ化
 	space: spacingPresets,
-	p: [...spacingPresets, ...emPresets, ...TOKENS.p],
-	pxy: [...spacingPresets, ...emPresets],
+	p: [...spacingPresets, ...TOKENS.p],
+	pxy: [...spacingPresets],
 	gap: [...spacingPresets, ...emPresets],
 
 	// align-content

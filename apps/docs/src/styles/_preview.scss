@@ -11,8 +11,6 @@
 .c--preview_title {
 	display: flex;
 	align-items: center;
-	gap: var(--em--5);
-	// margin-block-start: var(--s--50);
 
 	+ * {
 		margin-top: var(--s--10) !important;

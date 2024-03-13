@@ -1,8 +1,8 @@
 @forward './divider';
-@forward './accordion';
-@forward './tabs';
 // @forward './linkbox';
 
+@forward '../../components/Accordion/style.scss';
+@forward '../../components/Tabs/style.scss';
 // @use './layout-modules.scss';
 
 @forward '../../components/Avatar/style.scss';

@@ -43,7 +43,7 @@ import { Badge } from '@lism-ui/astro';
 
 export const ColorDemos = ({colors, variant=''}) => {
 	return (
-		<Cluster gap={20} itemMinW='5em'>
+		<Cluster gap={20}>
 			{colors.map((colorname) => {
 				return (
 					<Badge key={colorname} boxcolor={colorname} variant={variant}>{colorname}</Badge>
@@ -63,7 +63,7 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewArea p={20} isShadow={0}>
 		<Cluster gap={20}>
 			<Badge boxcolor='blue'>Badge</Badge>
-			<Badge boxcolor='content'>Badge</Badge>
+			<Badge boxcolor='#609e0e'>Badge</Badge>
 			<Badge boxcolor='pink' variant='fill'>Badge</Badge>
 		</Cluster>
 	</PreviewArea>
@@ -71,7 +71,7 @@ export const ColorDemos = ({colors, variant=''}) => {
 		```jsx
 		<Cluster gap={20}>
 			<Badge boxcolor='blue'>Badge</Badge>
-			<Badge boxcolor='content'>Badge</Badge>
+			<Badge boxcolor='#609e0e'>Badge</Badge>
 			<Badge boxcolor='pink' variant='fill'>Badge</Badge>
 		</Cluster>
 		```
@@ -80,30 +80,13 @@ export const ColorDemos = ({colors, variant=''}) => {
 		```html
 		<div class="l--cluster -gap:20">
 			<span class="c--badge -boxcolor:blue">Badge</span>
-			<span class="c--badge -boxcolor:" style="--boxcolor:var(--content)">Badge</span>
+			<span class="c--badge -boxcolor:" style="--boxcolor:#609e0e;">Badge</span>
 			<span class="c--badge c--badge--fill -boxcolor:pink">Badge</span>
 		</div>
 		```
 	</PreviewCode>
 </Preview>
 
-<Preview>
-	<PreviewTitle>カラーコード指定</PreviewTitle>
-	<PreviewArea p={20} isShadow={0}>
-		<Cluster gap={20}>
-			<Badge boxcolor='hsl(260deg 75% 40%)'>Badge</Badge>
-			<Badge variant='fill' boxcolor='#ac2c23'>Badge</Badge>
-		</Cluster>
-	</PreviewArea>
-<PreviewCode slot='tab' label='React, Astro'>
-```jsx
-<Cluster gap={20}>
-	<Badge boxcolor='hsl(260deg 75% 40%)'>Badge</Badge>
-	<Badge variant='fill' boxcolor='#ac2c23'>Badge</Badge>
-</Cluster>
-```
-</PreviewCode>
-</Preview>
 
 
 ### カラーとスタイルのバリエーション
@@ -115,18 +98,6 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewArea p={20} isShadow={0}>
 		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']}  />
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx
-		<Cluster gap={20}>
-			<Badge boxcolor='{color}'>Badge</Badge>
-		</Cluster>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<span class="c--badge -boxcolor:{color}">Badge</span>
-		```
-	</PreviewCode>
 </Preview>
 
 <Preview>
@@ -134,16 +105,6 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewArea p={20} isShadow={0}>
 		<ColorDemos variant='fill' colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']} />
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx
-		<Badge boxcolor='{color}' variant='fill'>Badge</Badge>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<span class="c--badge c--badge--fill -boxcolor:{color}">Badge</span>
-		```
-	</PreviewCode>
 </Preview>
 
 <Preview> 
@@ -151,19 +112,7 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewArea p={20} isShadow={0}>
 		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']} variant='outline' />
 	</PreviewArea>
-		<PreviewCode slot='tab' label='React, Astro'>
-		```jsx
-		<Badge boxcolor='{color}' variant='outline'>Badge</Badge>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<span class="c--badge c--badge--outline -boxcolor:{color}">Badge</span>
-		```
-	</PreviewCode>
 </Preview>
-
-
 
 
 
@@ -180,17 +129,17 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewTitle>`<InlineIcon>`の使用例</PreviewTitle>
 	<PreviewArea p={20}>
 		<Cluster gap={20}>
-			<Badge variant='fill' d='inline-flex' flex={{ai: 'center', gap: 'em2'}}><Icon icon={Book} size='1.25em'/> Badge</Badge>
-			<Badge variant='outline' d='inline-flex' flex={{ai: 'center', gap: 'em2'}}><Icon icon={Cat} size='1.25em'/> Badge</Badge>
+			<Badge variant='fill'><Icon icon={Book} size='1.25em'/> Badge</Badge>
+			<Badge variant='outline'><Icon icon={Cat} size='1.25em'/> Badge</Badge>
 		</Cluster>
 	</PreviewArea>
 <PreviewCode slot='tab' label='React, Astro'>
 ```jsx
 <Cluster gap={20}>
-	<Badge variant='fill' d='inline-flex' flex={{ai: 'center', gap: 'em2'}}>
+	<Badge variant='fill'>
 		<Icon icon={Book} size='1.25em'/>Badge
 	</Badge>
-	<Badge variant='outline' d='inline-flex' flex={{ai: 'center', gap: 'em2'}}>
+	<Badge variant='outline'>
 		<Icon icon={Cat} size='1.25em'/>Badge
 	</Badge>
 </Cluster>

@@ -6,6 +6,10 @@ export default function getTabProps(
 	let _listProps = {};
 	let _panelProps = {};
 
+	const defaultProps = {
+		gap: 'em8',
+	};
+
 	if (isVertical) {
 		// props.gt = 'side:s';
 		// _panelProps.gcs = 2;
@@ -20,9 +24,9 @@ export default function getTabProps(
 
 	if (variant === 'box') {
 		_listProps.bgc = 'base-3';
-		_listProps.p = 'em1';
-		_listProps.gap = 'em5';
-		_listProps.bdrs = '2';
+		_listProps.p = '5';
+		_listProps.gap = 'em4';
+		_listProps.bdrs = 's';
 	}
 
 	if (keepHeight) {
@@ -37,7 +41,7 @@ export default function getTabProps(
 	}
 
 	return {
-		tabProps: props,
+		tabProps: Object.assign(defaultProps, props),
 		listProps: Object.assign(_listProps, listProps),
 		panelProps: Object.assign(_panelProps, panelProps),
 	};

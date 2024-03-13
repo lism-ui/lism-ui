@@ -8,7 +8,7 @@ export default function TabPanel({
 	//isActive,
 	...props
 }) {
-	lismClass.c = 'c--tabs_panel';
+	lismClass.c = 'c--tabs__panel';
 
 	const { tabId, activeIndex } = React.useContext(TabContext);
 	const isActive = activeIndex === index;

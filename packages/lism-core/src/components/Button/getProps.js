@@ -17,9 +17,6 @@ export function getButtonProps({
 		skipState: true,
 		tag: 'a',
 		hover: 'fade',
-		// gap: 'em5',
-		// py: 'em3',
-		// px: 'em10',
 		// jc: 'center',
 		// ai: 'center',
 	};
@@ -60,9 +57,6 @@ export function getIconButtonProps({ _lismClass = [], variant = 'fill', ...props
 		skipState: true,
 		tag: 'a',
 		hover: 'fade',
-		// gap: 'em5',
-		// py: 'em3',
-		// px: 'em10',
 		// jc: 'center',
 		// ai: 'center',
 	};

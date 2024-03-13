@@ -37,7 +37,6 @@ export default function getProps(_props) {
 			{},
 			{
 				as: 'Flex',
-				gap: 'em5',
 				ai: 'center',
 			},
 			props.headProps || {}

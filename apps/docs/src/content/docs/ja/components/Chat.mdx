@@ -20,7 +20,6 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 | `footer` | チャット本文の下に表示するフッターテキストを指定できます。 |
 
 
-
 ## Import
 
 <Preview>
@@ -43,19 +42,19 @@ import { Chat } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='red' footer='Color:red'>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
 			<DammyText length='codes' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green'>
 			<p>Lorem ipsum...</p>
 		</Chat>
-		<Chat direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='red' footer='Color:red'>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
 			<p>Lorem ipsum...</p>
 		</Chat>
 		```
@@ -93,7 +92,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 	<PreviewTitle>`slot`の使用例</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
-			<i slot='name'>Taro</i>
+			<b slot='name'>Taro</b>
 			<DammyText length='codes' />
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
 		</Chat>
@@ -101,7 +100,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 	<PreviewCode>
 		```jsx "slot='name'" "slot='footer'"
 		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
-			<i slot='name'>Taro</i>
+			<b slot='name'>Taro</b>
 			<p>Lorem ipsum...</p>
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
 		</Chat>

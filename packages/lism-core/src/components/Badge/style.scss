@@ -2,6 +2,9 @@
 	display: inline-flex; // 文中でもpaddingが効くように
 	font-size: var(--fz--xs);
 	border-radius: var(--radius--xs);
+	padding-inline: var(--em--3);
+	gap: var(--em--2);
+	align-items: center;
 }
 
 // -boxcolor とセットで使う
@@ -14,7 +17,6 @@
 	// color: var(--c);
 	// background-color: var(--bgc);
 	border: solid 1px var(--bdc); // サイズ揃えるために常にborderを指定
-	padding-inline: var(--em--5);
 }
 
 .c--badge--fill {

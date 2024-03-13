@@ -29,8 +29,7 @@ export function getNameProps(props = {}) {
 	return {
 		fz: '2xs',
 		lh: 'xs',
-		px: 'em5',
-		py: 'em1',
+		px: '5',
 		c: 'content-2',
 		// translate: '0 -100%',
 		...props,
@@ -51,9 +50,9 @@ export function getFooterProps(props = {}) {
 	return {
 		fz: '2xs',
 		lh: 'xs',
-		px: 'em5',
-		py: 'em1',
-		c: 'content-2',
+		px: '5',
+		c: 'content-3',
+		fs: 'i',
 		...props,
 	};
 }

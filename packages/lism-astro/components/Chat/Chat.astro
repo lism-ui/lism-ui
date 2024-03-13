@@ -1,11 +1,13 @@
 ---
 import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { Decorator } from '../Decorator';
 import { Grid } from '../Grid';
 import ChatName from './ChatName.astro';
 import ChatAvatar from './ChatAvatar.astro';
 import ChatContent from './ChatContent.astro';
 import ChatFooter from './ChatFooter.astro';
-import { getProps } from '@lism-ui/core/components/Chat/getProps';
+import { getProps, getDecoProps, getContentProps } from '@lism-ui/core/components/Chat/getProps';
 
 interface Props extends LismProps {}
 
@@ -32,16 +34,21 @@ const hasFooter = footer || Astro.slots.has('footer');
 ---
 
 <Grid _lismClass={_lismClass} lismState={lismState} {...getProps(direction, variant)} {...props}>
-	{hasName && <ChatName>{name || <slot name='name' />}</ChatName>}
 	{avatar && <ChatAvatar src={avatar} />}
-	<ChatContent
-		isFlow={isFlow}
-		variant={variant}
-		direction={direction}
-		contentProps={contentProps}
-		{...bodyProps}
-	>
-		<slot />
-	</ChatContent>
+	{hasName && <ChatName>{name || <slot name='name' />}</ChatName>}
+	<Lism _lismClass={['c--chat__body']} {...props}>
+		{
+			('speak' === variant || 'think' === variant) && (
+				<Decorator {...getDecoProps(direction, variant)} />
+			)
+		}
+		<Lism
+			_lismClass={['c--chat__content']}
+			isFlow={isFlow}
+			{...getContentProps(direction, variant, contentProps)}
+		>
+			<slot />
+		</Lism>
+	</Lism>
 	{hasFooter && <ChatFooter>{footer || <slot name='footer' />}</ChatFooter>}
 </Grid>

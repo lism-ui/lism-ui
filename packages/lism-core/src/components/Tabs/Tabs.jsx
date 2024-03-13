@@ -41,7 +41,7 @@ export default function Tabs({
 	};
 
 	return (
-		<Grid lismClass={lismClass} gap='em10' {...tabProps}>
+		<Grid lismClass={lismClass} {...tabProps}>
 			<TabContext.Provider value={deliverState}>
 				<TabChildren
 					// tabId={tabId}

@@ -22,7 +22,7 @@ export default function Divider({ lismClass = {}, variant, label, ...props }) {
 
 	if (label) {
 		return (
-			<Flex lismClass={lismClass} fz='s' c='content-3' ai='c' gap='em7' {...props}>
+			<Flex lismClass={lismClass} fz='s' c='content-3' ai='c' gap='em6' {...props}>
 				<FlexItem layout={Decorator} fx='1' />
 				<span>{label}</span>
 				<FlexItem layout={Decorator} fx='1' />
