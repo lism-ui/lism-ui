@@ -16,7 +16,7 @@ export default function TabChildren({
 	const panels = [];
 	React.Children.forEach(children, (child, index) => {
 		const childProps = child.props || {};
-		const { label, ..._panelProps } = childProps;
+		const { label, ...otherPanelProps } = childProps;
 
 		// const isActive = activeIndex === index;
 		// const controlId = `${tabId}-${index}`;
@@ -41,7 +41,7 @@ export default function TabChildren({
 				index={index}
 				// id={controlId}
 				// isActive={isActive}
-				{..._panelProps}
+				{...otherPanelProps}
 				{...panelProps}
 			/>
 		);

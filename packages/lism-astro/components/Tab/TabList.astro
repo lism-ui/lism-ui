@@ -1,14 +1,12 @@
 ---
 import { LismProps } from '../types';
 import { Flex } from '../Flex';
+import { getTabListProps } from '@lism-ui/core/components/Tabs/getProps';
 
 export interface Props extends LismProps {}
-const { lismClass = {}, ...props } = Astro.props;
-
-lismClass.c = 'c--tabs__list';
-// if (variant) lismClass.c += ` c--tabs__list--${variant}`;
+const props = Astro.props || {};
 ---
 
-<Flex lismClass={lismClass} jc='s' role='tablist' {...props}>
+<Flex {...getTabListProps(props)}>
 	<slot />
 </Flex>

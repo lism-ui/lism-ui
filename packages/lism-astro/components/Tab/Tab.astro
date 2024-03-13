@@ -1,6 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
+import { getTabProps } from '@lism-ui/core/components/Tabs/getProps';
 
 export interface Props extends LismProps {
 	// controlId: string;
@@ -8,22 +9,10 @@ export interface Props extends LismProps {
 	tabID?: string | number;
 	index?: number;
 }
-const { lismClass = {}, tabID = '', index = 0, isActive, ...props } = Astro.props;
-lismClass.c = 'c--tabs__tab';
+const { tabID = '', index = 0, isActive, ...props } = Astro.props;
 const controlId = `${tabID}-${index}`;
 ---
 
-<Lism
-	skipState
-	lismClass={lismClass}
-	lismState={['is--resetField']}
-	tag='button'
-	role='tab'
-	aria-selected={isActive ? 'true' : 'false'}
-	aria-controls={controlId}
-	fz='s'
-	lh='xs'
-	{...props}
->
+<Lism aria-controls={controlId} {...getTabProps(props, isActive)}>
 	<slot />
 </Lism>

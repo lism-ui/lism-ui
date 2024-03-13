@@ -177,11 +177,11 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs defaultIndex={1}>
-			<TabItem label="tab1" isFlow='s'>
+			<TabItem label="tab1">
 				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label="tab2" isFlow='s'>
+			<TabItem label="tab2">
 				<p>index:1</p>
 				<DammyText length="l" />
 			</TabItem>
@@ -190,11 +190,11 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewCode>
 		```jsx "defaultIndex="
 		<Tabs defaultIndex={1}>
-			<TabItem label="tab1" isFlow='s'>
+			<TabItem label="tab1">
 				<p>index:0</p>
 				<p>...</p>
 			</TabItem>
-			<TabItem label="tab2" isFlow='s'>
+			<TabItem label="tab2">
 				<p>index:1</p>
 				<p>...</p>
 			</TabItem>
@@ -207,41 +207,68 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewArea p={30} resize>
-		<Tabs isVertical keepHeight>
-			<TabItem label='title1' isFlow='s'>
+		<Tabs isVertical keepHeight panelProps={{isFlow: 's'}}>
+			<TabItem label='title1'>
 				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label='title2' isFlow='s'>
+			<TabItem label='title2'>
 				<p>index:1</p>
 				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
+	<PreviewCode>
+		```jsx "isVertical"
+		<Tabs isVertical keepHeight panelProps={{isFlow: 's'}}>
+			<TabItem label='title1'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label='title2'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
 </Preview>
 
 <Preview>
 	<PreviewArea p={30} resize>
-		<Tabs variant='box' isVertical keepHeight ai='s' ji='c'>
-			<TabItem label='title1' isFlow='s'>
+		<Tabs variant='box' isVertical keepHeight ai='s' ji='c' panelProps={{isFlow: 's'}}>
+			<TabItem label='title1'>
 				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label='title2' isFlow='s'>
+			<TabItem label='title2'>
 				<p>index:1</p>
 				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
+	<PreviewCode>
+		```jsx "isVertical"
+		<Tabs variant='box' isVertical keepHeight ai='s' ji='c' panelProps={{isFlow: 's'}}>
+			<TabItem label='title1'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label='title2'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
 </Preview>
 
 
-
-
 ### Tabパネル（コンテンツ部分）に対するpropsの指定
-
 
 `<Tabs>`に listProps, panelProps を指定でき、それぞれリスト部分とパネル部分に対するpropsを指定できます。
 {/* btnProps? */}
@@ -250,7 +277,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
-		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'em10', isFlow:'s'}}>
+		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'40', isFlow:'s'}}>
 			<TabItem label='tab1'>
 				<DammyText />
 				<DammyText length='m' />
@@ -263,7 +290,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'em10', isFlow:'s'}}>
+		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'40', isFlow:'s'}}>
 			<TabItem label='tab1'>
 				<DammyText />
 				<DammyText length='m' />
