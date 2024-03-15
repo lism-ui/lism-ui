@@ -192,7 +192,7 @@ Prop Utility には以下の3種類の形式があります。
 |---|---|---|
 |`.-{prop}:{token\|value}`| トークンや主要な値を利用するためのユーティリティクラス(\*1) |`.-fz:l`, `.-ta:c`|
 |`.-{prop}:`| 変数 `--{prop}:` を受け取るためのクラス(\*2) |`.-p:`, `.-fz:`|
-|`.-{prop}[:\|@bp]`| 変数 `--{prop}[--bp]` を受け取るためのクラス(\*3) |`.-p@sm`, `.-p@md`|
+|`.-{prop}[:\|@bp]`| 変数 `--[bp-]{prop}` を受け取るためのクラス(\*3) |`.-p@sm`, `.-p@md`|
 
 
 {/* `{value}`部分について
@@ -218,10 +218,10 @@ Prop Utility には以下の3種類の形式があります。
 
 .-p\:{ padding: var(--p); }
 @container (min-width: 480px) {
-	.-p\@sm\:{ padding: var(--p--sm); }
+	.-p\@sm\:{ padding: var(--sm-p); }
 }
 @container (min-width: 720px) {
-	.-p\@md\:{ padding: var(--p--md); }
+	.-p\@md\:{ padding: var(--md-p); }
 }
 ```
 
@@ -239,7 +239,7 @@ Prop Utility には以下の3種類の形式があります。
 <div class="-p:20">...</div>
 
 <!-- ↓ レスポンシブ対応 -->
-<div class="-p:20 -p@sm -p@md" style="--p--sm:var(--s--30);--p--md:var(--s--40);">
+<div class="-p:20 -p@sm -p@md" style="--sm-p:var(--s--30);--md-p:var(--s--40);">
 	...
 </div>
 ```
@@ -256,43 +256,6 @@ Prop Utility には以下の3種類の形式があります。
 ```
 	</PreviewCode>
 </Preview>
-
-
-{/* さらに、[ReactやAstro用のコンポーネント](/docs/components/)を活用することで、以下のように非常にシンプルに記述できるようにもなります。
-
-```jsx
-// ↓ プリセット値の活用
-<Box p="20">...</Box>
-
-// ↓ レスポンシブ対応
-<Box p={[20, 30, 40]}>...</Box>
-``` */}
-
-
-{/* #### CSS変数の命名規則
-
-|分類|形式|例|
-|---|---|---|
-|プロパティ|`--{propKey}[--{bp}]`<br/><small>ローカルなスコープでプロパティ管理するため変数</small>|`--fz`,`--w--md`|
-|スコープ付き|`--{scope}--{propKey}`<br/><small>ローカルなスコープでプロパティ管理するため変数</small>|`--item--minW`| */}
-
-
-{/* - ケバブケース?キャメルケース？<MemoBadge>検討中</MemoBadge>
-	- --flowGap, --contentSize, --mediaScale, --mediaFilter, --lismVar, --shadowProps
-	- --flow-gap, --content-size, --media-scale, --media-filter, --lism-var, --shadow-props
-	- １文字省略形はキャメルでつなぐ (`--maxW`, `--minH` とか)
-- 本当は メディアクエリは`--@sm`とかで記述したいが、`@`はCSS変数名では使えない。 */}
-
-
-
-
-{/* ※ prop:val ではないユーティリティどうする？ `.u--cf` ...? */}
-
-
-{/* <Alert preset='point'>
-上記のUtilityクラスクラスは、**それ単体に対してスタイルが適用される**ものに対して使用し、
-「特定のモジュールに関する状態のバリエーション」を示すものは `.-` 始まりor`data`属性で管理する。
-</Alert> */}
 
 
 
@@ -348,58 +311,6 @@ Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`
 	// your styles...
 }
 ```
-
-{/* 
-### カスタマイズ方法
-
-#### プロパティの値をブレイクポイントで切り替える方法
-
-Lismでは、ブレイクポイントでCSSを切り替えるための記法を次のように定義しています。
-
-<Preview>
-	<PreviewTitle>プロパティ単体のレスポンシブ対応コード</PreviewTitle>
-	<PreviewCode label="HTML" slot="tab">
-```html
-<div class="-{prop}@{bp}" style="--{prop}--{bp}: {value}">...</div>
-```
-	</PreviewCode>
-	<PreviewCode label="CSS" slot="tab">
-```css
-.-prop\:{ padding: var(--prop); }
-@container (min-width: 480px) {
-	.-prop\@sm\:{ padding: var(--prop--sm); }
-}
-@container (min-width: 720px) {
-	.-prop\@md\:{ padding: var(--prop--md); }
-}
-@container (min-width: 960px) {
-	.-prop\@lg\:{ padding: var(--prop--lg); }
-}
-```
-	</PreviewCode>
-	<PreviewCode label="Sass" slot="tab">
-```scss
-@use '../.../node_modules/@lism-ui/core/scss/query' as query;
-
-.-prop\:{ padding: var(--prop); }
-@include query.cq('sm') {
-	.-prop\@sm\:{ padding: var(--prop--sm); }
-}
-@include query.cq('md') {
-	.-prop\@md\:{ padding: var(--prop--md); }
-}
-@include query.cq('lg') {
-	.-prop\@lg\:{ padding: var(--prop--lg); }
-}
-```
-	</PreviewCode>
-</Preview>
-
-
-<Alert preset="info">
-主要なCSSプロパティについては、この形式でLismのパッケージ内のCSSで定義されていますが、未対応のものは自分でCSSを追記する必要があります。
-</Alert> */}
-
 
 
 ## 補足事項

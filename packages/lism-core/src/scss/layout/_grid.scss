@@ -74,10 +74,10 @@
 }
 
 .l--grid--swap:where(.-gt\@sm) {
-	--gt--sm: var(--gt--hz);
+	--sm-gt: var(--gt--hz);
 }
 .l--grid--swap:where(.-gt\@md) {
-	--gt--md: var(--gt--hz);
+	--md-gt: var(--gt--hz);
 }
 
 // .l--grid--swap[data-bp='sm'] {

@@ -122,7 +122,7 @@ class LismPropsData {
 		// 		this.addStyle('--lism', baseValue);
 		// 	}
 		// 	Object.keys(bpValues).forEach((bp) => {
-		// 		this.addStyle(`--lism--${bp}`, bpValues[bp]);
+		// 		this.addStyle(`--${bp}-lism`, bpValues[bp]);
 		// 	});
 		// }
 
@@ -357,7 +357,7 @@ class LismPropsData {
 		// const isBP = bp && !isBaseBP(bp);
 
 		if (bp) {
-			styleName += `--${bp}`;
+			styleName = `--${bp}-${name}`;
 			utilName += `@${bp}`;
 		} else {
 			utilName += ':';

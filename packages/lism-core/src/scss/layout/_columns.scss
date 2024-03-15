@@ -12,23 +12,23 @@
 	// 各ブレイクポイント用の変数に伝搬していく
 	--cols: 1; // 初期値
 	// --_sm_cols: var(--cols);
-	--cols--sm: var(--cols);
-	--cols--md: var(--cols--sm);
-	--cols--lg: var(--cols--md);
-	// --cols--xl: var(--cols--lg);
+	--sm-cols: var(--cols);
+	--md-cols: var(--sm-cols);
+	--lg-cols: var(--md-cols);
+	// --xl-cols: var(--lg-cols);
 
 	--cols--val: var(--cols);
 	@include query.bp-up('sm') {
-		--cols--val: var(--cols--sm);
+		--cols--val: var(--sm-cols);
 	}
 	@include query.bp-up('md') {
-		--cols--val: var(--cols--md);
+		--cols--val: var(--md-cols);
 	}
 	@include query.bp-up('lg') {
-		--cols--val: var(--cols--lg);
+		--cols--val: var(--lg-cols);
 	}
 	// @include query.bp-up('xl') {
-	// 	--cols--val: var(--cols--xl);
+	// 	--cols--val: var(--xl-cols);
 	// }
 }
 

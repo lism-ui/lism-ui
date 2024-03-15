@@ -11,7 +11,7 @@ export default function getColumnsProps({ cols, style = {}, ...props }) {
 
 	if (!isEmptyObj(bpValues)) {
 		Object.keys(bpValues).forEach((bp) => {
-			style[`--cols--${bp}`] = bpValues[bp];
+			style[`--${bp}-cols`] = bpValues[bp];
 		});
 		// defaultProps.gtc = bpValues;
 	}
@@ -19,20 +19,3 @@ export default function getColumnsProps({ cols, style = {}, ...props }) {
 	props.style = style;
 	return props;
 }
-
-// function getColumnsVars(cols) {
-// 	let baseCols = cols._ || 2;
-
-// 	// ~8のときは省略したい
-// 	if (baseCols <= 8) {
-// 		baseCols = null;
-// 	}
-
-// 	return {
-// 		'--cols': baseCols || null,
-// 		'--cols--sm': cols.sm || null,
-// 		'--cols--xs': cols.xs || null,
-// 		// "--cols--lg": cols.lg || null,
-// 		// "--cols--xl": cols.xl || null,
-// 	};
-// }
