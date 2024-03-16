@@ -135,7 +135,7 @@ $bp_support_list: (); // list
 			}
 			@include query.bp-up($bp) {
 				.-#{$key}\@#{$bp} {
-					#{$prop}: var(--#{$key}--#{$bp}) #{get_important($is_important)};
+					#{$prop}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
 				}
 			}
 		}
