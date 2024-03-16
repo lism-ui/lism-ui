@@ -5,180 +5,176 @@ description: ...
 
 
 import { Alert, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/core';
-// import Script from 'next/script';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import {Question,ChatCircleDots} from '@phosphor-icons/react';
 
 Q&Aの構築例を紹介します。
 
+export function Faq({ children }) {
+	return (
+		<Stack tag='dl' gap='20'>
+			{children}
+		</Stack>
+	);
+}
 
-## Usage
+export function FaqItem({ q, children }) {
+	return (
+		<Stack gap='20'>
+			<Flex tag='dt' gap='em6' ai='c'>
+				<Icon emoji='Q' fz='xl' c='accent' />
+				<Text tag='span' fw='bold'>{q}</Text>
+			</Flex>
+			<Lism tag='dd' px='em4' isFlow='s'>
+				{children}
+			</Lism>
+		</Stack>
+	);
+}
 
-{/* クラスつけるなら
-- .b--faq
-- .b--faq__item
-	- .b--faq__header
-		- .b--faq__question
-	- .b--faq__body
-	- .b--faq__answer */}
+export function FaqItemAcc({ q, children }) {
+	return (
+		<Accordion>
+			<AccordionHeader bgc='base-3' bdrs='m'>
+				<Icon icon={Question} fz='2xl' />
+				<AccordionLabel>{q}</AccordionLabel>
+				<AccordionIcon />
+			</AccordionHeader>
+			<AccordionBody>
+				{children}
+			</AccordionBody>
+		</Accordion>
+	);
+}
+
+
+
+## コンポーネント作成例
 
 <Preview>
-	<PreviewTitle>Boxの例 1</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Stack className='b--faq' tag='dl' gap={20}>
-			<Stack tag='div' gap={30}>
-				<Flex tag='dt' gap='em10' ai='c'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
-					{/* <Icon emoji='Q' fz='xl' /> */}
-					<Text tag='span' fw='bold'>
-						Lorem question 1
-					</Text>
-				</Flex>
-				<Flex tag='dd' gap='em10'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
-					{/* <Icon emoji='A' fz='xl' size='auto' lh='2'/> */}
-					<Lism isFlow='s'>
-						<DammyText length="l" />
-					</Lism>
-				</Flex>
+	<PreviewCode slot='tab' label='React'>
+	```jsx
+	import { Lism, Text, Flex, Stack, Icon } from '@lism-ui/core';
+
+	function Faq({ children }) {
+		return (
+			<Stack tag='dl' gap='20'>
+				{children}
 			</Stack>
+		);
+	}
+
+	function FaqItem({ q, children }) {
+		return (
+			<Stack gap='20'>
+				<Flex tag='dt' gap='em6' ai='c'>
+					<Icon emoji='Q' fz='xl' c='accent' />
+					<Text tag='span' fw='bold'>{q}</Text>
+				</Flex>
+				<Lism tag='dd' px='em4' isFlow='s'>
+					{children}
+				</Lism>
+			</Stack>
+		);
+	}
+	```
+	</PreviewCode>
+	{/* <PreviewCode slot='tab' label='Astro'>
+	```jsx
+	```
+	</PreviewCode> */}
+</Preview>
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Faq>
+			<FaqItem q='Lorem ipsum,  question 1'>
+				<DammyText length='l' />
+			</FaqItem>
 			<Divider />
-			<Stack tag='div' gap={30}>
-				<Flex tag='dt' gap='em10' ai='c'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
-					<Text tag='span' fw='bold'>
-						Lorem question 2
-					</Text>
-				</Flex>
-				<Flex tag='dd' gap='em10'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
-					<Lism isFlow='s'>
-						<DammyText length="l" />
-					</Lism>
-				</Flex>
-			</Stack>
-		</Stack>
+			<FaqItem q='Lorem ipsum dolor sit amet, question 2'>
+				<DammyText  />
+				<DammyText length='l' />
+			</FaqItem>
+		</Faq>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Stack className='b--faq' tag='dl' gap={20}>
-			<Stack tag='div' gap={30}>
-				<Flex tag='dt' gap='em10' ai='c'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
-					<Text tag='span' fw='bold'>
-						Lorem question 1
-					</Text>
-				</Flex>
-				<Flex tag='dd' gap='em10'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
-					<Lism isFlow='s'>
-						<DammyText length="l" />
-					</Lism>
-				</Flex>
-			</Stack>
+		<Faq>
+			<FaqItem q='Lorem ipsum,  question 1'>
+				<DammyText length='l' />
+			</FaqItem>
 			<Divider />
-			<Stack tag='div' gap={30}>
-				<Flex tag='dt' gap='em10' ai='c'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>Q</Lism>
-					<Text tag='span' fw='bold'>
-						Lorem question 2
-					</Text>
-				</Flex>
-				<Flex tag='dd' gap='em10'>
-					<Lism tag='span' c='content-3' ff='emoji' fz='xl' lh='1' aria-hidden='true'>A</Lism>
-					<Lism isFlow='s'>
-						<DammyText length="l" />
-					</Lism>
-				</Flex>
-			</Stack>
-		</Stack>
+			<FaqItem q='Lorem ipsum dolor sit amet, question 2'>
+				<DammyText  />
+				<DammyText length='l' />
+			</FaqItem>
+		</Faq>
 		```
 	</PreviewCode>
 </Preview>
 
-<Alert preset="info">
-※ `b--`クラスは別に不要ですが。何か命名するとしたらこうかな？という一例です。
+<Alert preset='info'>
+※ `c--`クラスは別に不要ですが。何か命名するとしたらこうかな？という一例です。
 ※ この例では、`data-icon='A'`は、Qと同じ幅で余白をあけるために配置しています。
 </Alert>
 
-<Alert preset="note">
-Memo: ブロック化した時、"Q." はテキスト普通におくのではなく、`::before`で。（CSSでいじりやすくする）
+<Alert preset='note'>
+Memo: ブロック化した時、'Q.' はテキスト普通におくのではなく、`::before`で。（CSSでいじりやすくする）
 </Alert>
 
 
-### アコーディオンタイプ
-
-{/* <Script src='/js/acc.js' type="module"/> */}
-
-`isAccordion` を指定するとアコーディオンになります。
+### アコーディオンタイプの作成例
 
 <Preview>
-	<PreviewTitle>Boxの例 1</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<AccordionGroup gap={10} className='b--faq'>
-			<Accordion className='b--faq__item'>
-				<AccordionHeader p="box" bgc='base-2'>
-					{/* <Icon data-icon='Q' fz='xl'>Q.</Icon> */}
-					<Icon tag='span' c='base' bgc='content' bdrs='full' p='em3' ff='emoji' fz='l' lh='1' aria-hidden='true'>Q</Icon>
-					
-					<AccordionLabel>
-						Lorem question 1 ロレム・イプサムの座り雨、トマ好き学習エリット？
-					</AccordionLabel>
+	<PreviewCode slot='tab' label='React'>
+	```jsx
+	import { Accordion, AccordionHeader, AccordionLabel, AccordionIcon, AccordionBody, Icon } from '@lism-ui/core';
+	import { Question } from '@phosphor-icons/react';
+
+	function FaqItemAcc({ q, children }) {
+		return (
+			<Accordion>
+				<AccordionHeader bgc='base-3' bdrs='m'>
+					<Icon icon={Question} fz='2xl' />
+					<AccordionLabel>{q}</AccordionLabel>
 					<AccordionIcon />
 				</AccordionHeader>
-				<AccordionBody p="box">
-					<p>
-						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
-					</p>
+				<AccordionBody>
+					{children}
 				</AccordionBody>
 			</Accordion>
-			<Accordion className='b--faq__item'>
-				<AccordionHeader p="box" bgc='base-2'>
-					<Icon data-icon='Q' fz='xl'>Q.</Icon>
-					<AccordionLabel>
-						Lorem question 2 ロレム・イプサムの座り雨、トマ好き学習エリット？
-					</AccordionLabel>
-					<AccordionIcon />
-				</AccordionHeader>
-				<AccordionBody p="box">
-					<p>
-						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
-					</p>
-				</AccordionBody>
-			</Accordion>
+		);
+	}
+	```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<AccordionGroup gap={20}>
+			<FaqItemAcc q='Lorem ipsum,  question 1'>
+				<DammyText length='l' />
+			</FaqItemAcc>
+			<FaqItemAcc q='Lorem ipsum dolor sit amet, question 2'>
+				<DammyText  />
+				<DammyText length='l' />
+			</FaqItemAcc>
 		</AccordionGroup>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<AccordionGroup gap={10} className='b--faq'>
-			<Accordion className='b--faq__item'>
-				<AccordionHeader p="box" bgc='base-2'>
-					<Icon data-icon='Q' fz='xl'>Q.</Icon>
-					<AccordionLabel>
-						Lorem question 1 ロレム・イプサムの座り雨、トマ好き学習エリット？
-					</AccordionLabel>
-					<AccordionIcon />
-				</AccordionHeader>
-				<AccordionBody p="box">
-					<p>
-						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
-					</p>
-				</AccordionBody>
-			</Accordion>
-			<Accordion className='b--faq__item'>
-				<AccordionHeader p="box" bgc='base-2'>
-					<Icon data-icon='Q' fz='xl'>Q.</Icon>
-					<AccordionLabel>
-						Lorem question 2 ロレム・イプサムの座り雨、トマ好き学習エリット？
-					</AccordionLabel>
-					<AccordionIcon />
-				</AccordionHeader>
-				<AccordionBody p="box">
-					<p>
-						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。長年にわたり、私は学区と長寿であれば、そのような刺激の取り組み、彼女のうち、運動の利点を分注を邪魔されたする人が来ます。クピダタットのつるの痛みになりたい宿題に、批判されてきたら痛み、マグナ逃亡しても結果の喜びを生成しません。先例クピダタットブラックは先例していない、つまり、彼らはあなたの悩みに責任がある人の、一般的な義務を捨て、魂を癒しています。
-					</p>
-				</AccordionBody>
-			</Accordion>
+		<AccordionGroup gap={20}>
+			<FaqItemAcc q='Lorem ipsum,  question 1'>
+				<DammyText length='l' />
+			</FaqItemAcc>
+			<FaqItemAcc q='Lorem ipsum dolor sit amet, question 2'>
+				<DammyText  />
+				<DammyText length='l' />
+			</FaqItemAcc>
 		</AccordionGroup>
 		```
 	</PreviewCode>
