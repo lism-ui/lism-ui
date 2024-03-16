@@ -11,7 +11,14 @@ export default function ({ _lismClass = [], variant, size, style = {}, ...props 
 	if (size) style['--size'] = size;
 	props.style = style;
 
+	const defaultProps = {
+		_lismClass,
+		style,
+		skipState: true,
+		'aria-hidden': 'true',
+	};
+
 	// aria-hidden='true'、デフォルトでつける？
 
-	return props;
+	return Object.assign(defaultProps, props);
 }

@@ -9,4 +9,4 @@ interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
-<Lism skipState tag='span' {...getProps(props)}><slot /></Lism>
+<Lism {...getProps(props)}><slot /></Lism>

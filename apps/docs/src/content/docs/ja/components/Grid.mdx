@@ -3,7 +3,7 @@ title: 'Grid'
 description: ...
 ---
 
-import { Alert, Grid, GridItem, Center } from '@lism-ui/core';
+import { Alert, Grid, GridItem, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
@@ -36,6 +36,35 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 
 
 このほか、`gap`, `ai`(`align-items`), `ji`(`justify-items`)など。
+
+
+### 使用に関する注意点
+
+`<Grid>`に使用されるクラス`.l--grid`は、次のように`--gt`, `--gtc`, `--gtr`という変数を持っており、変数セットだけでレイアウトの調整ができるようになっています。
+
+```css
+.l--grid {
+	--gtc: none;
+	--gtr: none;
+	--gt: var(--gtr) / var(--gtc);
+	grid-template: var(--gt);
+	display: grid;
+}
+```
+
+ただし、HTMLを直接書く場合は次の点に注意してください。
+
+<Alert preset='alert'>
+`--gt`を指定すると`--gtc`, `--gtr`を上書きする形になってしまうので、基本的には、`--gt`を使うときは`--gtc`, `--gtr`は使わないでください。  
+（どうしても両方指定したい場合は、`.-gtc:`、`-gtr:`、`-gta:`クラスも併用してください。）
+</Alert>
+
+
+`<Grid>`コンポーネントを使用する際は気にしなくて大丈夫です。
+
+<Alert preset='good'>
+コンポーネントでは、`gt`、`gtc`、`gtr`は基本的には変数のみが出力され、必要な場合は自動でクラスの出力も調整されます。
+</Alert>
 
 
 ## Import
@@ -117,37 +146,6 @@ import { Grid, GridItem } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 </Preview>
-
-
-
-### 注意点
-
-Grid(`.l--grid`)は、それ自体が`--gt`, `--gtc`, `--gtr`を変数として持っています。
-
-```css
-.l--grid {
-	--gtc: none;
-	--gtr: none;
-	--gt: var(--gtr) / var(--gtc);
-	grid-template: var(--gt);
-	display: grid;
-}
-```
-
-変数だけでもレイアウトの調整ができるようになっていますが、`--gt`を指定すると`--gtc`, `--gtr`を上書きする形になってしまうので注意が必要です。
-
-<Alert preset='alert'>
-基本的には、`--gt`を使うときは`--gtc`, `--gtr`は使わないでください。
-</Alert>
-
-
-
-どうしても両方指定したい場合は、`.-gtc:`、`-gtr:`、`-gta:`クラスも併用してください。
-
-
-<Alert preset='check'>
-コンポーネントでは、`gt`、`gtc`、`gtr`は基本的には変数のみが出力され、必要な場合はProp Utilityクラスも自動で出力されます。
-</Alert>
 
 
 

@@ -3,7 +3,7 @@ title: 'Badge'
 description: ...
 ---
 
-import { Badge, Cluster, Icon, InlineIcon } from '@lism-ui/core';
+import { Badge, Cluster, Icon } from '@lism-ui/astro';
 import {
 	Book,
 	Cat,
@@ -126,7 +126,7 @@ export const ColorDemos = ({colors, variant=''}) => {
 	gap: 0.2em; */}
 
 <Preview>
-	<PreviewTitle>`<InlineIcon>`の使用例</PreviewTitle>
+	<PreviewTitle>`<Icon>`の使用例</PreviewTitle>
 	<PreviewArea p={20}>
 		<Cluster gap={20}>
 			<Badge variant='fill'><Icon icon={Book} size='1.25em'/> Badge</Badge>

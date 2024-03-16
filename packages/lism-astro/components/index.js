@@ -22,6 +22,7 @@ export * from './Spacer';
 export * from './Avatar';
 export * from './Delimiter';
 export * from './Decorator';
+export * from './Divider';
 export * from './Icon';
 
 export * from './LinkBox';

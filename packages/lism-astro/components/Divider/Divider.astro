@@ -1,0 +1,26 @@
+---
+import { LismProps } from '../types';
+import { Flex, FlexItem } from '../Flex';
+import { Decorator } from '../Decorator';
+import { getDividerProps } from '@lism-ui/core/components/Divider/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+const { label, ...attrs } = getDividerProps(props);
+---
+
+<Flex {...attrs}>
+	{
+		label ? (
+			<>
+				<FlexItem layout={Decorator} fx='1' />
+				<span>{label}</span>
+				<FlexItem layout={Decorator} fx='1' />
+			</>
+		) : (
+			<FlexItem layout={Decorator} fx='1' />
+		)
+	}
+</Flex>

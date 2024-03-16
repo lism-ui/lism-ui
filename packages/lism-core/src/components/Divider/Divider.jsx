@@ -1,37 +1,22 @@
 // import React from 'react';
 import { Flex, FlexItem } from '../Flex';
 import { Decorator } from '../Decorator';
+import { getDividerProps } from './getProps';
 
-// const animationTypes = {
-// 	Wave1: 'loop',
-// 	Wave2: 'lr',
-// 	Wave3: 'lr',
-// };
+export default function Divider(props) {
+	const { label, ...attrs } = getDividerProps(props);
 
-// aria-hidden="true"
-// focusable="false"
-
-// align: full, wide, ''
-export default function Divider({ lismClass = {}, variant, label, ...props }) {
-	lismClass.c = 'c--divider';
-	if (variant) lismClass.c += ` c--divider--${variant}`;
-
-	// if (shape) {
-	// 	return <ShapeDivider shape={shape} lismClass={lismClass} {...props} />;
-	// }
-
-	if (label) {
-		return (
-			<Flex lismClass={lismClass} fz='s' c='content-3' ai='c' gap='em6' {...props}>
-				<FlexItem layout={Decorator} fx='1' />
-				<span>{label}</span>
-				<FlexItem layout={Decorator} fx='1' />
-			</Flex>
-		);
-	}
 	return (
-		<Flex lismClass={lismClass} ai='c' {...props}>
-			<FlexItem layout={Decorator} fx='1' />
+		<Flex {...attrs}>
+			{label ? (
+				<>
+					<FlexItem layout={Decorator} fx='1' />
+					<span>{label}</span>
+					<FlexItem layout={Decorator} fx='1' />
+				</>
+			) : (
+				<FlexItem layout={Decorator} fx='1' />
+			)}
 		</Flex>
 	);
 }
