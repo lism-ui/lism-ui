@@ -45,7 +45,6 @@ export * from './Note';
 export * from './Banner';
 export * from './Card';
 
-export * from './TermList';
 export * from './NavMenu';
 // export * from './Section';
 export * from './Hero';

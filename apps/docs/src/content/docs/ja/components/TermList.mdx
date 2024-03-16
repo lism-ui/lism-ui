@@ -1,133 +1,124 @@
 ---
-title: 'TermList'
+title: 'Terms'
 description: ...
 ---
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Alert, SideFlex, TermList, TermListItem } from '@lism-ui/core';
+import { Lism, Text, Stack, SideFlex } from '@lism-ui/core';
 
 
-dl,dt,ddタグの組み合わせで、シンプルな説明リストを作成するコンポーネントです。
+dl,dt,ddタグによるシンプルな用語リストの構築例を紹介します。
 
-## Props
-- TermList
-	- Stack で使えるProps
-- TermListItem
-	- term : ターム名。(dt要素の内容)
-	- dtProps : dtに渡したいProps
-	- ddProps : ddに渡したいProps
-	- isFlow : dd 側に渡るようになっています。
-
-
-## Import
-
-```js
-import { TermList, TermListItem } from '@lism-ui/core';
-```
-
-## Usage
 
 <Preview>
 	<PreviewTitle>例 1</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<TermList>
-			<TermListItem term="The term A">
-				<DammyText />
-			</TermListItem>
-			<TermListItem term="The term B">
-				<DammyText length="l" />
-			</TermListItem>
-			<TermListItem term="The term C">
-				<DammyText length="m" />
-			</TermListItem>
-		</TermList>
+		<Stack tag='dl' gap='40'>
+			<div>
+				<Text tag='dt' fw='bold' bd='l' pl='em4'>
+					<>The term A</>
+				</Text>
+				<Lism tag='dd' mbs='5' pl='em8'>
+					<DammyText />
+				</Lism>
+			</div>
+			<div>
+				<Text tag='dt' fw='bold' bd='l' pl='em4'>
+					<>The term B</>
+				</Text>
+				<Lism tag='dd' mbs='5' pl='em8'>
+					<DammyText length="l" />
+				</Lism>
+			</div>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<TermList>
-			<TermListItem term="The term A">
-				<DammyText />
-			</TermListItem>
-			<TermListItem term="The term B">
-				<DammyText length="l" />
-			</TermListItem>
-			<TermListItem term="The term C">
-				<DammyText length="m" />
-			</TermListItem>
-		</TermList>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>例 2</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<TermList>
-			<TermListItem term="The term A" ddProps={{pis: '1em'}}>
-				<DammyText />
-			</TermListItem>
-			<TermListItem term="The term B" ddProps={{pis: '1em'}}>
-				<DammyText length="l" />
-			</TermListItem>
-			<TermListItem term="The term C" isFlow='s' ddProps={{pis: '1em'}}>
-				<DammyText />
-				<DammyText length="m" />
-			</TermListItem>
-		</TermList>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<TermList>
-			<TermListItem term="The term A" ddProps={{pis: '1em'}}>
-				<DammyText />
-			</TermListItem>
-			<TermListItem term="The term B" ddProps={{pis: '1em'}}>
-				<DammyText length="l" />
-			</TermListItem>
-			<TermListItem term="The term C" isFlow='s' ddProps={{pis: '1em'}}>
-				<DammyText />
-				<DammyText length="m" />
-			</TermListItem>
-		</TermList>
+		<Stack tag='dl' gap='40'>
+			<div>
+				<Text tag='dt' fw='bold' bd='l' pl='em4'>
+					The term A
+				</Text>
+				<Lism tag='dd' mbs='5' pl='em8'>
+					<p>...</p>
+				</Lism>
+			</div>
+			<div>
+				<Text tag='dt' fw='bold' bd='l' pl='em4'>
+					The term B
+				</Text>
+				<Lism tag='dd' mbs='5' pl='em8'>
+					<p>...</p>
+				</Lism>
+			</div>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
 
 
-### SideFlexで展開
+### 横並びの例
 
-TermListItem に isFlex を指定すると、SideFlex で展開され、大きな画面サイズでは横並びになります。
-この時、初期値として以下が自動で設定されます。
-
-- gap: 10
-- side: 'first'
-- sideW: '10rem'
-- fluidMinW: '15rem'
+SideFlexを活用して、画面サイズが広い場合に用語リストを横並びにする例です。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<TermList>
-			<TermListItem isFlex term="The term A">
-				<DammyText />
-				<DammyText length="m" />
-			</TermListItem>
-			<TermListItem isFlex term="The term B LongName Version test.">
-				<DammyText length="l" />
-			</TermListItem>
-		</TermList>
+		<Stack tag='dl' gap='40'>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					<>The term A</>
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<DammyText />
+				</Lism>
+			</SideFlex>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					<>The term B</>
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<DammyText length='m' />
+				</Lism>
+			</SideFlex>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					<>The term C (長めの用語のテストです。This is ダミーテキスト).</>
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<DammyText length="l" />
+				</Lism>
+			</SideFlex>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "isFlex"
-		<TermList>
-			<TermListItem isFlex term="The term A">
-				<DammyText />
-				<DammyText length="m" />
-			</TermListItem>
-			<TermListItem isFlex term="The term B LongName Version test.">
-				<DammyText length="l" />
-			</TermListItem>
-		</TermList>
+		<Stack tag='dl' gap='40'>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					The term A
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<p>...</p>
+				</Lism>
+			</SideFlex>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					The term B
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<p>...</p>
+				</Lism>
+			</SideFlex>
+			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
+				<Text tag='dt' fw='bold'>
+					The term C (長めの用語のテストです。This is ダミーテキスト).
+				</Text>
+				<Lism tag='dd' pl='em8'>
+					<p>...</p>
+				</Lism>
+			</SideFlex>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>

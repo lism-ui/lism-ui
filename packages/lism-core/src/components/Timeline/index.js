@@ -1,2 +1,2 @@
-export { default as TermList } from './TermList';
-export { default as TermListRow } from './TermListRow';
+export { default as Timeline } from './Timeline';
+export { default as TimelineRow } from './TimelineRow';

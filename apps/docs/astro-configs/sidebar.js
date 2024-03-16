@@ -242,10 +242,6 @@ export default [
 				link: '/components/tabs/',
 			},
 			{
-				label: 'TermList',
-				link: '/components/termlist/',
-			},
-			{
 				label: 'Hero',
 				link: '/components/hero/',
 			},
@@ -260,6 +256,10 @@ export default [
 			{
 				label: 'PriceMenu',
 				link: '/components/pricemenu/',
+			},
+			{
+				label: 'TermList',
+				link: '/components/termlist/',
 			},
 			{
 				label: 'DecorationBox',
