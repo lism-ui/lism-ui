@@ -1,21 +1,21 @@
 // import React from 'react';
 import { Flex, FlexItem } from '../Flex';
-import { Decorator } from '../Decorator';
+import { Lism } from '../Lism';
 import { getDividerProps } from './getProps';
 
 export default function Divider(props) {
-	const { label, ...attrs } = getDividerProps(props);
-
+	const { label } = props;
+	const { dividerProps, labelProps, bdProps } = getDividerProps(props);
 	return (
-		<Flex {...attrs}>
+		<Flex {...dividerProps}>
 			{label ? (
 				<>
-					<FlexItem layout={Decorator} fx='1' />
-					<span>{label}</span>
-					<FlexItem layout={Decorator} fx='1' />
+					<FlexItem {...bdProps} />
+					<Lism {...labelProps}>{label}</Lism>
+					<FlexItem {...bdProps} />
 				</>
 			) : (
-				<FlexItem layout={Decorator} fx='1' />
+				<FlexItem {...bdProps} />
 			)}
 		</Flex>
 	);
