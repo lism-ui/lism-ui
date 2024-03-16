@@ -4,6 +4,7 @@
 export default {
 	p: ['box', 'box:s', 'box:l'],
 	fz: [
+		'root',
 		'5xl',
 		'4xl',
 		'3xl',

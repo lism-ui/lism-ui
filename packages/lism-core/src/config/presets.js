@@ -7,7 +7,7 @@ const emPresets = ['em1', 'em2', 'em3', 'em4', 'em6', 'em8', 'em10', 'em12', 'em
 export default {
 	radius: ['0', ...TOKENS.radius],
 	shadow: TOKENS.shadow,
-	fz: ['root', TOKENS.fz],
+	fz: TOKENS.fz,
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,
 	ff: TOKENS.ff,
