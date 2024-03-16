@@ -20,17 +20,20 @@
 :where(.is--flow\:) > * {
 	--mbs: var(--flowGap);
 }
+// 見出しの上部余白は少しだけ広くする. ただし、見出し直後の見出しの場合を除く。
+// Note: :first-child での打消しのほうが優先度高くなるように注意する
+:where(h1, h2, h3:not(h2 + h3), h4:not(h3 + h4), h5:not(h4 + h5), h6:not(h5 + h6)) {
+	--mbs: var(--flowGap--htag);
+}
+// :where(:is(h1, h2, h3, h4, h5, h6):not(:is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6))) {
+// 	--mbs: var(--flowGap--htag);
+// }
 
 // :first-child への上書きのほうが優先度高くなるように。
 :is(.is--flow, [class*='is--flow:']) {
 	> * {
 		margin-block-end: 0;
 		margin-block-start: var(--mbs); // resetCSSがlismであれば、これは不要
-	}
-
-	// Flowレイアウト直下の見出しの上部余白は少しだけ広くする. :first-child での打消しのほうが優先度高くなるように。
-	> :where(h1, h2, h3, h4, h5, h6) {
-		--mbs: var(--flowGap--htag);
 	}
 
 	// :empty どうする？
