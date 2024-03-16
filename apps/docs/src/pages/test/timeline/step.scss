@@ -1,0 +1,116 @@
+.c--step {
+	// gap: 1em;
+	--icon--size: 1rem;
+}
+.c--step__item {
+	--start-space: var(--s--10);
+	--end-space: var(--s--30);
+	gap: 0 0.5em;
+	grid:
+		'lineStart .' var(--start-space)
+		'shape head'
+		'lineEnd body'
+		'. .' var(--end-space) / calc(var(--icon--size) + 0.75rem) 1fr;
+	// grid-template-columns: calc(var(--icon--size) + 0.75rem) 1fr;
+	// grid-template-rows: var(--start-space) auto auto var(--end-space);
+	// column-gap: calc(var(--deco--size) + 0.125rem);
+	align-items: center;
+}
+.c--step__line {
+	grid-area: lineStart;
+	// grid-row-end: span 2; // or  shape
+	// grid-row: 1 / 3;
+	// grid-column: 1;
+	height: 100%;
+	width: 2px;
+	background-color: var(--bdc--base);
+	place-self: center;
+	// align-self: start;
+	// margin-top: calc(0.5rem - var(--start-space));
+
+	// align-self: center;
+	// position: absolute;
+
+	--length: calc(50% + var(--the-space) / 2);
+}
+.c--step__line:first-child {
+	--the-space: var(--start-space);
+	grid-area: lineStart;
+}
+.c--step__line:last-child {
+	--the-space: var(--end-space);
+	grid-area: lineEnd;
+	// grid-row-end: span 2;
+}
+:not(.l--reel) > .c--step__item > .c--step__line {
+	grid-row-end: span 2;
+}
+
+.c--step__ct {
+	grid-area: shape;
+	position: relative;
+	// grid-row: 2;
+	// grid-column: 1;
+	justify-self: center;
+	z-index: 1;
+	width: calc(var(--icon--size) + 0.75rem);
+	font-size: var(--icon--size);
+
+	&:empty {
+		width: calc(var(--icon--size) * 0.75);
+	}
+}
+
+// .c--step__ct.-emphasis
+// .c--step__ct > .e--icon{
+// 	font-size: var(--icon--size);
+// }
+
+.c--step__head {
+	// grid-column: 2;
+	// grid-row: 2;
+	grid-area: head;
+}
+.c--step__body {
+	// grid-row: 3;
+	// grid-column: 2;
+	grid-area: body;
+}
+
+.c--step__item.-start {
+	--start-space: 0;
+}
+.c--step__item.-end {
+	--end-space: 0;
+}
+
+// .l--reel.c--step {}
+.l--reel > .c--step__item {
+	--start-space: var(--s--30);
+	--end-space: var(--s--30);
+	gap: 0.5em 0;
+	grid:
+		'. head .' auto
+		'lineStart shape lineEnd' auto
+		'. body .' auto / var(--start-space) 1fr var(--end-space);
+
+	> .c--step__line {
+		// grid-area: lineStrat;
+		// grid-column-end: span 2;
+		width: var(--length);
+		height: 2px;
+	}
+	> .c--step__line:first-child {
+		grid-column-end: shape;
+		justify-self: start;
+	}
+	> .c--step__line:last-child {
+		grid-column-start: shape;
+		justify-self: end;
+	}
+	> .c--step__head {
+		justify-self: center;
+	}
+}
+
+// x + x + y

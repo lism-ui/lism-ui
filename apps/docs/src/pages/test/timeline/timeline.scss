@@ -1,0 +1,124 @@
+.c--timelines {
+	// gap: 1em;
+	--shape-size: 0.75rem;
+	--icon-size: 1.5rem;
+	--start-space: var(--s--30);
+	--end-space: var(--s--30);
+	--line-size: 100%;
+}
+
+.c--timeline {
+	// --line-pos: center;
+	gap: 0 0.75em;
+	grid:
+		'.     .' var(--start-space)
+		'shape time'
+		'.     body'
+		'.     .' var(--end-space) / calc(var(--icon-size) + 8px) 1fr;
+	align-items: center;
+}
+
+.c--timeline__line {
+	height: var(--line-size);
+	width: 2px;
+	grid-column: 1;
+	grid-row: 1 / -1;
+}
+
+// e--deco
+.c--timeline__shape {
+	--size: var(--shape-size);
+	grid-area: shape;
+	position: relative;
+	justify-self: center;
+	z-index: 1;
+	width: var(--size);
+	height: var(--size);
+
+	&:has(> .e--icon) {
+		--size: var(--icon-size);
+		font-size: var(--size);
+	}
+}
+.c--timeline__shape > .e--icon {
+	--scale: 0.75;
+}
+
+// 強調アイテム
+.c--timeline__highlight {
+	inset: -3px;
+	background-color: inherit;
+	border-radius: inherit;
+	opacity: 0.25;
+}
+
+// :where(.c--timeline.-emphasis) {
+// 	> .c--timeline__shape {
+// 		box-shadow: 0 0 6px -2px var(--bgc);
+// 	}
+// 	// > .c--timeline__shape::before {
+// 	// 	content: '';
+// 	// 	position: absolute;
+// 	// 	inset: -3px;
+// 	// 	background-color: inherit;
+// 	// 	border-radius: inherit;
+// 	// 	opacity: 0.25;
+// 	// 	// box-shadow: 0 0 4px 1px var(--bgc);
+// 	// }
+// }
+
+.c--timeline__time {
+	grid-area: time;
+}
+
+.c--timeline__body {
+	grid-area: body;
+}
+
+.c--timeline.-start {
+	--start-space: 0;
+	--line-size: calc(100% - var(--icon-size) / 2);
+	// --line-pos: end;
+
+	// > .c--timeline__line {
+	// 	--line-size: 50%;
+	// 	--line-pos: end;
+	// }
+}
+.c--timeline.-end {
+	--end-space: 0;
+	--line-size: calc(var(--start-space) + var(--icon-size) / 2);
+	// --line-pos: start;
+
+	// > .c--timeline__line:first-child {
+	// 	--line-size: 50%;
+	// 	--line-pos: start;
+	// }
+}
+
+// .l--flex > .c--timeline,
+.c--timeline--horizontal {
+	grid:
+		'. shape .' calc(var(--icon-size) + 8px)
+		'. time .' auto
+		'. body .' auto / var(--start-space) 1fr var(--end-space);
+	gap: 0.5em 0;
+
+	&:first-child {
+		--start-space: 0;
+	}
+	&:last-child {
+		--end-space: 0;
+	}
+
+	&:is(.-start, .-end) {
+		--line-size: 50%;
+	}
+
+	:where(&) > .c--timeline__line {
+		width: var(--line-size); //100%;
+		height: 2px;
+		grid-row: 1;
+		grid-column: 1 / -1;
+	}
+}
