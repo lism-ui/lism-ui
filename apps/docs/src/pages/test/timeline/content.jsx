@@ -16,7 +16,6 @@ import {
 import { DammyText } from '~/components';
 
 import './timeline.scss';
-import './step.scss';
 
 const FolderIcon = (props) => (
 	<svg
@@ -274,56 +273,6 @@ export default function content() {
 					</p>
 				</TimelineItem>
 			</Timelines>
-
-			<h2>Step</h2>
-			<Reel className='c--step'>
-				<Grid className='c--step__item'>
-					{/* <Decorator className='c--step__line' /> */}
-					<Decorator
-						className='c--step__ct -empasis'
-						aspect='1/1'
-						bdrs='full'
-						c='opposite'
-						bgc='opposite'
-					></Decorator>
-					<Lism className='c--step__body'>
-						<Text>Lism 0.1.x がリリースした日。</Text>
-					</Lism>
-					<Decorator className='c--step__line' />
-				</Grid>
-				<Grid className='c--step__item'>
-					<Decorator className='c--step__line' />
-					<Center
-						className='c--step__ct'
-						aspect='1/1'
-						bdrs='full'
-						c='opposite'
-						bgc='opposite'
-					>
-						<Icon icon={FolderIcon}></Icon>
-					</Center>
-					<Lism className='c--step__body'>
-						<Text>Lism 0.1.x がリリースした日。</Text>
-					</Lism>
-					<Decorator className='c--step__line' />
-				</Grid>
-				<Grid className='c--step__item'>
-					<Decorator className='c--step__line' />
-					<Center
-						className='c--step__ct'
-						aspect='1/1'
-						bdrs='full'
-						c='opposite'
-						bgc='opposite'
-					>
-						{/* <Icon icon={FolderIcon}></Icon> */}
-					</Center>
-					<Lism className='c--step__body'>
-						<Text>Lism 0.1.x がリリースした日。</Text>
-					</Lism>
-					<Decorator className='c--step__line' />
-				</Grid>
-			</Reel>
 		</Lism>
 	);
 }
