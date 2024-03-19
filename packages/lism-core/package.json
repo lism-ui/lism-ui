@@ -32,7 +32,8 @@
 		".": "./dist/index.js",
 		"./*": "./dist/*",
 		"./css/*": "./dist/css/*",
-		"./scss/*": "./src/scss/*"
+		"./scss/*": "./src/scss/*",
+		"./svg/*": "./src/svg/*"
 	},
 	"homepage": "https://www.lism.style",
 	"repository": {

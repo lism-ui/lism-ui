@@ -1,0 +1,19 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import ShapeSVG from './ShapeSVG.astro';
+import { getShapeDividerProps } from '@lism-ui/core/components/ShapeDivider/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+const { shape, ...attrs } = getShapeDividerProps(props);
+if (props.level === 0) return null;
+---
+
+<Lism skipState data-shape={shape} {...attrs}>
+	<Lism skipState className='c--shapeDivider__inner -h:100'>
+		<ShapeSVG className='c--shapeDivider__svg -d:b' shape={shape} />
+	</Lism>
+</Lism>

@@ -1,0 +1,26 @@
+---
+import { LismProps } from '../types';
+import SVGs from './svg';
+import { svgDefaultProps } from '@lism-ui/core/components/ShapeDivider/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const { className, shape } = Astro.props || {};
+const SVG = SVGs[shape] || null;
+
+// xmlns="http://www.w3.org/2000/svg"
+
+// SVGから <svg> の中身とviewBox属性を取得する
+const viewBox = SVG.match(/viewBox="([^"]+)"/)?.[1] || '';
+const svgContent = SVG.replace(/<svg[^>]+>|<\/svg>/g, '');
+---
+
+<svg
+	xmlns='http://www.w3.org/2000/svg'
+	viewBox={viewBox}
+	className={className}
+	{...svgDefaultProps}
+>
+	<Fragment set:html={svgContent} />
+</svg>

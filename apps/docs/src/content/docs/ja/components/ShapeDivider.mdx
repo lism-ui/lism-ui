@@ -5,7 +5,7 @@ description: ...
 
 import { Divider, ShapeDivider, Container, Stack } from '@lism-ui/core';
 import { Tabs, TabItem } from '@lism-ui/astro';
-import LineDemo from '~/demos/divider/line.mdx';
+import SlopeDemo from '~/demos/divider/slope.mdx';
 import ArrowDemo from '~/demos/divider/arrow.mdx';
 import CircleDemo from '~/demos/divider/circle.mdx';
 import WaveDemo from '~/demos/divider/wave.mdx';
@@ -15,29 +15,28 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 境界線
 
+
 ## Props
 
-- `shape`: 形状の指定。svgで描画されます。 `line`(→ `slope`?) `wave` `arrow` `circle` が指定できます。
-	- 任意のsvgの受け渡しができるようにしたい<MemoBadge>未実装</MemoBadge>
-- `shape`の指定がなければ、background-color? で線を描画する(?) <MemoBadge>要検討</MemoBadge>
-- `shape`用 prop
-	- `isFlip`: シェイプの上下反転をするかどうか。 
-		- `false`: 下から上へ伸びるシェイプになります。(デフォルト)
-		- `true`: 上から下へ伸びるシェイプになります。(デフォルト)
-	- `level`: 高さのレベル。正の数・負の数を指定できます。 `5` がデフォルト。
-		- `level * 1cqw` で`<Divider>`の高さが計算され、`600px`時点の値(`level * 6px`)が最小値、`1200px`時点の値(`level * 12px`)が最大値となります。
-		- `level` が マイナスの時、図形の描画方向が反転します。
-	- `stretch`: 横方向の伸縮率。 `1` がデフォルトです。
-	- `offset`: X方向の位置をずらす。 `stretch`と合わせて`%`単位で指定してください。
-		- 例: `stretch:1.5` なら、`offset:-25%~25%`の範囲が有効です。
+| プロパティ | 説明 |
+|---|---|
+| `shape` |  形状の指定。svgで描画されます。 `slope`, `wave`, `arrow`, `circle` が指定できます。|
+| `isFlip` | シェイプの上下反転をするかどうか。 |
+| `level` | 高さのレベル。正の数・負の数を指定できます。 `5` がデフォルト。|
+| `stretch` | 横方向の伸縮率。 `1` がデフォルトです。 |
+| `offset` | X方向の位置をずらす。 `stretch`と合わせて`%`単位で指定してください。（例: `stretch:1.5` なら、`offset:-25%~25%`の範囲が有効です。） |
 
 
-memo 
-- 任意のSVGを指定できるようにしたい
-- アニメーション機能、SVGにあわせて、アニメーション手法を切り替える?
+- 任意のsvgの受け渡しができるようにしたい<MemoBadge>未実装</MemoBadge>
+- `level`について
+	- `level * 1cqw` で`<Divider>`の高さが計算され、`600px`時点の値(`level * 6px`)が最小値、`1200px`時点の値(`level * 12px`)が最大値となります。
+	- `level` が マイナスの時、図形の描画方向が反転します。
+
+
+{/* - アニメーション機能、SVGにあわせて、アニメーション手法を切り替える?
 	1. 左右交互移動 (これが一番カンタン)
 	2. 一方向への無限ループ（隙間がどうしても見えてしまうので一旦なし）  
-	(参考: https://chocolat5.com/ja/tips/loop-image-animation/)
+	(参考: https://chocolat5.com/ja/tips/loop-image-animation/) */}
 
 
 ## Import
@@ -55,20 +54,22 @@ import { ShapeDivider } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
+
 ## Shapes
+
 <Tabs alignfull panelProps={{isFlow: true}}>
-	<TabItem label="Line">
+	<TabItem label="Slope">
 		<Preview>
 			<PreviewArea resize>
-				<ShapeDivider shape="line1" c="black"/>
-				<ShapeDivider shape="line2" c="black"/>
-				<ShapeDivider shape="line3" c="black"/>
+				<ShapeDivider shape="slope1" c="black"/>
+				<ShapeDivider shape="slope2" c="black"/>
+				<ShapeDivider shape="slope3" c="black"/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="line1" c="black"/>
-				<ShapeDivider shape="line2" c="black"/>
-				<ShapeDivider shape="line3" c="black"/>
+				<ShapeDivider shape="slope1" c="black"/>
+				<ShapeDivider shape="slope2" c="black"/>
+				<ShapeDivider shape="slope3" c="black"/>
 				```
 			</PreviewCode>
 		</Preview>
@@ -76,15 +77,15 @@ import { ShapeDivider } from '@lism-ui/astro';
 		<Preview>
 			<PreviewTitle>with Animation</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="line1" isAnimation c="black"/>
-				<ShapeDivider shape="line2" isAnimation c="black"/>
-				<ShapeDivider shape="line3" isAnimation c="black"/>
+				<ShapeDivider shape="slope1" isAnimation c="black"/>
+				<ShapeDivider shape="slope2" isAnimation c="black"/>
+				<ShapeDivider shape="slope3" isAnimation c="black"/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="line1" isAnimation c="black"/>
-				<ShapeDivider shape="line2" isAnimation c="black"/>
-				<ShapeDivider shape="line3" isAnimation c="black"/>
+				<ShapeDivider shape="slope1" isAnimation c="black"/>
+				<ShapeDivider shape="slope2" isAnimation c="black"/>
+				<ShapeDivider shape="slope3" isAnimation c="black"/>
 				```
 			</PreviewCode>
 		</Preview>
@@ -163,8 +164,8 @@ import { ShapeDivider } from '@lism-ui/astro';
 - コンテンツ上部に配置する場合は、`isFlip` を指定します。
 
 <Tabs alignfull panelProps={{isFlow: true}}>
-	<TabItem label="Line">
-		<LineDemo />
+	<TabItem label="Slope">
+		<SlopeDemo />
 	</TabItem>
 	<TabItem label="Wave">
 		<WaveDemo />

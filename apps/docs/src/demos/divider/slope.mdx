@@ -1,24 +1,25 @@
-import { ShapeDivider, Box } from '@lism-ui/core';
+import { ShapeDivider, Box } from '@lism-ui/astro';
 import { DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
+
 <Preview>
-	<PreviewTitle>`shape="circle1"`</PreviewTitle>
+	<PreviewTitle>`shape="slope1"`</PreviewTitle>
 	<PreviewArea resize p='0'>
 		<Box>
-			<ShapeDivider shape="circle1" isFlip c="gray"/>
+			<ShapeDivider shape="slope1" isFlip c="gray"/>
 			<Box isFlow hasGutter py={50}>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="circle1" c="gray"/>
+			<ShapeDivider shape="slope1" c="gray"/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "circle1" "isFlip"
+		```jsx "slope1" "isFlip"
 		<Box>
-			<ShapeDivider shape="circle1" isFlip c="gray"/>
+			<ShapeDivider shape="slope1" isFlip c="gray"/>
 			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="circle1" c="gray"/>
+			<ShapeDivider shape="slope1" c="gray"/>
 		</Box>
 		```
 	</PreviewCode>
@@ -28,85 +29,87 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 	<PreviewTitle>`level`をマイナスに</PreviewTitle>
 	<PreviewArea resize p='0'>
 		<Box>
-			<ShapeDivider shape="circle1" isFlip level={-4} c="gray"/>
+			<ShapeDivider shape="slope1" isFlip level={-3} c="gray"/>
 			<Box isFlow hasGutter py={50}>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="circle1" level={-4} c="gray"/>
+			<ShapeDivider shape="slope1" level={-3} c="gray"/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "level="
 		<Box>
-			<ShapeDivider shape="circle1" isFlip level={-4} c="gray"/>
+			<ShapeDivider shape="slope1" isFlip level={-3} c="gray"/>
 			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="circle1" level={-4} c="gray"/>
+			<ShapeDivider shape="slope1" level={-3} c="gray"/>
 		</Box>
 		```
 	</PreviewCode>
 </Preview>
 
+
 <Preview>
-	<PreviewTitle>`stretch`の活用</PreviewTitle>
+	<PreviewTitle>`shape="slope2"`</PreviewTitle>
 	<PreviewArea resize p='0'>
 		<Box>
-			<ShapeDivider shape="circle1" isFlip c="gray" level={5} stretch={.25} />
+			<ShapeDivider shape="slope2" isFlip c="gray"/>
 			<Box isFlow hasGutter py={50}>
 				<DammyText length='l' />
 			</Box>
+			<ShapeDivider shape="slope2" c="gray" />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "slope2"
+		<Box>
+			<ShapeDivider shape="slope2" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="slope2" c="gray" />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>`shape="slope3"`</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="slope3" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
+			</Box>
+			<ShapeDivider shape="slope3" c="gray" />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Box>
-			<ShapeDivider shape="circle1" isFlip c="gray" level={5} stretch={.25} />
+			<ShapeDivider shape="slope3" isFlip c="gray"/>
 			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="slope3" c="gray" />
 		</Box>
 		```
 	</PreviewCode>
 </Preview>
 
-
 <Preview>
-	<PreviewTitle>`shape="circle2"`</PreviewTitle>
+	<PreviewTitle>`isAnimation`</PreviewTitle>
 	<PreviewArea resize p='0'>
 		<Box>
-			<ShapeDivider shape="circle2" isFlip c="gray"/>
+			<ShapeDivider shape="slope3" isFlip isAnimation c="gray"/>
 			<Box isFlow hasGutter py={50}>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="circle2" c="gray" />
+			<ShapeDivider shape="slope3" isAnimation c="gray" />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "circle2"
+		```jsx "isAnimation"
 		<Box>
-			<ShapeDivider shape="circle2" isFlip c="gray"/>
+			<ShapeDivider shape="slope3" isFlip isAnimation c="gray"/>
 			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="circle2" c="gray" />
-		</Box>
-		```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>`shape="circle3"`</PreviewTitle>
-	<PreviewArea resize p='0'>
-		<Box>
-			<ShapeDivider shape="circle3" level={5} isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
-				<DammyText length='l' />
-			</Box>
-			<ShapeDivider shape="circle3" level={-5} c="gray" />
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "circle3"
-		<Box>
-			<ShapeDivider shape="circle3" level={5} isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="circle3" level={-5} c="gray" />
+			<ShapeDivider shape="slope3" isAnimation c="gray" />
 		</Box>
 		```
 	</PreviewCode>

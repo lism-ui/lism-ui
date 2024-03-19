@@ -1,0 +1,69 @@
+// heightが.-h:で上書きできるかあとでチェック
+.c--shapeDivider {
+	// --c: var(--base);
+	--level: 0;
+	--duration: 12s;
+	--offset: 0;
+	--stretch: 1;
+	--scaleX: 1;
+	--scaleY: 1;
+	--trnslt: 0 0.5px;
+	--svg-trfo: unset;
+	--svg-anim: unset;
+
+	// --rotateX: 0deg;
+	// --rotateY: 0deg;
+
+	position: relative;
+	overflow: hidden;
+	color: var(--base);
+
+	// 高さを svg ではなく親でセットしているのは、 <Divider h='hoge'> で簡単に上書きできるようにするため。
+	// 600px時点を最小値, 1200px時点を最大値にして、clampで高さを変動させる
+	height: clamp(calc(6px * var(--level)), calc(1cqw * var(--level)), calc(12px * var(--level)));
+	max-width: 100%; // is--constrained の影響を受けないようにする
+
+	scale: var(--scaleX) var(--scaleY);
+	translate: var(--trnslt);
+
+	// 上下にわずかな隙間ができてしまうのを防ぐ
+	&[data-flip*='y'] {
+		// top: -0.5px;
+		--scaleY: -1;
+		--trnslt: 0 -0.5px;
+	}
+	&[data-flip*='x'] {
+		--scaleX: -1;
+	}
+	// &:not([data-flip*='y']) {
+	// 	bottom: -0.5px;
+	// }
+}
+.c--shapeDivider--animation {
+	/* ↓ X 100% にしてるのは translateXのcalc計算で * -1 をしなくていいように。*/
+	--svg-trfo: 100% 0;
+	--svg-anim: LismShapeSlide var(--duration) infinite alternate linear;
+}
+
+.c--shapeDivider__inner {
+	// position: relative;
+	// inset: 0;
+	scale: var(--stretch) 1;
+	translate: var(--offset);
+	// height: 100%;
+}
+
+.c--shapeDivider__svg {
+	transform-origin: var(--svg-trfo);
+	animation: var(--svg-anim);
+}
+
+// 左右にスライドする
+@keyframes LismShapeSlide {
+	0% {
+		transform: scaleX(4);
+	}
+	100% {
+		transform: scaleX(4) translateX(calc(100% - 25%));
+	}
+}

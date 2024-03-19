@@ -23,6 +23,7 @@ export * from './Avatar';
 export * from './Delimiter';
 export * from './Decorator';
 export * from './Divider';
+export * from './ShapeDivider';
 export * from './Icon';
 
 export * from './LinkBox';

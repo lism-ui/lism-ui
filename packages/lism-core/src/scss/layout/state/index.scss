@@ -17,7 +17,12 @@
 // 	}
 // }
 
-// field--rest ?
+// .is--square ?
+// .has--size {
+// 	width: var(--size);
+// 	height: var(--size);
+// }
+
 .is--reset {
 	color: inherit;
 	background: none;

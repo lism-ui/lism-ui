@@ -4,26 +4,108 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>ShapeDivider</PreviewTitle>
-	<PreviewArea resize alignfull>
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip level={4}/>
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
+	<PreviewTitle>`shape="arrow1"`</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow1" c="white" level={4}/>
+			<ShapeDivider shape="arrow1" c="gray"/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "arrow1" "isFlip"
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="arrow1" c="gray"/>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`level`をマイナスに</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip level={-4} c="gray"/>
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
+			</Box>
+			<ShapeDivider shape="arrow1" level={-4} c="gray"/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "level="
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip level={-4} c="gray"/>
+			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="arrow1" level={-4} c="gray"/>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`stretch`の活用</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} stretch={.25} />
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
+			</Box>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip level={4}/>
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} stretch={.25} />
+			<Box isFlow hasGutter py={50}>...</Box>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`w`,`h` でサイズ固定</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} w="4em" h="2em" mx='auto' />
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow1" c="white" level={4}/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box>
+			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} w="4em" h="2em" mx='auto' />
+			<Box isFlow hasGutter py={50}>...</Box>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>`shape="arrow2"`</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow2" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
+			</Box>
+			<ShapeDivider shape="arrow2" c="gray" />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "arrow2"
+		<Box>
+			<ShapeDivider shape="arrow2" isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="arrow2" c="gray" />
 		</Box>
 		```
 	</PreviewCode>
@@ -31,99 +113,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>ShapeDivider</PreviewTitle>
-	<PreviewArea resize alignfull>
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip level={-4}/>
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
+	<PreviewTitle>`shape="arrow3"`</PreviewTitle>
+	<PreviewArea resize p='0'>
+		<Box>
+			<ShapeDivider shape="arrow3" level={5} isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>
+				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow1" c="white" level={-4}/>
+			<ShapeDivider shape="arrow3" level={-5} c="gray" />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip level={-4}/>
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
-			</Box>
-			<ShapeDivider shape="arrow1" c="white" level={-4}/>
-		</Box>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>ShapeDivider</PreviewTitle>
-	<PreviewArea resize alignfull>
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip w="4em" h="2em" ml="auto" mr="auto" />
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
-			</Box>
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow1" c="white" isFlip w="4em" h="2em" ml="auto" mr="auto" />
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
-			</Box>
-		</Box>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-<Preview>
-	<PreviewTitle>ShapeDivider</PreviewTitle>
-	<PreviewArea resize alignfull>
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="25%" isFlip />
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
-			</Box>
-			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="-25%" />
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="25%" isFlip />
-			<Box isFlow py={40} px={40}>...</Box>
-			<ShapeDivider shape="arrow2" c="white" level={2} stretch={1.5} offset="-25%" />
-		</Box>
-		```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>ShapeDivider</PreviewTitle>
-	<PreviewArea resize alignfull>
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow3" c="white" level={2} isFlip />
-			<Box isFlow py={40} px={40}>
-				<DammyText />
-				<DammyText length="l" />
-			</Box>
-			<ShapeDivider shape="arrow3" c="white" level={-2} />
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Box alignfull bgc="#e5e5e5" c="black">
-			<ShapeDivider shape="arrow3" c="white" level={2} isFlip />
-			<Box isFlow py={40} px={40}>...</Box>
-			<ShapeDivider shape="arrow3" c="white" level={-2} />
+		```jsx "arrow3"
+		<Box>
+			<ShapeDivider shape="arrow3" level={5} isFlip c="gray"/>
+			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape="arrow3" level={-5} c="gray" />
 		</Box>
 		```
 	</PreviewCode>

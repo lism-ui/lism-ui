@@ -13,6 +13,8 @@ import {
 	Divider,
 	GridItem,
 	FlexItem,
+	ShapeDivider,
+	Box,
 } from '@lism-ui/core';
 import { DammyText } from '~/components';
 import { ArrowFatLinesDown } from '@phosphor-icons/react';
@@ -50,6 +52,14 @@ export default function content() {
 	return (
 		<Lism isFlow hasGutter py={50} isContainer='s' alignfull id='demo-wrapper' _dir='rtl'>
 			<h1>Step</h1>
+
+			<Box>
+				<ShapeDivider shape='slope1' isFlip c='content-3' />
+				<Box isFlow hasGutter py={50}>
+					<DammyText length='l' />
+				</Box>
+				<ShapeDivider shape='slope1' c='content-3' />
+			</Box>
 
 			<Stack gap='40'>
 				<Step>

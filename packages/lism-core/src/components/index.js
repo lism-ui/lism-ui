@@ -19,7 +19,6 @@ export * from './Columns';
 export * from './Reel';
 export * from './Frame';
 export * from './Layer';
-export * from './Divider';
 export * from './Spacer';
 
 export * from './LinkBox';
@@ -44,6 +43,8 @@ export * from './Alert';
 export * from './Note';
 export * from './Banner';
 export * from './Card';
+export * from './Divider';
+export * from './ShapeDivider';
 
 export * from './NavMenu';
 // export * from './Section';
