@@ -9,31 +9,31 @@ import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import {Question,ChatCircleDots} from '@phosphor-icons/react';
 
-Q&Aの構築例を紹介します。
+Q&Aのレイアウト構築例を紹介します。
 
-export function Faq({ children }) {
+export function FAQs({ children }) {
 	return (
-		<Stack tag='dl' gap='20'>
+		<Stack className='c--faqs' tag='dl' gap='40'>
 			{children}
 		</Stack>
 	);
 }
 
-export function FaqItem({ q, children }) {
+export function FAQ({ q, children }) {
 	return (
-		<Stack gap='20'>
-			<Flex tag='dt' gap='em6' ai='c'>
-				<Icon emoji='Q' fz='xl' c='accent' />
-				<Text tag='span' fw='bold'>{q}</Text>
+		<Stack className='c--faq' gap='20'>
+			<Flex className='c--faq__q' tag='dt' gap='em6' ai='c'>
+				<Icon emoji='Q' fz='xl' c='content-3' />
+				<Lism tag='span' fw='bold'>{q}</Lism>
 			</Flex>
-			<Lism tag='dd' px='em4' isFlow='s'>
+			<Lism className='c--faq__a' tag='dd' px='em4' isFlow='s'>
 				{children}
 			</Lism>
 		</Stack>
 	);
 }
 
-export function FaqItemAcc({ q, children }) {
+export function AccFAQ({ q, children }) {
 	return (
 		<Accordion>
 			<AccordionHeader bgc='base-3' bdrs='m'>
@@ -49,30 +49,31 @@ export function FaqItemAcc({ q, children }) {
 }
 
 
+## 例
 
-## コンポーネント作成例
+<PreviewTitle>コンポーネントの準備</PreviewTitle>
 
 <Preview>
 	<PreviewCode slot='tab' label='React'>
 	```jsx
-	import { Lism, Text, Flex, Stack, Icon } from '@lism-ui/core';
+	import { Lism, Flex, Stack, Icon } from '@lism-ui/core';
 
-	function Faq({ children }) {
+	export function FAQs({ children }) {
 		return (
-			<Stack tag='dl' gap='20'>
+			<Stack className='c--faqs' tag='dl' gap='40'>
 				{children}
 			</Stack>
 		);
 	}
 
-	function FaqItem({ q, children }) {
+	export function FAQ({ q, children }) {
 		return (
-			<Stack gap='20'>
-				<Flex tag='dt' gap='em6' ai='c'>
-					<Icon emoji='Q' fz='xl' c='accent' />
-					<Text tag='span' fw='bold'>{q}</Text>
+			<Stack className='c--faq' gap='20'>
+				<Flex className='c--faq__q' tag='dt' gap='em6' ai='c'>
+					<Icon emoji='Q' fz='xl' c='content-3' />
+					<Lism tag='span' fw='bold'>{q}</Lism>
 				</Flex>
-				<Lism tag='dd' px='em4' isFlow='s'>
+				<Lism className='c--faq__a' tag='dd' px='em4' isFlow='s'>
 					{children}
 				</Lism>
 			</Stack>
@@ -86,47 +87,54 @@ export function FaqItemAcc({ q, children }) {
 	</PreviewCode> */}
 </Preview>
 
+{/* <Alert preset='info'>
+※ `c--`クラスに対して特にCSSは当てていません。命名が必要な場合の一例です。
+</Alert> */}
+
+
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<Faq>
-			<FaqItem q='Lorem ipsum,  question 1'>
+		<FAQs>
+			<FAQ q='Lorem ipsum, question 1'>
 				<DammyText length='l' />
-			</FaqItem>
+			</FAQ>
 			<Divider />
-			<FaqItem q='Lorem ipsum dolor sit amet, question 2'>
+			<FAQ q='Lorem ipsum dolor sit amet, question 2'>
 				<DammyText  />
 				<DammyText length='l' />
-			</FaqItem>
-		</Faq>
+			</FAQ>
+			<Divider />
+			<FAQ q='Question 3'>
+				<DammyText length='m' />
+			</FAQ>
+		</FAQs>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<Faq>
-			<FaqItem q='Lorem ipsum,  question 1'>
-				<DammyText length='l' />
-			</FaqItem>
-			<Divider />
-			<FaqItem q='Lorem ipsum dolor sit amet, question 2'>
-				<DammyText  />
-				<DammyText length='l' />
-			</FaqItem>
-		</Faq>
-		```
+```jsx
+import { Divider } from '@lism-ui/core';
+import { FAQs, FAQ } from './path/to/.../steps';
+
+<FAQs>
+	<FAQ q='Lorem ipsum, question 1'>
+		<p>Answer...</p>
+	</FAQ>
+	<Divider />
+	<FAQ q='Lorem ipsum dolor sit amet, question 2'>
+		<p>Answer...</p>
+		<p>Answer...</p>
+	</FAQ>
+	<Divider />
+	<FAQ q='Question 3'>
+		<p>Answer...</p>
+	</FAQ>
+</FAQs>
+```
 	</PreviewCode>
 </Preview>
 
-<Alert preset='info'>
-※ `c--`クラスは別に不要ですが。何か命名するとしたらこうかな？という一例です。
-※ この例では、`data-icon='A'`は、Qと同じ幅で余白をあけるために配置しています。
-</Alert>
 
-<Alert preset='note'>
-Memo: ブロック化した時、'Q.' はテキスト普通におくのではなく、`::before`で。（CSSでいじりやすくする）
-</Alert>
-
-
-### アコーディオンタイプの作成例
+### アコーディオンタイプの例
 
 <Preview>
 	<PreviewCode slot='tab' label='React'>
@@ -134,7 +142,7 @@ Memo: ブロック化した時、'Q.' はテキスト普通におくのではな
 	import { Accordion, AccordionHeader, AccordionLabel, AccordionIcon, AccordionBody, Icon } from '@lism-ui/core';
 	import { Question } from '@phosphor-icons/react';
 
-	function FaqItemAcc({ q, children }) {
+	function AccFAQ({ q, children }) {
 		return (
 			<Accordion>
 				<AccordionHeader bgc='base-3' bdrs='m'>
@@ -156,27 +164,36 @@ Memo: ブロック化した時、'Q.' はテキスト普通におくのではな
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize p={30}>
 		<AccordionGroup gap={20}>
-			<FaqItemAcc q='Lorem ipsum,  question 1'>
+			<AccFAQ q='Question 1'>
 				<DammyText length='l' />
-			</FaqItemAcc>
-			<FaqItemAcc q='Lorem ipsum dolor sit amet, question 2'>
+			</AccFAQ>
+			<AccFAQ q='Question 2'>
 				<DammyText  />
 				<DammyText length='l' />
-			</FaqItemAcc>
+			</AccFAQ>
+			<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
+				<DammyText length='l' />
+			</AccFAQ>
 		</AccordionGroup>
 	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<AccordionGroup gap={20}>
-			<FaqItemAcc q='Lorem ipsum,  question 1'>
-				<DammyText length='l' />
-			</FaqItemAcc>
-			<FaqItemAcc q='Lorem ipsum dolor sit amet, question 2'>
-				<DammyText  />
-				<DammyText length='l' />
-			</FaqItemAcc>
-		</AccordionGroup>
-		```
-	</PreviewCode>
+<PreviewCode>
+```jsx
+import { AccordionGroup } from '@lism-ui/core';
+import { AccFAQ } from './path/to/.../steps';
+
+<AccordionGroup gap={20}>
+	<AccFAQ q='Lorem ipsum, question 1'>
+		<p>Answer...</p>
+	</AccFAQ>
+	<AccFAQ q='Question 2'>
+		<p>Answer...</p>
+		<p>Answer...</p>
+	</AccFAQ>
+	<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
+		<p>Answer...</p>
+	</AccFAQ>
+</AccordionGroup>
+```
+</PreviewCode>
 </Preview>
 
