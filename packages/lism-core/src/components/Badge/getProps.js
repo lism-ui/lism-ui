@@ -1,3 +1,5 @@
+import { mergeFlexContextProps } from '../Flex/getProps';
+
 export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
 	_lismClass.push('c--badge');
 	if (variant) _lismClass.push(`c--badge--${variant}`);
@@ -9,5 +11,5 @@ export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
 		_lismClass,
 	};
 
-	return Object.assign(defaultProps, props);
+	return Object.assign(defaultProps, mergeFlexContextProps(props));
 }

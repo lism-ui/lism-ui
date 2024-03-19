@@ -12,11 +12,11 @@ export function getDividerProps({ _lismClass = [], variant, isVertical, label, .
 	const theProps = {
 		_lismClass,
 		_flex: isVertical ? 'stack' : 'flex',
+		ai: 'c', // pricemenu など flexの直下で stretchになっても中央に来るように、デフォルトで付ける
 	};
 	if (label) {
 		// <Divider> に対する指定でそれぞれ上書きできるように、<Divider>側でフォントサイズなども指定している
 		Object.assign(theProps, {
-			ai: 'c',
 			gap: 'em6',
 			fz: 's',
 			lh: '1',
