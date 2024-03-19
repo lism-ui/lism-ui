@@ -42,24 +42,24 @@ import { Divider } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider />
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {2}
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider />
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html {2-4}
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		<div class="c--divider l--flex">
 			<div class="c--divider__bd -bd:t"></div>
 		</div>
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -67,26 +67,26 @@ import { Divider } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>labelあり</PreviewTitle>
 	<PreviewArea resize p='30' >
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider label='Label Text' />
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {2}
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider label='Label Text' />
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html {2-6}
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		<div class="c--divider l--flex -fz:s -lh:1 -c:content-3 -gap:em6 -ai:c">
 			<div class="c--divider__bd -bd:t"></div>
 			<div class="c--divider__label">Label Text</div>
 			<div class="c--divider__bd -bd:t"></div>
 		</div>
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -94,26 +94,26 @@ import { Divider } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>スタイルの変更例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider label='Label Text' bds='dotted' bdw='4px' bdc='blue:40%' c='blue' fw='bold' fz='xs'/>
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {2}
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		<Divider label='Label Text' bds='dotted' bdw='4px' bdc='blue:40%' c='blue' fw='bold' fz='xs'/>
-		<Box bgc='base-2' py='50'></Box>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		<div class="c--divider l--flex -fz:xs -lh:1 -c: -fw:bold -gap:em6 -ai:c" style="--c:var(--blue);--bds:dotted;--bdw:4px;--bdc:hsl(var(--hsl-blue) / 40%)">
 			<div class="c--divider__bd -bd:t"></div>
 			<div class="c--divider__label">Label Text</div>
 			<div class="c--divider__bd -bd:t"></div>
 		</div>
-		<div class="l--box -bgc:base-2 -py:50"></div>
+		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -125,28 +125,28 @@ import { Divider } from '@lism-ui/astro';
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='c' gap={30}>
-			<FlexItem fx='1' bgc='base-2' py='50'></FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 			<Divider isVertical />
-			<FlexItem fx='1' bgc='base-2' py='50'></FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {3} "isVertical"
 		<Flex ai='c' gap={30}>
-			<FlexItem fx='1' bgc='base-2' py='50'></FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 			<Divider isVertical />
-			<FlexItem fx='1' bgc='base-2' py='50'></FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html {3-5} "l--stack" "-bd:l"
 		<div class="l--flex -gap:30 -ai:c">
-			<div class="-fx:1 -bgc:base-2 -py:50"></div>
+			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 			<div class="c--divider l--stack">
 				<div class="c--divider__bd -bd:l"></div>
 			</div>
-			<div class="-fx:1 -bgc:base-2 -py:50"></div>
+			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		</div>
 		```
 	</PreviewCode>
@@ -157,30 +157,30 @@ import { Divider } from '@lism-ui/astro';
 	<PreviewTitle>labelあり</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='c' gap={20}>
-			<div class='l--box -bgc:base-2 -py:50 -fx:1'></div>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 			<Divider isVertical label='Text' />
-			<div class='l--box -bgc:base-2 -py:50 -fx:1'></div>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {3}
 		<Flex ai='c' gap={20}>
-			<div class='l--box -bgc:base-2 -py:50 -fx:1'></div>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 			<Divider isVertical label='Text' />
-			<div class='l--box -bgc:base-2 -py:50 -fx:1'></div>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html {3-7}
 		<div class="l--flex -gap:30 -ai:c">
-			<div class="-fx:1 -bgc:base-2 -py:50"></div>
+			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 			<div class="c--divider l--stack -fz:s -lh:1 -c:content-3 -gap:em6 -ai:c">
 				<div class="c--divider__bd -bd:l"></div>
 				<div class="c--divider__label">Text</div>
 				<div class="c--divider__bd -bd:l"></div>
 			</div>
-			<div class="-fx:1 -bgc:base-2 -py:50"></div>
+			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		</div>
 		```
 	</PreviewCode>
