@@ -6,9 +6,9 @@
 [data-lism-consume~='m'] {
 	margin: var(--pass--m);
 }
-// [data-lism-consume~='gap'] {
-// 	gap: var(--pass--gap);
-// }
+[data-lism-consume~='gap'] {
+	gap: var(--pass--gap);
+}
 [data-lism-consume~='c'] {
 	color: var(--pass--c);
 	//--c

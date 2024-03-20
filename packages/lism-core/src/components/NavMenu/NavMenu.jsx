@@ -1,61 +1,19 @@
 // import React from 'react';
 import { Lism } from '../Lism';
-import { Flex } from '../Flex';
-import getMaybeCssVar from '../../lib/getMaybeCssVar';
+import { Accordion } from '../Accordion';
+import NavMenuLink from './NavMenuLink';
+import { getNavMenuProps } from './getProps';
 
-export default function NavMenu({
-	lismClass = {},
-	lismStyle = {},
-	children,
-	variant,
-	nestLevel,
-	// border,
-	isFlex,
-	itemHovColor,
-	itemHovBgc,
-	// itemP,
-	// style = {},
-	// itemPadding,
-	// provide = { p: null }, // data-provideの出力だけしておきたい?
-	...props
-}) {
-	lismClass.c = 'c--navMenu';
-	if (variant) {
-		// navProps['data-variant'] = variant;
-		lismClass.c += ` c--navMenu--${variant}`;
-	}
-
-	if (itemHovBgc) {
-		lismStyle['--hov--bgc'] = getMaybeCssVar(itemHovBgc, 'color', 'bgc');
-	}
-	if (itemHovColor) {
-		lismStyle['--hov--c'] = getMaybeCssVar(itemHovColor, 'color', 'c');
-	}
-
-	// const lismStyle = {};
-	const navProps = {
-		tag: 'ul',
-		lismClass,
-		lismStyle,
-		// provide,
-	};
-
-	if (nestLevel) {
-		// lismStyle['--level'] = parseInt(nestLevel);
-		navProps['data-nest-level'] = nestLevel;
-	}
-
-	if (isFlex) {
-		return (
-			<Flex {...navProps} {...props}>
-				{children}
-			</Flex>
-		);
-	}
+export default function NavMenu({ isAcc, children, ...props }) {
+	const { liProps, linkProps } = getNavMenuProps(props);
 
 	return (
-		<Lism {...navProps} {...props}>
-			{children}
+		<Lism {...liProps}>
+			{isAcc ? (
+				<Accordion>{children}</Accordion>
+			) : (
+				<>{linkProps ? <NavMenuLink {...linkProps}>{children}</NavMenuLink> : children}</>
+			)}
 		</Lism>
 	);
 }

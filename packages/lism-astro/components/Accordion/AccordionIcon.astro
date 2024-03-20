@@ -11,12 +11,7 @@ interface Props extends LismProps {
 	iconProps?: Object;
 }
 
-const {
-	icon = 'accordion-toggle', // accordion-toggle
-	size,
-	iconProps = {},
-	...props
-} = Astro.props || {};
+const { icon = 'acc-btn', size, iconProps = {}, ...props } = Astro.props || {};
 ---
 
 <FlexItem {...getAccIconProps(props)}>

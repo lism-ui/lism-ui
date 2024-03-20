@@ -491,6 +491,21 @@ class LismPropsData {
 			Object.keys(hoverData).forEach((propName) => {
 				let value = hoverData[propName];
 
+				// 変数だけ受け渡したいデータ
+				if (propName === 'pass' && typeof value === 'object') {
+					const passData = value;
+					Object.keys(passData).forEach((passPropName) => {
+						let passValue = passData[passPropName];
+
+						// コンバーター取得
+						const { converter = '' } = HOV_PROPS[passPropName] || {};
+						if (converter) passValue = getMaybeCssVar(passValue, converter, propName);
+
+						this.addStyle(`--hov--${passPropName}`, passValue);
+					});
+					return;
+				}
+
 				// データ取得
 				const {
 					//presets = [],
@@ -501,9 +516,8 @@ class LismPropsData {
 				// 	this.addUtil(`-hov:${utilKey || propName}:${value}`);
 				// 	return;
 				// }
-				if (converter) {
-					value = getMaybeCssVar(value, converter, propName);
-				}
+
+				if (converter) value = getMaybeCssVar(value, converter, propName);
 				this.addUtil(`-hov:${utilKey || propName}`);
 				this.addStyle(`--hov--${propName}`, value);
 			});

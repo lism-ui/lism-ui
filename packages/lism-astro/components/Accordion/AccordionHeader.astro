@@ -7,19 +7,21 @@ import { getAccHeadProps } from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 
-const { label, icon, iconProps, ...props } = Astro.props || {};
+const { isFreeMode, tag, icon, trigger, ...props } = Astro.props || {};
 
-const hasSlot = Astro.slots.has('default');
+// const hasSlot = Astro.slots.has('default');
 ---
 
 <Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
 	{
-		hasSlot ? (
+		isFreeMode ? (
 			<slot />
 		) : (
 			<>
-				<AccordionLabel>{label || ''}</AccordionLabel>
-				<AccordionIcon icon={icon} iconProps={iconProps} />
+				<AccordionLabel tag={tag}>
+					<slot />
+				</AccordionLabel>
+				<AccordionIcon icon={icon} isTrigger={trigger === 'icon'} />
 			</>
 		)
 	}

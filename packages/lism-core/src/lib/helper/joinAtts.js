@@ -10,7 +10,7 @@
  */
 // spacedAttr, attrConcat
 export default function joinAtts(...args) {
-	const classes = [];
+	let classes = [];
 	for (let i = 0; i < args.length; i++) {
 		const mix = args[i];
 
@@ -26,6 +26,6 @@ export default function joinAtts(...args) {
 
 	// 最後に重複削除
 	// Array.from(new Set(classes))
-	// [...new Set(classes)];
+	classes = [...new Set(classes)];
 	return classes.join(' ').trim();
 }

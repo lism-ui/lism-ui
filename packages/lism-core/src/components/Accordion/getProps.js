@@ -25,7 +25,7 @@ export function getAccGroupProps({
 	if (variant) _lismClass.push('c--accordions--' + variant);
 
 	if (duration) {
-		style['--accordion--duration'] = duration;
+		style['--acc-duration'] = duration;
 	}
 
 	if (!allowMultiple) {

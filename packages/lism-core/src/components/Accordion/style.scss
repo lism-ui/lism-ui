@@ -1,9 +1,9 @@
 :root {
-	--accordion--duration: 0.25s;
+	--acc-duration: 0.25s;
 }
 
-[data-icon='accordion-toggle'] {
-	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M20.1,7.6L12,15.7L3.9,7.6c-0.2-0.2-0.5-0.2-0.7,0L2.4,8.4c-0.2,0.2-0.2,0.5,0,0.7l8.1,8.1l1.5,1.5l1.5-1.5l8.1-8.1 c0.2-0.2,0.2-0.5,0-0.7l-0.8-0.8C20.6,7.4,20.3,7.4,20.1,7.6z"/></svg>');
+[data-icon='acc-btn'] {
+	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M19.5,8L12,15.5L4.5,8C4.3,7.8,4.1,7.8,3.9,8L3.1,8.8C3,8.9,3,9.2,3.1,9.4l7.5,7.5l1.4,1.4l1.4-1.4l7.5-7.5 c0.2-0.2,0.2-0.5,0-0.6L20.1,8C19.9,7.8,19.7,7.8,19.5,8z"/></svg>');
 
 	background-color: currentColor;
 	mask: var(--mask-image) no-repeat 50% 50% / contain;
@@ -11,7 +11,7 @@
 
 .c--accordion {
 	--isOpened: 0;
-	--duration: var(--accordion--duration);
+	--duration: var(--acc-duration);
 	overflow: clip; // bdrs考慮
 
 	// 開いた時
@@ -60,6 +60,7 @@
 // アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
 .c--accordion__icon {
 	:where(&) {
+		font-size: 1.125em;
 		background-color: transparent;
 	}
 
@@ -86,9 +87,9 @@
 	border-radius: var(--radius--xs);
 }
 
-.c--accordion__header:has([data-role='trigger']) {
-	pointer-events: none;
-}
+// .c--accordion__header:has([data-role='trigger']) {
+// 	pointer-events: none;
+// }
 
 .c--accordion__label > a,
 .c--accordion__icon {

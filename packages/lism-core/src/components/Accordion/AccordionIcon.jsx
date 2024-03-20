@@ -4,7 +4,7 @@ import { Icon } from '../Icon';
 import { getAccIconProps } from './getProps';
 
 export default function AccordionIcon({
-	icon = 'accordion-toggle',
+	icon = 'acc-btn',
 	size,
 	iconProps = {},
 	children,

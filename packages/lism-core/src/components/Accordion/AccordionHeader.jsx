@@ -8,18 +8,18 @@ import { getAccHeadProps } from './getProps';
 // import { AccContext } from './context';
 
 // asProps
-export default function AccordionHeader({ label, icon, children, ...props }) {
+export default function AccordionHeader({ isFreeMode, tag, icon, trigger, children, ...props }) {
 	// const { trigger } = React.useContext(AccContext);
 
 	// childrenの有無で分かれる
 	return (
 		<Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
-			{children ? (
+			{isFreeMode ? (
 				children
 			) : (
 				<>
-					<AccordionLabel>{label || ''}</AccordionLabel>
-					<AccordionIcon icon={icon} />
+					<AccordionLabel tag={tag}>{children}</AccordionLabel>
+					<AccordionIcon icon={icon} isTrigger={trigger === 'icon'} />
 				</>
 			)}
 		</Flex>

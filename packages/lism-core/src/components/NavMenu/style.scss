@@ -6,7 +6,8 @@
 	// --list-pis: 0; // padding-inline-start
 
 	// provider
-	--pass--p: var(--em--6); // __text用
+	--pass--p: var(--p--box--s); // var(--em--4) var(--em--6);
+	--pass--gap: var(--em--4);
 	line-height: var(--lh--xs);
 }
 
@@ -15,20 +16,23 @@
 	padding-inline-start: 0; // 自身のpadding
 
 	// 子リストのpadding
-	--list-pis: 1em; //var(--s--30);
+	--list-pis: 1.25em; //var(--s--30);
 }
 
 // <li>
 // .c--navMenu__item {}
 
 // <a> or <span>
+// :where(.c--navMenu__link) {
+// 	gap: var(--em--4);
+// }
+
 .c--navMenu__link {
 	--link-td: none; // text-decoration: none;
 	color: inherit;
 	outline-offset: -1px;
-	// padding: var(--item--p);
 }
-:where(.c--navMenu) .-hov\::hover {
+:where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {
 	color: var(--hov--c);
 	background-color: var(--hov--bgc);
 }

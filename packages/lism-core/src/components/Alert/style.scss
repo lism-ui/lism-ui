@@ -3,7 +3,7 @@
 // 初期値
 :where(.c--alert) {
 	border-radius: var(--radius--m);
-	padding: var(--p--box--s);
+	padding: 1em; //var(--p--box--s);
 	gap: 0.5em 0.75em;
 }
 
