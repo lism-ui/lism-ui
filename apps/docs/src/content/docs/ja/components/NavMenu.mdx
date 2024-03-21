@@ -335,10 +335,9 @@ import { FolderSimple } from "@phosphor-icons/react";
 		<Box minH="20rem">
 		<NavMenuList isFlex hasDivider provide={{ p: 'em6 em8' }}>
 			<NavMenu href='#menu1'>Menu item</NavMenu>
-			<NavMenu href='#menu2'>Menu item</NavMenu>
 			<NavMenu hover='pass' pos='r'>
 				<NavMenuLink href='#menu3'>
-					<>Has Child Menu</>
+					<>Hover Menu</>
 					<Icon icon='acc-btn'/>
 				</NavMenuLink>
 				<NavMenuList hover='get:show' pos='a' top='100%' bgc='base' bxsh='2' bdrs='xs' hasDivider nestLevel={1}>
@@ -348,7 +347,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 			</NavMenu>
 
 			<NavMenu isAcc pos='r'>
-				<NavMenuLink isAccHead href='a' pr='em2'>Menu item</NavMenuLink>
+				<NavMenuLink isAccHead href='a' pr='em2'>Acc Menu</NavMenuLink>
 				<NavMenuList isAccBody accBodyProps={{bxsh:'2', pos:'a', bgc:'base', w:'100'}} nestLevel={1} hasDivider>
 					<NavMenu href='#child-menu1'>Child item</NavMenu>
 					<NavMenu href='#child-menu2'>Child item</NavMenu>
