@@ -21,14 +21,16 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ## Props
 
-| プロパティ | 説明 | デフォルト値 |
-|---|---|---|
-| <PropBadge>`AccordionHeader`</PropBadge><br/>`label` | AccordionLabel の中身を指定します。 |
-| <PropBadge>`AccordionHeader`</PropBadge><br/>`icon` | AccordionIcon に渡す `icon` を指定できます。 |
-| <PropBadge>`AccordionIcon`</PropBadge><br/>`icon` | Icon に渡す `icon` を指定できます。 |
-| <PropBadge>`AccordionIcon`</PropBadge><br/>`size` | Icon に渡す `size` を指定できます。 |
-| <PropBadge>`AccordionIcon`</PropBadge><br/>`isTrigger` | `true`にするとアイコンをトリガーにすることができます。 |
+| プロパティ | 説明 | 
+|---|---|
+| <PropBadge ml='-.5em'>`<Accordion>`</PropBadge><br/><PropBadge ml='-.5em'>`<AccordionGroup>`</PropBadge><br/>`duration` | 開閉アニメーションの時間を指定できます。 |
+| <PropBadge ml='-.5em'>`<AccordionGroup>`</PropBadge><br/>`allowMultiple` | 複数のアコーディオンを同時に開くことを禁止します。 |
+| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/><PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
+| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/>`trigger` | `"icon"`を指定すると、 内部で呼び出される`<AccordionIcon>`の`isTrigger`が`true`にセットされます。|
+| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/>`isFreeMode` | 内部コンテンツをより自由に記述できるようになります。 |
+| <PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`isTrigger` | `true`にするとアイコンをトリガーにすることができます。 |
 
+{/* | <PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`size` | `<Icon>` に渡す `size` を指定できます。 | */}
 {/* | <PropBadge>`AccordionHeader`</PropBadge><br/>`iconProps`,`labelProps` | AccordionLabel, AccordionIcon に渡すpropsを指定します。 | */}
 
 
