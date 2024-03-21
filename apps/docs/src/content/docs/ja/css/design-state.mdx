@@ -7,10 +7,10 @@ sidebar:
 
 
 import { Alert, Box, Note, Text, Lism, Stack, Flex, Container, Frame, Button, Center } from '@lism-ui/core';
-import { Desktop } from "@phosphor-icons/react";
-import { MemoBadge,HelpText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import PreviewFrame from "~/components/PreviewFrame.astro";
+import { Desktop } from '@phosphor-icons/react';
+import { MemoBadge,HelpText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import PreviewFrame from '~/components/PreviewFrame.astro';
 
 Lismでは、レイアウト・デザインを組む上で特定の役割を持ち、かつ複数のモジュールに対してつけ外しできるような汎用性の高いセレクタを Design State（<MemoBadge color='purple'>仮名</MemoBadge>） として分類しています。
 
@@ -52,7 +52,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={20}>
-		<div class="is--flow">
+		<div class='is--flow'>
 			<Text bd='guide'>コンテンツ</Text>
 			<Text bd='guide'>コンテンツ</Text>
 			<Text bd='guide'>コンテンツ</Text>
@@ -85,7 +85,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 <Preview>
 	<PreviewTitle>任意の値をflowGapにセットする</PreviewTitle>
 	<PreviewArea p={20}>
-		<div className="is--flow:" style={{"--flowGap": "1em"}}>
+		<div className='is--flow:' style={{'--flowGap': '1em'}}>
 			<Text bd='guide'>コンテンツ</Text>
 			<Text bd='guide'>コンテンツ</Text>
 			<Text bd='guide'>コンテンツ</Text>
