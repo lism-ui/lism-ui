@@ -190,10 +190,6 @@ export default [
 				link: '###',
 			},
 			{
-				label: 'Alert',
-				link: '/components/alert/',
-			},
-			{
 				label: 'Accordion',
 				link: '/components/accordion/',
 			},
@@ -210,10 +206,6 @@ export default [
 				link: '/components/badge/',
 			},
 			{
-				label: 'Banner',
-				link: '/components/banner/',
-			},
-			{
 				label: 'Card',
 				link: '/components/card/',
 			},
@@ -224,14 +216,6 @@ export default [
 			{
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
-			},
-			{
-				label: 'NavMenu',
-				link: '/components/navmenu/',
-			},
-			{
-				label: 'Note',
-				link: '/components/note/',
 			},
 			{
 				label: 'Tabs',
@@ -246,12 +230,28 @@ export default [
 				link: '###',
 			},
 			{
+				label: 'Alert',
+				link: '/components/alert/',
+			},
+			{
+				label: 'Banner',
+				link: '/components/banner/',
+			},
+			{
+				label: 'Note',
+				link: '/components/note/',
+			},
+			{
 				label: 'Chat',
 				link: '/components/chat/',
 			},
 			{
 				label: 'FAQ',
 				link: '/components/faq/',
+			},
+			{
+				label: 'NavMenu',
+				link: '/components/navmenu/',
 			},
 			{
 				label: 'Step',

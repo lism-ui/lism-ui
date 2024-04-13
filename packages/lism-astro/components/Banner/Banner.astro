@@ -1,10 +1,11 @@
 ---
-import { Frame } from '../Frame';
+import { LinkBox } from '../LinkBox';
 import getProps from '@lism-ui/core/components/Banner/getProps';
 
 const props = Astro.props || {};
 ---
 
-<Frame {...getProps(props)}>
+<!-- <Frame {...getProps(props)}> -->
+<LinkBox isFrame {...getProps(props)}>
 	<slot />
-</Frame>
+</LinkBox>

@@ -1,6 +1,6 @@
-import { Frame } from '../Frame';
+import { LinkBox } from '../LinkBox';
 import getProps from './getProps';
 
 export default function Banner(props) {
-	return <Frame {...getProps(props)} />;
+	return <LinkBox isFrame {...getProps(props)} />;
 }
