@@ -3,124 +3,108 @@ title: 'Hero'
 description: ...
 ---
 
-import { Box, Grid, Text, Layer, Stack, MediaLayer, FilterLayer, Hero, HeroContent, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
-import { Reference, MemoBadge, DammyText } from "~/components";
+import { Spacer, Box, Grid, DammyText, Text, Container, Layer, Stack, FlexItem, MediaLayer, FilterLayer, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
+import { Reference, MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import PreviewFrame from "~/components/PreviewFrame.astro";
 
-広いコンテンツエリアを作成するためのモジュールで、デフォルトでの単体使用では、ただの`isFullwide`な`Stack`です。
+ヒーローコンテンツの作成例を紹介します。
 
 
-`<Hero>`内に`<HeroContent>`を使うことで、上・中央・下寄せでコンテンツを配置できます。をコントロールできるようになります。
-
+{/* `<Hero>`内に`<HeroContent>`を使うことで、上・中央・下寄せでコンテンツを配置できます。 */}
 {/* <p>親ブロックからbodyブロックを上・中央・下寄せをコントロールできるように。(marginを変える)</p>
 <p>初期展開ブロックを選べるようにする。内部gridパターンも。</p> */}
 
-## Props
-
-- `<Hero>`
-- `<HeroContent>`
-	- `type`
-
-## Import
-
-```js
-import { Hero, HeroContent } from '@lism-ui/core';
-```
 
 ## Usage
 
-`HeroContent` には`type`を指定でき、`top`、`center`、`bottom`のいずれかを指定することができます。  
-それぞれのキーワードに合わせて出力されるpropsが変わります。
+{/* `HeroContent` には`type`を指定でき、`top`、`center`、`bottom`のいずれかを指定することができます。  
+それぞれのキーワードに合わせて出力されるpropsが変わります。 */}
 
-たとえば、`type='center'`の場合は、`my='auto'`, `hasGutter`, `isContainer='m'`が呼び出されます。
-{/* \isFlowは？ */}
+{/* たとえば、`type='center'`の場合は、`my='auto'`, `hasGutter`, `isContainer='m'`が呼び出されます。 */}
+
 
 <Preview>
 	<PreviewTitle>例 1</PreviewTitle>
 	<PreviewArea resize>
-		<Hero minH='50vh'>
-			<HeroContent type='center' isFlow bd='guide'>
-				<Text fw='bold' fz='xl'>DEMO 02</Text>
+		<Stack isFullwide minH='50vh' bgc='base-2'>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>DEMO 01</Text>
 				<DammyText length='l' lang='ja'/>
-			</HeroContent>
-		</Hero>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "type='center'"
-		<Hero minH='50vh'>
+			</Container>
+		</Stack>
+		{/* <Hero minH='50vh'>
 			<HeroContent type='center' isFlow>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<DammyText length='l' lang='ja'/>
 			</HeroContent>
-		</Hero>
+		</Hero> */}
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Stack isFullwide minH='50vh' bgc='base-2'>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>DEMO 01</Text>
+				<DammyText length='l' lang='ja'/>
+			</Container>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
 
-`type='top'`では`mb='auto' `,`type='bottom'`では`mt='auto'`が呼び出されます。
+{/* `type='top'`では`mb='auto' `,`type='bottom'`では`mt='auto'`が呼び出されます。 */}
 
 
 <Preview>
 	<PreviewTitle>例2: top,center,bottom を使用する</PreviewTitle>
 	<PreviewArea resize>
-		<Hero aspect='16/9'>
-			<HeroContent type='top' bd='guide'>
-				<p>type: top</p>
-			</HeroContent>
-			<HeroContent type='center' py='40' bd='guide'>
-				<Text fw='bold' fz='xl'>DEMO 03</Text>
+		<Stack isFullwide minH='50vh' bgc='base-2' gap='30'>
+			<Box bd='guide' ta='c'>Header</Box>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<HeroContent type='bottom' bd='guide'>
-				<p>type: bottom</p>
-			</HeroContent>
-		</Hero>
+			</Container>
+			<Box bd='guide' ta='c'>Footer</Box>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "type='top'" "type='center'" "type='bottom'"
-		<Hero aspect='16/9'>
-			<HeroContent type='top'>
-				<p>type: top</p>
-			</HeroContent>
-			<HeroContent type='center' py='40'>
-				<Text fw='bold' fz='xl'>DEMO 03</Text>
+		```jsx
+		<Stack isFullwide minH='50vh' bgc='base-2' gap='30'>
+			<Box bd='guide' ta='c'>Header</Box>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<HeroContent type='bottom'>
-				<p>type: bottom</p>
-			</HeroContent>
-		</Hero>
+			</Container>
+			<Box bd='guide' ta='c'>Footer</Box>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
 
 
+### スクリーンサイズに高さを合わせる
+
+`.-h:full`クラス（`h='full'`） を活用すると、スクリーンサイズに合わせた高さになります。
 
 <Preview>
-	<PreviewTitle>例3: top,bottom だけを使用する</PreviewTitle>
+	<PreviewTitle>例2: top,center,bottom を使用する</PreviewTitle>
 	<PreviewArea resize>
-		<Hero aspect='16/9' minH='25rem'>
-			<HeroContent type='top' isFlow='s' p='30'>
-				<Text fw='bold' fz='xl'>DEMO 04</Text>
-				<DammyText length='l' lang='ja' />
-			</HeroContent>
-			<HeroContent type='bottom' p='30' aslf='flex-end'>
-				<p>type: bottom</p>
-			</HeroContent>
-		</Hero>
+		<Stack isFullwide h='full' bgc='base-2' gap='30'>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>Full Screen</Text>
+				<DammyText length='xl' />
+			</Container>
+			<Box bd='guide' ta='c'>Footer</Box>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "type='top'" "type='center'" "type='bottom'"
-		<Hero aspect='16/9' minH='25rem'>
-			<HeroContent type='top' isFlow='s' p='30'>
-				<Text fw='bold' fz='xl'>DEMO 04</Text>
-				<DammyText length='l' lang='ja' />
-			</HeroContent>
-			<HeroContent type='bottom' p='30' aslf='flex-end'>
-				<p>type: bottom</p>
-			</HeroContent>
-		</Hero>
+		```jsx
+		<Stack isFullwide h='full' bgc='base-2' gap='30'>
+			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+				<Text fw='bold' fz='xl'>DEMO 03</Text>
+				<DammyText length='xl' />
+			</Container>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
@@ -128,30 +112,28 @@ import { Hero, HeroContent } from '@lism-ui/core';
 
 ### ShapeDivider や Layer との組み合わせ
 
-ShapeDividerを使う場合は、`Hero`の直下に(`HeroContent`の兄弟要素として）に配置してください。
-
 <Preview>
 	<PreviewTitle>With ShapeDivider</PreviewTitle>
 	<PreviewArea resize>
-		<Hero minH='50vh'>
-			<ShapeDivider shape='wave3' c='content-3' isFlip />
-			<HeroContent type='center'>
+		<Stack isFullwide minH='50vh' bgc='base-3'>
+			<ShapeDivider shape='wave3' c='base' isFlip />
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<ShapeDivider shape='wave3' c='content-3' />
-		</Hero>
+			</Container>
+			<ShapeDivider shape='wave3' c='base' />
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "\<ShapeDivider"
-		<Hero minH='50vh'>
-			<ShapeDivider shape='wave3' c='content-3' isFlip />
-			<HeroContent type='center'>
+		<Stack isFullwide minH='50vh' bgc='base-3'>
+			<ShapeDivider shape='wave3' c='base' isFlip />
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<ShapeDivider shape='wave3' c='content-3' />
-		</Hero>
+			</Container>
+			<ShapeDivider shape='wave3' c='base' />
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
@@ -159,68 +141,61 @@ ShapeDividerを使う場合は、`Hero`の直下に(`HeroContent`の兄弟要素
 <Preview>
 	<PreviewTitle>With Layers</PreviewTitle>
 	<PreviewArea resize>
-		<Hero c='white' minH='50vh'>
+		<Stack isFullwide isFrame minH='50vh'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:40%' />
-			<HeroContent type='center' isConstrained='s'>
+			<FilterLayer blur='4px' bgc='black:50%' />
+			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
 				<DammyText length='l' />
-			</HeroContent>
-		</Hero>
+			</Container>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "\<MediaLayer" "\<FilterLayer"
-		<Hero c='white' minH='50vh'>
+		```jsx "isFrame" "\<MediaLayer" "\<FilterLayer"
+		<Stack isFullwide isFrame minH='50vh'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:40%' />
-			<HeroContent type='center' isConstrained='s'>
+			<FilterLayer blur='4px' bgc='black:50%' />
+			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
 				<DammyText length='l' />
-			</HeroContent>
-		</Hero>
+			</Container>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
 
+※ `<Container>`はコンテナ要素なので、z-indexなどを指定しなくてもレイヤーより上に来ますが、ここでは明示的に`z='0'`を指定しています。
+
+<Spacer h='10'/>
 
 <Preview>
 	<PreviewTitle>With ShapDivide & Layers</PreviewTitle>
 	<PreviewArea resize>
-		<Hero bd c='white' minH='50vh'>
+		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:40%' />
-			<ShapeDivider shape='line2' c='#fff' isFlip />
-			<HeroContent type='top' p='em5'>
-				<p>type: top</p>
-			</HeroContent>
-			<HeroContent type='center' isConstrained='s'>
+			<FilterLayer blur='4px' bgc='black:50%' />
+			<ShapeDivider shape='slope2' c='base' isFlip />
+			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<HeroContent type='bottom' p='em5' aslf='e'>
-				<p>type: bottom</p>
-			</HeroContent>
-			<ShapeDivider shape='line2' c='#fff' />
-		</Hero>
+			</Container>
+			<Box z='0' ta='c'>Footer</Box>
+			<ShapeDivider shape='slope2' c='base' />
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "\<MediaLayer" "\<FilterLayer" "\<ShapeDivider"
-		<Hero bd c='white' minH='50vh'>
+		```jsx "isFrame" "\<MediaLayer" "\<FilterLayer" "\<ShapeDivider"
+		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<FilterLayer blur='4px' bgc='black:40%' />
-			<ShapeDivider shape='line2' c='#fff' isFlip />
-			<HeroContent type='top' p='em5'>
-				<p>type: top</p>
-			</HeroContent>
-			<HeroContent type='center' isConstrained='s'>
+			<ShapeDivider shape='slope2' c='base' isFlip />
+			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
 				<DammyText length='l' />
-			</HeroContent>
-			<HeroContent type='bottom' p='em5' aslf='e'>
-				<p>type: bottom</p>
-			</HeroContent>
-			<ShapeDivider shape='line2' c='#fff' />
-		</Hero>
+			</Container>
+			<Box z='0' ta='c'>Footer</Box>
+			<ShapeDivider shape='slope2' c='base' />
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
@@ -243,68 +218,127 @@ ShapeDividerを使う場合は、`Hero`の直下に(`HeroContent`の兄弟要素
 
 {/* -  */}
 
-Hero 自体の高さを固定していい場合は、普通に Hero の高さを指定すれば子要素であるHeroContentや、そのさらに子要素のheightにも`%`を使うことができます。
+Hero 自体の高さを`height`で固定している場合は、普通に子要素であるHeroContentや、そのさらに子要素の`height`や`min-height`にも`%`を使うことができます。
 
 <Preview>
-	<PreviewTitle>普通に`h`を指定するケース</PreviewTitle>
+	<PreviewTitle>親の高さが`h`で指定されるケース</PreviewTitle>
 	<PreviewArea resize>
-		<Hero h='50vh' bgc='base-3'>
-			<HeroContent type='center' minH='50%'>
-				<Center minH='100%' bgc='base' bxsh='1'>
-					<Text fw='bold' fz='l'>Height 50%</Text>
+		<Stack isFullwide h='400px' bgc='base-3'>
+			<Box h='50%' my='auto' px='40'>
+				<Center h='100%' bgc='base' bxsh='1'>
+					<Text fw='bold'>Height 50%</Text>
 				</Center>
-			</HeroContent>
-		</Hero>
+			</Box>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "h='50vh'" "minH='50%'" "minH='100%'"
-		<Hero h='50vh' bgc='base-3'>
-			<HeroContent type='center' minH='50%'>
-				<Center minH='100%' bgc='base' bxsh='1'>
-					<Text fw='bold' fz='l'>Height 50%</Text>
+		```jsx "h='400px'" "h='50%'"
+		<Stack isFullwide h='400px' bgc='base-3'>
+			<Box h='50%' my='auto' px='40'>
+				<Center h='100%' bgc='base' bxsh='1'>
+					<Text fw='bold'>Height 50%</Text>
 				</Center>
-			</HeroContent>
-		</Hero>
+			</Box>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
 
 
-問題は、`<Hero>` の高さを minH やアスペクト比で指定したいケースです。  
-(ウインドウ幅が広い時は特定の高さに制限したいが、ウインドウ幅が狭くなって内部のコンテンツ量がはみ出す時、自然と`Hero`の高さが伸びてくれるようなレイアウトを作りたいケース。)
+問題は、Heroコンテンツ の高さを minH やアスペクト比で指定したいケースです。  
+(ウインドウ幅が広い時は特定の高さに制限したいが、ウインドウ幅が狭くなって内部のコンテンツ量がはみ出す時は高さが伸びてくれるようなレイアウトを作りたいケース。)
 
 
-基本的に、min-height を指定した要素の子要素では、heightに`%`を使っても無効となるため、一工夫必要です。
-
-- `Hero` は `Stack` で構成されているので、`HeroContent`の`flex-grow`を`1`にして高さを伸ばします。
-- 高さがある`grid`要素で、かつ`align-items`が`center`などの要素の直下では `height` の%指定が有効となるため、`HeroContent`を`<Grid>`で展開します。（`align-items`を指定せず、子要素を`my='auto'`や`aslf='center'`にしてもOKです。）
-
-
-`type="stretch"`を指定すると上記の工程を手軽に呼び出せます。（`as={Grid} fxg='1' ai='center'` をセットする）
+基本的に、`min-height`を指定した要素の子要素では、`height`や`min-height`に`%`を使っても無効となります。
 
 
 <Preview>
-	<PreviewTitle>minH指定のHero内の子要素でも`%`を使えるようにする例</PreviewTitle>
+	<PreviewTitle>NG例</PreviewTitle>
 	<PreviewArea resize>
-		<Hero minH='60vh'>
+		<Stack isFullwide minH='400px' bgc='base-3'>
+			<Box minH='50%' my='auto' px='40'>
+				<Center minH='100%' bgc='base' bxsh='1'>
+					<Text fw='bold'>子要素のminHが50%にならない</Text>
+				</Center>
+			</Box>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "minH='400px'"
+		<Stack isFullwide minH='400px' bgc='base-3'>
+			<Box minH='50%' my='auto' px='40'>
+				<Center minH='100%' bgc='base' bxsh='1'>
+					<Text fw='bold'>子要素のminHが50%にならない</Text>
+				</Center>
+			</Box>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
+
+
+このため、少し工夫が必要です。
+
+<Preview>
+	<PreviewTitle>改善例</PreviewTitle>
+	<PreviewArea resize>
+		<Stack isFullwide minH='400px' bgc='base-3'>
+			<FlexItem layout={Grid} fxg='1' ai='c' px='40'>
+				<Center minH='50%' bgc='base' bxsh='1' gap='20' p='box'>
+					<Text fw='bold'>OK</Text>
+				</Center>
+			</FlexItem>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "Grid" "fxg='1' ai='c'"
+		<Stack isFullwide minH='400px' bgc='base-3'>
+			<FlexItem layout={Grid} fxg='1' ai='c' px='40'>
+				<Center minH='50%' bgc='base' bxsh='1' gap='20' p='box'>
+					<Text fw='bold'>OK</Text>
+				</Center>
+			</FlexItem>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
+
+
+1. 親要素が`Stack` で構成されているので、子要素であるコンテンツの`flex-grow`を`1`にして高さを親に合わせて伸ばします。
+2. 高さがある`grid`要素で、`height`や`min-height`に`%`を使えるようにするためには以下のいずれかを指定します。
+	- grid要素に`align-items:center`などを指定する。
+	- grid要素の子要素に`margin-block:auto` か `align-self:center`を指定する。
+
+
+{/* `type="stretch"`を指定すると上記の工程を手軽に呼び出せます。（`as={Grid} fxg='1' ai='center'` をセットする） */}
+
+
+<Preview>
+	<PreviewTitle>活用例</PreviewTitle>
+	<PreviewArea resize>
+		<Stack isFullwide isFrame minH='50vh'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<FilterLayer bgc='black:20%' />
-			{/* <ShapeDivider shape='line2' c='#fff' isFlip /> */}
-			{/* <HeroContent type='top' p='em5'>
-				<p>type: top</p>
-			</HeroContent> */}
-			<HeroContent type='stretch' p='40' bd='guide'>
-				<Center minH='50%' bg="glass" p="box" c="white" bdrs='s' gap={20}>
+			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
+				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
-					<DammyText length='xl' />
+					<DammyText length='l' />
 				</Center>
-			</HeroContent>
-			{/* <ShapeDivider shape='line2' c='#fff'/> */}
-		</Hero>
+			</FlexItem>
+		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		...
+		<Stack isFullwide isFrame minH='50vh'>
+			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
+			<FilterLayer bgc='black:20%' />
+			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
+				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
+					<Text fw='bold' fz='xl'>min-height 50%</Text>
+					<DammyText length='l' />
+				</Center>
+			</FlexItem>
+		</Stack>
 		```
 	</PreviewCode>
 </Preview>
@@ -331,5 +365,4 @@ Hero 自体の高さを固定していい場合は、普通に Hero の高さを
 
 
 ## 別ページで確認する
-
 <PreviewFrame url='/demo/hero' />

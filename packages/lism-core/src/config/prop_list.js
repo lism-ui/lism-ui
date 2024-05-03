@@ -75,7 +75,7 @@ const insetsProps = { utils: 'insets', converter: 'space' };
 export default {
 	// size
 	w: { utils: 'size', converter: 'size' },
-	h: { utils: 'size', converter: 'size' },
+	h: { utils: 'size', presets: ['full'], converter: 'size' },
 	maxW: { utils: 'maxSize', converter: 'size' },
 	maxH: { utils: 'maxSize', converter: 'size' },
 	minW: { utils: 'minSize', converter: 'size' },

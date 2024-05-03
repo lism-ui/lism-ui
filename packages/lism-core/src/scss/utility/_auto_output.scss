@@ -57,6 +57,16 @@
 	}
 }
 
+// @mixin echoSpecialUtilities($key, $utilities, $important) {
+// 	@each $ukey, $value in $utilities {
+// 		$selector: '.-#{$key}\\:#{$ukey}';
+// 		$style: '#{$selector}{#{$value}}';
+
+// 		// 文字列をそのまま出力できない...
+// 		// $style;
+// 	}
+// }
+
 $bp_support_list: (); // list
 
 @each $key, $data in setting.$prop_class_data {
@@ -97,6 +107,12 @@ $bp_support_list: (); // list
 	@if $utilities {
 		@include echoUtilities($key, $prop, $utilities, $base_type, $important);
 	}
+
+	// 少し特殊・複雑なユーティリティクラス→一旦直書き。
+	// $special_utilities: map.get($data, special_utilities);
+	// @if $special_utilities {
+	// 	@include echoSpecialUtilities($key, $special_utilities, $important);
+	// }
 
 	// BPクラスを出力するプロパティのリストを作成
 	@if map.has-key($data, bp) {

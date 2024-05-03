@@ -1,6 +1,7 @@
 @forward './consume';
 @forward './colorbox'; // Note: colorより前に読み込む必要あり
 @forward './color'; // Note: colorboxより後ろに読み込む必要あり
+
 @forward './auto_output';
 
 @forward './border';
@@ -26,3 +27,10 @@
 
 // とりあえずいらないか...?
 //@forward './lism';
+
+// 複雑なスタイル、一旦直書き。
+.-h\:full {
+	height: 100vh;
+	height: 100dvh;
+	// height: calc(100vw - var(--sbar))
+}

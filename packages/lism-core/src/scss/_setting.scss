@@ -291,10 +291,13 @@ $prop_class_data: map.deep-merge(
 			prop: 'height',
 			base_type: 1,
 			utilities: 'size',
-			special_utilities: (
-				'screen': 'height: 100vh; height: 100dvh;',
-				//height: calc(100vw - var(--sbar))
-			),
+			// special_utilities: (
+			// 	'full': (
+			// 		'height': '100vh',
+			// 		'height': '100dvh',
+			// 		//height: calc(100vw - var(--sbar)),
+			// 	),
+			// ),
 			bp: 1,
 		),
 		'maxW': (
