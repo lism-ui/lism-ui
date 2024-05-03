@@ -1,0 +1,11 @@
+---
+import { LismProps } from '../types';
+import Text from './Text.astro';
+import TEXTS from '@lism-ui/core/components/Lism/texts';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { length = 's', lang = 'en', ...props } = Astro.props || {};
+---
+
+<Text {...props} set:html={TEXTS[lang][length] || ''} />
