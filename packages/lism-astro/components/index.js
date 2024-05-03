@@ -33,11 +33,10 @@ export * from './Accordion';
 export * from './Alert';
 export * from './Badge';
 export * from './Button';
-export * from './Banner';
+// export * from './Banner';
 export * from './Note'; // export * from './Note'; // → なぜかnot export になってしまう?
 export * from './Card';
 export * from './Reel';
 export * from './Tab';
-// export * from './Banner';
 
 export * from './Chat';

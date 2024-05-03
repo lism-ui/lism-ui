@@ -11,10 +11,11 @@
 @forward '../../components/Alert/style.scss';
 @forward '../../components/Note/style.scss';
 @forward '../../components/Chat/style.scss';
-@forward '../../components/Banner/style.scss';
 @forward '../../components/Card/style.scss';
 @forward '../../components/Hero/style.scss';
 @forward '../../components/NavMenu/style.scss';
+
+// @forward '../../components/Banner/style.scss';
 
 // デフォルトスタイル
 // コンポーネントの初期値にセットするよりCSSで一括上書きできたほうが楽そうなものをここに書く

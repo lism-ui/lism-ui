@@ -6,7 +6,6 @@
 // import React from 'react';
 
 export * from './Lism';
-// export { Component } from './Component';
 
 // Layout
 export * from './Box';
@@ -41,7 +40,7 @@ export * from './Tabs';
 // Blocks
 export * from './Alert';
 export * from './Note';
-export * from './Banner';
+// export * from './Banner';
 export * from './Card';
 export * from './Divider';
 export * from './ShapeDivider';
