@@ -335,23 +335,23 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 <Preview>
 	<PreviewTitle>`get:show` を使う</PreviewTitle>
 	<PreviewArea p={20}>
-		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
 			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
 			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
 				<Text p='box' c='white'>View More</Text>
 			</Layer>
-		</Banner>
+		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx "hover='pass'" "hover='get:show'"
-		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
 			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
 			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
 				<Text p='box' c='white'>View More</Text>
 			</Layer>
-		</Banner>
+		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
@@ -372,15 +372,15 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 <Preview>
 	<PreviewTitle>`hover=get:zoom` を使う</PreviewTitle>
 	<PreviewArea p={20}>
-		<Banner href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
+		<LinkBox isFrame href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
 			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
-		</Banner>
+		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx "hover='pass'" "hover='get:zoom'"
-		<Banner hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
-		</Banner>
+		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>

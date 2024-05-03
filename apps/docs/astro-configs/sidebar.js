@@ -184,14 +184,9 @@ export default [
 				label: 'Delimiter',
 				link: '/components/delimiter/',
 			},
-
 			{
-				label: 'Component',
+				label: 'Block',
 				link: '###',
-			},
-			{
-				label: 'Accordion',
-				link: '/components/accordion/',
 			},
 			{
 				label: 'Avatar',
@@ -206,10 +201,6 @@ export default [
 				link: '/components/badge/',
 			},
 			{
-				label: 'Card',
-				link: '/components/card/',
-			},
-			{
 				label: 'Divider',
 				link: '/components/divider/',
 			},
@@ -217,33 +208,52 @@ export default [
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
 			},
+
 			{
-				label: 'Tabs',
-				link: '/components/tabs/',
-			},
-			{
-				label: 'Hero',
-				link: '/components/hero/',
-			},
-			{
-				label: '---',
+				label: 'Component',
 				link: '###',
+			},
+			{
+				label: 'Accordion',
+				link: '/components/accordion/',
 			},
 			{
 				label: 'Alert',
 				link: '/components/alert/',
 			},
 			{
-				label: 'Banner',
-				link: '/components/banner/',
+				label: 'Card',
+				link: '/components/card/',
 			},
 			{
 				label: 'Note',
 				link: '/components/note/',
 			},
 			{
+				label: 'Tabs',
+				link: '/components/tabs/',
+			},
+
+			{
+				label: '---',
+				link: '###',
+			},
+			{
+				label: 'Examples',
+				link: '###',
+			},
+
+			{
+				label: 'Banner',
+				link: '/components/banner/',
+			},
+			{
 				label: 'Chat',
 				link: '/components/chat/',
+			},
+			{
+				label: 'Hero',
+				link: '/components/hero/',
 			},
 			{
 				label: 'FAQ',
