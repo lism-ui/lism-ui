@@ -85,7 +85,7 @@ const FILTERS = [
 export function getFilterLayerProps({ css = {}, ...props }) {
 	const backdropFilters = [];
 
-	if (null != css.backdropFilter) {
+	if (null == css.backdropFilter) {
 		FILTERS.forEach((filterName) => {
 			if (props[filterName]) {
 				backdropFilters.push(`${filterName}(${props[filterName]})`);
@@ -99,5 +99,6 @@ export function getFilterLayerProps({ css = {}, ...props }) {
 	}
 
 	props.css = css;
+
 	return props;
 }

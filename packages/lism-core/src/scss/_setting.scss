@@ -139,6 +139,11 @@ $utilities: (
 		'r': 'right',
 		'c': 'center',
 	),
+	'tsh': (
+		'black': 'var(--tsh--black)',
+		'white': 'var(--tsh--white)',
+		'n': 'none',
+	),
 
 	'c': (
 		'main': 'var(--main)',
@@ -349,6 +354,7 @@ $prop_class_data: map.deep-merge(
 		'fz': (
 			prop: 'font-size',
 			base_type: 2,
+			bp: 1,
 		),
 		'ff': (
 			prop: 'font-family',
@@ -373,6 +379,10 @@ $prop_class_data: map.deep-merge(
 		),
 		'ta': (
 			prop: 'text-align',
+			base_type: 0,
+		),
+		'tsh': (
+			prop: 'text-shadow',
 			base_type: 0,
 		),
 		'd': (

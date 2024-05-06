@@ -12,6 +12,7 @@ export default {
 	lts: TOKENS.lts,
 	ff: TOKENS.ff,
 	fw: TOKENS.fw,
+	tsh: ['black', 'white'],
 	c: [
 		'main',
 		// 'accent',

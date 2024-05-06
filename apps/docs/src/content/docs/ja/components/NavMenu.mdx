@@ -3,21 +3,33 @@ title: 'NavMenu'
 description: ...
 ---
 
-import { Flex,NavMenuList, NavMenu, NavMenuLink, NavMenuAccBody, Badge, Icon, Spacer, Box, Alert} from '@lism-ui/core';
+import { Flex, NavMenuList, NavMenu, NavMenuLink, NavMenuAccBody, Badge, Icon, Spacer, Box, Alert} from '@lism-ui/core';
 import { Accordion,
 	AccordionBody,
 	AccordionHeader,
 	AccordionLabel,
 	AccordionIcon } from '@lism-ui/astro';
 import { FolderSimple } from "@phosphor-icons/react";
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Reference, MemoBadge, HelpText, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
 
+ナビメニューリストを作成できるコンポーネントです。
 
 ## Props
 
-- `provide.p`でpaddingを一括コントロールできます。
+| プロパティ | 説明 |
+|---|---|
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`nestLevel` | メニューのネストレベルを指定します。 |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`hovBgc` | メニューホバー時の背景色 |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`hovC` | メニューホバー時の文字色 |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`provide.p` | 各メニューのpaddingを一括調整できます |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`provide.gap` | 各メニューのgapを一括調整できます |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`isAccBody` | アコーディオン化します |
+| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`isAcc` | アコーディオン化します |
+| <PropBadge ml='-1px'>`<NavMenuLink>`</PropBadge><br/>`isAccHead` | アコーディオン化します |
+| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`href` | NavMenuにhrefを指定すると、NavMenuLinkを省略できます。 |
+
 
 
 ## Import
@@ -58,7 +70,7 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 };
 
 <Preview>
-	<PreviewTitle>NavMenuの例</PreviewTitle>
+	<PreviewTitle>基本構造</PreviewTitle>
 	<PreviewArea p='40'>
 		<NavMenuList>
 			<Items />
@@ -80,11 +92,13 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 </Preview>
 
 
+<Spacer h='10' />
+
 メニューの内容が複雑でない場合は、次のように`<NavMenuLink>`の記述を省略できます。
 
 
 <Preview>
-	<PreviewTitle>NavMenuの例</PreviewTitle>
+	<PreviewTitle>シンプルなテキストメニュー</PreviewTitle>
 	<PreviewCode>
 		```jsx
 		<NavMenuList>
@@ -96,9 +110,11 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 	</PreviewCode>
 </Preview>
 
-<Alert preset='info'>
+<Alert preset='info' mbs='20'>
 `<NavMenu>`に`href`指定すると、内部で`<NavMenuLink>`が自動生成されるようになっています。  
 </Alert>
+
+<Spacer h='10' />
 
 <Preview>
 	<PreviewTitle>`hasDivider`と上下ボーダーを指定</PreviewTitle>

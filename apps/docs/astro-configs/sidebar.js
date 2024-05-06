@@ -222,16 +222,16 @@ export default [
 				link: '/components/alert/',
 			},
 			{
-				label: 'Card',
-				link: '/components/card/',
-			},
-			{
 				label: 'Note',
 				link: '/components/note/',
 			},
 			{
 				label: 'Tabs',
 				link: '/components/tabs/',
+			},
+			{
+				label: 'NavMenu',
+				link: '/components/navmenu/',
 			},
 
 			{
@@ -248,24 +248,8 @@ export default [
 				link: '/components/banner/',
 			},
 			{
-				label: 'Chat',
-				link: '/components/chat/',
-			},
-			{
 				label: 'Hero',
 				link: '/components/hero/',
-			},
-			{
-				label: 'FAQ',
-				link: '/components/faq/',
-			},
-			{
-				label: 'NavMenu',
-				link: '/components/navmenu/',
-			},
-			{
-				label: 'Step',
-				link: '/components/step/',
 			},
 			{
 				label: 'PriceMenu',
@@ -274,6 +258,26 @@ export default [
 			{
 				label: 'TermList',
 				link: '/components/termlist/',
+			},
+			{
+				label: '---',
+				link: '###',
+			},
+			{
+				label: 'Card',
+				link: '/components/card/',
+			},
+			{
+				label: 'Chat',
+				link: '/components/chat/',
+			},
+			{
+				label: 'FAQ',
+				link: '/components/faq/',
+			},
+			{
+				label: 'Step',
+				link: '/components/step/',
 			},
 			{
 				label: 'DecorationBox',

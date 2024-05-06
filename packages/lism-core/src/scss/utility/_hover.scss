@@ -11,6 +11,9 @@
 // 値指定
 // ------------------------------------------------------------
 // .-hov\:duration\:{}
+.-hov\:u:hover {
+	text-decoration: underline !important;
+}
 .-hov\:c:hover {
 	color: var(--hov--c) !important;
 }

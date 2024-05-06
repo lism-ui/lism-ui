@@ -41,7 +41,7 @@ export * from './Tabs';
 export * from './Alert';
 export * from './Note';
 // export * from './Banner';
-export * from './Card';
+// export * from './Card';
 export * from './Divider';
 export * from './ShapeDivider';
 

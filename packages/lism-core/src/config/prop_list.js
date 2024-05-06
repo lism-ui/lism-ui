@@ -122,7 +122,7 @@ export default {
 	lts: { style: 'letterSpacing', presets: 1 }, // utilityあってもいい
 	ta: { style: 'textAlign', utils: 1 },
 	td: { style: 'textDecoration', utils: 1 },
-	tsh: { style: 'textShadow' },
+	tsh: { style: 'textShadow', presets: 1, utils: { none: 'n' } },
 	whs: { style: 'whiteSpace', utils: { nowrap: 'nw' } },
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
 

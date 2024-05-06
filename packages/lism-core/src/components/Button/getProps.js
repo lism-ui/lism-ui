@@ -40,6 +40,8 @@ export function getButtonProps({
 		textProps.gridItem = { gc: 2, jslf: 'c' };
 		// leftIconProps.gridItem = { gc: 1 };
 		// rightIconProps.gridItem = { gce: -1 };
+	} else {
+		defaultProps.jc = 'c';
 	}
 
 	return {

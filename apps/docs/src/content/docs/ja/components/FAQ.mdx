@@ -36,7 +36,7 @@ export function FAQ({ q, children }) {
 export function AccFAQ({ q, children }) {
 	return (
 		<Accordion>
-			<AccordionHeader bgc='base-3' bdrs='m'>
+			<AccordionHeader bgc='base-3' bdrs='m' isFreeMode>
 				<Icon icon={Question} fz='2xl' />
 				<AccordionLabel>{q}</AccordionLabel>
 				<AccordionIcon />
@@ -49,10 +49,30 @@ export function AccFAQ({ q, children }) {
 }
 
 
-## 例
+## 構築例-1
+
+<Preview>
+	<PreviewTitle>表示</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<FAQs>
+			<FAQ q='Lorem ipsum, question 1'>
+				<DammyText length='l' />
+			</FAQ>
+			<Divider />
+			<FAQ q='Lorem ipsum dolor sit amet, question 2'>
+				<DammyText  />
+				<DammyText length='l' />
+			</FAQ>
+			<Divider />
+			<FAQ q='Question 3'>
+				<DammyText length='m' />
+			</FAQ>
+		</FAQs>
+	</PreviewArea>
+</Preview>
+
 
 <PreviewTitle>コンポーネントの準備</PreviewTitle>
-
 <Preview>
 	<PreviewCode slot='tab' label='React'>
 	```jsx
@@ -93,23 +113,7 @@ export function AccFAQ({ q, children }) {
 
 
 <Preview>
-	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<FAQs>
-			<FAQ q='Lorem ipsum, question 1'>
-				<DammyText length='l' />
-			</FAQ>
-			<Divider />
-			<FAQ q='Lorem ipsum dolor sit amet, question 2'>
-				<DammyText  />
-				<DammyText length='l' />
-			</FAQ>
-			<Divider />
-			<FAQ q='Question 3'>
-				<DammyText length='m' />
-			</FAQ>
-		</FAQs>
-	</PreviewArea>
+	<PreviewTitle>使用時のコード</PreviewTitle>
 	<PreviewCode>
 ```jsx
 import { Divider } from '@lism-ui/core';
@@ -134,34 +138,13 @@ import { FAQs, FAQ } from './path/to/.../steps';
 </Preview>
 
 
-### アコーディオンタイプの例
+## 構築例-2
+
+アコーディオンタイプの例
+
 
 <Preview>
-	<PreviewCode slot='tab' label='React'>
-	```jsx
-	import { Accordion, AccordionHeader, AccordionLabel, AccordionIcon, AccordionBody, Icon } from '@lism-ui/core';
-	import { Question } from '@phosphor-icons/react';
-
-	function AccFAQ({ q, children }) {
-		return (
-			<Accordion>
-				<AccordionHeader bgc='base-3' bdrs='m'>
-					<Icon icon={Question} fz='2xl' />
-					<AccordionLabel>{q}</AccordionLabel>
-					<AccordionIcon />
-				</AccordionHeader>
-				<AccordionBody>
-					{children}
-				</AccordionBody>
-			</Accordion>
-		);
-	}
-	```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewTitle>表示</PreviewTitle>
 	<PreviewArea resize p={30}>
 		<AccordionGroup gap={20}>
 			<AccFAQ q='Question 1'>
@@ -176,24 +159,53 @@ import { FAQs, FAQ } from './path/to/.../steps';
 			</AccFAQ>
 		</AccordionGroup>
 	</PreviewArea>
-<PreviewCode>
-```jsx
-import { AccordionGroup } from '@lism-ui/core';
-import { AccFAQ } from './path/to/.../steps';
+</Preview>
 
-<AccordionGroup gap={20}>
-	<AccFAQ q='Lorem ipsum, question 1'>
-		<p>Answer...</p>
-	</AccFAQ>
-	<AccFAQ q='Question 2'>
-		<p>Answer...</p>
-		<p>Answer...</p>
-	</AccFAQ>
-	<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
-		<p>Answer...</p>
-	</AccFAQ>
-</AccordionGroup>
-```
-</PreviewCode>
+<PreviewTitle>コンポーネントの準備</PreviewTitle>
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+	```jsx
+	import { Accordion, AccordionHeader, AccordionLabel, AccordionIcon, AccordionBody, Icon } from '@lism-ui/core';
+	import { Question } from '@phosphor-icons/react';
+
+	function AccFAQ({ q, children }) {
+		return (
+			<Accordion>
+				<AccordionHeader bgc='base-3' bdrs='m' isFreeMode>
+					<Icon icon={Question} fz='2xl' />
+					<AccordionLabel>{q}</AccordionLabel>
+					<AccordionIcon />
+				</AccordionHeader>
+				<AccordionBody>
+					{children}
+				</AccordionBody>
+			</Accordion>
+		);
+	}
+	```
+	</PreviewCode>
+</Preview>
+
+<PreviewTitle>使用時のコード</PreviewTitle>
+<Preview>
+	<PreviewCode>
+	```jsx
+	import { AccordionGroup } from '@lism-ui/core';
+	import { AccFAQ } from './path/to/.../steps';
+
+	<AccordionGroup gap={20}>
+		<AccFAQ q='Lorem ipsum, question 1'>
+			<p>Answer...</p>
+		</AccFAQ>
+		<AccFAQ q='Question 2'>
+			<p>Answer...</p>
+			<p>Answer...</p>
+		</AccFAQ>
+		<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
+			<p>Answer...</p>
+		</AccFAQ>
+	</AccordionGroup>
+	```
+	</PreviewCode>
 </Preview>
 
