@@ -1,10 +1,394 @@
 ---
-title: 'Terms'
+title: 'Timeline'
 description: ...
 ---
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Lism, Text, Stack, SideFlex, Grid, Decorator } from '@lism-ui/core';
+import { Lism, DammyText, Text, Stack, SideFlex, Grid, Decorator } from '@lism-ui/core';
 
+import { Timelines, Timeline, TimelineTime, TimelineBody } from '~/components/ex/Timeline';
+import '~/components/ex/Timeline/style.scss';
 
 タイムラインの構築例を紹介します。
+
+## 構築例
+
+<PreviewTitle>コンポーネントの準備</PreviewTitle>
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+	```jsx
+	import { Center, Stack, Grid, FlexItem, GridItem, Icon, Decorator } from '@lism-ui/core';
+
+	export function Timelines({ children, ...props }) {
+		return (
+			<Stack className='c--timelines' {...props}>
+				{children}
+			</Stack>
+		);
+	}
+
+	export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, children, ...props }) {
+		let itemClass = 'c--timeline';
+		const lineProps = { bgc: 'base-3', jslf: 'c' };
+		const shapeProps = {
+			pos: 'r',
+			z: '1',
+			jslf: 'c',
+			bdrs: 'full',
+			c: 'base',
+			bgc: shapeColor || 'content',
+		};
+
+		if (isStart) {
+			itemClass += ' -start';
+			lineProps.aslf = 'e';
+		}
+		if (isEnd) {
+			itemClass += ' -end';
+			lineProps.aslf = 's';
+		}
+		if (icon) {
+			shapeProps.layout = Center;
+		}
+
+		return (
+			<FlexItem layout={Grid} className={itemClass} {...props}>
+				<GridItem layout={Decorator} className='c--timeline__line' {...lineProps} />
+				<GridItem className='c--timeline__shape' {...shapeProps}>
+					{isHighlighted && (
+						<Decorator
+							className='c--timeline__highlight'
+							tag='span'
+							pos='a'
+							z='-1'
+							bgc='inherit'
+							bdrs='full'
+						/>
+					)}
+					{icon && <Icon icon={icon} fz='s' />}
+				</GridItem>
+				{children}
+			</FlexItem>
+		);
+	}
+	export function TimelineTime(props) {
+		return <GridItem className='c--timeline__time' fz='xs' lh='xs' c='content-2' {...props} />;
+	}
+
+	export function TimelineBody(props) {
+		return <GridItem className='c--timeline__body' mbs='10' {...props} />;
+	}
+
+	```
+	</PreviewCode>
+	{/* <PreviewCode slot='tab' label='Astro'>
+	```jsx
+	```
+	</PreviewCode> */}
+	<PreviewCode slot='tab' label='SCSS'>
+	```scss
+	.c--timelines {
+		--shape-size: 0.75rem;
+		--icon-size: 1.5rem;
+		--start-space: var(--s--30);
+		--end-space: var(--s--30);
+		--line-size: 100%;
+	}
+
+	.c--timeline {
+		gap: 0 0.75em;
+		grid:
+			'.     .' var(--start-space)
+			'shape time'
+			'.     body'
+			'.     .' var(--end-space) / calc(var(--icon-size) + 8px) 1fr;
+		align-items: center;
+	}
+
+	.c--timeline__line {
+		height: var(--line-size);
+		width: 2px;
+		grid-column: 1;
+		grid-row: 1 / -1;
+	}
+
+	// e--deco
+	.c--timeline__shape {
+		--size: var(--shape-size);
+		grid-area: shape;
+		width: var(--size);
+		height: var(--size);
+
+		&:has(> .e--icon) {
+			--size: var(--icon-size);
+			font-size: var(--size);
+		}
+	}
+	.c--timeline__shape > .e--icon {
+		--scale: 0.75;
+	}
+
+	// 強調
+	.c--timeline__highlight {
+		inset: -3px;
+		opacity: 0.25;
+	}
+
+	.c--timeline__time {
+		grid-area: time;
+	}
+	.c--timeline__body {
+		grid-area: body;
+	}
+	.c--timeline.-start {
+		--start-space: 0;
+		--line-size: calc(100% - var(--icon-size) / 2);
+	}
+	.c--timeline.-end {
+		--end-space: 0;
+		--line-size: calc(var(--start-space) + var(--icon-size) / 2);
+	}
+
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Timelines>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+		</Timelines>
+	</PreviewArea>
+	<PreviewCode>
+```jsx
+<Timelines>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+</Timelines>
+```
+	</PreviewCode>
+</Preview>
+
+
+### End, Startの指定
+
+最初と最後の要素にそれぞれ`isStart`、`isEnd`を指定すると、ラインの上下のはみ出しをなくします。
+
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Timelines>
+			<Timeline isStart>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline isEnd>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+		</Timelines>
+	</PreviewArea>
+	<PreviewCode>
+```jsx "isStart" "isEnd"
+<Timelines>
+	<Timeline isStart>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline isEnd>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+</Timelines>
+```
+	</PreviewCode>
+</Preview>
+
+
+### シェイプの強調
+
+`isHighlighted`でハイライト表示、`shapeColor`でシェイプの色を指定できます。
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Timelines>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline isHighlighted shapeColor='red'>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+		</Timelines>
+	</PreviewArea>
+	<PreviewCode>
+```jsx "isHighlighted" "shapeColor"
+<Timelines>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline isHighlighted shapeColor='red'>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+	<Timeline>
+		<TimelineTime>20yy年m月dd日</TimelineTime>
+		<TimelineBody>
+			<Text>Lism x.y.z がリリース。</Text>
+			<DammyText lang='ja'/>
+		</TimelineBody>
+	</Timeline>
+</Timelines>
+```
+	</PreviewCode>
+</Preview>
+
+
+
+### アイコンの使用例
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Timelines>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline icon='lism:check' isHighlighted shapeColor='red'>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+		</Timelines>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx "icon="
+		<Timelines>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+			<Timeline icon='lism:check' isHighlighted shapeColor='red'>
+				<TimelineTime>20yy年m月dd日</TimelineTime>
+				<TimelineBody>
+					<Text>Lism x.y.z がリリース。</Text>
+					<DammyText lang='ja'/>
+				</TimelineBody>
+			</Timeline>
+		</Timelines>
+	```
+	</PreviewCode>
+</Preview>

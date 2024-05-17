@@ -15,8 +15,8 @@ const flexPlaces = {
 export default {
 	// color: {},
 	// c: {},
-	bgc: { none: 't', transparent: 't', currentColor: 'cc' },
-	bdc: { none: 't', transparent: 't' },
+	bgc: { none: 't', transparent: 't', currentColor: 'cc', inherit: 'i' },
+	bdc: { none: 't', transparent: 't', inherit: 'i' },
 	bg: { none: 'n' },
 	bgcp: { text: 'tx' },
 	margin: { auto: 'a', '0px': '0' },

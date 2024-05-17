@@ -161,10 +161,13 @@ $utilities: (
 		'base-3': 'var(--base-3)',
 		'content': 'var(--content)',
 		't': 'transparent',
+		'cc': 'currentColor',
+		'i': 'inherit',
 	),
 	'bdc': (
 		// 'main': 'var(--main)',
 		't': 'transparent',
+		'i': 'inherit',
 		'divider': 'var(--divider-bdc)',
 	),
 	'bds': (

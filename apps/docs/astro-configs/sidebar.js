@@ -280,6 +280,10 @@ export default [
 				link: '/components/step/',
 			},
 			{
+				label: 'Timeline',
+				link: '/components/timeline/',
+			},
+			{
 				label: 'DecorationBox',
 				link: '/components/decorationbox/',
 			},

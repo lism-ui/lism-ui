@@ -1,0 +1,61 @@
+import { Center, Stack, Grid, FlexItem, GridItem, Icon, Decorator } from '@lism-ui/core';
+
+export function Timelines({ children, ...props }) {
+	return (
+		<Stack className='c--timelines' {...props}>
+			{children}
+		</Stack>
+	);
+}
+
+export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, children, ...props }) {
+	let itemClass = 'c--timeline';
+	const lineProps = { bgc: 'base-3', jslf: 'c' };
+	const shapeProps = {
+		pos: 'r',
+		z: '1',
+		jslf: 'c',
+		bdrs: 'full',
+		c: 'base',
+		bgc: shapeColor || 'content',
+	};
+
+	if (isStart) {
+		itemClass += ' -start';
+		lineProps.aslf = 'e';
+	}
+	if (isEnd) {
+		itemClass += ' -end';
+		lineProps.aslf = 's';
+	}
+	if (icon) {
+		shapeProps.layout = Center;
+	}
+
+	return (
+		<FlexItem layout={Grid} className={itemClass} {...props}>
+			<GridItem layout={Decorator} className='c--timeline__line' {...lineProps} />
+			<GridItem className='c--timeline__shape' {...shapeProps}>
+				{isHighlighted && (
+					<Decorator
+						className='c--timeline__highlight'
+						tag='span'
+						pos='a'
+						z='-1'
+						bgc='inherit'
+						bdrs='full'
+					/>
+				)}
+				{icon && <Icon icon={icon} fz='s' />}
+			</GridItem>
+			{children}
+		</FlexItem>
+	);
+}
+export function TimelineTime(props) {
+	return <GridItem className='c--timeline__time' fz='xs' lh='xs' c='content-2' {...props} />;
+}
+
+export function TimelineBody(props) {
+	return <GridItem className='c--timeline__body' mbs='10' {...props} />;
+}
