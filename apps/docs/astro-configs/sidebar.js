@@ -66,20 +66,8 @@ export default [
 				link: '/components/lism/',
 			},
 			{
-				label: 'Text',
-				link: '/components/text/',
-			},
-			{
-				label: 'Media',
-				link: '/components/media/',
-			},
-			{
-				label: 'Link',
-				link: '/components/link/',
-			},
-			{
 				label: 'Layout',
-				link: '###',
+				link: '###---',
 			},
 			// {
 			// 	label: 'Layout',
@@ -105,7 +93,7 @@ export default [
 			},
 			{
 				label: '---',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Grid',
@@ -125,7 +113,7 @@ export default [
 			},
 			{
 				label: '---',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Box',
@@ -133,7 +121,7 @@ export default [
 			},
 			// {
 			// 	label: '---',
-			// 	link: '###',
+			// 	link: '###---',
 			// },
 			{
 				label: 'Center',
@@ -154,7 +142,7 @@ export default [
 			},
 			{
 				label: 'State',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Container',
@@ -170,7 +158,7 @@ export default [
 			},
 			{
 				label: 'Element',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Icon',
@@ -186,7 +174,7 @@ export default [
 			},
 			{
 				label: 'Block',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Avatar',
@@ -211,7 +199,7 @@ export default [
 
 			{
 				label: 'Component',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Accordion',
@@ -236,11 +224,11 @@ export default [
 
 			{
 				label: '---',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Examples',
-				link: '###',
+				link: '###---',
 			},
 
 			{
@@ -261,7 +249,7 @@ export default [
 			},
 			{
 				label: '---',
-				link: '###',
+				link: '###---',
 			},
 			{
 				label: 'Card',

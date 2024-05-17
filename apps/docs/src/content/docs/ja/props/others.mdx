@@ -1,0 +1,162 @@
+---
+title: 'Others'
+description: ...
+sidebar:
+  order: 90
+---
+
+import { Alert, Box, Frame, Layer, Media, Center } from '@lism-ui/core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+ここでは、Lismコンポーネントで使えるプロパティの中でも少し特殊なものについて説明します。
+
+## Backgrounds
+
+Lismコンポーネントでは、`background`用のプロパティとして`bg`,`backgrounds`の2種類があります。
+
+| プロパティ | 説明 |
+|---|---|
+|`bg`| 指定した文字列をそのまま `background` として出力されます。 |
+|`backgrounds`| オブジェクト形式で各プロパティを指定できます。|
+{/* |`bgc`| `background-color` として出力されます。 | */}
+
+
+### `bg`
+
+<Preview>
+	<PreviewTitle>`bg`に指定</PreviewTitle>
+	<PreviewArea p={0}>
+		<Box aspect='16/9' bg="url(/img.jpg) center / 50%"></Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "bg"
+		<Box aspect='16/9' bg="url(/img.jpg) center / 50%"></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### `backgrounds`
+
+
+
+| キー | 対応するCSSプロパティ |
+|---|---|
+|image|background-image|
+|size|background-size|
+|repeat|background-repeat|
+|position|background-position|
+|color|background-color|
+|attachment|background-attachment|
+|blendMode|background-blend-mode|
+|clip|background-clip|
+|origin|background-origin|
+
+
+
+<Preview>
+	<PreviewTitle>`backgrounds`で指定する例</PreviewTitle>
+	<PreviewArea p={0}>
+		<Box
+			aspect='16/9'
+			backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}
+		></Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "backgrounds" {3}
+		<Box
+			aspect='16/9'
+			backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}
+		></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### bg用ユーティリティクラス
+
+{/* （css多いから拡張パックで？） */}
+
+<Preview>
+	<PreviewTitle>glass</PreviewTitle>
+	<PreviewArea p={20}>
+		<Frame aspect='16/9'>
+			<Media src='/img/img-1.jpg' alt='' width='960' height='640'/>
+			<Layer bg='glass' position='center' p='box:l' bdrs='m' bxsh='4'>
+				<DammyText />
+			</Layer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "bg='glass'"
+		<Frame aspect='16/9'>
+			<Media src='/img/img-1.jpg' alt='' width='960' height='640'/>
+			<Layer bg='glass' position='center' p='box:l' bdrs='m' bxsh='4'>
+				<DammyText />
+			</Layer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>grid, stripe</PreviewTitle>
+	<PreviewArea resize nogrid p={20}>
+		<Box bg='grid' p='box:l'>
+			<DammyText />
+		</Box>
+		<Box bg='stripe' p='box:l'>
+			<DammyText />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box bg='grid' p='box:l'>
+			<DammyText />
+		</Box>
+		<Box bg='stripe' p='box:l'>
+			<DammyText />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>カラー糸との組み合わせ</PreviewTitle>
+	<PreviewArea resize nogrid p={20}>
+		<Box bg='stripe' p='box:l' boxcolor='gray'>
+			<DammyText />
+		</Box>
+		<Box bg='stripe' p='box:l' bgc='gray:10%'>
+			<DammyText />
+		</Box>
+		<Box bg='grid' p='box:l' boxcolor='blue'>
+			<DammyText />
+		</Box>
+		<Box bg='grid' p='box:l' bgc='blue:15%'>
+			<DammyText />
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Box bg='stripe' p='box:l' boxcolor='gray'>
+			<DammyText />
+		</Box>
+		<Box bg='stripe' p='box:l' bgc='gray:10%'>
+			<DammyText />
+		</Box>
+		<Box bg='grid' p='box:l' boxcolor='blue'>
+			<DammyText />
+		</Box>
+		<Box bg='grid' p='box:l' bgc='blue:15%'>
+			<DammyText />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
