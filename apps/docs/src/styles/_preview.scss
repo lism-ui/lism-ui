@@ -1,12 +1,12 @@
 .c--preview {
-	&:not(:first-child),
-	+ * {
-		margin-top: var(--s--50);
-	}
-	// &:not(:last-child) {
-	// 	margin-bottom: var(--s--50);
-	// }
+	padding-block: 0.5rem;
 }
+// .c--preview:not(:first-child) {
+// 	margin-top: var(--s--50);
+// }
+// :where(.c--preview) + p {
+// 	margin-top: var(--s--50);
+// }
 
 .c--preview_title {
 	display: flex;

@@ -4,6 +4,21 @@
 import { Icon } from '@astrojs/starlight/components';
 import Badge from '@astrojs/starlight/components/Badge.astro';
 
+export interface Link {
+	type: 'link';
+	label: string;
+	href: string;
+	isCurrent: boolean;
+	// badge: Badge | undefined;
+	// attrs: LinkHTMLAttributes;
+}
+/** Turn the nested tree structure of a sidebar into a flat list of all the links. */
+function flattenSidebar(sidebar: SidebarEntry[]): Link[] {
+	return sidebar.flatMap((entry) =>
+		entry.type === 'group' ? flattenSidebar(entry.entries) : entry
+	);
+}
+
 interface Props {
 	sublist: any[];
 	nested?: boolean;
@@ -63,7 +78,7 @@ const { sublist, nested } = Astro.props;
 					) : (
 						<details
 							open={
-								// flattenSidebar(entry.entries).some((i) => i.isCurrent) ||
+								flattenSidebar(entry.entries).some((i) => i.isCurrent) ||
 								!entry.collapsed
 							}
 						>

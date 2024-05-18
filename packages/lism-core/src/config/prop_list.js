@@ -93,7 +93,7 @@ export default {
 		// map: 1,
 		presets: 1,
 		utils: 1,
-		objProcessor: (d) => `bd${d}`, // いるか...?
+		// objProcessor: (d) => `bd${d}`, // {c,w,s}で指定できるようにする
 	},
 	//
 	bdl: { style: 'borderLeft', utils: { none: 'n' } },

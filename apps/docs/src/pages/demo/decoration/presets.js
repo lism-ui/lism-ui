@@ -1,8 +1,8 @@
 import {
 	Grid,
 	GridItem,
-	Flex,
-	FlexItem,
+	// Flex,
+	// FlexItem,
 	// DecoBox,
 } from '@lism-ui/core';
 
@@ -81,17 +81,16 @@ export default {
 	kakko: {
 		decoratorCount: 2,
 		boxProps: { p: 'box', pos: 'r' },
-		decoratorProps: { pos: 'a', bd: '-' },
 		lr: {
 			decoratorProps: {
-				i1: { t: 0, l: 0, bdr: 'none', bdb: 'none' },
-				i2: { r: 0, b: 0, bdt: 'none', bdl: 'none' },
+				i1: { pos: 'a', top: 0, left: 0, bd: 'all,r:n,b:n' },
+				i2: { pos: 'a', right: 0, bottom: 0, bd: 'all,t:n,l:n' },
 			},
 		},
 		tb: {
 			decoratorProps: {
-				i1: { t: 0, r: 0, bdl: 'none', bdb: 'none' },
-				i2: { l: 0, b: 0, bdr: 'none', bdt: 'none' },
+				i1: { pos: 'a', top: 0, right: 0, bd: 'all,l:n,b:n' },
+				i2: { pos: 'a', left: 0, bottom: 0, bd: 'all,r:n,t:n' },
 			},
 		},
 	},

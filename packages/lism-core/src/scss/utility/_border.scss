@@ -36,6 +36,7 @@
 
 // 使用される環境（resetCSS）によって挙動が変わりやすいので 各プロパティを変数で管理する。
 // ブラウザのデフォルト挙動では、bds指定でborder出現してくるが、nextraのresetCSSみたいな特殊な環境だとbdwの指定でborderでてきたりする。
+// .-bd\:a,
 .-bd\: {
 	// --bd: var(--bdw) var(--bds) var(--bdc);
 	border: var(--bd);
@@ -44,6 +45,9 @@
 // --------------------
 // bd:presets
 // --------------------
+.-bd\:n {
+	border: none;
+}
 .-bd\:emphasis {
 	--bds: double;
 	--bdw: 5px;
@@ -52,7 +56,7 @@
 }
 .-bd\:guide {
 	--bds: dashed;
-	--bdc: rgba(90, 165, 172, 0.4);
+	--bdc: hsl(var(--hsl-gray) / 0.25);
 	border: var(--bd);
 	// border: 1px dashed rgba(160, 160, 160, 0.4);
 }
@@ -81,18 +85,17 @@
 .-bd\:b {
 	border-bottom: var(--bd);
 }
-.-bd\:is {
-	border-inline-start: var(--bd);
-}
-.-bd\:bs {
-	border-block-start: var(--bd);
-}
-// inline-startとかは？
 .-bd\:x {
 	border-inline: var(--bd);
 }
 .-bd\:y {
 	border-block: var(--bd);
+}
+.-bd\:is {
+	border-inline-start: var(--bd);
+}
+.-bd\:bs {
+	border-block-start: var(--bd);
 }
 
 // bd, bdl, bdr,...
@@ -107,30 +110,30 @@
 // .-bdt\:{border-top: var(--bdt);}
 // .-bdb\:{border-bottom: var(--bdb);}
 
-.-bdl\:n {
+.-bd\:l\:n {
 	border-left: none;
 }
-.-bdr\:n {
+.-bd\:r\:n {
 	border-right: none;
 }
-.-bdt\:n {
+.-bd\:t\:n {
 	border-top: none;
 }
-.-bdb\:n {
+.-bd\:b\:n {
 	border-bottom: none;
 }
-.-bdis\:n {
+.-bd\:is\:n {
 	border-inline-start: none;
 }
-.-bdbs\:n {
+.-bd\:bs\:n {
 	border-block-start: none;
 }
-.-bdie\:n {
-	border-inline-end: none;
-}
-.-bdbe\:n {
-	border-block-end: none;
-}
+// .-bdie\:n {
+// 	border-inline-end: none;
+// }
+// .-bdbe\:n {
+// 	border-block-end: none;
+// }
 
 // bdw="1px 1px 0 0" とかでも指定できる
 // .-bdw\:{border-width: var(--bdw);}

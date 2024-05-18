@@ -1,0 +1,289 @@
+---
+title: 'border'
+description: ...
+---
+
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Box, Alert, Flex, Stack, Divider, Spacer } from '@lism-ui/core';
+
+export const LismBorderPreviews = ({ directions = [] }) => {
+	return (
+		<>
+			{directions.map((name) => {
+				return (
+					<Box key={name} bd={name} p="20">{name}</Box>
+				);
+			})}
+		</>
+	);
+};
+
+
+Lismでは、border系の指定が少し特殊になっています。
+
+`-bd:`クラスがベースにあり、`--bdc`, `--bdw`, `--bds` の3つの変数で各プロパティを管理しています。
+
+<PreviewTitle>css</PreviewTitle>
+```scss
+[class*='-bd:'] {
+	// 初期値
+	--bds: solid;
+	--bdw: 1px;
+	--bdc: currentColor;
+	--bd: var(--bdw) var(--bds) var(--bdc);
+}
+.-bd\: { border: var(--bd); }
+.-bd\:l { border-left: var(--bd); }
+.-bd\:t { border-top: var(--bd); }
+.-bd\:r { border-right: var(--bd); }
+.-bd\:b { border-bottom: var(--bd); }
+// ...
+```
+
+これに合わせて、コンポーネントでも `bd`, `bdc`, `bdw`, `bds` が指定できるようになっています。
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Box bd bdc='red' bds='dashed' p='20'>
+			<DammyText length='s'/>
+		</Box>
+		<Box bd='l' bdc='blue' bdw='0.4em' p='20'>
+			<DammyText length='s'/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx
+		<Box bd bdc='red' bds='dashed' p='20'>
+			<DammyText length='s'/>
+		</Box>
+		<Box bd='l' bdc='blue' bdw='0.4em' p='20'>
+			<DammyText length='s'/>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "-bd\:" "-bd\:l" "--bdc" "--bdw" "--bds"
+		<div class="l--box -p:20 -bd:" style="--bdc:var(--red);--bds:dashed">
+			...
+		</div>
+		<div class="l--box -p:20 -bd:l" style="--bdc:var(--blue);--bdw:0.4em;">
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* <Preview>
+	<PreviewTitle>オブジェクトで`bdc`,`bdw`,`bds`を一括指定</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box bd={{ c:"accent", w:"3px", s:"dotted" }}>
+			<DammyText p={20}/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx {1}
+	<Box bd={{ c:"accent", w:"3px", s:"dotted" }}>
+		...
+	</Box>
+	```
+	</PreviewCode>
+</Preview> */}
+
+
+
+## 方向指定
+
+
+<Alert preset='info'>
+一方向だけのボーダー指定をしたい場合、`.-bd:`の派生クラスを使います。
+</Alert>
+
+
+<Preview>
+	<PreviewTitle>方向指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<Box bd='l' px='10'>left</Box>
+		<Box bd='r' px='10'>right</Box>
+		<Box bd='t' p='10'>top</Box>
+		<Box bd='b' p='10'>bottom</Box>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx
+		<Box bd='l' px='10'>left</Box>
+		<Box bd='r' px='10'>right</Box>
+		<Box bd='t' p='10'>top</Box>
+		<Box bd='b' p='10'>bottom</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class='-bd:l -px:10'>left</div>
+		<div class='-bd:r -px:10'>right</div>
+		<div class='-bd:t -p:10'>top</div>
+		<div class='-bd:b -p:10'>bottom</div>
+		```
+	</PreviewCode>
+</Preview>
+
+コンポーネントでは、`bd`の値を`,`区切りで複数指定することで複数のクラスを出力できます。
+
+<Preview>
+	<PreviewTitle>`,`区切りで複数指定</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box bd='l,b' p='10'>left,bottom</Box>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx "bd='l,b'"
+		<Box bd='l,b' p='10'>left,bottom</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class='-bd:l -bd:b -p:10'>left,bottom</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<Spacer h='10' />
+
+各方向のnone指定用クラスも用意しています。
+
+<Preview>
+	<PreviewTitle>方向指定</PreviewTitle>
+	<PreviewArea p='30'>
+		{/* <Box bd='all, l:n' p='10'>...</Box> */}
+		<div class='-bd: -bd:l:n -p:10'>leftをnone</div>
+		<Divider mx='a' w='5rem' bdw='4px' bds='dotted' />
+		<div class='-bd: -bd:b:n -p:10'>bottomをnone</div>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx
+		<Box bd='all,l:n' p='10'>...</Box>
+		<Box bd='all,b:n' p='10'>...</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class='-bd: -bd:l:n -p:10'>leftをnone</div>
+		<div class='-bd: -bd:b:n -p:10'>bottomをnone</div>
+		```
+	</PreviewCode>
+</Preview>
+
+<HelpText>Note: `all`指定→`-bd:`クラスが出力されます。</HelpText>
+
+<Spacer h='10' />
+
+block, inline方向の指定方法
+
+<Preview>
+	<PreviewTitle>block, inline方向での指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<Box bd='y' p='10'>block(y)</Box>
+		<Divider mx='a' w='5rem' bdw='4px' bds='dotted' />
+		<Box bd='x' p='10'>inline(x)</Box>
+		<Divider mx='a' w='5rem' bdw='4px' bds='dotted' />
+		<Box bd='bs' p='10'>block-start</Box>
+		<Divider mx='a' w='5rem' bdw='4px' bds='dotted' />
+		<Box bd='is' p='10'>inline-start</Box>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx
+		<Box bd='y' p='10'>block(y)</Box>
+		<Box bd='x' p='10'>inline(x)</Box>
+		<Box bd='bs' p='10'>block-start</Box>
+		<Box bd='is' p='10'>inline-start</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class='-bd:y -p:10'>block(y)</div>
+		<div class='-bd:x -p:10'>inline(x)</div>
+		<div class='-bd:bs -p:10'>block-start</div>
+		<div class='-bd:is -p:10'>inline-start</div>
+		```
+	</PreviewCode>
+</Preview>
+
+block, inline方向に関して、start方向はクラスを用意していますが、end方向は用意していません。  
+end方向のみボーダーを付けたい場合は、次のようにすることができます。
+
+<Preview>
+	<PreviewTitle>end方向</PreviewTitle>
+	<PreviewArea p='30'>
+		<div class='-bd:y -bd:bs:n -p:10'>block-end</div>
+		<Divider mx='a' w='5rem' bdw='4px' bds='dotted' />
+		<div class='-bd:x -bd:is:n -p:10'>inline-end</div>
+	</PreviewArea>
+	<PreviewCode>
+		```html
+		<div class='-bd:y -bd:bs:n -p:10'>block-end</div>
+		<div class='-bd:x -bd:is:n -p:10'>inline-end</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+## ユーティリティクラスを出力
+
+デフォルトで用意しているのは次の通りです。（要検討）
+
+- `-bd:guide`
+- `-bd:emphasis`
+
+
+<Preview>
+	<PreviewTitle>ユーティリティクラスの活用</PreviewTitle>
+	<PreviewArea p='30'>
+		<div class='-bd:guide -p:10'>
+			<DammyText length='s'/>
+		</div>
+		<div class='-bd:emphasis -p:10'>
+			<DammyText length='s'/>
+		</div>
+		<div class='-bd:emphasis -p:10' style='--bdc:#39bae0'>
+			<DammyText length='s'/>
+		</div>
+	</PreviewArea>
+	<PreviewCode>
+	```html
+	<div class='-bd:guide -p:10'>...</div>
+	<div class='-bd:emphasis -p:10'>...</div>
+	<div class='-bd:emphasis -p:10' style='--bdc:#39bae0'>...</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+### `bdl`,`bdr`,`bdt`,`bdb`の使用
+
+`--bdw`, `--bds`, `--bdc`と無関係に、各方向のボーダー(`border-left`,`border-top`など)を指定できます。  
+これらは単純にインラインスタイルとして出力されます。
+
+<Preview>
+	<PreviewTitle>bdl,bdb</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Box bdl="solid 4px" bdb="solid 1px">
+			<DammyText p={20} lh='xs'/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode label='Component' slot='tab'>
+		```jsx
+		<Box bdl="solid 4px" bdb="solid 1px">
+			...
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class="l--box" style="border-left:solid 4px;border-bottom:solid 1px">
+			...
+		</div>
+		```
+	</PreviewCode>
+</Preview>

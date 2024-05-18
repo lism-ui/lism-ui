@@ -39,6 +39,7 @@ export default [
 		label: 'Lism CSS',
 		autogenerate: {
 			directory: 'css',
+			collapsed: true,
 		},
 		// items: [
 		// 	{
@@ -53,9 +54,10 @@ export default [
 		// ],
 	},
 	{
-		label: 'Utility Props',
+		label: 'Props',
 		autogenerate: {
 			directory: 'props',
+			collapsed: true,
 		},
 	},
 	{

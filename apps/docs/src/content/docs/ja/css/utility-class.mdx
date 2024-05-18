@@ -1,5 +1,5 @@
 ---
-title: 'Prop Utilities'
+title: 'Utilitiy Class'
 description: ...
 sidebar:
   order: 5
@@ -167,6 +167,7 @@ export const PropTable = ({data={}, ...props}) => {
 <PropTable
 	data={{
 		bd:{
+			'': 'border: var(--bd)',
 			'l': 'border-left: var(--bd)',
 			'r': 'border-right: var(--bd)',
 			't': 'border-top: var(--bd)',
@@ -176,39 +177,31 @@ export const PropTable = ({data={}, ...props}) => {
 			'x': 'border-inline: var(--bd)',
 			'y': 'border-block: var(--bd)',
 		},
-		'bdl':{'n':'border-left: none'},
-		'bdr':{'n':'border-right: none'},
-		'bdt':{'n':'border-top: none'},
-		'bdb':{'n':'border-bottom: none'},
-		'bdis':{'n':'border-inline-start: none'},
-		'bdbs':{'n':'border-block-start: none'},
-		'bdie':{'n':'border-inline-end: none'},
-		'bdbe':{'n':'border-block-end: none'},
+		'bd:l':{'n':'border-left: none'},
+		'bd:r':{'n':'border-right: none'},
+		'bd:t':{'n':'border-top: none'},
+		'bd:b':{'n':'border-bottom: none'},
+		'bd:is':{'n':'border-inline-start: none'},
+		'bd:bs':{'n':'border-block-start: none'},
+		//'bdie':{'n':'border-inline-end: none'},
+		//'bdbe':{'n':'border-block-end: none'},
 	}}
 />
 
-
-### `--bdc`(border-color)
+変数セット用のクラス
 
 <PropTable
 	data={{
 		bdc:{
-			't': 'transparent',
-			'divider': 'var(---divider-bdc)',
-			'table': 'var(---table-bdc)',
+			't': '--bdc:transparent',
+			'divider': '--bdc:var(---divider-bdc)',
+			'table': '--bdc:var(---table-bdc)',
 		},
-	}}
-/>
-
-### `--bds` (border-style)
-
-<PropTable
-	data={{
-		'bds': {
-			'dt': 'dotted',
-			'ds': 'dashed',
-			's': 'solid',
-			'db': 'double',
+		bds: {
+			'dt': '--bds:dotted',
+			'ds': '--bds:dashed',
+			's': '--bds:solid',
+			'db': '--bds:double',
 		}
 	}}
 />

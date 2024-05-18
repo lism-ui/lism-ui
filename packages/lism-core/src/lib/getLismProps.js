@@ -279,15 +279,6 @@ class LismPropsData {
 				});
 			}
 		} else {
-			// , 区切りでユーティリティ複数指定できるもの
-			if (propName === 'bd' && typeof propVal === 'string' && propVal.includes(',')) {
-				propVal.split(',').forEach((_val) => {
-					const utilVal = getMaybeUtilValue('bd', _val);
-					if (utilVal) this.addUtil(`-bd:${utilVal}`);
-				});
-				return;
-			}
-
 			// オブジェクト以外の普通の処理
 			this.setAttrs(name || propName, propVal, options);
 		}
@@ -531,17 +522,22 @@ class LismPropsData {
 			// , 区切りでユーティリティを複数指定できる（var() や rgba() などがないかチェック）
 			if (value.includes(',') && !value.includes('(')) {
 				value.split(',').forEach((_val) => {
-					const utilVal = getMaybeUtilValue('bd', _val);
-					if (utilVal) this.addUtil(`-bd:${utilVal}`);
+					let utilVal = getMaybeUtilValue('bd', _val) || _val;
+					utilVal = utilVal.trim();
+					if (utilVal === 'all') {
+						if (utilVal) this.addUtil(`-bd:`);
+					} else if (utilVal) {
+						this.addUtil(`-bd:${utilVal}`);
+					}
 				});
 				return;
 			}
 		}
 
-		// BP指定用のオブジェクトかどうかは考慮していないことに注意。
-		if (null != value && typeof value === 'object') {
-			this.addUtil('-bd:');
-		}
+		// {c,w,s}で指定できるようにする場合の追加処理（BP指定用のオブジェクトかどうかは考慮していないことに注意）
+		// if (null != value && typeof value === 'object') {
+		// 	this.addUtil('-bd:');
+		// }
 
 		this.analyzeProp('bd', value);
 	}

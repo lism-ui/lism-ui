@@ -39,11 +39,11 @@ Lismでは、レイアウト・デザインを組む上で特定の役割を持�
 Lismでは、**コンテンツ間の余白を管理するためのクラス**として、`.is--flow` を用意しています。
 
 
-| クラス名 | Prop | 初期値 |
-|:--|:--|:--|
-| `is--flow:s` | `isFlow='s'` | `--flowGap--s` (`--s--20`) |
-| `is--flow` | `isFlow` | `--flowGap--m` (`--s--40`) |
-| `is--flow:l` | `isFlow='l'` | `--flowGap--l` (`--s--50`) |
+| クラス名 | 初期値 |
+|---|---|
+| `is--flow` | `--flowGap--m` (`--s--40`) |
+| `is--flow:s` | `--flowGap--s` (`--s--20`) |
+| `is--flow:l` | `--flowGap--l` (`--s--50`) |
 
 <Alert preset='point'>
 `.is--flow`系の直下では、コンテンツの間隔が `margin-block-start` で管理されます。
@@ -77,6 +77,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	```
 	</PreviewCode>
 </Preview>
+
 
 #### `.is--flow`に カスタム値をセットする方法
 
@@ -150,21 +151,23 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	`.is--flow`, `is--flow:s`, `is--flow:l` をネストするのは問題ありません.
 </Alert>
 
+
+
 ### `is--container`
 
 `is--container`はコンテナ要素を定義するためのクラスです。  
 `is--container:{s|m|l}`のようにサイズを指定することで、コンテナの子要素のサイズを制御することもできます。
 
-| クラス名 | Prop | コンテンツ幅 |
-|:--|:--|:--|
-| `is--container`| `isContainer` | |
-| `is--container:s` | `isContainer='s'` | `--size--s` |
-| `is--container:m` | `isContainer='m'` | `--size--m` |
-| `is--container:l` | `isContainer='l'` | `--size--l` |
+| クラス名 | コンテンツ幅 |
+|---|---|
+| `is--container`| 幅の指定なし |
+| `is--container:s` | `--size--s` |
+| `is--container:m` | `--size--m` |
+| `is--container:l` | `--size--l` |
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={20}>
+	<PreviewArea resize p={20}>
 		<Lism isContainer='s' bd='guide'>
 			<Box bd='guide'>コンテンツ</Box>
 			<Box bd='guide'>コンテンツ</Box>
@@ -188,7 +191,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	</PreviewCode>
 </Preview>
 
-#### `.is--container` に カスタム値をセットする方法
+#### `.is--container` に 任意の値をセットする方法
 
 s, m, l 以外の値をセットしたい場合は、`is--container:`クラスと`--contentSize`変数を組み合わせます。
 
@@ -226,15 +229,15 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 コンテンツの左右に余白をつけることができるクラスです。  
 サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
 
-| クラス名 | Prop | 初期値 |
-|:--|:--|:--|
-| `has--gutter` | `hasGutter` | `--s--40` |
+| クラス名 |  初期値 |
+|---|---|
+| `has--gutter` | `--s--40` |
 
 {/* has--gutter:s */}
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={20}>
+	<PreviewArea resize p={20}>
 		<Lism hasGutter bd='guide'>
 			<Box bd='guide'>コンテンツ</Box>
 			<Box bd='guide'>コンテンツ</Box>
@@ -263,11 +266,11 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 
 {/* flow, flow:s, container, container:s */}
 
-| クラス名 | Props | 説明 |
-|:--|:--|:--|
-| `is--wide` | `isWide` | `is--container:`クラス直下では、現在のコンテンツ幅よりも1段階広いサイズになります.  |
-| `is--fullwide` | <span class='-whs:nw'>`isFullwide`</span> | `is--container:`や`has--gutter`の直下でも、親要素のサイズいっぱいに広がります。 |
-| `is--overwide` | `isOverwide` | 直前のコンテナ要素が呼び出された位置を基準としたコンテナ幅（`100cqw`）まで広がります。（`@propetry`が有効なブラウザでのみ有効。） |
+| クラス名 | 説明 |
+|---|---|
+| `is--wide` | `is--container:`クラス直下では、現在のコンテンツ幅よりも1段階広いサイズになります.  |
+| `is--fullwide` | `is--container:`や`has--gutter`の直下でも、親要素のサイズいっぱいに広がります。 |
+| `is--overwide` | 直前のコンテナ要素が呼び出された位置を基準としたコンテナ幅（`100cqw`）まで広がります。（`@propetry`が有効なブラウザでのみ有効。） |
 
 
 

@@ -15,26 +15,22 @@ Lismが配布しているReactやAstro用のコンポーネントでは、Lism C
 |種別||
 |---|---|
 |State Props|[Design State](/ja/css/design-state/) に分類されるクラスを出力するためのプロパティ|
-|CSS Props|[Prop Utilities](/ja/css/prop-utility/) に分類されるクラスを出力するためのプロパティ|
+|CSS Props|[Prop Utilities](/ja/css/utility-class/) に分類されるクラスを出力するためのプロパティ|
+|Component Props|その他、Lismコンポーネントで使えるプロパティ|
 
 
 ## State Props
 
 たとえば、`is--flow`クラスに対応する State Propsは`isFlow`です。
 
-```jsx
-<Box isFlow>
-	<div>contents...</div>
-	<div>contents...</div>
-</Box>
-```
-
-[Design State](/ja/css/design-state/) 一覧ページにそれぞれ対応する State Props の使用例も記載していますので、詳しくはそちらを参照してください。
-
+<Reference>
+- [Design State クラスの一覧](/ja/css/design-state/) 
+- [それに対応した State Props一覧](/ja/props/state-props/) 
+</Reference>
 
 ## CSS Props
 
-[Prop Utilities](/ja/css/prop-utility/) に分類されるユーティリティクラスなどを簡単に指定できるようになっています。
+[Prop Utilities](/ja/css/utility-class/) に分類されるユーティリティクラスなどを簡単に指定できるようになっています。
 
 一部のCSSプロパティはユーティリティクラスが用意されていなくても指定できるようになっており、インラインスタイルとして出力することもできます。
 
@@ -92,7 +88,7 @@ const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
 </Note>
 
 
-## Core Component Props
+## Component Props
 
 その他、Lismコンポーネントの挙動を調整するために使用できるプロパティがあります。
 
