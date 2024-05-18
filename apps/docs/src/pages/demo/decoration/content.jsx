@@ -10,7 +10,7 @@ export default function content() {
 				className='c--balloon c--balloon--left'
 				variant='ltr'
 				ai='center'
-				provide={{ bdc: 'currentColor', bgc: 'base' }}
+				passProps={{ bdc: 'currentColor', bgc: 'base' }}
 			>
 				<Decorator
 					as={FlexItem}
@@ -18,14 +18,14 @@ export default function content() {
 					// z='1'
 					size='0.875em'
 					bd
-					consume='bdc bgc'
+					getProps='bdc,bgc'
 					css={{
 						rotate: '45deg',
 						translate: '50%',
 						clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
 					}}
 				/>
-				<FlexItem p='box' bdrs='l' w='fit-content' bd consume='bdc bgc'>
+				<FlexItem p='box' bdrs='l' w='fit-content' bd getProps='bdc,bgc'>
 					<DammyText />
 				</FlexItem>
 			</Flex>
@@ -34,16 +34,16 @@ export default function content() {
 				// variant='right'
 				variant='ltr'
 				ai='center'
-				provide={{ bdc: 'currentColor', bgc: 'base-2' }}
+				passProps={{ bdc: 'currentColor', bgc: 'base-2' }}
 			>
-				<FlexItem p='box' bdrs='l' w='fit-content' bd consume='bdc bgc' ml='auto'>
+				<FlexItem p='box' bdrs='l' w='fit-content' bd getProps='bdc,bgc' ml='auto'>
 					<DammyText length='l' />
 				</FlexItem>
 				<Decorator
 					as={FlexItem}
 					size='0.875em'
 					bd
-					consume='bdc bgc'
+					getProps='bdc,bgc'
 					// ga='side'
 					right='1px'
 					// z='1'
@@ -60,16 +60,16 @@ export default function content() {
 				// name='balloon'
 				// variant='top'
 				ji='center'
-				provide={{ bdc: 'base-3', bgc: 'base-2', bdw: '2px' }}
+				passProps={{ bdc: 'base-3', bgc: 'base-2', bdw: '2px' }}
 			>
-				<GridItem p='box' bdrs='l' w='fit-content' bd consume='bdc bgc bdw'>
+				<GridItem p='box' bdrs='l' w='fit-content' bd getProps='bdc,bgc,bdw'>
 					<DammyText length='l' />
 				</GridItem>
 				<Decorator
 					as={GridItem}
 					size='0.875em'
 					bd
-					consume='bdc bgc bdw'
+					getProps='bdc,bgc,bdw'
 					grs='1'
 					top='var(--bdw)'
 					mx='1.5em'
@@ -85,16 +85,16 @@ export default function content() {
 				// variant='bottom'
 				// gt='side:b'
 				ji='center' // start, end
-				provide={{ bdc: 'base-3', bgc: 'base-2', bdw: '2px' }}
+				passProps={{ bdc: 'base-3', bgc: 'base-2', bdw: '2px' }}
 			>
-				<GridItem p='box' bdrs='l' w='fit-content' bd consume='bdc bgc bdw'>
+				<GridItem p='box' bdrs='l' w='fit-content' bd getProps='bdc,bgc,bdw'>
 					<DammyText length='l' />
 				</GridItem>
 				<Decorator
 					as={GridItem}
 					size='0.875em'
 					bd
-					consume='bdc bgc bdw'
+					getProps='bdc,bgc,bdw'
 					grs='2'
 					bottom='var(--bdw)'
 					mx='1.5em'

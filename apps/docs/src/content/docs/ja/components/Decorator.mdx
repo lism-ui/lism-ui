@@ -40,90 +40,100 @@ import { Decorator } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>Call</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Grid className='c--callout c--callout--left' ta='l'>
+		<Grid ta='l'>
 			<Decorator
 				size='1.25em'
-				bd='left'
+				bd='l'
+				mr='a'
 				rotate='45deg'
 				transformOrigin='left bottom'
-				mr='auto'
 			/>
 			<Box p='box:s'>
 				<DammyText length='m' />
 			</Box>
 			<Decorator
 				size='1.25em'
-				bd='left'
+				bd='l'
+				mr='a'
 				rotate='-45deg'
 				transformOrigin='left top'
-				mr='auto'
 			/>
 		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid ta='l'>
+			<Decorator
+				size='1.25em'
+				bd='l'
+				mr='a'
+				rotate='45deg'
+				transformOrigin='left bottom'
+			/>
+			<Box p='box:s'>
+				<DammyText length='m' />
+			</Box>
+			<Decorator
+				size='1.25em'
+				bd='l'
+				mr='a'
+				rotate='-45deg'
+				transformOrigin='left top'
+			/>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>Call</PreviewTitle>
+	<PreviewArea resize p={20}>
 		<Flex
-			className='c--balloon c--balloon--left'
 			variant='ltr'
 			ai='center'
-			provide={{ bdc: 'currentColor', bgc: 'base' }}
+			passProps={{ bdc: 'currentColor', bgc: 'base' }}
 		>
 		<Decorator
 				as={FlexItem}
+				bd
 				left='1px'
 				size='0.875em'
-				bd
-				consume='bdc bgc'
+				getProps='bdc,bgc'
 				css={{
 					rotate: '45deg',
 					translate: '50%',
 					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
 				}}
 			/>
-			<FlexItem p='box' bdrs='m' w='fit-content' bd consume='bdc bgc'>
+			<FlexItem p='box' bdrs='m' w='fit-content' bd getProps='bdc,bgc'>
 				<DammyText />
 			</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
-	```jsx
-		<Grid ta='l'>
-			<Decorator
-				size='1.25em'
-				bd='left'
-				rotate='45deg'
-				transformOrigin='left bottom'
-				mr='auto'
-			/>
-			<Box p='box:s'>
-				<DammyText length='m' />
-			</Box>
-			<Decorator
-				size='1.25em'
-				bd='left'
-				rotate='-45deg'
-				transformOrigin='left top'
-				mr='auto'
-			/>
-		</Grid>
+		```jsx
 		<Flex
 			variant='ltr'
 			ai='center'
-			provide={{ bdc: 'currentColor', bgc: 'base' }}
+			passProps={{ bdc: 'currentColor', bgc: 'base' }}
 		>
 		<Decorator
 				as={FlexItem}
+				bd
 				left='1px'
 				size='0.875em'
-				bd
-				consume='bdc bgc'
+				getProps='bdc,bgc'
 				css={{
 					rotate: '45deg',
 					translate: '50%',
 					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
 				}}
 			/>
-			<FlexItem p='box' bdrs='m' w='fit-content' bd consume='bdc bgc'>
+			<FlexItem p='box' bdrs='m' w='fit-content' bd getProps='bdc,bgc'>
 				<DammyText />
 			</FlexItem>
 		</Flex>
-	```
+		```
 	</PreviewCode>
 </Preview>

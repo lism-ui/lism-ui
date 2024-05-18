@@ -25,7 +25,7 @@ export function getNavMenuLinkProps(props) {
 		_lismClass: ['c--navMenu__link'],
 		tag: 'span',
 		ai: 'center',
-		consume: 'p gap',
+		getProps: 'p,gap',
 	};
 
 	const { linkProps, otherProps } = separateLinkProps(props);

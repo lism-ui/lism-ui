@@ -23,8 +23,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 | <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`nestLevel` | メニューのネストレベルを指定します。 |
 | <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`hovBgc` | メニューホバー時の背景色 |
 | <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`hovC` | メニューホバー時の文字色 |
-| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`provide.p` | 各メニューのpaddingを一括調整できます |
-| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`provide.gap` | 各メニューのgapを一括調整できます |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`passProps.p` | 各メニューのpaddingを一括調整できます |
+| <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`passProps.gap` | 各メニューのgapを一括調整できます |
 | <PropBadge ml='-1px'>`<NavMenuList>`</PropBadge><br/>`isAccBody` | アコーディオン化します |
 | <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`isAcc` | アコーディオン化します |
 | <PropBadge ml='-1px'>`<NavMenuLink>`</PropBadge><br/>`isAccHead` | アコーディオン化します |
@@ -180,9 +180,9 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 
 <Preview>
-	<PreviewTitle>ボックススタイルにしてhovカラー指定, provideでpaddingやgapを一括指定</PreviewTitle>
+	<PreviewTitle>ボックススタイルにしてhovカラー指定, `passProps` でpaddingやgapを一括指定</PreviewTitle>
 	<PreviewArea p='40'>
-		<NavMenuList hasDivider bd hovBgc='black' hovC='white' provide={{ p: 'em8',gap: 'em6' }}>
+		<NavMenuList hasDivider bd hovBgc='black' hovC='white' passProps={{ p:'em8', gap:'em6' }}>
 			<NavMenu href='#menu1'>
 				<Icon icon={FolderSimple} fz='l' weight='fill' />
 				<span>Menu item</span>
@@ -198,8 +198,8 @@ import { FolderSimple } from "@phosphor-icons/react";
 		</NavMenuList>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "hovBgc" "hovC" "provide"
-		<NavMenuList hasDivider bd hovBgc='black' hovC='white' provide={{ p: 'em8',gap: 'em6' }}>
+		```jsx "hovBgc" "hovC" "passProps"
+		<NavMenuList hasDivider bd hovBgc='black' hovC='white' passProps={{ p:'em8', gap:'em6' }}>
 			<NavMenu href='#menu1'>
 				<Icon icon={FolderSimple} fz='l' weight='fill' />
 				<span>Menu item</span>
@@ -349,7 +349,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 	<PreviewTitle>横並び</PreviewTitle>
 	<PreviewArea p='40'>
 		<Box minH="20rem">
-		<NavMenuList isFlex hasDivider provide={{ p: 'em6 em8' }}>
+		<NavMenuList isFlex hasDivider passProps={{ p: 'em6 em8' }}>
 			<NavMenu href='#menu1'>Menu item</NavMenu>
 			<NavMenu hover='pass' pos='r'>
 				<NavMenuLink href='#menu3'>

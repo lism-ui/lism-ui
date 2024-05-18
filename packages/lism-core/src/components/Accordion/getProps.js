@@ -43,16 +43,16 @@ export function getAccHeadProps({ _lismClass = [], ...props }) {
 
 	const defaultProps = { p: 'box:s', gap: 20 };
 
-	// consume に 'p', 'gap' が含まれている場合、p, gap のデフォルト値を消す
-	// if (null !== consume) {
-	// 	if (typeof consume === 'string') consume = consume.split(' ');
+	// getProps に 'p', 'gap' が含まれている場合、p, gap のデフォルト値を消す
+	// if (null !== getProps) {
+	// 	if (typeof getProps === 'string') getProps = getProps.split(',');
 
-	// 	if (Array.isArray(consume)) {
-	// 		if (consume.includes('p')) delete defaultProps.p;
-	// 		if (consume.includes('gap')) delete defaultProps.gap;
+	// 	if (Array.isArray(getProps)) {
+	// 		if (getProps.includes('p')) delete defaultProps.p;
+	// 		if (getProps.includes('gap')) delete defaultProps.gap;
 
 	// 		// propsに戻す
-	// 		props.consume = consume;
+	// 		props.getProps = getProps;
 	// 	}
 	// }
 

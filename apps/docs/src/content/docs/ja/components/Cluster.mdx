@@ -116,24 +116,24 @@ import { Cluster } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>他のpropsの活用例</PreviewTitle>
 	<PreviewArea resize p='box:l'>
-		<Cluster hasDivider jc="center" ta="center" provide={{p: '0 20'}}>
-			<Box consume='p'>Lorem ipsum</Box>
-			<Box consume='p'>Dolor</Box>
-			<Box consume='p'>Sit amet</Box>
-			<Box consume='p'>Consectetur</Box>
-			<Box consume='p'>Adipisicing</Box>
-			<Box consume='p'>Elit</Box>
+		<Cluster hasDivider jc="center" ta="center" passProps={{p: '0 20'}}>
+			<Box getProps='p'>Lorem ipsum</Box>
+			<Box getProps='p'>Dolor</Box>
+			<Box getProps='p'>Sit amet</Box>
+			<Box getProps='p'>Consectetur</Box>
+			<Box getProps='p'>Adipisicing</Box>
+			<Box getProps='p'>Elit</Box>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx
-<Cluster hasDivider jc="center" ta="center" provide={{p: '0 20'}}>
-	<Box consume='p'>Lorem ipsum</Box>
-	<Box consume='p'>Dolor</Box>
-	<Box consume='p'>Sit amet</Box>
-	<Box consume='p'>Consectetur</Box>
-	<Box consume='p'>Adipisicing</Box>
-	<Box consume='p'>Elit</Box>
+<Cluster hasDivider jc="center" ta="center" passProps={{p: '0 20'}}>
+	<Box getProps='p'>Lorem ipsum</Box>
+	<Box getProps='p'>Dolor</Box>
+	<Box getProps='p'>Sit amet</Box>
+	<Box getProps='p'>Consectetur</Box>
+	<Box getProps='p'>Adipisicing</Box>
+	<Box getProps='p'>Elit</Box>
 </Cluster>
 ```
 	</PreviewCode>

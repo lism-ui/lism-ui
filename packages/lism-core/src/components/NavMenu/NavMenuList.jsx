@@ -14,8 +14,6 @@ export default function NavMenuList({
 	isFlex,
 	hovC,
 	hovBgc,
-	// style = {},
-	// provide = { p: null }, // data-provideの出力だけしておきたい?
 	...props
 }) {
 	lismClass.c = 'c--navMenu';
@@ -39,7 +37,6 @@ export default function NavMenuList({
 		lismClass,
 		lismStyle,
 		hover,
-		// provide,
 	};
 
 	if (nestLevel) {

@@ -1,31 +1,29 @@
 // Note: utility の最初で読み込む ? layout-state?
-// get
-[data-lism-consume~='p'] {
+
+.-get\:p {
 	padding: var(--pass--p);
 }
-[data-lism-consume~='m'] {
+.-get\:m {
 	margin: var(--pass--m);
 }
-[data-lism-consume~='gap'] {
+.-get\:gap {
 	gap: var(--pass--gap);
 }
-[data-lism-consume~='c'] {
+.-get\:c {
 	color: var(--pass--c);
-	//--c
 }
-[data-lism-consume~='bgc'] {
+.-get\:bgc {
 	background-color: var(--pass--bgc);
-	// --bgc:
 }
-[data-lism-consume~='bdc'] {
+.-get\:bdc {
 	--bdc: var(--pass--bdc);
 }
-[data-lism-consume~='bdw'] {
+.-get\:bdw {
 	--bdw: var(--pass--bdw);
 }
-// [data-lism-consume~='shadow'] {
+// [data-lism-get~='shadow'] {
 // 	box-shadow: var(--pass--shadow);
 // }
-// [data-lism-consume~='radius'] {
+// [data-lism-get~='radius'] {
 // 	border-radius: var(--pass--radius);
 // }

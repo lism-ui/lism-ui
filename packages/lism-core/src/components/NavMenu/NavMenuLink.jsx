@@ -14,7 +14,7 @@ export default function NavMenuLink({ isAccHead, children, ...props }) {
 				pis='0'
 				minH='0'
 				gap='em2'
-				consume='p'
+				getProps='p'
 				trigger={accTrigger}
 			>
 				<Flex {...getNavMenuLinkProps(props)}>{children}</Flex>

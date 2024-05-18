@@ -81,40 +81,40 @@ import { Delimiter } from '@lism-ui/astro';
 
 
 <Preview>
-	<PreviewTitle>provide/consume を使ってデリミタのカラーを一括で変更する</PreviewTitle>
+	<PreviewTitle>passProps/getProps を使ってデリミタのカラーを一括で変更する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20} provide={{c: 'accent'}}>
+		<Cluster gap={20} passProps={{c: 'accent'}}>
 			<span >Lorem ipsum</span>
-			<Delimiter consume="c">▶</Delimiter>
+			<Delimiter getProps="c">▶</Delimiter>
 			<span >Dolor</span>
-			<Delimiter consume="c">▶</Delimiter>
+			<Delimiter getProps="c">▶</Delimiter>
 			<span >Sit amet</span>
-			<Delimiter consume="c">▶</Delimiter>
+			<Delimiter getProps="c">▶</Delimiter>
 			<span >Consectetur</span>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="React, Astro">
-	```jsx "provide" "consume"
-	<Cluster gap={20} provide={{c: 'accent'}}>
+	```jsx "passProps" "getProps"
+	<Cluster gap={20} passProps={{c: 'accent'}}>
 		<span >Lorem ipsum</span>
-		<Delimiter consume="c">▶</Delimiter>
+		<Delimiter getProps="c">▶</Delimiter>
 		<span >Dolor</span>
-		<Delimiter consume="c">▶</Delimiter>
+		<Delimiter getProps="c">▶</Delimiter>
 		<span >Sit amet</span>
-		<Delimiter consume="c">▶</Delimiter>
+		<Delimiter getProps="c">▶</Delimiter>
 		<span >Consectetur</span>
 	</Cluster>
 	```
 	</PreviewCode>
 	<PreviewCode slot="tab" label="HTML">
-	```jsx "--pass--c" "data-lism-consume=\"c\""
+	```jsx "--pass--c" "-get\:c"
 	<div class="l--flex l--flex--cluster -gap:20" style="--pass--c:var(--accent)">
 		<span>Lorem ipsum</span>
-		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span class="e--delimiter -get:c">▶</span>
 		<span>Dolor</span>
-		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span class="e--delimiter -get:c">▶</span>
 		<span>Sit amet</span>
-		<span class="e--delimiter" data-lism-consume="c">▶</span>
+		<span class="e--delimiter -get:c">▶</span>
 		<span>Consectetur</span>
 	</div>
 	```

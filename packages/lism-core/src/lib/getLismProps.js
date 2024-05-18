@@ -7,6 +7,7 @@ import getStateProps from './getStateProps';
 import joinAtts from './helper/joinAtts';
 import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
+import splitWithComma from './helper/splitWithComma';
 
 // const isBaseBP = (bp) => {
 // 	return '_' === bp;
@@ -77,8 +78,8 @@ class LismPropsData {
 			lismClass,
 			_lismClass = [],
 			// lismVar,
-			provide,
-			consume,
+			passProps,
+			getProps,
 			skipState,
 			_context,
 			..._props
@@ -149,14 +150,15 @@ class LismPropsData {
 			this.attrs.ref = forwardedRef;
 		}
 
-		if (null != provide && typeof provide === 'object') {
-			this.setProvider(provide);
+		if (null != passProps && typeof passProps === 'object') {
+			this.setPassProps(passProps);
 		}
 
-		if (null != consume) {
-			const consumeData = Array.isArray(consume) ? consume.join(' ') : consume;
-			// if (typeof consumeData === 'string')
-			this.attrs['data-lism-consume'] = consumeData;
+		if (null != getProps) {
+			// , 区切りでユーティリティクラスを複数出力可能
+			splitWithComma(getProps).forEach((_propName) => {
+				this.addUtil(`-get:${_propName}`);
+			});
 		}
 	}
 
@@ -426,16 +428,14 @@ class LismPropsData {
 		this.addStyle(styleName, val);
 	}
 
-	setProvider(providerData) {
+	setPassProps(passProps) {
 		let dataList = [];
-
-		// providerData オブジェクトをループさせる
-		Object.keys(providerData).forEach((propName) => {
+		Object.keys(passProps).forEach((propName) => {
 			// プロバイダーリストに追加
 			dataList.push(propName);
 
 			// 渡す値
-			let value = providerData[propName];
+			let value = passProps[propName];
 			if (null === value) return;
 
 			// コンバーター通して取得
@@ -446,9 +446,6 @@ class LismPropsData {
 
 			this.addStyle(`--pass--${propName}`, value);
 		});
-
-		// 意味はないが一応何をしているかわかるようにdata属性にセット
-		// this.attrs['data-lism-provide'] = dataList.join(' ');
 	}
 
 	setHoverProps(hoverData) {
@@ -465,14 +462,10 @@ class LismPropsData {
 		if (hoverData === '-' || hoverData === true) {
 			this.addUtil(`-hov:`);
 		} else if (typeof hoverData === 'string') {
-			// , 区切りでユーティリティを複数指定できる
-			if (hoverData.includes(',')) {
-				hoverData.split(',').forEach((_val) => {
-					this.addUtil(`-hov:${_val}`);
-				});
-			} else {
-				this.addUtil(`-hov:${hoverData}`);
-			}
+			// , 区切りでユーティリティクラスを複数出力可能
+			splitWithComma(hoverData).forEach((_val) => {
+				this.addUtil(`-hov:${_val}`);
+			});
 		} else if (typeof hoverData === 'object') {
 			// bxsh: '2', → shSize'2', shSize:'3'に分割?
 			// if(hoverData.bxsh) {
@@ -521,9 +514,8 @@ class LismPropsData {
 		if (typeof value === 'string') {
 			// , 区切りでユーティリティを複数指定できる（var() や rgba() などがないかチェック）
 			if (value.includes(',') && !value.includes('(')) {
-				value.split(',').forEach((_val) => {
-					let utilVal = getMaybeUtilValue('bd', _val) || _val;
-					utilVal = utilVal.trim();
+				splitWithComma(value).forEach((_val) => {
+					const utilVal = getMaybeUtilValue('bd', _val) || _val;
 					if (utilVal === 'all') {
 						if (utilVal) this.addUtil(`-bd:`);
 					} else if (utilVal) {
