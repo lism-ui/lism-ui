@@ -1,6 +1,8 @@
 ---
-title: 'Hover'
+title: 'hover'
 description: ...
+sidebar: 
+  order: 101
 ---
 
 import { Alert, Flex, Button, Media, MediaLayer, FilterLayer, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
@@ -59,7 +61,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewArea p={40}>
 		<PreviewBoxs hover='fade'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover="
 	<LinkBox hover='fade' href='###' p='box'>
 		...
@@ -80,7 +82,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewArea p={40}>
 		<PreviewBoxs hover='bxsh'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover="
 	<LinkBox hover='bxsh' href='###' p='box'>
 		...
@@ -102,7 +104,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewArea p={40}>
 		<PreviewBoxs hover='up'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover="
 	<LinkBox hover='up' href='###' p='box'>
 		...
@@ -126,7 +128,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewArea p={40}>
 		<PreviewBoxs hover='up,bxsh'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover="
 	<LinkBox hover='up,bxsh' href='###' p='box'>
 		...
@@ -173,7 +175,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover=" "bgc:'main'" "c:'white'"
 		<LinkBox href='###' hover={{ bgc:'main', c:'white'}} bgc='base-2' p='box'>
 			...
@@ -213,7 +215,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox> */}
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "hover=" "bgc:'main'" "c:'white'"
 		<LinkBox href='###' hover={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
 			<p>bxsh:2→hoverで5</p>
@@ -341,7 +343,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 			</Layer>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx "hover='pass'" "hover='get:show'"
 		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
@@ -374,7 +376,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx "hover='pass'" "hover='get:zoom'"
 		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
