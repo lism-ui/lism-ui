@@ -1,9 +1,10 @@
 :where(.c--chat) {
 	border-radius: var(--radius--l);
+	--boxcolor: var(--gray);
 }
 .c--chat {
 	// --keycolor: var(--gray);
-	--boxcolor: var(--gray);
+	// --boxcolor: var(--gray);
 
 	// --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
 	--avator-size: clamp(40px, 16px + 7.5cqw, 64px); // 320:40px~640:64px
@@ -37,7 +38,7 @@
 
 .c--chat__avatar {
 	grid-area: icon;
-	--size: var(--avator-size); //  c--avatar に渡す
+	--size: var(--avator-size); //  avatar に渡す
 }
 
 .c--chat__name {

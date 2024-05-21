@@ -48,7 +48,7 @@ export * from './ShapeDivider';
 export * from './NavMenu';
 // export * from './Section';
 // export * from './Hero';
-export * from './Chat';
+// export * from './Chat';
 
 // export { FAQ } from './FAQ';
 // export { MediaText } from './MediaText';
