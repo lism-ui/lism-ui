@@ -1,5 +1,5 @@
 // heightが.-h:で上書きできるかあとでチェック
-.c--shapeDivider {
+.b--shapeDivider {
 	// --c: var(--base);
 	--level: 0;
 	--duration: 12s;
@@ -39,13 +39,13 @@
 	// 	bottom: -0.5px;
 	// }
 }
-.c--shapeDivider--animation {
+.b--shapeDivider--animation {
 	/* ↓ X 100% にしてるのは translateXのcalc計算で * -1 をしなくていいように。*/
 	--svg-trfo: 100% 0;
 	--svg-anim: LismShapeSlide var(--duration) infinite alternate linear;
 }
 
-.c--shapeDivider__inner {
+.b--shapeDivider__inner {
 	// position: relative;
 	// inset: 0;
 	scale: var(--stretch) 1;
@@ -53,7 +53,7 @@
 	// height: 100%;
 }
 
-.c--shapeDivider__svg {
+.b--shapeDivider__svg {
 	transform-origin: var(--svg-trfo);
 	animation: var(--svg-anim);
 }

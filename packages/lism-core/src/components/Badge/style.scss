@@ -1,4 +1,4 @@
-:where(.c--badge) {
+:where(.b--badge) {
 	display: inline-flex; // 文中でもpaddingが効くように
 	font-size: var(--fz--xs);
 	border-radius: var(--radius--xs);
@@ -8,7 +8,7 @@
 }
 
 // -boxcolor とセットで使う
-.c--badge {
+.b--badge {
 	// --boxcolor: var(--content);
 	// --c: var(--boxcolor);
 	// --bdc: transparent;
@@ -19,7 +19,7 @@
 	border: solid 1px var(--bdc); // サイズ揃えるために常にborderを指定
 }
 
-.c--badge--fill {
+.b--badge--fill {
 	--cbox-c: var(--base);
 	--cbox-bgc: var(--boxcolor);
 	// --c: var(--base);
@@ -27,10 +27,10 @@
 
 	--cbox-bdc: transparent;
 }
-.c--badge--outline {
+.b--badge--outline {
 	--cbox-c: var(--boxcolor);
 	--cbox-bdc: var(--boxcolor);
 	--cbox-bgc: transparent;
 }
-// .c--badge--subtle {
+// .b--badge--subtle {
 // }

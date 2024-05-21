@@ -1,13 +1,13 @@
 export const dividerLabelProps = {
-	className: 'c--divider__label',
+	className: 'b--divider__label',
 	// fz: 's',
 	// lh: '1',
 	// c: 'content-3',
 };
 
 export function getDividerProps({ _lismClass = [], variant, isVertical, label, ...props }) {
-	_lismClass.push('c--divider');
-	if (variant) _lismClass.push(`c--divider--${variant}`);
+	_lismClass.push('b--divider');
+	if (variant) _lismClass.push(`b--divider--${variant}`);
 
 	const theProps = {
 		_lismClass,
@@ -26,13 +26,13 @@ export function getDividerProps({ _lismClass = [], variant, isVertical, label, .
 
 	return {
 		dividerProps: Object.assign(theProps, props),
-		labelProps: { className: 'c--divider__label' },
-		bdProps: { className: 'c--divider__bd', bd: isVertical ? 'l' : 't' },
+		labelProps: { className: 'b--divider__label' },
+		bdProps: { className: 'b--divider__bd', bd: isVertical ? 'l' : 't' },
 	};
 }
 
 export const dividerDecoProps = {
-	className: 'c--divider__bd',
+	className: 'b--divider__bd',
 	// fx: '1',
 	// d: 'block',
 	// tag: 'span',

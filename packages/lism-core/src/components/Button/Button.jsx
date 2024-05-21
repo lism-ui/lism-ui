@@ -11,9 +11,9 @@ export default function Button({ leftIcon, rightIcon, children, ...props }) {
 
 	return (
 		<BtnComponent {...btnProps}>
-			{leftIcon && <Icon className='c--button__leftIcon' icon={leftIcon} />}
+			{leftIcon && <Icon className='b--button__leftIcon' icon={leftIcon} />}
 			<Lism {...textProps}>{children}</Lism>
-			{rightIcon && <Icon className='c--button__leftIcon' icon={rightIcon} />}
+			{rightIcon && <Icon className='b--button__leftIcon' icon={rightIcon} />}
 		</BtnComponent>
 	);
 }

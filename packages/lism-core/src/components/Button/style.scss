@@ -1,4 +1,4 @@
-:where(.c--button) {
+:where(.b--button) {
 	--keycolor: var(--content);
 	--icon--scale: 1.25; // offsetとバランス合わせる
 	--icon--offset: 0%; //25%;
@@ -19,7 +19,7 @@
 }
 
 // py は小さめにして、minHで最低限の高さを確保.
-.c--button {
+.b--button {
 	--link-td: none; // pタグ内にくるかもしれないので
 	width: fit-content;
 	color: var(--c);
@@ -27,23 +27,23 @@
 	border: solid 1px var(--bdc); // アウトラインと並べたときにサイズに差がでないように
 }
 
-// .c--button:where(.-hov\:reverse):hover {
+// .b--button:where(.-hov\:reverse):hover {
 // 	color: var(--hov--c);
 // 	background-color: var(--hov--bgc);
 // 	// border-color: var(--hov--bdc);
 // }
 
 // デフォルトスタイル
-// .c--button:not([class*='c--button--'])
-.c--button--fill {
+// .b--button:not([class*='b--button--'])
+.b--button--fill {
 	--c: var(--base);
 	--bgc: var(--keycolor);
 	--bdc: var(--bgc);
 	// --hov--bgc: transparent;
 }
 
-// c--button--style
-.c--button--outline {
+// b--button--style
+.b--button--outline {
 	--c: var(--keycolor);
 	// --bgc: transparent;
 	--bdc: var(--keycolor);
@@ -51,37 +51,37 @@
 	// --hov--bdc: var(--keycolor);
 }
 
-// c--button--style
-.c--button--ghost {
+// b--button--style
+.b--button--ghost {
 	--c: var(--keycolor);
 	// --bgc: transparent;
 	// --bdc: transparent;
 	--hov--c: var(--base);
 }
 
-// .c--button.l--grid,
-.c--button:where(.l--grid) {
+// .b--button.l--grid,
+.b--button:where(.l--grid) {
 	--gtc: 1em 1fr 1em; // アイコン部分を固定幅にすることで、テキストを常に中央に配置
 }
 
-// :where(.l--grid) > .c--button__text {
+// :where(.l--grid) > .b--button__text {
 // 	justify-self: center;
 // }
 
-:where(.c--button) > .a--icon {
+:where(.b--button) > .a--icon {
 	scale: var(--icon--scale);
 	// flex-shrink: 0; // → .a--icon についてる
 }
 
-.c--button__leftIcon {
+.b--button__leftIcon {
 	translate: calc(0px - var(--icon--offset));
 }
-.c--button__rightIcon {
+.b--button__rightIcon {
 	translate: calc(0px - var(--icon--offset));
 }
 
-// .c--button__icon で統一するならこっち
-// :where(.c--button > .a--icon) {
+// .b--button__icon で統一するならこっち
+// :where(.b--button > .a--icon) {
 // 	&:only-child {
 // 		--icon--offset: 0;
 // 	}
@@ -94,7 +94,7 @@
 // 	}
 // }
 
-.c--button--icon {
+.b--button--icon {
 	--size: 2.5em;
 	// gap: 0;
 	width: var(--size);

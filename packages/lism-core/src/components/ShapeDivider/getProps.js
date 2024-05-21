@@ -10,9 +10,9 @@ export function getShapeDividerProps({
 	offset, // -25% ~ 25%
 	...props
 }) {
-	_lismClass.push('c--shapeDivider');
-	if (isAnimation) _lismClass.push('c--shapeDivider--animation');
-	if (variant) _lismClass.push(`c--divider--${variant}`);
+	_lismClass.push('b--shapeDivider');
+	if (isAnimation) _lismClass.push('b--shapeDivider--animation');
+	if (variant) _lismClass.push(`b--divider--${variant}`);
 
 	props._lismClass = _lismClass;
 

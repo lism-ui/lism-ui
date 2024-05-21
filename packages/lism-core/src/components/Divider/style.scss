@@ -1,8 +1,8 @@
 // --------------------
 // divider
 // --------------------
-// :where(.c--divider) {}
-.c--divider {
+// :where(.b--divider) {}
+.b--divider {
 	--bdc: var(--divider-bdc);
 	--bdw: 1px;
 	--bds: solid;
@@ -11,7 +11,7 @@
 	// min-height: 1em;
 }
 
-.c--divider__bd {
+.b--divider__bd {
 	--bdc: inherit;
 	--bdw: inherit;
 	--bds: inherit;
@@ -19,7 +19,7 @@
 	flex: 1;
 }
 
-// :where(.l--stack) > .c--divider__bd {
+// :where(.l--stack) > .b--divider__bd {
 // 	border-top: none;
 // 	border-left: var(--bdw) var(--bds) var(--bdc);
 // }

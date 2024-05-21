@@ -8,8 +8,8 @@ export default function ShapeDivider(props) {
 
 	return (
 		<Lism skipState data-shape={shape} {...attrs}>
-			<Lism skipState className='c--shapeDivider__inner -h:100'>
-				<ShapeSVG className='c--shapeDivider__svg -d:b' shape={shape} />
+			<Lism skipState className='b--shapeDivider__inner -h:100'>
+				<ShapeSVG className='b--shapeDivider__svg -d:b' shape={shape} />
 			</Lism>
 		</Lism>
 	);

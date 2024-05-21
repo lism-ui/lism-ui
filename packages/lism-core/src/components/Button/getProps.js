@@ -9,8 +9,8 @@ export function getButtonProps({
 	textProps = {},
 	...props
 }) {
-	_lismClass.push('c--button');
-	if (variant) _lismClass.push(` c--button--${variant}`);
+	_lismClass.push('b--button');
+	if (variant) _lismClass.push(` b--button--${variant}`);
 
 	const defaultProps = {
 		_lismClass,
@@ -23,7 +23,7 @@ export function getButtonProps({
 	const defaultTextProps = {
 		skipState: true,
 		tag: 'span',
-		_lismClass: ['c--button__text'],
+		_lismClass: ['b--button__text'],
 	};
 
 	const { linkProps, otherProps } = separateLinkProps(props);
@@ -55,9 +55,9 @@ export function getIconButtonProps({
 	style = {},
 	...props
 }) {
-	_lismClass.push('c--button');
-	_lismClass.push('c--button--icon');
-	if (variant) _lismClass.push(`c--button--${variant}`);
+	_lismClass.push('b--button');
+	_lismClass.push('b--button--icon');
+	if (variant) _lismClass.push(`b--button--${variant}`);
 
 	if (size) {
 		style['--size'] = size;

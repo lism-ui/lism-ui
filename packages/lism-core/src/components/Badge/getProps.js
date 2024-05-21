@@ -1,8 +1,8 @@
 import { mergeFlexContextProps } from '../Flex/getProps';
 
 export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('c--badge');
-	if (variant) _lismClass.push(`c--badge--${variant}`);
+	_lismClass.push('b--badge');
+	if (variant) _lismClass.push(`b--badge--${variant}`);
 
 	const defaultProps = {
 		tag: 'span',

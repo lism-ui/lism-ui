@@ -2,8 +2,8 @@ import getBpData from '../../lib/getBpData';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
 export default function getSpacerProps({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('l--spacer');
-	if (variant) _lismClass.push(`l--spacer--${variant}`);
+	_lismClass.push('b--spacer');
+	if (variant) _lismClass.push(`b--spacer--${variant}`);
 	props._lismClass = _lismClass;
 
 	if (null != props.h) {
