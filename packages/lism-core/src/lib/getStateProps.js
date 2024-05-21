@@ -79,7 +79,13 @@ export default function getStateProps({
 		Object.assign(lismStyle, style);
 	}
 
-	isFrame && lismState.push('is--frame');
+	if (isFrame) {
+		lismState.push('is--frame');
+		if (props.objectPosition) {
+			lismStyle['--objectPosition'] = props.objectPosition;
+			delete props.objectPosition;
+		}
+	}
 
 	if (isLinkBox) {
 		lismState.push('is--linkBox');

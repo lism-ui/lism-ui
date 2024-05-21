@@ -11,10 +11,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 # Frame
 
-[`is--frame`](/ja/css/design-state/#is--frame)をデフォルトで出力するコンポーネントです。
+[`is--frame`](/ja/css/design-state/#is--frame)をデフォルトで出力するコンポーネントです。(`<Lism isFrame>`のエイリアスです。)
 
 アスペクト比や高さを指定し、直下のメディア要素（img,vieo）を `object-fit:cover` でFrameサイズいっぱいに表示することができます。
-
 
 
 ## Props
@@ -23,7 +22,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 |---|---|
 | `aspect` | フレームの比率を指定できます。|
 | `objectPosition` | 直下のメディア要素のobject-positionを指定できます。 |
-| `layer` | 展開したい Lismコンポーネント を指定できます。|
+| `layout` | 展開したい Lismコンポーネント を指定できます。|
 
 <HelpText mbs="em10">(aspect自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
 

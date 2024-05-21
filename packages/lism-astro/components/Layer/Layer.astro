@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { Lism, Media } from '../Lism';
-import { Frame } from '../Frame';
+// import { Frame } from '../Frame';
 import { getLayerProps } from '@lism-ui/core/components/Layer/getProps';
 import separateMediaAttrs from '@lism-ui/core/components/separateMediaAttrs';
 // Propsの定義
@@ -22,9 +22,9 @@ if (props?.src) {
 
 {
 	props?.src ? (
-		<Frame {...getLayerProps(layerProps)}>
+		<Lism isFrame {...getLayerProps(layerProps)}>
 			<Media {...mediaProps} />
-		</Frame>
+		</Lism>
 	) : (
 		<Lism {...getLayerProps(layerProps)}>
 			<slot />
