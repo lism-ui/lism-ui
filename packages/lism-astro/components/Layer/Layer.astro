@@ -1,14 +1,33 @@
 ---
 import { LismProps } from '../types';
-import { Lism } from '../Lism';
+import { Lism, Media } from '../Lism';
+import { Frame } from '../Frame';
 import { getLayerProps } from '@lism-ui/core/components/Layer/getProps';
-
+import separateMediaAttrs from '@lism-ui/core/components/separateMediaAttrs';
 // Propsの定義
 interface Props extends LismProps {}
 
 let props = Astro.props || {};
+let layerProps = {};
+let mediaProps = {};
+
+if (props?.src) {
+	const { mediaAttrs, otherProps } = separateMediaAttrs(props);
+	layerProps = otherProps;
+	mediaProps = mediaAttrs;
+} else {
+	layerProps = props;
+}
 ---
 
-<Lism {...getLayerProps(props)}>
-	<slot />
-</Lism>
+{
+	props?.src ? (
+		<Frame {...getLayerProps(layerProps)}>
+			<Media {...mediaProps} />
+		</Frame>
+	) : (
+		<Lism {...getLayerProps(layerProps)}>
+			<slot />
+		</Lism>
+	)
+}

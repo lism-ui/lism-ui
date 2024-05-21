@@ -2,7 +2,7 @@
 title: 'Frame'
 description: ...
 ---
-import { Box, Flex, Media, Text, MediaLayer, FilterLayer, Frame, Center, Columns, Layer } from '@lism-ui/astro';
+import { Box, Flex, Media, Text, Layer, Frame, Center, Columns } from '@lism-ui/astro';
 
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
@@ -78,8 +78,8 @@ import { Frame } from '@lism-ui/astro';
 	<PreviewArea resize p={20}>
 		<Frame aspect='16/9' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<FilterLayer blur='4px' bgc='black:20%' />
-			<Layer inset='0' p='box:l'>
+			<Layer blur='4px' bgc='black:20%' />
+			<Layer p='box:l' ov='auto'>
 				<Center minH='100' gap={10}>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<DammyText length='m' />
@@ -92,8 +92,8 @@ import { Frame } from '@lism-ui/astro';
 		```jsx
 		<Frame aspect='16/9' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<FilterLayer blur='4px' bgc='black:20%' />
-			<Layer inset='0' p='box:l'>
+			<Layer blur='4px' bgc='black:20%' />
+			<Layer p='box:l' ov='auto'>
 				<Center minH='100' gap={10}>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<p>...</p>
@@ -111,12 +111,12 @@ import { Frame } from '@lism-ui/astro';
 	<PreviewArea resize>
 		<Frame aspect={['1/1', '4/3', '16/9']}>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<Layer position='left top' bgc='content' c='base' p='10' lh='xs' fz='s' m='20' bdrs='s'>
+			<Box pos='a' left='0' top='0' bgc='content' c='base' p='10' lh='xs' fz='s' m='20' bdrs='s'>
 				{`比率:`}
 				<Text tag="span" d={['inline', 'none']}>1/1</Text>
 				<Text tag="span" d={['none', 'inline', 'none']}>4/3</Text>
 				<Text tag="span" d={['none', null, 'inline']}>16/9</Text>
-			</Layer>
+			</Box>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
@@ -151,9 +151,9 @@ export const FrameRatios = () => {
 			{['golden', 'silver', 'bronze', 'ogp'].map((ratio) => {
 				return (
 					<Frame key={ratio} aspect={ratio} bgc='base-2'>
-						<Layer position='center' fz='s'>
+						<Text pos='a' inset='c' fz='s'>
 							<code>{ratio}</code>
-						</Layer>
+						</Text>
 					</Frame>
 				);
 			})}

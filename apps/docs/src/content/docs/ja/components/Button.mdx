@@ -5,7 +5,7 @@ description: ...
 
 import { DammyText, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Alert, Box, Flex, Button, IconButton, Icon, Cluster, MediaLayer, FilterLayer } from '@lism-ui/astro';
+import { Alert, Box, Flex, Button, IconButton, Icon, Cluster, Layer } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
@@ -61,14 +61,14 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 
 <Preview>
 	<PreviewTitle>各`variant`</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<Button href='###' variant='fill'>Fill</Button>
 			<Button href='###' variant='outline'>Outline</Button>
 			<Button href='###' variant='ghost'>Text</Button>
 		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx "variant"
 		<Button href='###'>Fill Button</Button>
 		<Button href='###' variant='outline'>Outline Button</Button>
@@ -95,14 +95,14 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 
 <Preview>
 	<PreviewTitle>左にアイコン</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
 			<Button href='###' leftIcon={ShoppingCartSimple} variant='outline'>Button</Button>
 			<Button href='###' leftIcon={ShoppingCartSimple} variant='ghost'>Button</Button>
 		</Cluster>
 	</PreviewArea>
-<PreviewCode slot='tab' label='React, Astro'>
+<PreviewCode slot='tab' label='Component'>
 ```jsx "leftIcon"
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 
@@ -121,14 +121,14 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>アイコンを右に</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<Button href='###' rightIcon={ArrowRight}>Button</Button>
 			<Button href='###' rightIcon={ArrowRight} variant='outline'>Button</Button>
 			<Button href='###' rightIcon={ArrowRight} variant='ghost'>Button</Button>
 		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx "rightIcon"
 	<Button href='###' rightIcon={ArrowRight}>Button</Button>
 	```
@@ -146,15 +146,15 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>横並び</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex gap={20}>
+	<PreviewArea resize p='20'>
+		<Flex gap='20'>
 			<Button href='###' flexItem={{fxb:'50%'}}>Button</Button>
 			<Button href='###' variant='outline' flexItem={{fxb:'50%'}} leftIcon={ShoppingCartSimple}>Button</Button>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 	```jsx
-	<Flex gap={20}>
+	<Flex gap='20'>
 		<Button href='###' flexItem={{fxb:'50%'}}>Button</Button>
 		<Button href='###' variant='outline' flexItem={{fxb:'50%'}} leftIcon={ShoppingCartSimple}>Button</Button>
 	</Flex>
@@ -181,12 +181,12 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>`isGrid`</PreviewTitle>
-	<PreviewArea resize p={20} isFlow={20}>
+	<PreviewArea resize p='20' isFlow='20'>
 			<Button isGrid href='###' leftIcon={ShoppingCartSimple} minW='15em'>Button</Button>
 			<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
 			<Button isGrid href='###' leftIcon={ShoppingCartSimple} rightIcon={ArrowRight} minW='15em'>Button</Button>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx "isGrid"
 		<Button isGrid href='###' leftIcon={ShoppingCartSimple} minW='15em'>Button</Button>
 		<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
@@ -211,12 +211,12 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>`iconOffset`の比較</PreviewTitle>
-	<PreviewArea resize p={20} isFlow='s'>
+	<PreviewArea resize p='20' isFlow='s'>
 		<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
 		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
 		<Button href='###' iconOffset="-20%" leftIcon={ShoppingCartSimple}>Button</Button>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx "iconOffset"
 		<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
 		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
@@ -239,35 +239,58 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 ### `IconButton` - アイコンのみのボタン
 
-クラスとしては同じ`.c--button`がベースですが、コンポーネントとしては`IconButton`を別に用意しています。
+クラスとしては同じ`.c--button`がベースですが、追加で`.c--button--icon`を併用してアイコンのみのボタンを作成できます。
+
+コンポーネントとしては`IconButton`を別に用意しています。
 
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<IconButton href='###' icon={ShoppingCartSimple} /> 
 	</PreviewArea>
-<PreviewCode slot='tab' label='React, Astro'>
+<PreviewCode slot='tab' label='Component'>
 ```jsx
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 
-<Button href='###' icon={ShoppingCartSimple} />
+<IconButton href='###' icon={ShoppingCartSimple} />
 ```
 </PreviewCode>
 <PreviewCode slot='tab' label='HTML'>
 	```html
-	<a class="c--button  c--button--fill l--flex -hov:fade" href="###">
-		<svg class="c--button__icon e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+	<a class="c--button c--button--icon c--button--fill l--stack -hov:fade" href="###">
+		<svg class="e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 	</a>
-	...
 	```
 </PreviewCode>
 </Preview>
 
+
+アイコンサイズはフォントサイズで、ボタンサイズは`--size`でコントロールできます。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<IconButton size='32px' fz='16px' href='###' icon={ShoppingCartSimple} /> 
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+		```jsx
+		<IconButton size='32px' fz='16px' href='###' icon={ShoppingCartSimple} />
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<a class="c--button c--button--icon c--button--fill l--stack -hov:fade -fz:" style="--size:32px;--fz:16px" href="###">
+			<svg class="e--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+		</a>
+		```
+	</PreviewCode>
+</Preview>
+
 <Preview>
 	<PreviewTitle>子要素に`Icon`を配置してもOKです。</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<IconButton hover='up'>
 				<Icon icon={ShoppingCartSimple} weight='fill'/>
 			</IconButton>
@@ -292,16 +315,16 @@ p, fz, w などの基本Propで調整できます。
 
 <Preview>
 	<PreviewTitle>小さいサイズのボタン</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
-			<Button href='###' keycolor='purple' fz='xs' p={10} leftIcon={ArrowRight}>Button</Button>
-			<IconButton href='###' fz='xs' p={10} px={20} icon={ShoppingCartSimple} />
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
+			<Button href='###' keycolor='purple' fz='xs' p='10' leftIcon={ArrowRight}>Button</Button>
+			<IconButton href='###' fz='xs' icon={ShoppingCartSimple} />
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "fz=" "p=" "px=" "py="
-		<Button href='###' keycolor='purple' fz='xs' p={10} leftIcon={ArrowRight}>Button</Button>
-		<IconButton href='###' fz='xs' py={10} px={20} icon={ShoppingCartSimple} />
+		<Button href='###' keycolor='purple' fz='xs' p='10' leftIcon={ArrowRight}>Button</Button>
+		<IconButton href='###' fz='xs' icon={ShoppingCartSimple} />
 		```
 	</PreviewCode>
 </Preview>
@@ -318,8 +341,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 
 <Preview>
 	<PreviewTitle>`hover='reverse'`</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<Button href='###' hover='reverse'>Fill</Button>
 			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
 			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
@@ -327,7 +350,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Cluster gap={20}>
+		<Cluster gap='20'>
 			<Button href='###' hover='reverse'>Fill</Button>
 			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
 			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
@@ -338,8 +361,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 
 <Preview>
 	<PreviewTitle>keycolor指定ありでのreverse</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+	<PreviewArea resize p='20'>
+		<Cluster gap='20'>
 			<Button href='###' hover='reverse' keycolor='blue'>Button</Button>
 			<Button href='###' hover='reverse' variant='outline' keycolor='pink'>Button</Button>
 			<Button href='###' hover='reverse' variant='ghost' bgc='base-2'>Button</Button>
@@ -358,13 +381,12 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 
 <Preview>
 	<PreviewTitle>NG例: 真っ白になってしまう</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Box p='40' hasLayer c='base'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
-			<FilterLayer blur='4px' z='-1'/>
-			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+	<PreviewArea p='20'>
+		<Box p='40' pos='r' c='base'>
+			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
-			<Cluster mbs={30} gap={20}>
+			<Cluster mbs={30} gap='20'>
 				<Button href='###' keycolor='base' hover='reverse' variant='outline'>Button</Button>
 				<Button href='###' c='base' hover='reverse' variant='ghost'>Button</Button>
 			</Cluster>
@@ -379,13 +401,12 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 
 <Preview>
 	<PreviewTitle>解決策</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Box p='40' hasLayer c='base'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
-			<FilterLayer blur='4px' z='-1'/>
-			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+	<PreviewArea resize p='20'>
+		<Box p='40' pos='r' c='base'>
+			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
-			<Cluster mbs={30} gap={20}>
+			<Cluster mbs={30} gap='20'>
 				<Button href='###' keycolor='base' hover={['reverse', { c:'content' }]} variant='outline'>Button</Button>
 				<Button href='###' c='base' hover={['reverse', { c:'content' }]} variant='ghost'>Button</Button>
 			</Cluster>
@@ -401,13 +422,12 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 
 <Preview>
 	<PreviewTitle>白黒反転エリアでのテスト</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Box p='40' hasLayer c='base'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
-			<FilterLayer blur='4px' z='-1'/>
-			<FilterLayer bgc='#000' opacity='0.5' z='-1'/>
+	<PreviewArea resize p='20'>
+		<Box p='40' pos='r' c='base'>
+			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
-			<Cluster mbs={30} gap={20}>
+			<Cluster mbs={30} gap='20'>
 				<Button href='###' hover='reverse' variant='fill'>Button</Button>
 				<Button href='###' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
 				<Button href='###' bgc='base' c='content' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>

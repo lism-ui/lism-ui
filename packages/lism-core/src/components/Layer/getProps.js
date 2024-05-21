@@ -1,6 +1,59 @@
 import getEffectProps from '../getEffectProps';
 import getInsetProps from '../getInsetProps';
 
+export function getLayerProps(props) {
+	const { _lismClass = [], variant, ...otherProps } = props;
+
+	_lismClass.push('l--layer');
+	if (variant) _lismClass.push('l--layer--' + variant);
+
+	// positon から得られたデータを props とマージ
+	// const positionProps = getLayerPositions(position);
+	let layerProps = otherProps; //Object.assign({}, positionProps, otherProps);
+
+	layerProps = getInsetProps(layerProps); // l,r,t,b などのコンテキストpropsのマージ
+	layerProps = getEffectProps(layerProps); // effect系propsのマージ
+	layerProps = getFilterLayerProps(layerProps); // filter系propsのマージ
+
+	layerProps._lismClass = _lismClass;
+	return layerProps;
+}
+
+const FILTERS = [
+	'blur',
+	'contrast',
+	'brightness',
+	'drop-shadow',
+	'grayscale',
+	'hue-rotate',
+	'invert',
+	// 'opacity',
+	'saturate',
+	'sepia',
+];
+
+export function getFilterLayerProps({ css = {}, ...props }) {
+	const backdropFilters = [];
+
+	if (null == css.backdropFilter) {
+		FILTERS.forEach((filterName) => {
+			if (props[filterName]) {
+				backdropFilters.push(`${filterName}(${props[filterName]})`);
+				delete props[filterName];
+			}
+		});
+
+		if (backdropFilters.length > 0) {
+			css.backdropFilter = backdropFilters.join(' ');
+		}
+	}
+
+	props.css = css;
+
+	return props;
+}
+
+/*
 // l,r,t,b, translate をそのまま受け取れる
 export function getLayerPositions(position) {
 	const props = {};
@@ -50,55 +103,4 @@ export function getLayerPositions(position) {
 
 	return props;
 }
-
-// l,r,t,b, translate をそのまま受け取れる
-export function getLayerProps(props) {
-	const { _lismClass = [], variant, position, ...otherProps } = props;
-
-	_lismClass.push('l--layer');
-	if (variant) _lismClass.push('l--layer--' + variant);
-
-	// positon から得られたデータを props とマージ
-	const positionProps = getLayerPositions(position);
-	let layerProps = Object.assign({}, positionProps, otherProps);
-
-	layerProps = getInsetProps(layerProps); // l,r,t,b などのコンテキストpropsのマージ
-	layerProps = getEffectProps(layerProps); // effect系propsのマージ
-
-	layerProps._lismClass = _lismClass;
-	return layerProps;
-}
-
-const FILTERS = [
-	'blur',
-	'contrast',
-	'brightness',
-	'drop-shadow',
-	'grayscale',
-	'hue-rotate',
-	'invert',
-	// 'opacity',
-	'saturate',
-	'sepia',
-];
-
-export function getFilterLayerProps({ css = {}, ...props }) {
-	const backdropFilters = [];
-
-	if (null == css.backdropFilter) {
-		FILTERS.forEach((filterName) => {
-			if (props[filterName]) {
-				backdropFilters.push(`${filterName}(${props[filterName]})`);
-				delete props[filterName];
-			}
-		});
-
-		if (backdropFilters.length > 0) {
-			css.backdropFilter = backdropFilters.join(' ');
-		}
-	}
-
-	props.css = css;
-
-	return props;
-}
+ */

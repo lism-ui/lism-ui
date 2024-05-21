@@ -12,7 +12,6 @@ import {
 	Stack,
 	FlexItem,
 	MediaLayer,
-	FilterLayer,
 	Center,
 	Frame,
 	Button,
@@ -59,7 +58,7 @@ import {
 		<Spacer bg='stripe' h='60' />
 		<Stack isFullwide isFrame minH='50vh'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640' />
-			<FilterLayer blur='4px' bgc='black:50%' />
+			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
 				<DammyText length='l' />
@@ -68,7 +67,7 @@ import {
 		<Spacer bg='stripe' h='60' />
 		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640' />
-			<FilterLayer blur='4px' bgc='black:50%' />
+			<Layer blur='4px' bgc='black:50%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide & Layers</Text>
@@ -80,7 +79,7 @@ import {
 		<Spacer bg='stripe' h='60' />
 		<Stack isFullwide isFrame minH='50vh'>
 			<MediaLayer src='/img.jpg' alt='' width='960' height='640' />
-			<FilterLayer bgc='black:20%' />
+			<Layer bgc='black:20%' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
 				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>

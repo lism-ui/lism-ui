@@ -68,7 +68,7 @@ export default {
 
 	bg: ['glass', 'stripe', 'grid'],
 	z: ['-1', '0', '1'],
-	inset: ['center', 'centerX', 'centerY'], // inset は 0% だけ
+	inset: ['c', 'cX', 'cY'], // inset は 0% だけ
 	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',
 
 	// fx: ['1'],
@@ -83,7 +83,7 @@ export default {
 	gre: ['-1'],
 	ga: [
 		'side',
-		//'start', 'center', 'end'
+		//'start', 'c', 'end'
 	],
 	gradient: ['sunset', 'blackToBottom'],
 	// transform: ['flip:x', 'flip:y', 'flip:xy'],

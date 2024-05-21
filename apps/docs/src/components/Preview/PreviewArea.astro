@@ -33,12 +33,9 @@ if (resize) lismState.push('is--resize');
 		<slot />
 		{
 			resize && (
-				<Layer
-					className='c--preview_help -d:f -lh:1 -p:em5 -gap:em3 -bdrs:xs'
-					position='bottom right'
-				>
+				<Lism className='c--preview_help -pos:a -b:0 -r:0 -d:f -lh:1 -p:em5 -gap:em3 -bdrs:xs'>
 					リサイズ可能 <Icon as={ArrowDownRight} weight='fill' />
-				</Layer>
+				</Lism>
 			)
 		}
 	</Lism>

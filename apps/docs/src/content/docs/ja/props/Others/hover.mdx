@@ -5,7 +5,7 @@ sidebar:
   order: 101
 ---
 
-import { Alert, Flex, Button, Media, MediaLayer, FilterLayer, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
+import { Alert, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -336,33 +336,33 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewTitle>`get:show` を使う</PreviewTitle>
 	<PreviewArea p={20}>
 		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
-			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
-			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
-			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
-				<Text p='box' c='white'>View More</Text>
+			<Layer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer hover='get:show' bgc='black:20%' blur='4px'/>
+			<Layer hover='get:show' inset='c' c='white' bgc='black:50%' bdrs='l'>
+				<Text p='box'>View More</Text>
 			</Layer>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
 		```jsx "hover='pass'" "hover='get:show'"
 		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
-			<MediaLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy'/>
-			<FilterLayer hover='get:show' bgc='black:20%' blur='4px'/>
-			<Layer hover='get:show' position='center' bgc='black:50%' bdrs='l'>
-				<Text p='box' c='white'>View More</Text>
+			<Layer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer hover='get:show' bgc='black:20%' blur='4px'/>
+			<Layer hover='get:show' inset='c' c='white' bgc='black:50%' bdrs='l'>
+				<Text p='box'>View More</Text>
 			</Layer>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:pass" "-hov:get:show"
-	<a class="c--banner is--frame -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
-		<div class="l--layer l--layer--media">
-			<img class="-obf:cv" loading="lazy" decoding="async" src="/img/img-1.jpg" width="960" height="640">
+	<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<div class="l--layer is--frame">
+			<img src="/img/img-1.jpg" width="960" height="640" loading="lazy">
 		</div>
-		<div class="l--layer l--layer--filter -hov:get:show -bgc:" style="backdrop-filter:blur(4px);--bgc:hsl(var(--hsl--black) / 20%)"></div>
-		<div class="l--layer -hov:get:show -bgc: -bdrs:l -trnslt:-50 -l:50 -t:50" style="--bgc:hsl(var(--hsl--black) / 50%)">
-			<p class="-p:box -c:" style="--c:var(--white)">View More</p>
+		<div class="l--layer -hov:get:show -bgc:" style="--bgc:hsl(var(--hsl-black) / 20%);backdrop-filter:blur(4px)"></div>
+		<div class="l--layer -hov:get:show -inset:c -c: -bgc: -bdrs:l" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 50%)">
+			<p class="-p:box">View More</p>
 		</div>
 	</a>
 	```
@@ -373,20 +373,20 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 	<PreviewTitle>`hover=get:zoom` を使う</PreviewTitle>
 	<PreviewArea p={20}>
 		<LinkBox isFrame href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
-			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			<Layer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
 		```jsx "hover='pass'" "hover='get:zoom'"
 		<LinkBox isFrame hover='pass' href='#banner-link' aspect='16/9' bdrs='l'>
-			<MediaLayer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			<Layer hover='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:pass" "-hov:get:zoom"
 	<a class="c--banner is--frame -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
-		<div class="l--layer l--layer--media">
+		<div class="l--layer is--frame">
 			<img class="-hov:get:zoom -obf:cv" loading="lazy" decoding="async" src="/img/img-2.jpg" width="960" height="640">
 		</div>
 	</a>

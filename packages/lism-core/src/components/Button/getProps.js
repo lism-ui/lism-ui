@@ -40,8 +40,6 @@ export function getButtonProps({
 		textProps.gridItem = { gc: 2, jslf: 'c' };
 		// leftIconProps.gridItem = { gc: 1 };
 		// rightIconProps.gridItem = { gce: -1 };
-	} else {
-		defaultProps.jc = 'c';
 	}
 
 	return {
@@ -50,15 +48,27 @@ export function getButtonProps({
 	};
 }
 
-export function getIconButtonProps({ _lismClass = [], variant = 'fill', ...props }) {
+export function getIconButtonProps({
+	_lismClass = [],
+	variant = 'fill',
+	size,
+	style = {},
+	...props
+}) {
 	_lismClass.push('c--button');
-	if (variant) _lismClass.push(` c--button--${variant}`);
+	_lismClass.push('c--button--icon');
+	if (variant) _lismClass.push(`c--button--${variant}`);
+
+	if (size) {
+		style['--size'] = size;
+	}
 
 	const defaultProps = {
 		_lismClass,
 		skipState: true,
 		tag: 'a',
 		hover: 'fade',
+		style,
 		// jc: 'center',
 		// ai: 'center',
 	};

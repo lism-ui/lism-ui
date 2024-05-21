@@ -2,7 +2,7 @@
 title: 'Alert'
 description: ...
 ---
-import { Box, Alert, FilterLayer, MediaLayer } from '@lism-ui/astro';
+import { Box, Alert, Layer } from '@lism-ui/astro';
 import { Book } from '@phosphor-icons/react';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
@@ -196,12 +196,12 @@ import { Book } from '@phosphor-icons/react';
 
 
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>背景に画像がある時の様子</PreviewTitle>
 	<PreviewArea alignfull p={20}>
 		<Box>
-			<MediaLayer src='/img.jpg' z='-1'/>
-			<FilterLayer blur='8px' bgc='rgba(0,0,0,0.6)' z='-1'/>
+			<Layer src='/img.jpg' z='-1'/>
+			<Layer blur='8px' bgc='rgba(0,0,0,0.6)' z='-1'/>
 			<Box c='white' p={20} isFlow='s'>
 				<AlertDemos><DammyText length='codes' /></AlertDemos>
 			</Box>
@@ -221,7 +221,7 @@ import { Book } from '@phosphor-icons/react';
 		</Section>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 
 

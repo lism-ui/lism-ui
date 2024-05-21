@@ -2,12 +2,16 @@
 	position: relative;
 }
 
+// .is--layer = .
+
 // --------------------
 // Layer
 // --------------------
 .l--layer {
 	position: absolute;
-	overflow: auto;
+	// overflow: auto;
+	overflow: hidden;
+	inset: 0;
 
 	// 親要素のサイズを超えないようにする設定
 	// &[data-size='cover'] {
@@ -21,11 +25,11 @@
 	// }
 
 	// 要素のサイズを超えないようにする設定
-	&[data-size='contain'] {
-		max-width: 100%;
-		max-height: 100%;
-		// overflow: auto;
-	}
+	// &[data-size='contain'] {
+	// 	max-width: 100%;
+	// 	max-height: 100%;
+	// 	overflow: auto;
+	// }
 }
 
 // .l--layer--content {
@@ -33,11 +37,11 @@
 // 	z-index: 1;
 // }
 
-.l--layer--filter,
-.l--layer--media {
-	inset: 0;
-	overflow: hidden;
-}
+// .l--layer--filter,
+// .l--layer--media {
+// 	inset: 0;
+// 	overflow: hidden;
+// }
 
 // // .l--layer__media
 // .l--layer--media {

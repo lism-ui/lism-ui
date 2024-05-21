@@ -3,7 +3,7 @@ title: 'Hero'
 description: ...
 ---
 
-import { Spacer, Box, Grid, DammyText, Text, Container, Layer, Stack, FlexItem, MediaLayer, FilterLayer, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
+import { Spacer, Box, Grid, DammyText, Text, Container, Layer, Stack, FlexItem, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
 import { Reference, MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import PreviewFrame from "~/components/PreviewFrame.astro";
@@ -142,8 +142,8 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>With Layers</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:50%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
 				<DammyText length='l' />
@@ -151,10 +151,10 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "\<MediaLayer" "\<FilterLayer"
+		```jsx "isFrame" "\<Layer" "\<Layer"
 		<Stack isFullwide isFrame minH='50vh'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:50%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
 				<DammyText length='l' />
@@ -172,8 +172,8 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>With ShapDivide & Layers</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:50%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer blur='4px' bgc='black:50%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
@@ -184,10 +184,10 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "\<MediaLayer" "\<FilterLayer" "\<ShapeDivider"
+		```jsx "isFrame" "\<Layer" "\<Layer" "\<ShapeDivider"
 		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer blur='4px' bgc='black:40%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer blur='4px' bgc='black:40%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
@@ -317,8 +317,8 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 	<PreviewTitle>活用例</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer bgc='black:20%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer bgc='black:20%' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
 				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
@@ -330,8 +330,8 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 	<PreviewCode>
 		```jsx
 		<Stack isFullwide isFrame minH='50vh'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640'/>
-			<FilterLayer bgc='black:20%' />
+			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Layer bgc='black:20%' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
 				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
@@ -347,8 +347,8 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 	<PreviewTitle></PreviewTitle>
 	<PreviewArea resize>
 		<Hero minH='50vh' as={Grid}>
-			<MediaLayer src='/img/img-2.jpg' alt='' width='960' height='640'/>
-			<FilterLayer bgc='black:20%' />
+			<Layer src='/img/img-2.jpg' alt='' width='960' height='640'/>
+			<Layer bgc='black:20%' />
 			<HeroContent type='center' bd='guide' minH='50%' as={Grid}>
 				<Center minH='100%' w='100' bg="glass" p="box" c="white" bdrs='s' gap={20}>
 					<Text fw='bold' fz='xl'>DEMO 8</Text>

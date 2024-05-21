@@ -1,0 +1,124 @@
+---
+title: 'absolute'
+description: ...
+---
+
+
+import { Media, MediaLayer, FilterLayer, Stack, Alert, Note, Text, Box, Layer, Columns, Center, Frame } from '@lism-ui/astro';
+import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+`position:absolute`で要素を配置する例をいくつか紹介します。
+
+<Note preset='info' heading='Points'>
+- positionにあたるプロパティが`pos`です。
+	- `absolute`は`a`と省略できます。
+	- `relative`は`r`と省略できます。
+- 配置位置を決めるプロパティが `inset`,`top`,`bottom`,`left`,`right` です。
+- `inset`には、少し特殊なユーティリティクラス、`-inset:c`,`-inset:cX`,`-inset:cY`があります。
+</Note>
+
+<Alert preset='warning' fz='s'>
+※ `inset`,`top` `right` `bottom` `left` は、数値指定するとスペーストークンとして認識されます。  
+また、この処理の都合上、値が`0`,`100`のユーティリティクラス（`-t:0`など）を出力させたい場合、 `t={0}` ではなく `t='0'` と文字列で指定する必要があります。
+</Alert>
+
+<Preview>
+	<PreviewTitle>
+		`pos='a'`でabsolute配置する
+	</PreviewTitle>
+	<PreviewArea p='20'>
+		<Box pos='r' p='40' bgc='base-2'>
+			<Text fz='4xl' fw='bold' c='content-3' ta='c' lts='l'>BG</Text>
+			<Box pos='a' top='0' left='0' bd='guide'>
+				<p>Content A</p>
+			</Box>
+			<Box pos='a' bottom='40' right='40' bd='guide'>
+				<p>Content B</p>
+			</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+		```jsx "pos='a'" "top" "bottom" "left" "right"
+		<Box pos='r' p='40' bgc='base-2'>
+			<Text fz='4xl' fw='bold' c='content-3' ta='c' lts='l'>BG</Text>
+			<Box pos='a' top='0' left='0' bd='guide'>
+				<p>Content A</p>
+			</Box>
+			<Box pos='a' bottom='40' right='40' bd='guide'>
+				<p>Content B</p>
+			</Box>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-inset:0"
+		<div class="l--box -pos:r -p:40 -bgc:base-2">
+			<p class="-fz:4xl -fw:bold -c:content-3 -ta:c -lts:l">BG</p>
+			<div class="l--box -pos:a -t:0 -l:0 -bd:guide">
+				<p>Content A</p>
+			</div>
+			<div class="l--box -pos:a -bd:guide" style="bottom:var(--s--40);right:var(--s--40)">
+				<p>Content B</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+### positionの指定
+
+<Preview>
+	<PreviewTitle>
+		各配置の指定方法
+	</PreviewTitle>
+	<PreviewArea resize p='20'>
+		{/* <LayerPositionsDemo /> */}
+		<Box pos='r' aspect='4/3' bgc='base-2'>
+			<Box pos='a' left='0' top='0' bd='guide'><Text fz='s' p='20' lh='1'>A</Text></Box>
+			<Box pos='a' inset='cX' top='0' bd='guide'><Text fz='s' p='20' lh='1'>B</Text></Box>
+			<Box pos='a' right='0' top='0' bd='guide'><Text fz='s' p='20' lh='1'>C</Text></Box>
+			<Box pos='a' left='0' inset='cY' bd='guide'><Text fz='s' p='20' lh='1'>D</Text></Box>
+			<Box pos='a' inset='c' bd='guide'><Text fz='s' p='20' lh='1'>E</Text></Box>
+			<Box pos='a' right='0' inset='cY' bd='guide'><Text fz='s' p='20' lh='1'>F</Text></Box>
+			<Box pos='a' left='0' bottom='0' bd='guide'><Text fz='s' p='20' lh='1'>G</Text></Box>
+			<Box pos='a' inset='cX' bottom='0' bd='guide'><Text fz='s' p='20' lh='1'>H</Text></Box>
+			<Box pos='a' right='0' bottom='0' bd='guide'><Text fz='s' p='20' lh='1'>I</Text></Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+		```jsx
+		<Box pos='r' aspect='4/3' bgc='base-2'>
+			<Box pos='a' left='0' top='0'>...</Box>
+			<Box pos='a' inset='cX' top='0'>...</Box>
+			<Box pos='a' right='0' top='0'>...</Box>
+			<Box pos='a' left='0' inset='cY'>...</Box>
+			<Box pos='a' inset='c'>...</Box>
+			<Box pos='a' right='0' inset='cY'>...</Box>
+			<Box pos='a' left='0' bottom='0'>...</Box>
+			<Box pos='a' inset='cX' bottom='0'>...</Box>
+			<Box pos='a' right='0' bottom='0'>...</Box>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-inset:0"
+		<div class="l--box -pos:r -aspect:4/3 -bgc:base-2">
+			<div class="l--box -pos:a -l:0 -t:0">...</div>
+			<div class="l--box -pos:a -inset:cX -t:0">...</div>
+			<div class="l--box -pos:a -r:0 -t:0">...</div>
+			<div class="l--box -pos:a -l:0 -inset:cY">...</div>
+			<div class="l--box -pos:a -inset:c">...</div>
+			<div class="l--box -pos:a -r:0 -inset:cY">...</div>
+			<div class="l--box -pos:a -l:0 -b:0">...</div>
+			<div class="l--box -pos:a -inset:cX -b:0">...</div>
+			<div class="l--box -pos:a -r:0 -b:0">...</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+

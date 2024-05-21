@@ -3,7 +3,7 @@ title: 'Banner'
 description: ...
 ---
 
-import { DammyText, Text, Center, Layer, FilterLayer, Media, MediaLayer, Button, LinkBox } from '@lism-ui/astro';
+import { DammyText, Text, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
 
 import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
@@ -45,8 +45,8 @@ import { LinkBox } from '@lism-ui/core';
 	<PreviewArea p={30}>
 		<LinkBox isFrame href='#banner-link' aspect='16/9' bdrs='l'>
 			<Media src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-			<FilterLayer bgc='black:40%' blur='2px' />
-			<Layer inset='0' isFlow='s' p='box' c='white'>
+			<Layer bgc='black:40%' blur='4px' />
+			<Layer isFlow='s' p='box' c='white'>
 				<Text fz='2xl' fw='bold'>Banner</Text>
 				<DammyText lang='ja'/>
 			</Layer>
@@ -54,12 +54,12 @@ import { LinkBox } from '@lism-ui/core';
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { LinkBox, Layer, FilterLayer, Text, DammyText } from '@lism-ui/core';
+import { LinkBox, Layer, Layer, Text, DammyText } from '@lism-ui/core';
 
 <LinkBox isFrame href='#banner-link' aspect='16/9' bdrs='l'>
 	<Media src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-	<FilterLayer bgc='black:40%' blur='2px' />
-	<Layer inset='0' isFlow='s' p='box' c='white'>
+	<Layer bgc='black:40%' blur='4px' />
+	<Layer isFlow='s' p='box' c='white'>
 		<Text fz='2xl' fw='bold'>Banner</Text>
 		<DammyText lang='ja'/>
 	</Layer>
@@ -74,22 +74,22 @@ import { LinkBox, Layer, FilterLayer, Text, DammyText } from '@lism-ui/core';
 	<PreviewTitle>`hover`を活用する例</PreviewTitle>
 	<PreviewArea p={30}>
 		<LinkBox isFrame href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
-			<MediaLayer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hover='get:zoom'/>
-			<FilterLayer bgc='black:20%' blur='4px' hover='get:show'/>
-			<Layer position='center' bgc='black:50%' bdrs='l' hover='get:show'>
-				<Text p='box' c='white'>View More</Text>
+			<Layer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hover='get:zoom'/>
+			<Layer bgc='black:20%' blur='4px' hover='get:show'/>
+			<Layer inset='c' bgc='black' c='white' bdrs='l' hover='get:show'>
+				<Text p='box'>View More</Text>
 			</Layer>
 		</LinkBox>
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { LinkBox, Layer, FilterLayer, MediaLayer, Text } from '@lism-ui/core';
+import { LinkBox, Layer, Text } from '@lism-ui/core';
 
 <LinkBox isFrame href='#banner-link' aspect='16/9' hover='pass' bdrs='l'>
-	<MediaLayer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hover='get:zoom'/>
-	<FilterLayer bgc='black:20%' blur='4px' hover='get:show'/>
-	<Layer position='center' bgc='black:50%' bdrs='l' hover='get:show'>
-		<Text p='box' c='white'>View More</Text>
+	<Layer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hover='get:zoom'/>
+	<Layer bgc='black:20%' blur='4px' hover='get:show'/>
+	<Layer inset='c' bgc='black' c='white' bdrs='l' hover='get:show'>
+		<Text p='box'>View More</Text>
 	</Layer>
 </LinkBox>
 ```

@@ -12,6 +12,8 @@
 	line-height: var(--lh--xs);
 	padding: 0.375em 0.875em; // bdrs=full を考慮すると 1em くらいあった方がいいが...
 	gap: var(--em--4);
+	align-items: center;
+	justify-content: center;
 	// min-block-size: 2.75em;
 	min-block-size: 2.5em;
 }
@@ -19,7 +21,6 @@
 // py は小さめにして、minHで最低限の高さを確保.
 .c--button {
 	--link-td: none; // pタグ内にくるかもしれないので
-	align-items: center;
 	width: fit-content;
 	color: var(--c);
 	background-color: var(--bgc);
@@ -92,3 +93,12 @@
 // 		translate: var(--icon--offset);
 // 	}
 // }
+
+.c--button--icon {
+	--size: 2.5em;
+	// gap: 0;
+	width: var(--size);
+	height: var(--size);
+	min-height: unset;
+	padding: 0.25em;
+}

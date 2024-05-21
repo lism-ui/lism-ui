@@ -1,6 +1,6 @@
 ---
 import { LismProps } from '../types';
-import { Flex } from '../Flex';
+import { Stack } from '../Flex';
 import { Icon } from '../Icon';
 import { getIconButtonProps } from '@lism-ui/core/components/Button/getProps';
 
@@ -10,4 +10,4 @@ const { icon, ...props } = Astro.props || {};
 const hasSlot = Astro.slots.has('default');
 ---
 
-<Flex {...getIconButtonProps(props)}>{hasSlot ? <slot /> : <Icon icon={icon} />}</Flex>
+<Stack {...getIconButtonProps(props)}>{hasSlot ? <slot /> : <Icon icon={icon} />}</Stack>
