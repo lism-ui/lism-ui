@@ -2,10 +2,10 @@
 [dir='rtl'] {
 	// flip:rtl とか用意する...?
 	// .flip:rtl.flip:X
-	.c--chat--start > .c--chat__body > .e--deco {
+	.c--chat--start > .c--chat__body > .a--deco {
 		transform: scaleX(-1);
 	}
-	.c--chat--end > .c--chat__body > .e--deco {
+	.c--chat--end > .c--chat__body > .a--deco {
 		transform: scaleX(1);
 	}
 

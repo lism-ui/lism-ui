@@ -1,6 +1,6 @@
 export default function ({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('e--delimiter');
-	if (variant) _lismClass.push(`e--delimiter--${variant}`);
+	_lismClass.push('a--delimiter');
+	if (variant) _lismClass.push(`a--delimiter--${variant}`);
 
 	const defaultProps = {
 		skipState: true,

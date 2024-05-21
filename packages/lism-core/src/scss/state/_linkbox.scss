@@ -27,13 +27,13 @@
 	}
 }
 
-.e--hiddenLink {
+.a--hiddenLink {
 	position: absolute;
 	inset: 0;
 	z-index: 0;
 }
 
-.e--overlayLink {
+.a--overlayLink {
 	position: static;
 	color: inherit;
 	--link-td: none; // text-decoration: none;
@@ -48,7 +48,7 @@
 }
 
 // position relative な要素が上にきてしまう
-.e--hiddenLink ~ .is--frame {
+.a--hiddenLink ~ .is--frame {
 	pointer-events: none;
 }
 
@@ -75,7 +75,7 @@
 // 		// z-index: 1;
 // 	}
 
-// 	a:not(.e--overlayLink) {
+// 	a:not(.a--overlayLink) {
 // 		// pointer-events: auto;
 // 		// position: relative;
 // 		// z-index: 1;

@@ -25,7 +25,7 @@
 	grid-row: 1 / -1;
 }
 
-// e--deco
+// a--deco
 .c--timeline__shape {
 	--size: var(--shape-size);
 	grid-area: shape;
@@ -35,12 +35,12 @@
 	width: var(--size);
 	height: var(--size);
 
-	&:has(> .e--icon) {
+	&:has(> .a--icon) {
 		--size: var(--icon-size);
 		font-size: var(--size);
 	}
 }
-.c--timeline__shape > .e--icon {
+.c--timeline__shape > .a--icon {
 	--scale: 0.75;
 }
 

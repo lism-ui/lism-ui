@@ -21,7 +21,7 @@
 // 	&.c--chat--speak .c--chat__content {
 // 		border-start-start-radius: 0;
 // 	}
-// 	> .c--chat__body > .e--deco {
+// 	> .c--chat__body > .a--deco {
 // 		inset-inline-end: 100%;
 // 	}
 // }
@@ -29,7 +29,7 @@
 .c--chat--end {
 	grid: 'name icon' var(--body-offset) 'body icon' 'foot .' / 1fr auto;
 	// > [data-type='chat'] > .c--chat__content {border-start-end-radius: 0;}
-	// > .c--chat__body > .e--deco {
+	// > .c--chat__body > .a--deco {
 	// 	inset-inline-start: 100%;
 	// 	transform: scaleX(-1);
 	// }
@@ -73,19 +73,19 @@
 }
 
 // decorator
-:where(.c--chat__body) > .e--deco {
+:where(.c--chat__body) > .a--deco {
 	// top: 0.5em;
 	--size: var(--deco-size);
 	background: var(--cbox-bgc, var(--gray));
 	width: var(--size);
 	height: var(--size);
 }
-.e--deco--chat-speak {
+.a--deco--chat-speak {
 	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path d="M8,8L8,8C7.4,4.8,5.4,2,2.6,0.4L2,0h6V8z"/></svg>');
 	// --mask-image: url(data:image/svg+xml;base64,...);
 }
 // think
-.e--deco--chat-think {
+.a--deco--chat-think {
 	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><circle cx="2" cy="2" r="1.5"/><circle cx="5" cy="5" r="2.2"/></svg>');
 	// scale: 1.1;
 }

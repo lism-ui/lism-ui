@@ -65,7 +65,7 @@
 	}
 
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
-	> .e--icon {
+	> .a--icon {
 		// grid-area: icon;
 		transition: rotate 0.25s;
 		rotate: calc(0deg - var(--isOpened) * 180deg);

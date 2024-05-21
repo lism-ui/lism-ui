@@ -41,7 +41,7 @@ export const PrestIcons = () => {
 | `asProps` | 外部のアイコンコンポーネントに渡すpropsを指定できます。 |
 | `icon` | アイコンを指定できます。指定した内容によって出力が変わります。 |
 | `emoji`| emoji用のクラスを付与して、指定した絵文字をそのまま出力します。 |
-| `isInline` | 指定すると、`.e--icon--inline`クラスも同時に出力されます。 |
+| `isInline` | 指定すると、`.a--icon--inline`クラスも同時に出力されます。 |
 | `size` | プリセットアイコンを呼び出す場合、`width`, `height`として出力されます。|
 | `scale` <PropBadge type="cssvar">--scale</PropBadge>| アイコンの scale を指定できます。css変数で出力されます。 |
 | `label` <PropBadge type="attr">aria-label</PropBadge>| `aria-label`として出力します。指定があれば`role="img"`が同時に出力され、指定がない場合は`aria-hidden="true"`が出力されます。 |
@@ -123,6 +123,10 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 	</PreviewCode>
 </Preview> 
 
+<HelpText>
+`.a--icon[data-icon="acc-btn"]`に対するCSSは Lism に内包されています。
+</HelpText>
+
 {/* また、`name`が`mask-`で始まる場合は `--mask-image` にsvgを渡せるようになっています。  
 lism-core には、アコーディオン用に`"mask-acc-btn"`のみ用意しています。
 
@@ -184,11 +188,11 @@ import { Cat } from "@phosphor-icons/react";
 {/* <Preview>
 	<PreviewTitle>アイコンを`children`に渡す</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cat className="e--icon" weight="thin" size="3em" />
+		<Cat className="a--icon" weight="thin" size="3em" />
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Cat className="e--icon" weight="thin" size="3em" />
+		<Cat className="a--icon" weight="thin" size="3em" />
 		```
 	</PreviewCode>
 </Preview> */}
@@ -197,15 +201,15 @@ import { Cat } from "@phosphor-icons/react";
 
 {/* 
 <Preview>
-	<PreviewTitle>`svg`に直接`e--icon`クラスを指定</PreviewTitle>
+	<PreviewTitle>`svg`に直接`a--icon`クラスを指定</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<svg className="e--icon" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" viewBox="0 0 256 256">
+		<svg className="a--icon" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" viewBox="0 0 256 256">
 			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
 		</svg>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<svg className="e--icon" role="img" aria-label="Phosphor Icons のロゴ" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" viewBox="0 0 256 256">
+		<svg className="a--icon" role="img" aria-label="Phosphor Icons のロゴ" xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" viewBox="0 0 256 256">
 			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
 		</svg>
 		```
@@ -234,7 +238,7 @@ import { Cat } from "@phosphor-icons/react";
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "--size:"
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="e--icon -c:" style="--c:var(--red)">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="a--icon -c:" style="--c:var(--red)">
 			<path d="M144,24H64a8,8,0,0,0-8,8V160a80.09,80.09,0,0,0,80,80,8,8,0,0,0,8-8V168a72,72,0,0,0,0-144ZM72,62.54,122.32,152H72Zm56,66.92L77.68,40H128ZM72.51,168H128v55.5A64.14,64.14,0,0,1,72.51,168ZM144,152V40a56,56,0,0,1,0,112Z"></path>
 		</svg>
 		```
@@ -260,8 +264,8 @@ import { Cat } from "@phosphor-icons/react";
 	</PreviewCode>
 	<PreviewCode slot='tab' label="HTML">
 		```html
-		<span aria-hidden="true" class="e--icon e--icon--emoji -fz:" style="--fz:2em;">✍️</span>
-		<span aria-hidden="true" class="e--icon e--icon--emoji -fz:" style="--fz:2em;">💡</span>
+		<span aria-hidden="true" class="a--icon a--icon--emoji -fz:" style="--fz:2em;">✍️</span>
+		<span aria-hidden="true" class="a--icon a--icon--emoji -fz:" style="--fz:2em;">💡</span>
 		```
 	</PreviewCode>
 </Preview>
@@ -269,21 +273,21 @@ import { Cat } from "@phosphor-icons/react";
 
 ## インラインアイコン
 
-`isInline`, または `variant='inline'` を 指定すると、`.e--icon--inline`クラスも出力されます。
+`isInline`, または `variant='inline'` を 指定すると、`.a--icon--inline`クラスも出力されます。
 
 <Preview>
 	<PreviewTitle>HTML構造</PreviewTitle>
 	<PreviewCode>
 	```jsx
-	<svg class="e--icon e--icon--inline">...</svg>
+	<svg class="a--icon a--icon--inline">...</svg>
 	```
 	</PreviewCode>
 </Preview>
 
-`e--icon--inline`に対しては次のようなCSSが適用されており、文字と並んでも見やすくなるような調整がデフォルトで入っています。
+`a--icon--inline`に対しては次のようなCSSが適用されており、文字と並んでも見やすくなるような調整がデフォルトで入っています。
 
 ```css
-.e--icon--inline {
+.a--icon--inline {
 	--scale: 1.125; /* アイコンは小さくなりがちなので、デフォルトでほんのり拡大 */
 	vertical-align: -0.125em; /* テキストの下部付近に揃える */
 	margin-inline: calc(1em * (var(--scale) - 1) / 2); /* scaleを考慮してマージンをつける */

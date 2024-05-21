@@ -4,8 +4,8 @@ import getInsetProps from '../getInsetProps';
 export default function ({ _lismClass = [], variant, size, ...props }) {
 	props = getEffectProps(getInsetProps(props));
 
-	_lismClass.push('e--deco');
-	if (variant) _lismClass.push(`e--deco--${variant}`);
+	_lismClass.push('a--deco');
+	if (variant) _lismClass.push(`a--deco--${variant}`);
 	props._lismClass = _lismClass;
 
 	if (size) {

@@ -9,8 +9,8 @@ export default function getAvatarProps({
 	style = {},
 	...props
 }) {
-	_lismClass.push('c--avatar');
-	if (variant) _lismClass.push(`c--avatar--${variant}`);
+	_lismClass.push('b--avatar');
+	if (variant) _lismClass.push(`b--avatar--${variant}`);
 
 	if (size) style['--size'] = size;
 	props.style = style;

@@ -1,7 +1,8 @@
-:where(.c--avatar) {
+// :where(.b--avatar) {
+// 	--size: auto;
+// }
+.b--avatar {
 	--size: auto;
-}
-.c--avatar {
 	display: inline-flex;
 	inline-size: var(--size);
 	// aspect-ratio: 1/1;

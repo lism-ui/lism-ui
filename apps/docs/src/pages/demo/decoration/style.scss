@@ -1,4 +1,4 @@
-:where(.c--decoBox > .e--deco) {
+:where(.c--decoBox > .a--deco) {
 	--size: 1em;
 	width: var(--size);
 	height: var(--size);
@@ -17,7 +17,7 @@
 	max-width: 30em;
 	// box-shadow: 1px 1px 2px 0px hsl(var(--hsl--shadow) / 0.08);
 }
-.c--decoBox--sticky > .e--deco {
+.c--decoBox--sticky > .a--deco {
 	max-width: 12em;
 	background-color: hsl(var(--hsl--shadow) / 0.2);
 	filter: blur(4px);
@@ -25,7 +25,7 @@
 
 // .c--decoBox--pipipi {}
 // .c--decoBox--pipipi > .l--box {}
-.e--deco--pipipi {
+.a--deco--pipipi {
 	&::before,
 	&::after {
 		content: '';

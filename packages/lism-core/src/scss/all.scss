@@ -4,14 +4,14 @@
 // base
 @use './base/index' as base;
 
+// state
+@use './state/index';
+
 // layout
 @use './layout/index' as layout;
 
-// element
-@use './element/index' as element;
-
 // objects
-@use './component/index' as component;
+@use './objects/index' as objects;
 
 // utility
 @use './utility/index' as utility;

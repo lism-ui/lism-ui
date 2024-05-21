@@ -1,9 +1,9 @@
-:where(.e--icon:not([width])) {
+:where(.a--icon:not([width])) {
 	width: 1em;
 	height: 1em;
 }
 
-.e--icon {
+.a--icon {
 	--scale: 1;
 	scale: var(--scale);
 	display: inline-flex;
@@ -13,7 +13,7 @@
 	// height: 1em;
 }
 
-.e--icon--emoji {
+.a--icon--emoji {
 	// emoji 考慮
 	font-family: var(--ff--emoji);
 	line-height: 1;
@@ -21,7 +21,7 @@
 	place-items: center; // align-items: center;
 }
 
-.e--icon--inline {
+.a--icon--inline {
 	--scale: 1.125; // inlineアイコンはデフォルト状態で少し拡大表示
 	vertical-align: -0.125em;
 	margin-inline: calc(1em * (var(--scale) - 1) / 2);
@@ -29,16 +29,16 @@
 }
 
 // data-icon のサイズはフォントサイズでコントロールする
-.e--icon:where([data-icon]) {
+.a--icon:where([data-icon]) {
 	width: 1em;
 	height: 1em;
 }
 
-// .e--icon[data-icon='acc-btn'] {
+// .a--icon[data-icon='acc-btn'] {
 // 	background-color: currentColor;
 // 	clip-path: polygon(50% 76%, 10% 25%, 90% 25%);
 // }
 
-// :where(.e--icon).-mask\: {
+// :where(.a--icon).-mask\: {
 // 	background-color: currentColor;
 // }

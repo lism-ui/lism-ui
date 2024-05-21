@@ -64,21 +64,26 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td>HTML要素に対するスタイルの初期セット</td>
 		</tr>
 		<tr>
-			<td rowSpan={3}>Layout</td>
-			<td>Design State</td>
-			<td rowSpan={3}>基本的なレイアウト構成要素</td>
+			<td colSpan='2'>Design State</td>
+			<td>レイアウト・デザインを組む上で特定の役割を持つ要素。かつ、汎用性が高く複数のモジュールに対してつけ外しできるようなもの。</td>
+			<td>0-1-0</td>
+		</tr>
+		<tr>
+			<td colSpan='2'>Layout Modules</td>
+			<td>レイアウトを構成するための具体的な役割を持つ要素。</td>
+			<td>0-1-0</td>
+		</tr>
+		<tr>
+			<td rowSpan={3}>Objects</td>
+			<td>Atoms</td>
+			<td rowSpan={3}>単体で具体的な役割を持つコンポーネント群</td>
 			<td rowSpan={3}>0-1-0</td>
 		</tr>
 		<tr>
-			<td>Layout Module</td>
+			<td>Blocks</td>
 		</tr>
 		<tr>
-			<td>Element Module</td>
-		</tr>
-		<tr>
-			<td colSpan='2'>Component</td>
-			<td>具体的な役割を持つコンポーネント. 基本的にレイアウトクラスと組み合わせて利用することを前提とする。</td>
-			<td>0-1-0</td>
+			<td>Components</td>
 		</tr>
 		{/* <tr>
 			<td>Block</td>
@@ -127,25 +132,26 @@ LismがどのようなCSS設計になっているかを説明します。
 Lismでは、レイアウト・デザインの構成要素を細分化していくつかの種類に分類しています。
 
 
-### Module 系 クラス
+### Module クラス
 
 |分類|形式|例|
 |---|---|---|
-|Layout Module<HelpText>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
-|Element Module<HelpText>デザインの構成要素として最小単位となるようなもの</HelpText>|`.e--{elemName}`|`.e--avatar`,`.e--icon`|
-|Component Module<HelpText>その他、具体的な役割を持ったコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--button`|
+|Layout<HelpText>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
+|Atom<HelpText>コンテンツの構成要素として最小単位となるようなもの</HelpText>|`.a--{atomName}`|`.a--icon`|
+|Block<HelpText>シンプルな役割を持つコンテンツ要素</HelpText>|`.b--{atomName}`|`.b--avatar`,`.b--button`|
+|Component<HelpText>その他のコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--tab`|
 
 {/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
 <small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}
 
 <Alert preset="info">
-Component は、`.c--`系のクラスを使うだけでデザインが完結するわけではなく、`l--`や`e--`, Prop Utility などと組み合わせて使用する前提のものが多くなっています。
+Blocks はAtom,Layoutクラスで構成されるような粒度で、Componentは Layout,Atom,Block 等で構成されるような粒度でイメージしてください。
 </Alert>
 
 
 #### 子要素を持つ場合
 
-子要素も含めて一つのモジュールとして機能するものは、子要素側のクラスぬいは BEMでの Element にあたる文字列をクラスに付け加えます。
+子要素も含めて一つのモジュールとして機能するものは、BEMでの Element にあたる文字列をクラスに付け加えます。
 
 - 形式: `.c--{componentName}__{elementName}`
 - 例: `.c--hoge__item`
@@ -156,9 +162,9 @@ Component は、`.c--`系のクラスを使うだけでデザインが完結す�
 モジュールのバリエーションスタイルを定義する場合、BEMでの Modifier を付け加えたクラスを作成します。
 
 - 形式:`.{prefix}--{name}--{variant}`
-- 例: `.c--button--outline`
+- 例: `.b--button--outline`
 
-基本的には元となる`.{pefix}--{name}`も併記し、CSSコードの重複を避けるようにして運用してください。
+基本的には元となる`.{pefix}--{name}`も併記し、CSSコードの重複を避けるようにして運用します。
 
 
 ### State クラス
@@ -178,7 +184,7 @@ Design State はそれ単体でスタイルを持ち、Temporary State はそれ
 ### Prop Utility
 
 特定のCSSプロパティに対応するユーティリティクラスを定義しています。  
-基本的にはそれぞれのクラスが単一のCSSプロパティをコントロールするためのになっていますが、例外もあります。
+基本的にはそれぞれのクラスが単一のCSSプロパティをコントロールするためのになっています。（一部、例外もあります。）
 
 {/* 
 3. ユーティリティクラス
@@ -267,11 +273,9 @@ Lismパッケージに内蔵されているクラスではありませんが、�
 |---|---|---|
 |ユーティリティクラス|`.u--{utilityName}`|`.u--hoge`|
 |ユニーククラス|`.uq--{uniqueName}`|`.uq--hoge`|
-|エリア名|`.a--{areaName}`|`.a--header`,<br />`.a--sidebar`,<br />`.a--article`|
+|ゾーニング|`.z--{zoneName}`|`.z--header`,<br />`.z--sidebar`,<br />`.z--article`|
 |ページの分類|`.p--{type}--{id\|slug}`|`.p--front`, `.p--archive`, `.p--post--{id}`, `.p--page--{slug}`|
 |テキスト装飾|`.t--{textFormat}`|`.t--marker`|
-{/* |ゾーニング|`.z--{areaName}`|`.z--header`,<br />`.z--sidebar`,<br />`.z--article`| */}
-
 
 ## コンテナクエリ
 

@@ -23,10 +23,10 @@ export default function getProps({
 	style = {},
 	...otherProps
 }) {
-	_lismClass.push('e--icon');
-	if (isInline) _lismClass.push('e--icon--inline');
-	if (emoji) _lismClass.push('e--icon--emoji');
-	if (variant) _lismClass.push(`e--icon--${variant}`);
+	_lismClass.push('a--icon');
+	if (isInline) _lismClass.push('a--icon--inline');
+	if (emoji) _lismClass.push('a--icon--emoji');
+	if (variant) _lismClass.push(`a--icon--${variant}`);
 	otherProps._lismClass = _lismClass;
 
 	if (scale) style['--scale'] = scale;

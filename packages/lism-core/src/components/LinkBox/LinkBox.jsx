@@ -21,7 +21,7 @@ export default function LinkBox({
 	if (setHiddenLink) {
 		return (
 			<LismComponent isLinkBox tag='div' {...otherProps}>
-				<a className='e--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps}></a>
+				<a className='a--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps}></a>
 				{children}
 			</LismComponent>
 		);

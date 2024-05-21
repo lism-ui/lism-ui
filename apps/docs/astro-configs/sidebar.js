@@ -14,13 +14,6 @@ export default [
 				},
 			},
 			{
-				label: 'Consepts',
-				link: '/concepts/',
-				translations: {
-					ja: 'コンセプト',
-				},
-			},
-			{
 				label: 'Getting Started',
 				link: '/getting-started/',
 			},
@@ -68,7 +61,7 @@ export default [
 				link: '/components/lism/',
 			},
 			{
-				label: 'Layout',
+				label: 'Layouts',
 				link: '###---',
 			},
 			// {
@@ -139,10 +132,6 @@ export default [
 				link: '/components/reel/',
 			},
 			{
-				label: 'Spacer',
-				link: '/components/spacer/',
-			},
-			{
 				label: 'State',
 				link: '###---',
 			},
@@ -159,7 +148,7 @@ export default [
 				link: '/components/linkbox/',
 			},
 			{
-				label: 'Element',
+				label: 'Atoms',
 				link: '###---',
 			},
 			{
@@ -175,9 +164,10 @@ export default [
 				link: '/components/delimiter/',
 			},
 			{
-				label: 'Block',
+				label: 'Blocks',
 				link: '###---',
 			},
+
 			{
 				label: 'Avatar',
 				link: '/components/avatar/',
@@ -198,9 +188,13 @@ export default [
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
 			},
+			{
+				label: 'Spacer',
+				link: '/components/spacer/',
+			},
 
 			{
-				label: 'Component',
+				label: 'Components',
 				link: '###---',
 			},
 			{
@@ -229,7 +223,7 @@ export default [
 				link: '###---',
 			},
 			{
-				label: 'Examples',
+				label: 'More Examples',
 				link: '###---',
 			},
 

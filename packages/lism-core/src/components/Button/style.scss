@@ -68,9 +68,9 @@
 // 	justify-self: center;
 // }
 
-:where(.c--button) > .e--icon {
+:where(.c--button) > .a--icon {
 	scale: var(--icon--scale);
-	// flex-shrink: 0; // → .e--icon についてる
+	// flex-shrink: 0; // → .a--icon についてる
 }
 
 .c--button__leftIcon {
@@ -81,7 +81,7 @@
 }
 
 // .c--button__icon で統一するならこっち
-// :where(.c--button > .e--icon) {
+// :where(.c--button > .a--icon) {
 // 	&:only-child {
 // 		--icon--offset: 0;
 // 	}

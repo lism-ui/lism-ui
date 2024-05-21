@@ -162,8 +162,13 @@ td:first-child > code:only-child {
 		pointer-events: none;
 		color: inherit;
 		// margin-left: -0.5em;
-		padding: 0.75em 0 0.5em;
+		// padding: 0.75em 0 0.5em;
+		margin-top: 0.75em;
+		padding: 0.25em 0.5em;
 		font-size: var(--sl-text-sm);
+		// border-left: 1px solid #000;
+		font-weight: 700;
+		background-color: var(--base-2);
 	}
 	._divider {
 		padding-block: 0.5em;
