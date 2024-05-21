@@ -3,7 +3,7 @@ import { Flex, Stack, Frame, FlexItem, LinkBox } from '@lism-ui/core';
 export function Card({ isFlex, children, ...props }) {
 	let CardLayout = isFlex ? Flex : Stack;
 	return (
-		<CardLayout className='c--card' bdrs='m' bxsh='2' ov='h' {...props}>
+		<CardLayout className='c--card' bgc='base' bdrs='m' bxsh='2' ov='h' {...props}>
 			{children}
 		</CardLayout>
 	);

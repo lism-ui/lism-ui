@@ -3,5 +3,5 @@ import { Lism } from '../Lism';
 
 export default function Frame({ layout, ...props }) {
 	const Layout = layout || Lism;
-	return <Layout {...props} />;
+	return <Layout isFrame {...props} />;
 }
