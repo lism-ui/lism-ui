@@ -256,6 +256,10 @@ export default [
 				link: '/components/chat/',
 			},
 			{
+				label: 'Decorations',
+				link: '/components/decorations/',
+			},
+			{
 				label: 'FAQ',
 				link: '/components/faq/',
 			},
@@ -266,10 +270,6 @@ export default [
 			{
 				label: 'Timeline',
 				link: '/components/timeline/',
-			},
-			{
-				label: 'DecorationBox',
-				link: '/components/decorationbox/',
 			},
 		],
 	},

@@ -146,10 +146,10 @@ export default {
 
 	pos: { style: 'position', utils: 1 },
 	z: { style: 'zIndex', presets: 1 },
-	top: { ...insetsProps, style: 1, utilKey: 't' },
-	left: { ...insetsProps, style: 1, utilKey: 'l' },
-	right: { ...insetsProps, style: 1, utilKey: 'r' },
-	bottom: { ...insetsProps, style: 1, utilKey: 'b' },
+	t: { ...insetsProps, style: 'top' },
+	l: { ...insetsProps, style: 'left' },
+	r: { ...insetsProps, style: 'right' },
+	b: { ...insetsProps, style: 'bottom' },
 	inset: { style: 1, utils: 1, presets: 1, converter: 'space' },
 	insets: { map: 1 },
 

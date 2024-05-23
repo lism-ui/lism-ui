@@ -83,14 +83,14 @@ export default {
 		boxProps: { p: 'box', pos: 'r' },
 		lr: {
 			decoratorProps: {
-				i1: { pos: 'a', top: 0, left: 0, bd: 'all,r:n,b:n' },
-				i2: { pos: 'a', right: 0, bottom: 0, bd: 'all,t:n,l:n' },
+				i1: { pos: 'a', t: 0, l: 0, bd: 'all,r:n,b:n' },
+				i2: { pos: 'a', r: 0, b: 0, bd: 'all,t:n,l:n' },
 			},
 		},
 		tb: {
 			decoratorProps: {
-				i1: { pos: 'a', top: 0, right: 0, bd: 'all,l:n,b:n' },
-				i2: { pos: 'a', left: 0, bottom: 0, bd: 'all,r:n,t:n' },
+				i1: { pos: 'a', t: 0, r: 0, bd: 'all,l:n,b:n' },
+				i2: { pos: 'a', l: 0, b: 0, bd: 'all,r:n,t:n' },
 			},
 		},
 	},

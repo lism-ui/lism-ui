@@ -102,45 +102,6 @@ export default function content() {
 			</Stack>
 
 			<h2>横並び</h2>
-			<Flex className='c--stepNav'>
-				<Flex className='c--stepNav__item' bgc='content-3' c='base' px='30' py='10' pos='r'>
-					<Lism className='c--stepNav__body'>
-						<Text>入力</Text>
-					</Lism>
-					<Decorator
-						pos='a'
-						z='1'
-						h='100%'
-						w='.5em'
-						bgc='inherit'
-						left='100%'
-						top='0'
-						css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
-					></Decorator>
-				</Flex>
-				<Flex className='c--stepNav__item' bgc='content-2' c='base' px='30' py='10' pos='r'>
-					<Spacer w='em4' />
-					<Lism className='c--stepNav__body'>
-						<Text>確認</Text>
-					</Lism>
-					<Decorator
-						pos='a'
-						z='1'
-						h='100%'
-						w='.5em'
-						bgc='inherit'
-						left='100%'
-						top='0'
-						css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
-					></Decorator>
-				</Flex>
-				<Flex className='c--stepNav__item' bgc='content' c='base' px='30' py='10'>
-					<Spacer w='em4' />
-					<Lism className='c--stepNav__body'>
-						<Text>完了</Text>
-					</Lism>
-				</Flex>
-			</Flex>
 		</Lism>
 	);
 }

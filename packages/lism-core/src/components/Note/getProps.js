@@ -52,8 +52,8 @@ export default function getProps(_props) {
 	// 	// borderの上に重ねる
 	// 	Object.assign(headProps, {
 	// 		pos: 'absolute',
-	// 		top: 0,
-	// 		left: 0,
+	// 		t: 0,
+	// 		l: 0,
 	// 		translate: '0 -50%',
 	// 	});
 	// 	bodyProps.mbs = '10';

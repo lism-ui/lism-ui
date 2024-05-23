@@ -1,13 +1,21 @@
 ---
-title: 'DecorationBox'
+title: 'Decorations'
 description: ...
 ---
 
-import { Grid, Flex, GridItem, FlexItem, Decorator, Box } from '@lism-ui/astro';
+import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Alert } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import BalloonBox from '~/components/ex/Decorations/balloon';
+import PipipiBox from '~/components/ex/Decorations/pipipi';
+
+import '~/components/ex/Decorations/style.scss';
 
 装飾ボックスの作成例を紹介します。
+
+<Alert preset='alert'>
+このページは準備中です...
+</Alert>
 
 
 {/* 対応クラスは`.c--decoBox--{variant}`。  
@@ -126,3 +134,54 @@ import { DecoBox } from '@lism-ui/core';
 	</PreviewCode>
 </Preview>
 
+
+
+### balloon
+
+<Preview>
+	<PreviewTitle>Balloon</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<BalloonBox variant='left'>
+			<DammyText />
+		</BalloonBox>
+		<BalloonBox variant='right'>
+			<DammyText />
+		</BalloonBox>
+		<BalloonBox variant='top'>
+			<DammyText />
+		</BalloonBox>
+		<BalloonBox variant='bottom'>
+			<DammyText />
+		</BalloonBox>
+		---
+		<BalloonBox variant='bottom' bdw='2px' bdc='base-3' bgc='base-2'>
+			<DammyText />
+		</BalloonBox>
+		<BalloonBox variant='bottom' boxcolor='red'>
+			<DammyText />
+		</BalloonBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	...
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>Pipipi</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<PipipiBox variant='left'>
+			<DammyText />
+		</PipipiBox>
+		<PipipiBox variant='right'>
+			<DammyText />
+		</PipipiBox>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	...
+	```
+	</PreviewCode>
+</Preview>

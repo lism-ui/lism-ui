@@ -81,7 +81,7 @@ export function getDecoProps(direction, variant) {
 		variant: `chat-${variant}`,
 		mask: '-',
 		pos: 'absolute',
-		top: '0',
+		t: '0',
 		...DECORATOR_PROPS[direction],
 	};
 }

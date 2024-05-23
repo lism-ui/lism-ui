@@ -1,0 +1,54 @@
+---
+title: 'Others'
+description: ...
+---
+
+
+import { Alert, Text, Badge, Lism, Flex, Stack, Icon, Center, Decorator, Spacer } from '@lism-ui/core';
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import {Question,ChatCircleDots} from '@phosphor-icons/react';
+import { ArrowFatLinesDown } from '@phosphor-icons/react';
+import { Step, StepBody, StepHead } from '~/components/ex/Step';
+
+
+
+<Flex className='c--stepNav'>
+	<Flex className='c--stepNav__item' bgc='content-3' c='base' px='30' py='10' pos='r'>
+		<Lism className='c--stepNav__body'>
+			<Text>入力</Text>
+		</Lism>
+		<Decorator
+			pos='a'
+			z='1'
+			h='100%'
+			w='.5em'
+			bgc='inherit'
+			l='100%'
+			t='0'
+			css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+		></Decorator>
+	</Flex>
+	<Flex className='c--stepNav__item' bgc='content-2' c='base' px='30' py='10' pos='r'>
+		<Spacer w='em4' />
+		<Lism className='c--stepNav__body'>
+			<Text>確認</Text>
+		</Lism>
+		<Decorator
+			pos='a'
+			z='1'
+			h='100%'
+			w='.5em'
+			bgc='inherit'
+			l='100%'
+			t='0'
+			css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+		></Decorator>
+	</Flex>
+	<Flex className='c--stepNav__item' bgc='content' c='base' px='30' py='10'>
+		<Spacer w='em4' />
+		<Lism className='c--stepNav__body'>
+			<Text>完了</Text>
+		</Lism>
+	</Flex>
+</Flex>
