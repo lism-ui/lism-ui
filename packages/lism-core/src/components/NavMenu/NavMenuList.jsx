@@ -22,7 +22,7 @@ export default function NavMenuList({
 		lismClass.c += ` c--navMenu--${variant}`;
 	}
 
-	const hover = { pass: { bgc: hovBgc, c: hovC } };
+	const hov = { pass: { bgc: hovBgc, c: hovC } };
 
 	// if (itemHovBgc) {
 	// 	lismStyle['--hov--bgc'] = getMaybeCssVar(itemHovBgc, 'color', 'bgc');
@@ -36,7 +36,7 @@ export default function NavMenuList({
 		tag: 'ul',
 		lismClass,
 		lismStyle,
-		hover,
+		hov,
 	};
 
 	if (nestLevel) {

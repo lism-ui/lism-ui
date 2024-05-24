@@ -208,7 +208,7 @@ class LismPropsData {
 
 		attrKeys.forEach((propName) => {
 			// 特殊系
-			if (propName === 'hover') {
+			if (propName === 'hov') {
 				const propVal = this.extractProp(propName);
 				this.setHoverProps(propVal);
 				return;

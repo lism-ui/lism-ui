@@ -15,7 +15,7 @@ export default function separateMediaAttrs({
 	poster,
 	// objectFit,
 	// objectPosition,
-	hover,
+	hov,
 	...props
 }) {
 	return {
@@ -34,7 +34,7 @@ export default function separateMediaAttrs({
 			poster,
 			// objectFit,
 			// objectPosition,
-			hover,
+			hov,
 		}),
 		otherProps: props,
 	};

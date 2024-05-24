@@ -351,12 +351,12 @@ import { FolderSimple } from "@phosphor-icons/react";
 		<Box minH="20rem">
 		<NavMenuList isFlex hasDivider passProps={{ p: 'em6 em8' }}>
 			<NavMenu href='#menu1'>Menu item</NavMenu>
-			<NavMenu hover='pass' pos='r'>
+			<NavMenu hov='pass' pos='r'>
 				<NavMenuLink href='#menu3'>
 					<>Hover Menu</>
 					<Icon icon='acc-btn'/>
 				</NavMenuLink>
-				<NavMenuList hover='get:show' pos='a' t='100%' bgc='base' bxsh='2' bdrs='xs' hasDivider nestLevel={1}>
+				<NavMenuList hov='get:show' pos='a' t='100%' bgc='base' bxsh='2' bdrs='xs' hasDivider nestLevel={1}>
 					<NavMenu href='#child-menu1'>Nested Menu</NavMenu>
 					<NavMenu href='#child-menu2'>Nested Menu item</NavMenu>
 				</NavMenuList>

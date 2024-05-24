@@ -210,10 +210,10 @@ radiusのデフォルト、`1`にする？ */}
 <Preview>
 	<PreviewTitle>内部にもリンクあり(OverlayLinkを使う例）</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<CardLink hover='bxsh' maxW='xs'>
+		<CardLink hov='bxsh' maxW='xs'>
 			<CardMedia aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hover='up' t='20' r='20'>Category</Badge>
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:m'>
@@ -228,10 +228,10 @@ radiusのデフォルト、`1`にする？ */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "CardLink" "OverlayLink"
-		<CardLink hover='bxsh' maxW='xs'>
+		<CardLink hov='bxsh' maxW='xs'>
 			<CardMedia aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hover='up' t='20' r='20'>Category</Badge>
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:m'>
@@ -250,10 +250,10 @@ radiusのデフォルト、`1`にする？ */}
 <Preview>
 	<PreviewTitle>内部にもリンクあり(`hiddenLink` を使う例）</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<CardLink setHiddenLink href='#card-hiddenlink' hover='bxsh' maxW='xs'>
+		<CardLink setHiddenLink href='#card-hiddenlink' hov='bxsh' maxW='xs'>
 			<CardMedia aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hover='up' t='20' r='20'>Category</Badge>
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:m'>Card Title</h3>
@@ -266,10 +266,10 @@ radiusのデフォルト、`1`にする？ */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "setHiddenLink"
-		<CardLink setHiddenLink href='#card-hiddenlink' hover='bxsh' maxW='xs'>
+		<CardLink setHiddenLink href='#card-hiddenlink' hov='bxsh' maxW='xs'>
 			<CardMedia aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hover='up' t='20' r='20'>Category</Badge>
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:m'>Card Title</h3>
@@ -325,7 +325,7 @@ radiusのデフォルト、`1`にする？ */}
 <Preview>
 	<PreviewTitle>横並びの方向を 逆順にして、リンクも設定する</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<CardLink isFlex fxd='rr' href='###' hover='bxsh,up'>
+		<CardLink isFlex fxd='rr' href='###' hov='bxsh,up'>
 			<CardMedia fxb={['40%','50%']}>
 				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
 			</CardMedia>
@@ -338,7 +338,7 @@ radiusのデフォルト、`1`にする？ */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "fxd='rr'"
-		<CardLink isFlex fxd='rr' href='###' hover='bxsh,up'>
+		<CardLink isFlex fxd='rr' href='###' hov='bxsh,up'>
 			<CardMedia fxb={['40%','50%']}>
 				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
 			</CardMedia>
@@ -455,7 +455,7 @@ radiusのデフォルト、`1`にする？ */}
 <Preview>
 	<PreviewTitle>画像の下部にコンテンツを被せる</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<CardLink pos='r' href='#card-test' bxsh='3' hover='up' maxW='xs'>
+		<CardLink pos='r' href='#card-test' bxsh='3' hov='up' maxW='xs'>
 			<CardMedia aspect={['1/1','4/3']}>
 				<img src='/img.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -469,7 +469,7 @@ radiusのデフォルト、`1`にする？ */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<CardLink pos='r' href='#card-test' bxsh='3' hover='up' maxW='xs'>
+		<CardLink pos='r' href='#card-test' bxsh='3' hov='up' maxW='xs'>
 			<CardMedia aspect={['1/1','4/3']}>
 				<img src='/img.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -492,7 +492,7 @@ radiusのデフォルト、`1`にする？ */}
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
 	<PreviewArea p={30}>
 		<Grid variant='tile' itemMinW='20rem' gap='30'>
-			<CardLink href='#card-a' pos='r' bdrs='s' hover='bxsh,pass'>
+			<CardLink href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -500,7 +500,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title A</h3>
-						<Grid hover='get:slideUp'>
+						<Grid hov='get:slideUp'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
 							</Box>
@@ -509,7 +509,7 @@ radiusのデフォルト、`1`にする？ */}
 					</Box>
 				</CardBody>
 			</CardLink>
-			<CardLink href='#card-b' pos='r' bdrs='s' hover='bxsh,pass'>
+			<CardLink href='#card-b' pos='r' bdrs='s' hov='bxsh,pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -517,7 +517,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title B</h3>
-						<Grid hover='get:slideUp'>
+						<Grid hov='get:slideUp'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
 							</Box>
@@ -532,7 +532,7 @@ radiusのデフォルト、`1`にする？ */}
 	<PreviewCode>
 		```jsx
 		<Grid variant='tile' itemMinW='20rem' gap={20}>
-			<CardLink href='#card-a' pos='r' bdrs='s' hover='pass'>
+			<CardLink href='#card-a' pos='r' bdrs='s' hov='pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -540,7 +540,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title A</h3>
-						<Grid hover='get:slideUp'>
+						<Grid hov='get:slideUp'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
 							</Box>
@@ -549,7 +549,7 @@ radiusのデフォルト、`1`にする？ */}
 					</Box>
 				</CardBody>
 			</CardLink>
-			<CardLink href='#card-b' pos='r' bdrs='s' hover='pass'>
+			<CardLink href='#card-b' pos='r' bdrs='s' hov='pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -557,7 +557,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title B</h3>
-						<Grid hover='get:slideUp'>
+						<Grid hov='get:slideUp'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
 							</Box>

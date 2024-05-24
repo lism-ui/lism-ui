@@ -8,7 +8,7 @@ interface Props extends LismProps {}
 const { as, asProps, ...props } = Astro.props || {};
 
 const { linkProps, otherProps } = separateLinkProps(props);
-const lismProps = getLismProps(otherProps, { hover: 'fade' });
+const lismProps = getLismProps(otherProps, { hov: 'fade' });
 const JSX = as || 'a';
 ---
 

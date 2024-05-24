@@ -291,16 +291,16 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewTitle>子要素に`Icon`を配置してもOKです。</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster gap='20'>
-			<IconButton hover='up'>
+			<IconButton hov='up'>
 				<Icon icon={ShoppingCartSimple} weight='fill'/>
 			</IconButton>
-			{/* <IconButton href='###' icon={ArrowFatDown} hover="bxsh:4" variant='outline' />
-			<IconButton href='###' icon={ArrowRight} hover={{bgc:'base-3'}} variant='ghost' /> */}
+			{/* <IconButton href='###' icon={ArrowFatDown} hov="bxsh:4" variant='outline' />
+			<IconButton href='###' icon={ArrowRight} hov={{bgc:'base-3'}} variant='ghost' /> */}
 		</Cluster>
 	</PreviewArea>
 <PreviewCode>
 ```jsx {2}
-<IconButton hover='up'>
+<IconButton hov='up'>
 	<Icon icon={ShoppingCartSimple} weight='fill'/>
 </IconButton>
 ```
@@ -330,7 +330,7 @@ p, fz, w などの基本Propで調整できます。
 </Preview>
 
 
-### hover="reverse"
+### hov="reverse"
 
 Buttonでは、`-hov:reverse`との相性が良くなるように調整を加えています。
 
@@ -340,20 +340,20 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 - `b--button--outline`, `b--button--ghost` で使うと、文字色 が `var(--base)`へ変化し, 背景色がホバー前の文字色になります。
 
 <Preview>
-	<PreviewTitle>`hover='reverse'`</PreviewTitle>
+	<PreviewTitle>`hov='reverse'`</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster gap='20'>
-			<Button href='###' hover='reverse'>Fill</Button>
-			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
-			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
+			<Button href='###' hov='reverse'>Fill</Button>
+			<Button href='###' hov='reverse' variant='outline'>Outline</Button>
+			<Button href='###' hov='reverse' variant='ghost'>Ghost</Button>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Cluster gap='20'>
-			<Button href='###' hover='reverse'>Fill</Button>
-			<Button href='###' hover='reverse' variant='outline'>Outline</Button>
-			<Button href='###' hover='reverse' variant='ghost'>Ghost</Button>
+			<Button href='###' hov='reverse'>Fill</Button>
+			<Button href='###' hov='reverse' variant='outline'>Outline</Button>
+			<Button href='###' hov='reverse' variant='ghost'>Ghost</Button>
 		</Cluster>
 		```
 	</PreviewCode>
@@ -363,9 +363,9 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 	<PreviewTitle>keycolor指定ありでのreverse</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster gap='20'>
-			<Button href='###' hover='reverse' keycolor='blue'>Button</Button>
-			<Button href='###' hover='reverse' variant='outline' keycolor='pink'>Button</Button>
-			<Button href='###' hover='reverse' variant='ghost' bgc='base-2'>Button</Button>
+			<Button href='###' hov='reverse' keycolor='blue'>Button</Button>
+			<Button href='###' hov='reverse' variant='outline' keycolor='pink'>Button</Button>
+			<Button href='###' hov='reverse' variant='ghost' bgc='base-2'>Button</Button>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
@@ -387,8 +387,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
 			<Cluster mbs={30} gap='20'>
-				<Button href='###' keycolor='base' hover='reverse' variant='outline'>Button</Button>
-				<Button href='###' c='base' hover='reverse' variant='ghost'>Button</Button>
+				<Button href='###' keycolor='base' hov='reverse' variant='outline'>Button</Button>
+				<Button href='###' c='base' hov='reverse' variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>
@@ -407,8 +407,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
 			<Cluster mbs={30} gap='20'>
-				<Button href='###' keycolor='base' hover={['reverse', { c:'content' }]} variant='outline'>Button</Button>
-				<Button href='###' c='base' hover={['reverse', { c:'content' }]} variant='ghost'>Button</Button>
+				<Button href='###' keycolor='base' hov={['reverse', { c:'content' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hov={['reverse', { c:'content' }]} variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>
@@ -428,9 +428,9 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
 			<Cluster mbs={30} gap='20'>
-				<Button href='###' hover='reverse' variant='fill'>Button</Button>
-				<Button href='###' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
-				<Button href='###' bgc='base' c='content' hover={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
+				<Button href='###' hov='reverse' variant='fill'>Button</Button>
+				<Button href='###' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
+				<Button href='###' bgc='base' c='content' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>

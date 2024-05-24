@@ -5,12 +5,12 @@ import { Frame } from '../Frame';
 import separateMediaAttrs from '../separateMediaAttrs';
 
 // memo: picture対応
-export default function MediaLayer({ media = 'img', hover, children, ...props }) {
+export default function MediaLayer({ media = 'img', hov, children, ...props }) {
 	const { mediaAttrs, otherProps } = separateMediaAttrs(props);
 
 	if (children) {
 		return (
-			<Frame layout={Layer} variant='media' hover={hover} {...otherProps}>
+			<Frame layout={Layer} variant='media' hov={hov} {...otherProps}>
 				{children}
 			</Frame>
 		);
@@ -18,7 +18,7 @@ export default function MediaLayer({ media = 'img', hover, children, ...props })
 
 	return (
 		<Frame layout={Layer} variant='media' {...otherProps}>
-			<Media as={media} hover={hover} loading='lazy' decoding='async' {...mediaAttrs} />
+			<Media as={media} hov={hov} loading='lazy' decoding='async' {...mediaAttrs} />
 		</Frame>
 	);
 }

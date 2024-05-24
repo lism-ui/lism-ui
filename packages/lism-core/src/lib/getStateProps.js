@@ -89,7 +89,7 @@ export default function getStateProps({
 
 	if (isLinkBox) {
 		lismState.push('is--linkBox');
-		if (props.hover == null) props.hover = 'fade';
+		if (props.hov == null) props.hov = 'fade';
 	}
 
 	hasGutter && lismState.push('has--gutter');
