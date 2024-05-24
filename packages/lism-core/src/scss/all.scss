@@ -5,7 +5,7 @@
 @use './base/index' as base;
 
 // state
-@use './state/index';
+@use './state/index' as state;
 
 // layout
 @use './layout/index' as layout;

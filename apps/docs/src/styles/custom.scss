@@ -157,17 +157,24 @@ td:first-child > code:only-child {
 			background-color: var(--base-3);
 		}
 	}
+	.top-level > li {
+		// > details > summary {
+		// 	border-left: 1px solid currentColor;
+		// 	padding-inline-start: 0.5em !important;
+		// }
+	}
 	._subtitle {
 		display: block;
 		pointer-events: none;
 		color: inherit;
+		font-weight: bold;
 		// margin-left: -0.5em;
 		// padding: 0.75em 0 0.5em;
 		margin-top: 0.75em;
 		padding: 0.25em 0.5em;
 		font-size: var(--sl-text-sm);
-		// border-left: 1px solid #000;
-		font-weight: 700;
+		// border-left: 1px solid var(--content-3);
+		border-radius: var(--radius--s);
 		background-color: var(--base-2);
 	}
 	._divider {

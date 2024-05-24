@@ -44,7 +44,6 @@ import { Decorator } from '@lism-ui/astro';
 			<Decorator
 				size='1.25em'
 				bd='l'
-				mr='a'
 				rotate='45deg'
 				transformOrigin='left bottom'
 			/>
@@ -54,7 +53,6 @@ import { Decorator } from '@lism-ui/astro';
 			<Decorator
 				size='1.25em'
 				bd='l'
-				mr='a'
 				rotate='-45deg'
 				transformOrigin='left top'
 			/>
@@ -66,7 +64,6 @@ import { Decorator } from '@lism-ui/astro';
 			<Decorator
 				size='1.25em'
 				bd='l'
-				mr='a'
 				rotate='45deg'
 				transformOrigin='left bottom'
 			/>
@@ -76,7 +73,6 @@ import { Decorator } from '@lism-ui/astro';
 			<Decorator
 				size='1.25em'
 				bd='l'
-				mr='a'
 				rotate='-45deg'
 				transformOrigin='left top'
 			/>
@@ -85,55 +81,10 @@ import { Decorator } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
+---
 
-<Preview>
-	<PreviewTitle>Call</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex
-			variant='ltr'
-			ai='center'
-			passProps={{ bdc: 'currentColor', bgc: 'base' }}
-		>
-		<Decorator
-				as={FlexItem}
-				bd
-				left='1px'
-				size='0.875em'
-				getProps='bdc,bgc'
-				css={{
-					rotate: '45deg',
-					translate: '50%',
-					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
-				}}
-			/>
-			<FlexItem p='box' bdrs='m' w='fit-content' bd getProps='bdc,bgc'>
-				<DammyText />
-			</FlexItem>
-		</Flex>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Flex
-			variant='ltr'
-			ai='center'
-			passProps={{ bdc: 'currentColor', bgc: 'base' }}
-		>
-		<Decorator
-				as={FlexItem}
-				bd
-				left='1px'
-				size='0.875em'
-				getProps='bdc,bgc'
-				css={{
-					rotate: '45deg',
-					translate: '50%',
-					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
-				}}
-			/>
-			<FlexItem p='box' bdrs='m' w='fit-content' bd getProps='bdc,bgc'>
-				<DammyText />
-			</FlexItem>
-		</Flex>
-		```
-	</PreviewCode>
-</Preview>
+その他、以下のページでDecoratorを活用した装飾ボックスの例を複数紹介しています。
+
+<Reference>
+[装飾ボックスの例](/ja/components/decorations)
+</Reference>

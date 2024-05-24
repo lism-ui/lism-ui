@@ -236,10 +236,6 @@ export default [
 				link: '/components/hero/',
 			},
 			{
-				label: 'PriceMenu',
-				link: '/components/pricemenu/',
-			},
-			{
 				label: 'TermList',
 				link: '/components/termlist/',
 			},
@@ -270,6 +266,14 @@ export default [
 			{
 				label: 'Timeline',
 				link: '/components/timeline/',
+			},
+			{
+				label: '---',
+				link: '###---',
+			},
+			{
+				label: 'Others',
+				link: '/components/others/',
 			},
 		],
 	},

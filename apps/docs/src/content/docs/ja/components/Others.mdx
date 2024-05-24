@@ -4,7 +4,7 @@ description: ...
 ---
 
 
-import { Alert, Text, Badge, Lism, Flex, Stack, Icon, Center, Decorator, Spacer } from '@lism-ui/core';
+import { Grid, Alert, Text, Badge, Lism, Flex, Stack, Icon, Center, Decorator, Spacer } from '@lism-ui/core';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import {Question,ChatCircleDots} from '@phosphor-icons/react';
@@ -52,3 +52,40 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 		</Lism>
 	</Flex>
 </Flex>
+
+---
+
+<Preview>
+	<PreviewTitle>コード</PreviewTitle>
+	<PreviewArea resize p={30} nogrid>
+		<Stack className='c--priceMenu' gap={30} fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>とても美味しいトマトソースのスパゲッティ</Text>
+				{/* <Divider/> */}
+				<Decorator bd='block-start' bdc='divider' />
+				<Text whs='nowrap'>1,000円</Text>
+			</Grid>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>美味しいドリンク</Text>
+				<Decorator bd='block-start' bdc='divider' />
+				<Text whs='nowrap'>500円</Text>
+			</Grid>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Stack className='c--priceMenu' gap={30} fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>とても美味しいトマトソースのスパゲッティ</Text>
+				<Decorator bd='block-start' bdc='divider' />
+				<Text whs='nowrap'>1,000円</Text>
+			</Grid>
+			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+				<Text>美味しいドリンク</Text>
+				<Decorator bd='block-start' bdc='divider' />
+				<Text whs='nowrap'>500円</Text>
+			</Grid>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
