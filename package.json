@@ -53,8 +53,5 @@
 		"stylelint-prettier": "^4.1.0",
 		"turbo": "^1.11.3"
 	},
-	"packageManager": "pnpm@8.15.8",
-	"engines": {
-		"pnpm": ">=8.0"
-	}
+	"packageManager": "pnpm@8.15.8"
 }
