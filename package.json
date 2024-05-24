@@ -15,7 +15,8 @@
   },
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/docs",
+	"apps/playgrounds/*"
   ],
   "keywords": [
     "framework",
