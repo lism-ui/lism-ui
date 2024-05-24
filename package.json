@@ -10,7 +10,8 @@
 		"dev": "turbo run dev",
 		"start": "turbo run start",
 		"lint": "turbo run lint",
-		"clean": "turbo run clean"
+		"clean": "turbo run clean",
+		"merge:dev": "git checkout main && git merge dev"
 	},
 	"workspaces": [
 		"packages/*",
