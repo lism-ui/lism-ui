@@ -17,3 +17,11 @@ export const LayoutContext = createContext(null);
 ## パッケージ公開
 
 npm publish
+
+## pnpm-lock.yamlの更新
+
+依存関係を再整理したいとき。
+
+```
+pnpm install
+```
