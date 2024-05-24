@@ -15,3 +15,5 @@ export const LayoutContext = createContext(null);
 のように、useXXX や createContext などをとってきてしまうと、 Boxのインポートだけでも use client が必要だとエラーになる。
 
 ## パッケージ公開
+
+npm publish

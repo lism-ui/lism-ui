@@ -5,6 +5,7 @@
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"scripts": {
+		"postinstall": "cd packages/lism-core && pnpm run build",
 		"build": "turbo run build",
 		"dev": "turbo run dev",
 		"start": "turbo run start",
