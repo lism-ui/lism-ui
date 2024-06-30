@@ -1,10 +1,13 @@
+import getMaybeCssVar from '../../lib/getMaybeCssVar';
 export default function getTabsProps({
 	_lismClass = [],
-	variant = 'line',
+	variant = 'default',
 	isVertical,
 	keepHeight,
 	listProps = {},
 	panelProps = {},
+	tabPadding,
+	style = {},
 	...props
 }) {
 	_lismClass.push('c--tabs');
@@ -14,9 +17,14 @@ export default function getTabsProps({
 	let _listProps = {};
 	let _panelProps = {};
 
+	if (null != tabPadding) {
+		style['--tab-p'] = getMaybeCssVar(tabPadding, 'space', 'p');
+	}
+
 	const defaultProps = {
 		_lismClass,
-		gap: 'em8',
+		// gap: 'em8',
+		style,
 	};
 
 	if (isVertical) {

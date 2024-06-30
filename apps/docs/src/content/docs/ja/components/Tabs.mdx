@@ -3,11 +3,24 @@ title: 'Tabs'
 description: ...
 ---
 
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Reference, PropBadge, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Tabs, TabItem, Tab, TabList, TabPanel } from '@lism-ui/astro';
+import { DammyText, Tabs, TabItem, Tab, TabList, TabPanel, Icon } from '@lism-ui/astro';
+
+タブ要素を作成できるコンポーネントです。  
+最低限の実装にしているので、デザインは適宜カスタマイズしてください。
+
 
 ## Props
+
+| プロパティ | 説明 |
+|---|---|
+|<PropBadge>`<Tabs>`</PropBadge><br/>`variant`|`c--tabs--{variant}`クラスが出力されます。デフォルトは`"default"です。`|
+|<PropBadge>`<Tabs>`</PropBadge><br/>`keepHeight`|`data-tabs="keep-height"`属性が出力され、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。`|
+|<PropBadge>`<Tabs>`</PropBadge><br/>`isVertical`|`data-tabs="vertical"`属性が出力され、タブ部分が縦並びになります。`|
+|<PropBadge>`<TabItem>`</PropBadge><br/>`label` | タブテキストを指定します。 |
+
+
 
 {/* - `<Tabs>`
 	- `keepHeight` が true の場合、タブの高さを固定する（切り替えた時に高さが動かないようにする）
@@ -34,13 +47,13 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 ## Usage
 
-初期props: gap=10, variant='line'
+
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabItem label='tab1'>
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText length='l' />
@@ -51,7 +64,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		```jsx
 		<Tabs>
 			<TabItem label='tab1'>
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText length='l' />
@@ -62,33 +75,60 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview>
 
 
-タブリストの各ボタンテキストは`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
+### タブテキストにJSX式を渡す
 
-<Preview mbs='20'>
+各タブテキストは`<TabItem>``label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs>
+			<TabItem>
+				<Fragment slot='label'><Icon icon='lism:good'/>Tab<small>small text</small></Fragment>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
-		```jsx
-		<TabItem label={<>Lorem text<small>small text</small></>}>
-			...
-		</TabItem>
+		```jsx {2}
+		<Tabs>
+			<TabItem label={<><Icon icon='lism:good'/>Tab<small>small text</small></>}>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
-		```jsx "slot='label'"
-		<TabItem>
-			<Fragment slot='label'>Lorem text<small>small text</small></Fragment>
-			...
-		</TabItem>
+		```jsx {3}
+		<Tabs>
+			<TabItem>
+				<Fragment slot='label'><Icon icon='lism:good'/>Tab<small>small text</small></Fragment>
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
 		```
 	</PreviewCode>
 </Preview>
 
 
+### タブリストの中央寄せ
+
+`<Tabs>`に `ji='center'` を指定すると、タブリストを中央寄せにすることができます。
+
 <Preview>
-	<PreviewTitle>タブリストのセンター寄せ</PreviewTitle>
+	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
-		<Tabs variant='line' ji='center'>
+		<Tabs ji='center'>
 			<TabItem label='tab1'>
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText length='l' />
@@ -97,9 +137,9 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "ji='center'"
-		<Tabs variant='line' ji='center'>
+		<Tabs ji='center'>
 			<TabItem label='tab1'>
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText length='l' />
@@ -109,31 +149,6 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-<Preview>
-	<PreviewTitle>`variant='box'`</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs variant='box' ji='center'>
-			<TabItem label='tab1'>
-				<DammyText length='m' />
-			</TabItem>
-			<TabItem label='tab2'>
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "variant='box'"
-		<Tabs variant='box' ji='center'>
-			<TabItem label='tab1'>
-				<DammyText length='m' />
-			</TabItem>
-			<TabItem label='tab2'>
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-		```
-	</PreviewCode>
-</Preview>
 
 
 ### 高さが変わらないようにする
@@ -203,7 +218,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-### 縦並び
+### タブの縦並びレイアウト
 
 <Preview>
 	<PreviewArea p={30} resize>
@@ -270,17 +285,17 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 ### Tabパネル（コンテンツ部分）に対するpropsの指定
 
-`<Tabs>`に listProps, panelProps を指定でき、それぞれリスト部分とパネル部分に対するpropsを指定できます。
+`<Tabs>`に `listProps`, `panelProps` を指定でき、それぞれリスト部分とパネル部分に対するpropsを指定できます。
 {/* btnProps? */}
 
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
-		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'40', isFlow:'s'}}>
+		<Tabs variant='line' bgc='base-2' bxsh='1' gap='0' tabPadding='box' listProps={{c:'content-3'}} panelProps={{p:'40', isFlow:'s'}}>
 			<TabItem label='tab1'>
 				<DammyText />
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText />
@@ -289,11 +304,11 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		</Tabs>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<Tabs bgc='base-2' bxsh='1' gap='0' listProps={{c:'content-2'}} panelProps={{p:'40', isFlow:'s'}}>
+		```jsx "listProps" "panelProps"
+		<Tabs bgc='base-2' bxsh='1' gap='0' tabPadding='box' listProps={{c:'content-3'}} panelProps={{p:'40', isFlow:'s'}}>
 			<TabItem label='tab1'>
 				<DammyText />
-				<DammyText length='m' />
+				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText />
@@ -323,6 +338,97 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview> */}
 
 
+
+### variant 作成例
+
+<Preview>
+	<PreviewTitle>`variant='line'`</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs variant='line'>
+			<TabItem label='tab1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='使用コード'>
+		```jsx "variant='line'"
+		<Tabs variant='line'>
+			<TabItem label='tab1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='SCSS'>
+```scss
+:where(.c--tabs--line) {
+
+	> .c--tabs__list {
+		--shadowOfset: 0 2px; // inset 0 -2px
+		--tab--shadowColor: transparent;
+		box-shadow: var(--shadowOfset) 0 0 var(--base-3);
+	}
+	.c--tabs__tab {
+		box-shadow: var(--shadowOfset) 0 0 var(--tab--shadowColor);
+	}
+	[aria-selected='true'] {
+		--tab--shadowColor: currentColor;
+	}
+}
+```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>`variant='box'`</PreviewTitle>
+	<PreviewArea p={30}>
+		<Tabs variant='box' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='使用コード'>
+		```jsx "variant='box'"
+		<Tabs variant='box' ji='center'>
+			<TabItem label='tab1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='tab2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='SCSS'>
+```scss
+.c--tabs--box {
+	--bdrs: var(--radius--s);
+	--active-bgc: var(--base);
+}
+:where(.c--tabs--box) {
+	> .c--tabs__list {
+		--tab-radii: calc(var(--bdrs, 0) - 0.125em);
+	}
+	[aria-selected='true'] {
+		box-shadow: var(--sh--1);
+	}
+}
+```
+	</PreviewCode>
+</Preview>
+
+
+
 ### TabItemを使わない書き方
 
 より細かいprops指定が必要な場合、`<TabItem>`を使わずに、`<TabList>`,`<Tab>`,`<TabPanel>`を使って書くこともできます。
@@ -348,17 +454,37 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 
 <Preview>
-	<PreviewCode slot='tab' label='React'>
-		```jsx "defaultIndex" "index"
-		<Tabs defaultIndex={0}>
+	<PreviewArea p={30}>
+		<Tabs>
 			<TabList>
-				<Tab index={0}>tab1</Tab>
-				<Tab index={1}>tab2</Tab>
+				<Tab tabID='the-tabid' isActive index={0}><Icon icon='lism:good'/>tab1</Tab>
+				<Tab tabID='the-tabid' index={1}><Icon icon='lism:bad'/>tab2</Tab>
 			</TabList>
-			<TabPanel index={0}>
+			<TabPanel tabID='the-tabid' isActive index={0}>
+				<DammyText length='s' />
 				<DammyText />
 			</TabPanel>
-			<TabPanel index={1}>
+			<TabPanel tabID='the-tabid' index={1}>
+				<DammyText length='l' />
+			</TabPanel>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React'>
+		```jsx "defaultIndex" "index"
+		<Tabs>
+			<TabList>
+				<Tab tabID='the-tabid' isActive index={0}>
+					<Icon icon='lism:good'/>tab1
+				</Tab>
+				<Tab tabID='the-tabid' index={1}>
+					<Icon icon='lism:bad'/>tab2
+				</Tab>
+			</TabList>
+			<TabPanel tabID='the-tabid' isActive index={0}>
+				<DammyText length='s' />
+				<DammyText />
+			</TabPanel>
+			<TabPanel tabID='the-tabid' index={1}>
 				<DammyText length='l' />
 			</TabPanel>
 		</Tabs>
@@ -368,8 +494,12 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		```jsx "isActive" "index" "tabID"
 		<Tabs>
 			<TabList>
-				<Tab tabID='the-tabid' isActive index={0}>tab1</Tab>
-				<Tab tabID='the-tabid' index={1}>tab2</Tab>
+				<Tab tabID='the-tabid' isActive index={0}>
+					<Icon icon='lism:good'/>tab1
+				</Tab>
+				<Tab tabID='the-tabid' index={1}>
+					<Icon icon='lism:bad'/>tab2
+				</Tab>
 			</TabList>
 			<TabPanel tabID='the-tabid' isActive index={0}>
 				<DammyText />
@@ -381,19 +511,3 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 </Preview>
-
-
-## 要検討Memo
-
-- アコーディオンと同様に、isFlow をデフォルトセットする？
-
-- 縦並びの時、スマホではアコーディオン？ or ドロップダウンメニュー化してもいいかもしれない。
-- ナビ部分の横スクロールどうする？
-	- スクロールするときは数が多い時→「テキストに応じる」幅の時にautoにしておけばよいか。
-- ナビ部分の設定値どうするか
-	- アイコン
-	- ボタン幅 fillにするか、テキストに応じるか。
-		- 最低限維持する幅 minW (auto幅用)
-		- 最大幅（fill用）
-		- を、クエリサイズごとに？
-	- ボタン間のギャップ

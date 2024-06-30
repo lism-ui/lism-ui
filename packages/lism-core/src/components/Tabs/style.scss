@@ -1,16 +1,24 @@
 @use '../../scss/query' as query;
 
 // l--grid--gt
-.c--tabs {
+:where(.c--tabs) {
 	// position: relative;
 	--active-c: var(--content);
 	--active-bgc: transparent;
-	--gt: 'list' 'panel' / 100%;
 	--tab-radii: 0;
+	--tab-p: var(--p--box--s); //var(--em--4) var(--em--6);
 	// grid-template: var(--gt);
 	// max-width: 100% !important;
 	// width: 100% !important;
-	// gap: var(--em--10);
+	--gap: var(--em--6);
+}
+.c--tabs {
+	--gt: 'list' 'panel' / 100%;
+	gap: var(--gap);
+}
+
+.c--tabs--default {
+	--active-bgc: var(--base-2);
 }
 
 .c--tabs__list {
@@ -19,11 +27,17 @@
 }
 
 .c--tabs__tab {
-	display: block;
-	padding: var(--em--4) var(--em--8);
+	display: flex;
+	padding: var(--tab-p);
 	border-radius: var(--tab-radii);
+	align-items: center;
+	gap: var(--em--2);
 
-	&[aria-selected='true'] {
+	:where(&) > .a--icon {
+		font-size: 1.25em;
+	}
+
+	&:where([aria-selected='true']) {
 		color: var(--active-c);
 		background-color: var(--active-bgc);
 	}
@@ -34,66 +48,13 @@
 	// position: relative;
 	grid-area: panel;
 	width: 100%;
-	&[aria-hidden='true'] {
+	&:where([aria-hidden='true']) {
 		display: none;
 	}
 }
 
-// ovx='auto' の時にmarginネガティブだとアウトなので、borderではなくbox-shadowで表現する。
-:where(.c--tabs--line) {
-	> .c--tabs__list {
-		--shadowOfset: 0 2px; // inset 0 -2px
-		--tab--shadowColor: transparent;
-		box-shadow: var(--shadowOfset) 0 0 var(--base-3);
-	}
-	// タブはそんな頻出するものではないので、文字数削減を優先して子孫セレクタ使う。
-	.c--tabs__tab {
-		box-shadow: var(--shadowOfset) 0 0 var(--tab--shadowColor);
-	}
-
-	[aria-selected='true'] {
-		--tab--shadowColor: currentColor;
-	}
-}
-
-.c--tabs--box {
-	--bdrs: var(--radius--s);
-	--active-bgc: var(--base);
-
-	> .c--tabs__list {
-		// .c--tabs__list 事態のradiusより少しだけ小さくする
-		--tab-radii: calc(var(--bdrs, 0) - 0.125em);
-	}
-
-	[aria-selected='true'] {
-		box-shadow: var(--sh--1);
-	}
-}
-
-// .c--tabs__list--lifted {
-// 	--bdw: 1px;
-// 	// > .c--tabs__tab  {}
-
-// 	> [aria-selected='false'] {
-// 		border-bottom: var(--bdw) solid var(--base-3);
-// 	}
-// 	> [aria-selected='true'] {
-// 		border: var(--bdw) solid var(--base-3);
-// 		border-bottom: none;
-// 	}
-// 	&::after {
-// 		content: '';
-// 		position: absolute;
-// 		inset: 0;
-// 		display: block;
-// 		z-index: -1;
-// 		// flex: 1;
-// 		border-bottom: var(--bdw) solid var(--base-3);
-// 	}
-// }
-
 [data-tabs~='keep-height'] {
-	> [aria-hidden='true'] {
+	> :where([aria-hidden='true']) {
 		display: block;
 		visibility: hidden;
 		opacity: 0;
@@ -103,15 +64,15 @@
 }
 
 @include query.bp-up('sm') {
-	.c--tabs[data-tabs~='vertical'] {
+	.c--tabs:where([data-tabs~='vertical']) {
 		--gt: 'list panel' auto / auto 1fr;
 
 		// 縦並びの時・ memo: rtl対応必要
 		// :where(.c--tabs--line)[data-tabs~='vertical'] {
+		// }
 		> .c--tabs__list {
 			--shadowOfset: 2px 0; // .c--tabs--line用
 			--fxd: column;
 		}
-		// }
 	}
 }

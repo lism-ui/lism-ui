@@ -6,10 +6,10 @@ const slotKeys: string[] = Object.keys(Astro?.slots || {});
 
 let tabs = '';
 for (let index = 0; index < slotKeys.length; index++) {
-    const slotName = slotKeys[index];
-    if (slotName !== 'default') {
-        tabs += await Astro.slots.render(slotName);
-    }
+	const slotName = slotKeys[index];
+	if (slotName !== 'default') {
+		tabs += await Astro.slots.render(slotName);
+	}
 }
 
 // Astro.slots.has('tab') && (
@@ -21,12 +21,12 @@ for (let index = 0; index < slotKeys.length; index++) {
 ---
 
 <Lism className='c--preview' {...Astro.props}>
-    <slot />
-    {
-        Astro.slots.has('tab') && (
-            <Tabs className='c--preview_code'>
-                <slot name='tab' />
-            </Tabs>
-        )
-    }
+	<slot />
+	{
+		Astro.slots.has('tab') && (
+			<Tabs className='c--preview_code' variant='line'>
+				<slot name='tab' />
+			</Tabs>
+		)
+	}
 </Lism>
