@@ -3,10 +3,10 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Alert, Note, Text, Center, Flex, Icon } from '@lism-ui/core';
+import { Divider, Stack, Alert, Note, Text, Center, Flex, Icon, DammyText } from '@lism-ui/core';
 import { AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/astro';
 import { Minus, Plus, X, Question } from "@phosphor-icons/react";
-import { Reference, PropBadge, HelpText, DammyText } from "~/components";
+import { Reference, PropBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
 アコーディオン要素を作成できるコンポーネントです。
@@ -23,14 +23,15 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 | プロパティ | 説明 | 
 |---|---|
-| <PropBadge ml='-.5em'>`<Accordion>`</PropBadge><br/><PropBadge ml='-.5em'>`<AccordionGroup>`</PropBadge><br/>`duration` | 開閉アニメーションの時間を指定できます。 |
-| <PropBadge ml='-.5em'>`<AccordionGroup>`</PropBadge><br/>`allowMultiple` | 複数のアコーディオンを同時に開くことを禁止します。 |
-| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/><PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
-| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/>`trigger` | `"icon"`を指定すると、 内部で呼び出される`<AccordionIcon>`の`isTrigger`が`true`にセットされます。|
-| <PropBadge ml='-.5em'>`<AccordionHeader>`</PropBadge><br/>`isFreeMode` | 内部コンテンツをより自由に記述できるようになります。 |
-| <PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`isTrigger` | `true`にするとアイコンをトリガーにすることができます。 |
+| <PropBadge>`<Accordion>`</PropBadge><br/><PropBadge>`<AccordionGroup>`</PropBadge><br/>`duration` | 開閉アニメーションの時間を指定できます。 |
+| <PropBadge>`<AccordionGroup>`</PropBadge><br/>`allowMultiple` | 複数のアコーディオンを同時に開くことを禁止します。 |
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/><PropBadge>`<AccordionIcon>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/><PropBadge>`<AccordionLabel>`</PropBadge><br/>`tag` | アコーディオンラベルのHTMLタグを指定できます。 |
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`trigger` | `"icon"`を指定すると、 内部で呼び出される`<AccordionIcon>`の`isTrigger`が`true`にセットされます。|
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`isFreeMode` | 内部コンテンツをより自由に記述できるようになります。 |
+| <PropBadge>`<AccordionIcon>`</PropBadge><br/>`isTrigger` | `true`にするとアイコンをトリガーにすることができます。 |
 
-{/* | <PropBadge ml='-.5em'>`<AccordionIcon>`</PropBadge><br/>`size` | `<Icon>` に渡す `size` を指定できます。 | */}
+{/* | <PropBadge>`<AccordionIcon>`</PropBadge><br/>`size` | `<Icon>` に渡す `size` を指定できます。 | */}
 {/* | <PropBadge>`AccordionHeader`</PropBadge><br/>`iconProps`,`labelProps` | AccordionLabel, AccordionIcon に渡すpropsを指定します。 | */}
 
 
@@ -46,16 +47,10 @@ HTML で使用する場合、jsファイルが必要です。
 ```html
 <script src='...'></script>
 ```
+{/* <script src="index.js" type="module"></script> */}
 
 
 ## Usage
-
-export const AccDemoContent = () => {
-	return(
-		<p>Accordion Contents.</p>
-	);
-};
-
 
 {/* <Script src='/js/acc.js' type="module"/> */}
 
@@ -127,7 +122,7 @@ export const AccDemoContent = () => {
 		<Accordion>
 			<AccordionHeader tag='h3'>アコーディオンヘッダー</AccordionHeader>
 			<AccordionBody>
-				<AccDemoContent />
+				<DammyText length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -362,7 +357,7 @@ export const AccDemoContent = () => {
 		</AccordionGroup>
 	</PreviewArea>
 	<PreviewCode>
-```jsx
+```jsx "gap="
 <AccordionGroup gap={20}>
 	<Accordion hasDivider bgc='base-2' bxsh='1' bdrs='m'>
 		<AccordionHeader p='box'>Accordion</AccordionHeader>
@@ -384,9 +379,9 @@ export const AccDemoContent = () => {
 
 
 
-## より高度なカスタマイズ
+### isFreeMode
 
-`<AccordionHeader>`については、`isFreeMode`を指定するとアイコンなどの自動出力などがオフになり、`<AccordionLabel>`,`<AccordionIcon>`を使ってより自由に記述できます。
+`<AccordionHeader>`に`isFreeMode`を指定すると、本来自動で呼び出される`<AccordionLabel>`,`<AccordionIcon>`を自由に配置できます。
 
 <Preview>
 	<PreviewTitle>`isFreeMode`でアイコンを左側にする例</PreviewTitle>
@@ -415,72 +410,29 @@ export const AccDemoContent = () => {
 </Preview>
 
 
-### 開閉時にアイコンを切り替える
 
-`<AccordionIcon>`の子要素(`children`)に直接`<Icon>`を配置することもでき、アイコンを2つ配置して`data-to`属性を指定すると開くアイコンと閉じるアイコンを分けることが可能です。
+`<AccordionLabel>` は `<FlexItem>`で構成されており、次のように`layout`で展開するコンポーネントの指定もできます。
 
 <Preview>
-	<PreviewTitle>開閉アイコンを切り替える</PreviewTitle>
+	<PreviewTitle>AccordionLabelをFlexで展開する</PreviewTitle>
 	<PreviewArea p={20}>
 		<Accordion>
 			<AccordionHeader isFreeMode>
-				<AccordionLabel>プラス / マイナス</AccordionLabel>
-				<AccordionIcon>
-					<Icon as={Plus} weight='bold' data-to='open' />
-					<Icon as={Minus} weight='bold' data-to='close' />
-				</AccordionIcon>
-			</AccordionHeader>
-			<AccordionBody>
-				<DammyText length='m' />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode>
-```jsx "isFreeMode" "AccordionIcon"
-import { Minus, Plus } from '@phosphor-icons/react';
-
-<Accordion>
-	<AccordionHeader isFreeMode>
-		<AccordionLabel>プラス/マイナス</AccordionLabel>
-		<AccordionIcon>
-			<Icon as={Plus} weight='bold' data-to='open' />
-			<Icon as={Minus} weight='bold' data-to='close' />
-		</AccordionIcon>
-	</AccordionHeader>
-	<AccordionBody>
-		<DammyText length='m' />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-</Preview>
-
-
-
-### ヘッダーに要素を追加する
-
-`<AccordionHeader>` は flexで要素を並べているだけなので、例えばアイコンを追加ことなども可能です。
-
-<Preview>
-	<PreviewTitle>アイコンをもう一つ使用する</PreviewTitle>
-	<PreviewArea p={20}>
-		<Accordion>
-			<AccordionHeader isFreeMode>
-				<AccordionLabel layout={Flex} ai='c' gap='em3'>
+				<AccordionLabel layout={Flex} ai='c' gap='em3' tag='h3'>
 					<><Icon as={Question} fz='2xl' />アコーディオンヘッダー</>
 				</AccordionLabel>
 				<AccordionIcon />
 			</AccordionHeader>
 			<AccordionBody>
-				<DammyText length='m' />
+				<DammyText />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
 	<PreviewCode>
-```jsx {3}
+```jsx "isFreeMode" "layout="
 <Accordion>
-	<AccordionHeader>
-		<AccordionLabel layout={Flex} ai='c' gap='em3'>
+	<AccordionHeader isFreeMode>
+		<AccordionLabel layout={Flex} ai='c' gap='em3' tag='h3'>
 			<Icon as={Question} fz='2xl' />
 			アコーディオンヘッダー
 		</AccordionLabel>
@@ -495,8 +447,50 @@ import { Minus, Plus } from '@phosphor-icons/react';
 </Preview>
 
 
+### 開閉時にアイコンを切り替える方法
 
-## アコーディオントリガーをアイコンのみにする
+`<AccordionIcon>`の子要素(`children`)に直接`<Icon>`を配置することもでき、アイコンを2つ配置して`data-to`属性を指定すると開くアイコンと閉じるアイコンを分けることが可能な設計になっています。
+
+<Preview>
+	<PreviewTitle>開閉アイコンを切り替える</PreviewTitle>
+	<PreviewArea p={20}>
+		<Accordion>
+			<AccordionHeader isFreeMode>
+				<AccordionLabel>プラス / マイナス</AccordionLabel>
+				<AccordionIcon>
+					<Icon as={Plus} weight='bold' data-to='open' />
+					<Icon as={Minus} weight='bold' data-to='close' />
+				</AccordionIcon>
+			</AccordionHeader>
+			<AccordionBody>
+				<DammyText />
+			</AccordionBody>
+		</Accordion>
+	</PreviewArea>
+	<PreviewCode>
+```jsx "isFreeMode" "data-to='open'" "data-to='close'"
+import { Minus, Plus } from '@phosphor-icons/react';
+
+<Accordion>
+	<AccordionHeader isFreeMode>
+		<AccordionLabel>プラス/マイナス</AccordionLabel>
+		<AccordionIcon>
+			<Icon as={Plus} weight='bold' data-to='open' />
+			<Icon as={Minus} weight='bold' data-to='close' />
+		</AccordionIcon>
+	</AccordionHeader>
+	<AccordionBody>
+		<DammyText />
+	</AccordionBody>
+</Accordion>
+```
+	</PreviewCode>
+</Preview>
+
+
+
+
+### アコーディオントリガーをアイコンのみにする
 
 `<AccordionHeader>` に `trigger='icon'` を指定すると、内部の `<AccordionIcon>` に `isTrigger` が適用され、`data-role="trigger"`が出力されます。  
 
@@ -510,7 +504,7 @@ import { Minus, Plus } from '@phosphor-icons/react';
 				<>ヘッダーテキスト（<a href="#acc">ヘルプリンク</a>）</>
 			</AccordionHeader>
 			<AccordionBody>
-				<AccDemoContent />
+				<DammyText />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>

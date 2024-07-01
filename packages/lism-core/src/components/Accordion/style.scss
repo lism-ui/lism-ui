@@ -3,10 +3,7 @@
 }
 
 [data-icon='acc-btn'] {
-	--mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M19.5,8L12,15.5L4.5,8C4.3,7.8,4.1,7.8,3.9,8L3.1,8.8C3,8.9,3,9.2,3.1,9.4l7.5,7.5l1.4,1.4l1.4-1.4l7.5-7.5 c0.2-0.2,0.2-0.5,0-0.6L20.1,8C19.9,7.8,19.7,7.8,19.5,8z"/></svg>');
-
-	background-color: currentColor;
-	mask: var(--mask-image) no-repeat 50% 50% / contain;
+	--icon-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M19.5,8L12,15.5L4.5,8C4.3,7.8,4.1,7.8,3.9,8L3.1,8.8C3,8.9,3,9.2,3.1,9.4l7.5,7.5l1.4,1.4l1.4-1.4l7.5-7.5 c0.2-0.2,0.2-0.5,0-0.6L20.1,8C19.9,7.8,19.7,7.8,19.5,8z"/></svg>');
 }
 
 .c--accordion {
@@ -21,11 +18,9 @@
 }
 
 .c--accordion__header {
-	cursor: pointer;
-	// align-items: center;
-	// justify-content: space-between;
-	min-height: 3.25em;
-	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうので 内側へ
+	// cursor: pointer;
+	// min-height: 3.25em;
+	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうのを防ぐ
 
 	/* Safariで表示されるデフォルトの三角形アイコンを消します */
 	&::-webkit-details-marker {

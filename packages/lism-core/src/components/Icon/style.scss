@@ -32,6 +32,8 @@
 .a--icon:where([data-icon]) {
 	width: 1em;
 	height: 1em;
+	background-color: currentColor;
+	mask: var(--icon-mask) no-repeat 50% 50% / contain;
 }
 
 // .a--icon[data-icon='acc-btn'] {
