@@ -3,36 +3,54 @@ title: 'Banner'
 description: ...
 ---
 
-import { DammyText, Text, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
+import { DammyText, Banner, Text, Stack, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
 
 import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
-バナーリンク型コンテンツを作成する例を紹介します。
+バナーリンクを表示するコンポーネントです。  
+`is--frame`, `is--linkBox` が呼び出されます。
 
-is--frame,is--linkBox を活用します。
+## Props
+
+`<Frame>`, `<LinkBox>` で使用できるプロパティが利用できます。
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Banner } from '@lism-ui/core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Banner } from '@lism-ui/astro';
+```
+	</PreviewCode>
+</Preview>
 
 ## Usage
 
 <Preview>
 	<PreviewTitle>16:9のバナーリンク</PreviewTitle>
 	<PreviewArea p={30}>
-		<LinkBox isFrame href='#banner-link' aspect='16/9'>
-			<img src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-		</LinkBox>
+		<Banner href='#banner-link' aspect='bronze'>
+			<img src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy' />
+		</Banner>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
-```jsx "LinkBox" "isFrame"
-import { LinkBox } from '@lism-ui/core';
+```jsx "Banner"
+import { Banner } from '@lism-ui/core';
 
-<LinkBox isFrame href='#banner-link' aspect='16/9'>
+<Banner href='#banner-link' aspect='bronze'>
 	<img src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-</LinkBox>
+</Banner>
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html "is--frame" "is--linkbox"
-<a class="is--frame is--linkBox -aspect:16/9 -hov:fade" href="#banner-link">
+<a class="b--banner is--frame is--linkBox -aspect:bronze -hov:fade" href="#banner-link">
 	<img src="/img.jpg" alt="" width="960" height="640" loading="lazy">
 </a>
 ```
@@ -43,55 +61,53 @@ import { LinkBox } from '@lism-ui/core';
 <Preview>
 	<PreviewTitle>`Layer`で画像に被せてコンテンツを表示</PreviewTitle>
 	<PreviewArea p={30}>
-		<LinkBox isFrame href='#banner-link' aspect='16/9' bdrs='l'>
-			<Media src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Layer bgc='black:40%' blur='4px' />
-			<Layer isFlow='s' p='box' c='white'>
-				<Text fz='2xl' fw='bold'>Banner</Text>
-				<DammyText lang='ja'/>
-			</Layer>
-		</LinkBox>
+		<Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
+			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer bgc='black:50%' blur='4px' />
+			<Stack pos='a' inset='0' jc='c' gap='10' px='40' c='white' lh='s'>
+				<Text fz='xl' fw='bold'>Banner</Text>
+				<DammyText fz='s' lang='ja' length='s'/>
+			</Stack>
+		</Banner>
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { LinkBox, Layer, Layer, Text, DammyText } from '@lism-ui/core';
+import { Banner, Stack, Layer, Text, DammyText } from '@lism-ui/core';
 
-<LinkBox isFrame href='#banner-link' aspect='16/9' bdrs='l'>
-	<Media src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-	<Layer bgc='black:40%' blur='4px' />
-	<Layer isFlow='s' p='box' c='white'>
-		<Text fz='2xl' fw='bold'>Banner</Text>
-		<DammyText lang='ja'/>
-	</Layer>
-</LinkBox>
+<Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
+	<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
+	<Layer bgc='black:50%' blur='4px' />
+	<Stack pos='a' inset='0' jc='c' gap='10' px='40' c='white' lh='s'>
+		<Text fz='xl' fw='bold'>Banner</Text>
+		<DammyText fz='s' lang='ja' length='s'/>
+	</Stack>
+</Banner>
 ```
 </PreviewCode>
 </Preview>
 
-
-
 <Preview>
 	<PreviewTitle>`hover`を活用する例</PreviewTitle>
 	<PreviewArea p={30}>
-		<LinkBox isFrame href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
+		<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
 			<Layer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hov='get:zoom'/>
 			<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 			<Layer inset='c' bgc='black' c='white' bdrs='l' hov='get:show'>
 				<Text p='box'>View More</Text>
 			</Layer>
-		</LinkBox>
+		</Banner>
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { LinkBox, Layer, Text } from '@lism-ui/core';
+import { Banner, Layer, Text } from '@lism-ui/core';
 
-<LinkBox isFrame href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
+<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
 	<Layer src='/img.jpg' alt='' width='960' height='640' loading='lazy' hov='get:zoom'/>
 	<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 	<Layer inset='c' bgc='black' c='white' bdrs='l' hov='get:show'>
 		<Text p='box'>View More</Text>
 	</Layer>
-</LinkBox>
+</Banner>
 ```
 </PreviewCode>
 </Preview>
