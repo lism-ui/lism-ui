@@ -42,19 +42,17 @@ export function getTheStateData(stateName, value) {
 export default function getStateProps({
 	lismState = [],
 	lismStyle = {},
-	alignfull,
-	alignwide,
 	isOverwide,
 	isFullwide,
 	isWide,
 	isFlow,
 	isContainer,
 	// isConstrained,
-	isFrame,
-	isLinkBox,
+	// isFrame,
+	// isLinkBox,
 	hasGutter,
-	hasLayer,
 	hasDivider,
+	// hasLayer,
 	// hasCoverMedia,
 
 	...props
@@ -79,24 +77,11 @@ export default function getStateProps({
 		Object.assign(lismStyle, style);
 	}
 
-	if (isFrame) {
-		lismState.push('is--frame');
-		if (props.objectPosition) {
-			lismStyle['--objectPosition'] = props.objectPosition;
-			delete props.objectPosition;
-		}
-	}
-
-	if (isLinkBox) {
-		lismState.push('is--linkBox');
-		if (props.hov == null) props.hov = 'fade';
-	}
-
 	hasGutter && lismState.push('has--gutter');
-	hasLayer && lismState.push('has--layer');
+	// hasLayer && lismState.push('has--layer');
 	isOverwide && lismState.push('is--overwide');
-	(alignfull || isFullwide) && lismState.push('is--fullwide');
-	(alignwide || isWide) && lismState.push('is--wide');
+	isFullwide && lismState.push('is--fullwide');
+	isWide && lismState.push('is--wide');
 
 	if (hasDivider) lismState.push('has--divider');
 	// if (hasCoverMedia) lismState.push('has--coverMedia');

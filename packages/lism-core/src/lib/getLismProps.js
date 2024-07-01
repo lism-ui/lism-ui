@@ -73,6 +73,7 @@ class LismPropsData {
 		// 受け取るpropsとそうでないpropsを分ける
 		let {
 			forwardedRef,
+			class: classFromAstro,
 			className,
 			style = {},
 			lismClass,
@@ -81,6 +82,8 @@ class LismPropsData {
 			passProps,
 			getProps,
 			skipState,
+			isFrame,
+			isLinkBox,
 			_context,
 			..._props
 		} = props;
@@ -88,7 +91,21 @@ class LismPropsData {
 		this.context = _context || null;
 
 		_props = skipState ? _props : getStateProps(_props);
+
 		const { lismState = [], lismStyle = {}, ...others } = _props;
+
+		// isFrame, isLinkBoxは skipStateに関係なくチェック
+		if (isFrame) {
+			lismState.push('is--frame');
+			if (others.objectPosition) {
+				lismStyle['--objectPosition'] = others.objectPosition;
+				delete others.objectPosition;
+			}
+		}
+		if (isLinkBox) {
+			lismState.push('is--linkBox');
+			if (others.hov == null) others.hov = 'fade';
+		}
 
 		this.styles = Object.assign({}, lismStyle, style);
 
@@ -106,6 +123,7 @@ class LismPropsData {
 
 		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
 		this.className = joinAtts(
+			classFromAstro,
 			className, // ユーザー指定のクラス
 			lismClassNames, // l--, c--, e-- などのクラス
 			_lismClass,

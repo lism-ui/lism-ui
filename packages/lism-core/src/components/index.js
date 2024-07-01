@@ -32,24 +32,24 @@ export * from './Delimiter';
 export * from './Decorator';
 export * from './DecoBox';
 
+// Blocks
+export * from './Banner';
+export * from './Divider';
+export * from './ShapeDivider';
+
+// Components
+export * from './Alert';
+export * from './Note';
+export * from './NavMenu';
+
 // appルーターで use client がいるもの
 export * from './Accordion';
 export * from './Tabs';
 // export { DynamicCSS } from './DynamicCSS';
 
-// Blocks
-export * from './Alert';
-export * from './Note';
-// export * from './Banner';
 // export * from './Card';
-export * from './Divider';
-export * from './ShapeDivider';
-
-export * from './NavMenu';
-// export * from './Section';
-// export * from './Hero';
 // export * from './Chat';
-
+// export * from './Hero';
 // export { FAQ } from './FAQ';
 // export { MediaText } from './MediaText';
 
