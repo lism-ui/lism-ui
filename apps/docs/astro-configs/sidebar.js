@@ -173,12 +173,16 @@ export default [
 				link: '/components/avatar/',
 			},
 			{
-				label: 'Button',
-				link: '/components/button/',
-			},
-			{
 				label: 'Badge',
 				link: '/components/badge/',
+			},
+			{
+				label: 'Banner',
+				link: '/components/banner/',
+			},
+			{
+				label: 'Button',
+				link: '/components/button/',
 			},
 			{
 				label: 'Divider',
@@ -227,10 +231,6 @@ export default [
 				link: '###---',
 			},
 
-			{
-				label: 'Banner',
-				link: '/components/banner/',
-			},
 			{
 				label: 'Hero',
 				link: '/components/hero/',

@@ -39,8 +39,10 @@
 .l--sideFlex {
 	display: flex;
 	flex-wrap: wrap;
-	--side--w: auto;
-	--fluid--minW: 50%;
+	:where(&) {
+		--side--w: auto;
+		--fluid--minW: 50%;
+	}
 
 	&[data-side='first'] > :first-child,
 	&[data-side='last'] > :last-child {
@@ -55,3 +57,8 @@
 		min-width: min(100%, var(--fluid--minW)); // このサイズが折り返しポイント
 	}
 }
+
+// テキストの可読性を最低限維持する
+// .l--sideFlex--text {
+// 	--fluid--minW: 16em;
+// }

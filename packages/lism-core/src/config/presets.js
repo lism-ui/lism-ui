@@ -19,7 +19,8 @@ export default {
 		'base',
 		'content-2',
 		'content-3',
-		'mix',
+		'boxcolor',
+		'cbox',
 	],
 	bgc: [
 		'main',
@@ -28,7 +29,8 @@ export default {
 		'base-2',
 		'base-3',
 		'content',
-		'mix',
+		'boxcolor',
+		'cbox',
 	],
 	bdc: [
 		'main',
@@ -36,6 +38,8 @@ export default {
 		'mix',
 		'divider',
 		// 'table',
+		'boxcolor',
+		'cbox',
 	],
 	palette: [
 		// 'main',
@@ -69,7 +73,19 @@ export default {
 	bg: ['glass', 'stripe', 'grid'],
 	z: ['-1', '0', '1'],
 	inset: ['c', 'cX', 'cY'], // inset は 0% だけ
-	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',
+	aspect: [
+		'16/9',
+		'4/3',
+		'4/1',
+		'3/2',
+		'2/1',
+		'1/1',
+		'golden',
+		'silver',
+		'bronze',
+		'ogp',
+		'cinema',
+	], //'2/1',
 
 	// fx: ['1'],
 	// gd: ['fix:l', 'fix:r', 'fix:t', 'fix:b'],

@@ -152,6 +152,8 @@ $utilities: (
 		'content-2': 'var(--content-2)',
 		'content-3': 'var(--content-3)',
 		'base': 'var(--base)',
+		'boxcolor': 'var(--boxcolor,currentColor)',
+		'cbox': 'var(--cbox-c, var(--content))',
 	),
 	'bgc': (
 		'main': 'var(--main)',
@@ -163,12 +165,16 @@ $utilities: (
 		't': 'transparent',
 		'cc': 'currentColor',
 		'i': 'inherit',
+		'boxcolor': 'var(--boxcolor,currentColor)',
+		'cbox': 'var(--cbox-bgc, var(--base-2))',
 	),
 	'bdc': (
 		// 'main': 'var(--main)',
 		't': 'transparent',
 		'i': 'inherit',
 		'divider': 'var(--divider-bdc)',
+		'boxcolor': 'var(--boxcolor,currentColor)',
+		'cbox': 'var(--cbox-bdc, var(--base-3))',
 	),
 	'bds': (
 		'dt': dotted,

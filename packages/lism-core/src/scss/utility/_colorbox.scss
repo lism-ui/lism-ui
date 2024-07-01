@@ -1,3 +1,7 @@
+/*
+    Note: c,bgc,bdc ユーティリティより前で読み込むこと。
+*/
+
 // @supports (color: color-mix(in srgb, #000, #fff)) {
 :root {
 	// --mixcolorspace: srgb
@@ -11,8 +15,8 @@
 
 /* stylelint-disable */
 
-// パレットカラーだけに限定すれば、hsl(var(--color / alpha )) でいけるが...。
-// → ただしその場合は半透明にすることしかできないので、どちらにせよ微妙。
+
+// memo: パレットカラーだけに限定すれば、hsl(var(--color / alpha )) でいける? → ただしその場合は半透明にすることしかできないので、どちらにせよ微妙。
 [class*="-boxcolor:"]{
 	// c,bdc は 変数セットのみ
 	// --c: var(--cbox-c, var(--content));
@@ -35,6 +39,7 @@
 		// --code-bgc: color-mix(in srgb, transparent, currentColor 4%);
 	}
 }
+
 
 // cbox, boxcolor
 // is--cbox

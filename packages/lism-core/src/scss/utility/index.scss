@@ -1,6 +1,6 @@
 @forward './pass-get';
-@forward './colorbox'; // Note: colorより前に読み込む必要あり
-@forward './color'; // Note: colorboxより後ろに読み込む必要あり
+@forward './colorbox'; // Note: 他のカラー系（auto_output) より前に読み込む必要あり
+// @forward './color'; // Note: colorboxより後ろに読み込む必要あり
 
 @forward './auto_output';
 
