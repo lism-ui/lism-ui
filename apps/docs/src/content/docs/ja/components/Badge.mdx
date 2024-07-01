@@ -129,17 +129,17 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewTitle>`<Icon>`の使用例</PreviewTitle>
 	<PreviewArea p={20}>
 		<Cluster gap={20}>
-			<Badge variant='fill'><Icon icon={Book} size='1.25em'/> Badge</Badge>
-			<Badge variant='outline'><Icon icon={Cat} size='1.25em'/> Badge</Badge>
+			<Badge variant='fill' ai='c' gap='em2'><Icon icon={Book} size='1.25em'/>Badge</Badge>
+			<Badge variant='outline' ai='c' gap='em2'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 		</Cluster>
 	</PreviewArea>
 <PreviewCode slot='tab' label='React, Astro'>
 ```jsx
 <Cluster gap={20}>
-	<Badge variant='fill'>
+	<Badge variant='fill' ai='c' gap='em2'>
 		<Icon icon={Book} size='1.25em'/>Badge
 	</Badge>
-	<Badge variant='outline'>
+	<Badge variant='outline' ai='c' gap='em2'>
 		<Icon icon={Cat} size='1.25em'/>Badge
 	</Badge>
 </Cluster>

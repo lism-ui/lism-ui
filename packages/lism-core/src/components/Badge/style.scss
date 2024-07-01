@@ -1,22 +1,17 @@
+// 初期スタイル
 :where(.b--badge) {
-	display: inline-flex; // 文中でもpaddingが効くように
 	font-size: var(--fz--xs);
 	border-radius: var(--radius--xs);
-	padding-inline: var(--em--3);
-	gap: var(--em--2);
-	align-items: center;
+	padding-inline: var(--em--4);
+	// align-items: center;
+	// gap: var(--em--2);
 }
 
 // -boxcolor とセットで使う
 .b--badge {
-	// --boxcolor: var(--content);
-	// --c: var(--boxcolor);
-	// --bdc: transparent;
-	// --bgc: transparent;
-	--cbox-mixper--txt: 50%;
-	// color: var(--c);
-	// background-color: var(--bgc);
-	border: solid 1px var(--bdc); // サイズ揃えるために常にborderを指定
+	// --cbox-mixper--txt: 50%; // ちょっと明るく？
+	display: inline-flex; // 文中でもpaddingが効くように
+	border: solid 1px var(--bdc); // 別スタイルを並べてもサイズに差が出ないようにborderを指定
 }
 
 .b--badge--fill {

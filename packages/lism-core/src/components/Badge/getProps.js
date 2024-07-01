@@ -6,8 +6,11 @@ export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
 
 	const defaultProps = {
 		tag: 'span',
-		boxcolor: 'content',
 		skipState: true,
+		boxcolor: 'content',
+		// bdrs: 'xs',
+		// fz: 'xs',
+		// px: '10',
 		_lismClass,
 	};
 
