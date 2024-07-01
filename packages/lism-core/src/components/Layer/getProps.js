@@ -1,6 +1,18 @@
 import getEffectProps from '../getEffectProps';
 import getInsetProps from '../getInsetProps';
 
+const FILTERS = [
+	'blur',
+	'contrast',
+	'brightness',
+	'drop-shadow',
+	'grayscale',
+	'hue-rotate',
+	'invert',
+	'saturate',
+	'sepia',
+];
+
 export function getLayerProps(props) {
 	const { _lismClass = [], variant, ...otherProps } = props;
 
@@ -13,26 +25,13 @@ export function getLayerProps(props) {
 
 	layerProps = getInsetProps(layerProps); // l,r,t,b などのコンテキストpropsのマージ
 	layerProps = getEffectProps(layerProps); // effect系propsのマージ
-	layerProps = getFilterLayerProps(layerProps); // filter系propsのマージ
+	layerProps = getFilterProps(layerProps); // filter系propsのマージ
 
 	layerProps._lismClass = _lismClass;
 	return layerProps;
 }
 
-const FILTERS = [
-	'blur',
-	'contrast',
-	'brightness',
-	'drop-shadow',
-	'grayscale',
-	'hue-rotate',
-	'invert',
-	// 'opacity',
-	'saturate',
-	'sepia',
-];
-
-export function getFilterLayerProps({ css = {}, ...props }) {
+export function getFilterProps({ css = {}, ...props }) {
 	const backdropFilters = [];
 
 	if (null == css.backdropFilter) {

@@ -1,6 +1,4 @@
-// import React from 'react';
 import { Lism, Media } from '../Lism';
-// import { Frame } from '../Frame';
 import { getLayerProps } from './getProps';
 import separateMediaAttrs from '../separateMediaAttrs';
 
