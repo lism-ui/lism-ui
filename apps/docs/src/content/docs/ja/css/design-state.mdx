@@ -6,11 +6,12 @@ sidebar:
 ---
 
 
-import { Alert, Box, Note, Text, Lism, Stack, Flex, Container, Frame, Button, Center } from '@lism-ui/core';
+import { Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center } from '@lism-ui/core';
 import { Desktop } from '@phosphor-icons/react';
 import { MemoBadge,HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import PreviewFrame from '~/components/PreviewFrame.astro';
+import { Note } from '~/components/ex/Note';
 
 Lismでは、レイアウト・デザインを組む上で特定の役割を持ち、かつ複数のモジュールに対してつけ外しできるような汎用性の高いセレクタを Design State（<MemoBadge color='purple'>仮名</MemoBadge>） として分類しています。
 
@@ -23,9 +24,9 @@ Lismでは、レイアウト・デザインを組む上で特定の役割を持�
 
 ## DEMOページ
 
-<Alert icon={Desktop} boxcolor='purple'>
+<Callout icon={Desktop} boxcolor='purple'>
 主要なDesign Stateのデモページを用意しています。ぜひ広い画面でご確認ください。
-</Alert>
+</Callout>
 
 <PreviewFrame url='/demo/container' />
 
@@ -45,9 +46,9 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 | `is--flow:s` | `--flowGap--s` (`--s--20`) |
 | `is--flow:l` | `--flowGap--l` (`--s--50`) |
 
-<Alert preset='point'>
+<Callout type='point'>
 `.is--flow`系の直下では、コンテンツの間隔が `margin-block-start` で管理されます。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
@@ -147,9 +148,9 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	</PreviewCode>
 </Preview>
 
-<Alert preset='good'>
+<Callout type='good'>
 	`.is--flow`, `is--flow:s`, `is--flow:l` をネストするのは問題ありません.
-</Alert>
+</Callout>
 
 
 
@@ -434,16 +435,16 @@ article > * {
 }
 ```
 
-<Alert preset="point">
+<Callout type="point">
 しかし、Lismで推奨しているのは ② の方法です。
-</Alert>
+</Callout>
 
 <HelpText>（もちろん、どちらも可能ではあります。）</HelpText>
 
 なので、`is--container:m` などのコンテンツサイズ制御クラスも、②のアプローチを採用しています。
 
 
-<Note heading='なぜ ② か' preset='help' isFlow='s'>
+<Note title='なぜ ② か' type='help' isFlow='s'>
 ①は、コンテンツエリア内で**全幅サイズで表示したいコンテンツ**を作る場合の処理が複雑になってしまうためです。
 </Note>
 
@@ -519,7 +520,7 @@ article > * {
 		`.is--constrained > .alignfull`の挙動
 	</PreviewTitle>
 	<PreviewArea resize>
-		Alert, Box, Note, <Lism
+		Callout, Box, Note, <Lism
 			isFlow
 			isConstrained
 			hasGutter

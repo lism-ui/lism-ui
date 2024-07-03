@@ -3,7 +3,7 @@ title: 'NavMenu'
 description: ...
 ---
 
-import { Flex, NavMenuList, NavMenu, NavMenuLink, NavMenuAccBody, Badge, Icon, Spacer, Box, Alert} from '@lism-ui/core';
+import { Flex, NavMenuList, NavMenu, NavMenuLink, NavMenuAccBody, Badge, Icon, Spacer, Box, Callout} from '@lism-ui/core';
 import { Accordion,
 	AccordionBody,
 	AccordionHeader,
@@ -110,9 +110,9 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 	</PreviewCode>
 </Preview>
 
-<Alert preset='info' mbs='20'>
+<Callout type='info' mbs='20'>
 `<NavMenu>`に`href`指定すると、内部で`<NavMenuLink>`が自動生成されるようになっています。  
-</Alert>
+</Callout>
 
 <Spacer h='10' />
 

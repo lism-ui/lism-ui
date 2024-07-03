@@ -1,0 +1,193 @@
+---
+title: 'Callout'
+description: ...
+---
+import { Box, Callout, Icon, Layer, DammyText } from '@lism-ui/astro';
+import { Book } from '@phosphor-icons/react';
+import { Reference, MemoBadge, HelpText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+
+短い文言を目立たせて強調表示したい時に使えるコンポーネントです。
+
+
+内部で`<SideFlex>`を使用しており、コンテンツ側が`16rem`を下回るとアイコンとコンテンツが縦並びになります。  
+また、`.-boxcolor:`との併用によって、`--boxcolor`から背景色やボーダー色を自動生成します。
+
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`icon`| アイコンを指定できます。デフォルトは `"lism:alert"`です。|
+|`boxcolor`| ボックスカラーを指定します。デフォルトは `"red"`です。(`color-mix`で色の生成をしているため、未対応ブラウザでは表示が変わります。)|
+|`type`|`boxcolor`と`icon`の組み合わせを呼び出すキーワードを指定できます。初期値:`"alert"`|
+|`isFlow`|`__body`に渡されます|
+{/* | `iconProps` | アイコン（`<Icon>`）に渡すpropsを指定できます。| */}
+{/* - `variant`: `'fill'` | `'outline'` ? */}
+
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { Callout } from '@lism-ui/core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { Callout } from '@lism-ui/astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+
+<Preview>
+	<PreviewTitle>
+		デフォルト（`type='alert'`）
+	</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Callout>
+			<DammyText lang='ja' />
+		</Callout>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+		```jsx
+		<Callout>
+			<p>ロレムイプサムの座り雨、トマ好き学習だったエリット、しかし時と活力はそのような木々と楽しみ。</p>
+		</Callout>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="c--callout l--sideFlex -boxcolor:red" data-side="first">
+			<div class="c--callout__icon l--center -c:boxcolor -fz:xl">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true">...</svg>
+			</div>
+			<div class="c--callout__body">
+				<p>ロレムイプサムの座り雨、トマ好き学習だったエリット、しかし時と活力はそのような木々と楽しみ。ブラインド行うにはいくつかの重要な事柄が流れます。</p>
+			</div>
+		 </div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		typeの指定
+	</PreviewTitle>
+	<PreviewArea p='30'>
+		<Callout type='alert'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='point'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='warning'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='check'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='info'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='help'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='note'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		{/* <Callout icon={Book}>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
+		</Callout> */}
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+	```jsx
+	<Callout type='alert'>...</Callout>
+	<Callout type='point'>...</Callout>
+	<Callout type='warning'>...</Callout>
+	<Callout type='check'>...</Callout>
+	<Callout type='info'>...</Callout>
+	<Callout type='help'>...</Callout>
+	<Callout type='note'>...</Callout>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		その他、カラーとアイコンの指定例
+	</PreviewTitle>
+	<PreviewArea p='30'>
+		<Callout icon='lism:good' boxcolor='green'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout icon='lism:bad' boxcolor='blue'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout icon='lism:book-open' boxcolor='#185b6e'>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
+		</Callout>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Component'>
+	```jsx
+	<Callout icon='lism:good' boxcolor='green'>...</Callout>
+	<Callout icon='lism:bad' boxcolor='blue'>...</Callout>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>
+		Astroのアイコンをslotで指定する例
+	</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Callout boxcolor='#185b6e'>
+			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
+				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
+			</Icon>
+			<DammyText />
+		</Callout>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "slot='icon'"
+		<Callout boxcolor='#185b6e'>
+			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
+				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
+			</Icon>
+			<DammyText />
+		</Callout>
+		```
+	</PreviewCode>
+</Preview>
+
+### isFlow
+
+<Preview>
+	<PreviewTitle>
+		isFlowの指定
+	</PreviewTitle>
+	<PreviewArea p='30'>
+		<Callout isFlow='s'>
+			<DammyText lang='ja' length='xs'/>
+			<DammyText lang='ja' />
+		</Callout>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "isFlow='s'"
+		<Callout isFlow='s'>
+			<p>...</p>
+			<p>...</p>
+		</Callout>
+		```
+	</PreviewCode>
+</Preview>
+

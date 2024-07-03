@@ -3,7 +3,7 @@ title: 'Getting Started'
 description: '...'
 ---
 
-import { Badge, Alert, Tabs, TabItem } from '@lism-ui/astro';
+import { Badge, Callout, Tabs, TabItem } from '@lism-ui/astro';
 import { SmileyXEyes } from "@phosphor-icons/react";
 import { MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
@@ -82,9 +82,7 @@ import { Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, 
 {/* Next.js の **app ルーティング**を使用している場合、`<Accordion>`や`<Tab>`を使うには`"use client"`の記述が必要になりますが、 */}
 
 
-{/* <Alert preset="info"> */}
 `@lism-ui/next`パッケージを追加すると、Lism コンポーネントに関する`"use client"`の記述を省略することができるようになります。
-{/* </Alert> */}
 
 <small>（`"use client"`が必要なものにはすでに記述された状態でimportできるようになります。）</small>
 
@@ -93,9 +91,9 @@ import { Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, 
 npm i @lism-ui/next
 ```
 
-<Alert preset='warning'>
+<Callout type='warning'>
 `@lism-ui/next`から`@lism-ui/core`のコードを ンポートできるようにするため、`next.config.js`の`transpilePackages`に`"@lism-ui/next"`を追加してください。
-</Alert>
+</Callout>
 
 
 ```js filename="next.config.js"
@@ -141,9 +139,9 @@ import { Stack, Flex } from '@lism-ui/astro';
 ```
 
 
-<Alert preset='warning'>
+<Callout type='warning'>
 `@lism-ui/astro`から`@lism-ui/core`のコードをインポートできるようにするため、`astro.config.js`の`vite.ssr.noExternal`に`"@lism-ui/core"`を追加してください。
-</Alert>
+</Callout>
 
 ```js filename="astro.config.js"
 import { defineConfig } from "astro/config";

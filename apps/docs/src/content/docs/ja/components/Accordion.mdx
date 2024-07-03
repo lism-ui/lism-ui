@@ -3,16 +3,17 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Alert, Note, Text, Center, Flex, Icon, DammyText } from '@lism-ui/core';
+import { Divider, Stack, Text, Center, Flex, Icon, DammyText } from '@lism-ui/core';
 import { AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/astro';
 import { Minus, Plus, X, Question } from "@phosphor-icons/react";
 import { Reference, PropBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
 
 アコーディオン要素を作成できるコンポーネントです。
 
 
-<Note heading='実装について' preset='info'>
+<Note title='実装について' type='info'>
 - `details/summary` を採用。
 - `grid` の `1fr` を使った transition で "height:100% 問題" を解決。
 	- Note: コンテンツ側のpadding は、`__inner` ではなく `__body` につけるように注意が必要です。
@@ -536,7 +537,7 @@ import { Minus, Plus } from '@phosphor-icons/react';
 </Preview>
 
 
-<Note heading='Note:' preset='note' isFlow='s'>
+<Note title='Note:' type='note' isFlow='s'>
 `<summary>`自体が`toggle`イベントを持つため、`<AccordionHeader>`内のリンク以外のエリアをクリックしてもアコーディオンは開閉します。  
 これを防いでアイコンのみだけをクリッカブルにしたい場合は、以下のようにCSSを追加してください。
 

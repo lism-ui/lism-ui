@@ -7,7 +7,7 @@ sidebar:
 
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Box, Alert, Flex, Stack, Divider, Spacer } from '@lism-ui/core';
+import { Box, Callout, Flex, Stack, Divider, Spacer } from '@lism-ui/core';
 
 export const LismBorderPreviews = ({ directions = [] }) => {
 	return (
@@ -99,9 +99,9 @@ Lismでは、border系の指定が少し特殊になっています。
 ## 方向指定
 
 
-<Alert preset='info'>
+<Callout type='info'>
 一方向だけのボーダー指定をしたい場合、`.-bd:`の派生クラスを使います。
-</Alert>
+</Callout>
 
 
 <Preview>

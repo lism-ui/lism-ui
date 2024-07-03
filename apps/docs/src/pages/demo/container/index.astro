@@ -2,20 +2,8 @@
 import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
 import { TipCode, AlignWide, AlignFull, Overwide, LoremContent } from './components.jsx';
 import GutterGuide from './GutterGuide.astro';
-
-import {
-	Box,
-	Container,
-	Layer,
-	Frame,
-	Layouter,
-	Spacer,
-	// Alert,
-	Note,
-	Text,
-} from '@lism-ui/astro';
-// import { DammyText } from '~/components';
-
+import { Box, Container, Layer, Frame, Spacer, Text } from '@lism-ui/astro';
+import { Note } from '~/components/ex/Note';
 import './style.scss';
 
 // import './style.scss';
@@ -24,7 +12,7 @@ import './style.scss';
 <DemoPageLayout>
 	<Container isFlow hasGutter py={50} alignfull id='demo-wrapper' _dir='rtl'>
 		<!-- <Container size='m'> -->
-		<Note heading='このページの注意点' preset='warning'>
+		<Note title='このページの注意点' type='warning'>
 			<p>
 				小めの画面でも確認しやすいように、各コンテナサイズをLismのデフォルト値よりも狭くなるように上書きセットしています。
 			</p>

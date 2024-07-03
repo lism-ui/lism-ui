@@ -3,7 +3,7 @@ title: 'Decorations'
 description: ...
 ---
 
-import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Alert } from '@lism-ui/astro';
+import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Callout } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import BalloonBox from '~/components/ex/Decorations/balloon';
@@ -13,9 +13,9 @@ import '~/components/ex/Decorations/style.scss';
 
 装飾ボックスの作成例を紹介します。
 
-<Alert preset='alert'>
+<Callout type='alert'>
 このページは準備中です...
-</Alert>
+</Callout>
 
 
 {/* 対応クラスは`.c--decoBox--{variant}`。  

@@ -3,7 +3,7 @@ title: 'Icon'
 description: ...
 ---
 
-import { Flex, Alert, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
+import { Flex, Callout, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
@@ -139,9 +139,9 @@ lism-core には、アコーディオン用に`"mask-acc-btn"`のみ用意して
 
 これにより、`React Icons`,`@phosphor-icons/react`などのアイコンパッケージを`<Icon>`を通して利用することができます。
 
-<Alert preset='warning'>
+<Callout type='warning'>
 AstroでReact製のアイコンパッケージを利用する場合、別途Astro側でReactを有効化する必要があることに注意してください。
-</Alert>
+</Callout>
 
 <Spacer h={10}/>
 

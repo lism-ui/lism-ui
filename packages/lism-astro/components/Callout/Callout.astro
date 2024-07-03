@@ -1,0 +1,27 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { Center } from '../Center';
+import { Icon } from '../Icon';
+import { SideFlex } from '../Flex';
+import getProps from '@lism-ui/core/components/Callout/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+const { calloutProps, icon, iconProps, bodyProps } = getProps(props);
+const hasIconSlot = Astro.slots.has('icon');
+---
+
+<SideFlex side='first' {...calloutProps}>
+	{
+		// slot 優先
+		(hasIconSlot || icon) && (
+			<Center {...iconProps}>
+				{hasIconSlot ? <slot name='icon' /> : <Icon icon={icon} />}
+			</Center>
+		)
+	}
+	<Lism {...bodyProps}><slot /></Lism>
+</SideFlex>

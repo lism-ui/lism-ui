@@ -3,7 +3,7 @@ title: 'Overview'
 description: ...
 ---
 
-import { Box, Text, Alert, Center, Button, Flex, Frame } from "@lism-ui/astro";
+import { Box, Text, Callout, Center, Button, Flex, Frame } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import DemoLismComponent from '~/demos/demo-lism-component.mdx';
 import SmileyXEyes from "~/components/icons/SmileyXEyes.astro";
@@ -74,9 +74,9 @@ Lismは、あくまでも**HTMLとCSSの設計が主体**になっており、�
 
 {/* 最近流行りのゼロランタイムと逆行する、ゼロビルドです。 */}
 
-<Alert preset="check">
+<Callout type="check">
 CSSを読み込むだけで**素のHTMLサイト**や**WordPressサイトでも利用できる**ものになっています。
-</Alert>
+</Callout>
 
 <Text c="content-2" mbs="10" fz="s">（一部、アコーディオンやタブの動作に関するJavaScriptが付属しています。）</Text>
 
@@ -91,9 +91,9 @@ CSSを読み込むだけで**素のHTMLサイト**や**WordPressサイトでも�
 
 {/* ビルド環境を工夫できる場合は無駄なものを省くことができるので良いですが、そうでない場合は用意されているユーティリティクラスをすべて読み込む必要があります。 */}
 
-{/* <Alert preset="check">
+{/* <Callout type="check">
 そこで、**用意している全CSS**を読み込んでも**あまり気にならない容量**に抑えることを意識しつつ、Lism設計だけでかなり柔軟なレイアウトを実現できるように意識しました。
-</Alert> */}
+</Callout> */}
 {/* <Text mbs="20" fz="s">（現状、用途が限定的な拡張用コンポーネントのCSSを含めても、50kb程度）</Text> */}
 {/* また、完全なユーティリティファースト設計ではないため、レイアウトモジュールに関するCSSについては分離して必要なページでのみ読み込むこともできます。 */}
 
@@ -103,16 +103,16 @@ CSSを読み込むだけで**素のHTMLサイト**や**WordPressサイトでも�
 
 特に、容量の面で一番の課題となるのが**レスポンシブ対応**です。
 
-<Alert boxcolor="blue" icon={SmileyXEyes}>
+<Callout boxcolor="blue" icon={SmileyXEyes}>
 汎用性を高めるために複数のブレイクポイントに対応したクラスを用意してしまうと、CSSの量が一気に肥大化してしまいます。
-</Alert>
+</Callout>
 
 とはいえ、実際の制作現場ではブレイクポイントでのデザイン切り替えが必要となることが多いです。
 
-<Alert boxcolor="green" icon='good'>
+<Callout boxcolor="green" icon='good'>
 そこで、Lismでは**CSS変数とユーティリティクラスの組み合わせ方式**を考えました。  
 CSSの容量を抑えつつ、**簡単にブレイクポイントごとの切り替えができる**ようになっています。
-</Alert>
+</Callout>
 
 （デフォルトでブレイクポイントの切り替えに対応しているCSSプロパティの数は一部ですが、同じ形式に則ってCSSを追加することで、その他のプロパティについてもブレイクポイント切り替えが可能になります。）
 
@@ -126,9 +126,9 @@ Lism UI は CSSレベルのトークンやモジュール設計を提供する�
 さらに、アコーディオンやタブなど、どう実装するのが正解か非常に悩ましいコンテンツについても、個人的なベストプラクティスを詰め込んだ上で実装し、提供しています。(新たなベストプラクティスが出てきた場合は、随時更新していきます。)
 
 
-<Alert boxcolor="green" icon='good'>
+<Callout boxcolor="green" icon='good'>
 似たようなCSS、似たようなHTML、似たようなコンポーネントを何度も書くのはもうおしまいにしましょう。
-</Alert>
+</Callout>
 
 柔軟性があり、軽量で、どんなプロジェクトにも導入できるフレームワークがここにあります。
 

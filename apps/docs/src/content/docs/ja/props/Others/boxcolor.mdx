@@ -5,7 +5,7 @@ sidebar:
   order: 101
 ---
 
-import { Chat, Alert, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
+import { Chat, Callout, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -18,9 +18,9 @@ Lismでは、ボックス全体のカラーリングを行う`.-boxcolor:`クラ
 | `-boxcolor:{palette-token}` | パレットトークンに対しては専用のユーティリティクラスが用意されています。 |
 
 
-<Alert preset='info'>
+<Callout type='info'>
 指定したキーカラーを元に、文字色・背景色・ボーダー色を `color-mix()` で生成します。
-</Alert>
+</Callout>
 
 ## Usage
 

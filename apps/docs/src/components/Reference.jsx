@@ -1,4 +1,4 @@
-import { Alert } from '@lism-ui/core';
+import { Callout } from '@lism-ui/core';
 
 import {
 	// Book,
@@ -10,8 +10,8 @@ import {
 
 export default function Reference({ children }) {
 	return (
-		<Alert icon={BookOpenText} boxcolor='purple'>
+		<Callout icon={BookOpenText} boxcolor='purple'>
 			{children}
-		</Alert>
+		</Callout>
 	);
 }

@@ -2,7 +2,7 @@
 title: 'SideFlex'
 description: ...
 ---
-import { SideFlex, FlexItem, Alert } from '@lism-ui/astro';
+import { SideFlex, FlexItem, Callout } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -11,9 +11,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 かつ、**設定した幅を下回ると自動で** 1カラム に切り替わります。
 
-<Alert preset="point">
+<Callout type="point">
 つまり、メディアクエリやコンテナクエリに依存せずに横並びと縦並びの切り替えを行うことができます。
-</Alert>
+</Callout>
 
 
 ## Props

@@ -2,7 +2,7 @@
 title: 'Flex'
 description: ...
 ---
-import { Flex, Text, Alert } from '@lism-ui/astro';
+import { Flex, Text, Callout } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -187,9 +187,9 @@ Flexの子要素に対するFlexオプションを指定する方法は以下の
 
 これにより、`ltr`でも`rtl`でも左から順に要素が並ぶようになります。
 
-<Alert preset="info">
+<Callout type="info">
 ただし、`dir="rtl"`をhtmlに指定してrtl言語であることを明示的にしておく必要があります。
-</Alert>
+</Callout>
 
 
 <Preview>

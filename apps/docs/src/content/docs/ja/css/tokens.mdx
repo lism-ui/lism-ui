@@ -8,7 +8,7 @@ sidebar:
 import { MemoBadge, DammyText, Reference } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { ColorDemos, FzDemos, LhDemos, LtsDemos, SpacingDemos, ShadowDemos,BoxShadowDemos, RadiusDemos } from "~/demos/tokens.jsx";
-import { Lism, Box, Text, Stack, Flex, Columns, Frame, Alert, Note, Tabs, TabItem, Spacer } from '@lism-ui/astro';
+import { Lism, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabItem, Spacer } from '@lism-ui/astro';
 
 
 export const ColorBadge = ({color, label}) => {
@@ -205,9 +205,9 @@ export const ColorBadge = ({color, label}) => {
 |`5xl`|`--fz--5xl`|`.-fz:5xl`||
 |`r`|`--fz--r`|`.-fz:r`|`1rem`|
 
-{/* <Alert preset="info">
+{/* <Callout type="info">
 	Memo:スケーリングは 4xl くらいまでにして、5xlのとこは `here` などのセマンティックトークンにしてもよさそう。2xsとかも?
-</Alert> */}
+</Callout> */}
 
 
 
@@ -249,9 +249,9 @@ Lism では、フォントサイズのスケーリングには数学的に美し
 
 分子 7~9 あたりで選ぶのがおすすめです。
 
-{/* <Alert preset="info">
+{/* <Callout type="info">
 	英語は分子`8`、 日本語は分子`9`でスケーリングするのが良さそう。
-</Alert> */}
+</Callout> */}
 
 
 <script src='/typo.js' />
@@ -301,9 +301,9 @@ base値をセットし、それに対して小さい・大きいで段階的に�
 |`xl`|`--lh--xl`|`.-lh:xl`|`calc({root} + 0.25)`|
 
 
-<Alert preset="info">
+<Callout type="info">
 base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおすすめ。（英語なら `1.5`, `1.625` あたりがおすすめ）
-</Alert>
+</Callout>
 
 <Tabs>
 	<TabItem label='日本語'>
@@ -502,9 +502,7 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 
 また、それぞれクラスを用意しているのは `50` としています。<MemoBadge>検討中</MemoBadge>
 
-{/* <Note preset="note">
-- ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...?
-</Note> */}
+{/* - ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...? */}
 
 
 ### `SPACE.EM` トークン
@@ -538,9 +536,7 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 
 デフォルトでは、`-gap:{EM}` のみ用意しています。<MemoBadge>要検討</MemoBadge>
 
-{/* <Note preset="note">
 - ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...?
-</Note> */}
 
 
 {/* ## カスタマイズ方法
@@ -659,9 +655,9 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 ## `SHADOW` トークン
 
 
-{/* <Alert preset='warning'>
+{/* <Callout type='warning'>
 box-shadow は少し特殊で、ユーティリティクラス内で複数のshadow用変数が組み合わされています。
-</Alert> */}
+</Callout> */}
 
 |トークン値|変数|クラス|
 |---|---|---|

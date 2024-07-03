@@ -2,7 +2,7 @@
 title: 'Lism'
 description: ...
 ---
-import { Lism, Text, DammyText, Link, Alert } from "@lism-ui/astro";
+import { Lism, Text, DammyText, Link, Callout } from "@lism-ui/astro";
 import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -166,9 +166,9 @@ import Image from 'next/image';
 #### as が使えないケースについて
 
 
-<Alert preset='alert'>
+<Callout type='alert'>
 Astro の `<Image>` を`as`で渡そうとすると、Astro(TypeScript?)のチェックに引っかかり、「Image missing required "alt" property.」エラーが出てしまいます。
-</Alert>
+</Callout>
 
 Astro の `<Image>` に対してLism Propsを使用したい場合は、[`getLismProps()`](/ja/props/lism-props/#getlismprops)を使用するか、Lism CSSに従ってクラスとスタイルを直接記述してください。
 

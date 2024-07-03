@@ -164,19 +164,26 @@ td:first-child > code:only-child {
 		// 	padding-inline-start: 0.5em !important;
 		// }
 	}
+
+	li:has(> ._subtitle) {
+		padding-inline-start: 0;
+	}
+
 	._subtitle {
 		display: block;
 		pointer-events: none;
 		color: inherit;
-		font-weight: bold;
-		// margin-left: -0.5em;
+		color: var(--content-3);
+		// font-weight: bold;
+		margin-inline-start: -1px;
 		// padding: 0.75em 0 0.5em;
 		margin-top: 0.75em;
-		padding: 0.25em 0.5em;
+		padding-inline-start: 0.5em;
+		padding-block: 0;
 		font-size: var(--sl-text-sm);
-		// border-left: 1px solid var(--content-3);
-		border-radius: var(--radius--s);
-		background-color: var(--base-2);
+		border-left: 1px solid var(--content-3);
+		// border-radius: var(--radius--s);
+		// background-color: var(--base-2);
 	}
 	._divider {
 		padding-block: 0.5em;

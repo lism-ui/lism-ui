@@ -30,11 +30,11 @@ export * from './LinkBox';
 export * from './OverlayLink';
 
 export * from './Accordion';
-export * from './Alert';
+export * from './Callout';
 export * from './Badge';
 export * from './Button';
 
-export * from './Note'; // export * from './Note'; // → なぜかnot export になってしまう?
+// export * from './Note';
 export * from './Reel';
 export * from './Tab';
 export * from './Banner';

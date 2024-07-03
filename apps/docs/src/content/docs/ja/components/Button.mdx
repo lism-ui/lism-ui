@@ -5,7 +5,7 @@ description: ...
 
 import { DammyText, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Alert, Box, Flex, Button, IconButton, Icon, Cluster, Layer } from '@lism-ui/astro';
+import { Callout, Box, Flex, Button, IconButton, Icon, Cluster, Layer } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
@@ -27,9 +27,9 @@ import {
 {/* |`hover`| デフォルトは`fade`が指定されています。| */}
 
 
-{/* <Alert preset="info">
+{/* <Callout type="info">
 Astroでアイコンの受け渡しどうする...。（jsxコンポーネントであれば問題なし。）
-</Alert> */}
+</Callout> */}
 
 
 
@@ -375,9 +375,9 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 	</PreviewCode>
 </Preview>
 
-<Alert preset='warning'>
+<Callout type='warning'>
 テキストカラー反転してるようなエリアでは、真っ白になったり真っ黒になったりすることに注意が必要です。その場合、ホバー時の文字色を明示的に指定してください。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>NG例: 真っ白になってしまう</PreviewTitle>

@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Box, Grid, Alert, Note } from "@lism-ui/astro";
+import { Box, Grid, Note } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -20,7 +20,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 	</PreviewCode>
 </Preview>
 
-{/* <Note heading="Lism Propsの重要なポイント" preset="point">
+{/* <Note heading="Lism Propsの重要なポイント" type="point">
 - プロパティと値の組み合わせによってはユーティリティクラス化されて出力される。
 - ユーティリティクラス化されない時の挙動が数パターンある。
 - ブレイクポイントで値を切り替えることができるものがある。

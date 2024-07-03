@@ -2,142 +2,183 @@
 title: 'Note'
 description: ...
 ---
-
-import {  Alert, Note, Tabs, TabItem, Spacer } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Icon, Box, DammyText } from '@lism-ui/astro';
+import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import {Note} from '~/components/ex/Note';
 
-export const NoteDemos = ({ variant }) => {
-	const PRESETS = ['alert', 'point', 'warning', 'check', 'info', 'help', 'note'];
-	return (
-		<>
-			{PRESETS.map((preset) => {
-				return (
-					<Note heading='Note default' variant={variant} preset={`${preset}`} key={preset}>
-						<DammyText length='codes' lang='ja'/>
-					</Note>
-				);
-			})}
-		</>
-	);
-};
 
-## 主なprops
+ブログ記事などで、重要なポイントを示すためのコンポーネントです。
 
-- heading
-- `isFlow`: `__body`に渡されます
-
-<MemoBadge>Memo:</MemoBadge>
-NoteHeader, NoteBody にわける？ → preset で色とアイコンの一括指定ができなくなる（ContextやChildren処理が必要）
-## Import
-
-```js
-import { Note } from '@lism-ui/core';
-```
-
-## Usage
 
 <Preview>
 	<PreviewTitle>
-		デフォルト
+		使用例
 	</PreviewTitle>
-	<PreviewArea p={20}>
-		<Note>
-			<DammyText length='codes' lang='ja'/>
+	<PreviewArea p='30'>
+		<Note title='Note Title'>
+			<DammyText lang='ja'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<Note>
-		<p>Lorem ipsum text...</p>
+	<Note title='Note Title'>
+		<DammyText lang='ja'/>
 	</Note>
 	```
 	</PreviewCode>
 </Preview>
 
 
+## コンポーネントの準備
+
+<PreviewTitle>構築例</PreviewTitle>
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+	```jsx
+	import { Lism, Flex, Stack, Icon, Center } from '@lism-ui/core';
+	import notePresets from '@lism-ui/core/components/Callout/presets.js';
+
+	export function Note({ type = 'note', boxcolor, icon, title, children, isFlow, ...props }) {
+		const presets = type ? notePresets[type] : null;
+		if (presets) {
+			boxcolor = boxcolor || presets?.color || null;
+			icon = icon || presets?.icon || null;
+		}
+
+		return (
+			<Stack className='c--note' boxcolor={boxcolor} p='box' gap='20' bdrs='xs' {...props}>
+				{title && (
+					<Flex className='c--note__head' fw='bold' ai='c' gap='em4' skipState>
+						<Center className='c--note__icon' fz='xl' c='boxcolor' skipState>
+							<Icon icon={icon} />
+						</Center>
+						<span className='c--note__title'>{title}</span>
+					</Flex>
+				)}
+				<Lism className='c--note__body' isFlow={isFlow}>
+					{children}
+				</Lism>
+			</Stack>
+		);
+	}
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='CSS'>
+	```scss
+	:where(.c--note) {
+		border-inline-start: solid 4px var(--boxcolor);
+	}
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+### Props
+
+| プロパティ | 説明 |
+|---|---|
+|`boxcolor`| 表示カラーを指定します。|
+|`icon`| アイコンを指定できます。|
+|`type`|`boxcolor`と`icon`の組み合わせのプリセット値を指定できます。初期値:`"note"`|
+|`title`|タイトルテキストを指定します。|
+|`isFlow`|`__body`に渡されます|
+{/* - `variant`: `'fill'` | `'outline'` ? */}
+
+
+
+### Usage
+
+
+
 <Preview>
 	<PreviewTitle>
-		`heading`を指定
+		`icon`、`boxcolor`を指定
 	</PreviewTitle>
-	<PreviewArea p={20}>
-		<Note heading='Heading text...'>
+	<PreviewArea p='30'>
+		<Note title='Heading text...' icon='lism:star' boxcolor='blue'>
+			<DammyText lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note title='Heading text...' icon='lism:note'>
+			<DammyText lang='ja'/>
+		</Note>
+		```
+	</PreviewCode>
+</Preview>
+
+<HelpText>
+※: アイコンは、`title` の指定がある時のみ表示されます。
+</HelpText>
+
+
+{/* <Preview>
+	<PreviewTitle>
+		Astroで`slot`を利用する例
+	</PreviewTitle>
+	<PreviewArea p='30'>
+		<Note boxcolor='purple'>
+			<Fragment slot='title'>Haeding Title</Fragment>
+			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
+				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
+			</Icon>
+			<DammyText lang='ja'/>
+		</Note>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Note boxcolor='purple'>
+			<Fragment slot='title'>Haeding Title</Fragment>
+			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
+				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
+			</Icon>
+			<DammyText lang='ja'/>
+		</Note>
+		```
+	</PreviewCode>
+</Preview> */}
+
+
+#### Presets
+
+上記の構築例では、`<Callout>`と同じように、`type`を指定できるようにしています。
+
+<Preview>
+	<PreviewArea p='30'>
+		<Note title='type="note"' type='note'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="alert"' type='alert'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="warning"' type='warning'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="point"' type='point'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="check"' type='check'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="info"' type='info'>
+			<DammyText length='codes' lang='ja'/>
+		</Note>
+		<Note title='type="help"' type='help'>
 			<DammyText length='codes' lang='ja'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Note heading='Heading text...'>
-			<p>Lorem ipsum text...</p>
-		</Note>
+		<Note title='type="note"' type='note'>...</Note>
+		<Note title='type="alert"' type='alert'>...</Note>
+		<Note title='type="warning"' type='warning'>...</Note>
+		<Note title='type="point"' type='point'>...</Note>
+		<Note title='type="check"' type='check'>...</Note>
+		<Note title='type="info"' type='info'>...</Note>
+		<Note title='type="help"' type='help'>...</Note>
 		```
 	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>
-		`isFlow`を指定
-	</PreviewTitle>
-	<PreviewArea p={20}>
-		<Note heading='Heading text...' isFlow='s'>
-			<p>Lorem ipsum text...</p>
-			<DammyText />
-		</Note>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Note heading='Heading text...' isFlow='s'>
-			<p>Lorem ipsum text...</p>
-			<p>Lorem ipsum text...</p>
-		</Note>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>
-		`icon`を指定 (iconを使う場合、headingが必須)
-	</PreviewTitle>
-	<PreviewArea p={20}>
-		<Note heading='Heading text...' icon='lism:note'>
-			<DammyText length='codes' lang='ja'/>
-		</Note>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Note heading='Heading text...' icon='lism:note'>
-			...
-		</Note>
-		```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>
-		`boxcolor`を指定
-	</PreviewTitle>
-	<PreviewArea p={20}>
-		<Note heading='Heading text...' icon='lism:note' boxcolor='blue'>
-			<DammyText length='codes' lang='ja'/>
-		</Note>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Note heading='Heading text...' icon='lism:note' boxcolor='blue'>
-			...
-		</Note>
-		```
-	</PreviewCode>
-</Preview>
-
-
-### Presets
-
-Alertと同じプリセットが使用可能。
-
-<Preview>
-	<PreviewArea p={20}>
-		<NoteDemos />
-	</PreviewArea>
 </Preview>

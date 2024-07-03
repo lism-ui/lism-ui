@@ -3,7 +3,7 @@ title: 'Center'
 description: ...
 ---
 
-import { Center, Frame, Alert, Box, Text, Spacer } from '@lism-ui/astro';
+import { Center, Frame, Callout, Box, Text, Spacer } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -44,9 +44,9 @@ import { Center } from '@lism-ui/astro';
 
 Centerが**高さを持たない**場合は、コンテンツを水平方向に対して中央揃えで配置するだけとなります。
 
-{/* <Alert preset="info">
+{/* <Callout type="info">
 水平方向の中央揃えだけでいい場合は、`<Stack ai="center">`でも可能です。
-</Alert> */}
+</Callout> */}
 
 {/* 水平方向に関しては、いわゆる『内在的な』中央揃え（テキスト幅が小さければ左右中央揃え、長ければ普通に左寄せ状態と同じ状態）になります。 */}
 
@@ -237,9 +237,9 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 </Preview>
 
 
-<Alert preset="info">
+<Callout type="info">
 `width`, `height` ではなく `min-width`, `min-height` を指定しているのは、`<Center>`のコンテンツが親要素よりも大きくなった時にスクロールに問題が発生するためです。（詳しくは後述します）
-</Alert>
+</Callout>
 
 
 
@@ -286,9 +286,9 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 
 というケースでは、少し注意が必要です。
 
-<Alert preset='alert'>
+<Callout type='alert'>
 `grid`や`flex`で上下中央揃えを実装する方法では、**スクロール時に上端が見えなくなる**という問題があります。
-</Alert>
+</Callout>
 
 Lismの`<Center>` は `grid` を使ってるので、この問題が発生します。
 
@@ -323,9 +323,9 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 - `<Center>`の親要素に高さやアスペクト比、`overflow-y:auto`を指定する。
 - `<Center>`には **`min-height:100%`** を指定する。
 
-<Alert preset='alert'>
+<Callout type='alert'>
 `height:100%` だとうまくいかないので注意してください。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>
@@ -412,9 +412,9 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 }
 ```
 
-<Alert preset="info">
+<Callout type="info">
 	`justify-content:center` にするだけでも垂直方向にセンター寄せできますが、それだと**スクロール時に正常な動作にならない**ため、`margin`で実装しています。
-</Alert>
+</Callout>
 
 
 次のエリアをリサイズしてスクロール時の挙動の違いを比較してみてください。

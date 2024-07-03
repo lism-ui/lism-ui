@@ -5,9 +5,10 @@ sidebar:
   order: 1
 ---
 
-import { Box, Flex, Alert, Note } from "@lism-ui/astro";
+import { Box, Flex } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
 
 Lismが配布しているReactやAstro用のコンポーネントでは、Lism CSSの設計に合わせて、専用のプロパティ("Lism Props" と呼びます)が受け取れるようになっています。
 
@@ -77,7 +78,7 @@ const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
 
 {/* // const { className, style, ...otherProps} = getLismProps(exampleProps); */}
 
-<Note heading='注意点' preset='warning' isFlow='s'>
+<Note title='注意点' type='warning' isFlow='s'>
 	`getLismProps`をスプレッド構文で展開する際、classNameとstyleが含まれることに注意してください。  
 	例えば、次のようにclassNameの指定を分離すると、classNameが上書きされてしまいます。
 

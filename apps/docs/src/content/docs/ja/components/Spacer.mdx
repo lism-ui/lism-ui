@@ -4,7 +4,7 @@ description: ...
 ---
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Spacer, Alert, Box, Flex } from '@lism-ui/astro';
+import { Spacer, Callout, Box, Flex } from '@lism-ui/astro';
 
 
 スペースを確保するためのモジュールです。
@@ -15,9 +15,9 @@ import { Spacer, Alert, Box, Flex } from '@lism-ui/astro';
 {/* - `w`: `width`の値を指定できます。
 - `h`: `height`の値を指定できます。 */}
 
-<Alert preset="info">
+<Callout type="info">
 `<Space>`では、`w`と`h`に対してSPACEトークンの値が使えます。
-</Alert>
+</Callout>
 
 
 ## Import

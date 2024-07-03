@@ -8,7 +8,7 @@
 	scale: var(--scale);
 	display: inline-flex;
 	vertical-align: middle; //下にスペースができるのを防ぐ
-	flex-shrink: 0; // Alertなど、アイコンはflex直下の子要素にしたい場合が多いので、指定しておく
+	flex-shrink: 0; // Callout など、アイコンはflex直下の子要素にしたい場合も多いので、指定しておく
 	// width: 1em;
 	// height: 1em;
 }

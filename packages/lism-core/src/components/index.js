@@ -38,8 +38,8 @@ export * from './Divider';
 export * from './ShapeDivider';
 
 // Components
-export * from './Alert';
-export * from './Note';
+export * from './Callout';
+// export * from './Note';
 export * from './NavMenu';
 
 // appルーターで use client がいるもの

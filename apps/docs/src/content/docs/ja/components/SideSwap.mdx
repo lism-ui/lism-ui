@@ -4,15 +4,15 @@ description: ...
 ---
 import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { SideSwap, GridItem, Alert, Note } from '@lism-ui/astro';
-
+import { SideSwap, GridItem, Callout } from '@lism-ui/astro';
+import { Note } from '~/components/ex/Note';
 
 **片方の横幅を固定し、もう一方の要素が伸縮する**ような 2カラムレイアウト を作成します。
 
 かつ、**指定したブレイクポイントで** 1カラム に切り替わり、1カラム時に固定幅のサイド要素が上側・下側のどちらに配置されるかも指定できるコンポーネントです。
 
-<Note preset="note">
-<Fragment slot="heading"><a href="/ja/components/sideflex">{`<SideFlex>`}</a>と異なる点</Fragment>
+<Note type="note" title='SideFlexとの違い'>
+{/* <Fragment slot="type"><a href="/ja/components/sideflex">{`<SideFlex>`}</a>と異なる点</Fragment> */}
 - 折返しタイミングをコンテナクエリで制御します。
 {/* - 縦並びになった時に、サイド要素が上に来るか下にくるかをコントロールできます。 */}
 </Note>
@@ -56,9 +56,9 @@ import { SideSwap } from '@lism-ui/astro';
 
 ## Usage
 
-<Alert preset="info">
+<Callout type="info">
 子要素の1つに `grid-area:side`(`.-ga:side`) の指定が必須です.
-</Alert>
+</Callout>
 {/* サイド要素に対して`<GridItem ga='side'>`を使うか、`gridItem={{ga:"side"}}`を使用してください。 */}
 
 {/* side要素には、`.is--side`クラスの指定が必須です。  
@@ -150,9 +150,9 @@ export const SideSwapDemos = () => {
 
 `bp="{bpName}"`で指定できます。（デフォルトは`sm`.）
 
-<Alert preset="note">
+<Callout type="note">
 `sm`, `md`をデフォルトでサポートしていますが、`lg`などを指定することで`data-bp="lg"`を出力させることができるので、CSSを追加していただければお好きなポイントで切り替えるようにカスタマイズすることもできます。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>`@sm`(デフォルト)</PreviewTitle>

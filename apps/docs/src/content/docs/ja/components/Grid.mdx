@@ -3,7 +3,7 @@ title: 'Grid'
 description: ...
 ---
 
-import { Alert, Grid, GridItem, Center } from '@lism-ui/astro';
+import { Callout, Grid, GridItem, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
@@ -54,17 +54,17 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 
 ただし、HTMLを直接書く場合は次の点に注意してください。
 
-<Alert preset='alert'>
+<Callout type='alert'>
 `--gt`を指定すると`--gtc`, `--gtr`を上書きする形になってしまうので、基本的には、`--gt`を使うときは`--gtc`, `--gtr`は使わないでください。  
 （どうしても両方指定したい場合は、`.-gtc:`、`-gtr:`、`-gta:`クラスも併用してください。）
-</Alert>
+</Callout>
 
 
 `<Grid>`コンポーネントを使用する際は気にしなくて大丈夫です。
 
-<Alert preset='good'>
+<Callout type='good'>
 コンポーネントでは、`gt`、`gtc`、`gtr`は基本的には変数のみが出力され、必要な場合は自動でクラスの出力も調整されます。
-</Alert>
+</Callout>
 
 
 ## Import
@@ -251,9 +251,9 @@ import { Grid, GridItem } from '@lism-ui/astro';
 
 **子要素が指定した幅より小さくならないように自動で折り返しされる**タイルグリッドを作成します。
 
-<Alert preset="info">
+<Callout type="info">
 カラムの折返しタイミングがブレイクポイントではなくコンテンツサイズに依存します。
-</Alert>
+</Callout>
 
 ただし、カラム数は**1列ずつしか変わらない**（ 4列→2列 とかはできず、4列→3列→2列になる ) ので、カラム数を具体的に指定したい場合は [`<Columns>`](/ja/components/columns) を使ってください。
 

@@ -2,14 +2,15 @@
 title: 'LinkBox'
 description: ...
 ---
-import { LinkBox, OverlayLink, Stack, Note, Alert, Text, Spacer } from '@lism-ui/astro';
+import { LinkBox, OverlayLink, Stack, Callout, Text, Spacer } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
+
 
 ボックス全体がリンクになったモジュールです。
 
 ## Props
-
 
 | プロパティ | 説明 |
 |---|---|
@@ -37,12 +38,12 @@ import { LinkBox, OverlayLink } from '@lism-ui/core';
 LinkBoxは、次の3通りの使い方ができます。
 
 1. `<LinkBox>`自体を`<a>`タグにする。
-2. `<LinkBox>`が`<div>`で、内部に`e--overlayLink`を配置する。
-3. `<LinkBox>`が`<div>`で、内部に`e--hiddenLink`を配置する。
+2. `<LinkBox>`が`<div>`で、内部に`a--overlayLink`を配置する。
+3. `<LinkBox>`が`<div>`で、内部に`a--hiddenLink`を配置する。
 
-<Alert preset='info'>
+<Callout type='info'>
 2, 3 では、LinkBox内部に別のリンクも配置できます。
-</Alert>
+</Callout>
 
 ### `<LinkBox>`自体を`<a>`タグにする
 
@@ -80,14 +81,14 @@ LinkBoxは、次の3通りの使い方ができます。
 </Preview>
 
 
-### 内部に`e--overlayLink`を配置する
+### 内部に`a--overlayLink`を配置する
 
 LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力され、  
-内部のアンカー要素に`.e--overlayLink`を併用することで`.is--linkBox`全体をリンクにすることができます。
+内部のアンカー要素に`.a--overlayLink`を併用することで`.is--linkBox`全体をリンクにすることができます。
 
-<Alert preset='info'>
+<Callout type='info'>
 この時、LinkBoxの内部に別のリンクを配置できます。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle id='boxlink02'>LinkBoxにhrefを指定せず、中にoverlayLinkを配置する</PreviewTitle>
@@ -118,10 +119,10 @@ LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力�
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx {1,3,9} "e--overlayLink"
+		```jsx {1,3,9} "a--overlayLink"
 		<div class="is--linkBox -hov:fade -p:box:l -bgc:base -bd: -bdc:divider -bdrs:l">
 			<p class="-fz:xl -fw:bold">
-				<a class="e--overlayLink" href="#boxlink02">Heading Link</a>
+				<a class="a--overlayLink" href="#boxlink02">Heading Link</a>
 			</p>
 			<p class="-c:content-2 -lh:s -mbs:20">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
@@ -135,29 +136,29 @@ LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力�
 </Preview>
 
 
-<Note preset='info' isFlow='s'>
-`e--overlayLink`にフォーカスした時のアウトラインをLinkBox全体に広げたい場合は、次のようなCSSを追記してください。
+<Note type='info' isFlow='s'>
+`a--overlayLink`にフォーカスした時のアウトラインをLinkBox全体に広げたい場合は、次のようなCSSを追記してください。
 
 ```css
 @supports selector(:has(*)) {
-	.is--linkBox:has(.e--overlayLink:focus-visible) {
+	.is--linkBox:has(.a--overlayLink:focus-visible) {
 		outline: auto 1px;
 		outline: auto 1px -webkit-focus-ring-color;
 	}
-	.e--overlayLink:focus {
+	.a--overlayLink:focus {
 		outline: 0;
 	}
 }
 ```
 </Note>
 
-### 内部に`e--hiddenLink`を配置する
+### 内部に`a--hiddenLink`を配置する
 
 `setHiddenLink`を指定すると、ボックスを`<a>`タグにせず、内部に隠しリンク要素を出力します。
 
-<Alert preset='info'>
+<Callout type='info'>
 この場合、`linkLabel`を使ってリンクの読み上げテキストを指定するようにしてください。(`aria-label`として出力されます）
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle id='boxlink03'>`setHiddenLink`</PreviewTitle>
@@ -184,9 +185,9 @@ LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力�
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx {2,8} "e--hiddenLink"
+		```jsx {2,8} "a--hiddenLink"
 		<div class="is--linkBox -hov:fade -p:box:l -bgc:base -bd: -bdc:divider -bdrs:l">
-			<a class="e--hiddenLink is--skipFlow" href="#boxlink03" aria-label='リンクだよ'></a>
+			<a class="a--hiddenLink is--skipFlow" href="#boxlink03" aria-label='リンクだよ'></a>
 			<p class="-fz:xl -fw:bold">Heading Text</p>
 			<p class="-c:content-2 -lh:s -mbs:20">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.

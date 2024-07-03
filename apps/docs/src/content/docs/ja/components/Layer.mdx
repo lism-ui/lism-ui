@@ -4,17 +4,13 @@ description: ...
 ---
 
 
-import { Media, Layer, Stack, Alert, Note, Text, Box, Columns, Center, Frame } from '@lism-ui/astro';
+import { Media, Layer, Stack, Callout, Note, Text, Box, Columns, Center, Frame } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
 `position:absolute`で要素を親要素に被せて配置するためのモジュールです。
 
-<Alert preset="warning">
-Layerの親要素を `position:relative` にしておく必要があることに注意してください。
-</Alert>
-
-CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定された状態で配置されることに注意してください。
+CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定された状態で配置されます。
 
 ```css
 .l--layer {
@@ -29,50 +25,11 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 参考：[absoluteで配置する方法](/ja/props/others/absolute)
 </Reference>
 
-{/* ## 主なProps
 
-| プロパティ | 説明 | 有効な値|
-|---|---|---|
-| `position`| Layerの配置位置をキーワードで指定します。指定された値に合わせて、top,left などの位置プロパティが適用されます。|`'{X} {Y}'`形式で、それぞれ`left`,`right`,`top`,`bottom`,`center` が使えます。| */}
+<Callout type="warning">
+Layerの親要素を `position:relative` にしておく必要があることに注意してください。
+</Callout>
 
-{/* | `data-size` | サイズに関する調整をキーワードで指定できます。| `contain`| */}
-
-{/* |Prop|CSS|
-|---|---|
-|`inset`|`inset`|
-|`t`|`top`|
-|`b`|`bottom`|
-|`l`|`left`|
-|`r`|`right`|
-|`is`|`inset-inline-start`|
-|`ie`|`inset-inline-end`|
-|`bs`|`inset-block-start`|
-|`be`|`inset-block-end`| */}
-
-{/* |Prop|CSS|
-|---|---|
-|`translate`|`translate`|
-|`rotate`|`rotate`|
-|`scale`|`scale`|
-|`transform`|`transform`|
-|`transformOrigin`|`transformOrigin`|
-|`clipPath`|`clipPath`|
-|`backdropFilter`|`backdropFilter`| */}
-
-
-
-{/* 
----
-
-<Note preset="note" heading="ブロック化した時のmemo...">
-- Layer配置時に自動で親ブロックに `.-pos:r` を追加するようにしたい。(Layerブロックから親要素へアクセスしてsetAtttibutes）
-- ~~できれば、削除されたときに親ブロックからそのクラスは削除したい。~~  
-	→ 「まだ必要なのに消えてしまう」ケースも起こりうるので、削除はなし。
-- エディター側では 常に親要素・兄弟要素に被っていると編集ができないので、「relative モード」的なものを用意して `absolute` を一時的に解除して他のブロックの編集ができるようにしたい。
-- 子ブロックとしてしか使えないようにしたい。
-</Note>
-
---- */}
 
 ## Import
 

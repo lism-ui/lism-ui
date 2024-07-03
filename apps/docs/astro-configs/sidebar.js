@@ -206,12 +206,8 @@ export default [
 				link: '/components/accordion/',
 			},
 			{
-				label: 'Alert',
-				link: '/components/alert/',
-			},
-			{
-				label: 'Note',
-				link: '/components/note/',
+				label: 'Callout',
+				link: '/components/callout/',
 			},
 			{
 				label: 'Tabs',
@@ -260,6 +256,10 @@ export default [
 				link: '/components/faq/',
 			},
 			{
+				label: 'Note',
+				link: '/components/note/',
+			},
+			{
 				label: 'Step',
 				link: '/components/step/',
 			},
@@ -295,7 +295,7 @@ export default [
 
 	// 	items: [
 	// 		{
-	// 			label: 'Alert',
+	// 			label: 'Callout',
 	// 			link: '/components/core/',
 	// 		},
 	// 		{

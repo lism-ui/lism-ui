@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Box, Alert,Flex } from "@lism-ui/astro";
+import { Box, Callout,Flex } from "@lism-ui/astro";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -109,7 +109,7 @@ LismがどのようなCSS設計になっているかを説明します。
 
 基本的に、最大詳細度を超えないようにセレクタを調整してこの順番で読み込みます。
 
-<Alert preset='info'>例外的にあえて"最大詳細度"を超えてセレクタを定義する場合もあります。絶対的なルールではありません。</Alert>
+<Callout type='info'>例外的にあえて"最大詳細度"を超えてセレクタを定義する場合もあります。絶対的なルールではありません。</Callout>
 
 {/* それぞれカスケードレイヤー（`@layer`）を定義して読み込むようにすれば、詳細度をあまり気にせずに書けるようになります。
 <MemoBadge>好きな方を選べるように、2パターンでCSSを作成予定。</MemoBadge> */}
@@ -144,9 +144,9 @@ Lismでは、レイアウト・デザインの構成要素を細分化してい�
 {/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
 <small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}
 
-<Alert preset="info">
+<Callout type="info">
 Blocks はAtom,Layoutクラスで構成されるような粒度で、Componentは Layout,Atom,Block 等で構成されるような粒度でイメージしてください。
-</Alert>
+</Callout>
 
 
 #### 子要素を持つ場合
@@ -207,13 +207,13 @@ Prop Utility には以下の3種類の形式があります。
 - ネガティブ(マイナス)値の表記もそのままで。
 	- 例: `.-prop:-1` */}
 
-<Alert preset="warning">
+<Callout type="warning">
 	<div class="-fz:s">
 	\*1: 全てのトークンにユーティリティクラスがデフォルトで用意されているわけではありません。  
 	\*2: 全てのCSSプロパティに対応するクラスがデフォルトで用意されているわけではありません。  
 	\*3: ブレークポイントに対応したクラスがデフォルトで用意されているものは一部のプロパティのみです。
 	</div>
-</Alert>
+</Callout>
 
 
 <PreviewTitle>先ほどの表で例に出したクラスは、以下のように定義されています。</PreviewTitle>
@@ -233,9 +233,9 @@ Prop Utility には以下の3種類の形式があります。
 
 <HelpText>（厳密には少し異なるものもありますが、イメージとしてはこんな感じです。）</HelpText>
 
-<Alert preset="check">
+<Callout type="check">
 これにより、Lism では**クラスと変数を書くだけでレスポンシブデザイン**を実現できるようになっています。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>実際の活用例は次の通りです。</PreviewTitle>
@@ -281,9 +281,9 @@ Lismパッケージに内蔵されているクラスではありませんが、�
 
 Lismは**コンテナクエリ**を標準で採用しています。
 
-<Alert preset='point'>
+<Callout type='point'>
 ブレイクポイントで値を切り替えるには先祖要素でコンテナ要素を定義する必要があります。
-</Alert>
+</Callout>
 
 Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`)が便利です。
 
@@ -299,9 +299,9 @@ Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`
 |`lg`|`width >= 960px`|
 |(`xl`)|`width >= 1200px`|
 
-<Alert preset="info">
+<Callout type="info">
 (ただし、xlサイズのサポートは別途SCSSの設定ファイルの上書きが必要)
-</Alert>
+</Callout>
 
 
 これらの定義済みポイントは、SCSSであれば次のようにして簡単に利用できます。

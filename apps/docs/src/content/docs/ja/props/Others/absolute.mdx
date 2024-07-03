@@ -4,13 +4,14 @@ description: ...
 ---
 
 
-import { Media, Stack, Alert, Note, Text, Box, Layer, Frame } from '@lism-ui/astro';
+import { Media, Stack, Callout, Text, Box, Layer, Frame } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
 
 `position:absolute`で要素を配置する例をいくつか紹介します。
 
-<Note preset='info' heading='Points'>
+<Note type='info' title='Points'>
 - positionにあたるプロパティが`pos`です。
 	- `absolute`は`a`と省略できます。
 	- `relative`は`r`と省略できます。
@@ -18,10 +19,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 - `inset`には、少し特殊なユーティリティクラス、`-inset:c`,`-inset:cX`,`-inset:cY`があります。
 </Note>
 
-<Alert preset='warning' fz='s'>
+<Callout type='warning' fz='s'>
 ※ `inset`,`top` `right` `bottom` `left` は、数値指定するとスペーストークンとして認識されます。  
 また、この処理の都合上、値が`0`,`100`のユーティリティクラス（`-t:0`など）を出力させたい場合、 `t={0}` ではなく `t='0'` と文字列で指定する必要があります。
-</Alert>
+</Callout>
 
 <Preview>
 	<PreviewTitle>

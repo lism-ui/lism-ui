@@ -9,9 +9,9 @@
 // --------------------
 .l--layer {
 	position: absolute;
-	// overflow: auto;
-	overflow: hidden;
 	inset: 0;
+	overflow: hidden;
+	// overflow: auto;
 
 	// 親要素のサイズを超えないようにする設定
 	// &[data-size='cover'] {

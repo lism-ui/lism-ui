@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 4
 ---
-import { Alert } from "@lism-ui/astro";
+import { Callout } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 
@@ -46,9 +46,9 @@ import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 
 
 
-<Alert preset="alert">
+<Callout type="alert">
 CSS側でクラスが用意されていないと実際に値は切り替わりません。デフォルトでレスポンシブ対応されていないプロパティは、[追加のカスタマイズ](/ja/css/customize/)が必要です。
-</Alert>
+</Callout>
 
 途中のポイントをスキップする場合は次のようになります。
 
