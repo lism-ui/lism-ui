@@ -69,7 +69,7 @@
 
 $bp_support_list: (); // list
 
-@each $key, $data in setting.$prop_class_data {
+@each $key, $data in setting.$props {
 	$prop: map.get($data, prop); // 対応するCSSプロパティ名
 	$base_type: map.get($data, base_type); // 基本セレクタの種類
 	$is_important: map.get($data, important);
@@ -115,45 +115,72 @@ $bp_support_list: (); // list
 	// }
 
 	// BPクラスを出力するプロパティのリストを作成
-	@if map.has-key($data, bp) {
+	$bp_support: map.get($data, bp);
+
+	// $bp_support が 1 または 文字列か
+	@if $bp_support == 1 or type-of($bp_support) == string {
 		$bp_support_list: list.append($bp_support_list, $key);
 	}
 }
+// @debug $bp_support_list;
+
+// query.$breakpoints のキーだけを抽出したリストを取得
+$bp_names: map.keys(query.$breakpoints);
 
 /* __stylelint-disable */
-//まず定義されている BP でループ
-@each $bp in map.keys(query.$break-points) {
-	// BPサポートプロパティのリストをループ
-	@each $key in $bp_support_list {
-		$prop_data: map.get(setting.$prop_class_data, $key);
-		$prop: map.get($prop_data, prop);
-		$base_type: map.get($prop_data, base_type);
-		$bp_data: map.get($prop_data, bp);
-		$is_important: map.get($prop_data, important);
 
-		// 現在のブレイクポイント ($bp) 用のクラスを出力するかどうかを、デフォルト設定から取得
-		$support_now_bp: map.get(setting.$utility_bps, $bp);
+// BPサポートしてるプロパティのリストをループ
+@each $key in $bp_support_list {
+	$prop_data: map.get(setting.$props, $key);
+	$prop_name: map.get($prop_data, prop);
+	$base_type: map.get($prop_data, base_type);
+	$prop_bp_data: map.get($prop_data, bp);
+	$is_important: map.get($prop_data, important);
+	$support_bp: query.$support_bp;
 
-		// Propごとの設定で上書きデータがあるかどうか
-		@if (type-of($bp_data) == map) {
-			// 0, 1 がセットされてれば
-			@if type-of(map.get($bp_data, $bp)) == number {
-				$support_now_bp: map.get($bp_data, $bp);
-			}
-		} @else if ($bp_data == 0) {
-			$support_now_bp: 0;
-		}
-
-		@if $support_now_bp == 1 {
-			// memo: Note: base_type: 0 の時、かつBPサポートが有効な場合、インラインスタイルで出力されているのでBPクラスにimoirtantが必要（現状はそのような組み合わせは存在しないが）
-			@if $base_type == 0 {
-				$is_important: 1;
-			}
-			@include query.bp-up($bp) {
-				.-#{$key}\@#{$bp} {
-					#{$prop}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
-				}
-			}
-		}
+	// memo: Note: base_type: 0 の時、かつBPサポートが有効な場合、インラインスタイルで出力されているのでBPクラスにimoirtantが必要（現状はそのような組み合わせは存在しないが）
+	@if $base_type == 0 {
+		$is_important: 1;
 	}
+
+	@if (type-of($prop_bp_data) == string) {
+		// サポートするブレイクポイントの上書き指定があれば
+		$support_bp: $prop_bp_data;
+	}
+	//  @else if ($prop_bp_data == 0) {
+	// 	// 0 が渡されれば、BPサポートを無効にする
+	// 	$output_bps: 0;
+	// }
+
+	// debug: $prop_name が 'gap' or 'p' なら$output_bps を 出力してみる
+	@if $prop_name == 'gap' or $prop_name == 'flex-direction' or $prop_name == 'padding' {
+		@debug $prop_name, $support_bp;
+	}
+
+	$flag: true;
+	$i: 1;
+	@while $flag {
+		$bp: list.nth($bp_names, $i);
+
+		@include query.bp-up($bp) {
+			.-#{$key}\@#{$bp} {
+				#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
+			}
+		}
+
+		// サポートするBPまで辿り着いたら終了
+		@if $bp == $support_bp or $i == list.length($bp_names) {
+			$flag: false;
+		}
+
+		$i: $i + 1;
+	}
+
+	// $support_bp と一致する list番号 を取得
+	// $bp_index: list.index($bp_names, $support_bp);
+	// @if $bp_index {
+	// 	@for $i from 1 through list.length($bp_names) {
+	// 		$bp: list.nth($bp_names, $i);
+	// 	}
+	// }
 }

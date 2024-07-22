@@ -6,20 +6,18 @@ $util_spaces: 5, 10, 15, 20, 30, 40, 50 !default;
 $util_em_tokens: 1, 2, 3, 5, 7, 10, 15, 20, 25, 30 !default;
 
 $utilities: () !default;
-$prop_class_data: () !default;
-$utility_bps: () !default;
-$bp_props: () !default;
-$prop_list: () !default;
+$props: () !default;
 
 // ユーティリティクラスを出力するブレイクポイントのリスト
-$utility_bps: map.merge(
-	(
-		'sm': 1,
-		'md': 1,
-		'lg': 1,
-	),
-	$utility_bps
-);
+// $utility_bps: () !default;
+// $utility_bps: map.merge(
+// 	(
+// 		'sm': 1,
+// 		'md': 1,
+// 		'lg': 1,
+// 	),
+// 	$utility_bps
+// );
 
 /*
 prop:CSSプロパティ名
@@ -291,7 +289,7 @@ $utilities: (
 	'jslf': $place_utils,
 );
 
-$prop_class_data: map.deep-merge(
+$props: map.deep-merge(
 	(
 		'w': (
 			prop: 'width',
@@ -438,14 +436,17 @@ $prop_class_data: map.deep-merge(
 			prop: 'gap',
 			base_type: 1,
 			utilities: s em,
+			bp: 1,
 		),
 		'colg': (
 			prop: 'column-gap',
 			base_type: 1,
+			bp: 1,
 		),
 		'rowg': (
 			prop: 'row-gap',
 			base_type: 1,
+			bp: 1,
 		),
 		'm': (
 			prop: 'margin',
@@ -577,6 +578,7 @@ $prop_class_data: map.deep-merge(
 		'fxd': (
 			prop: 'flex-direction',
 			base_type: 0,
+			bp: 1,
 		),
 		'fx': (
 			prop: 'flex',
@@ -666,5 +668,5 @@ $prop_class_data: map.deep-merge(
 			base_type: 0,
 		),
 	),
-	$prop_class_data
+	$props
 );

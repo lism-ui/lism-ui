@@ -1,0 +1,22 @@
+// @パッケージ でインポートできるのは Astro だから？
+
+// 480→400に変更
+@use '@lism-ui/core/scss/query' with (
+		$breakpoints: (
+			'sm': '400px',
+			// 'lg': 0,
+		),
+		// $support_bp: 'md' // デフォルトでサポートするブレイクポイントを md までに下げる
+	);
+
+@use '@lism-ui/core/scss/setting' as lism-setting with (
+	$props: (
+		// importantを付ける
+		'fz': (important: 1),
+		'p': (bp: 'md'),
+		'gap': (bp: 'xl'),
+		'fx': (bp: 1),
+	)
+);
+
+@use '@lism-ui/core/scss/all';

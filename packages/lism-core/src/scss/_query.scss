@@ -2,41 +2,48 @@
 
 // xs sm md lg xl xxl
 // 240刻み
-$break-points: () !default;
-$query-type: 'container' !default;
+$breakpoints: () !default;
+$is_container_query: 1 !default;
 
-$break-points: map.merge(
+$breakpoints: map.merge(
 	(
 		'sm': '480px',
 		'md': '720px',
 		'lg': '960px',
-		// 'xl': '1200px',
-		// 'xxl': '1400px',
+		'xl': '1200px',
 	),
-	$break-points
+	$breakpoints
 );
+$support_bp: 'lg' !default;
 
-@mixin bp-up($size) {
-	$bp: map.get($break-points, $size);
-	@if $query-type == 'container' {
-		@container (min-width: #{$bp}) {
-			@content;
-		}
-	} @else {
-		@media (min-width: #{$bp}) {
-			@content;
+@mixin bp-up($bp_name) {
+	$bp_size: map.get($breakpoints, $bp_name);
+
+	// サイズが 0 の時はスキップ(カスタマイズでオフにできるように）
+	@if $bp_size != 0 {
+		@if $is_container_query == 1 {
+			@container (min-width: #{$bp_size}) {
+				@content;
+			}
+		} @else {
+			@media (min-width: #{$bp_size}) {
+				@content;
+			}
 		}
 	}
 }
-@mixin bp-down($size) {
-	$bp: map.get($break-points, $size);
-	@if $query-type == 'container' {
-		@container not (min-width: #{$bp}) {
-			@content;
-		}
-	} @else {
-		@media not (min-width: #{$bp}) {
-			@content;
+@mixin bp-down($bp_name) {
+	$bp_size: map.get($breakpoints, $bp_name);
+	// サイズが 0 の時はスキップ(カスタマイズでオフにできるように）
+	@if $bp_size != 0 {
+		@if $is_container_query == 1 {
+			@container not (min-width: #{$bp_size}) {
+				@content;
+			}
+		} @else {
+			@media not (min-width: #{$bp_size}) {
+				@content;
+			}
 		}
 	}
 }
