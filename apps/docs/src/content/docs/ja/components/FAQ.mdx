@@ -7,26 +7,18 @@ description: ...
 import { Callout, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/core';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import {Question,ChatCircleDots} from '@phosphor-icons/react';
+import {Question, ChatCircleDots} from '@phosphor-icons/react';
 
 Q&Aのレイアウト構築例を紹介します。
-
-export function FAQs({ children }) {
-	return (
-		<Stack className='c--faqs' tag='dl' gap='40'>
-			{children}
-		</Stack>
-	);
-}
 
 export function FAQ({ q, children }) {
 	return (
 		<Stack className='c--faq' gap='20'>
-			<Flex className='c--faq__q' tag='dt' gap='em6' ai='c'>
-				<Icon emoji='Q' fz='xl' c='content-3' />
+			<Flex className='c--faq__Q' gap='em4' ai='c'>
+				<Icon icon={Question} fz='2xl' c='purple'/>
 				<Lism tag='span' fw='bold'>{q}</Lism>
 			</Flex>
-			<Lism className='c--faq__a' tag='dd' px='em4' isFlow='s'>
+			<Lism className='c--faq__A' px='em4' isFlow='s'>
 				{children}
 			</Lism>
 		</Stack>
@@ -35,7 +27,7 @@ export function FAQ({ q, children }) {
 
 export function AccFAQ({ q, children }) {
 	return (
-		<Accordion>
+		<Accordion className='c--faq'>
 			<AccordionHeader bgc='base-3' bdrs='m' isFreeMode>
 				<Icon icon={Question} fz='2xl' />
 				<AccordionLabel>{q}</AccordionLabel>
@@ -54,7 +46,7 @@ export function AccFAQ({ q, children }) {
 <Preview>
 	<PreviewTitle>表示</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<FAQs>
+		<Stack gap='40'>
 			<FAQ q='Lorem ipsum, question 1'>
 				<DammyText length='l' />
 			</FAQ>
@@ -67,7 +59,7 @@ export function AccFAQ({ q, children }) {
 			<FAQ q='Question 3'>
 				<DammyText length='m' />
 			</FAQ>
-		</FAQs>
+		</Stack>
 	</PreviewArea>
 </Preview>
 
@@ -77,23 +69,16 @@ export function AccFAQ({ q, children }) {
 	<PreviewCode slot='tab' label='React'>
 	```jsx
 	import { Lism, Flex, Stack, Icon } from '@lism-ui/core';
-
-	export function FAQs({ children }) {
-		return (
-			<Stack className='c--faqs' tag='dl' gap='40'>
-				{children}
-			</Stack>
-		);
-	}
+	import { Question } from '@phosphor-icons/react';
 
 	export function FAQ({ q, children }) {
 		return (
 			<Stack className='c--faq' gap='20'>
-				<Flex className='c--faq__q' tag='dt' gap='em6' ai='c'>
-					<Icon emoji='Q' fz='xl' c='content-3' />
+				<Flex className='c--faq__Q' gap='em4' ai='c'>
+					<Icon icon={Question} fz='2xl' c='purple'/>
 					<Lism tag='span' fw='bold'>{q}</Lism>
 				</Flex>
-				<Lism className='c--faq__a' tag='dd' px='em4' isFlow='s'>
+				<Lism className='c--faq__A' px='em4' isFlow='s'>
 					{children}
 				</Lism>
 			</Stack>
@@ -170,7 +155,7 @@ import { FAQs, FAQ } from './path/to/.../steps';
 
 	function AccFAQ({ q, children }) {
 		return (
-			<Accordion>
+			<Accordion className='c--faq'>
 				<AccordionHeader bgc='base-3' bdrs='m' isFreeMode>
 					<Icon icon={Question} fz='2xl' />
 					<AccordionLabel>{q}</AccordionLabel>
