@@ -11,7 +11,7 @@ export function StepBody(props) {
 export function StepHead({ tag = 'div', num = '1', label = '', children, ...props }) {
 	return (
 		<Flex className='c--stepHead' gap='em8' ai='c' {...props}>
-			<Badge variant='fill' tag='div' lh='1' px='em6' py='em3' bdrs='full'>
+			<Badge variant='fill' tag='div' lh='1' px='em6' py='em3' gap='em2' bdrs='full'>
 				{label && (
 					<Lism tag='span' fz='xs' fs='i'>
 						{label}

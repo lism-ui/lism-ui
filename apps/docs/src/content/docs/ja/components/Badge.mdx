@@ -3,7 +3,7 @@ title: 'Badge'
 description: ...
 ---
 
-import { Badge, Cluster, Icon } from '@lism-ui/astro';
+import { Badge, Cluster, Icon, Callout } from '@lism-ui/astro';
 import {
 	Book,
 	Cat,
@@ -129,23 +129,27 @@ export const ColorDemos = ({colors, variant=''}) => {
 	<PreviewTitle>`<Icon>`の使用例</PreviewTitle>
 	<PreviewArea p={20}>
 		<Cluster gap={20}>
-			<Badge variant='fill' ai='c' gap='em2'><Icon icon={Book} size='1.25em'/>Badge</Badge>
-			<Badge variant='outline' ai='c' gap='em2'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
+			<Badge variant='fill' gap='em2'><Icon icon={Book} size='1.25em'/>Badge</Badge>
+			<Badge variant='outline' gap='em2'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 		</Cluster>
 	</PreviewArea>
 <PreviewCode slot='tab' label='React, Astro'>
 ```jsx
 <Cluster gap={20}>
-	<Badge variant='fill' ai='c' gap='em2'>
+	<Badge variant='fill' gap='em2'>
 		<Icon icon={Book} size='1.25em'/>Badge
 	</Badge>
-	<Badge variant='outline' ai='c' gap='em2'>
+	<Badge variant='outline' gap='em2'>
 		<Icon icon={Cat} size='1.25em'/>Badge
 	</Badge>
 </Cluster>
 ```
 </PreviewCode>
 </Preview>
+
+<Callout type='info'>
+`.b--badge`には`display: inline-flex;`と`align-items: center;`が指定されています。
+</Callout>
 
 {/* <Cluster gap={20}>
 	<Badge><Icon isInline icon={Book} /> Badge</Badge>
