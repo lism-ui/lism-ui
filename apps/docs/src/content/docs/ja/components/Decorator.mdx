@@ -3,19 +3,20 @@ title: 'Decorator'
 description: ...
 ---
 
-import { Decorator, Box, Flex, FlexItem, Grid, GridItem } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Decorator, Box, Flex, FlexItem, Grid, GridItem, Spacer, DammyText } from '@lism-ui/astro';
+import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
-コンテンツを装飾するための空要素を出力するためのコンポーネントです。
+コンテンツを装飾するための空要素を出力するためのコンポーネントです。  
+デフォルトで`aria-hidden="true"`で出力されます。
 
 
 
 ## Props
 
-| プロパティ | 説明 | デフォルト値 |
-|---|---|---|
-|`size`| デコレーターのサイズ（横幅・高さを一括指定します。|`1em`|
+| プロパティ | 説明 |
+|---|---|
+|`size`| デコレーターのサイズ（横幅・高さ）を一括指定します。<br/>この指定がある場合、`aspect='1'`が自動で付与され、指定したサイズは`w`に渡されます。|
 
 
 
@@ -37,6 +38,8 @@ import { Decorator } from '@lism-ui/astro';
 
 ## Usage
 
+`<Decorator>`を使った装飾例を紹介します。
+
 <Preview>
 	<PreviewTitle>Call</PreviewTitle>
 	<PreviewArea resize p={20}>
@@ -48,7 +51,7 @@ import { Decorator } from '@lism-ui/astro';
 				transformOrigin='left bottom'
 			/>
 			<Box p='box:s'>
-				<DammyText length='m' />
+				<DammyText />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -58,7 +61,7 @@ import { Decorator } from '@lism-ui/astro';
 			/>
 		</Grid>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot="tab" label="React, Astro">
 		```jsx
 		<Grid ta='l'>
 			<Decorator
@@ -68,7 +71,7 @@ import { Decorator } from '@lism-ui/astro';
 				transformOrigin='left bottom'
 			/>
 			<Box p='box:s'>
-				<DammyText length='m' />
+				<DammyText />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -79,11 +82,15 @@ import { Decorator } from '@lism-ui/astro';
 		</Grid>
 		```
 	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx
+	```
+	</PreviewCode>
 </Preview>
 
----
+<Spacer h='20' />
 
-その他、以下のページでDecoratorを活用した装飾ボックスの例を複数紹介しています。
+この他にも、以下のページで`<Decorator>`を活用したコンテンツの装飾例を複数紹介しています。
 
 <Reference>
 [装飾ボックスの例](/ja/components/decorations)

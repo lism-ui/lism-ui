@@ -22,7 +22,5 @@ export default function ({ _lismClass = [], variant, size, ...props }) {
 		'aria-hidden': 'true',
 	};
 
-	// aria-hidden='true'、デフォルトでつける？
-
 	return Object.assign(defaultProps, props);
 }

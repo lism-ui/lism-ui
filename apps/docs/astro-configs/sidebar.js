@@ -236,6 +236,10 @@ export default [
 				link: '/components/termlist/',
 			},
 			{
+				label: 'Decorations',
+				link: '/components/decorations/',
+			},
+			{
 				label: '---',
 				link: '###---',
 			},
@@ -246,10 +250,6 @@ export default [
 			{
 				label: 'Chat',
 				link: '/components/chat/',
-			},
-			{
-				label: 'Decorations',
-				link: '/components/decorations/',
 			},
 			{
 				label: 'FAQ',
