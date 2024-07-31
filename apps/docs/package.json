@@ -20,5 +20,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2"
   }
 }

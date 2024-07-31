@@ -1,15 +1,14 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+// import react from '@astrojs/react'; // react 使う場合に使用
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    // ssr: {
-    //   noExternal: ["@lism-ui/core"],
-    // },
-    resolve: {
-      alias: {
-        "~/": "/src/",
-      },
-    },
-  },
+	// integrations: [react()], // react 使う場合に使用
+	vite: {
+		resolve: {
+			alias: {
+				'~/': '/src/',
+			},
+		},
+	},
 });

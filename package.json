@@ -36,6 +36,9 @@
   "homepage": "https://...",
   "license": "MIT",
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@phosphor-icons/react": "^2.0.10",
     "autoprefixer": "^10.4.17",
     "cross-env": "^7.0.3",
     "css-mqpacker": "^7.0.0",
@@ -49,6 +52,7 @@
     "postcss-merge-at-rules": "^1.0.1",
     "prettier": "^3.2.4",
     "prettier-plugin-astro": "^0.13.0",
+    "react-icons": "^4.12.0",
     "sass": "^1.70.0",
     "stylelint": "^15.11.0",
     "stylelint-config-rational-order": "^0.1.2",
