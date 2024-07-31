@@ -153,9 +153,9 @@ $bp_names: map.keys(query.$breakpoints);
 	// }
 
 	// debug: $prop_name が 'gap' or 'p' なら$output_bps を 出力してみる
-	@if $prop_name == 'gap' or $prop_name == 'flex-direction' or $prop_name == 'padding' {
-		@debug $prop_name, $support_bp;
-	}
+	// @if $prop_name == 'gap' or $prop_name == 'flex-direction' or $prop_name == 'padding' {
+	// 	@debug $prop_name, $support_bp;
+	// }
 
 	$flag: true;
 	$i: 1;
