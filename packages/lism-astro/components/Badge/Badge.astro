@@ -1,11 +1,14 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
+import { Icon } from '../Icon';
 import getProps from '@lism-ui/core/components/Badge/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
-const props = Astro.props || {};
+const { icon, ...props } = Astro.props || {};
 ---
 
-<Lism {...getProps(props)}><slot /></Lism>
+<Lism {...getProps(props)}>
+	{icon && <Icon icon={icon} variant='inline' />}<slot />
+</Lism>

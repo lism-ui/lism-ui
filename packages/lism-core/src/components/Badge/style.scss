@@ -1,9 +1,9 @@
 // 初期スタイル
 :where(.b--badge) {
+	--boxcolor: var(--content);
 	font-size: var(--fz--xs);
 	border-radius: var(--radius--xs);
 	padding-inline: var(--em--4);
-	align-items: center;
 	// gap: var(--em--2);
 }
 
@@ -11,6 +11,7 @@
 .b--badge {
 	// --cbox-mixper--txt: 50%; // ちょっと明るく？
 	display: inline-flex; // 文中でもpaddingが効くように
+	align-items: center;
 	border: solid 1px var(--bdc); // 別スタイルを並べてもサイズに差が出ないようにborderを指定
 }
 

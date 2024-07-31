@@ -5,14 +5,18 @@ export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
 	if (variant) _lismClass.push(`b--badge--${variant}`);
 
 	const defaultProps = {
+		_lismClass,
 		tag: 'span',
 		skipState: true,
-		boxcolor: 'content',
+		boxcolor: '-',
 		// bdrs: 'xs',
 		// fz: 'xs',
 		// px: '10',
-		_lismClass,
 	};
+	// if (icon) {
+	// 	defaultProps.d = 'inline-flex';
+	// 	defaultProps.ai = 'center';
+	// }
 
 	return Object.assign(defaultProps, mergeFlexContextProps(props));
 }
