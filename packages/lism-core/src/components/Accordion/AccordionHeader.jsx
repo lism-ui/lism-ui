@@ -1,27 +1,31 @@
-import React from 'react';
-// import { Icon } from '../Icon';
-import { Flex } from '../Flex';
-import AccordionLabel from './AccordionLabel';
-import AccordionIcon from './AccordionIcon';
-import { getAccHeadProps } from './getProps';
+// import React from 'react';
+import { Icon } from '../Icon';
+import { Flex, FlexItem } from '../Flex';
+import { getAccHeadProps, getAccLabelProps, getAccIconProps } from './getProps';
 
-// import { AccContext } from './context';
-
-// asProps
-export default function AccordionHeader({ isFreeMode, tag, icon, trigger, children, ...props }) {
-	// const { trigger } = React.useContext(AccContext);
-
-	// childrenの有無で分かれる
+// exProps
+export default function AccordionHeader({
+	tag,
+	icon = 'caret-down',
+	openIcon,
+	closeIcon,
+	trigger,
+	children,
+	...props
+}) {
 	return (
-		<Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
-			{isFreeMode ? (
-				children
-			) : (
-				<>
-					<AccordionLabel tag={tag}>{children}</AccordionLabel>
-					<AccordionIcon icon={icon} isTrigger={trigger === 'icon'} />
-				</>
-			)}
+		<Flex tag='summary' {...getAccHeadProps(props)}>
+			<FlexItem {...getAccLabelProps(tag)}>{children}</FlexItem>
+			<FlexItem {...getAccIconProps(trigger)}>
+				{openIcon ? (
+					<>
+						<Icon icon={openIcon} class='b--accordion__iconOpen ' />
+						<Icon icon={closeIcon} class='b--accordion__iconClose ' />
+					</>
+				) : (
+					<Icon icon={icon} />
+				)}
+			</FlexItem>
 		</Flex>
 	);
 }

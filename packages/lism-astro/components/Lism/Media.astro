@@ -10,11 +10,11 @@ interface Props extends LismProps {
 	// width?: string | number;
 	// height?: string | number;
 }
-const { as, asProps, tag, ...props } = Astro.props || {};
+const { as, exProps, tag, ...props } = Astro.props || {};
 
 const JSX = as || tag || 'img';
 ---
 
-<JSX {...getLismProps(getMediaProps(props))} {...asProps}>
+<JSX {...getLismProps(getMediaProps(props))} {...exProps}>
 	<slot />
 </JSX>

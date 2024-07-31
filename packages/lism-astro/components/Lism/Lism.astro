@@ -5,10 +5,10 @@ import getLismProps from '@lism-ui/core/lib/getLismProps';
 // Propsの定義
 interface Props extends LismProps {}
 
-const { as, asProps, tag, ...props } = Astro.props || {};
+const { as, exProps, tag, ...props } = Astro.props || {};
 const JSX = as || tag || 'div';
 ---
 
-<JSX {...getLismProps(props)} {...asProps}>
+<JSX {...getLismProps(props)} {...exProps}>
 	<slot />
 </JSX>

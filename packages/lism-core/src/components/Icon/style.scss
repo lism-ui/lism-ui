@@ -13,6 +13,13 @@
 	// height: 1em;
 }
 
+.a--icon--inline {
+	--scale: 1.125; // inlineアイコンはデフォルト状態で少し拡大表示
+	vertical-align: -0.125em;
+	margin-inline: calc(1em * (var(--scale) - 1) / 2);
+	// line-height: inherit;
+}
+
 .a--icon--emoji {
 	// emoji 考慮
 	font-family: var(--ff--emoji);
@@ -21,22 +28,16 @@
 	place-items: center; // align-items: center;
 }
 
-.a--icon--inline {
-	--scale: 1.125; // inlineアイコンはデフォルト状態で少し拡大表示
-	vertical-align: -0.125em;
-	margin-inline: calc(1em * (var(--scale) - 1) / 2);
-	// line-height: inherit;
-}
-
-// data-icon のサイズはフォントサイズでコントロールする
-.a--icon:where([data-icon]) {
+// data-lism-icon のサイズはフォントサイズでコントロールする
+//.a--icon:where([data-lism-icon]),
+.a--icon--mask {
 	width: 1em;
 	height: 1em;
 	background-color: currentColor;
 	mask: var(--icon-mask) no-repeat 50% 50% / contain;
 }
 
-// .a--icon[data-icon='acc-btn'] {
+// .a--icon[data-lism-icon='acc-btn'] {
 // 	background-color: currentColor;
 // 	clip-path: polygon(50% 76%, 10% 25%, 90% 25%);
 // }

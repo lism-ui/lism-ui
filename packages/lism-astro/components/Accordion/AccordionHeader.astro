@@ -1,28 +1,45 @@
 ---
 import { LismProps } from '../types';
-import { Flex } from '../Flex';
-import AccordionLabel from './AccordionLabel.astro';
-import AccordionIcon from './AccordionIcon.astro';
-import { getAccHeadProps } from '@lism-ui/core/components/Accordion/getProps';
+import { Flex, FlexItem } from '../Flex';
+import { Icon } from '../Icon';
+// import AccordionLabel from './AccordionLabel.astro';
+// import AccordionIcon from './AccordionIcon.astro';
+import {
+	getAccHeadProps,
+	getAccLabelProps,
+	getAccIconProps,
+} from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 
-const { isFreeMode, tag, icon, trigger, ...props } = Astro.props || {};
+const {
+	isFreeMode,
+	tag,
+	icon = 'caret-down',
+	openIcon,
+	closeIcon,
+	trigger,
+	...props
+} = Astro.props || {};
 
-// const hasSlot = Astro.slots.has('default');
+// const hasIconSlot = Astro.slots.has('icon');
+// const hasIcon = !!icon || hasIconSlot;
 ---
 
-<Flex tag='summary' ai='center' {...getAccHeadProps(props)}>
-	{
-		isFreeMode ? (
-			<slot />
-		) : (
-			<>
-				<AccordionLabel tag={tag}>
-					<slot />
-				</AccordionLabel>
-				<AccordionIcon icon={icon} isTrigger={trigger === 'icon'} />
-			</>
-		)
-	}
+<Flex tag='summary' {...getAccHeadProps(props)}>
+	<FlexItem {...getAccLabelProps(tag)}>
+		<slot />
+	</FlexItem>
+	<FlexItem {...getAccIconProps(trigger)}>
+		{
+			openIcon ? (
+				<>
+					<Icon icon={openIcon} class='b--accordion__iconOpen ' />
+					<Icon icon={closeIcon} class='b--accordion__iconClose ' />
+				</>
+			) : (
+				<Icon icon={icon} />
+			)
+		}
+	</FlexItem>
 </Flex>

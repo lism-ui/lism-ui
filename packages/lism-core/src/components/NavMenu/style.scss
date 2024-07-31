@@ -31,7 +31,7 @@
 	color: inherit;
 	outline-offset: -1px;
 }
-:where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {
+:where(a.c--navMenu__link, .c--navMenu .b--accordion__header:not(:has(a))):hover {
 	color: var(--hov--c);
 	background-color: var(--hov--bgc);
 }

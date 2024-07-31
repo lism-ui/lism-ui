@@ -1,26 +1,22 @@
-:root {
-	--acc-duration: 0.25s;
-}
-
-[data-icon='acc-btn'] {
-	--icon-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M19.5,8L12,15.5L4.5,8C4.3,7.8,4.1,7.8,3.9,8L3.1,8.8C3,8.9,3,9.2,3.1,9.4l7.5,7.5l1.4,1.4l1.4-1.4l7.5-7.5 c0.2-0.2,0.2-0.5,0-0.6L20.1,8C19.9,7.8,19.7,7.8,19.5,8z"/></svg>');
-}
-
-.c--accordion {
+.b--accordion {
 	--isOpened: 0;
 	--duration: var(--acc-duration);
 	overflow: clip; // bdrs考慮
-
-	// 開いた時
-	&.-opened {
-		--isOpened: 1;
-	}
 }
 
-.c--accordion__header {
+// 開いた時
+.b--accordion.-opened {
+	--isOpened: 1;
+}
+
+.b--accordion__header {
 	// cursor: pointer;
-	// min-height: 3.25em;
 	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうのを防ぐ
+	align-items: center;
+	gap: var(--em--4);
+	// :where(&) {
+	// 	padding: var(--p--box--s);
+	// }
 
 	/* Safariで表示されるデフォルトの三角形アイコンを消します */
 	&::-webkit-details-marker {
@@ -28,35 +24,46 @@
 	}
 }
 
-// .c--accordion__label {
-// 	flex: 1;
-// }
-
-.c--accordion__body {
-	display: grid;
-	grid-template-rows: 1fr;
-	transition-property: padding-block, opacity, grid-template-rows;
-	transition-duration: var(--duration);
+.b--accordion__label {
+	flex: 1;
 }
 
-.c--accordion__inner {
+.b--accordion__body {
+	display: grid;
+	grid-template-rows: 1fr;
+	transition-property: margin-block, padding-block, opacity, grid-template-rows;
+	transition-duration: var(--duration);
+
+	// :where(&) {
+	// 	padding: var(--p--box--s);
+	// }
+}
+
+.b--accordion__inner {
 	overflow: hidden; // ※ 正常な animation に必須
 }
 
 // 閉じている時
-.c--accordion:not(.-opened) {
-	> .c--accordion__body {
+.b--accordion:not(.-opened) {
+	> .b--accordion__body {
 		opacity: 0.1;
 		grid-template-rows: 0fr;
 		padding-block: 0 !important;
+		margin-block: 0 !important;
 	}
 }
 
 // アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
-.c--accordion__icon {
-	:where(&) {
-		font-size: 1.125em;
-		background-color: transparent;
+:where(.b--accordion__icon) {
+	font-size: 1.125em;
+	background-color: transparent;
+	display: inline-flex;
+
+	// [data-clickable="icon"] のとき
+	&:where([data-role='trigger']) {
+		padding: 0.375em;
+		border: solid 1px currentColor;
+		border-radius: var(--radius--xs);
 	}
 
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
@@ -65,36 +72,23 @@
 		transition: rotate 0.25s;
 		rotate: calc(0deg - var(--isOpened) * 180deg);
 	}
-	> [data-to='open'] {
-		opacity: calc(1 - var(--isOpened));
-	}
-	> [data-to='close'] {
-		opacity: calc(0 + var(--isOpened));
-		position: absolute;
-		rotate: calc(180deg - var(--isOpened) * 180deg);
-	}
+}
+.b--accordion__iconOpen {
+	opacity: calc(1 - var(--isOpened));
+}
+.b--accordion__iconClose {
+	opacity: calc(0 + var(--isOpened));
+	position: absolute;
+	rotate: calc(180deg - var(--isOpened) * 180deg);
 }
 
-// [data-clickable="icon"] のとき
-:where(.c--accordion__icon[data-role='trigger']) {
-	padding: 0.375em;
-	border: solid 1px currentColor;
-	border-radius: var(--radius--xs);
+.b--accordion_header:has([data-role='trigger']) {
+	pointer-events: none;
 }
 
-// .c--accordion__header:has([data-role='trigger']) {
-// 	pointer-events: none;
-// }
-
-.c--accordion__label > a,
-.c--accordion__icon {
+.b--accordion__label > a,
+.b--accordion__icon {
 	pointer-events: auto;
 }
-// .-opened > .c--accordion__header > .c--accordion__icon {
+// .-opened > .b--accordion__header > .b--accordion__icon {
 // 	transform: rotate(180deg);
-
-// 	// [data-icon-type="plus"] > .-opened でちゃんと指定したいがCSS長くなるのでdata指定なしでいく
-// 	// &::after {
-// 	// 	opacity: 0;
-// 	// }
-// }

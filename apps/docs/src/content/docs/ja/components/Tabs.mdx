@@ -77,14 +77,14 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 ### タブテキストにJSX式を渡す
 
-各タブテキストは`<TabItem>``label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
+各タブテキストは`<TabItem>`の`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabItem>
-				<Fragment slot='label'><Icon icon='lism:good'/>Tab<small>small text</small></Fragment>
+				<Fragment slot='label'><Icon icon='good'/>Tab<small>small text</small></Fragment>
 				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
@@ -95,7 +95,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewCode slot='tab' label='React'>
 		```jsx {2}
 		<Tabs>
-			<TabItem label={<><Icon icon='lism:good'/>Tab<small>small text</small></>}>
+			<TabItem label={<><Icon icon='good'/>Tab<small>small text</small></>}>
 				<DammyText />
 			</TabItem>
 			<TabItem label='tab2'>
@@ -108,7 +108,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		```jsx {3}
 		<Tabs>
 			<TabItem>
-				<Fragment slot='label'><Icon icon='lism:good'/>Tab<small>small text</small></Fragment>
+				<Fragment slot='label'><Icon icon='good'/>Tab<small>small text</small></Fragment>
 			</TabItem>
 			<TabItem label='tab2'>
 				<DammyText length='l' />
@@ -457,8 +457,8 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabList>
-				<Tab tabID='the-tabid' isActive index={0}><Icon icon='lism:good'/>tab1</Tab>
-				<Tab tabID='the-tabid' index={1}><Icon icon='lism:bad'/>tab2</Tab>
+				<Tab tabID='the-tabid' isActive index={0}><Icon icon='good'/>tab1</Tab>
+				<Tab tabID='the-tabid' index={1}><Icon icon='bad'/>tab2</Tab>
 			</TabList>
 			<TabPanel tabID='the-tabid' isActive index={0}>
 				<DammyText length='s' />
@@ -474,10 +474,10 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		<Tabs>
 			<TabList>
 				<Tab tabID='the-tabid' isActive index={0}>
-					<Icon icon='lism:good'/>tab1
+					<Icon icon='good'/>tab1
 				</Tab>
 				<Tab tabID='the-tabid' index={1}>
-					<Icon icon='lism:bad'/>tab2
+					<Icon icon='bad'/>tab2
 				</Tab>
 			</TabList>
 			<TabPanel tabID='the-tabid' isActive index={0}>
@@ -495,10 +495,10 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		<Tabs>
 			<TabList>
 				<Tab tabID='the-tabid' isActive index={0}>
-					<Icon icon='lism:good'/>tab1
+					<Icon icon='good'/>tab1
 				</Tab>
 				<Tab tabID='the-tabid' index={1}>
-					<Icon icon='lism:bad'/>tab2
+					<Icon icon='bad'/>tab2
 				</Tab>
 			</TabList>
 			<TabPanel tabID='the-tabid' isActive index={0}>

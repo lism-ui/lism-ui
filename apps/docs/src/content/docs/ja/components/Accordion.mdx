@@ -3,9 +3,9 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Text, Center, Flex, Icon, DammyText } from '@lism-ui/core';
-import { AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/astro';
-import { Minus, Plus, X, Question } from "@phosphor-icons/react";
+import { Divider, Stack, Text, Center, Flex, Icon, Callout, DammyText } from '@lism-ui/core';
+import { AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/astro';
+import { Minus, Plus, X, Question, CaretDown } from "@phosphor-icons/react";
 import { Reference, PropBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Note } from '~/components/ex/Note';
@@ -26,21 +26,15 @@ import { Note } from '~/components/ex/Note';
 |---|---|
 | <PropBadge>`<Accordion>`</PropBadge><br/><PropBadge>`<AccordionGroup>`</PropBadge><br/>`duration` | 開閉アニメーションの時間を指定できます。 |
 | <PropBadge>`<AccordionGroup>`</PropBadge><br/>`allowMultiple` | 複数のアコーディオンを同時に開くことを禁止します。 |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/><PropBadge>`<AccordionIcon>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/><PropBadge>`<AccordionLabel>`</PropBadge><br/>`tag` | アコーディオンラベルのHTMLタグを指定できます。 |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`trigger` | `"icon"`を指定すると、 内部で呼び出される`<AccordionIcon>`の`isTrigger`が`true`にセットされます。|
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`isFreeMode` | 内部コンテンツをより自由に記述できるようになります。 |
-| <PropBadge>`<AccordionIcon>`</PropBadge><br/>`isTrigger` | `true`にするとアイコンをトリガーにすることができます。 |
-
-{/* | <PropBadge>`<AccordionIcon>`</PropBadge><br/>`size` | `<Icon>` に渡す `size` を指定できます。 | */}
-{/* | <PropBadge>`AccordionHeader`</PropBadge><br/>`iconProps`,`labelProps` | AccordionLabel, AccordionIcon に渡すpropsを指定します。 | */}
-
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`tag` | アコーディオンラベルのHTMLタグを指定できます。 |
+| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`trigger` | `"icon"`を指定すると、 開閉トリガーがアイコン部分になります。|
 
 
 ## Import
 
 ```js
-import { Accordion, AccordionHeader, AccordionIcon, AccordionLabel, AccordionBody } from '@lism-ui/core';
+import { Accordion, AccordionHeader, AccordionBody } from '@lism-ui/core';
 ```
 
 HTML で使用する場合、jsファイルが必要です。
@@ -53,14 +47,12 @@ HTML で使用する場合、jsファイルが必要です。
 
 ## Usage
 
-{/* <Script src='/js/acc.js' type="module"/> */}
-
 <Preview>
 	<PreviewTitle>Accordionの例</PreviewTitle>
-	<PreviewArea p={20}>
+	<PreviewArea p='30'>
 		<Accordion>
 			<AccordionHeader>Accordionヘッダー</AccordionHeader>
-			<AccordionBody>
+			<AccordionBody mbs='20'>
 				<DammyText length="l" />
 			</AccordionBody>
 		</Accordion>
@@ -69,21 +61,23 @@ HTML で使用する場合、jsファイルが必要です。
 ```jsx
 <Accordion>
 	<AccordionHeader>Accordionヘッダー</AccordionHeader>
-	<AccordionBody>...</AccordionBody>
+	<AccordionBody mbs='20'>
+		<DammyText length="l" />
+	</AccordionBody>
 </Accordion>
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html
-<details class="c--accordion">
-	<summary class="c--accordion__header l--flex -p:box:s -gap:20 -ai:c">
-		<span class="c--accordion__label -fx:1">Accordionヘッダー</span>
-		<span class="c--accordion__icon -d:if">
-			<span class="a--icon" data-icon="acc-btn" aria-hidden="true"></span>
+<details class="b--accordion">
+	<summary class="b--accordion__header l--flex">
+		<span class="b--accordion__label">Accordionヘッダー</span>
+		<span class="b--accordion__icon">
+			<span class="a--icon" data-lism-icon="acc-btn" aria-hidden="true"></span>
 		</span>
 	</summary>
-	<div class="c--accordion__body -p:box:s">
-		<div class="c--accordion__inner">
+	<div class="b--accordion__body -mbs:20">
+		<div class="b--accordion__inner">
 			...
 		</div>
 	</div>
@@ -92,87 +86,152 @@ HTML で使用する場合、jsファイルが必要です。
 	</PreviewCode>
 </Preview>
 
-`<AccordionHeader>` に `icon` を指定すると、内部で使用されている `<AccordionIcon>` に渡されます。
 
 <Preview>
-	<PreviewTitle>アイコンを変更する</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
+	<PreviewTitle>ヘッダーのHTMLタグをh3タグにする</PreviewTitle>
+	<PreviewArea p='30'>
 		<Accordion>
-			<AccordionHeader icon='lism:caret-down-fill'>Accordionヘッダー</AccordionHeader>
-			<AccordionBody>
+			<AccordionHeader tag='h3'>アコーディオンヘッダー</AccordionHeader>
+			<AccordionBody mbs='20'>
+				<DammyText length="l" />
+			</AccordionBody>
+		</Accordion>
+	</PreviewArea>
+	<PreviewCode>
+```jsx "tag='h3'"
+<Accordion>
+	<AccordionHeader tag='h3'>アコーディオンヘッダー</AccordionHeader>
+	<AccordionBody mbs='20'>...</AccordionBody>
+</Accordion>
+```
+	</PreviewCode>
+</Preview>
+
+
+### アイコンの変更
+
+<Preview>
+	<PreviewTitle>アイコンの位置を逆にする</PreviewTitle>
+	<PreviewArea p='30'>
+		<Accordion>
+			<AccordionHeader fxd='rr'>Accordionヘッダー</AccordionHeader>
+			<AccordionBody mbs='20'>
+				<DammyText length="l" />
+			</AccordionBody>
+		</Accordion>
+	</PreviewArea>
+	<PreviewCode>
+```jsx "fxd='rr'"
+<Accordion>
+	<AccordionHeader fxd='rr'>Accordionヘッダー</AccordionHeader>
+	<AccordionBody mbs='20'>...</AccordionBody>
+</Accordion>
+```
+	</PreviewCode>
+</Preview>
+
+`<AccordionHeader>`に指定する`icon`は、内部で`<Icon>`に渡されます。
+
+<Preview>
+	<PreviewTitle>外部アイコンコンポーネントを渡す</PreviewTitle>
+	<PreviewArea p='30'>
+		<Accordion>
+			<AccordionHeader icon={{as:CaretDown, weight:'fill'}}>
+				<>Accordionヘッダー</>
+			</AccordionHeader>
+			<AccordionBody mbs='20'>
 				<DammyText length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx "icon="
+import { CaretDown } from "@phosphor-icons/react";
+
 <Accordion>
-	<AccordionHeader icon='lism:caret-down-fill'>Accordionヘッダー</AccordionHeader>
-	<AccordionBody>...</AccordionBody>
+	<AccordionHeader icon={{as:CaretDown, weight:'fill'}}>Accordionヘッダー</AccordionHeader>
+	<AccordionBody mbs='20'>...</AccordionBody>
 </Accordion>
 ```
 	</PreviewCode>
 </Preview>
 
-
-`<AccordionHeader>` に `tag` を指定すると、内部で使用されている `<AccordionLabel>` に渡されます。
+svgアイコンを自分で定義して`icon`に渡す場合は、`props`の受け渡しを忘れないように注意してください。
 
 <Preview>
-	<PreviewTitle>ヘッダーのHTMLタグをh3タグにする</PreviewTitle>
-	<PreviewArea p={20}>
-		<Accordion>
-			<AccordionHeader tag='h3'>アコーディオンヘッダー</AccordionHeader>
-			<AccordionBody>
-				<DammyText length="l" />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
+	<PreviewTitle>外部アイコンコンポーネントを渡す</PreviewTitle>
 	<PreviewCode>
-```jsx {3}
+```jsx "MyIcon" "props"
+const MyIcon = (props) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg" 
+			viewBox="0 0 24 24"
+			width='1em'
+			height='1em'
+			{...props}
+		>...</svg>
+	);
+};
+
 <Accordion>
-	<AccordionHeader tag='h3'>アコーディオンヘッダー</AccordionHeader>
-	<AccordionBody>...</AccordionBody>
+	<AccordionHeader icon={MyIcon}>Accordionヘッダー</AccordionHeader>
+	<AccordionBody mbs='20'>...</AccordionBody>
 </Accordion>
 ```
 	</PreviewCode>
 </Preview>
 
+#### 開閉時にアイコンを切り替える
 
-{/* <Preview>
-	<PreviewTitle>単体での装飾例</PreviewTitle>
-	<PreviewArea p={30}>
-		<Accordion bxsh='2' bdrs='xs' bgc='base'>
-			<AccordionHeader label='Accordionヘッダー1' p='box' bgc='main' c='white' bdrss={{es: '0', ee: '0'}}/>
-			<AccordionBody p='box' bgc='main:20%'>
-				<DammyText length='l' />
-			</AccordionBody>
-		</Accordion>
-		<hr />
-		<Accordion bd  hasDivider>
-			<AccordionHeader label='Accordionヘッダー2' p='box' bgc='base' />
-			<AccordionBody p='box' bgc='base'>
-				<DammyText length='l' />
+`<AccordionHeader>`に`openIcon`,`closeIcon`を指定して、開閉時にアイコンを切り替えることが可能になっています。
+
+<Preview>
+	<PreviewTitle>開閉時、アイコンを切り替える</PreviewTitle>
+	<PreviewArea p='30'>
+		<Accordion>
+			<AccordionHeader openIcon={Plus} closeIcon={Minus}>
+				<>Accordionヘッダー</>
+			</AccordionHeader>
+			<AccordionBody mbs='20'>
+				<DammyText />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Accordion bxsh='2' bdrs='s'>
-			<AccordionHeader label='Accordionヘッダー1' p='box' bgc='main' c='white' bdrss={{es: '0', ee: '0'}}/>
-			<AccordionBody p='box' bgc='main:20%'>
-				...
-			</AccordionBody>
-		</Accordion>
-		<hr />
-		<Accordion bd  hasDivider>
-			<AccordionHeader label='Accordionヘッダー2' p='box' bgc='base' />
-			<AccordionBody p='box' bgc='base'>
-				<DammyText length='l' />
-			</AccordionBody>
-		</Accordion>
-		```
+	<PreviewCode slot='tab' label='JSX'>
+```jsx "openIcon" "closeIcon"
+import { Minus, Plus } from '@phosphor-icons/react';
+
+<Accordion>
+	<AccordionHeader openIcon={Plus} closeIcon={Minus}>
+		Accordionヘッダー
+	</AccordionHeader>
+	<AccordionBody mbs='20'>
+		<DammyText />
+	</AccordionBody>
+</Accordion>
+```
 	</PreviewCode>
-</Preview> */}
+		<PreviewCode slot='tab' label='HTML'>
+```html "b--accordion__iconOpen" "b--accordion__iconClose"
+<details class="b--accordion">
+	<summary class="b--accordion__header l--flex">
+		<span class="b--accordion__label"> Accordionヘッダー </span>
+		<span class="b--accordion__icon">
+			<svg class="b--accordion__iconOpen a--icon" ...>...</svg>
+			<svg class="b--accordion__iconClose a--icon" ...>...</svg>
+		</span>
+	</summary>
+	<div class="b--accordion__body -mbs:20">
+		<div class="b--accordion__inner">
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi.</p>
+		</div>
+	</div>
+</details>
+```
+	</PreviewCode>
+</Preview>
+
 
 
 ### `<AccordionGroup>`
@@ -182,22 +241,22 @@ HTML で使用する場合、jsファイルが必要です。
 <Preview>
 	<PreviewTitle>AccordionGroup</PreviewTitle>
 	<PreviewArea p={30}>
-		<AccordionGroup hasDivider>
-			<Accordion>
+		<AccordionGroup hasDivider bd>
+			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
-				<AccordionBody>
+				<AccordionBody mbs='20'>
 					<DammyText length="l" />
 				</AccordionBody>
 			</Accordion>
-			<Accordion>
+			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
-				<AccordionBody>
+				<AccordionBody mbs='20'>
 					<DammyText length="l" />
 				</AccordionBody>
 			</Accordion>
-			<Accordion>
+			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
-				<AccordionBody>
+				<AccordionBody mbs='20'>
 					<DammyText length="l" />
 				</AccordionBody>
 			</Accordion>
@@ -205,136 +264,53 @@ HTML で使用する場合、jsファイルが必要です。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<AccordionGroup hasDivider>
-			<Accordion>
+		<AccordionGroup hasDivider bd>
+			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
-				<AccordionBody>...</AccordionBody>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
 			</Accordion>
-			<Accordion>...</Accordion>
-			<Accordion>...</Accordion>
-		</AccordionGroup>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html
-<div class="c--accordions l--stack has--divider">
-	<details class="c--accordion">
-		<summary class="c--accordion__header l--flex -p:box:s -gap:20 -ai:c">
-			<span class="c--accordion__label -fx:1">Accordionヘッダー1</span>
-			<span class="c--accordion__icon -d:if">
-				<span class="a--icon" data-icon="acc-btn" aria-hidden="true"></span>
+<div class="b--accordions l--stack has--divider -bd:">
+	<details class="b--accordion -p:20">
+		<summary class="b--accordion__header l--flex">
+			<span class="b--accordion__label">Accordionヘッダー1</span>
+			<span class="b--accordion__icon">
+				<span class="a--icon" data-lism-icon="acc-btn" aria-hidden="true"></span>
 			</span>
 		</summary>
-		<div class="c--accordion__body -p:box:s">
-			<div class="c--accordion__inner">
-				...
-			</div>
+		<div class="b--accordion__body -mbs:20">
+			<div class="b--accordion__inner">...</div>
 		</div>
 	</details>
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
+	<details class="b--accordion -p:20">...</details>
+	<details class="b--accordion -p:20">...</details>
 </div>
 ```
 	</PreviewCode>
 </Preview>
 
-`allowMultiple`に`false`を指定すると `[data-multiple="disallow"]`が出力され、複数のアコーディオンを同時に開くことを禁止します。
-
-<Preview>
-	<PreviewTitle>allowMultiple</PreviewTitle>
-	<PreviewArea p={30}>
-		<AccordionGroup hasDivider allowMultiple={false}>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-```jsx "allowMultiple={false}"
-<AccordionGroup hasDivider allowMultiple={false}>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-</AccordionGroup>
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-```html "data-multiple=\"disallow\""
-<div class="c--accordions l--stack has--divider" data-multiple="disallow">
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
-</div>
-```
-	</PreviewCode>
-</Preview>
-
-
-`AccordionGroup`に`duration`で直下の`<Accordion>`全ての開閉速度を指定できます。
-
-<Preview>
-	<PreviewTitle>duration</PreviewTitle>
-	<PreviewArea p={30}>
-		<AccordionGroup hasDivider bd bdrs='m' duration='.5s'>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader>Accordionヘッダー</AccordionHeader>
-				<AccordionBody>
-					<DammyText length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-```jsx "duration='.5s'"
-<AccordionGroup duration='.5s' hasDivider bd bdrs='m'>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-</AccordionGroup>
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-```html "--acc-duration"
-<div class="c--accordions l--stack has--divider -bd: -bdrs:m" style="--acc-duration:.5s">
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
-</div>
-```
-	</PreviewCode>
-</Preview>
 
 `AccordionGroup`は`Stack`で構成されているため、`gap`でアコーディオン間の余白を調整できます。
 
 <Preview>
-	<PreviewTitle>gap</PreviewTitle>
+	<PreviewTitle>別の例</PreviewTitle>
 	<PreviewArea p={30}>
 		<AccordionGroup gap={20}>
 			<Accordion hasDivider bgc='base-2' bxsh='1' bdrs='m'>
@@ -380,43 +356,116 @@ HTML で使用する場合、jsファイルが必要です。
 
 
 
-### isFreeMode
+#### allowMultiple
 
-`<AccordionHeader>`に`isFreeMode`を指定すると、本来自動で呼び出される`<AccordionLabel>`,`<AccordionIcon>`を自由に配置できます。
+
+`allowMultiple`に`false`を指定すると `[data-multiple="disallow"]`が出力され、複数のアコーディオンを同時に開くことを禁止します。
 
 <Preview>
-	<PreviewTitle>`isFreeMode`でアイコンを左側にする例</PreviewTitle>
-	<PreviewArea p={20}>
-		<Accordion>
-			<AccordionHeader isFreeMode>
-				<AccordionIcon />
-				<AccordionLabel>Accordionヘッダー</AccordionLabel>
-			</AccordionHeader>
-			<AccordionBody>
-				<DammyText length="l" />
-			</AccordionBody>
-		</Accordion>
+	<PreviewTitle>allowMultiple</PreviewTitle>
+	<PreviewArea p={30}>
+		<AccordionGroup hasDivider bd allowMultiple={false}>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+		</AccordionGroup>
 	</PreviewArea>
-	<PreviewCode>
-		```jsx "isFreeMode" "AccordionIcon" "AccordionLabel"
-		<Accordion>
-			<AccordionHeader isFreeMode>
-				<AccordionIcon />
-				<AccordionLabel>Accordionヘッダー</AccordionLabel>
-			</AccordionHeader>
-			<AccordionBody>...</AccordionBody>
-		</Accordion>
-		```
+	<PreviewCode slot='tab' label='React, Astro'>
+```jsx "allowMultiple={false}"
+<AccordionGroup hasDivider bd allowMultiple={false}>
+	...
+</AccordionGroup>
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+```html "data-multiple=\"disallow\""
+<div class="b--accordions l--stack has--divider -bd:" data-multiple="disallow">
+	...
+</div>
+```
 	</PreviewCode>
 </Preview>
 
 
+#### duration
 
-`<AccordionLabel>` は `<FlexItem>`で構成されており、次のように`layout`で展開するコンポーネントの指定もできます。
+`AccordionGroup`に`duration`で直下の`<Accordion>`全ての開閉速度を指定できます。
+
+<Preview>
+	<PreviewTitle>duration</PreviewTitle>
+	<PreviewArea p={30}>
+		<AccordionGroup hasDivider bd duration='.5s'>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+			<Accordion p='20'>
+				<AccordionHeader>Accordionヘッダー</AccordionHeader>
+				<AccordionBody mbs='20'>
+					<DammyText length="l" />
+				</AccordionBody>
+			</Accordion>
+		</AccordionGroup>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+```jsx "duration='.5s'"
+<AccordionGroup duration='.5s' hasDivider bd>
+	<Accordion>...</Accordion>
+	<Accordion>...</Accordion>
+	<Accordion>...</Accordion>
+</AccordionGroup>
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+```html "--acc-duration"
+<div class="b--accordions l--stack has--divider -bd:" style="--acc-duration:.5s">
+	<details class="b--accordion">...</details>
+	<details class="b--accordion">...</details>
+	<details class="b--accordion">...</details>
+</div>
+```
+	</PreviewCode>
+</Preview>
+
+
+<Callout type='info'>
+CSSで`:root`の`--acc-duration`を上書きすると、デフォルトの開閉速度を変更できます。
+</Callout>
+
+
+{/* ### isFreeMode */}
+
+{/* `<AccordionHeader>`に`isFreeMode`を指定すると、本来自動で呼び出される`<AccordionLabel>`,`<AccordionIcon>`を自由に配置できます。 */}
+
+
+{/* `<AccordionLabel>` は `<FlexItem>`で構成されており、次のように`layout`で展開するコンポーネントの指定もできます。
 
 <Preview>
 	<PreviewTitle>AccordionLabelをFlexで展開する</PreviewTitle>
-	<PreviewArea p={20}>
+	<PreviewArea p='30'>
 		<Accordion>
 			<AccordionHeader isFreeMode>
 				<AccordionLabel layout={Flex} ai='c' gap='em3' tag='h3'>
@@ -424,8 +473,8 @@ HTML で使用する場合、jsファイルが必要です。
 				</AccordionLabel>
 				<AccordionIcon />
 			</AccordionHeader>
-			<AccordionBody>
-				<DammyText />
+			<AccordionBody mbs='20'>
+				<DammyText length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -439,67 +488,25 @@ HTML で使用する場合、jsファイルが必要です。
 		</AccordionLabel>
 		<AccordionIcon />
 	</AccordionHeader>
-	<AccordionBody>
-		...
+	<AccordionBody mbs='20'>
+		<DammyText length="l" />
 	</AccordionBody>
 </Accordion>
 ```
 	</PreviewCode>
-</Preview>
-
-
-### 開閉時にアイコンを切り替える方法
-
-`<AccordionIcon>`の子要素(`children`)に直接`<Icon>`を配置することもでき、アイコンを2つ配置して`data-to`属性を指定すると開くアイコンと閉じるアイコンを分けることが可能な設計になっています。
-
-<Preview>
-	<PreviewTitle>開閉アイコンを切り替える</PreviewTitle>
-	<PreviewArea p={20}>
-		<Accordion>
-			<AccordionHeader isFreeMode>
-				<AccordionLabel>プラス / マイナス</AccordionLabel>
-				<AccordionIcon>
-					<Icon as={Plus} weight='bold' data-to='open' />
-					<Icon as={Minus} weight='bold' data-to='close' />
-				</AccordionIcon>
-			</AccordionHeader>
-			<AccordionBody>
-				<DammyText />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode>
-```jsx "isFreeMode" "data-to='open'" "data-to='close'"
-import { Minus, Plus } from '@phosphor-icons/react';
-
-<Accordion>
-	<AccordionHeader isFreeMode>
-		<AccordionLabel>プラス/マイナス</AccordionLabel>
-		<AccordionIcon>
-			<Icon as={Plus} weight='bold' data-to='open' />
-			<Icon as={Minus} weight='bold' data-to='close' />
-		</AccordionIcon>
-	</AccordionHeader>
-	<AccordionBody>
-		<DammyText />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-</Preview>
-
+</Preview> */}
 
 
 
 ### アコーディオントリガーをアイコンのみにする
 
-`<AccordionHeader>` に `trigger='icon'` を指定すると、内部の `<AccordionIcon>` に `isTrigger` が適用され、`data-role="trigger"`が出力されます。  
+`<AccordionHeader>` に `trigger='icon'` を指定すると、内部の `.b--accordion__icon` に `[data-role="trigger"]`が付与され、アコーディオンを開閉するための`click`イベントがヘッダー全体ではなくアイコン部分に対して登録されます。
 
-これにより、アコーディオンを展開するための`click`イベントがヘッダー全体ではなくアイコン部分に対して登録され、**アコーディオンヘッダー内のリンクをクリックできる**ようになります。
+これにより、**アコーディオンヘッダー内のリンクをクリックできる**ようになります。
 
 <Preview>
 	<PreviewTitle>Accordionの例</PreviewTitle>
-	<PreviewArea p={20}>
+	<PreviewArea p='30'>
 		<Accordion>
 			<AccordionHeader trigger='icon'>
 				<>ヘッダーテキスト（<a href="#acc">ヘルプリンク</a>）</>
@@ -521,29 +528,29 @@ import { Minus, Plus } from '@phosphor-icons/react';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html "data-role=\"trigger\""
-<details class="c--accordion">
-	<summary class="c--accordion__header l--flex -p:box:s -gap:20 -ai:c">
-		<span class="c--accordion__label -fx:1">ヘッダーテキスト（<a href="#acc">ヘルプリンク</a></span>
-		<button class="c--accordion__icon -d:if" data-role="trigger">
-			<span class="a--icon" data-icon="acc-btn" aria-hidden="true" ></span>
+<details class="b--accordion">
+	<summary class="b--accordion__header l--flex">
+		<span class="b--accordion__label">ヘッダーテキスト（<a href="#acc">ヘルプリンク</a></span>
+		<button class="b--accordion__icon" data-role="trigger">
+			<span class="a--icon" data-lism-icon="acc-btn" aria-hidden="true" ></span>
 		</button>
 	</summary>
-	<div class="c--accordion__body -p:box:s">
-		<div class="c--accordion__inner">...</div>
+	<div class="b--accordion__body">
+		<div class="b--accordion__inner">...</div>
 	</div>
 </details>
 ```
 	</PreviewCode>
 </Preview>
 
-
+{/* 
 <Note title='Note:' type='note' isFlow='s'>
 `<summary>`自体が`toggle`イベントを持つため、`<AccordionHeader>`内のリンク以外のエリアをクリックしてもアコーディオンは開閉します。  
 これを防いでアイコンのみだけをクリッカブルにしたい場合は、以下のようにCSSを追加してください。
 
 ```css
-.c--accordion__header:has([data-role='trigger']) {
+.b--accordion__header:has([data-role='trigger']) {
 	pointer-events: none;
 }
 ```
-</Note>
+</Note> */}

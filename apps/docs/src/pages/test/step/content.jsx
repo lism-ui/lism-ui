@@ -47,7 +47,7 @@ export function StepHead({ num = '1', label = '', children, ...props }) {
 	);
 }
 
-const stepIcon = ArrowFatLinesDown; //lism:caret-down-fill
+const stepIcon = ArrowFatLinesDown;
 export default function content() {
 	return (
 		<Lism isFlow hasGutter py={50} isContainer='s' alignfull id='demo-wrapper' _dir='rtl'>

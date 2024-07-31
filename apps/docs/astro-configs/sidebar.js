@@ -167,7 +167,10 @@ export default [
 				label: 'Blocks',
 				link: '###---',
 			},
-
+			{
+				label: 'Accordion',
+				link: '/components/accordion/',
+			},
 			{
 				label: 'Avatar',
 				link: '/components/avatar/',
@@ -196,15 +199,11 @@ export default [
 				label: 'Spacer',
 				link: '/components/spacer/',
 			},
-
 			{
 				label: 'Components',
 				link: '###---',
 			},
-			{
-				label: 'Accordion',
-				link: '/components/accordion/',
-			},
+
 			{
 				label: 'Callout',
 				link: '/components/callout/',

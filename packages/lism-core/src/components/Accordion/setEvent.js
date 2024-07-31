@@ -100,7 +100,7 @@ const setEvent = (currentRef) => {
 
 		// 複数展開を許可しない場合、（開く処理の直前で）他の開いているアイテムがあれば閉じる
 		if (!allowMultiple && !details.open) {
-			const openedItem = parent.querySelector(`.c--accordion.-opened`);
+			const openedItem = parent.querySelector(`.b--accordion.-opened`);
 			if (null != openedItem) clickedEvent(openedItem, durationTime, true);
 		}
 

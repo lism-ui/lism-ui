@@ -18,7 +18,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 
 | プロパティ | 説明 |
 |---|---|
-|`icon`| アイコンを指定できます。デフォルトは `"lism:alert"`です。|
+|`icon`| アイコンを指定できます。デフォルトは `"alert"`です。|
 |`boxcolor`| ボックスカラーを指定します。デフォルトは `"red"`です。(`color-mix`で色の生成をしているため、未対応ブラウザでは表示が変わります。)|
 |`type`|`boxcolor`と`icon`の組み合わせを呼び出すキーワードを指定できます。初期値:`"alert"`|
 |`isFlow`|`__body`に渡されます|
@@ -126,20 +126,20 @@ import { Callout } from '@lism-ui/astro';
 		その他、カラーとアイコンの指定例
 	</PreviewTitle>
 	<PreviewArea p='30'>
-		<Callout icon='lism:good' boxcolor='green'>
+		<Callout icon='good' boxcolor='green'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout icon='lism:bad' boxcolor='blue'>
+		<Callout icon='bad' boxcolor='blue'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout icon='lism:book-open' boxcolor='#185b6e'>
+		<Callout icon='book-open' boxcolor='#185b6e'>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
 		</Callout>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
 	```jsx
-	<Callout icon='lism:good' boxcolor='green'>...</Callout>
-	<Callout icon='lism:bad' boxcolor='blue'>...</Callout>
+	<Callout icon='good' boxcolor='green'>...</Callout>
+	<Callout icon='bad' boxcolor='blue'>...</Callout>
 	```
 	</PreviewCode>
 </Preview>

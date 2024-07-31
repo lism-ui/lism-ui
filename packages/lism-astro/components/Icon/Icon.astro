@@ -7,20 +7,19 @@ import SVG from './SVG.astro';
 // Propsの定義
 interface Props extends LismProps {}
 
-let { asProps = {}, ...props } = Astro.props || {};
+const props = Astro.props || {};
 
 // const hasChildren = Astro.slots.has('default');
 // let { IconTag, iconProps, otherProps } = getProps(props, hasChildren);
 // if (IconTag === '_SVG_') IconTag = SVG;
 
-let { IconComponent, iconTag, iconProps, emoji, otherProps } = getProps(props);
+let { Component, emoji, lismProps, exProps } = getProps(props);
 
-let TheComponent = IconComponent || iconTag;
-if (TheComponent === 'svg') {
-	TheComponent = SVG;
+if (Component === '_SVG_') {
+	Component = SVG;
 }
 ---
 
-<TheComponent {...getLismProps(otherProps)} {...iconProps} {...asProps}>
+<Component {...getLismProps(lismProps)} {...exProps}>
 	{emoji || <slot />}
-</TheComponent>
+</Component>

@@ -114,7 +114,7 @@ import Image from 'next/image';
 
 
 
-### asProps
+### exProps
 
 Lism側での処理をスキップしたいpropsを指定できます。  
 `as`で指定したコンポーネントが受け取れるPropsと、Lism Props の名前が被っていた場合、Lism側での処理が優先されてしまうので、それを回避する際に活用できます。
@@ -130,13 +130,13 @@ Lism側での処理をスキップしたいpropsを指定できます。
 	</PreviewCode>
 </Preview>
 
-Hoge コンポーネント側で`size`を受け取るためには、以下のように`asProps`で指定する必要があります。
+Hoge コンポーネント側で`size`を受け取るためには、以下のように`exProps`で指定する必要があります。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewCode>
 ```jsx
-<Lism as={Hoge} asProps={{size:'...'}} p='em10' fz='l'>...</Lism>
+<Lism as={Hoge} exProps={{size:'...'}} p='em10' fz='l'>...</Lism>
 ```
 	</PreviewCode>
 </Preview>

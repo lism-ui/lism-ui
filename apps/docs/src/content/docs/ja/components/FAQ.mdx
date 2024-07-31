@@ -4,7 +4,7 @@ description: ...
 ---
 
 
-import { Callout, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody, AccordionLabel, AccordionIcon } from '@lism-ui/core';
+import { Callout, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/core';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import {Question, ChatCircleDots} from '@phosphor-icons/react';
@@ -27,13 +27,14 @@ export function FAQ({ q, children }) {
 
 export function AccFAQ({ q, children }) {
 	return (
-		<Accordion className='c--faq'>
-			<AccordionHeader bgc='base-2' bdrs='m' isFreeMode>
-				<Icon icon={Question} fz='2xl' />
-				<AccordionLabel>{q}</AccordionLabel>
-				<AccordionIcon />
+		<Accordion className='c--faq' p='30' bgc='base-2' bdrs='m'>
+			<AccordionHeader>
+				<Flex gap='em4'>
+					<Icon icon={Question} fz='2xl' />
+					{q}
+				</Flex>
 			</AccordionHeader>
-			<AccordionBody>
+			<AccordionBody mbs='30' isFlow='s'>
 				{children}
 			</AccordionBody>
 		</Accordion>
@@ -150,18 +151,19 @@ import { FAQs, FAQ } from './path/to/.../steps';
 <Preview>
 	<PreviewCode slot='tab' label='React'>
 	```jsx
-	import { Accordion, AccordionHeader, AccordionLabel, AccordionIcon, AccordionBody, Icon } from '@lism-ui/core';
+	import { Accordion, AccordionHeader, AccordionBody, Icon } from '@lism-ui/core';
 	import { Question } from '@phosphor-icons/react';
 
 	function AccFAQ({ q, children }) {
 		return (
-			<Accordion className='c--faq'>
-				<AccordionHeader bgc='base-2' bdrs='m' isFreeMode>
-					<Icon icon={Question} fz='2xl' />
-					<AccordionLabel>{q}</AccordionLabel>
-					<AccordionIcon />
+			<Accordion className='c--faq' p='30' bgc='base-2' bdrs='m'>
+				<AccordionHeader>
+					<Flex gap='em4'>
+						<Icon icon={Question} fz='2xl' />
+						{q}
+					</Flex>
 				</AccordionHeader>
-				<AccordionBody>
+				<AccordionBody mbs='30' isFlow='s'>
 					{children}
 				</AccordionBody>
 			</Accordion>
