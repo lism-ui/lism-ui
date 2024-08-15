@@ -64,7 +64,7 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 
 <Preview>
 	<PreviewTitle>基本構造</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu>
 			<Items />
 		</NavMenu>
@@ -111,7 +111,7 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 
 <Preview>
 	<PreviewTitle>`hasDivider`と上下ボーダーを指定</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu hasDivider bd='block'>
 			<Items />
 		</NavMenu>
@@ -131,7 +131,7 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 {/* テキストをspanで囲んで -fx:1 でも可 */}
 <Preview>
 	<PreviewTitle>アイコンやバッジを使った例</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu hasDivider bd>
 			<NavMenuItem href='#menu1'>
 				<Icon icon={FolderSimple} />
@@ -172,44 +172,6 @@ import { FolderSimple } from "@phosphor-icons/react";
 </Preview>
 
 
-<Preview>
-	<PreviewTitle>ボックススタイルにしてhovカラー指定, `passProps` でpaddingやgapを一括指定</PreviewTitle>
-	<PreviewArea p='40'>
-		<NavMenu hasDivider bd hovBgc='black' hovC='white' passProps={{ p:'em8', gap:'em6' }}>
-			<NavMenuItem href='#menu1'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu2'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu3'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-		</NavMenu>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "hovBgc" "hovC" "passProps"
-		<NavMenu hasDivider bd hovBgc='black' hovC='white' passProps={{ p:'em8', gap:'em6' }}>
-			<NavMenuItem href='#menu1'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu2'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu3'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-		</NavMenu>
-		```
-	</PreviewCode>
-</Preview>
-
 
 ### メニューのネスト
 
@@ -219,7 +181,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>メニューのネスト</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu hasDivider>
 			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
 			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
@@ -268,7 +230,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>展開メニューにリンクなし</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu bd='block'>
 			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
 			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
@@ -313,7 +275,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 <Preview>
 	<PreviewTitle>メニューはリンクのまま子要素のリストをアコーディオンで展開</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<NavMenu bd='block'>
 			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
 			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
@@ -356,13 +318,127 @@ import { FolderSimple } from "@phosphor-icons/react";
 </Preview>
 
 
-## 横並びメニュー
+### 各リストのpaddingとgapを一括で調整する方法
+
+`passProps`を使って、各リストのpaddingやgapを一括で指定できます。
+
+<Preview>
+	<PreviewTitle>`passProps` でpaddingやgapを一括指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<NavMenu bd hasDivider lh='xs' passProps={{ p:'em8', gap:'em6' }}>
+			<NavMenuItem href='#menu1'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+			<NavMenuItem href='#menu2'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>
+					<Icon icon={FolderSimple} fz='l' weight='fill' />
+					<span>Menu item</span>
+				</NavMenuLink>
+				<NavMenu nestLevel={1} passProps={{ p:'em6' }}>
+					<NavMenuItem href='#child-menu1'>
+						<Icon icon={FolderSimple} fz='l' />
+						<span>Child item</span>
+					</NavMenuItem>
+					<NavMenuItem href='#child-menu2'>
+						<Icon icon={FolderSimple} fz='l' />
+						<span>Child item</span>
+					</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+			<NavMenuItem href='#menu4'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "passProps"
+		<NavMenu bd hasDivider lh='xs' passProps={{ p:'em8', gap:'em6' }}>
+			<NavMenuItem href='#menu1'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+			<NavMenuItem href='#menu2'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>
+					<Icon icon={FolderSimple} fz='l' weight='fill' />
+					<span>Menu item</span>
+				</NavMenuLink>
+				<NavMenu nestLevel={1} passProps={{ p:'em6' }}>
+					<NavMenuItem href='#child-menu1'>
+						<Icon icon={FolderSimple} fz='l' />
+						<span>Child item</span>
+					</NavMenuItem>
+					<NavMenuItem href='#child-menu2'>
+						<Icon icon={FolderSimple} fz='l' />
+						<span>Child item</span>
+					</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+			<NavMenuItem href='#menu4'>
+				<Icon icon={FolderSimple} fz='l' weight='fill' />
+				<span>Menu item</span>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### ホバースタイルの調整
+
+`hovC`, `hovBgc`で調整できるようになっています。
+
+<Preview>
+	<PreviewTitle>hover時のカラー指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<NavMenu bd hasDivider hovBgc='black' hovC='white'>
+			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
+			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
+				<NavMenu nestLevel={1}>
+					<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
+					<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+			<NavMenuItem href='#menu4'>Menu item</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "hovBgc" "hovC"
+		<NavMenu bd hasDivider hovBgc='black' hovC='white'>
+			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
+			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
+				<NavMenu nestLevel={1}>
+					<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
+					<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+				</NavMenu>
+			</NavMenuItem>
+			<NavMenuItem href='#menu4'>Menu item</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 横並びメニュー
 
 `<NavMenu>`に`isFlex`を指定すると、横並びになります。
 
 <Preview>
 	<PreviewTitle>横並び</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea p='30'>
 		<Box minH="20rem">
 		<NavMenu isFlex hasDivider passProps={{ p: 'em6 em8' }}>
 			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>

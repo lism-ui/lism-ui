@@ -1,18 +1,17 @@
 // <ul>
 .c--navMenu {
-	--hov--c: currentColor;
-	--hov--bgc: var(--base-2);
 	--list-style: none;
-	// --list-pis: 0; // padding-inline-start
-
-	--pass--p: var(--p--box--s); // var(--em--4) var(--em--6);
-	--pass--gap: var(--em--4);
-	line-height: var(--lh--xs);
+	// line-height: var(--lh--xs);
 }
 
 // トップ要素でのみ定義
 .c--navMenu:where(:not([data-nest-level])) {
 	padding-inline-start: 0; // 自身のpadding
+
+	--pass--p: var(--p--box--s); // var(--em--4) var(--em--6);
+	--pass--gap: var(--em--4);
+	--hov--c: currentColor;
+	--hov--bgc: var(--base-2);
 
 	// 子リストのpadding
 	--list-pis: 1.25em; //var(--s--30);
@@ -23,15 +22,7 @@
 	.b--accordion__header {
 		padding-inline-end: var(--em--4);
 	}
-	// .b--accordion__icon {
-	// 	margin-inline-end: var(--em--4);
-	// }
 }
-
-// <a> or <span>
-// :where(.c--navMenu__link) {
-// 	gap: var(--em--4);
-// }
 
 .c--navMenu__link {
 	--link-td: none; // text-decoration: none;
