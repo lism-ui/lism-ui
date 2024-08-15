@@ -1,0 +1,24 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import NavMenuLink from './NavMenuLink.astro';
+import { getNavMenuItemProps } from '@lism-ui/core/components/NavMenu/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+const { liProps, linkProps } = getNavMenuItemProps(props);
+---
+
+<Lism {...liProps}>
+	{
+		linkProps ? (
+			<NavMenuLink {...linkProps}>
+				<slot />
+			</NavMenuLink>
+		) : (
+			<slot />
+		)
+	}
+</Lism>

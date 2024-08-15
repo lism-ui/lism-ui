@@ -1,19 +1,13 @@
-// import React from 'react';
 import { Lism } from '../Lism';
-import { Accordion } from '../Accordion';
-import NavMenuLink from './NavMenuLink';
+import { Flex } from '../Flex';
 import { getNavMenuProps } from './getProps';
 
-export default function NavMenu({ isAcc, children, ...props }) {
-	const { liProps, linkProps } = getNavMenuProps(props);
+export default function NavMenu({ children, isFlex, ...props }) {
+	const JSX = isFlex ? Flex : Lism;
 
 	return (
-		<Lism {...liProps}>
-			{isAcc ? (
-				<Accordion>{children}</Accordion>
-			) : (
-				<>{linkProps ? <NavMenuLink {...linkProps}>{children}</NavMenuLink> : children}</>
-			)}
-		</Lism>
+		<JSX {...getNavMenuProps(props)} {...props}>
+			{children}
+		</JSX>
 	);
 }

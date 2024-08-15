@@ -1,6 +1,23 @@
 import separateLinkProps from '../separateLinkProps';
 
-export function getNavMenuProps({ _lismClass = [], linkComponent, ...props }) {
+export function getNavMenuProps({ _lismClass = [], variant, nestLevel, hovC, hovBgc, ...props }) {
+	_lismClass.push('c--navMenu');
+	if (variant) {
+		_lismClass.push(`c--navMenu--${variant}`);
+	}
+
+	const hov = { pass: { bgc: hovBgc, c: hovC } };
+	const theProps = { _lismClass, tag: 'ul', hov, ...props };
+
+	if (nestLevel) {
+		// lismStyle['--level'] = parseInt(nestLevel);
+		theProps['data-nest-level'] = nestLevel;
+	}
+
+	return theProps;
+}
+
+export function getNavMenuItemProps({ _lismClass = [], linkComponent, ...props }) {
 	_lismClass.push('c--navMenu__item');
 	const liProps = { skipState: true, _lismClass, tag: 'li', ...props };
 

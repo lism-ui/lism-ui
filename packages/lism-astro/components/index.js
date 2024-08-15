@@ -38,5 +38,8 @@ export * from './Button';
 export * from './Reel';
 export * from './Tab';
 export * from './Banner';
+
+export * from './NavMenu';
+
 // export * from './Card';
 // export * from './Chat';

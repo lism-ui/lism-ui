@@ -1,0 +1,16 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import { Flex } from '../Flex';
+import { getNavMenuProps } from '@lism-ui/core/components/NavMenu/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+
+const { isFlex, ...props } = Astro.props || {};
+const JSX = isFlex ? Flex : Lism;
+---
+
+<JSX {...getNavMenuProps(props)} {...props}>
+	<slot />
+</JSX>

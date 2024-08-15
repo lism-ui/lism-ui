@@ -19,7 +19,14 @@
 }
 
 // <li>
-// .c--navMenu__item {}
+.c--navMenu__item {
+	.b--accordion__header {
+		padding-inline-end: var(--em--4);
+	}
+	// .b--accordion__icon {
+	// 	margin-inline-end: var(--em--4);
+	// }
+}
 
 // <a> or <span>
 // :where(.c--navMenu__link) {
