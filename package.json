@@ -7,11 +7,12 @@
   "module": "dist/index.js",
   "scripts": {
     "postinstall": "cd packages/lism-core && pnpm run build",
-    "build": "turbo run build",
     "dev": "turbo run dev",
     "start": "turbo run start",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
+	"build": "turbo run build",
+	"build:core": "turbo run build --filter=./packages/lism-core",
     "merge:dev": "git checkout main && git merge dev",
     "merge:m2d": "git checkout dev && git merge main"
   },
