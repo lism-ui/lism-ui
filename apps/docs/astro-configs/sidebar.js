@@ -54,6 +54,13 @@ export default [
 		},
 	},
 	{
+		label: 'Styles',
+		autogenerate: {
+			directory: 'styles',
+			collapsed: true,
+		},
+	},
+	{
 		label: 'Components',
 		items: [
 			{
