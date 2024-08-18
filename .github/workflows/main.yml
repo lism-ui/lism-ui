@@ -24,6 +24,6 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm build:core
 
       - run: pnpx pkg-pr-new publish './packages/lism-core'
