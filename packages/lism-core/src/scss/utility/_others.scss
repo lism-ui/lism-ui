@@ -13,29 +13,30 @@
 // }
 
 // overflow
-// .-ov\:v{overflow: visible;}
+// .-ov\:v{overflow: visible;} // 初期値不要
 .-ov\:h{overflow: hidden;}
 .-ov\:a{overflow: auto;}
 .-ov\:c{overflow: clip;}
-// .-ov\:s{overflow: scroll;}
+.-ov\:s{overflow: scroll;}
 
 .-ovx\:a{overflow-x: auto;}
 .-ovx\:c{overflow-x: clip;}
 .-ovx\:h{overflow-x: hidden;}
+.-ovx\:s{overflow-x: scroll;}
 
 .-ovy\:a{overflow-y: auto;}
 .-ovy\:c{overflow-y: clip;}
 .-ovy\:h{overflow-y: hidden;}
-
+.-ovy\:s{overflow-y: scroll;}
 
 .-obf\:cn{
-	width: 100%;
-	height: 100%;
+	// width: 100%;
+	// height: 100%;
 	object-fit: contain;
 }
 .-obf\:cv{
-	width: 100%;
-	height: 100%;
+	// width: 100%;
+	// height: 100%;
 	object-fit: cover;
 }
 

@@ -82,7 +82,7 @@ export default {
 	},
 	inset: { '0%': '0' }, // inset は 0% だけ
 	insets: { '0%': '0', '50%': '50', '100%': '100' }, // top,left,right,bottom 用
-	ov: { hidden: 'h', auto: 'a', clip: 'c' },
+	ov: { scroll: 's', hidden: 'h', auto: 'a', clip: 'c' },
 	visibility: { hidden: 'h', visible: 'v' },
 	d: {
 		none: 'n',
