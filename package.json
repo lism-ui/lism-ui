@@ -48,6 +48,7 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-react": "^7.33.2",
     "npm-check-updates": "^16.14.14",
+    "pkg-pr-new": "^0.0.20",
     "postcss": "^8.4.33",
     "postcss-merge-at-rules": "^1.0.1",
     "prettier": "^3.2.4",
