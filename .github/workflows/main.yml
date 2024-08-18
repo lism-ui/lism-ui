@@ -7,8 +7,7 @@ on:
       - '!**'
 
 jobs:
-  approved:
-    if: github.event.review.state == 'APPROVED'
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,5 +22,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build
+        run: pnpm build
 
       - run: pnpx pkg-pr-new publish　'./packages/lism-core'
