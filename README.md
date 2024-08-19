@@ -21,3 +21,9 @@ or
 cd apps/playgrounds/vite
 pnpm run dev
 ```
+
+## 最新版mainブランチのテスト
+
+```
+npm i https://pkg.pr.new/lism-ui/lism-ui/@lism-ui/core@{commitID}
+```
