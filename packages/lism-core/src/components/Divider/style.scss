@@ -1,25 +1,26 @@
 // --------------------
 // divider
 // --------------------
-// :where(.b--divider) {}
-.b--divider {
+.a--divider {
 	--bdc: var(--divider-bdc);
 	--bdw: 1px;
 	--bds: solid;
-	place-self: stretch;
-	// min-width: 1em;
-	// min-height: 1em;
+	// display: block;
+	border-top: var(--bdw) var(--bds) var(--bdc);
+	// place-self: stretch;
 }
 
-.b--divider__bd {
-	--bdc: inherit;
-	--bdw: inherit;
-	--bds: inherit;
-	// border-top: var(--bdw) var(--bds) var(--bdc);
-	flex: 1;
+.a--divider--vertical {
+	border-top: none;
+	height: 100%;
+	width: 0;
+	border-left: var(--bdw) var(--bds) var(--bdc);
 }
 
-// :where(.l--stack) > .b--divider__bd {
-// 	border-top: none;
-// 	border-left: var(--bdw) var(--bds) var(--bdc);
+// .b--divider__bd {
+// 	--bdc: inherit;
+// 	--bdw: inherit;
+// 	--bds: inherit;
+// 	// border-top: var(--bdw) var(--bds) var(--bdc);
+// 	flex: 1;
 // }

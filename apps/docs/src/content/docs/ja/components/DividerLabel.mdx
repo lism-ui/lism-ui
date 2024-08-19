@@ -1,0 +1,137 @@
+---
+title: 'DividerLabel'
+description: ...
+---
+
+import { Divider, Flex, FlexItem, Box, Stack, Text } from '@lism-ui/astro';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { DividerLabel } from '~/components/ex/DividerLabel';
+
+
+区切り線をラベルテキスト付きで描画するコンポーネントの作成例です。
+
+
+## コンポーネントの準備
+
+```jsx
+import { Lism, Flex, Divider } from '@lism-ui/core';
+
+export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bds, ...props }) {
+	const bdProps = { bdc, bdw, bds };
+
+	if (isVertical) {
+		bdProps.variant = 'vertical';
+		props.fxd = 'column';
+	}
+	return (
+		<Flex className='b--dividerLabel' ai='c' gap='20' fz='s' lh='1' c='content-3' {...props}>
+			{labelPosition !== 'start' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
+			<Lism className='b--divider__label'>{children}</Lism>
+			{labelPosition !== 'end' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
+		</Flex>
+	);
+}
+```
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+| `isVertical` | 区切り線を縦方向にできます |
+| `bdw`,`bds`,`bdc` | 区切り線のボーダープロパティ |
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30' >
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel labelPosition='start'>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel labelPosition='end'>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>スタイルの変更例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel bds='dotted' bdw='4px' bdc='blue:50%' c='blue' fz='s'>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {2}
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel bds='dotted' bdw='4px' bdc='blue:50%' c='blue' fz='s'>Label Text</DividerLabel>
+		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### 縦方向
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30' isFlow={false}>
+		<Flex ai='c' gap='20'>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical fz='s' flexItem={{aslf:'stretch'}}>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx {3}
+		<Flex ai='c' gap='20'>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical fz='s' flexItem={{aslf:'stretch'}}>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30' isFlow={false}>
+		<Flex ai='stretch' gap='20'>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical labelPosition='start'>
+				<Text className='-wm:v-lr'>Label</Text>
+			</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical labelPosition='end'>
+				<Text className='-wm:v-lr'>Label</Text>
+			</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Flex ai='stretch' gap='20'>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical labelPosition='start'>
+				<Text className='-wm:v-lr'>Label</Text>
+			</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<DividerLabel isVertical labelPosition='end'>
+				<Text className='-wm:v-lr'>Label</Text>
+			</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>

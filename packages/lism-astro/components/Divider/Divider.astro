@@ -1,6 +1,5 @@
 ---
 import { LismProps } from '../types';
-import { Flex, FlexItem } from '../Flex';
 import { Lism } from '../Lism';
 import { getDividerProps } from '@lism-ui/core/components/Divider/getProps';
 
@@ -8,20 +7,6 @@ import { getDividerProps } from '@lism-ui/core/components/Divider/getProps';
 interface Props extends LismProps {}
 
 const props = Astro.props || {};
-const { label } = props;
-const { dividerProps, labelProps, bdProps } = getDividerProps(props);
 ---
 
-<Flex {...dividerProps}>
-	{
-		label ? (
-			<>
-				<FlexItem {...bdProps} />
-				<Lism {...labelProps}>{label}</Lism>
-				<FlexItem {...bdProps} />
-			</>
-		) : (
-			<FlexItem {...bdProps} />
-		)
-	}
-</Flex>
+<Lism {...getDividerProps(props)} />

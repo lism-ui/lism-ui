@@ -159,8 +159,8 @@ export default [
 				link: '###---',
 			},
 			{
-				label: 'Icon',
-				link: '/components/icon/',
+				label: 'Divider',
+				link: '/components/divider/',
 			},
 			{
 				label: 'Decorator',
@@ -169,6 +169,10 @@ export default [
 			{
 				label: 'Delimiter',
 				link: '/components/delimiter/',
+			},
+			{
+				label: 'Icon',
+				link: '/components/icon/',
 			},
 			{
 				label: 'Blocks',
@@ -194,10 +198,7 @@ export default [
 				label: 'Button',
 				link: '/components/button/',
 			},
-			{
-				label: 'Divider',
-				link: '/components/divider/',
-			},
+
 			{
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
@@ -256,6 +257,10 @@ export default [
 			{
 				label: 'Chat',
 				link: '/components/chat/',
+			},
+			{
+				label: 'DividerLabel',
+				link: '/components/dividerlabel/',
 			},
 			{
 				label: 'FAQ',

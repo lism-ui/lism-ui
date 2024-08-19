@@ -17,8 +17,6 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 | プロパティ | 説明 |
 |---|---|
-| `label` | 区切り線の間に表示するラベルテキスト |
-| `isVertical` | 区切り線を縦方向にできます |
 | `bdw`,`bds`,`bdc` | 区切り線のボーダープロパティ |
 
 ## Import
@@ -54,65 +52,33 @@ import { Divider } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html {2-4}
+		```html {2}
 		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-		<div class="b--divider l--flex">
-			<div class="b--divider__bd -bd:t"></div>
-		</div>
+		<div class="a--divider"></div>
 		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		```
 	</PreviewCode>
 </Preview>
 
-<Preview>
-	<PreviewTitle>labelあり</PreviewTitle>
-	<PreviewArea resize p='30' >
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<Divider label='Label Text' />
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx {2}
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<Divider label='Label Text' />
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html {2-6}
-		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-		<div class="b--divider l--flex -fz:s -lh:1 -c:content-3 -gap:em6 -ai:c">
-			<div class="b--divider__bd -bd:t"></div>
-			<div class="b--divider__label">Label Text</div>
-			<div class="b--divider__bd -bd:t"></div>
-		</div>
-		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-		```
-	</PreviewCode>
-</Preview>
 
 <Preview>
 	<PreviewTitle>スタイルの変更例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<Divider label='Label Text' bds='dotted' bdw='4px' bdc='blue:40%' c='blue' fw='bold' fz='xs'/>
+		<Divider bds='dotted' bdw='4px' bdc='blue:50%'/>
 		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx {2}
 		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<Divider label='Label Text' bds='dotted' bdw='4px' bdc='blue:40%' c='blue' fw='bold' fz='xs'/>
+		<Divider bds='dotted' bdw='4px' bdc='blue:50%'/>
 		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html
+		```html {2}
 		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-		<div class="b--divider l--flex -fz:xs -lh:1 -c: -fw:bold -gap:em6 -ai:c" style="--c:var(--blue);--bds:dotted;--bdw:4px;--bdc:hsl(var(--hsl-blue) / 40%)">
-			<div class="b--divider__bd -bd:t"></div>
-			<div class="b--divider__label">Label Text</div>
-			<div class="b--divider__bd -bd:t"></div>
-		</div>
+		<div class="a--divider" style="--bds:dotted;--bdw:4px;--bdc:hsl(var(--hsl-blue) / 50%)"></div>
 		<div class="l--box -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		```
 	</PreviewCode>
@@ -121,68 +87,34 @@ import { Divider } from '@lism-ui/astro';
 
 ### 縦方向
 
+`variant='vertical'` (`.a--divider--vertical`) を用意しています。
+
+
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='c' gap={30}>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider isVertical />
+			<Divider variant='vertical' />
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx {3} "isVertical"
+		```jsx {3} "variant='vertical'"
 		<Flex ai='c' gap={30}>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider isVertical />
+			<Divider variant='vertical' />
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html {3-5} "l--stack" "-bd:l"
+		```html {3} "a--divider--vertical"
 		<div class="l--flex -gap:30 -ai:c">
 			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-			<div class="b--divider l--stack">
-				<div class="b--divider__bd -bd:l"></div>
-			</div>
+			<div class="a--divider a--divider--vertical"></div>
 			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		</div>
 		```
 	</PreviewCode>
 </Preview>
-
-
-<Preview>
-	<PreviewTitle>labelあり</PreviewTitle>
-	<PreviewArea resize p='30' isFlow={false}>
-		<Flex ai='c' gap={20}>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider isVertical label='Text' />
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-		</Flex>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx {3}
-		<Flex ai='c' gap={20}>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider isVertical label='Text' />
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-		</Flex>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html {3-7}
-		<div class="l--flex -gap:30 -ai:c">
-			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-			<div class="b--divider l--stack -fz:s -lh:1 -c:content-3 -gap:em6 -ai:c">
-				<div class="b--divider__bd -bd:l"></div>
-				<div class="b--divider__label">Text</div>
-				<div class="b--divider__bd -bd:l"></div>
-			</div>
-			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-		</div>
-		```
-	</PreviewCode>
-</Preview>
-
