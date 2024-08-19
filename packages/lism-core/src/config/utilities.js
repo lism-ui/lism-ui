@@ -23,7 +23,7 @@ export default {
 	place: places,
 	placeItems: { ...places, ...flexPlaces, stretch: 'str' },
 	placeContent: { ...places, ...flexPlaces, 'space-between': 'sb' },
-	selfPlace: { ...places, ...flexPlaces },
+	selfPlace: { ...places, ...flexPlaces, stretch: 'str' },
 	ta: { center: 'c', left: 'l', right: 'r' },
 	td: { underline: 'u', none: 'n' },
 

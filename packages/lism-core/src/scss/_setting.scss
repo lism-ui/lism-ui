@@ -49,6 +49,8 @@ $place_content: map.merge(
 		'sb': 'space-between',
 	)
 );
+$place_self: $place_items;
+
 // map.get($data, prop);
 $utilities: (
 	'0': (
@@ -285,8 +287,8 @@ $utilities: (
 	'ac': $place_content,
 	'ji': $place_items,
 	'jc': $place_content,
-	'aslf': $place_utils,
-	'jslf': $place_utils,
+	'aslf': $place_self,
+	'jslf': $place_self,
 );
 
 $props: map.deep-merge(
