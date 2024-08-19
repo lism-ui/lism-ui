@@ -12,9 +12,9 @@
 
 .a--divider--vertical {
 	border-top: none;
-	height: 100%;
-	width: 0;
 	border-left: var(--bdw) var(--bds) var(--bdc);
+	min-height: 1em;
+	// align-self: stretch;
 }
 
 // .b--divider__bd {

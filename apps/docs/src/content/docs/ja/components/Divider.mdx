@@ -95,7 +95,7 @@ import { Divider } from '@lism-ui/astro';
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='c' gap={30}>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider variant='vertical' />
+			<Divider variant='vertical' flexItem={{aslf:'stretch'}} />
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 	</PreviewArea>
@@ -103,7 +103,7 @@ import { Divider } from '@lism-ui/astro';
 		```jsx {3} "variant='vertical'"
 		<Flex ai='c' gap={30}>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
-			<Divider variant='vertical' />
+			<Divider variant='vertical' flexItem={{aslf:'stretch'}} />
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
 		</Flex>
 		```
@@ -112,7 +112,7 @@ import { Divider } from '@lism-ui/astro';
 		```html {3} "a--divider--vertical"
 		<div class="l--flex -gap:30 -ai:c">
 			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
-			<div class="a--divider a--divider--vertical"></div>
+			<div class="a--divider a--divider--vertical -aslf:str"></div>
 			<div class="-fx:1 -bgc:base-2 -py:50 -ta:c">...Contents...</div>
 		</div>
 		```
