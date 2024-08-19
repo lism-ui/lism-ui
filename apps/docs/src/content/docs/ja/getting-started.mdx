@@ -7,9 +7,10 @@ import { Badge, Callout, Tabs, TabItem } from '@lism-ui/astro';
 import { SmileyXEyes } from "@phosphor-icons/react";
 import { MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
 
-
-## Installation
+{/* ## Installation */}
+## インストール
 
 Lismは2通りの使い方ができます。
 
@@ -27,7 +28,7 @@ HTMLで組むシンプルなサイトであれば、CDN経由でCSSを読み込�
 
 ReactやAstroで専用のコンポーネントを使用するためには、コアパッケージをインストールする必要があります。
 
-<Tabs>
+<Tabs variant='line'>
 	<TabItem label='npm'>
 		```bash frame="none"
 		npm i @lism-ui/core
@@ -45,39 +46,124 @@ ReactやAstroで専用のコンポーネントを使用するためには、コ�
 	</TabItem>
 </Tabs>
 
+<Note title='最新版mainブランチのテスト'>
+pkg.pr.new を導入してます。
+
+```zsh frame="none"
+pnpm add https://pkg.pr.new/lism-ui/lism-ui/@lism-ui/core@{commitID}
+```
+</Note>
+
+
 
 ### CSSの読み込み
-
-例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。
 
 ```js
 import '@lism-ui/core/css/all.css';
 ```
 
-
-### Purgeする
-
-ビルド環境の調整ができる場合は、[PurgeCSS](https://purgecss.com/)を利用して、必要なCSSだけを抽出することができます。<MemoBadge>未検証</MemoBadge>
+例えば、Next.jsであれば、`_app.js`や`layout.js`でglobalスタイルとして読み込んでください。
 
 
+{/* ### Using Components */}
+### コンポーネントの読み込み
 
-## Using Components
+reactベースで、コンポーネントを配布しています。
 
 ```jsx
-import { Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, Box, Text, ... } from '@lism-ui/core';
-
-// ...
-<Box p={20} bgc='base-2'>
-	<Text fz="l">Lorem ipsum text...</Text>
-</Box>
-// ...
+import { Box, Flex, ... } from '@lism-ui/core';
 ```
 
-{/* <Reference></Reference> */}
+{/* ```jsx
+const LismTestBox = () => {
+	return (
+		<Box p='20' bgc='base-2'>
+			<Text fz="l">Lorem ipsum text...</Text>
+		</Box>
+	);
+}
+``` */}
 
-## 特定の環境に合わせた コンポーネントの読み込み
+
+
+
+## 特定の環境に合わせた追加コンポーネントの読み込み
+
+純粋なReactコンポーネントは、`@lism-ui/core`に含まれますが、Next.jsやAstroなどの特定のフレームワークに合わせたコンポーネントも準備しています。
+
+
+
+### Astro
+
+`@lism-ui/astro`パッケージを追加すると、`.astro`ファイルで構築されたコンポーネントを利用できるようになります。
+
+以下のパッケージを追加でインストールしてください。
+
+<Tabs variant='line'>
+	<TabItem label='npm'>
+		```bash frame="none"
+		npm i @lism-ui/astro
+		```
+	</TabItem>
+	<TabItem label='pnpm'>
+		```bash frame="none"
+		pnpm add @lism-ui/astro
+		```
+	</TabItem>
+		<TabItem label='yarn'>
+		```bash frame="none"
+		yarn add @lism-ui/astro
+		```
+	</TabItem>
+</Tabs>
+
+`@lism-ui/astro`から Lism Components をインポートして利用できるようになります。
+
+```js
+import { Box, Flex, ... } from '@lism-ui/astro';
+```
+
+一部のコンポーネントは、ReactとAstroで利用方法が変わるので注意してください。（各コンポーネントの解説ページで個別に説明していく予定です。）
+
+
+{/* <Callout type='warning'>
+`@lism-ui/astro`から`@lism-ui/core`のコードをインポートできるようにするため、`astro.config.js`の`vite.ssr.noExternal`に`"@lism-ui/core"`を追加してください。
+</Callout>
+
+```js filename="astro.config.js"
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  // ...other settings 
+  vite: {
+    ssr: {
+      noExternal: ["@lism-ui/core"],
+    },
+  },
+});
+```
+
+この記述がないと、"**Cannot use import statement outside a module**" というエラーが発生します。  
+<small>（パッケージ配布方法の改善で対応できるかどうか調整中です...）</small> */}
+
+
+
+
+{/* 
+## lism.config のセッティング
+
+Lism Propsのカスタマイズなどを行うためのファイルです。  
+トークン値のカスタマイズや、どの値をユーティリティクラス化するかを設定できます。<MemoBadge>未実装</MemoBadge>
+
+```js filename="lism.config.js"
+...
+``` */}
+
 
 ### Next.js (App Router)
+
+
+<MemoBadge>準備中</MemoBadge>
 
 {/* Next.js の **app ルーティング**を使用している場合、`<Accordion>`や`<Tab>`を使うには`"use client"`の記述が必要になりますが、 */}
 
@@ -124,50 +210,7 @@ import { Box, Tabs, TabItem } from '@lism-ui/next';
 
 
 
-### Astro
 
-`@lism-ui/astro`パッケージを追加すると、`.jsx`ファイルではなく、`.astro`ファイルでもコンポーネントを利用できるようになります。<MemoBadge>一部準備中</MemoBadge>
+## CSSをPurgeする
 
-以下のパッケージを追加でインストールしてください。
-
-```bash frame="none"
-npm i @lism-ui/astro
-```
-
-```js
-import { Stack, Flex } from '@lism-ui/astro';
-```
-
-
-<Callout type='warning'>
-`@lism-ui/astro`から`@lism-ui/core`のコードをインポートできるようにするため、`astro.config.js`の`vite.ssr.noExternal`に`"@lism-ui/core"`を追加してください。
-</Callout>
-
-```js filename="astro.config.js"
-import { defineConfig } from "astro/config";
-
-export default defineConfig({
-  // ...other settings 
-  vite: {
-    ssr: {
-      noExternal: ["@lism-ui/core"],
-    },
-  },
-});
-```
-
-この記述がないと、"**Cannot use import statement outside a module**" というエラーが発生します。  
-<small>（パッケージ配布方法の改善で対応できるかどうか調整中です...）</small>
-
-
-また、一部のコンポーネントは、ReactとAstroで利用方法が変わるので注意してください。（各コンポーネントの解説ページで個別に説明していく予定です。）
-
-{/* 
-## lism.config のセッティング
-
-Lism Propsのカスタマイズなどを行うためのファイルです。  
-トークン値のカスタマイズや、どの値をユーティリティクラス化するかを設定できます。<MemoBadge>未実装</MemoBadge>
-
-```js filename="lism.config.js"
-...
-``` */}
+ビルド環境の調整ができる場合は、[PurgeCSS](https://purgecss.com/)を利用して、必要なCSSだけを抽出することができます。<MemoBadge>未検証</MemoBadge>

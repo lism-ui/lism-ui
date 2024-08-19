@@ -1,0 +1,32 @@
+---
+import { Lism, Flex, Stack, Divider } from '@lism-ui/astro';
+import sidebarData from '@/astro-configs/sidebar';
+
+const { langPath = '', props } = Astro.props;
+
+// sidebarDataをループして label が 'Components' のものを取得
+const componentMenu = sidebarData.find((item) => item.label === 'Components');
+---
+
+<!-- componentMenuをループさせて label, link を出力 -->
+<Stack gap='10' {...props}>
+	{
+		componentMenu.items.map((item) => {
+			if (item.link === '###---' && item.label === '---') {
+				return <Divider />;
+			} else if (item.link === '###---') {
+				return (
+					<Flex mbs='40' ai='c' gap='30'>
+						<Lism c='content-3'>{item.label}</Lism>
+						<Divider class='-fx:1' />
+					</Flex>
+				);
+			}
+			return (
+				<Lism tag='a' href={`${langPath}${item.link}`} px='5' d='b'>
+					{item.label}
+				</Lism>
+			);
+		})
+	}
+</Stack>
