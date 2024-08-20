@@ -297,20 +297,18 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 
 子要素の間に仕切り線を表示します。
 
-l--flex, l--cluster では 区切り方向が自動で切り替わります。
-
 <Preview>
 	<PreviewTitle>`has--divider`</PreviewTitle>
 	<PreviewArea resize p={5}>
-		<Stack hasDivider>
+		<Box hasDivider>
 			<Box p='20'>Content</Box>
 			<Box p='20'>Content</Box>
 			<Box p='20'>Content</Box>
-		</Stack>
+		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="l--stack has--divider">
+	<div class="l--box has--divider">
 		<div class="-p:20">Content</div>
 		<div class="-p:20">Content</div>
 		<div class="-p:20">Content</div>
@@ -328,10 +326,13 @@ l--flex, l--cluster では 区切り方向が自動で切り替わります。
 	</PreviewCode>
 </Preview>
 
+
+`has--divider:i` で、区切り線をインライン方向に表示します。
+
 <Preview>
-	<PreviewTitle>`l--flex`で使用</PreviewTitle>
+	<PreviewTitle>`has--divider:i`</PreviewTitle>
 	<PreviewArea resize p={5}>
-		<Flex hasDivider>
+		<Flex hasDivider='i'>
 			<Box px='em10'>Content</Box>
 			<Box px='em10'>Content</Box>
 			<Box px='em10'>Content</Box>
@@ -339,7 +340,7 @@ l--flex, l--cluster では 区切り方向が自動で切り替わります。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx
-	<div class="l--flex has--divider">
+	<div class="l--flex has--divider:i">
 		<div class="-px:em10">Content</div>
 		<div class="-px:em10">Content</div>
 		<div class="-px:em10">Content</div>
@@ -348,7 +349,7 @@ l--flex, l--cluster では 区切り方向が自動で切り替わります。
 	</PreviewCode>
 	<PreviewCode slot='tab' label='コンポーネント'>
 	```jsx
-	<Flex hasDivider>
+	<Flex hasDivider='i'>
 		<Box px='em10'>Content</Box>
 		<Box px='em10'>Content</Box>
 		<Box px='em10'>Content</Box>
@@ -357,6 +358,36 @@ l--flex, l--cluster では 区切り方向が自動で切り替わります。
 	</PreviewCode>
 </Preview>
 
+
+{/* ## itemMinW
+<Preview>
+	<PreviewTitle>`itemMinW`を指定</PreviewTitle>
+	<PreviewArea resize p='box:l'>
+		<Cluster gap={20} itemMinW="20%" ta="center">
+			<Box bd>A</Box>
+			<Box bd>B</Box>
+			<Box bd>C</Box>
+		</Cluster>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx
+	<Cluster gap={20} itemMinW="20%" ta="center">
+		<Box bd>A</Box>
+		<Box bd>B</Box>
+		<Box bd>C</Box>
+	</Cluster>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```html
+	<div class="l--cluster -ta:c -gap:20" style="--item--minW:20%">
+		<div class="l--box -bd:">A</div>
+		<div class="l--box -bd:">B</div>
+		<div class="l--box -bd:">C</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview> */}
 
 
 ## 補足

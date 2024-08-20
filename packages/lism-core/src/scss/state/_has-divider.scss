@@ -15,13 +15,24 @@
 // 	border-inline-end: var(--bdw) var(--bds) var(--bdc);
 // }
 
+// is--divided?
 .has--divider {
-	--isRow: 0; // l--flex,cluster では 1 にセットされる
-	--bdc: var(--base-3); // ボーダーを持つ要素の場合はそのボーダーカラーに合わせる
-	--r1c0: calc(var(--isRow, 0) * 1px); // isRow 1 なら 1px, isRow 0 なら 0px
+	--bdc: var(--divider-bdc);
+	// --isFlex: 0;
+	// --_r1c0: calc(var(--isFlex, 0) * 1px); // isFlex 1 なら 1px, isFlex 0 なら 0px
+	// &:where(.l--flex) {--isFlex: 1;}
+
+	> :not(:last-child) {
+		// border-inline-end: solid var(--_r1c0) var(--bdc);
+		// border-bottom: solid calc(1px - var(--_r1c0)) var(--bdc)
+		border-bottom: solid 1px var(--bdc);
+	}
 }
 
-.has--divider > :not(:last-child) {
-	border-inline-end: solid var(--r1c0) var(--bdc);
-	border-bottom: solid calc(1px - var(--r1c0)) var(--bdc);
+.has--divider\:i {
+	--bdc: var(--divider-bdc);
+
+	> :not(:last-child) {
+		border-inline-end: solid 1px var(--bdc);
+	}
 }

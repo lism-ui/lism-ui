@@ -83,7 +83,12 @@ export default function getStateProps({
 	isFullwide && lismState.push('is--fullwide');
 	isWide && lismState.push('is--wide');
 
-	if (hasDivider) lismState.push('has--divider');
+	if (hasDivider && typeof hasDivider === 'string') {
+		lismState.push(`has--divider:${hasDivider}`);
+	} else if (hasDivider) {
+		lismState.push('has--divider');
+	}
+
 	// if (hasCoverMedia) lismState.push('has--coverMedia');
 
 	//  else if (typeof hasDivider === 'string') {
