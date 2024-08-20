@@ -2,12 +2,14 @@
 
 // 初期値
 :where(.c--callout) {
-	--fluid--minW: 16rem;
 	padding: 0.75em; //var(--p--box--s);
 	gap: 0.5em 0.75em;
-	align-items: center;
 	border: 1px solid var(--bdc); // .-boxcolor 側で定義している --bdc を使う
 	border-radius: var(--radius--m);
+}
+.c--callout {
+	--main-minW: 16rem;
+	align-items: center;
 }
 
 // .c--callout {

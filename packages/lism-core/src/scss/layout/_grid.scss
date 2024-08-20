@@ -25,22 +25,6 @@
 .l--grid--3row {
 	--gtr: auto 1fr auto;
 }
-// .l--grid--gt {
-// 	--gt: none;
-// 	display: grid;
-// 	grid-template: var(--gt);
-// }
-
-// --------------------
-// 比率固定グリッド
-// --------------------
-.l--grid--ratio {
-	--gtc: 1fr 1fr; // 初期値
-
-	// display: grid;
-	// grid-template-columns: var(--gtc);
-}
-
 // --------------------
 // TileGrid
 // --------------------
@@ -51,43 +35,3 @@
 	// auto-fill or auto-fit : 親の幅に対してアイテムが少ない時に、引き伸ばすか、伸ばさないか
 	--gtc: repeat(auto-fit, minmax(min(var(--item--minW), 100%), 1fr));
 }
-
-// --------------------
-// SideSwap
-// --------------------
-// 一応 area名は . ではなく . で、子要素から指定できるようにしている。
-.l--grid--swap {
-	--sideW: auto;
-	--gt: '.' 'side' / auto;
-
-	// top指定がある時
-	&:where([data-side~='top']) {
-		--gt: 'side' '.' / auto;
-	}
-
-	// 横並び (horizontal) 時のプロパティ
-	--gt--hz: 'side .' / var(--sideW) 1fr;
-
-	&:where([data-side~='end']) {
-		--gt--hz: '. side' / 1fr var(--sideW);
-	}
-}
-
-.l--grid--swap:where(.-gt\@sm) {
-	--sm-gt: var(--gt--hz);
-}
-.l--grid--swap:where(.-gt\@md) {
-	--md-gt: var(--gt--hz);
-}
-
-// .l--grid--swap[data-bp='sm'] {
-// 	@include query.bp-up('sm') {
-// 		--gt: var(--gt--hz);
-// 	}
-// }
-
-// .l--grid--swap[data-bp='md'] {
-// 	@include query.bp-up('md') {
-// 		--gt: var(--gt--hz);
-// 	}
-// }

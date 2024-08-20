@@ -86,10 +86,6 @@ export default [
 				link: '/components/stack/',
 			},
 			{
-				label: 'SideFlex',
-				link: '/components/sideflex/',
-			},
-			{
 				label: '---',
 				link: '###---',
 			},
@@ -102,12 +98,8 @@ export default [
 				link: '/components/griditem/',
 			},
 			{
-				label: 'SideSwap',
-				link: '/components/sideswap/',
-			},
-			{
-				label: 'Columns',
-				link: '/components/columns/',
+				label: 'RepeatGrid',
+				link: '/components/repeatgrid/',
 			},
 			{
 				label: '---',
@@ -125,6 +117,10 @@ export default [
 				label: 'Center',
 				link: '/components/center/',
 			},
+			{
+				label: 'Columns',
+				link: '/components/columns/',
+			},
 
 			{
 				label: 'Layer',
@@ -133,6 +129,10 @@ export default [
 			{
 				label: 'Reel',
 				link: '/components/reel/',
+			},
+			{
+				label: 'WithSide',
+				link: '/components/withside/',
 			},
 			{
 				label: 'State',

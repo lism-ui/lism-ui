@@ -33,17 +33,3 @@ export function getFlexItemProps(props) {
 
 	return props;
 }
-
-export function getSideFlexProps({ lismStyle = {}, side = 'last', sideW, fluidMinW, ...props }) {
-	props['data-side'] = side;
-
-	if (null != fluidMinW) {
-		lismStyle['--fluid--minW'] = fluidMinW;
-	}
-	if (null != sideW) {
-		lismStyle['--side--w'] = sideW;
-	}
-
-	props.lismStyle = lismStyle;
-	return props;
-}

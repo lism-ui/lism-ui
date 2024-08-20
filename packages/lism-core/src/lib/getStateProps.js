@@ -48,12 +48,8 @@ export default function getStateProps({
 	isFlow,
 	isContainer,
 	// isConstrained,
-	// isFrame,
-	// isLinkBox,
 	hasGutter,
 	hasDivider,
-	// hasLayer,
-	// hasCoverMedia,
 
 	...props
 }) {
@@ -63,14 +59,6 @@ export default function getStateProps({
 		lismState.push(className);
 		Object.assign(lismStyle, style);
 	}
-
-	// if (isConstrained) {
-	// 	if (isConstrained === true) isConstrained = 'm';
-	// 	const { className, style } = getTheStateData('is--container', isConstrained);
-	// 	lismState.push(className);
-	// 	Object.assign(lismStyle, style);
-	// }
-
 	if (isFlow) {
 		const { className, style } = getTheStateData('is--flow', isFlow);
 		lismState.push(className);
@@ -78,7 +66,6 @@ export default function getStateProps({
 	}
 
 	hasGutter && lismState.push('has--gutter');
-	// hasLayer && lismState.push('has--layer');
 	isOverwide && lismState.push('is--overwide');
 	isFullwide && lismState.push('is--fullwide');
 	isWide && lismState.push('is--wide');

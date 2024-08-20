@@ -13,6 +13,7 @@ export * from './Container';
 // export * from './Flow';
 export * from './Flex';
 export * from './Grid';
+export * from './WithSide';
 export * from './Center';
 export * from './Columns';
 export * from './Reel';

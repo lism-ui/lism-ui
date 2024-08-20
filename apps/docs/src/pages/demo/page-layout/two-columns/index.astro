@@ -3,44 +3,37 @@ import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
 import DemoHeader from '../DemoHeader.astro';
 import DemoFooter from '../DemoFooter.astro';
 import DemoContent from '../DemoContent.astro';
-import { Lism, Stack, Container, SideFlex, FlexItem } from '@lism-ui/astro';
+import { Box, Stack, Container, DammyText, WithSide } from '@lism-ui/astro';
 
 //  two column では、メインコンテンツ内のfullwideはスマホで見ても端っこまで広がらないことに注意。
 ---
 
 <DemoPageLayout>
-    <Stack id='wrap' minH='100vh'>
-        <DemoHeader />
-        <Container className='z--content' hasGutter size='m' py={50} flexItem={{ fx: 1 }}>
-            <SideFlex side='last' sideW='240px' fluidMinW='40em' gap={50}>
-                <Container tag='main' className='z--main' bd='guide'>
-                    <article class='z--article'>
-                        <header class='z--article__header'>
-                            <h1>Page Title</h1>
-                        </header>
-
-                        <Lism isFlow mbs='60'>
-                            <DemoContent />
-                        </Lism>
-
-                        <Lism tag='aside' class='z--article__aside' mbs='60'>
-                            <Lism bgc='base-2' p='50'>
-                                <div>Comment area, etc...</div>
-                            </Lism>
-                        </Lism>
-                    </article>
-                </Container>
-                <Container tag='aside' isFlow bd='guide'>
-                    <p>Sidebar contents...</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    <p>
-                        Deleniti cum nostrum nemo, accusantium eius est ut voluptatibus excepturi
-                        unde repudiandae ea dolore odio laborum corrupti, totam perspiciatis odit.
-                        Laboriosam, amet.
-                    </p>
-                </Container>
-            </SideFlex>
-        </Container>
-        <DemoFooter />
-    </Stack>
+	<Stack id='wrap' minH='100vh'>
+		<DemoHeader />
+		<Container hasGutter size='m' py='50' flexItem={{ fx: 1 }}>
+			<WithSide sideW='240px' mainMinW='40em' gap='50'>
+				<Container tag='main'>
+					<article>
+						<header>
+							<h1>Page Title</h1>
+						</header>
+						<Box isFlow mbs='60'>
+							<DemoContent />
+						</Box>
+						<Box tag='aside' mbs='60'>
+							<Box bgc='base-2' p='50'>
+								<div>Comment area, etc...</div>
+							</Box>
+						</Box>
+					</article>
+				</Container>
+				<Container tag='aside' isSide isFlow>
+					<div>Sidebar contents...</div>
+					<DammyText />
+				</Container>
+			</WithSide>
+		</Container>
+		<DemoFooter />
+	</Stack>
 </DemoPageLayout>

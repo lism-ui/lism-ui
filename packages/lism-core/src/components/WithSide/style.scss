@@ -1,0 +1,69 @@
+.is--side {
+	grid-area: side;
+}
+
+// point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
+// memo: flex-grow は 変数指定だと挙動が変になる。
+.l--withSide {
+	--side-w: auto;
+	--main-minW: 50%;
+	display: flex;
+	flex-wrap: wrap;
+
+	// data-lism-side が指定されている時、gridで配置を切り替える
+	&:where([data-lism-side]) {
+		display: grid;
+		grid-template: var(--gt);
+
+		--gt: '.' 'side' / auto;
+
+		// 横並び (horizontal) 時のプロパティ
+		--gt--hz: 'side .' / var(--side-w) 1fr;
+	}
+
+	// "xxx start": 縦並びの時に side を上
+	&:where([data-lism-side$='start']) {
+		--gt: 'side' '.' / auto;
+	}
+
+	// "end xxx": 横並びの時に side を end 方向
+	&:where([data-lism-side^='end']) {
+		--gt--hz: '. side' / 1fr var(--side-w);
+	}
+
+	&:where(.-gt\@sm) {
+		--sm-gt: var(--gt--hz);
+	}
+	&:where(.-gt\@md) {
+		--md-gt: var(--gt--hz);
+	}
+}
+
+:where(.l--withSide:not([data-lism-side])) {
+	// &[data-side='first'] > :first-child,
+	// &[data-side='last'] > :last-child,
+	> .is--side {
+		flex-basis: var(--side-w);
+		flex-grow: 1; // fxg を 0 にすると、折り返されたときに広がらないので 1 にする必要がある
+	}
+
+	// &[data-side='first'] > :last-child,
+	// &[data-side='last'] > :first-child,
+	> :not(.is--side) {
+		flex-basis: 0;
+		flex-grow: 9999999; // できるだけ fix側を 指定値ピッタリに近づける
+		min-width: min(100%, var(--main-minW)); // このサイズが折り返しポイント
+	}
+}
+
+// .l--grid--swap[data-bp='sm'] {
+// 	@include query.bp-up('sm') {
+// 		--gt: var(--gt--hz);
+// 	}
+// }
+
+// .l--grid--swap[data-bp='md'] {
+// 	@include query.bp-up('md') {
+// 		--gt: var(--gt--hz);
+// 	}
+// }

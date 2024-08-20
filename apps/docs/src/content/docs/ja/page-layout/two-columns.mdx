@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-import { Lism } from '@lism-ui/core';
+import { Lism, Box } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import PreviewFrame from '~/components/PreviewFrame.astro'
 
@@ -18,38 +18,18 @@ Lismで2カラムページの全体レイアウトを組む場合の例を紹介
 	```jsx
 	<body>
 		<Stack id='wrap' minH='100vh'>
-			<YourHeader />
-			<Container className='z--content' hasGutter size='m' py={50} flexItem={{ fx: 1 }}>
-				<SideFlex side='last' sideW='240px' fluidMinW='40em' gap={50}>
-					<Container tag='main' className='z--main' bd='guide'>
-						<article class='z--article'>
-							<Lism tag='header' className='z--article__header'>
-								<h1>Page Title</h1>
-							</Lism>
-
-							<Lism isFlow mbs='60'>
-								<YourContent />
-							</Lism>
-
-							<Lism tag='aside' class='z--article__aside' mbs='60'>
-								<Lism bgc='base-2' p='50'>
-									<div>Comment area, etc...</div>
-								</Lism>
-							</Lism>
-						</article>
-					</Container>
-					<Container tag='aside' isFlow bd='guide'>
-						<p>Sidebar contents...</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-						<p>
-							Deleniti cum nostrum nemo, accusantium eius est ut voluptatibus excepturi
-							unde repudiandae ea dolore odio laborum corrupti, totam perspiciatis odit.
-							Laboriosam, amet.
-						</p>
-					</Container>
-				</SideFlex>
+			<_Header_ />
+			<Container hasGutter size='m' py='50' flexItem={{ fx: 1 }}>
+				<WithSide sideW='240px' mainMinW='40em' gap='50'>
+					<main class="is--container">
+						<_Contents_ />
+					</main>
+					<aside class='is--side is--container is--flow'>
+						<div>Sidebar contents...</div>
+					</aside>
+				</WithSide>
 			</Container>
-			<YourFooter />
+			<_Footer_ />
 		</Stack>
 	</body>
 	```

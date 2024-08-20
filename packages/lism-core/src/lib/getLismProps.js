@@ -82,6 +82,7 @@ class LismPropsData {
 			passProps,
 			getProps,
 			skipState,
+			isSide,
 			isFrame,
 			isLinkBox,
 			_context,
@@ -105,6 +106,9 @@ class LismPropsData {
 		if (isLinkBox) {
 			lismState.push('is--linkBox');
 			if (others.hov == null) others.hov = 'fade';
+		}
+		if (isSide) {
+			lismState.push('is--side');
 		}
 
 		this.styles = Object.assign({}, lismStyle, style);

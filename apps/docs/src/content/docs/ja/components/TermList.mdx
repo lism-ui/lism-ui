@@ -4,7 +4,7 @@ description: ...
 ---
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Lism, Text, Stack, SideFlex } from '@lism-ui/core';
+import { Lism, Text, Stack, WithSide } from '@lism-ui/core';
 
 
 dl,dt,ddタグによるシンプルな用語リストの構築例を紹介します。
@@ -59,65 +59,65 @@ dl,dt,ddタグによるシンプルな用語リストの構築例を紹介しま
 
 ### 横並びの例
 
-SideFlexを活用して、画面サイズが広い場合に用語リストを横並びにする例です。
+WithSide を活用して、画面サイズが広い場合に用語リストを横並びにする例です。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Stack tag='dl' gap='40'>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					<>The term A</>
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<DammyText />
 				</Lism>
-			</SideFlex>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			</WithSide>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					<>The term B</>
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<DammyText length='m' />
 				</Lism>
-			</SideFlex>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			</WithSide>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					<>The term C (長めの用語のテストです。This is ダミーテキスト).</>
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<DammyText length="l" />
 				</Lism>
-			</SideFlex>
+			</WithSide>
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Stack tag='dl' gap='40'>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					The term A
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<p>...</p>
 				</Lism>
-			</SideFlex>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			</WithSide>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					The term B
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<p>...</p>
 				</Lism>
-			</SideFlex>
-			<SideFlex side='first' sideW='10rem' fluidMinW='15rem' >
-				<Text tag='dt' fw='bold'>
+			</WithSide>
+			<WithSide sideW='10rem' mainMinW='16rem' >
+				<Text isSide tag='dt' fw='bold'>
 					The term C (長めの用語のテストです。This is ダミーテキスト).
 				</Text>
 				<Lism tag='dd' pl='em8'>
 					<p>...</p>
 				</Lism>
-			</SideFlex>
+			</WithSide>
 		</Stack>
 		```
 	</PreviewCode>

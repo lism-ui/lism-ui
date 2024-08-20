@@ -1,5 +1,3 @@
-import getBpData from '../../lib/getBpData';
-
 // gt + gtc, gtr の併用がなければ、コンテキストをセットして変数だけの出力にする
 export function getGridContext(gridProps = {}) {
 	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
@@ -7,21 +5,6 @@ export function getGridContext(gridProps = {}) {
 	}
 	return 'grid';
 }
-
-// 1:2:3 → 1fr 2fr 3fr に変換
-// function getMaybeFrs(value) {
-// 	// ":" があれば分解して配列化し、"fr" を付けて連結して返す
-// 	if (typeof value === 'string' && value.indexOf(':') !== -1) {
-// 		const splitArray = value.split(':');
-
-// 		if (isNumStr(splitArray[0])) {
-// 			//splitArrayの 0番目の要素が数値に変換できるか確認してから fr に変換
-// 			return splitArray.map((s) => `${s}fr`).join(' ');
-// 		}
-// 	}
-
-// 	return value;
-// }
 
 export function mergeGridContextProps(props) {
 	if (null == props.grid) props.grid = {};
@@ -84,7 +67,7 @@ export function getGridProps({
 	returnProps._context = getGridContext(props?.grid);
 
 	if (itemMinW) {
-		lismStyle['--item--minW'] = itemMinW;
+		lismStyle['--item-minW'] = itemMinW;
 	}
 
 	returnProps._lismClass = _lismClass;
@@ -106,25 +89,17 @@ export function getGridItemProps(props) {
 	return props;
 }
 
-export function getSideSwapProps({
-	style = {},
-	sideW,
-	side = 'end bottom', // "start top"|"start bottom"|"end top"|"end bottom"
-	bp = 'sm',
-	gt = {},
-	...props
-}) {
-	if (undefined !== sideW) {
-		style['--sideW'] = sideW;
-	}
+// 1:2:3 → 1fr 2fr 3fr に変換
+// function getMaybeFrs(value) {
+// 	// ":" があれば分解して配列化し、"fr" を付けて連結して返す
+// 	if (typeof value === 'string' && value.indexOf(':') !== -1) {
+// 		const splitArray = value.split(':');
 
-	props.gt = getBpData(gt);
-	props.gt[bp] = '-';
+// 		if (isNumStr(splitArray[0])) {
+// 			//splitArrayの 0番目の要素が数値に変換できるか確認してから fr に変換
+// 			return splitArray.map((s) => `${s}fr`).join(' ');
+// 		}
+// 	}
 
-	// if (customBreakPoint) {
-	// 	blockProps['data-break'] = 'custom';
-	// 	blockProps['data-custom-break'] = customBreakPoint;
-	// }
-
-	return Object.assign(props, { 'data-side': side, style });
-}
+// 	return value;
+// }

@@ -1,0 +1,298 @@
+---
+title: 'WithSide'
+description: ...
+---
+import { Box, Stack, Spacer, FlexItem, Callout } from '@lism-ui/astro';
+import { WithSide } from '@lism-ui/core';
+import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+**片方の横幅を固定し、もう一方の要素が伸縮する**ような サイドコンテンツを持つ2カラムレイアウト を作成します。
+
+デフォルトでは**設定した幅を下回ると自動で** 1カラム に切り替わりますが、ブレークポイントで折り返しをコントロールすることもできます。
+
+
+
+## Props
+
+| プロパティ | 出力 | 説明 |
+|---|---|---|
+| `dataSide` | <PropBadge type="attr">`[data-lism-side]`</PropBadge> | サイド要素の配置を指定できます.この指定がある時、gridレイアウトになります。|
+| `sideW` | <PropBadge type="cssvar">`--side-w`</PropBadge> | Side要素の横幅 |
+| `mainMinW` | <PropBadge type="cssvar">`--main-minW`</PropBadge>| もう一方の流動幅の要素が維持する最小幅 (`dataSide`の指定がある時は無効) |
+| `bp`| <PropBadge type="class">`.-gt@{bp}`</PropBadge> | `dataSide`の指定がある時の、カラム折り返しタイミングを指定できます |
+
+その他、[`<Flex>`で使えるProps](/ja/components/flex#props)が使えます。
+
+
+## Import
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+```jsx
+import { WithSide } from '@lism-ui/core';
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+```jsx
+import { WithSide } from '@lism-ui/astro';
+```
+	</PreviewCode>
+</Preview>
+
+
+## Usage
+
+子要素の一方に `isSide`(`.is--side`)を指定する必要があります。
+
+
+### メディアクエリに依存しない配置切り替え
+
+デフォルトでは、side要素ではない方のメイン要素側の幅が特定の値を下回ると、1カラムに切り替わるようになっています。
+
+<Callout type="point">
+つまり、メディアクエリやコンテナクエリに依存せずに横並びと縦並びの切り替えを行うことができます。
+</Callout>
+
+<Preview>
+	<PreviewTitle>
+		デフォルトでは50%の幅を維持します
+	</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<WithSide sideW='10rem' gap='30' >
+			<Box bd='guide'>
+				<DammyText />
+			</Box>
+			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+		</WithSide>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "sideW" "isSide"
+		<WithSide sideW='10rem' gap='30'>
+			<Box>
+				<DammyText />
+			</Box>
+			<Box isSide>Side Content</Box>
+		</WithSide>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "is--side" "--side-w"
+		<div class="l--withSide -gap:30" style="--side-w:10rem;">
+			<div class="l--box">
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="l--box is--side">Side Content</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+`mainMinW`(`--main-minW`)で、side要素ではない方の要素が維持する最小幅を指定できます。
+
+
+<Preview>
+	<PreviewTitle>
+		メイン要素が30remの長さを下回る時、1カラムに切り替える例
+	</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<WithSide sideW='10rem' mainMinW='30rem' gap='30'>
+			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			<Box bd='guide'>
+				<DammyText />
+			</Box>
+		</WithSide>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React'>
+		```jsx "mainMinW"
+		<WithSide sideW='10rem' mainMinW='30rem' gap='30'>
+			<Box isSide>Side Content</Box>
+			<Box bd='guide'>
+				<DammyText />
+			</Box>
+		</WithSide>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx {2} "--main-minW"
+		<div class="l--withSide -gap:30" style="--side-w:10rem;--main-minW:30rem">
+			<div class="l--box is--side">Side Content</div>
+			<div class="l--box">
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### 反転
+
+`-fxd:rr`クラス（`flex-direction:row-reverse`）を併用することで、横並びの時の順番だけを反転させることができます。
+
+<Callout type="point">
+これにより、横並びの時は左側、縦並びの時は下側にside要素を配置できます。
+</Callout>
+
+<Preview>
+	<PreviewTitle>
+		デフォルトでは50%の幅を維持します
+	</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<WithSide fxd='rr' sideW='10rem' gap='30' >
+			<Box bd='guide'>
+				<DammyText />
+			</Box>
+			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+		</WithSide>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "fxd='rr'"
+		<WithSide fxd='rr' sideW='10rem' gap='30'>
+			<Box>
+				<DammyText />
+			</Box>
+			<Box isSide>Side Content</Box>
+		</WithSide>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-fxd:rr"
+		<div class="l--withSide -fxd:rr -gap:30" style="--side-w:10rem;">
+			<div class="l--box">
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="l--box is--side">Side Content</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+### ブレークポイントでの折り返し
+
+`dataSide`(`data-lism-side`)で横並び時と縦並び時のside要素の配置を指定することで、gridレイアウトに変更されます。
+
+`dataSide`の指定方法は、`"{横並び時の配置} {縦並び時の配置}"` という形式で、それぞれ`start`または`end`で指定します。
+
+また、この時、折り返しタイミングはブレークポイントで制御されるようになります。(デフォルトは`sm`サイズでレイアウトが切り替わります)
+{/* `bp` `-gt@sm` */}
+
+
+<Preview>
+	<PreviewTitle>`dataSide='start end'`</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<WithSide dataSide='start end' sideW='10rem' gap='30'>
+			<Box bd='guide'>
+				<DammyText />
+			</Box>
+			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+		</WithSide>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='React, Astro'>
+		```jsx "dataSide='start end'"
+		<WithSide dataSide='start end' sideW='10rem' gap='30'>
+			<Box>
+				<DammyText />
+			</Box>
+			<Box isSide>Side Content</Box>
+		</WithSide>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-gt@sm" "data-lism-side"
+		<div class="l--withSide -gt@sm -gap:30" data-lism-side="start end" style="--side-w:10rem;">
+			<div class="l--box">
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="l--box is--side">Side Content</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### `dataSide`指定パターン一覧
+
+`dataSide`(`[data-lism-side]`)は以下の値をサポートしています。
+
+- `'start start'` ( = `'start'`)
+- `'start end'`
+- `'end start'`
+- `'end end'` ( = `'end'`)
+
+export const WithSideDemos = ({ dataArray = [] }) => {
+	return (
+		<Preview>
+		<PreviewArea resize p='30' isFlow='l'>
+			{dataArray.map((datSide) => (
+				<div key={datSide}>
+						<div>↓<code>dataSide="{datSide}"</code></div>
+						<WithSide dataSide={datSide} sideW='10rem' gap='20' mbs='20'>
+							<Box bd='guide'>
+								<DammyText />
+							</Box>
+							<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+						</WithSide>
+				</div>
+			))}
+			</PreviewArea>
+		</Preview>
+	);
+}
+
+{/* ['start start', 'start end', ] */}
+
+{/* <PreviewTitle>`dataSide='start xxx'`</PreviewTitle> */}
+<WithSideDemos dataArray={['start start', 'start end']} />
+<WithSideDemos dataArray={['end start', 'end end']} />
+
+
+#### ブレークポイントの指定
+
+`bp`で指定できます。（デフォルトは`sm`.）  
+デフォルトで有効なのは `sm`,`md`です。
+
+ただし、`grid-template`(`gt`)がサポートするブレークポイントリストをsassの設定ファイルから上書きしている場合、ここで有効な値もそれに準じます。
+
+
+<Preview>
+	<PreviewTitle>デフォルト(`sm`)</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Stack gap='20'>
+			<div>↓ デフォルト（`bp='sm'`）</div>
+			<WithSide dataSide='end' sideW='10rem' gap='30'>
+				<Box bd='guide'>
+					<DammyText />
+				</Box>
+				<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			</WithSide>
+			<Spacer h='40'/>
+			<div>↓ `bp='md'`にセット</div>
+			<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
+				<Box bd='guide'>
+					<DammyText />
+				</Box>
+				<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			</WithSide>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "bp='md'"
+		<WithSide dataSide='end' sideW='10rem' gap='30'>
+			<Box>
+				<DammyText />
+			</Box>
+			<Box isSide>Side Content</Box>
+		</WithSide>
+
+		<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
+			<Box>
+				<DammyText />
+			</Box>
+			<Box isSide>Side Content</Box>
+		</WithSide>
+		```
+	</PreviewCode>
+</Preview>

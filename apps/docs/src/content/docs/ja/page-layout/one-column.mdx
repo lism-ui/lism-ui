@@ -17,25 +17,13 @@ Lismで1カラムページの全体レイアウトを組む場合の例を紹介
 	```jsx
 	<body>
 		<Stack id='wrap' minH='100vh'>
-			<YourHeader />
-			<Lism tag='main' className='z--main' py={50} flexItem={{ fx: 1 }}>
-				<Lism tag='article' className='z--article' py={50}>
-					<Container tag='header' className='z--article__header' hasGutter>
-						<h1>Page Title</h1>
-					</Container>
-
-					<Container className='z--article__content' size='m' hasGutter isFlow mbs='60'>
-						<YourContent />
-					</Container>
-
-					<Container tag='aside' className='z--article__aside' size='m' hasGutter mbs='60'>
-						<Lism bgc='base-2' p='50'>
-							<div>Comment area, etc...</div>
-						</Lism>
-					</Container>
-				</Lism>
-			</Lism>
-			<YourFooter />
+			<_Header_ />
+			<Box tag='main' py='60' flexItem={{ fx: 1 }}>
+				<Container size='m' hasGutter isFlow>
+					<_Content_ />
+				</Container>
+			</Box>
+			<_Footer_ />
 		</Stack>
 	</body>
 	```

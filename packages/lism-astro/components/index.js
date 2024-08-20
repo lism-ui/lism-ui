@@ -15,6 +15,7 @@ export * from './Grid';
 export * from './Columns';
 export * from './Center';
 export * from './Layer';
+export * from './WithSide';
 
 export * from './Container';
 export * from './Frame';
