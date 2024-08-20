@@ -11,7 +11,7 @@
 // }
 .c--reel {
 	// --is--unreel: 1;
-	--item--w: var(--size--item);
+	--item-w: var(--size--item);
 	--snap: start;
 	--p: 0;
 
@@ -23,7 +23,7 @@
 
 	// unreel時用
 	&:where([data-unreel]) {
-		--gtc: repeat(auto-fit, minmax(min(var(--item--w), 100%), 1fr));
+		--gtc: repeat(auto-fit, minmax(min(var(--item-w), 100%), 1fr));
 	}
 
 	&:where([data-snap='center']) {
@@ -34,7 +34,7 @@
 	// }
 
 	> * {
-		flex: 0 0 var(--item--w);
+		flex: 0 0 var(--item-w);
 		scroll-snap-align: var(--snap);
 	}
 

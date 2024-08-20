@@ -12,7 +12,7 @@ export default function getReelProps({
 
 	if (snap) props['data-snap'] = snap;
 	if (unreel) props['data-unreel'] = unreel;
-	if (undefined !== itemW) style['--item--w'] = itemW;
+	if (undefined !== itemW) style['--item-w'] = itemW;
 	// if (showScrollbar) props['data-show-scrollbar'] = showScrollbar;
 
 	props._lismClass = _lismClass;
