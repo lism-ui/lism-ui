@@ -2,9 +2,11 @@
 title: 'Flex'
 description: ...
 ---
-import { Flex, Text, Callout } from '@lism-ui/astro';
+
+import { Box, Flex, Text, Callout, Badge } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
 
 コンテンツを**Flexレイアウトで配置する**ためのコンポーネントです。
 
@@ -86,7 +88,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx
-	<Flex fxw='wrap' jc='center' gap={20}>
+	<Flex fxw='wrap' jc='center' gap='20'>
 		<div>Item</div>
 		<div>Item</div>
 		<div>Item</div>
@@ -118,7 +120,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 		画面幅が狭い時に横にはみ出す例(resizeして確認してください)
 	</PreviewTitle>
 	<PreviewArea resize p={40}>
-		<Flex gap={20} className='has--itemGuide'>
+		<Flex gap='20' className='has--itemGuide'>
 			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -128,7 +130,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	
 	<PreviewCode>
 		```jsx
-		<Flex gap={20}>
+		<Flex gap='20'>
 			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -142,8 +144,8 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	<PreviewTitle>
 		はみ出す原因となるテキストに `-ovw:any` を適用
 	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex gap={20} className='has--itemGuide'>
+	<PreviewArea resize p='20'>
+		<Flex gap='20' className='has--itemGuide'>
 			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -152,7 +154,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx
-		<Flex gap={20}>
+		<Flex gap='20'>
 			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
 			<Text>AAA</Text>
 			<Text>BBB</Text>
@@ -173,55 +175,94 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 </Preview>
 
 
-{/* ## Flex Item について
-Flexの子要素に対するFlexオプションを指定する方法は以下のページを参考にしてください。
 
-<Reference>
-[Flex Props - flexitemの指定](/docs/props/flex#flexitemの指定)
-</Reference> */}
+### variant: cluster
+
+複数の要素を横方向に連続的に並べて配置するレイアウトを作るためのバリエーションです。
+
+`variant="cluster"`を指定すると `.l--flex--cluster` が出力されます。  
+このクラスには下記のようなCSSが適用されています。
+
+```css
+.l--flex--cluster{
+	flex-wrap: wrap;
+	align-items: baseline;
+}
+```
+
+<Preview>
+	<PreviewTitle>シンプルな`<Cluster>`の例</PreviewTitle>
+	<PreviewArea resize p='box:l'>
+		<Flex variant='cluster' gap='20'>
+			<Badge>Lorem ipsum</Badge>
+			<Badge>Dolor</Badge>
+			<Badge>Sit amet</Badge>
+			<Badge>Consectetur</Badge>
+			<Badge>Adipisicing</Badge>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="React, Astro">
+	```jsx
+	<Flex variant='cluster' gap='20'>
+		<Badge>Lorem ipsum</Badge>
+		<Badge>Dolor</Badge>
+		<Badge>Sit amet</Badge>
+		<Badge>Consectetur</Badge>
+		<Badge>Adipisicing</Badge>
+	</Flex>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```html
+	<div class="l--flex l--flex--cluster -gap:20">
+		<span class="b--badge">Lorem ipsum</span>
+		<span class="b--badge">Dolor</span>
+		<span class="b--badge">Sit amet</span>
+		<span class="b--badge">Consectetur</span>
+		<span class="b--badge">Adipisicing</span>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
 
 
-### ltrでもrtlでも同じ方向で揃える
+### variant: ltr,rtl
 
-`variant="ltr"`を指定すると `l--flex--ltr` が付与され、`dir="rtl"`ではdirectionが反転されるようになります。
+ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリエーションです。
 
-これにより、`ltr`でも`rtl`でも左から順に要素が並ぶようになります。
+`variant="ltr"`を指定すると `.l--flex--ltr`、`variant="rtl"`を指定すると `.l--flex--rtl`がそれぞれ出力されます。  
+これらのクラスがある時、`dir="rtl"`では`flex-direction`が反転されるようになります。
+
 
 <Callout type="info">
-ただし、`dir="rtl"`をhtmlに指定してrtl言語であることを明示的にしておく必要があります。
+ただし、rtl言語の場合に`dir="rtl"`を`<html>`等に指定し、明示しておく必要があります。
 </Callout>
 
 
 <Preview>
-	<PreviewTitle>ltr言語での動作</PreviewTitle>
+	<PreviewTitle>ltr言語での標準動作</PreviewTitle>
 	<PreviewArea p={40}>
-		<div dir="ltr">
-			<Flex className='has--itemGuide' variant='ltr' gap={20}>
-				<div>content-1</div>
-				<div>content-2</div>
-				<div>content-3</div>
+			<Flex variant='ltr' gap='20' className='has--itemGuide'>
+				<Box bgc='red'>box-1</Box>
+				<Box bgc='blue'>box-2</Box>
+				<Box bgc='green'>box-3</Box>
 			</Flex>
-		</div>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx "variant='ltr'"
-	<div dir="ltr">
-		<Flex variant='ltr' gap={20}>
-			<div>content-1</div>
-			<div>content-2</div>
-			<div>content-3</div>
-		</Flex>
-	</div>
+	<Flex variant='ltr' gap='20'>
+		<div>box-1</div>
+		<div>box-2</div>
+		<div>box-3</div>
+	</Flex>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "l--flex--ltr"
-	<div dir="ltr">
-		<div class="l--flex l--flex--ltr">
-			<div>content-1</div>
-			<div>content-2</div>
-			<div>content-3</div>
-		</div>
+	<div class="l--flex l--flex--ltr -gap:20">
+		<div>box-1</div>
+		<div>box-2</div>
+		<div>box-3</div>
 	</div>
 	```
 	</PreviewCode>
@@ -231,20 +272,20 @@ Flexの子要素に対するFlexオプションを指定する方法は以下の
 	<PreviewTitle>rtl言語での動作</PreviewTitle>
 	<PreviewArea p={40}>
 		<div dir="rtl">
-			<Flex className='has--itemGuide' variant='ltr' gap={20}>
-				<div>المحتوى-1</div>
-				<div>المحتوى-2</div>
-				<div>المحتوى-3</div>
+			<Flex className='has--itemGuide' variant='ltr' gap='20'>
+				<Box bgc='red'>صندوق-1</Box>
+				<Box bgc='blue'>صندوق-2</Box>
+				<Box bgc='green'>صندوق-3</Box>
 			</Flex>
 		</div>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 	```jsx "variant='ltr'"
 	<div dir="rtl">
-		<Flex variant='ltr' gap={20}>
-			<div>المحتوى-1</div>
-			<div>المحتوى-2</div>
-			<div>المحتوى-3</div>
+		<Flex variant='ltr' gap='20'>
+			<div>صندوق-1</div>
+			<div>صندوق-2</div>
+			<div>صندوق-3</div>
 		</Flex>
 	</div>
 	```
@@ -252,10 +293,10 @@ Flexの子要素に対するFlexオプションを指定する方法は以下の
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "l--flex--ltr"
 	<div dir="rtl">
-		<div class="l--flex l--flex--ltr">
-			<div>المحتوى-1</div>
-			<div>المحتوى-2</div>
-			<div>المحتوى-3</div>
+		<div class="l--flex l--flex--ltr -gap:20">
+			<div>صندوق-1</div>
+			<div>صندوق-2</div>
+			<div>صندوق-3</div>
 		</div>
 	</div>
 	```

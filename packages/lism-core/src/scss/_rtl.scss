@@ -1,5 +1,5 @@
 // rtl サポート
-[dir='rtl'] {
+:where([dir='rtl']) {
 	// flip:rtl とか用意する...?
 	// .flip:rtl.flip:X
 	// .c--chat--start > .c--chat__body > .a--decorator {
@@ -11,10 +11,10 @@
 
 	// rtlでも左右を反転させない
 	.l--flex--ltr {
-		--fxd: row-reverse;
+		flex-direction: row-reverse;
 	}
 	.l--flex--rtl {
-		--fxd: row;
+		flex-direction: row;
 	}
 	.-gt\:fix\:l {
 		--gt: 'nofix fix' / 1fr auto;

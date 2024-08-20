@@ -41,9 +41,6 @@
 	--code-c: currentColor;
 	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
 
-	// flexの方向検知
-	--isRow: 0;
-
 	/* ------------------------------------------------------------
 	  コンテンツサイズ: ユーザー側で定義が必要
 	    コンテンツサイズは960 ~ 1120 くらいがよさそう.

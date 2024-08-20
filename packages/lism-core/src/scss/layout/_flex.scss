@@ -1,37 +1,27 @@
 // これらは、fx系プロパティを使うときに、-fxw: 等のクラスは不要
 .l--flex,
-.l--stack,
-.l--cluster {
-	--fxw: nowrap;
-	--fxd: row;
-	--isRow: 1;
-	flex-flow: var(--fxd) var(--fxw);
+.l--stack {
+	// --fxw: nowrap;
+	// --fxd: row;
+	// flex-flow: var(--fxd) var(--fxw);
 	display: flex;
 }
 
 // l--flex--stack?
 .l--stack {
-	--isRow: 0;
-	--fxd: column;
+	flex-direction: column;
 }
 
-// l--flex--cluster
-.l--cluster {
-	--item--minW: auto;
-	--fxw: wrap;
-	align-items: baseline;
-
-	// item--itemMinW ? -children:minW: ?
-	> * {
-		min-width: var(--item--minW);
-	}
+.l--flex--cluster {
+	flex-wrap: wrap;
+	align-items: baseline; // stretch を解除
 }
 
 // .l--flex--ltr {
-// 	--fxd: row;
+// 	flex-direction: row;
 // }
 .l--flex--rtl {
-	--fxd: row-reverse;
+	flex-direction: row-reverse;
 }
 
 // point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。

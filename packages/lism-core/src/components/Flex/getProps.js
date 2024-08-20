@@ -34,18 +34,6 @@ export function getFlexItemProps(props) {
 	return props;
 }
 
-export function getClusterProps({ lismStyle = {}, itemMinW, ...props }) {
-	if (null != itemMinW) {
-		lismStyle['--item--minW'] = itemMinW;
-	}
-	// if (delimiterColor) {
-	// 	lismStyle['--delimiter--c'] = getMaybeCssVar(delimiterColor, 'color');
-	// }
-
-	props.lismStyle = lismStyle;
-	return props;
-}
-
 export function getSideFlexProps({ lismStyle = {}, side = 'last', sideW, fluidMinW, ...props }) {
 	props['data-side'] = side;
 
