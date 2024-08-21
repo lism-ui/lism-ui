@@ -1,0 +1,30 @@
+---
+// import { Text } from '@lism-ui/astro';
+import Expressive from './Expressive.astro';
+import { Preview, PreviewCode } from '~/components/Preview';
+
+const { component = '', ...props } = Astro.props;
+
+const getCode = (name: string) =>
+	`<span style='--0:#F97583;--1:#BF3441'>import</span>` +
+	`<span style='--0:#E1E4E8;--1:#24292E'> { ${component} } </span>` +
+	`<span style='--0:#F97583;--1:#BF3441'>from</span>` +
+	` ` +
+	`<span style='--0:#9ECBFF;--1:#032F62'>'@lism-ui/${name}'</span>` +
+	`<span style='--0:#E1E4E8;--1:#24292E'>;</span>`;
+
+const getCopyCode = (name: string) => `import { ${component} } from '@lism-ui/${name}';`;
+---
+
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+		<Expressive copyCode={getCopyCode('core')}>
+			<Fragment set:html={getCode('core')} />
+		</Expressive>
+	</PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
+		<Expressive copyCode={getCopyCode('astro')}>
+			<Fragment set:html={getCode('astro')} />
+		</Expressive>
+	</PreviewCode>
+</Preview>

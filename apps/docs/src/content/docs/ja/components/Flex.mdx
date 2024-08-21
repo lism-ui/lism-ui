@@ -6,25 +6,14 @@ description: ...
 import { Box, Flex, Text, Callout, Badge } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 コンテンツを**Flexレイアウトで配置する**ためのコンポーネントです。
 
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Flex } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Flex } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Flex' />
 
 
 ## Props

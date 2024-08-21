@@ -5,27 +5,16 @@ description: ...
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Stack } from '@lism-ui/astro';
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 複数の要素をFlexレイアウトで**縦並び**に配置するコンポーネントです。
 
 `<Flex fxd="column">`と機能的には同等です。
 
+
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Stack } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Stack } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
-
+<ImportCode component='Stack' />
 
 
 ## Props

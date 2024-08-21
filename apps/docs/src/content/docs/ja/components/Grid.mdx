@@ -6,12 +6,16 @@ description: ...
 import { Callout, Grid, GridItem, Box, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 コンテンツを**Gridレイアウトで配置する**ためのコンポーネントです。  
 [`<GridItem>`](/ja/components/griditem/)と組み合わせて使うとより便利です。
 
 {/* `<Grid>` は `<Box>`に[`isGrid`](/docs/layout-system/is-grid)を指定した状態のコンポーネントで、`<Box isGrid>`と同等です。 */}
+
+## Import
+
+<ImportCode component='Grid, GridItem' />
 
 
 ## Props
