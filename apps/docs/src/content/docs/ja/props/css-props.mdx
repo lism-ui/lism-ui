@@ -253,11 +253,11 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 |Prop|CSS|To Class|BP|
 |---|---|---|---|
-|`gd`|`grid`|-|-|
-|`gt`|`grid-template`|`side:s`, `side:e`, `side:l`, `side:r`|○|
+|`gd`|`grid`|-|○|
+|`gt`|`grid-template`||-|
 |`gta`|`grid-template-areas`|-|○|
-|`gtc`|`grid-template-columns`|-|○|
-|`gtr`|`grid-template-rows`|-|○|
+|`gtc`|`grid-template-columns`|`a1a`|○|
+|`gtr`|`grid-template-rows`|`a1a`|○|
 |`gaf`|`grid-auto-flow`|-|-|
 |`gar`|`grid-auto-rows`|-|-|
 |`gac`|`grid-auto-columns`|-|-|
@@ -265,7 +265,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 {/* autoFlow, autoRows, autoCols */}
 {/* area → fix: 'fix', left: 'l', right: 'r', center: 'c', top: 't', bottom: 'b' */}
 
-- `-gt:side:l`, `-gt:side:r` クラスは、（追加CSSファイルを読み込むと）`[dir='rtl']`時に方向が反転するようになっており、ltr言語でもrtl言語でも方向が一致するようになっています。
+{/* - `-gt:side:l`, `-gt:side:r` クラスは、（追加CSSファイルを読み込むと）`[dir='rtl']`時に方向が反転するようになっており、ltr言語でもrtl言語でも方向が一致するようになっています。 */}
 
 
 <PreviewTitle>基本的なgrid系プロパティの使用例</PreviewTitle>
@@ -292,14 +292,15 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 |Prop|CSS|To Class|BP|
 |---|---|---|---|
-|`ga`|`grid-area`|`side`,`start`(`s`),`end`(`e`),`center`(`c`)|-|
-|`gc`|`grid-column`|`1`,`2`,`3`, `span2`|○|
-|`gr`|`grid-row`|`1`,`2`,`3`, `span2`|○|
+|`ga`|`grid-area`|-|-|
+|`gc`|`grid-column`||○|
+|`gr`|`grid-row`||○|
 |`gcs`|`grid-column-start`||-|
 |`grs`|`grid-row-start`||-|
-|`gce`|`grid-column-end`|`-1`|-|
-|`gre`|`grid-row-end`|`-1`|-|
+|`gce`|`grid-column-end`|-|-|
+|`gre`|`grid-row-end`|-|-|
 
+{/* `start`,`end`,`center` */}
 
 {/* - `sp2` = `span 2 / span 2` */}
 
@@ -331,9 +332,11 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 |Prop|CSS|To Class|BP|
 |---|---|---|---|
+|`fx`|`flex`|`1`|○|
 |`fxsh`|`flex-shrink`|`0`, `1`|-|
 |`fxg`|`flex-grow`|`0`, `1`|-|
-|`fxb`|`flex-basis`||○|
+|`fxb`|`flex-basis`|-|○|
+
 
 
 {/* - c: center
