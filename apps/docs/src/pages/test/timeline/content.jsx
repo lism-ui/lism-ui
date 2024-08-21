@@ -75,7 +75,7 @@ export default function content() {
 			</Timelines>
 			{/*  */}
 			<h2>Timeline - 横並び</h2>
-			{/* <Reel> */}
+			{/* */}
 			<Timelines isFlex>
 				<TimelineItem variant='horizontal' time='20yy年m月d日' icon={FolderIcon}>
 					<Text>開発スタート</Text>
