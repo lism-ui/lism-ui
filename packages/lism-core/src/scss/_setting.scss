@@ -599,6 +599,7 @@ $props: map.deep-merge(
 		'fx': (
 			prop: 'flex',
 			base_type: 1,
+			bp: 1,
 		),
 		'fxsh': (
 			prop: 'flex-shrink',
