@@ -8,27 +8,6 @@
 	--cols: 2; // 初期値
 	display: grid;
 	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-
-	// 各ブレイクポイント用の変数に伝搬していく
-	// --_sm_cols: var(--cols);
-	// --sm-cols: var(--cols);
-	// --md-cols: var(--sm-cols);
-	// --lg-cols: var(--md-cols);
-	// --xl-cols: var(--lg-cols);
-
-	// --cols--val: var(--cols);
-	// @include query.bp-up('sm') {
-	// 	--cols--val: var(--sm-cols);
-	// }
-	// @include query.bp-up('md') {
-	// 	--cols--val: var(--md-cols);
-	// }
-	// @include query.bp-up('lg') {
-	// 	--cols--val: var(--lg-cols);
-	// }
-	// @include query.bp-up('xl') {
-	// 	--cols--val: var(--xl-cols);
-	// }
 }
 
 .l--columns--liquid {
@@ -39,5 +18,3 @@
 	display: grid;
 	grid-template-columns: repeat(var(--col-behavior), minmax(min(var(--col-size), 100%), 1fr));
 }
-
-// -repeat: 1;
