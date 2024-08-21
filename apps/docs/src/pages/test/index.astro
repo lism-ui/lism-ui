@@ -1,6 +1,6 @@
 ---
 import '@lism-ui/core/scss/all.scss';
-import { Box, Lism, Flex, NavMenuList, NavMenu } from '@lism-ui/core';
+import { Box, Lism, Flex, Container } from '@lism-ui/core';
 // import Lism from '@lism-ui/astro/Lism/Lism.astro';
 // import { Image } from 'astro:assets';
 // import getLismProps from '@lism-ui/core/lib/getLismProps';
@@ -10,12 +10,16 @@ import { Box, Lism, Flex, NavMenuList, NavMenu } from '@lism-ui/core';
 ---
 
 <p>hoge</p>
-<Box p='box' bgc='base-2'>Box</Box>
-<Lism p='box' bgc='base-2'>Lism box</Lism>
-<!-- <Flex gap='20'>
-	<Flex gap='20' c='red' _flex='a' _lismClass={['a']}>aaa</Flex>
-	<Flex gap='20' c='blue' _flex='b' _lismClass={['b']}>aaa</Flex>
-</Flex> -->
+<Container size='m' hasGutter isFlow>
+	<Box p='box' bgc='base-2' bd bdw={['1px', '4px']}>Box</Box>
+	<Lism p='box' bgc='base-2'>Lism box</Lism>
+
+	<Flex gap='20' fxd={['column', 'row']}>
+		<Flex bgc='red:20%' p='30' gap='20' c='red'>Box</Flex>
+		<Flex bgc='blue:20%' p='30' gap='20' c='blue'>Box</Flex>
+	</Flex>
+</Container>
+
 <!-- <NavMenuList hasDivider bd='block'> -->
 <!-- <NavMenu href='#menuaa'>Menu 1</NavMenu> -->
 <!-- </NavMenuList> -->
