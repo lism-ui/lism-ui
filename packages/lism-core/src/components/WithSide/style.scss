@@ -4,22 +4,16 @@
 	grid-area: side;
 }
 
+// data-lism-side が指定されている時、gridで配置を切り替える
 // point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
 // memo: flex-grow は 変数指定だと挙動が変になる。
 .l--withSide {
 	--side-w: auto;
-	--main-minW: 50%;
-	display: flex;
-	flex-wrap: wrap;
+	--gd: '.' 'side' / auto;
+	--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
 
-	// data-lism-side が指定されている時、gridで配置を切り替える
-	&:where([data-lism-side]) {
-		display: grid;
-		grid: var(--gd);
-
-		--gd: '.' 'side' / auto;
-		--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
-	}
+	display: grid;
+	grid: var(--gd);
 
 	// "xxx start": 縦並びの時に side を上
 	&:where([data-lism-side$='start']) {
@@ -39,6 +33,17 @@
 	// }
 }
 
+@include query.bp-up('sm') {
+	.l--withSide:not([class*='-gd@']) {
+		--gd: var(--gd--hz);
+	}
+}
+
+.l--withSide:not([data-lism-side]) {
+	--main-minW: 50%;
+	display: flex;
+	flex-wrap: wrap;
+}
 :where(.l--withSide:not([data-lism-side])) {
 	// &[data-side='first'] > :first-child,
 	// &[data-side='last'] > :last-child,
@@ -55,20 +60,3 @@
 		min-width: min(100%, var(--main-minW)); // このサイズが折り返しポイント
 	}
 }
-@include query.bp-up('sm') {
-	.l--withSide:not([class*='-gd@']) {
-		--gd: var(--gd--hz);
-	}
-}
-
-// .l--grid--swap[data-bp='sm'] {
-// 	@include query.bp-up('sm') {
-// 		--gd: var(--gd--hz);
-// 	}
-// }
-
-// .l--grid--swap[data-bp='md'] {
-// 	@include query.bp-up('md') {
-// 		--gd: var(--gd--hz);
-// 	}
-// }
