@@ -1,19 +1,11 @@
-@use '../query' as query;
+// @use '../../scss/query' as query;
 
-// --------------------
-// Reel
-// flex か grid かパッと判断できない&切り替わるので、個別にモジュール化。
-// 他の flex , grid 要素を指定することもない。
-// --------------------
-
-// :root {
-// 	--is--unreel: 0;
-// }
 .c--reel {
 	// --is--unreel: 1;
-	--item-w: var(--size--item);
-	--snap: start;
+	--item-size: var(--size--item);
+	--snap-align: start;
 	--p: 0;
+	--unreel-gtc: repeat(auto-fit, minmax(min(var(--item-size), 100%), 1fr));
 
 	// display: flex;
 	overflow: auto;
@@ -21,21 +13,9 @@
 	scroll-behavior: smooth; // idリンクでスクロールされる
 	scroll-padding: var(--p); // paddingと合わせる
 
-	// unreel時用
-	&:where([data-unreel]) {
-		--gtc: repeat(auto-fit, minmax(min(var(--item-w), 100%), 1fr));
-	}
-
-	&:where([data-snap='center']) {
-		--snap: center;
-	}
-	// &:where([data-direction='vertical']) {
-	// 	--direction: center;
-	// }
-
 	> * {
-		flex: 0 0 var(--item-w);
-		scroll-snap-align: var(--snap);
+		flex: 0 0 var(--item-size);
+		scroll-snap-align: var(--snap-align);
 	}
 
 	// 子要素に対してしか使えない
@@ -45,20 +25,20 @@
 }
 
 // unreel → tileグリッドに切り替え. 別レイアウトが必要であればgtcで。
-@include query.bp-up('sm') {
-	.c--reel[data-unreel='sm'] {
-		display: grid;
-		grid: none / var(--gtc);
-		overflow-x: revert;
-	}
-}
-@include query.bp-up('md') {
-	.c--reel[data-unreel='md'] {
-		display: grid;
-		grid: none / var(--gtc);
-		overflow-x: revert;
-	}
-}
+// @include query.bp-up('sm') {
+// 	.c--reel[data-unreel='sm'] {
+// 		display: grid;
+// 		grid: none / var(--unreel-gtc);
+// 		// overflow-x: revert;
+// 	}
+// }
+// @include query.bp-up('md') {
+// 	.c--reel[data-unreel='md'] {
+// 		display: grid;
+// 		grid: none / var(--unreel-gtc);
+// 		// overflow-x: revert;
+// 	}
+// }
 
 // スクロールバーのカスタマイズ
 /*

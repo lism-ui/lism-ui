@@ -1,11 +1,10 @@
 ---
 import { LismProps } from '../types';
-import { Flex, Stack } from '../Flex';
+import { Flex } from '../Flex';
 import getReelProps from '@lism-ui/core/components/Reel/getProps';
 
 interface Props extends LismProps {}
-const { isVertical, ...props } = Astro.props || {};
-const Layout = isVertical ? Stack : Flex;
+const props = Astro.props || {};
 ---
 
-<Layout {...getReelProps(props)}><slot /></Layout>
+<Flex {...getReelProps(props)}><slot /></Flex>

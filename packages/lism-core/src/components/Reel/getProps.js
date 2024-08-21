@@ -1,22 +1,32 @@
+import { mergeGridContextProps } from '../Grid/getProps';
+
 export default function getReelProps({
 	_lismClass = [],
 	style = {},
 	variant,
 	unreel,
-	itemW,
-	snap,
+	itemSize,
+	snapAlign,
 	...props
 }) {
 	_lismClass.push('c--reel');
 	if (variant) _lismClass.push(`c--reel--${variant}`);
 
-	if (snap) props['data-snap'] = snap;
-	if (unreel) props['data-unreel'] = unreel;
-	if (undefined !== itemW) style['--item-w'] = itemW;
+	if (undefined !== itemSize) style['--item-size'] = itemSize;
+	if (snapAlign) style['--snap-align'] = snapAlign;
 	// if (showScrollbar) props['data-show-scrollbar'] = showScrollbar;
+	// if (unreel) props['data-unreel'] = unreel;
 
-	props._lismClass = _lismClass;
-	props.style = style;
-	props.tabIndex = '0';
-	return props;
+	let unreelProps = {};
+	if (unreel) {
+		unreelProps = {
+			d: { [`${unreel}`]: 'grid' },
+			gtc: { [`${unreel}`]: 'var(--unreel-gtc)' },
+		};
+	}
+
+	return Object.assign(
+		{ _lismClass, style, tabIndex: '0' },
+		mergeGridContextProps({ ...unreelProps, ...props })
+	);
 }

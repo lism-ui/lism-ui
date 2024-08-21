@@ -128,10 +128,6 @@ export default [
 				link: '/components/layer/',
 			},
 			{
-				label: 'Reel',
-				link: '/components/reel/',
-			},
-			{
 				label: 'WithSide',
 				link: '/components/withside/',
 			},
@@ -212,6 +208,10 @@ export default [
 			{
 				label: 'Callout',
 				link: '/components/callout/',
+			},
+			{
+				label: 'Reel',
+				link: '/components/reel/',
 			},
 			{
 				label: 'Tabs',

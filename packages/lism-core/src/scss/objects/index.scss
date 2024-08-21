@@ -5,16 +5,17 @@
 
 // block
 @forward '../../components/Avatar/style.scss';
+@forward '../../components/Accordion/style.scss';
 @forward '../../components/Badge/style.scss';
 @forward '../../components/Button/style.scss';
 @forward '../../components/Divider/style.scss';
 @forward '../../components/ShapeDivider/style.scss';
 
 // components
-@forward '../../components/Accordion/style.scss';
 @forward '../../components/Tabs/style.scss';
 @forward '../../components/Callout/style.scss';
 @forward '../../components/NavMenu/style.scss';
+@forward '../../components/Reel/style.scss';
 
 // @forward '../../components/Note/style.scss';
 // @forward '../../components/Chat/style.scss';
