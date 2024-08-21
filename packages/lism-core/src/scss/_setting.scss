@@ -26,6 +26,7 @@ base_type:
 	0 →　なし（ユーティリティクラス以外はインラインスタイルのみ）
 	1 →　.-d\:{display: var(--d)}
 	2 → [class*='-aspect\:'] aspect-ratio: var(--aspect);}
+	3 → bpクラスとユーティリティクラスだけ出力したい( .-cols@sm{--cols: var(--sm-cols)} )
 utilities: ユーティリティクラスのセレクタと値のリスト
 special_utilities: 特殊な値をセットしたいユーティリティクラスのセレクタと値のリスト
 */
@@ -233,37 +234,38 @@ $utilities: (
 		'side\\:s,side\\:l': "'side .' / auto 1fr;",
 		'side\\:e,side\\:r': "'. side' / 1fr auto",
 	),
-	'ga': (
-		'side': 'side',
-		's': 'start',
-		'e': 'end',
-		'c': 'center',
-	),
-	'gr': (
-		'span2': 'span 2 / span 2',
-		'full': '1 / -1',
-		'1': 1,
-		'2': 2,
-		'3': 3,
-	),
-	'gre': (
-		'-1': '-1',
-	),
-	'gc': (
-		'span2': 'span 2 / span 2',
-		'full': '1 / -1',
-		'1': 1,
-		'2': 2,
-		'3': 3,
-	),
-	'gce': (
-		'-1': '-1',
-	),
-	'ord': (
-		'1': 1,
-		'0': 0,
-		'-1': -1,
-	),
+	// 'ga': (
+	// 	'side': 'side',
+	// 	's': 'start',
+	// 	'e': 'end',
+	// 	'c': 'center',
+	// ),
+	// 'gr': (
+	// 	'span2': 'span 2 / span 2',
+	// 	'full': '1 / -1',
+	// 	'1': 1,
+	// 	'2': 2,
+	// 	'3': 3,
+	// ),
+	// 'gre': (
+	// 	'-1': '-1',
+	// ),
+	// 'gc': (
+	// 	'span2': 'span 2 / span 2',
+	// 	'full': '1 / -1',
+	// 	'1': 1,
+	// 	'2': 2,
+	// 	'3': 3,
+	// ),
+	// 'gce': (
+	// 	'-1': '-1',
+	// ),
+	'ord':
+		(
+			'1': 1,
+			'0': 0,
+			'-1': -1,
+		),
 	'fxw': (
 		'w': 'wrap',
 		// 'nw': 'nowrap', //default
@@ -289,6 +291,11 @@ $utilities: (
 	'jc': $place_content,
 	'aslf': $place_self,
 	'jslf': $place_self,
+	// 'cols': (
+	// 	'1': '1',
+	// 	'2': '2',
+	// 	'3': '3',
+	// ),
 );
 
 $props: map.deep-merge(
@@ -668,6 +675,24 @@ $props: map.deep-merge(
 		'jslf': (
 			prop: 'justify-self',
 			base_type: 0,
+		),
+
+		// 変数だけのやつ
+		'bdw':
+			(
+				prop: '--bdw',
+				base_type: 3,
+				bp: 1,
+			),
+		'cols': (
+			prop: '--cols',
+			base_type: 3,
+			bp: 1,
+		),
+		'rows': (
+			prop: '--rows',
+			base_type: 3,
+			bp: 1,
 		),
 	),
 	$props

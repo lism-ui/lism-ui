@@ -167,6 +167,8 @@ td:first-child > code:only-child {
 
 	li:has(> ._subtitle) {
 		padding-inline-start: 0;
+		margin-top: var(--s--30);
+		margin-bottom: var(--s--10);
 	}
 
 	._subtitle {

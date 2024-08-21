@@ -2,8 +2,8 @@
 @use 'sass:list';
 @use 'sass:string';
 
-@use '../query' as query;
-@use '../setting' as setting;
+@use './query' as query;
+@use './setting' as setting;
 
 @function get_important($is_important) {
 	@if $is_important {
@@ -17,7 +17,7 @@
 		[class*='-#{$key}:'] {
 			#{$prop}: var(--#{$key}) #{$important};
 		}
-	} @else if $base_type != 0 {
+	} @else if $base_type == 1 {
 		.-#{$key}\: {
 			#{$prop}: var(--#{$key}) #{$important};
 		}
@@ -47,7 +47,7 @@
 
 		@if $base_type == 2 {
 			#{$selector} {
-				--#{$key}: #{$value};
+				--#{$key}: #{$value} #{$important};
 			}
 		} @else {
 			#{$selector} {
@@ -126,22 +126,26 @@ $bp_support_list: (); // list
 
 // query.$breakpoints のキーだけを抽出したリストを取得
 $bp_names: map.keys(query.$breakpoints);
+$bp_outputs: (
+	'sm': [],
+	'md': [],
+	'lg': [],
+	'xl': [],
+);
 
 /* __stylelint-disable */
+
+// @containerの出力数を少なくするためにBPで先にループして出力
+// @each $bp in $bp_names {
+// 	@include query.bp-up($bp) {
+// 	}
+// }
 
 // BPサポートしてるプロパティのリストをループ
 @each $key in $bp_support_list {
 	$prop_data: map.get(setting.$props, $key);
-	$prop_name: map.get($prop_data, prop);
-	$base_type: map.get($prop_data, base_type);
 	$prop_bp_data: map.get($prop_data, bp);
-	$is_important: map.get($prop_data, important);
 	$support_bp: query.$support_bp;
-
-	// memo: Note: base_type: 0 の時、かつBPサポートが有効な場合、インラインスタイルで出力されているのでBPクラスにimoirtantが必要（現状はそのような組み合わせは存在しないが）
-	@if $base_type == 0 {
-		$is_important: 1;
-	}
 
 	@if (type-of($prop_bp_data) == string) {
 		// サポートするブレイクポイントの上書き指定があれば
@@ -152,21 +156,26 @@ $bp_names: map.keys(query.$breakpoints);
 	// 	$output_bps: 0;
 	// }
 
-	// debug: $prop_name が 'gap' or 'p' なら$output_bps を 出力してみる
-	// @if $prop_name == 'gap' or $prop_name == 'flex-direction' or $prop_name == 'padding' {
-	// 	@debug $prop_name, $support_bp;
-	// }
-
 	$flag: true;
 	$i: 1;
 	@while $flag {
 		$bp: list.nth($bp_names, $i);
 
-		@include query.bp-up($bp) {
-			.-#{$key}\@#{$bp} {
-				#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
-			}
-		}
+		// mapから現在のリストを取得→リスト追加→更新されたリストを再びマージ
+		$_bp_list: map.get($bp_outputs, $bp);
+		$_bp_list: list.join($_bp_list, $key);
+		$bp_outputs: map.merge(
+			$bp_outputs,
+			(
+				$bp: $_bp_list,
+			)
+		);
+
+		// @include query.bp-up($bp) {
+		// 	.-#{$key}\@#{$bp} {
+		// 		#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
+		// 	}
+		// }
 
 		// サポートするBPまで辿り着いたら終了
 		@if $bp == $support_bp or $i == list.length($bp_names) {
@@ -183,4 +192,27 @@ $bp_names: map.keys(query.$breakpoints);
 	// 		$bp: list.nth($bp_names, $i);
 	// 	}
 	// }
+}
+
+// @debug $bp_outputs;
+
+//@containerの出力数を少なくするために出力は最後にまとめる。
+@each $bp, $data in $bp_outputs {
+	@include query.bp-up($bp) {
+		@each $key in $data {
+			$prop_data: map.get(setting.$props, $key);
+			$prop_name: map.get($prop_data, prop);
+			$base_type: map.get($prop_data, base_type);
+			$is_important: map.get($prop_data, important);
+
+			// memo: Note: base_type: 0 or 3 の時、かつBPサポートが有効な場合、変数がインラインスタイルで出力されるのでBPクラスにimportantが必要（現状はそのような組み合わせは存在しないが）
+			@if $base_type == 0 or $base_type == 3 {
+				$is_important: 1;
+			}
+
+			.-#{$key}\@#{$bp} {
+				#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
+			}
+		}
+	}
 }
