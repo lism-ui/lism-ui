@@ -16,12 +16,12 @@
 	.l--flex--rtl {
 		flex-direction: row;
 	}
-	.-gt\:fix\:l {
-		--gt: 'nofix fix' / 1fr auto;
-	}
-	.-gt\:fix\:r {
-		--gt: 'fix nofix' / auto 1fr;
-	}
+	// .-gd\:fix\:l {
+	// 	--gd: 'nofix fix' / 1fr auto;
+	// }
+	// .-gd\:fix\:r {
+	// 	--gd: 'fix nofix' / auto 1fr;
+	// }
 	// .-gta\:3col\:ltr {
 	// 	--gta: 'end center start';
 	// }

@@ -108,15 +108,15 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 
 <Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
 ```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html {2}
-		<a class="b--button b--button--fill l--flex -hov:fade" href="###">
-			<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
-			<span class="b--button__text">Button</span>
-		</a>
-		```
-	</PreviewCode>
+</PreviewCode>
+<PreviewCode slot='tab' label='HTML'>
+```html {2}
+<a class="b--button b--button--fill l--flex -hov:fade" href="###">
+	<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+	<span class="b--button__text">Button</span>
+</a>
+```
+</PreviewCode>
 </Preview>
 
 <Preview>
@@ -134,12 +134,12 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html {3}
-		<a class="b--button b--button--fill l--flex -hov:fade" href="###">
-			<span class="b--button__text">Button</span>
-			<svg class="b--button__rightIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
-		</a>
-		```
+	```html {3}
+	<a class="b--button b--button--fill l--flex -hov:fade" href="###">
+		<span class="b--button__text">Button</span>
+		<svg class="b--button__rightIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+	</a>
+	```
 	</PreviewCode>
 </Preview>
 
@@ -148,28 +148,28 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewTitle>横並び</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Flex gap='20'>
-			<Button href='###' flexItem={{fxb:'50%'}}>Button</Button>
-			<Button href='###' variant='outline' flexItem={{fxb:'50%'}} leftIcon={ShoppingCartSimple}>Button</Button>
+			<Button href='###' w='50%'>Button</Button>
+			<Button href='###' variant='outline' w='50%' leftIcon={ShoppingCartSimple}>Button</Button>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
 	```jsx
 	<Flex gap='20'>
-		<Button href='###' flexItem={{fxb:'50%'}}>Button</Button>
-		<Button href='###' variant='outline' flexItem={{fxb:'50%'}} leftIcon={ShoppingCartSimple}>Button</Button>
+		<Button href='###' w='50%'>Button</Button>
+		<Button href='###' variant='outline' w='50%' leftIcon={ShoppingCartSimple}>Button</Button>
 	</Flex>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<a class="b--button b--button--fill l--flex -hov:fade -fxb: -jc:c" style="--fxb:50%" href="###">
-			<span class="b--button__text">Button</span>
-		</a>
-		<a class="b--button  b--button--outline l--flex -hov:fade -fxb: -jc:c" style="--fxb:50%" href="###">
-			<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
-			<span class="b--button__text">Button</span>
-		</a>
-		```
+	```html
+	<a class="b--button b--button--fill l--flex -hov:fade -w:" style="--w:50%" href="###">
+		<span class="b--button__text">Button</span>
+	</a>
+	<a class="b--button  b--button--outline l--flex -hov:fade -w:" style="--w:50%" href="###">
+		<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
+		<span class="b--button__text">Button</span>
+	</a>
+	```
 	</PreviewCode>
 </Preview>
 
@@ -196,7 +196,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 		```html "l--grid" "-gc:2" "-jslf:c"
 		<a class="b--button b--button--fill l--grid -hov:fade -minW:" style="--minW:15em" href="###">
 			<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
-			<span class="b--button__text -gc:2 -jslf:c">Button</span>
+			<span class="b--button__text">Button</span>
 		</a>
 		...
 		```
@@ -223,8 +223,8 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html "--icon--offset"
-		<a class="b--button b--button--fill l--flex -hov:fade" style="--icon--offset:20%" href="###">
+		```html "--icon-offset"
+		<a class="b--button b--button--fill l--flex -hov:fade" style="--icon-offset:20%" href="###">
 			<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 			<span class="b--button__text">Button</span>
 		</a>

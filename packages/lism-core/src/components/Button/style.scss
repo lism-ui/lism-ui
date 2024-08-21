@@ -1,7 +1,7 @@
 :where(.b--button) {
 	--keycolor: var(--content);
-	--icon--scale: 1.25; // offsetとバランス合わせる
-	--icon--offset: 0%; //25%;
+	--icon-scale: 1.25; // offsetとバランス合わせる
+	--icon-offset: 0%; //25%;
 
 	// default(fill)用
 	--bgc: transparent;
@@ -21,10 +21,15 @@
 // py は小さめにして、minHで最低限の高さを確保.
 .b--button {
 	--link-td: none; // pタグ内にくるかもしれないので
+	--gtc: 1em 1fr 1em; // grid化した時用。左右のアイコン部分を固定幅にすることで、テキストを常に中央に配置
 	width: fit-content;
 	color: var(--c);
 	background-color: var(--bgc);
 	border: solid 1px var(--bdc); // アウトラインと並べたときにサイズに差がでないように
+}
+:where(.l--grid) > .b--button__text {
+	grid-column: 2;
+	justify-self: center;
 }
 
 // .b--button:where(.-hov\:reverse):hover {
@@ -60,37 +65,36 @@
 }
 
 // .b--button.l--grid,
-.b--button:where(.l--grid) {
-	--gtc: 1em 1fr 1em; // アイコン部分を固定幅にすることで、テキストを常に中央に配置
-}
+// .b--button:where(.l--grid) {
+// }
 
 // :where(.l--grid) > .b--button__text {
 // 	justify-self: center;
 // }
 
 :where(.b--button) > .a--icon {
-	scale: var(--icon--scale);
+	scale: var(--icon-scale);
 	// flex-shrink: 0; // → .a--icon についてる
 }
 
 .b--button__leftIcon {
-	translate: calc(0px - var(--icon--offset));
+	translate: calc(0px - var(--icon-offset));
 }
 .b--button__rightIcon {
-	translate: calc(0px - var(--icon--offset));
+	translate: calc(0px - var(--icon-offset));
 }
 
 // .b--button__icon で統一するならこっち
 // :where(.b--button > .a--icon) {
 // 	&:only-child {
-// 		--icon--offset: 0;
+// 		--icon-offset: 0;
 // 	}
 // 	&:first-child {
-// 		translate: calc(0px - var(--icon--offset));
+// 		translate: calc(0px - var(--icon-offset));
 // 	}
 // 	// &[data-position='right']
 // 	&:last-child {
-// 		translate: var(--icon--offset);
+// 		translate: var(--icon-offset);
 // 	}
 // }
 

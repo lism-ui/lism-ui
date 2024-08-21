@@ -1,3 +1,5 @@
+@use '../../scss/query' as query;
+
 .is--side {
 	grid-area: side;
 }
@@ -13,30 +15,28 @@
 	// data-lism-side が指定されている時、gridで配置を切り替える
 	&:where([data-lism-side]) {
 		display: grid;
-		grid-template: var(--gt);
+		grid: var(--gd);
 
-		--gt: '.' 'side' / auto;
-
-		// 横並び (horizontal) 時のプロパティ
-		--gt--hz: 'side .' / var(--side-w) 1fr;
+		--gd: '.' 'side' / auto;
+		--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
 	}
 
 	// "xxx start": 縦並びの時に side を上
 	&:where([data-lism-side$='start']) {
-		--gt: 'side' '.' / auto;
+		--gd: 'side' '.' / auto;
 	}
 
 	// "end xxx": 横並びの時に side を end 方向
 	&:where([data-lism-side^='end']) {
-		--gt--hz: '. side' / 1fr var(--side-w);
+		--gd--hz: '. side' / 1fr var(--side-w);
 	}
 
-	&:where(.-gt\@sm) {
-		--sm-gt: var(--gt--hz);
-	}
-	&:where(.-gt\@md) {
-		--md-gt: var(--gt--hz);
-	}
+	// &:where(.-gd\@sm) {
+	// 	--sm-gd: var(--gd--hz);
+	// }
+	// &:where(.-gd\@md) {
+	// 	--md-gd: var(--gd--hz);
+	// }
 }
 
 :where(.l--withSide:not([data-lism-side])) {
@@ -55,15 +55,20 @@
 		min-width: min(100%, var(--main-minW)); // このサイズが折り返しポイント
 	}
 }
+@include query.bp-up('sm') {
+	.l--withSide:not([class*='-gd@']) {
+		--gd: var(--gd--hz);
+	}
+}
 
 // .l--grid--swap[data-bp='sm'] {
 // 	@include query.bp-up('sm') {
-// 		--gt: var(--gt--hz);
+// 		--gd: var(--gd--hz);
 // 	}
 // }
 
 // .l--grid--swap[data-bp='md'] {
 // 	@include query.bp-up('md') {
-// 		--gt: var(--gt--hz);
+// 		--gd: var(--gd--hz);
 // 	}
 // }

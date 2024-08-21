@@ -205,8 +205,8 @@ $bp_outputs: (
 			$base_type: map.get($prop_data, base_type);
 			$is_important: map.get($prop_data, important);
 
-			// memo: Note: base_type: 0 or 3 の時、かつBPサポートが有効な場合、変数がインラインスタイルで出力されるのでBPクラスにimportantが必要（現状はそのような組み合わせは存在しないが）
-			@if $base_type == 0 or $base_type == 3 {
+			// memo: Note: base_type: 0  の時、かつBPサポートが有効な場合、変数がインラインスタイルで出力されるのでBPクラスにimportantが必要（現状はそのような組み合わせは存在しないが）
+			@if $base_type == 0 {
 				$is_important: 1;
 			}
 

@@ -1,20 +1,15 @@
 @use '../../scss/query' as query;
 
-// l--grid--gt
 :where(.c--tabs) {
 	// position: relative;
 	--active-c: var(--content);
 	--active-bgc: transparent;
 	--tab-radii: 0;
 	--tab-p: var(--p--box--s); //var(--em--4) var(--em--6);
-	// grid-template: var(--gt);
-	// max-width: 100% !important;
-	// width: 100% !important;
-	--gap: var(--em--6);
+	gap: var(--em--6);
 }
 .c--tabs {
-	--gt: 'list' 'panel' / 100%;
-	gap: var(--gap);
+	grid: 'list' 'panel' / 100%;
 }
 
 .c--tabs--default {
@@ -22,8 +17,8 @@
 }
 
 .c--tabs__list {
-	grid-area: list;
 	position: relative;
+	grid-area: list;
 }
 
 .c--tabs__tab {
@@ -65,14 +60,14 @@
 
 @include query.bp-up('sm') {
 	.c--tabs:where([data-tabs~='vertical']) {
-		--gt: 'list panel' auto / auto 1fr;
+		grid: 'list panel' auto / auto 1fr;
 
 		// 縦並びの時・ memo: rtl対応必要
 		// :where(.c--tabs--line)[data-tabs~='vertical'] {
 		// }
 		> .c--tabs__list {
 			--shadowOfset: 2px 0; // .c--tabs--line用
-			--fxd: column;
+			flex-direction: column;
 		}
 	}
 }

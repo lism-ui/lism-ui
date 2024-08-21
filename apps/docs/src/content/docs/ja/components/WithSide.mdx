@@ -10,7 +10,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 **片方の横幅を固定し、もう一方の要素が伸縮する**ような サイドコンテンツを持つ2カラムレイアウト を作成します。
 
-デフォルトでは**設定した幅を下回ると自動で** 1カラム に切り替わりますが、ブレークポイントで折り返しをコントロールすることもできます。
+デフォルトでは**設定した幅を下回ると自動で** 1カラム に切り替わりますが、ブレイクポイントで折り返しをコントロールすることもできます。
 
 
 
@@ -67,7 +67,7 @@ import { WithSide } from '@lism-ui/astro';
 			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "sideW" "isSide"
 		<WithSide sideW='10rem' gap='30'>
 			<Box>
@@ -148,7 +148,7 @@ import { WithSide } from '@lism-ui/astro';
 			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "fxd='rr'"
 		<WithSide fxd='rr' sideW='10rem' gap='30'>
 			<Box>
@@ -170,13 +170,13 @@ import { WithSide } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-### ブレークポイントでの折り返し
+### ブレイクポイントでの折り返し
 
 `dataSide`(`data-lism-side`)で横並び時と縦並び時のside要素の配置を指定することで、gridレイアウトに変更されます。
 
 `dataSide`の指定方法は、`"{横並び時の配置} {縦並び時の配置}"` という形式で、それぞれ`start`または`end`で指定します。
 
-また、この時、折り返しタイミングはブレークポイントで制御されるようになります。(デフォルトは`sm`サイズでレイアウトが切り替わります)
+また、この時、折り返しタイミングはブレイクポイントで制御されるようになります。(デフォルトは`sm`サイズでレイアウトが切り替わります)
 {/* `bp` `-gt@sm` */}
 
 
@@ -190,7 +190,7 @@ import { WithSide } from '@lism-ui/astro';
 			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "dataSide='start end'"
 		<WithSide dataSide='start end' sideW='10rem' gap='30'>
 			<Box>
@@ -201,8 +201,8 @@ import { WithSide } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx "-gt@sm" "data-lism-side"
-		<div class="l--withSide -gt@sm -gap:30" data-lism-side="start end" style="--side-w:10rem;">
+		```jsx "data-lism-side"
+		<div class="l--withSide -gap:30" data-lism-side="start end" style="--side-w:10rem;">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -249,50 +249,41 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 <WithSideDemos dataArray={['end start', 'end end']} />
 
 
-#### ブレークポイントの指定
+#### ブレイクポイントの指定
 
-`bp`で指定できます。（デフォルトは`sm`.）  
-デフォルトで有効なのは `sm`,`md`です。
+`bp`で指定できます。
 
-ただし、`grid-template`(`gt`)がサポートするブレークポイントリストをsassの設定ファイルから上書きしている場合、ここで有効な値もそれに準じます。
+ここで有効な値は、`grid`(`gd`)がサポートするブレイクポイントに従います。（sass設定で上書き可能）
 
 
 <Preview>
-	<PreviewTitle>デフォルト(`sm`)</PreviewTitle>
+	<PreviewTitle>`bp='md'`にセット</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Stack gap='20'>
-			<div>↓ デフォルト（`bp='sm'`）</div>
-			<WithSide dataSide='end' sideW='10rem' gap='30'>
-				<Box bd='guide'>
-					<DammyText />
-				</Box>
-				<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
-			</WithSide>
-			<Spacer h='40'/>
-			<div>↓ `bp='md'`にセット</div>
-			<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
-				<Box bd='guide'>
-					<DammyText />
-				</Box>
-				<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
-			</WithSide>
-		</Stack>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "bp='md'"
-		<WithSide dataSide='end' sideW='10rem' gap='30'>
-			<Box>
+		<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
+			<Box bd='guide'>
 				<DammyText />
 			</Box>
-			<Box isSide>Side Content</Box>
+			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
 		</WithSide>
-
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "bp='md'"
 		<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
 			<Box>
 				<DammyText />
 			</Box>
 			<Box isSide>Side Content</Box>
 		</WithSide>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```jsx "-gd@md" "--md-gd:var(--gd--hz)"
+		<div class="l--withSide -gd@md -gap:30" data-lism-side="end" style="--side-w:10rem;--md-gd:var(--gd--hz)">
+			<div class="l--box">
+				<p>Lorem ipsum dolor sit amet, ...</p>
+			</div>
+			<div class="l--box is--side">Side Content</div>
+		</div>
 		```
 	</PreviewCode>
 </Preview>

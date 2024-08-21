@@ -1,29 +1,12 @@
-@use '../query' as query;
-
-// gt, gta, gtc, gtr は、l--grid では変数で受け取れる
-// gt, gtc を 併記すると gtcが適用されないので注意が必要。→ あくまで内部的なものとしてコンポーネントで指定されたら個別クラスをつける？
 .l--grid {
 	// 初期値セット
-	// --gta: none;
 	--gtc: none;
 	--gtr: none;
-	--gt: var(--gtr) / var(--gtc);
-
+	--gta: none;
 	display: grid;
-	grid-template: var(--gt);
-
-	// gta などは、gd,gtと併記した時に上書きできるようにしたい。
-	// grid-template-areas: var(--gta);
-	// grid-template-columns: var(--gtc);
-	// grid-template-rows: var(--gtr);
-	// gap: var(--gap);
-}
-
-.l--grid--3col {
-	--gtc: auto 1fr auto;
-}
-.l--grid--3row {
-	--gtr: auto 1fr auto;
+	grid-template: var(--gtr) / var(--gtc);
+	grid-template-areas: var(--gta);
+	// grid: var(--gd);
 }
 
 .l--grid--repeat {

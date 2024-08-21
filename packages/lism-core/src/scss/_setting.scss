@@ -230,9 +230,16 @@ $utilities: (
 		'ogp': '1.91/1',
 		'cinema': '2.35/1',
 	),
-	'gt': (
-		'side\\:s,side\\:l': "'side .' / auto 1fr;",
-		'side\\:e,side\\:r': "'. side' / 1fr auto",
+	'gd': (
+		// 'cols:a1a': 'none / auto 1fr auto',
+		// 'side\\:s,side\\:l': "'side .' / auto 1fr",
+		// 'side\\:e,side\\:r': "'. side' / 1fr auto",
+	),
+	'gtc': (
+		'a1a': 'auto 1fr auto',
+	),
+	'gtr': (
+		'a1a': 'auto 1fr auto',
 	),
 	// 'ga': (
 	// 	'side': 'side',
@@ -606,16 +613,22 @@ $props: map.deep-merge(
 			base_type: 1,
 			bp: 1,
 		),
-		'gt': (
-			prop: 'grid-template',
+		'gd': (
+			prop: 'grid',
 			base_type: 1,
 			bp: 1,
 		),
-		'gta': (
-			prop: 'grid-template-areas',
-			base_type: 1,
-			bp: 1,
-		),
+		// 'gt': (
+		// 	prop: 'grid-template',
+		// 	base_type: 0,
+		// 	bp: 0,
+		// ),
+		'gta':
+			(
+				prop: 'grid-template-areas',
+				base_type: 1,
+				bp: 1,
+			),
 		'gtc': (
 			prop: 'grid-template-columns',
 			base_type: 1,
@@ -635,23 +648,32 @@ $props: map.deep-merge(
 			base_type: 1,
 			bp: 1,
 		),
-		'gre': (
-			prop: 'grid-row-end',
-			base_type: 0,
-		),
 		'gc': (
 			prop: 'grid-column',
 			base_type: 1,
 			bp: 1,
 		),
-		'gce': (
-			prop: 'grid-column-end',
-			base_type: 0,
-		),
-		'ord': (
-			prop: 'order',
-			base_type: 0,
-		),
+		// 'grs': (
+		// 	prop: 'grid-row-start',
+		// 	base_type: 0,
+		// ),
+		// 'gcs': (
+		// 	prop: 'grid-column-start',
+		// 	base_type: 0,
+		// ),
+		// 'gre': (
+		// 	prop: 'grid-row-end',
+		// 	base_type: 0,
+		// ),
+		// 'gce': (
+		// 	prop: 'grid-column-end',
+		// 	base_type: 0,
+		// ),
+		'ord':
+			(
+				prop: 'order',
+				base_type: 0,
+			),
 		'ai': (
 			prop: 'align-items',
 			base_type: 0,
@@ -676,22 +698,19 @@ $props: map.deep-merge(
 			prop: 'justify-self',
 			base_type: 0,
 		),
-
-		// 変数だけのやつ
-		'bdw':
-			(
-				prop: '--bdw',
-				base_type: 3,
-				bp: 1,
-			),
+		'bdw': (
+			prop: '--bdw',
+			base_type: 0,
+			bp: 1,
+		),
 		'cols': (
 			prop: '--cols',
-			base_type: 3,
+			base_type: 0,
 			bp: 1,
 		),
 		'rows': (
 			prop: '--rows',
-			base_type: 3,
+			base_type: 0,
 			bp: 1,
 		),
 	),

@@ -87,7 +87,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-gc:" "--gr:"
-		<div class="l--grid" style="--gtc:repeat(3, 1fr);--gtr:repeat(3, 1fr)">
+		<div class="l--grid l--grid--repeat" style="--cols:3;--rows:3">
 			<div class="-p:20 -bgc:base-2">item1</div>
 			<div class="-p:20 -bgc:base-2">item2</div>
 			<div class="-p:20 -bgc:base-3 -gc:span 2">item3</div>
@@ -98,3 +98,32 @@ import { Grid, GridItem } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 </Preview>
+
+
+{/* <Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Grid gtc='1fr auto 1fr'>
+			<Center p='20' bgc='base-2'>item1</Center>
+			<Center p='20' bgc='base-2'>item2</Center>
+			<Center p='20' bgc='base-3'>item3</Center>
+			<Center p='20' bgc='base-3'>item4</Center>
+			<Center p='20' bgc='base-2'>item5</Center>
+			<Center p='20' bgc='base-2'>item6</Center>
+			<Center p='20' bgc='blue' gridItem={{gc:'2', gr:'1 / span 3'}}>center</Center>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<Grid gtc='1fr auto 1fr'>
+		<Center p='20' bgc='base-2'>item1</Center>
+		<Center p='20' bgc='base-2'>item2</Center>
+		<Center p='20' bgc='base-3'>item3</Center>
+		<Center p='20' bgc='base-3'>item4</Center>
+		<Center p='20' bgc='base-2'>item5</Center>
+		<Center p='20' bgc='base-2'>item6</Center>
+		<Center p='20' bgc='blue' gridItem={{gc:'2', gr:'1 / span 3'}}>center</Center>
+	</Grid>
+	```
+	</PreviewCode>
+</Preview> */}

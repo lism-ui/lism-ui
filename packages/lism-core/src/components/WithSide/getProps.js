@@ -7,8 +7,7 @@ export function getWithSideProps({
 	dataSide,
 	sideW,
 	mainMinW,
-	bp = 'sm',
-	// gt = {},
+	bp,
 	...props
 }) {
 	_lismClass.push(`l--withSide`);
@@ -17,8 +16,10 @@ export function getWithSideProps({
 	let grid = {};
 	if (dataSide) {
 		props['data-lism-side'] = dataSide;
-		grid = { gt: {} };
-		grid.gt[bp] = '-';
+		if (bp) {
+			grid = { gd: {} };
+			grid.gd[bp] = 'var(--gd--hz)';
+		}
 	}
 	if (null != sideW) {
 		style['--side-w'] = sideW;

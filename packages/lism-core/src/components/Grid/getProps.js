@@ -1,10 +1,10 @@
 // gt + gtc, gtr の併用がなければ、コンテキストをセットして変数だけの出力にする
-export function getGridContext(gridProps = {}) {
-	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
-		return null;
-	}
-	return 'grid';
-}
+// export function getGridContext(gridProps = {}) {
+// 	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
+// 		return null;
+// 	}
+// 	return 'grid';
+// }
 
 export function mergeGridContextProps(props) {
 	if (null == props.grid) props.grid = {};
@@ -64,7 +64,7 @@ export function getGridProps({
 
 	// grid 系の props をまとめる
 	let returnProps = mergeGridContextProps(props);
-	returnProps._context = getGridContext(props?.grid);
+	returnProps._context = 'grid'; //getGridContext(props?.grid);
 
 	if (itemMinW) {
 		lismStyle['--item-minW'] = itemMinW;

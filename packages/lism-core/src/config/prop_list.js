@@ -113,7 +113,7 @@ export default {
 	// borderWidth: { style: 1 },
 
 	// Typography
-	f: { style: 1, utils: 1 },
+	f: { style: 'font', utils: 1 },
 	fz: { presets: 1, converter: 'fz' },
 	lh: { presets: 1, style: 'lineHeight' },
 	fw: { style: 'fontWeight', presets: 1 },
@@ -241,11 +241,11 @@ const itemProps = {
 };
 export const CONTEXT_PROPS = {
 	grid: {
-		gd: { style: 'grid' },
-		gt: { onlyVar: 'grid', presets: 1 },
-		gtc: { onlyVar: 'grid' },
-		gtr: { onlyVar: 'grid' },
-		gta: { presets: 1 },
+		gd: {},
+		gt: { style: 'gridTemplate' },
+		gtc: { onlyVar: 'grid', presets: 1 },
+		gtr: { onlyVar: 'grid', presets: 1 },
+		gta: { onlyVar: 'grid', presets: 1 },
 		gaf: { style: 'gridAutoFlow' },
 		gar: { style: 'gridAutoRows' },
 		gac: { style: 'gridAutoColumns' },

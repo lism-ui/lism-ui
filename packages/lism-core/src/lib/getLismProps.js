@@ -437,8 +437,6 @@ class LismPropsData {
 		}
 
 		// style のみ出力
-		//     memo: --gtcなど、Noクエリの時に .-prop: 不要なケースがあるが、それを判定すると処理が複雑になるので一旦なくしている。
-		//       (クラスがあったほうが上書き判定できて便利なケースもあるし...)
 		if (!bp && style) {
 			if (1 === style) style = name; // 1 は prop名をそのままstyleとして使う
 			this.addStyle(style, val);

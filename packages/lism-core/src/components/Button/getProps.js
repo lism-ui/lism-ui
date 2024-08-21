@@ -29,18 +29,16 @@ export function getButtonProps({
 	const { linkProps, otherProps } = separateLinkProps(props);
 
 	if (iconOffset) {
-		style['--icon--offset'] = iconOffset;
+		style['--icon-offset'] = iconOffset;
 	}
 	otherProps.style = style;
 
 	// const leftIconProps = { 'data-position': 'left' };
 	// const rightIconProps = { 'data-position': 'right' };
 
-	if (isGrid) {
-		textProps.gridItem = { gc: 2, jslf: 'c' };
-		// leftIconProps.gridItem = { gc: 1 };
-		// rightIconProps.gridItem = { gce: -1 };
-	}
+	// if (isGrid) {
+	// 	textProps.gridItem = { gc: 2, jslf: 'c' };
+	// }
 
 	return {
 		btnProps: Object.assign(linkProps, defaultProps, otherProps),
