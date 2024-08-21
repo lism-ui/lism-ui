@@ -1,11 +1,11 @@
 ---
 import { LismProps } from '../types';
 import { Grid } from '../Grid';
-import getProps from '@lism-ui/core/components/Center/getProps';
+// import getProps from '@lism-ui/core/components/Center/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
-<Grid _grid='center' {...getProps(props)}><slot /></Grid>
+<Grid _grid='center' {...props}><slot /></Grid>

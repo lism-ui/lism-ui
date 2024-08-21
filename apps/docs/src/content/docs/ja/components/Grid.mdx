@@ -3,7 +3,7 @@ title: 'Grid'
 description: ...
 ---
 
-import { Callout, Grid, GridItem, Center } from '@lism-ui/astro';
+import { Callout, Grid, GridItem, Box, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
@@ -16,11 +16,13 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 
 ## Props
 
-| プロパティ | 説明 | デフォルト値 |
+| プロパティ | 出力 | 説明 |
 |---|---|---|
-| `variant`<br/><PropBadge type="attr">`.l--grid--{variant}`</PropBadge> | コンポーネントのバリエーションを指定できます。 | |
-| `ratio` | `1fr 1fr`などの比率グリッドを`1:1`のようにして指定できます。<br/>（`gtc`として扱われます） | |
-| `itemMinW`<br/><PropBadge type="cssvar">`--item--minW`</PropBadge> | （`variant='tile'`の時のみ有効）<br/>子要素の最小幅を指定できます。 | `16rem` |
+| `variant` | <PropBadge type="attr">`.l--grid--{variant}`</PropBadge> | コンポーネントのバリエーションを指定できます。 |
+
+
+{/* | `ratio` | `1fr 1fr`などの比率グリッドを`1:1`のようにして指定できます。<br/>（`gtc`として扱われます） | |
+| `itemMinW`<br/><PropBadge type="cssvar">`--item--minW`</PropBadge> | （`variant='tile'`の時のみ有効）<br/>子要素の最小幅を指定できます。 | `16rem` | */}
 
 
 
@@ -88,68 +90,35 @@ import { Grid, GridItem } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Grid gt='80px / 1fr 2fr 1fr' gap='10' className="has--itemGuide">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
+			<div>A</div>
+			<div>B</div>
+			<div>C</div>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
 		<Grid gt='80px / 1fr 2fr 1fr' gap='10'>
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
+			<div>A</div>
+			<div>B</div>
+			<div>C</div>
 		</Grid>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div class="l--grid -gap:10" style="--gt:80px / 1fr 2fr 1fr">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
+			<div>A</div>
+			<div>B</div>
+			<div>C</div>
 		</div>
 		```
 	</PreviewCode>
 </Preview>
 
 
-<Preview>
-	<PreviewTitle>GridItemの活用</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid gtc='repeat(4, 1fr)' gap='10' className="has--itemGuide">
-			<GridItem>1</GridItem>
-			<GridItem gc='span 2'>2</GridItem>
-			<GridItem>3</GridItem>
-			<GridItem gc='1 / -1'>4</GridItem>
-		</Grid>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx
-		<Grid gtc='repeat(4, 1fr)' gap='10'>
-			<GridItem>1</GridItem>
-			<GridItem gc='span 2'>2</GridItem>
-			<GridItem>3</GridItem>
-			<GridItem gc='1 / -1'>4</GridItem>
-		</Grid>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```jsx
-		<div class="l--grid -gap:10" style="--gt:80px / 1fr 2fr 1fr">
-			<div>1</div>
-			<div>2</div>
-			<div>3</div>
-		</div>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-### 比率指定グリッド
+{/* ### 比率指定グリッド */}
 
 {/* `ratio="N:N[...:N]"`形式で指定すると、`gtc="Nfr Nfr[... Nfr]"`に変換します。
 
@@ -163,20 +132,18 @@ import { Grid, GridItem } from '@lism-ui/astro';
 
 
 <Preview>
-	<PreviewTitle>
-		1:2の比率でコンテンツを表示
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewTitle>1\:2 の比率でコンテンツを表示</PreviewTitle>
+	<PreviewArea resize p='20'>
 		<Grid gtc='1fr 2fr' className='has--itemGuide'>
-			<GridItem bgc='blue:10%'>1</GridItem>
-			<GridItem bgc='purple:10%'>2</GridItem>
+			<GridItem bgc='blue:10%'>A</GridItem>
+			<GridItem bgc='purple:10%'>B</GridItem>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Grid gtc='1fr 2fr'>
-			<GridItem bgc='blue:10%'>1</GridItem>
-			<GridItem bgc='purple:10%'>2</GridItem>
+			<GridItem bgc='blue:10%'>A</GridItem>
+			<GridItem bgc='purple:10%'>B</GridItem>
 		</Grid>
 		```
 	</PreviewCode>
@@ -184,129 +151,12 @@ import { Grid, GridItem } from '@lism-ui/astro';
 
 <br />
 
-<Preview>
-	<PreviewTitle>
-		1:1:1の比率グリッドで 1:2, 2:1 で順番にコンテンツを表示
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid gtc='1fr 1fr 1fr' gap={10}>
-			<GridItem px={20} bgc='base-2'>1</GridItem>
-			<GridItem px={20} bgc='base-3' gc='span2'>2</GridItem>
-			<GridItem px={20} bgc='base-3' gc='span2'>3</GridItem>
-			<GridItem px={20} bgc='base-2'>4</GridItem>
-		</Grid>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "gtc='1fr 1fr 1fr'" "gc='span2'"
-		<Grid gtc='1fr 1fr 1fr' gap={10}>
-			<GridItem px={20} bgc='base-2'>1</GridItem>
-			<GridItem px={20} bgc='base-3' gc='span2'>2</GridItem>
-			<GridItem px={20} bgc='base-3' gc='span2'>3</GridItem>
-			<GridItem px={20} bgc='base-2'>4</GridItem>
-		</Grid>
-		```
-	</PreviewCode>
-</Preview>
-
 
 {/* `ratio`のブレイクポイント指定は`gtc`のブレイクポイント指定に変換されます。 */}
-
-<Preview>
-	<PreviewTitle>
-		1:2 → `@md` で 1:2:1:2 で比率を切り替える
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid gtc={['1fr 2fr', null, '1fr 2fr 1fr 2fr']} gap={10}>
-			<GridItem bgc='base-2'>1</GridItem>
-			<GridItem bgc='base-3'>2</GridItem>
-			<GridItem bgc='base-2'>3</GridItem>
-			<GridItem bgc='base-3'>4</GridItem>
-			<GridItem bgc='base-2'>5</GridItem>
-			<GridItem bgc='base-3'>6</GridItem>
-			<GridItem bgc='base-2'>7</GridItem>
-			<GridItem bgc='base-3'>8</GridItem>
-		</Grid>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Grid gtc={['1fr 2fr', null, '1fr 2fr 1fr 2fr']} gap={10}>
-			<GridItem bgc='base-2'>1</GridItem>
-			<GridItem bgc='base-3'>2</GridItem>
-			<GridItem bgc='base-2'>3</GridItem>
-			<GridItem bgc='base-3'>4</GridItem>
-			<GridItem bgc='base-2'>5</GridItem>
-			<GridItem bgc='base-3'>6</GridItem>
-			<GridItem bgc='base-2'>7</GridItem>
-			<GridItem bgc='base-3'>8</GridItem>
-		</Grid>
-		```
-	</PreviewCode>
-</Preview>
 
 
 
 ## Variants
-
-### `variant='tile'`
-
-**子要素が指定した幅より小さくならないように自動で折り返しされる**タイルグリッドを作成します。
-
-<Callout type="info">
-カラムの折返しタイミングがブレイクポイントではなくコンテンツサイズに依存します。
-</Callout>
-
-ただし、カラム数は**1列ずつしか変わらない**（ 4列→2列 とかはできず、4列→3列→2列になる ) ので、カラム数を具体的に指定したい場合は [`<Columns>`](/ja/components/columns) を使ってください。
-
-<Preview>
-	<PreviewTitle>
-		デフォルト (`itemMinW`=`16rem`)
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid variant='tile' className="has--itemGuide">
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-		</Grid>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Grid variant='tile'>
-			...
-		</Grid>
-		```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>
-		子要素の最低限維持する幅を`10rem`に
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid variant="tile" itemMinW="10rem" className="has--itemGuide">
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-		</Grid>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx {1}
-		<Grid variant="tile" itemMinW="10rem">
-			...
-		</Grid>
-		```
-	</PreviewCode>
-</Preview>
 
 
 ### `variant='3col'`
@@ -314,7 +164,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Grid variant='3col'>
 			<GridItem p='box:s' bgc='base-2'>L</GridItem>
 			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
@@ -339,7 +189,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 {/* start,center,endで area名もつけるか,単純にgtc, gtrで指定するか。 */}
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Grid variant='3row' minH='15rem'>
 			<GridItem p='box:s' bgc='base-2'>L</GridItem>
 			<GridItem p='box:s' bgc='base-3'>Center</GridItem>
@@ -358,13 +208,118 @@ import { Grid, GridItem } from '@lism-ui/astro';
 </Preview>
 
 
+### `variant='repeat'`
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Grid variant='repeat' cols='4' rows='4' minH='15rem'>
+			<GridItem gc='1 / 3' gr='1 / 4' p='20' bgc='blue:25%'>A</GridItem>
+			<GridItem gc='3 / 5' gr='2 / 5' p='20' bgc='green:25%'>B</GridItem>
+			<GridItem gc='3 / 5' gr='1' p='20' bgc='red:25%'>C</GridItem>
+			<GridItem gc='1 / 3' gr='4' p='20' bgc='red:25%'>D</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid variant='repeat' cols='4' rows='4' minH='15rem'>
+			<GridItem gc='1 / 3' gr='1 / 4' p='20' bgc='blue:25%'>A</GridItem>
+			<GridItem gc='3 / 5' gr='2 / 5' p='20' bgc='green:25%'>B</GridItem>
+			<GridItem gc='3 / 5' gr='1' p='20' bgc='red:25%'>C</GridItem>
+			<GridItem gc='1 / 3' gr='4' p='20' bgc='red:25%'>D</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		1:2, 2:1 で順番にコンテンツを表示
+	</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Grid variant='repeat' cols='3' gap='10'>
+			<GridItem px='20' bgc='base-2'></GridItem>
+			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText /></GridItem>
+			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText length='l'/></GridItem>
+			<GridItem px='20' bgc='base-2'></GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid variant='repeat' cols='3' gap='10'>
+			<GridItem px='20' bgc='base-2'></GridItem>
+			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText /></GridItem>
+			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText length='l'/></GridItem>
+			<GridItem px='20' bgc='base-2'></GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
 
 
-## その他の例 (memo)
+cols,rows はそれぞれブレイクポイント指定も可能です。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Grid variant='repeat' cols={['4','6','8']} rows='4'>
+			<GridItem gc='1 / -1' p='20' bgc='purple:25%'>A</GridItem>
+			<GridItem gr='2 / 4' p='20' bgc='blue:25%'>B</GridItem>
+			<GridItem gc='2 / -2' gr='2 / 4' p='20' bgc='green:25%'>C</GridItem>
+			<GridItem gr='2 / 4' p='20' bgc='blue:25%'>D</GridItem>
+			<GridItem gc='1 / -1' gre='-1' p='20' bgc='purple:25%'>5</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid variant='repeat' cols={['4','6','8']} rows='4'>
+			<GridItem gc='1 / -1' p='20' bgc='purple:25%'>A</GridItem>
+			<GridItem gr='2 / 4' p='20' bgc='blue:25%'>B</GridItem>
+			<GridItem gc='2 / -2' gr='2 / 4' p='20' bgc='green:25%'>C</GridItem>
+			<GridItem gr='2 / 4' p='20' bgc='blue:25%'>D</GridItem>
+			<GridItem gc='1 / -1' gre='-1' p='20' bgc='purple:25%'>5</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+gc, gr もブレイクポイントに対応しています。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Grid variant='repeat' cols='3' rows='3'>
+			<GridItem gc={['1 / -1','1 / 3']} gr={['1 / -2','1 / -1']} p='box:s' bgc='base-3'>
+				<Box aspect='16/9'>A</Box>
+			</GridItem>
+			<GridItem gc={['1', '3 / -1']} gr={['3','1']} p='box:s' bgc='green:25%'>B</GridItem>
+			<GridItem gc={['2', '3 / -1']} gr={['3','2']} p='box:s' bgc='blue:25%'>C</GridItem>
+			<GridItem gc={['3', '3 / -1']} gr={['3','3']} p='box:s' bgc='red:25%'>D</GridItem>
+		</Grid>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Grid variant='repeat' cols='3' rows='3'>
+			<GridItem gc={['1 / -1','1 / 3']} gr={['1 / -2','1 / -1']} p='box:s' bgc='base-3'>
+				<Box aspect='16/9'>A</Box>
+			</GridItem>
+			<GridItem gc={['1', '3 / -1']} gr={['3','1']} p='box:s' bgc='green:25%'>B</GridItem>
+			<GridItem gc={['2', '3 / -1']} gr={['3','2']} p='box:s' bgc='blue:25%'>C</GridItem>
+			<GridItem gc={['3', '3 / -1']} gr={['3','3']} p='box:s' bgc='red:25%'>D</GridItem>
+		</Grid>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+
+## その他の少し複雑な例
 
 <Preview>
 	<PreviewTitle>ブレイクポイントでエリア位置を切り替える</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Grid
 			gt={[
 				`'main main'
@@ -373,7 +328,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 				`'left main right'
 				 'left main right' / 8em 1fr 8em`
 			]}
-			gap={20}
+			gap='20'
 		>
 			<GridItem ga='left' p='box:s' bgc='base-3'>Left</GridItem>
 			<GridItem ga='main' p='box:s' bgc='base-2'>
@@ -392,7 +347,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 				`'left main right'
 				 'left main right' / 8em 1fr 8em`
 			]}
-			gap={20}
+			gap='20'
 		>
 			<GridItem ga='left' p='box:s' bgc='base-3'>Left</GridItem>
 			<GridItem ga='main' p='box:s' bgc='base-2'><DammyText length='l' /></GridItem>
@@ -416,60 +371,42 @@ import { Grid, GridItem } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-{/* <PreviewTitle>gtではなくgta,gtcで書くと次のようになります</PreviewTitle>
-```jsx
-<Grid
-	gta={[
-		`'main main'
-			'left right'`,
-		null,
-		`'left main right'
-			'left main right'`
-	]}
-	gtc={[`1fr 1fr`, null, `8em 1fr 8em` ]}
->...</Grid>
-``` */}
 
-
-
-{/* ### repeat */}
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Grid gtc='1fr auto 1fr'>
-			<GridItem layout={Center} p={20} bgc='base-2'>item1</GridItem>
-			<GridItem layout={Center} p={20} bgc='base-2'>item2</GridItem>
-			<GridItem layout={Center} p={20} bgc='base-3'>item3</GridItem>
-			<GridItem layout={Center} p={20} bgc='base-3'>item4</GridItem>
-			<GridItem layout={Center} p={20} bgc='base-2'>item5</GridItem>
-			<GridItem layout={Center} p={20} bgc='base-2'>item6</GridItem>
-			<GridItem layout={Center} p={20} bgc='blue' gc='2' gr='1 / span 3'>center</GridItem>
+			<Center p='20' bgc='base-2'>item1</Center>
+			<Center p='20' bgc='base-2'>item2</Center>
+			<Center p='20' bgc='base-3'>item3</Center>
+			<Center p='20' bgc='base-3'>item4</Center>
+			<Center p='20' bgc='base-2'>item5</Center>
+			<Center p='20' bgc='base-2'>item6</Center>
+			<Center p='20' bgc='blue' gridItem={{gc:'2', gr:'1 / span 3'}}>center</Center>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
 	<Grid gtc='1fr auto 1fr'>
-		<GridItem layout={Center} p={20} bgc='base-2'>item1</GridItem>
-		<GridItem layout={Center} p={20} bgc='base-2'>item2</GridItem>
-		<GridItem layout={Center} p={20} bgc='base-3'>item3</GridItem>
-		<GridItem layout={Center} p={20} bgc='base-3'>item4</GridItem>
-		<GridItem layout={Center} p={20} bgc='base-2'>item5</GridItem>
-		<GridItem layout={Center} p={20} bgc='base-2'>item6</GridItem>
-		<GridItem layout={Center} p={20} bgc='blue' gc='2' gr='1 / span 3'>center</GridItem>
+		<Center p='20' bgc='base-2'>item1</Center>
+		<Center p='20' bgc='base-2'>item2</Center>
+		<Center p='20' bgc='base-3'>item3</Center>
+		<Center p='20' bgc='base-3'>item4</Center>
+		<Center p='20' bgc='base-2'>item5</Center>
+		<Center p='20' bgc='base-2'>item6</Center>
+		<Center p='20' bgc='blue' gridItem={{gc:'2', gr:'1 / span 3'}}>center</Center>
 	</Grid>
 	```
 	</PreviewCode>
 </Preview>
 
 {/* --repeat-c,repeat-c */}
-{/* RepeatGrid cols={3} rows={3} : 数字なら サイズは 1fr */}
-{/* RepeatGrid cols='3,40px' rows={3}  */}
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>1列 → 2列 → 幅200pxで3列かつ、中央よせ</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap={20} className='has--itemGuide'>
+	<PreviewArea resize p='20'>
+		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap='20' className='has--itemGuide'>
 			<DammyText/>
 			<DammyText/>
 			<DammyText/>
@@ -480,9 +417,9 @@ import { Grid, GridItem } from '@lism-ui/astro';
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap={20}>
+	<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap='20'>
 		...
 	</Grid>
 	```
 	</PreviewCode>
-</Preview>
+</Preview> */}

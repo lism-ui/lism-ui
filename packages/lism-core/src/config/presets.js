@@ -91,16 +91,16 @@ export default {
 	// gd: ['fix:l', 'fix:r', 'fix:t', 'fix:b'],
 	// gt: ['side:l', 'side:r', 'side:s', 'side:e', '3row', '3col'],
 	// gta: ['3col', '3row', '3col:ltr'],
-	gc: ['1', '2', '3', 'span2'],
-	gr: ['1', '2', '3', 'span2'],
+	// gc: ['1', '2', '3', 'span2'],
+	// gr: ['1', '2', '3', 'span2'],
 	// gcs: ['1', '2', '3'],
 	// grs: ['1', '2', '3'],
-	gce: ['-1'],
-	gre: ['-1'],
-	ga: [
-		'side',
-		//'start', 'c', 'end'
-	],
+	// gce: ['-1'],
+	// gre: ['-1'],
+	// ga: [
+	// 	'side',
+	// 	//'start', 'c', 'end'
+	// ],
 	gradient: ['sunset', 'blackToBottom'],
 	// transform: ['flip:x', 'flip:y', 'flip:xy'],
 	animation: [],

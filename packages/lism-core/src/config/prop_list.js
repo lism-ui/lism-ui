@@ -191,6 +191,9 @@ export default {
 	// me: marginOption,
 	// mbe: marginOption,
 
+	cols: { style: '--cols' },
+	rows: { style: '--rows' },
+
 	mask: { map: 1 },
 
 	// isFlowでのみ有効

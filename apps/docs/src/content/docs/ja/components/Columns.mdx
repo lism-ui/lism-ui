@@ -3,7 +3,7 @@ title: 'Columns'
 description: ...
 ---
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Box, Columns } from '@lism-ui/astro';
+import { Box, Callout, DammyText, Columns } from '@lism-ui/astro';
 import { PropBadge } from "~/components";
 
 指定した列数でカラムレイアウトを作成します。
@@ -114,9 +114,7 @@ import { Columns } from '@lism-ui/astro';
 
 
 <Preview>
-	<PreviewTitle>
-		2列 → `@md`:4列
-	</PreviewTitle>
+	<PreviewTitle>2列 → `@md`:4列</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Columns cols={[2, null, 4]} gap={20}>
 			<Box bgc='base-2' p="box">Box</Box>
@@ -126,18 +124,78 @@ import { Columns } from '@lism-ui/astro';
 		</Columns>
 	</PreviewArea>
 
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx "cols={[2, null, 4]}"
-		<Columns cols={[2, null, 4]} gap={20}>
+<PreviewCode slot='tab' label='React, Astro'>
+```jsx "cols={[2, null, 4]}"
+<Columns cols={[2, null, 4]} gap={20}>
+	...
+</Columns>
+```
+</PreviewCode>
+<PreviewCode slot='tab' label='HTML'>
+```html "--cols:2;--md-cols:4"
+<div class="l--columns -gap:20" style="--cols:2;--md-cols:4">
+	...
+</div>
+```
+</PreviewCode>
+</Preview>
+
+
+
+## Variants
+
+### `variant='liquid'`
+
+列数を指定せず、**子要素が指定した幅より小さくならないように自動で折り返しされる**カラムレイアウトを作成します。
+
+{/* <Callout type="info">
+カラムの折返しタイミングがブレイクポイントではなくコンテンツサイズに依存します。
+</Callout> */}
+
+子要素が維持する最小幅は`colSize`(`--col-size`) で指定できます。（デフォルトは`16rem`です）。
+
+<Preview>
+	<PreviewTitle>
+		デフォルト (`colSize`=`16rem`)
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Columns variant='liquid' className="has--itemGuide">
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+			<DammyText />
+		</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Columns variant='liquid'>
 			...
 		</Columns>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "--cols:2;--md-cols:4"
-		<div class="l--columns -gap:20" style="--cols:2;--md-cols:4">
+</Preview>
+
+<Preview>
+	<PreviewTitle>
+		`colSize`=`16rem`
+	</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Columns variant='liquid' gap='20' style={{'--col-size':'8rem', '--col-behavior':'auto-fit'}}>
+			<DammyText bgc='base-2' />
+			<DammyText bgc='base-2' />
+			<DammyText bgc='base-2' />
+			<DammyText bgc='base-2' />
+		</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Columns variant='liquid'>
 			...
-		</div>
+		</Columns>
 		```
 	</PreviewCode>
 </Preview>

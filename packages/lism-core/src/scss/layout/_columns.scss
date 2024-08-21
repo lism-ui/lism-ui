@@ -5,31 +5,39 @@
 // 他のgrid 要素を指定することはない & flex か grid かパッと判断できないので個別にモジュール化。
 // --------------------
 .l--columns {
-	// --gtc: var(--gtc);
+	--cols: 2; // 初期値
 	display: grid;
-	grid-template-columns: repeat(var(--cols--val), minmax(0, 1fr));
+	grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 
 	// 各ブレイクポイント用の変数に伝搬していく
-	--cols: 1; // 初期値
 	// --_sm_cols: var(--cols);
-	--sm-cols: var(--cols);
-	--md-cols: var(--sm-cols);
-	--lg-cols: var(--md-cols);
+	// --sm-cols: var(--cols);
+	// --md-cols: var(--sm-cols);
+	// --lg-cols: var(--md-cols);
 	// --xl-cols: var(--lg-cols);
 
-	--cols--val: var(--cols);
-	@include query.bp-up('sm') {
-		--cols--val: var(--sm-cols);
-	}
-	@include query.bp-up('md') {
-		--cols--val: var(--md-cols);
-	}
-	@include query.bp-up('lg') {
-		--cols--val: var(--lg-cols);
-	}
+	// --cols--val: var(--cols);
+	// @include query.bp-up('sm') {
+	// 	--cols--val: var(--sm-cols);
+	// }
+	// @include query.bp-up('md') {
+	// 	--cols--val: var(--md-cols);
+	// }
+	// @include query.bp-up('lg') {
+	// 	--cols--val: var(--lg-cols);
+	// }
 	// @include query.bp-up('xl') {
 	// 	--cols--val: var(--xl-cols);
 	// }
+}
+
+.l--columns--liquid {
+	// auto-fill or auto-fit : 親の幅に対してアイテムが少ない時に、引き伸ばすか、伸ばさないか
+	--col-behavior: auto-fill;
+	--col-size: var(--size--item); // var(--contentSize--xs)
+
+	display: grid;
+	grid-template-columns: repeat(var(--col-behavior), minmax(min(var(--col-size), 100%), 1fr));
 }
 
 // -repeat: 1;

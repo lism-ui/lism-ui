@@ -25,13 +25,9 @@
 .l--grid--3row {
 	--gtr: auto 1fr auto;
 }
-// --------------------
-// TileGrid
-// --------------------
-.l--grid--tile {
-	// display: grid;
-	--item--minW: var(--size--item); // var(--contentSize--xs)
 
-	// auto-fill or auto-fit : 親の幅に対してアイテムが少ない時に、引き伸ばすか、伸ばさないか
-	--gtc: repeat(auto-fit, minmax(min(var(--item--minW), 100%), 1fr));
+.l--grid--repeat {
+	--rows: 1;
+	--cols: 1;
+	grid-template: repeat(var(--rows), 1fr) / repeat(var(--cols), 1fr);
 }

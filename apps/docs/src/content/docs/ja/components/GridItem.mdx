@@ -64,29 +64,23 @@ import { Grid, GridItem } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Grid
-			gtc='repeat(3, 1fr)'
-			gtr='repeat(3, 1fr)'
-		>
+		<Grid variant='repeat' cols='3' rows='3'>
 			<GridItem p='box' bgc='base-2'>item1</GridItem>
 			<GridItem p='box' bgc='base-2'>item2</GridItem>
-			<GridItem p='box' bgc='base-3' gc='span2'>item3</GridItem>
+			<GridItem p='box' bgc='base-2'>item3</GridItem>
 			<GridItem p='box' bgc='base-2'>item4</GridItem>
-			<GridItem p='box' bgc='base-2'>item5</GridItem>
+			<GridItem p='box' bgc='base-3' gc='span 2'>item5</GridItem>
 			<GridItem layout={Center} gc='3' gr='1 / -1' p='box' bgc='blue'>item6</GridItem>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx "gc='span2'" "gc='3'" "gr='1 / -1'"
-		<Grid
-			gtc='repeat(3, 1fr)'
-			gtr='repeat(3, 1fr)'	
-		>
+		```jsx " gc=" " gr="
+		<Grid variant='repeat' cols='3' rows='3'>
 			<GridItem p='box' bgc='base-2'>item1</GridItem>
 			<GridItem p='box' bgc='base-2'>item2</GridItem>
-			<GridItem p='box' bgc='base-3' gc='span2'>item3</GridItem>
+			<GridItem p='box' bgc='base-2'>item3</GridItem>
 			<GridItem p='box' bgc='base-2'>item4</GridItem>
-			<GridItem p='box' bgc='base-2'>item5</GridItem>
+			<GridItem p='box' bgc='base-3' gc='span 2'>item5</GridItem>
 			<GridItem layout={Center} gc='3' gr='1 / -1' p='box' bgc='blue'>item6</GridItem>
 		</Grid>
 		```
@@ -96,7 +90,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 		<div class="l--grid" style="--gtc:repeat(3, 1fr);--gtr:repeat(3, 1fr)">
 			<div class="-p:20 -bgc:base-2">item1</div>
 			<div class="-p:20 -bgc:base-2">item2</div>
-			<div class="-p:20 -bgc:base-3 -gc:span2">item3</div>
+			<div class="-p:20 -bgc:base-3 -gc:span 2">item3</div>
 			<div class="-p:20 -bgc:base-2">item4</div>
 			<div class="-p:20 -bgc:base-2">item5</div>
 			<div class="-p:20 -bgc: -gc:3 -gr:" style="--bgc:var(--blue);--gr:1 / -1">item6</div>

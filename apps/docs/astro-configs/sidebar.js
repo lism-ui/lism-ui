@@ -78,6 +78,14 @@ export default [
 			// 	},
 			// },
 			{
+				label: 'Box',
+				link: '/components/box/',
+			},
+			{
+				label: '---',
+				link: '###---',
+			},
+			{
 				label: 'Flex',
 				link: '/components/flex/',
 			},
@@ -98,17 +106,10 @@ export default [
 				link: '/components/griditem/',
 			},
 			{
-				label: 'RepeatGrid',
-				link: '/components/repeatgrid/',
-			},
-			{
 				label: '---',
 				link: '###---',
 			},
-			{
-				label: 'Box',
-				link: '/components/box/',
-			},
+
 			// {
 			// 	label: '---',
 			// 	link: '###---',
