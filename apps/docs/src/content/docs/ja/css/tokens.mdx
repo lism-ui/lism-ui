@@ -13,7 +13,7 @@ import { Lism, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabI
 
 export const ColorBadge = ({color, label}) => {
 	return <span className='-d:f -ai:c -gap:em3'>
-			<Lism skipState tag='span' className='has--size -d:ib' size='1.5em' bgc={color} bdrs='s' bxsh='1' />
+			<Lism skipState tag='span' w='1.5em' aspect='1/1' bgc={color} bdrs='s' bxsh='1' />
 			<code>{label || color}</code>
 		</span>;
 }
