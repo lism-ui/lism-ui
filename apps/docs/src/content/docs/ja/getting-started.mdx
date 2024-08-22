@@ -10,19 +10,31 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 import { Note } from '~/components/ex/Note';
 
 {/* ## Installation */}
+
+
 ## インストール
 
-Lismは2通りの使い方ができます。
+Lism UI は大きく分けて2通りの導入方法ができます。
 
-### 1. CSS設計を導入したいだけの場合
+### 1. CSS設計のみを導入したい場合
 
-HTMLで組むシンプルなサイトであれば、CDN経由でCSSを読み込むだけで利用できます。
+HTMLで組むシンプルなサイト等、JSX形式のコンポーネントが不要であれば、CSSファイルのみを読み込んでください。
 
+
+<PreviewTitle>`@lism-ui/core`パッケージからimportする場合</PreviewTitle>
+
+```js
+import "@lism-ui/core/css/all.css";
+```
+
+
+<PreviewTitle>または、CDN経由でも利用できます</PreviewTitle>
 ```html
 <link href="https://cdn.jsdelivr.net/npm/@lism-ui/core/dist/css/all.css" rel="stylesheet" />
 ```
 
 もちろん、CSSファイルをダウンロードして読み込んでもOKです。
+
 
 ### 2. パッケージを使ってLism UI をフル活用する場合
 
