@@ -26,4 +26,4 @@ jobs:
       - name: Build
         run: pnpm build:core
 
-      - run: pnpx pkg-pr-new publish './packages/lism-core'
+      - run: pnpx pkg-pr-new publish './packages/lism-core' './packages/lism-astro'
