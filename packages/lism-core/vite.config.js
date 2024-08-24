@@ -32,6 +32,7 @@ import svgr from 'vite-plugin-svgr'; // svg を React Component として import
 // ファイルパスは大文字・小文字まで一致しないと Vercel でこけるので注意。
 const entries = {
 	index: resolve(__dirname, 'src/components/index.js'),
+	config: resolve(__dirname, 'src/config/index.js'),
 	// ↓ scripts.jsのビルドと、setEvent.js もこれでビルドされる.
 	'scripts/tabs': resolve(__dirname, 'src/components/Tabs/script.js'),
 	'scripts/accordion': resolve(__dirname, 'src/components/Accordion/script.js'),
