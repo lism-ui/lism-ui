@@ -2,17 +2,17 @@ import filterEmptyObj from './helper/filterEmptyObj';
 import hasKeys from './helper/hasKeys';
 import { BREAK_POINTS } from '../config';
 
-const BREAK_POINTS_ALL = ['_', ...BREAK_POINTS];
+const BREAK_POINTS_ALL = ['base', ...BREAK_POINTS];
 
 // BP指定に必要な規格化した形式のオブジェクトを返す.
 //     ( string, array, obj → {_, sm, md, ...} の型のobjectに変換する. )
 export default function getBpData(propVal) {
 	let values = {};
 
-	if (true === propVal) return { _: true };
+	if (true === propVal) return { base: true };
 
 	if (typeof propVal === 'string' || typeof propVal === 'number') {
-		values._ = propVal;
+		values.base = propVal;
 	} else if (Array.isArray(propVal)) {
 		propVal.forEach((r, i) => {
 			values[`${BREAK_POINTS_ALL[i]}`] = r;
@@ -22,7 +22,7 @@ export default function getBpData(propVal) {
 			// 'sm', 'md' などがある場合はｍbp指定のオブジェクトとみなす
 			values = propVal;
 		} else {
-			values._ = propVal; // 方向ブジェクト(sides props)の場合
+			values.base = propVal; // 方向ブジェクト(sides props)の場合
 		}
 	}
 

@@ -9,10 +9,6 @@ import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
 import splitWithComma from './helper/splitWithComma';
 
-// const isBaseBP = (bp) => {
-// 	return '_' === bp;
-// };
-
 const ProvidableProps = {
 	c: 'color',
 	bgc: 'color',
@@ -140,7 +136,7 @@ class LismPropsData {
 
 		// if (lismVar) {
 		// 	this.addUtil('-lismVar:');
-		// 	const { _: baseValue, ...bpValues } = getBpData(lismVar);
+		// 	const { base: baseValue, ...bpValues } = getBpData(lismVar);
 		// 	if (baseValue != null) {
 		// 		this.addStyle('--lism', baseValue);
 		// 	}
@@ -270,8 +266,8 @@ class LismPropsData {
 
 		const { name, objProcessor, map, ...options } = propData;
 
-		// ブレイクポイント指定用のオブジェクト{xs,sm,md,lg,xl}かどうかをチェック
-		const { _: baseValue, ...bpValues } = getBpData(propVal);
+		// ブレイクポイント指定用のオブジェクト{base,sm,md,lg,xl}かどうかをチェック
+		const { base: baseValue, ...bpValues } = getBpData(propVal);
 		propVal = baseValue;
 		// let bpValues = null;
 
@@ -279,7 +275,7 @@ class LismPropsData {
 		// }
 		// if (BP) {
 		// 	// 事前にBP指定用の { sm, md, ...} 形式で取り出す
-		// 	const { _: baseValue, ...bpData } = getBpData(propVal);
+		// 	const { base: baseValue, ...bpData } = getBpData(propVal);
 		// 	propVal = baseValue;
 		// 	bpValues = bpData;
 		// }
@@ -369,7 +365,6 @@ class LismPropsData {
 
 		let styleName = `--${name}`;
 		let utilName = `-${options.utilKey || name}`;
-		// const isBP = bp && !isBaseBP(bp);
 
 		if (bp) {
 			styleName = `--${bp}-${name}`;

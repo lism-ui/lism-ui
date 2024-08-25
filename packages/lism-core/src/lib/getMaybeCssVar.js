@@ -56,7 +56,7 @@ export function getMaybeSpaceVar(value, propName) {
 	}
 
 	// emトークン
-	if (value.startsWith('em')) {
+	if (typeof value === 'string' && value.startsWith('em')) {
 		const emVal = value.replace('em', '');
 		// if (isTokenValue('em')) {
 		return `var(--em--${emVal})`;
