@@ -29,7 +29,7 @@ import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 	</PreviewCode>
 	<PreviewCode label="オブジェクト形式" slot="tab">
 	```jsx
-	<Box p={{ _: 20, sm: 30, md: '5rem' }}>
+	<Box p={{ base: 20, sm: 30, md: '5rem' }}>
 		...
 	</Box>
 	```
@@ -87,7 +87,7 @@ BP指定との併用時における注意事項を以下に記載します。
 
 
 ```
-// p={_:{pl: [20,40], pr: 30}, sm:{}} のような指定はできないルール.
+// p={base:{pl: [20,40], pr: 30}, sm:{}} のような指定はできないルール.
 // p=[{left,right}, {left,right}] みたいな指定はできないルール.
 // p={x: [20,40], y: [30,40]} は一応処理的には問題ないが、そもそもそんな指定は非推奨
 ``` */}
