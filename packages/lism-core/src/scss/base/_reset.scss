@@ -36,18 +36,22 @@ html {
 	/* -webkit-font-smoothing: antialiased; */
 }
 
-:where(svg, img) {
+// :where(svg,img)
+img {
 	/* 親要素をはみ出さないように */
 	max-inline-size: 100%;
 
 	/* 隙間ができるのを防ぐ。( インラインな img, svg を考慮し、 display はいじらない。) */
 	vertical-align: middle;
+
+	// アスペクト比を保持
+	block-size: auto;
 }
 
 /* かつ、画像はアスペクト比を保持。 (svg に適用してしまうと width, height属性が効かない） */
-img {
-	block-size: auto;
-}
+// img {
+// 	block-size: auto;
+// }
 
 /* img 以外のメディア系も飛び出さないように。 ( audio, embed, object にも必要か...? ) */
 iframe,
