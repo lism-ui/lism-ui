@@ -128,10 +128,6 @@ export default {
 		'-50% 0': '-50X',
 		'0 -50%': '-50Y',
 	},
-	aspect: { '16/9': '16/9', '4/3': '4/3', '1/1': '1/1' },
-	// aspect: { video: '16/9', photo:'4/3', square:'1/1',  },
-	// -aspcet:16/9
-	// ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp'];
 	// whs: { nowrap: 'nw' },
 	// ovw: { anywhere: 'any' },
 	// lis: { none: 'n' },

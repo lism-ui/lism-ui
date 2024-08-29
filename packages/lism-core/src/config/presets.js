@@ -73,19 +73,7 @@ export default {
 	bg: ['glass', 'stripe', 'grid'],
 	z: ['-1', '0', '1'],
 	inset: ['c', 'cX', 'cY'], // inset は 0% だけ
-	aspect: [
-		'16/9',
-		'4/3',
-		'4/1',
-		'3/2',
-		'2/1',
-		'1/1',
-		'golden',
-		'silver',
-		'bronze',
-		'ogp',
-		'cinema',
-	], //'2/1',
+	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',
 
 	// fx: ['1'],
 	gd: [
@@ -109,7 +97,7 @@ export default {
 	// transform: ['flip:x', 'flip:y', 'flip:xy'],
 	animation: [],
 
-	contentSize: ['xs', 's', 'm', 'l', 'xl', 'full'], // container, constrained のユーティリティクラス
+	contentSize: ['xs', 's', 'l', 'xl', 'full'], // container, constrained のユーティリティクラス
 	flow: ['xs', 's', 'l'], // flowのユーティリティクラス
 	// mbs: ['s', 'm', 'l'], // --mbs--xxx トークン
 };
