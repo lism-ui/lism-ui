@@ -151,7 +151,6 @@ export default {
 	r: { ...insetsProps, style: 'right' },
 	b: { ...insetsProps, style: 'bottom' },
 	inset: { style: 1, utils: 1, presets: 1, converter: 'space' },
-	insets: { map: 1 },
 
 	// isolation
 	// flip: {},
@@ -194,6 +193,7 @@ export default {
 	cols: { style: '--cols' },
 	rows: { style: '--rows' },
 
+	insets: { map: 1 },
 	mask: { map: 1 },
 
 	// isFlowでのみ有効
@@ -362,4 +362,6 @@ export const CONTEXT_PROPS = {
 		backdropFilter: { style: 1, utilKey: 'bdFilter', presets: ['blur'], converter: 'filter' },
 		// mixBlendMode
 	},
+
+	// hov: { c, bgc, bdc, bxsh },
 };

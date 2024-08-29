@@ -181,15 +181,15 @@ class LismPropsData {
 	}
 
 	// 特定の条件下で受け取るpropの処理
-	setContextProps(context, props) {
-		// if (typeof props !== 'object') return;
+	setContextProps(context, propObject) {
+		// if (typeof propObject !== 'object') return;
 
 		const contextProps = CONTEXT_PROPS[context];
 		if (!contextProps) return;
 
-		Object.keys(props).forEach((propName) => {
+		Object.keys(propObject).forEach((propName) => {
 			const propData = contextProps[propName];
-			const propValue = props[propName];
+			const propValue = propObject[propName];
 
 			// console.log(propName, propValue, propData);
 			this.analyzeProp(propName, propValue, propData);
@@ -350,15 +350,6 @@ class LismPropsData {
 		return data;
 	}
 
-	setHoverClass(hovClass) {
-		this.addUtil(`-hov:${hovClass}`);
-		// if (typeof hovClass === 'string') {
-		// 	this.addUtil(`-hov:${hovClass}`);
-		// } else if (Array.isArray(hovClass)) {
-		// 	this.addUtil(hovClass.map((h) => `-hov:${h}`).join(' '));
-		// }
-	}
-
 	// utilクラスを追加するか、styleにセットするかの分岐処理 @base
 	setAttrs(name, val, options = {}, bp) {
 		if (null == val) return;
@@ -482,6 +473,8 @@ class LismPropsData {
 				this.addUtil(`-hov:${_val}`);
 			});
 		} else if (typeof hoverData === 'object') {
+			// hover={{c:'red', 'bgc': 'blue'}} みたいな指定の時
+
 			// bxsh: '2', → shSize'2', shSize:'3'に分割?
 			// if(hoverData.bxsh) {
 			// 	...
@@ -489,21 +482,6 @@ class LismPropsData {
 
 			Object.keys(hoverData).forEach((propName) => {
 				let value = hoverData[propName];
-
-				// 変数だけ受け渡したいデータ
-				if (propName === 'pass' && typeof value === 'object') {
-					const passData = value;
-					Object.keys(passData).forEach((passPropName) => {
-						let passValue = passData[passPropName];
-
-						// コンバーター取得
-						const { converter = '' } = HOV_PROPS[passPropName] || {};
-						if (converter) passValue = getMaybeCssVar(passValue, converter, propName);
-
-						this.addStyle(`--hov--${passPropName}`, passValue);
-					});
-					return;
-				}
 
 				// データ取得
 				const {

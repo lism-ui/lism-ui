@@ -26,7 +26,7 @@ export function getTheStateData(stateName, value) {
 	let className = '';
 	let style = null;
 
-	if (value === true) {
+	if (value === true || value === 'm') {
 		className = stateName;
 	} else if (value) {
 		if (tokenKey && isPresetValue(tokenKey, value)) {
