@@ -332,57 +332,28 @@
 	/* ------------------------------------------------------------
 	  shadow
 	------------------------------------------------------------ */
-	// --sh-color: hsl(215 8% 16% / 10%);
 	--sh-hsl: 215 8% 12%;
-	--sh-a: 8%;
-	// --sh-a--base: 5%;
+	--sh-a: 15%;
+
+	// --sh-a--base: calc(var(--sh-a) - 4%);
 	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));
-	// --sh-color: hsl(var(--sh-hsl) / var(--sh-a));
 
 	// shadow:
-	//    x:yのオフセット比率は一定に保つ. デフォルトは 1:2 の比率。
-	//    差は倍になっていく
-	--sh-size--0: 0.5px 1px 2px 0;
-	--sh-size--1: 1px 2px 4px 0;
-	--sh-size--2: 2px 4px 8px 0;
-	--sh-size--3: 4px 8px 16px 0;
-	--sh-size--4: 8px 16px 32px 0;
-	--sh-size--5: 16px 32px 64px 0;
 
-	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
-	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);
+	// 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+	--sh-size--0: 1px 2px 3px -1px;
+	--sh-size--1: 2px 4px 6px -1px;
+	--sh-size--2: 3px 6px 9px -1px;
+	--sh-size--3: 5px 10px 15px -1px;
+	--sh-size--4: 8px 16px 24px -1px;
+	--sh-size--5: 13px 26px 39px -1px;
 
-	--sh--1: var(--sh-size--0) hsl(var(--sh-hsl) / var(--sh-a)),
-		var(--sh-size--1) hsl(var(--sh-hsl) / calc(var(--sh-a) + 4%));
-	--sh--2: var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
-		var(--sh-size--2) hsl(var(--sh-hsl) / calc(var(--sh-a) + 5%));
-	--sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
-		var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
-	--sh--4: var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a)),
-		var(--sh-size--4) hsl(var(--sh-hsl) / calc(var(--sh-a) + 8%));
-	--sh--5: var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a)),
-		var(--sh-size--5) hsl(var(--sh-hsl) / calc(var(--sh-a) + 12%));
-
-	--sh--i1: inset var(--sh-size--0) hsl(var(--sh-hsl) / var(--sh-a)),
-		inset var(--sh-size--1) hsl(var(--sh-hsl) / calc(var(--sh-a) + 4%));
-	--sh--i2: inset var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
-		inset var(--sh-size--2) hsl(var(--sh-hsl) / calc(var(--sh-a) + 5%));
-	--sh--i3: inset var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
-		inset var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
-
-	// --sh--2: var(--sh-size--1) hsl(var(--sh-hsl) / var(--sh-a)),
-	// 	var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a));
-	// --sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
-	// 	var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a));
-	// --sh--4: var(--sh-size--3) hsl(var(--sh-hsl) / var(--sh-a)),
-	// 	var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a));
-	// --sh--5: var(--sh-size--4) hsl(var(--sh-hsl) / var(--sh-a)),
-	// 	var(--sh-size--5) hsl(var(--sh-hsl) / var(--sh-a));
-
-	// --bxsh--1: inset var(--sh-size--0), inset var(--sh-size--1);
-	// --bxsh--2: inset var(--sh-size--1), inset var(--sh-size--2);
-	// --bxsh--3: inset var(--sh-size--2), inset var(--sh-size--3);
-	// --bxsh--4: inset var(--sh-size--3), inset var(--sh-size--4);
+	// --sh-size--0: 0.5px 1px 2px 0;
+	// --sh-size--1: 1px 2px 4px 0;
+	// --sh-size--2: 2px 4px 8px 0;
+	// --sh-size--3: 4px 8px 16px 0;
+	// --sh-size--4: 8px 16px 32px 0;
+	// --sh-size--5: 16px 32px 64px 0;
 
 	/* ------------------------------------------------------------
 	  filter
@@ -392,6 +363,26 @@
 	--filter--lighten: brightness(1.15);
 	--filter--darken: brightness(0.85);
 }
+
+:root,
+.is--resetShVar {
+	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));
+	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
+	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);
+	--sh--1: var(--sh-size--0) var(--sh-color), var(--sh-size--1) var(--sh-color);
+	--sh--2: var(--sh-size--1) var(--sh-color), var(--sh-size--2) var(--sh-color);
+	--sh--3: var(--sh-size--2) var(--sh-color), var(--sh-size--3) var(--sh-color);
+	--sh--4: var(--sh-size--3) var(--sh-color), var(--sh-size--4) var(--sh-color);
+	--sh--5: var(--sh-size--4) var(--sh-color), var(--sh-size--5) var(--sh-color);
+
+	--sh--i1: inset var(--sh-size--0) var(--sh-color), inset var(--sh-size--1) var(--sh-color);
+	--sh--i2: inset var(--sh-size--1) var(--sh-color), inset var(--sh-size--2) var(--sh-color);
+	--sh--i3: inset var(--sh-size--2) var(--sh-color), inset var(--sh-size--3) var(--sh-color);
+}
+// .-bxsh\:3 {
+// 	--sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
+// 		var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
+// }
 
 @supports (content-visibility: auto) or (top: 0lh) {
 	// cqw を算出値で保持するために登録済みカスタムプロパティとして定義

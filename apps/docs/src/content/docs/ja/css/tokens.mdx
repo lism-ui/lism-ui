@@ -689,8 +689,8 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 
 <Preview>
 	<PreviewTitle>bxshクラス</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Columns cols={[3 , 5, 5]} gap={50}>
+	<PreviewArea p={50} nogrid>
+		<Columns cols={[3 , 5, 5]} gap={60}>
 			<BoxShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
 		</Columns>
 	</PreviewArea>
@@ -716,8 +716,8 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 
 <Preview>
 	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Columns cols={[3 , 5, 5]} gap={50}>
+	<PreviewArea p={50} nogrid>
+		<Columns cols={[3 , 5, 5]} gap={60}>
 			<BoxShadowDemos shadows={[ -1, -2, -3 ]}/>
 		</Columns>
 	</PreviewArea>
@@ -729,31 +729,3 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 		```
 	</PreviewCode>
 </Preview>
-
-{/* 
-### シャドウカラーの上書き
-
-bxshユーティリティの構成変数である `--sh-color` を上書き指定することで、シャドウカラーを変更することができます。
-
-<Preview>
-	<PreviewTitle>`--sh-color`の上書き</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "--sh-color:"
-		<div class="l--box -bxsh:3 -p:30" style="--sh-color:rgb(100 100 200 / 20%)"> … </div>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "--sh-color:"
-		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
-		```
-	</PreviewCode>
-</Preview> */}
-
-
-
-{/* ## hover クラス
-
-## border クラス */}
