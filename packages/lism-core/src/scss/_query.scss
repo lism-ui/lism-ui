@@ -14,7 +14,7 @@ $breakpoints: map.merge(
 	),
 	$breakpoints
 );
-$support_bp: 'md' !default;
+$support_bp: 'lg' !default;
 
 @mixin bp-up($bp_name) {
 	$bp_size: map.get($breakpoints, $bp_name);

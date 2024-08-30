@@ -22,7 +22,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 |---|---|---|
 | `itemSize` | <PropBadge type="cssvar">`--item-size`</PropBadge> | 各アイテムのサイズを指定できます。 |
 | `snapAlign` | <PropBadge type="cssvar">`--snap-align`</PropBadge> | 子要素に適用する scroll-snap-align の値 |
-| `unreel` | | 横スクロールを解除するブレイクポイントを指定できます。（`sm`, `md`を標準ではサポートしています) |
+| `unreel` | | 横スクロールを解除するブレイクポイントを指定できます。 |
 
 
 {/* ### 検討事項MEMO
@@ -234,7 +234,7 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 
 ### 大きい画面サイズでReelを解除する
 
-`unreel`でブレイクポイントを指定(`sm`, `md`を標準ではサポートしています)することで、そのポイントを超えるとReelではなく、`<Columns variant='liquid'>`と同じようなレイアウトに切り替わります。
+`unreel`でブレイクポイントを指定(`sm`, `md`, `lg`を標準ではサポートしています)することで、そのポイントを超えるとReelではなく、`<Columns variant='liquid'>`と同じようなレイアウトに切り替わります。
 
 
 <Preview>
