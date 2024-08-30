@@ -1,9 +1,9 @@
 /**
  * 配列と文字列だけを受け取るようにしたclassnamesやclsxの代替関数。
  *   従来の使い方でObjectを渡したいようなケースが出てきた時は、以下のように書き換えて使える。
- *   cx({'foo': isFoo, 'bar': isBar });
+ *   joinAtts({'foo': isFoo, 'bar': isBar });
  *     ↓
- *   cx(isFoo && 'foo', isBar && 'bar');
+ *   joinAtts(isFoo && 'foo', isBar && 'bar');
  *
  *   arguments&whileループとの差はなかった(結果が誤差の範囲 or その時によって反転する)
  *   flat()やfilter()を使うとシンプルになるが、処理速度が数倍になる。
