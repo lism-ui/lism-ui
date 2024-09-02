@@ -39,8 +39,8 @@
 	}
 }
 
-.l--withSide:not([data-lism-side]) {
-	--main-minW: 50%;
+.l--withSide:where(:not([data-lism-side])) {
+	--main-minW: max(16rem, 50%);
 	display: flex;
 	flex-wrap: wrap;
 }

@@ -6,10 +6,14 @@
 	gap: 0.5em 0.75em;
 	border: 1px solid var(--bdc); // .-boxcolor 側で定義している --bdc を使う
 	border-radius: var(--radius--m);
+	// align-items: center;
 }
-.c--callout {
-	--main-minW: 16rem;
-	align-items: center;
+// .c--callout {
+// 	--main-minW: 16rem;
+// }
+
+:where(.c--callout__icon) {
+	font-size: 1.25em;
 }
 
 // .c--callout {

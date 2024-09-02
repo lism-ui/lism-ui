@@ -6,6 +6,8 @@ import { Box, Callout, Icon, Layer, DammyText } from '@lism-ui/astro';
 import { Book } from '@phosphor-icons/react';
 import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import ImportCode from "~/components/code-template/Import.astro";
+
 
 短い文言を目立たせて強調表示したい時に使えるコンポーネントです。
 
@@ -29,18 +31,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Callout } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Callout } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Callout' />
 
 
 ## Usage
@@ -64,8 +55,8 @@ import { Callout } from '@lism-ui/astro';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="c--callout l--sideFlex -boxcolor:red" data-side="first">
-			<div class="c--callout__icon l--center -c:boxcolor -fz:xl">
+		<div class="c--callout l--withSide -boxcolor:red">
+			<div class="c--callout__icon l--center is--side -c:boxcolor">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true">...</svg>
 			</div>
 			<div class="c--callout__body">

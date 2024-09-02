@@ -17,7 +17,7 @@ export default function getProps({
 	// props._lismClass = _lismClass;
 
 	const theProps = { _lismClass };
-	const iconProps = { _lismClass: ['c--callout__icon'], c: 'boxcolor', fz: 'xl' };
+	const iconProps = { _lismClass: ['c--callout__icon'], c: 'boxcolor' };
 	const bodyProps = { _lismClass: ['c--callout__body'] };
 
 	// isFlowはbody側へ渡す
