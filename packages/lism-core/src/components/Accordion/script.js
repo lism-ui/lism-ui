@@ -1,8 +1,5 @@
-import setEvent from './setEvent.js';
+import setAccordion from './setAccordion.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	const detailsAll = document.querySelectorAll('.b--accordion');
-	detailsAll.forEach((details) => {
-		setEvent(details);
-	});
+	setAccordion();
 });

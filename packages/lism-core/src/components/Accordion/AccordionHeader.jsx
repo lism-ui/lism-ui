@@ -5,7 +5,7 @@ import { getAccHeadProps, getAccLabelProps, getAccIconProps } from './getProps';
 
 // exProps
 export default function AccordionHeader({
-	tag,
+	tag = 'span',
 	icon = 'caret-down',
 	openIcon,
 	closeIcon,
@@ -19,8 +19,8 @@ export default function AccordionHeader({
 			<FlexItem {...getAccIconProps(trigger)}>
 				{openIcon ? (
 					<>
-						<Icon icon={openIcon} class='b--accordion__iconOpen ' />
-						<Icon icon={closeIcon} class='b--accordion__iconClose ' />
+						<Icon icon={openIcon} class='c--accordion__openIcon ' />
+						<Icon icon={closeIcon} class='c--accordion__closeIcon ' />
 					</>
 				) : (
 					<Icon icon={icon} />

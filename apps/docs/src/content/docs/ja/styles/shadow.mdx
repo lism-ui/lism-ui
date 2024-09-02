@@ -11,3 +11,44 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 ## Points
+
+
+<Preview>
+	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Columns cols={[3 , 5, 5]} gap={50}>
+			{/* <BoxShadowDemos shadows={[ -1, -2, -3 ]}/> */}
+		</Columns>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="-bxsh:-1">...</div>
+		<div class="-bxsh:-2">...</div>
+		<div class="-bxsh:-3">...</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### シャドウカラーの上書き
+
+bxshユーティリティの構成変数である `--sh-color` を上書き指定することで、シャドウカラーを変更することができます。
+
+<Preview>
+	<PreviewTitle>`--sh-color`の上書き</PreviewTitle>
+	<PreviewArea p={40} nogrid>
+		<Box className='is--resetShVar' style={{'--sh-hsl': '20 80% 80%', '--sh-a':'50%'}}>
+			<Box bxsh='3' p='30' >...</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "--sh-color:"
+		<div class="l--box -bxsh:3 -p:30" style="--sh-hsl:20 8% 40%"> … </div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "--sh-color:"
+		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
+		```
+	</PreviewCode>
+</Preview>

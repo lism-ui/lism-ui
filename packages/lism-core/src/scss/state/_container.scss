@@ -15,6 +15,8 @@
 	inline-size: 100%; // gridやflex内での挙動を考慮。（container-type:inline-sizeだと横幅つぶれる）
 }
 
+// l--container[data-content-size='']
+
 [class*='is--container:'] {
 	container-type: inline-size;
 	--contentSize: var(--size--m);

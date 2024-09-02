@@ -70,7 +70,7 @@ function convertToMsNumber(time) {
 	return Math.round(totalMilliseconds); // 少数点以下を丸める
 }
 
-const setEvent = (currentRef) => {
+export const setEvent = (currentRef) => {
 	const details = currentRef;
 	// トリガーが明示的に指定されていない場合は、<summary> 要素をトリガーとする
 	const clickBtn =
@@ -90,7 +90,7 @@ const setEvent = (currentRef) => {
 	let allowMultiple = false;
 	const parent = details.parentNode;
 	if (null != parent) {
-		const dataMultiple = parent.dataset.multiple;
+		const dataMultiple = parent.dataset.accMultiple;
 		allowMultiple = 'disallow' !== dataMultiple;
 	}
 
@@ -100,7 +100,7 @@ const setEvent = (currentRef) => {
 
 		// 複数展開を許可しない場合、（開く処理の直前で）他の開いているアイテムがあれば閉じる
 		if (!allowMultiple && !details.open) {
-			const openedItem = parent.querySelector(`.b--accordion.-opened`);
+			const openedItem = parent.querySelector(`.-opened`);
 			if (null != openedItem) clickedEvent(openedItem, durationTime, true);
 		}
 
@@ -124,4 +124,10 @@ const setEvent = (currentRef) => {
 	};
 };
 
-export default setEvent;
+const setAccordion = () => {
+	const detailsAll = document.querySelectorAll('.c--accordion');
+	detailsAll.forEach((details) => {
+		setEvent(details);
+	});
+};
+export default setAccordion;

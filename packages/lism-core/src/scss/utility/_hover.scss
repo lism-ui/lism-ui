@@ -1,10 +1,9 @@
 // .-hov\: ユーティリティ
 
 [class*='-hov:'] {
-	transition: filter, opacity, visibility, box-shadow, translate, scale, border, color,
-		background-color;
-	transition-duration: var(--hov--duration);
-	// transition: all var(--hov--duration);
+	transition: var(--hov-trsp, all);
+	transition-duration: var(--hov-trsdu, 0.3s);
+	// transition: all var(--hov-trsdu);
 }
 
 // ------------------------------------------------------------
@@ -116,13 +115,15 @@
 .-hov\:get\:zoom {
 	scale: calc(1 + 0.1 * var(--isHover));
 }
-.-hov\:get\:slideUp {
+.-hov\:get\:slide {
 	grid-template-rows: var(--hov1fr); // calc() で fr単位が使えない
 	opacity: var(--isHover);
-	transition:
-		opacity 0.25s,
-		grid-template-rows 0.25s;
+	transition-property: var(--acc-trsp);
 }
+
+// .-hov\:get\:slide > * {
+// 	overflow: hidden;
+// }
 
 // [class*='-hov:media'] {
 // 	--hov--filter: unset;
@@ -136,7 +137,7 @@
 // 	// .-hov:media:用
 // 	scale: var(--hov--scale);
 // 	filter: var(--hov--filter);
-// 	transition: all var(--hov--duration);
+// 	transition: all var(--hov-duration);
 // }
 
 // [data-hov-media="media:zoom media:bright"]

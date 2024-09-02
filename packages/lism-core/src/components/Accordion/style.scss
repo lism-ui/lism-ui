@@ -1,22 +1,19 @@
-.b--accordion {
-	--isOpened: 0;
-	--duration: var(--acc-duration);
-	overflow: clip; // bdrs考慮
+.c--accordion {
+	--opened: 0;
+	--duration: var(--acc-trsdu); // jsからも取得することに注意
+	// overflow: clip; // bdrs考慮
 }
 
 // 開いた時
-.b--accordion.-opened {
-	--isOpened: 1;
+.c--accordion.-opened {
+	--opened: 1;
 }
 
-.b--accordion__header {
+.c--accordion__header {
 	// cursor: pointer;
+	// align-items: center;
 	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうのを防ぐ
-	align-items: center;
 	gap: var(--em--4);
-	// :where(&) {
-	// 	padding: var(--p--box--s);
-	// }
 
 	/* Safariで表示されるデフォルトの三角形アイコンを消します */
 	&::-webkit-details-marker {
@@ -24,28 +21,26 @@
 	}
 }
 
-.b--accordion__label {
-	flex: 1;
-}
+// .c--accordion__label {
+// 	flex: 1;
+// 	font: inherit;
+// }
 
-.b--accordion__body {
-	display: grid;
+.c--accordion__body {
+	// display: grid;
 	grid-template-rows: 1fr;
-	transition-property: margin-block, padding-block, opacity, grid-template-rows;
+	transition-property: var(--acc-trsp);
 	transition-duration: var(--duration);
-
-	// :where(&) {
-	// 	padding: var(--p--box--s);
-	// }
 }
 
-.b--accordion__inner {
-	overflow: hidden; // ※ 正常な animation に必須
-}
+// ※ 正常な animation に必須
+// .c--accordion__inner {
+// 	overflow: hidden;
+// }
 
 // 閉じている時
-.b--accordion:not(.-opened) {
-	> .b--accordion__body {
+.c--accordion:not(.-opened) {
+	> .c--accordion__body {
 		opacity: 0.1;
 		grid-template-rows: 0fr;
 		padding-block: 0 !important;
@@ -54,41 +49,40 @@
 }
 
 // アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
-:where(.b--accordion__icon) {
-	font-size: 1.125em;
-	background-color: transparent;
-	display: inline-flex;
-
-	// [data-clickable="icon"] のとき
-	&:where([data-role='trigger']) {
-		padding: 0.375em;
-		border: solid 1px currentColor;
-		border-radius: var(--radius--xs);
-	}
+:where(.c--accordion__icon) {
+	// font-size: 1.125em;
+	// display: inline-flex;
 
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
 	> .a--icon {
-		// grid-area: icon;
 		transition: rotate 0.25s;
-		rotate: calc(0deg - var(--isOpened) * 180deg);
+		rotate: calc(0deg - var(--opened) * 180deg);
 	}
 }
-.b--accordion__iconOpen {
-	opacity: calc(1 - var(--isOpened));
-}
-.b--accordion__iconClose {
-	opacity: calc(0 + var(--isOpened));
-	position: absolute;
-	rotate: calc(180deg - var(--isOpened) * 180deg);
+
+:where(.c--accordion__icon[data-role='trigger']) {
+	padding: 0.375em;
+	background-color: transparent;
+	border: solid 1px currentColor;
+	border-radius: var(--radius--xs);
 }
 
-.b--accordion_header:has([data-role='trigger']) {
+.c--accordion__openIcon {
+	opacity: calc(1 - var(--opened));
+}
+.c--accordion__closeIcon {
+	position: absolute;
+	opacity: calc(0 + var(--opened));
+	rotate: calc(180deg - var(--opened) * 180deg);
+}
+
+.c--accordion_header:has([data-role='trigger']) {
 	pointer-events: none;
 }
 
-.b--accordion__label > a,
-.b--accordion__icon {
+.c--accordion__label > a,
+.c--accordion__icon {
 	pointer-events: auto;
 }
-// .-opened > .b--accordion__header > .b--accordion__icon {
+// .-opened > .c--accordion__header > .c--accordion__icon {
 // 	transform: rotate(180deg);

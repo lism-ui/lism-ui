@@ -10,10 +10,15 @@
 
 :root {
 	--list-pis: 1.5em;
-	--acc-duration: 0.25s;
-	--hov--duration: 0.3s;
+	--hov-trsdu: 0.3s;
+	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color,
+		background-color;
 
-	--cell--p: var(--p--box--s);
+	// hov:get:slide でも使用
+	--acc-trsdu: 0.3s;
+	--acc-trsp: margin-block, padding-block, opacity, grid-template-rows;
+
+	--cell-p: var(--p--box--s);
 }
 
 html {

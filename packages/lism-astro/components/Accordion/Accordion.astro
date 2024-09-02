@@ -16,9 +16,6 @@ const props = Astro.props || {};
 
 <script>
 	// import setEvent from './setEvent';
-	import setEvent from '@lism-ui/core/components/Accordion/setEvent';
-	const accs = document.querySelectorAll('.b--accordion');
-	accs.forEach((acc) => {
-		setEvent(acc);
-	});
+	import setAccordion from '@lism-ui/core/components/Accordion/setAccordion';
+	setAccordion();
 </script>

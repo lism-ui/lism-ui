@@ -22,7 +22,7 @@ table {
 
 td,
 th {
-	padding: var(--cell--p);
+	padding: var(--cell-p);
 	border-inline: var(--bds) var(--bdwX) var(--bdc);
 	border-block: var(--bds) var(--bdwY) var(--bdc);
 }
@@ -65,7 +65,7 @@ tfoot {
 */
 // table:relaxed
 .table--relaxed {
-	--cell--p: var(--p--box);
+	--cell-p: var(--p--box);
 }
 
 // borderで囲む

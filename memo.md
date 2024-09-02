@@ -55,3 +55,7 @@ transpilePackages: ['@lism-ui/test'],
 
 .editorconfig や lint設定ファイルは基本的にルートに置いておくだけでよさそう。
 astroプロジェクトはprettierrc上書きするためにそれぞれ用意したりする。
+
+## stylelint
+
+stylelint 16 にすると保存するたびにバグる

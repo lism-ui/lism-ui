@@ -18,13 +18,13 @@ const getCopyCode = (name: string) => `import { ${component} } from '@lism-ui/${
 
 <Preview>
 	<PreviewCode slot='tab' label='React'>
-		<Expressive copyCode={getCopyCode('core')}>
-			<Fragment set:html={getCode('core')} />
-		</Expressive>
+		<Expressive copyCode={getCopyCode('core')}
+			><Fragment set:html={getCode('core')} /></Expressive
+		>
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
-		<Expressive copyCode={getCopyCode('astro')}>
-			<Fragment set:html={getCode('astro')} />
-		</Expressive>
+		<Expressive copyCode={getCopyCode('astro')}
+			><Fragment set:html={getCode('astro')} /></Expressive
+		>
 	</PreviewCode>
 </Preview>
