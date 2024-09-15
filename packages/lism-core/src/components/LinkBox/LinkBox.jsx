@@ -3,6 +3,7 @@ import separateLinkProps from '../separateLinkProps';
 
 export default function LinkBox({
 	layout,
+
 	setHiddenLink = false,
 	linkLabel = '',
 	children,
@@ -20,15 +21,19 @@ export default function LinkBox({
 	// hiddenLink でリンクを仕込むことも可能
 	if (setHiddenLink) {
 		return (
-			<LismComponent isLinkBox tag='div' {...otherProps}>
-				<a className='a--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps}></a>
+			<LismComponent isLinkBox hov='fade' tag='div' {...otherProps}>
+				<a
+					className='is--hiddenLink is--skipFlow'
+					aria-label={linkLabel}
+					{...linkProps}
+				></a>
 				{children}
 			</LismComponent>
 		);
 	}
 
 	return (
-		<LismComponent isLinkBox tag={defaultTag} {...linkProps} {...otherProps}>
+		<LismComponent isLinkBox hov='fade' tag={defaultTag} {...linkProps} {...otherProps}>
 			{children}
 		</LismComponent>
 	);

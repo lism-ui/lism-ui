@@ -13,7 +13,7 @@
 .l--columns--liquid {
 	// auto-fill or auto-fit : 親の幅に対してアイテムが少ない時に、引き伸ばすか、伸ばさないか
 	--col-auto: auto-fill;
-	--col-size: var(--size--item); // var(--contentSize--xs)
+	--col-size: var(--contentSize--min);
 
 	display: grid;
 	grid-template-columns: repeat(var(--col-auto), minmax(min(var(--col-size), 100%), 1fr));

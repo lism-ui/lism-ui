@@ -19,6 +19,9 @@
 	--acc-trsp: margin-block, padding-block, opacity, grid-template-rows;
 
 	--cell-p: var(--p--box--s);
+
+	// is--overwide で使用
+	--overwide-size: 100vw;
 }
 
 html {

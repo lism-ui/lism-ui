@@ -3,7 +3,7 @@ title: 'Icon'
 description: ...
 ---
 
-import { Container, Grid, Stack, Flex, Callout, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
+import { Container, Columns, Grid, Stack, Flex, Callout, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
@@ -11,7 +11,7 @@ import presetIcons from '@lism-ui/core/components/Icon/presets';
 import { Note } from '~/components/ex/Note';
 
 export const PrestIcons = () => {
-	return <Grid variant='tile' itemMinW='10rem' gap='20'>
+	return <Columns variant='liquid' colSize='10rem' gap='20'>
 			{Object.keys(presetIcons).map((iconName) => {
 				return (
 					<Stack key={iconName} gap='10' ai='c' bgc='base-2' bdrs='xs' p='box' lh='1'>
@@ -20,7 +20,7 @@ export const PrestIcons = () => {
 					</Stack>
 				);
 			})}
-	</Grid>;
+	</Columns>;
 }
 
 

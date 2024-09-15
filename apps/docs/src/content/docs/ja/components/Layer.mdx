@@ -4,16 +4,21 @@ description: ...
 ---
 
 
-import { Media, Layer, Stack, Callout, Note, Text, Box, Columns, Center, Frame } from '@lism-ui/astro';
+import { Media, Layer, Stack, Flex, Callout, Note, Text, Box, Columns, Center, Frame, Button } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
-`position:absolute`で要素を親要素に被せて配置するためのモジュールです。
+
+
+{/* [`is--container`](/ja/css/layout-state/#is--container) */}
+[`.is--layer`](/ja/css/layout-state/#is--layer)をデフォルトで出力するコンポーネント(`<Lism isLayer>`のエイリアス）です。
+
+`position:absolute`で要素を親要素サイズに合わせて配置できます。
 
 CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定された状態で配置されます。
 
 ```css
-.l--layer {
+.is--layer {
 	position: absolute;
 	inset: 0;
 	overflow: hidden;
@@ -21,14 +26,18 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 ```
 
 <Reference>
-要素を単純に`position:absolute`で配置したい場合は、`pos='a'`など各プロパティを使用することもできます。  
+要素を単純に`position:absolute`で配置したいだけの場合は、`-pos:a`クラスなどを使用することもできます。
 参考：[absoluteで配置する方法](/ja/props/others/absolute)
 </Reference>
 
 
-<Callout type="warning">
-Layerの親要素を `position:relative` にしておく必要があることに注意してください。
-</Callout>
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+| `layout` | 展開したい Lismコンポーネント を指定できます。|
+| `blur`,`contrast`,`brightness`,`grayscale`,`hueRotate`,`invert`,`saturate`,`sepia` | これらをまとめて `css.backdropFilter` に受け渡します。|
+
 
 
 ## Import
@@ -51,7 +60,7 @@ import { Layer } from '@lism-ui/core';
 			</Layer>
 		</Box>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Box pos='r' py='40'>
 			<Text fz='4xl' fw='bold' ta='c' lts='l' c='content-3'>BG</Text>
@@ -65,7 +74,7 @@ import { Layer } from '@lism-ui/core';
 		```html
 		<div class="l--box -pos:r -py:40">
 			<p class="-fz:4xl -fw:bold -ta:c -lts:l -c:content-3">BG</p>
-			<div class="l--layer -p:20 -bd:guide -bgc:" style="--bgc:hsl(var(--hsl-purple) / 10%)">
+			<div class="is--layer -p:20 -bd:guide -bgc:" style="--bgc:hsl(var(--hsl-purple) / 10%)">
 				<p>Layer Contents</p>
 			</div>
 		</div>
@@ -74,108 +83,9 @@ import { Layer } from '@lism-ui/core';
 </Preview>
 
 
-{/* <Preview>
-	<PreviewTitle>
-		inset上書き
-	</PreviewTitle>
-	<PreviewArea resize p={10}>
-		<Box pos='r' py='50'>
-			<Text fz='4xl' fw='bold' ta='c' lts='l' c='content-3'>BG</Text>
-			<Layer inset='cY' left='0' w='100' p='20' bd='guide' bgc='purple:10%'>
-				<p>Layer Contents</p>
-			</Layer>
-		</Box>
-	</PreviewArea>
-</Preview> */}
+### backdropFilterの活用
 
-
-{/* ### positionの指定
-
-export const LayerPositionsDemo = () => {
-	return (
-		<Columns cols={[1, 3]}>
-			{[
-				"left top",
-				"center top",
-				"right top",
-				"left center",
-				"center",
-				"right center",
-				"left bottom",
-				"center bottom",
-				"right bottom",
-			].map((position) => (
-				<Box key={position} pos='r' py={40} bgc='base-2'>
-					<Text fz="4xl" fw="bold" ta="c" opacity=".1">BG</Text>
-					<Layer position={position} bgc="purple:10%" bd="guide">
-						<Text fz="s" p={10} lh="1.5">"{position}"</Text>
-					</Layer>
-				</Box>
-			))}
-		</Columns>
-	);
-}
-
-<Preview>
-	<PreviewTitle>
-		`position`の指定による配置の違い
-	</PreviewTitle>
-	<PreviewArea p={10}>
-		<LayerPositionsDemo />
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "position=\{position\}"
-		<Box pos='r' py={40} bgc='base-2'>
-			<Text fz='xl' fw='bold' ta='c' opacity='.1'>BG</Text>
-			<Layer position={position} bgc='purple:10%' bd='guide'>
-				<Text fz='xs' p={10} lh='1.5'>...</Text>
-			</Layer>
-		</Box>
-		```
-	</PreviewCode>
-</Preview> */}
-
-
-
-
-{/* ### `overflow:auto` がデフォルトの挙動です。
-
-`<Layer>`(`.l--layer`)は `overflow:auto` が適用されており、親要素よりコンテンツの高さが高くなる場合は縦方向にスクロール可能になります。
-
-<Preview>
-	<PreviewTitle>
-		コンテンツが長い場合
-	</PreviewTitle>
-	<PreviewArea resize p={10}>
-		<Box pos='r' py={60}>
-			<Text fz="4xl" fw="bold" ta="c" lts='l'>BG</Text>
-			<Layer size="cover" isFlow p='box'>
-				<DammyText />
-				<DammyText length='l' />
-				<DammyText length='xl' />
-			</Layer>
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Layer size="cover" isFlow p='box'>
-			...
-		</Layer>
-		```
-	</PreviewCode>
-</Preview>
- */}
-
-
-### フィルター処理
-
-`<Layer>`は、`backdrop-filter`の主要なプロパティをオブジェクトで指定できるようにもなっています。
-
-| プロパティ | 説明 |
-|---|---|
-| `blur`,`contrast`,`brightness`,`grayscale`,`hue-rotate`,`invert`,`saturate`,`sepia`, | これらをまとめて `css.backdropFilter` に受け渡します。|
-| `backdropFilter`|`css.backdropFilter`に直接値を渡します。`FILTER`トークンを指定する時にはこちらを使います。こちらの指定があるとき、上記の個別指定は無視されます。|
-
+Lismコンポーネントでは、`css.backdropFilter` に指定した値を`backdrop-filter`としてインラインスタイルを出力できるようになっていますが、`<Layer>`コンポーネントでは、この機能をより活用しやすいようになっています。
 
 <Preview>
 	<PreviewTitle>
@@ -187,7 +97,7 @@ export const LayerPositionsDemo = () => {
 			<Layer blur='3px' />
 		</Box>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx {3}
 		<Box pos='r' p='box:l'>
 			<Text fz='2xl' fw='bold' ta='center'>Background</Text>
@@ -199,7 +109,7 @@ export const LayerPositionsDemo = () => {
 		```html {3}
 		<div class="l--box -pos:r -p:box:l">
 			<p class="-fz:2xl -fw:bold -ta:c">Background</p>
-			<div class="l--layer" style="backdrop-filter:blur(3px)"></div>
+			<div class="is--layer" style="backdrop-filter:blur(3px)"></div>
 		</div>
 		```
 	</PreviewCode>
@@ -207,7 +117,7 @@ export const LayerPositionsDemo = () => {
 
 <Preview>
 	<PreviewTitle>
-		画像の色味を変える
+		背景の色味を変える
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Frame aspect='cinema'>
@@ -246,39 +156,9 @@ export const LayerPositionsDemo = () => {
 </Preview>
 
 
-<Preview>
-	<PreviewTitle>
-		`FILTER`トークンを使う
-	</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Frame aspect='cinema'>
-			<Media src='/img.jpg' alt='' width='960' height='640' />
-			<Layer backdropFilter='blur' />
-		</Frame>
-		<Frame aspect='cinema'>
-			<Media src='/img.jpg' alt='' width='960' height='640' />
-			<Layer backdropFilter='lighten' />
-		</Frame>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx {3,7} "'blur'" "'lighten'"
-		<Frame aspect='cinema'>
-			<Media src='/img.jpg' alt='' width='960' height='640' />
-			<Layer backdropFilter='blur' />
-		</Frame>
-		<Frame aspect='cinema'>
-			<Media src='/img.jpg' alt='' width='960' height='640' />
-			<Layer backdropFilter='lighten' />
-		</Frame>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
 ### メディアレイヤー
 
-`isFrame`と組み合わせることで、親要素のサイズに合わせたメディアレイヤーを配置することができます。
+`is--frame`と`is--layer`を組み合わせることで、親要素のサイズに合わせたメディアレイヤーを配置することができるので、背景画像として使用することができます。
 
 {/* `MediaLayer` */}
 {/* **メディア（画像・動画）を親要素サイズに合わせてabsolute配置する**ための`<Layer>`の拡張コンポーネントです。 */}
@@ -298,31 +178,38 @@ export const LayerPositionsDemo = () => {
 		例
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Center aspect='cinema' pos='r' bgc='base'>
-			<Layer isFrame z='0' opacity='.5'>
+		<Box hasGutter pos='r' bgc='base'>
+			<Layer isFrame z='0' opacity='.4'>
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Layer>
-			<DammyText z='1' />
-		</Center>
+			<Stack pos='r' z='1' py='50' gap='20'>
+				<DammyText/>
+				<DammyText length='l' />
+			</Stack>
+		</Box>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
-		```jsx {2}
-		<Center aspect='cinema' pos='r' bgc='base'>
-			<Layer isFrame z='0' opacity='.5'>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Box hasGutter pos='r' bgc='base'>
+			<Layer isFrame z='0' opacity='.4'>
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Layer>
-			<DammyText z='1' />
-		</Center>
+			<Stack pos='r' z='1' py='50' gap='20'>
+				<DammyText/>
+				<DammyText length='l' />
+			</Stack>
+		</Box>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
+	{/* <PreviewCode slot='tab' label='HTML'>
 		```html {2-4}
 		<div class="l--center -aspect:cinema -pos:r -bgc:base">
-			<div class="l--layer is--frame -z:0" style="opacity:.5">
+			<div class="is--layer is--frame -z:0" style="opacity:.5">
 				<img src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
 			</div>
 			<p class="-z:1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
 		</div>
 		```
-	</PreviewCode>
+	</PreviewCode> */}
 </Preview>
+

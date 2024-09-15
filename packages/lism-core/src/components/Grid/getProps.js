@@ -56,7 +56,6 @@ export function getGridProps({
 	variant,
 	_lismClass = [],
 	lismStyle = {},
-	itemMinW,
 	...props
 }) {
 	_lismClass.push(`l--${_grid}`);
@@ -65,10 +64,6 @@ export function getGridProps({
 	// grid 系の props をまとめる
 	let returnProps = mergeGridContextProps(props);
 	returnProps._context = 'grid'; //getGridContext(props?.grid);
-
-	if (itemMinW) {
-		lismStyle['--item-minW'] = itemMinW;
-	}
 
 	returnProps._lismClass = _lismClass;
 	returnProps.lismStyle = lismStyle;
@@ -79,7 +74,16 @@ export function getGridProps({
 export function getGridItemProps(props) {
 	if (null == props.gridItem) props.gridItem = {};
 
-	['ga', 'gc', 'gr', 'gcs', 'gce', 'grs', 'gre', 'aslf', 'jslf', 'pslf', 'ord'].forEach((key) => {
+	[
+		'ga',
+		'gc',
+		'gr',
+		'gcs',
+		'gce',
+		'grs',
+		'gre',
+		//'aslf', 'jslf', 'pslf', 'ord'
+	].forEach((key) => {
 		if (null != props[key]) {
 			props.gridItem[key] = props[key];
 			delete props[key];

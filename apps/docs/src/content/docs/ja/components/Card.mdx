@@ -3,10 +3,10 @@ title: 'Card'
 description: ...
 ---
 
-import { DammyText, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, OverlayLink, Layer, Button, Columns, Media } from '@lism-ui/core';
+import { DammyText, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, Link, Layer, Button, Columns, Media } from '@lism-ui/core';
 import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import { Card, CardLink, CardMedia, CardBody } from '~/components/ex/Card';
+import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
 カード型でコンテンツを表示できるコンポーネントです。 全体をリンク化することも可能です。
 
@@ -27,359 +27,451 @@ radiusのデフォルト、`1`にする？ */}
 
 ## 構築例-1
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>表示</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<Columns gap='40'>
-			<Card>
-				<CardMedia aspect='16/9'>
-					<Media src='/img.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title A</h3>
-					<DammyText lang='ja' fz='s' />
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</Card>
-			{/* <Card>
-				<CardMedia aspect='16/9'>
-					<Media src='/img.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title B</h3>
-					<DammyText lang='ja' length='m' fz='s'/>
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</Card> */}
-		</Columns>
-	</PreviewArea>
+
 </Preview>
+ */}
 
 
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-	```jsx
-	import { Flex, Stack, Frame, FlexItem, LinkBox } from '@lism-ui/core';
-
-	export function Card({ isFlex, children, ...props }) {
-		let CardLayout = isFlex ? Flex : Stack;
-		return (
-			<CardLayout className='c--card' bgc='base' bdrs='m' bxsh='2' ov='h' {...props}>
-				{children}
-			</CardLayout>
-		);
-	}
-
-	// linkbox版
-	export function CardLink(props) {
-		return <LinkBox layout={Card} {...props} />;
-	}
-
-	export function CardMedia(props) {
-		// fxsh='0' は、横並びにした時用。
-		return <FlexItem layout={Frame} fxsh='0' ov='h' {...props} />;
-	}
-
-	export function CardBody({ children, ...props }) {
-		return (
-			<FlexItem layout={Stack} fxg='1' p='box' gap='10' {...props}>
-				{children}
-			</FlexItem>
-		);
-	}
-	```
-	</PreviewCode>
-	{/* <PreviewCode slot='tab' label='Astro'>
-	```jsx
-	```
-	</PreviewCode> */}
-</Preview>
 
 
-### Usage
+## Usage
+
+標準では、`<Card>`は`<WihSide>`で構成されています。
 
 <Preview>
-	<PreviewTitle>シンプルなカードレイアウト</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<Columns gap='40'>
-			<Card>
-				<CardMedia aspect='16/9'>
-					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title A</h3>
-					<DammyText lang='ja' fz='s' />
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</Card>
-			<Card>
-				<CardMedia aspect='16/9'>
-					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title B</h3>
-					<DammyText lang='ja' length='m' fz='s'/>
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</Card>
-		</Columns>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<Columns gap='40'>
-		<Card>
-			<CardMedia aspect='16/9'>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>Card Title A</h3>
-				<DammyText lang='ja' fz='s' />
-				<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
 			</CardBody>
 		</Card>
-		<Card>
-			<CardMedia aspect='16/9'>
+		<Card fxd='rr' sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>Card Title B</h3>
-				<DammyText lang='ja' length='m' fz='s'/>
-				<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
 			</CardBody>
 		</Card>
-	</Columns>
-	```
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Usage'>
+		```jsx
+		<Card sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		<Card fxd='rr' sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>ブレイクポイントで切り替える</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='50%' dataSide='start start'>
+			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		<Card sideW='50%' dataSide='end start'>
+			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Usage'>
+		```jsx
+		<Card sideW='50%' dataSide='start start'>
+			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		<Card sideW='50%' dataSide='end start'>
+			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>横向きの時はコンテンツ側の高さにあわせる</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='40%' dataSide='start start'>
+			<CardMedia isSide aspect={['2/1', 'unset']}>
+				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "layout='Flex'"
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* <Preview>
+	<PreviewTitle>flexを使う</PreviewTitle>
+	<PreviewArea resize p='30'>
+	<Card layout='Flex' fxd={['column','row']}>
+		<CardMedia fxb='40%' fxsh='0' aspect='16/9'>
+			<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+		</CardMedia>
+		<CardBody>
+			<h3 className='-fz:m'>Card Title</h3>
+			<DammyText lang='ja' fz='s' />
+		</CardBody>
+	</Card>
+	</PreviewArea>
+</Preview> */}
+
+
+### カードにリンクをつける
+
+`<Card>`にhrefを指定すると、カード全体が`<LinkBox>`で構成されるようになり、リンクになります。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card href='###' sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='Usage'>
+		```jsx "href='###'"
+		<Card href='###' sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+リンク要素を一部の要素に限定したい場合や、カード全体をリンクにしつつ、別のリンクを含めたい場合、 `is--overlayLink` か `is--hiddenLink` を使用してください。
+
+<Preview>
+	<PreviewTitle>is--overlayLinkを使う例</PreviewTitle>
+	<PreviewArea resize p='40'>
+		<Card isLinkBox hov='bxsh'>
+			<CardMedia aspect='4/3'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>
+					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
+				</h3>
+				<DammyText lang='ja' fz='s' />
+				<Text aslf='end' mt='auto' fz='s'>
+					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
+				</Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "#inner-link" "href='#badge-link'" "\<Link isOverlayLink href=\'#card-link\'"
+		<Card isLinkBox hov='bxsh'>
+			<CardMedia aspect='4/3'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>
+					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
+				</h3>
+				<DammyText lang='ja' fz='s' />
+				<Text aslf='end' mt='auto' fz='s'>
+					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
+				</Text>
+			</CardBody>
+		</Card>
+		```
 	</PreviewCode>
 </Preview>
 
 <Preview>
-	<PreviewTitle>リンクあり</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewTitle>内部にもリンクを設置(`hiddenLink` を使う例）</PreviewTitle>
+	<PreviewArea resize p='40'>
+		<Card href='#card-hiddenlink' setHiddenLink sideW='50%' hov='bxsh' >
+			<CardMedia aspect='4/3' isSide>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Text ta='right' mt='auto' fz='s'>
+					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
+				</Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "setHiddenLink" "#inner-link" "href='#badge-link'" "href='#card-hiddenlink'"
+		<Card href='#card-hiddenlink' setHiddenLink sideW='50%' hov='bxsh' >
+			<CardMedia aspect='4/3' isSide>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Text ta='right' mt='auto' fz='s'>
+					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
+				</Text>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+### 横並び
+
+`layout='Flex'`を指定すると、`<Card>`は`<Flex>`で構成され、他にflex用のプロパティ指定が特になければ横並びで固定されます。
+
+<Preview>
+	<PreviewTitle>横向きで固定</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card layout='Flex'>
+			<CardMedia w={['32%','40%','50%']} fxsh='0'>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		<Card layout='Flex' fxd='rr'>
+			<CardMedia w={['32%','40%','50%']} fxsh='0'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "layout='Flex'" "fxsh='0'" "fxg='1'"
+		<Card layout='Flex'>
+			<CardMedia w={['40%','50%']} fxsh='0'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+
+{/* Gridでも構成できる
+
+<Preview>
+	<PreviewTitle>横向きで固定 Gridパターン</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card layout={Grid} gtc='40% 1fr'>
+			<CardMedia aspect='1/1' h='100%' w='100%'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx 
+		<Card layout={Grid} gtc='40% 1fr'>
+			<CardMedia>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview> */}
+{/* aspectは画面サイズに余裕がある時のみ有効になります。 */}
+
+ <Preview>
+	<PreviewTitle>画像のアスペクト比を指定する例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card layout='Flex' href='###' hov='bxsh,up'>
+			<CardMedia aspect='1/1' w='36%' fxsh='0'>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' length='s' fz='s'/>
+				<Text aslf='end' mt='auto' fz='s'>Bottom Text</Text>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Card layout='Flex' href='###' hov='bxsh,up'>
+			<CardMedia w='40%' aspect='1/1' fxsh='0'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' gap='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' length='s' fz='s'/>
+				<Text aslf='end' mt='auto' fz='s'>Bottom Text</Text>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+
+この時、コンテンツの方が高さがでてくると、カードの高さはコンテンツの高さに合わせて伸びますが、align-itemsを変更するとaspectを維持させることもできます。
+
+
+{/* <Preview>
+	<PreviewTitle>コンテンツ側の最低幅を固定</PreviewTitle>
+	<PreviewArea resize p='30'>
+	<Card p='20' bdrs='l'>
+		<CardMedia fxb='75%' bdrs='inner'>
+			<Media  src='/img/img-1.jpg' alt='' width='960' height='640' />
+		</CardMedia>
+		<CardBody fxb='8rem' fxg='1' fxsh='0'>
+			<h3 className='-fz:m'>Card Title</h3>
+			<DammyText lang='ja' length='s' fz='s' />
+		</CardBody>
+	</Card>
+	</PreviewArea>
+</Preview> */}
+
+
+
+### 縦並び
+
+<Preview>
+	<PreviewTitle>縦向きレイアウト</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Columns variant='liquid' gap='40'>
+			<Card layout='Stack' href='#card-1'>
+				<CardMedia aspect='16/9'>
+					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody fxg='1'>
+					<h3 className='-fz:m'>Card Title</h3>
+					<DammyText lang='ja' fz='s' />
+					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+				</CardBody>
+			</Card>
+			<Card layout='Stack' href='#card-2'>
+				<CardMedia aspect='16/9'>
+					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+				</CardMedia>
+				<CardBody fxg='1'>
+					<h3 className='-fz:m'>Card Title</h3>
+					<DammyText lang='ja' length='s' fz='s'/>
+					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
+				</CardBody>
+			</Card>
+		</Columns>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "href"
 		<Columns gap='40'>
-			<CardLink href='#card-1'>
+			<Card href='#card-1'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody>
-					<h3 className='-fz:m'>Card Title A</h3>
+					<h3 className='-fz:m'>Card Title</h3>
 					<DammyText lang='ja' fz='s' />
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
-			</CardLink>
-			<CardLink href='#card-2'>
+			</Card>
+			<Card href='#card-2'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody>
-					<h3 className='-fz:m'>Card Title B</h3>
+					<h3 className='-fz:m'>Card Title</h3>
 					<DammyText lang='ja' length='m' fz='s'/>
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
-			</CardLink>
+			</Card>
 		</Columns>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "CardLink"
-		<Columns gap='40'>
-			<CardLink href='#card-1'>
-				<CardMedia aspect='16/9'>
-					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title A</h3>
-					<DammyText lang='ja' fz='s' />
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</CardLink>
-			<CardLink href='#card-2'>
-				<CardMedia aspect='16/9'>
-					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody>
-					<h3 className='-fz:m'>Card Title B</h3>
-					<DammyText lang='ja' length='m' fz='s'/>
-					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
-				</CardBody>
-			</CardLink>
-		</Columns>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>内部にもリンクあり(OverlayLinkを使う例）</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<CardLink hov='bxsh' maxW='xs'>
-			<CardMedia aspect='16/9'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
-			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>
-					<OverlayLink href='#card-link'>Card Title(Link)</OverlayLink>
-				</h3>
-				<DammyText lang='ja' fz='s' />
-				<Box ta='right' mt='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Box>
-			</CardBody>
-		</CardLink>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "CardLink" "OverlayLink"
-		<CardLink hov='bxsh' maxW='xs'>
-			<CardMedia aspect='16/9'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
-			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>
-					<OverlayLink href='#card-link'>Card Title(Link)</OverlayLink>
-				</h3>
-				<DammyText lang='ja' fz='s' />
-				<Box ta='right' mt='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Box>
-			</CardBody>
-		</CardLink>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>内部にもリンクあり(`hiddenLink` を使う例）</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<CardLink setHiddenLink href='#card-hiddenlink' hov='bxsh' maxW='xs'>
-			<CardMedia aspect='16/9'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
-			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>Card Title</h3>
-				<DammyText lang='ja' fz='s' />
-				<Box ta='right' mt='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Box>
-			</CardBody>
-		</CardLink>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "setHiddenLink"
-		<CardLink setHiddenLink href='#card-hiddenlink' hov='bxsh' maxW='xs'>
-			<CardMedia aspect='16/9'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
-			</CardMedia>
-			<CardBody>
-				<h3 className='-fz:m'>Card Title</h3>
-				<DammyText lang='ja' fz='s' />
-				<Box ta='right' mt='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Box>
-			</CardBody>
-		</CardLink>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-
-
-### 横並びカードの実装例
-
-今回紹介しているコンポーネントの例では、`<Card>`（`<CardLink>`）に`isFlex`を指定すると`<Stack>`ではなく`<Flex>`で構成されるようになっています。
-
-
-<Preview>
-	<PreviewTitle>横並びカード</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<Card isFlex>
-			<CardMedia fxb={['40%','50%']}>
-				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
-			</CardMedia>
-			<CardBody fz={['s','m']}>
-				<h3>Card Title</h3>
-				<DammyText length='m' lh='s'/>
-				{/* <FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem> */}
-			</CardBody>
-		</Card>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "isFlex"
-		<Card isFlex>
-			<CardMedia fxb={['40%','50%']}>
-				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
-			</CardMedia>
-			<CardBody fz={['s','m']}>
-				<h3>Card Title</h3>
-				<DammyText length='m' lh='s'/>
-			</CardBody>
-		</Card>
-		```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>横並びの方向を 逆順にして、リンクも設定する</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<CardLink isFlex fxd='rr' href='###' hov='bxsh,up'>
-			<CardMedia fxb={['40%','50%']}>
-				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
-			</CardMedia>
-			<CardBody fz={['s','m']}>
-				<h3>Card Title</h3>
-				<DammyText length='m' lh='s'/>
-				<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
-			</CardBody>
-		</CardLink>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "fxd='rr'"
-		<CardLink isFlex fxd='rr' href='###' hov='bxsh,up'>
-			<CardMedia fxb={['40%','50%']}>
-				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
-			</CardMedia>
-			<CardBody fz={['s','m']}>
-				<h3>Card Title</h3>
-				<DammyText length='m' lh='s'/>
-				<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
-			</CardBody>
-		</CardLink>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-<PreviewTitle>画面サイズに余裕があるときのアスペクト比率を指定する場合の例</PreviewTitle>
-<Preview>
-	<PreviewArea p={20} maxW='40em' resize>
-		<Card isFlex>
-			<CardMedia fxb='40%' aspect='1/1'>
-				<img src='/img.jpg' alt='' width='960' height='640' />
-			</CardMedia>
-			<CardBody>
-				<h3>Card Title</h3>
-				<DammyText/>
-				<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
-			</CardBody>
-		</Card>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx {2}
-		<Card isFlex>
-			<CardMedia fxb='40%' aspect='1/1'>
-				<img src='/img.jpg' alt='' width='960' height='640' />
-			</CardMedia>
-			<CardBody>
-				<h3>Card Title</h3>
-				<DammyText/>
-				<FlexItem fz='s' aslf='fe' mt='auto'>Bottom Text</FlexItem>
-			</CardBody>
-		</Card>
 		```
 	</PreviewCode>
 </Preview>
@@ -390,7 +482,7 @@ radiusのデフォルト、`1`にする？ */}
 	<PreviewArea p={20} maxW='40em'>
 		<Card isFlex dir='rtl'>
 			<CardMedia w='40%'>
-				<img src='/img.jpg' alt='' width='960' height='640' />
+				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
@@ -403,7 +495,7 @@ radiusのデフォルト、`1`にする？ */}
 		```jsx
 		<Card isFlex dir='rtl'>
 			<CardMedia w='40%'>
-				<img src='/img.jpg' alt='' width='960' height='640' />
+				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody>
 				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
@@ -416,90 +508,53 @@ radiusのデフォルト、`1`にする？ */}
 </Preview> */}
 
 
-### コンテンツを画像に被せる例
+### その他の例
 
 <Preview>
-	<PreviewTitle>画像全体の上にコンテンツを被せる</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<Card pos='r' bxsh='3' bdrs='l'>
-			<CardMedia pos='a' inset='0'>
-				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
+	<PreviewTitle>bdrs='inner'の活用</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='40%' p='20' gap='20' bdrs='l'>
+			<CardMedia isSide aspect='16/9' bdrs='inner'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody pos='r' z='1' aspect='16/9' minH='fit-content' bgc='rgba(255,255,255,0.5)' >
-				<Stack h='100%' gap='20' tsh='white'>
-					<h3>Card Title</h3>
-					<DammyText lh='s' mb='auto'/>
-					<Button href='#button-test' tsh='none' bdrs='full' ml='auto' mbs='30' minW='25%'>Button Text</Button>
-				</Stack>
+			<CardBody gap='10' p='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto' bdrs='full'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Card pos='r' bxsh='3' bdrs='l'>
-			<CardMedia pos='a' inset='0'>
-				<img src='/img.jpg' alt='' width='960' height='640' />
+		<Card sideW='40%' p='20' gap='20' bdrs='l'>
+			<CardMedia isSide aspect='16/9' bdrs='inner'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody pos='r' z='1' aspect='16/9' minH='fit-content' bgc='rgba(255,255,255,0.5)' >
-				<Stack h='100%' gap={20}>
-					<h3>Card Title</h3>
-					<DammyText />
-					<Button href='#button-test' bdrs='full' mt='auto' ml='auto'>Button</Button>
-				</Stack>
+			<CardBody gap='10' p='10'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' aslf='end' mt='auto' bdrs='full'>Button</Button>
 			</CardBody>
 		</Card>
 		```
 	</PreviewCode>
 </Preview>
 
-<Preview>
-	<PreviewTitle>画像の下部にコンテンツを被せる</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<CardLink pos='r' href='#card-test' bxsh='3' hov='up' maxW='xs'>
-			<CardMedia aspect={['1/1','4/3']}>
-				<img src='/img.jpg' alt='' width='960' height='640' />
-			</CardMedia>
-			<CardBody pos='a' b='0' w='100%' bgc='rgba(255,255,255,0.6)'>
-				<Stack h='100%' gap='5'>
-					<h3 className='-fz:m'>Card Title</h3>
-					<DammyText fz='s' lh='xs' length='s'/>
-				</Stack>
-			</CardBody>
-		</CardLink>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<CardLink pos='r' href='#card-test' bxsh='3' hov='up' maxW='xs'>
-			<CardMedia aspect={['1/1','4/3']}>
-				<img src='/img.jpg' alt='' width='960' height='640' />
-			</CardMedia>
-			<CardBody pos='a' b='0' w='100%' bgc='rgba(255,255,255,0.6)'>
-				<Stack h='100%' gap='5'>
-					<h3 className='-fz:m'>Card Title</h3>
-					<DammyText fz='s' lh='xs' length='s'/>
-				</Stack>
-			</CardBody>
-		</CardLink>
-		```
-	</PreviewCode>
-</Preview>
-
-
-### ホバーでコンテンツを出現
+#### ホバーでコンテンツを出現する例
 
 {/* Note: PreviewAreaにresize つけると Filterの挙動変わることに注意。 */}
 <Preview>
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
-	<PreviewArea p={30}>
-		<Grid variant='tile' itemMinW='20rem' gap='30'>
-			<CardLink href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
+	<PreviewArea p='30'>
+		<Columns variant='liquid' colSize='20rem' gap='30'>
+			<Card href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='rgba(255,255,255,0.5)'>
+				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title A</h3>
+						<h3 className='-fz:m'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
@@ -508,15 +563,15 @@ radiusのデフォルト、`1`にする？ */}
 						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
 					</Box>
 				</CardBody>
-			</CardLink>
-			<CardLink href='#card-b' pos='r' bdrs='s' hov='bxsh,pass'>
+			</Card>
+			<Card href='#card-b' pos='r' bdrs='s' hov='bxsh,pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='rgba(255,255,255,0.5)'>
+				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title B</h3>
+						<h3 className='-fz:m'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
 								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
@@ -525,49 +580,49 @@ radiusのデフォルト、`1`にする？ */}
 						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
 					</Box>
 				</CardBody>
-			</CardLink>
-		</Grid>
+			</Card>
+		</Columns>
 
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<Grid variant='tile' itemMinW='20rem' gap={20}>
-			<CardLink href='#card-a' pos='r' bdrs='s' hov='pass'>
-				<CardMedia aspect='4/3'>
-					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='rgba(255,255,255,0.5)'>
-					<Layer blur='4px' brightness='1.1'/>
-					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title A</h3>
-						<Grid hov='get:slide'>
-							<Box ov='h'>
-								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
-							</Box>
-						</Grid>
-						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
-					</Box>
-				</CardBody>
-			</CardLink>
-			<CardLink href='#card-b' pos='r' bdrs='s' hov='pass'>
-				<CardMedia aspect='4/3'>
-					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
-				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='rgba(255,255,255,0.5)'>
-					<Layer blur='4px' brightness='1.1'/>
-					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title B</h3>
-						<Grid hov='get:slide'>
-							<Box ov='h'>
-								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
-							</Box>
-						</Grid>
-						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
-					</Box>
-				</CardBody>
-			</CardLink>
-		</Grid>
-		```
+	```jsx
+	<Columns variant='liquid' colSize='20rem' gap='30'>
+		<Card href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
+			<CardMedia aspect='4/3'>
+				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+				<Layer blur='4px' brightness='1.1'/>
+				<Box pos='relative' z='1' c='black' lh='s'>
+					<h3 className='-fz:m'>Card Title</h3>
+					<Grid hov='get:slide'>
+						<Box ov='h'>
+							<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+						</Box>
+					</Grid>
+					<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+				</Box>
+			</CardBody>
+		</Card>
+		<Card href='#card-b' pos='r' bdrs='s' hov='bxsh,pass'>
+			<CardMedia aspect='4/3'>
+				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+				<Layer blur='4px' brightness='1.1'/>
+				<Box pos='relative' z='1' c='black' lh='s'>
+					<h3 className='-fz:m'>Card Title</h3>
+					<Grid hov='get:slide'>
+						<Box ov='h'>
+							<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+						</Box>
+					</Grid>
+					<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+				</Box>
+			</CardBody>
+		</Card>
+	</Columns>
+	```
 	</PreviewCode>
 </Preview>
 

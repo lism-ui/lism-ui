@@ -15,12 +15,12 @@ const LismComponent = layout || Lism;
 
 {
 	setHiddenLink ? (
-		<LismComponent isLinkBox tag='div' {...otherProps}>
-			<a className='a--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps} />
+		<LismComponent isLinkBox hov='fade' tag='div' {...otherProps}>
+			<a class='is--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps} />
 			<slot />
 		</LismComponent>
 	) : (
-		<LismComponent isLinkBox tag={defaultTag} {...linkProps} {...otherProps}>
+		<LismComponent isLinkBox hov='fade' tag={defaultTag} {...linkProps} {...otherProps}>
 			<slot />
 		</LismComponent>
 	)

@@ -15,16 +15,53 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Columns cols={[3 , 5, 5]} gap={50}>
-			{/* <BoxShadowDemos shadows={[ -1, -2, -3 ]}/> */}
+	<PreviewArea p={50} nogrid>
+		<Columns cols={[3, 5, 5]} gap={50}>
+			<Box bxsh='1' p='20'>...</Box>
+			<Box bxsh='2' p='20'>...</Box>
+			<Box bxsh='3' p='20'>...</Box>
+			<Box bxsh='4' p='20'>...</Box>
+			<Box bxsh='5' p='20'>...</Box>
+		</Columns>
+		<br />
+		<Columns cols={[3, 5, 5]} gap={50}>
+			<Box bxsh='-1' p='20'>...</Box>
+			<Box bxsh='-2' p='20'>...</Box>
+			<Box bxsh='-3' p='20'>...</Box>
 		</Columns>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<div class="-bxsh:-1">...</div>
-		<div class="-bxsh:-2">...</div>
-		<div class="-bxsh:-3">...</div>
+		<Columns cols={[3, 5, 5]} gap={50}>
+			<Box bxsh='1' p='20'>...</Box>
+			<Box bxsh='2' p='20'>...</Box>
+			<Box bxsh='3' p='20'>...</Box>
+			<Box bxsh='4' p='20'>...</Box>
+			<Box bxsh='5' p='20'>...</Box>
+		</Columns>
+		<br />
+		<Columns cols={[3, 5, 5]} gap={50}>
+			<Box bxsh='-1' p='20'>...</Box>
+			<Box bxsh='-2' p='20'>...</Box>
+			<Box bxsh='-3' p='20'>...</Box>
+		</Columns>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--columns -cols@sm -cols@md -gap:50" style="--cols:3;--sm-cols:5;--md-cols:5">
+			<div class="-bxsh:1 -p:20">...</div>
+			<div class="-bxsh:2 -p:20">...</div>
+			<div class="-bxsh:3 -p:20">...</div>
+			<div class="-bxsh:4 -p:20">...</div>
+			<div class="-bxsh:5 -p:20">...</div>
+		</div>
+		<br />
+		<div class="l--columns -cols@sm -cols@md -gap:50" style="--cols:3;--sm-cols:5;--md-cols:5">
+			<div class="-bxsh:-1 -p:20">...</div>
+			<div class="-bxsh:-2 -p:20">...</div>
+			<div class="-bxsh:-3 -p:20">...</div>
+		</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -32,23 +69,26 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ### シャドウカラーの上書き
 
-bxshユーティリティの構成変数である `--sh-color` を上書き指定することで、シャドウカラーを変更することができます。
+`.is--resetShVar` クラスを指定すると、その要素でシャドウ用の各変数が再定義されます。  
+この時、シャドウを構成する変数を上書きすることでシャドウの色味などを調整することが可能です。 
 
 <Preview>
-	<PreviewTitle>`--sh-color`の上書き</PreviewTitle>
+	<PreviewTitle>シャドウの上書き例</PreviewTitle>
 	<PreviewArea p={40} nogrid>
 		<Box className='is--resetShVar' style={{'--sh-hsl': '20 80% 80%', '--sh-a':'50%'}}>
-			<Box bxsh='3' p='30' >...</Box>
+			<Box bxsh='3' p='30' >Box</Box>
 		</Box>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "--sh-color:"
-		<div class="l--box -bxsh:3 -p:30" style="--sh-hsl:20 8% 40%"> … </div>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Box className='is--resetShVar' style={{'--sh-hsl': '20 80% 80%', '--sh-a':'50%'}}>
+			<Box bxsh='3' p='30' >Box</Box>
+		</Box>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "--sh-color:"
-		<Box bxsh='3' shColor='rgb(100 100 200 / 20%)' p='30'>...</Box>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="is--resetShVar l--box" style="--sh-hsl:20 80% 80%;--sh-a:50%"><div class="l--box -bxsh:3 -p:30">Box</div></div>
 		```
 	</PreviewCode>
 </Preview>

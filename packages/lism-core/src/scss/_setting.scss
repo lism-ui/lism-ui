@@ -23,10 +23,9 @@ $props: () !default;
 prop:CSSプロパティ名
 important: 1 →　!important を付ける
 base_type:
-	0 →　なし（ユーティリティクラス以外はインラインスタイルのみ）
-	1 →　.-d\:{display: var(--d)}
-	2 → [class*='-aspect\:'] aspect-ratio: var(--aspect);}
-	3 → bpクラスとユーティリティクラスだけ出力したい( .-cols@sm{--cols: var(--sm-cols)} )
+	0 →　なし（ユーティリティクラス以外は普通のインラインスタイルのみ）
+	1 →　.-d\:{display: var(--d)} 　(メリット：importantなしでbp対応できる)
+	2 → [class*='-aspect\:'] aspect-ratio: var(--aspect);}  (メリット: ユーティリティクラスもprop名を変数にできて文字数省略できる)
 utilities: ユーティリティクラスのセレクタと値のリスト
 special_utilities: 特殊な値をセットしたいユーティリティクラスのセレクタと値のリスト
 */
@@ -50,7 +49,12 @@ $place_content: map.merge(
 		'sb': 'space-between',
 	)
 );
-$place_self: $place_items;
+$place_self: (
+	'c': 'center',
+	's': 'start',
+	'e': 'end',
+	'str': 'stretch',
+);
 
 // map.get($data, prop);
 $utilities: (
@@ -140,22 +144,23 @@ $utilities: (
 		'r': 'right',
 		'c': 'center',
 	),
-	'tsh': (
-		'black': 'var(--tsh--black)',
-		'white': 'var(--tsh--white)',
-		'n': 'none',
-	),
-
-	'c': (
-		'main': 'var(--main)',
-		// 'accent': 'var(--accent)',
-		'content': 'var(--content)',
-		'content-2': 'var(--content-2)',
-		'content-3': 'var(--content-3)',
-		'base': 'var(--base)',
-		'boxcolor': 'var(--boxcolor,currentColor)',
-		'cbox': 'var(--cbox-c, var(--content))',
-	),
+	// 'tsh': (
+	// 	'black': 'var(--tsh--black)',
+	// 	'white': 'var(--tsh--white)',
+	// 	'n': 'none',
+	// ),
+	'c':
+		(
+			'main': 'var(--main)',
+			// 'accent': 'var(--accent)',
+			'content': 'var(--content)',
+			'content-2': 'var(--content-2)',
+			'content-3': 'var(--content-3)',
+			'base': 'var(--base)',
+			'boxcolor': 'var(--boxcolor,currentColor)',
+			// 'cbox': 'var(--cbox-c, var(--content))',
+			'i': 'inherit',
+		),
 	'bgc': (
 		'main': 'var(--main)',
 		// 'accent': 'var(--accent)',
@@ -164,18 +169,22 @@ $utilities: (
 		'base-3': 'var(--base-3)',
 		'content': 'var(--content)',
 		't': 'transparent',
-		'cc': 'currentColor',
 		'i': 'inherit',
+		'cc': 'currentColor',
 		'boxcolor': 'var(--boxcolor,currentColor)',
-		'cbox': 'var(--cbox-bgc, var(--base-2))',
+		// // 'cbox': 'var(--cbox-bgc, var(--base-2))',
+	),
+	'bg': (
+		'n': 'none',
 	),
 	'bdc': (
 		// 'main': 'var(--main)',
+		'divider': 'var(--divider-bdc)',
 		't': 'transparent',
 		'i': 'inherit',
-		'divider': 'var(--divider-bdc)',
+		'cc': 'currentColor',
 		'boxcolor': 'var(--boxcolor,currentColor)',
-		'cbox': 'var(--cbox-bdc, var(--base-3))',
+		// // 'cbox': 'var(--cbox-bdc, var(--base-3))',
 	),
 	'bds': (
 		'dt': dotted,
@@ -183,9 +192,7 @@ $utilities: (
 		's': solid,
 		'db': double,
 	),
-	'bg': (
-		'n': 'none',
-	),
+
 	'bdrs': (
 		'0': '0;',
 		// '1': '1px;',
@@ -298,6 +305,7 @@ $utilities: (
 	'jc': $place_content,
 	'aslf': $place_self,
 	'jslf': $place_self,
+	'pslf': $place_self,
 	// 'cols': (
 	// 	'1': '1',
 	// 	'2': '2',
@@ -330,32 +338,34 @@ $props: map.deep-merge(
 		),
 		'maxW': (
 			prop: 'max-width',
-			base_type: 1,
+			base_type: 0,
 			utilities: 'max',
 		),
 		'minW': (
 			prop: 'min-width',
-			base_type: 1,
+			base_type: 0,
 			utilities: 'min',
 		),
 		'maxH': (
 			prop: 'max-height',
-			base_type: 1,
+			base_type: 0,
 			utilities: 'max',
 		),
 		'minH': (
 			prop: 'min-height',
-			base_type: 1,
+			base_type: 0,
 			utilities: 'min',
 		),
 		'c': (
 			prop: 'color',
+			// 主要カラーは変数をhoverやcolor-mixで活用するので、変数管理
 			base_type: 2,
 			important: 1,
 			// utilities: 'c',
 		),
 		'bgc': (
 			prop: 'background-color',
+			// 主要カラーは変数をhoverやcolor-mixで活用するので、変数管理
 			base_type: 2,
 			important: 1,
 			// utilities: 'bgc',
@@ -369,6 +379,11 @@ $props: map.deep-merge(
 			prop: '--bds',
 			base_type: 0,
 			// utilities: 'bds',
+		),
+		'bdw': (
+			prop: '--bdw',
+			base_type: 0,
+			bp: 1,
 		),
 		'f': (
 			prop: 'font',
@@ -404,10 +419,6 @@ $props: map.deep-merge(
 			prop: 'text-align',
 			base_type: 0,
 		),
-		'tsh': (
-			prop: 'text-shadow',
-			base_type: 0,
-		),
 		'd': (
 			prop: 'display',
 			base_type: 1,
@@ -416,7 +427,7 @@ $props: map.deep-merge(
 		),
 		'aspect': (
 			prop: 'aspect-ratio',
-			base_type: 2,
+			base_type: 1,
 			bp: 1,
 		),
 		'bg': (
@@ -426,34 +437,36 @@ $props: map.deep-merge(
 		'bdrs': (
 			prop: 'border-radius',
 			base_type: 2,
-		),
-
-		'bdssrs': (
-			prop: 'border-start-start-radius',
-			base_type: 0,
-			utilities: '0',
-		),
-		'bdsers': (
-			prop: 'border-start-end-radius',
-			base_type: 0,
-			utilities: '0',
-		),
-		'bdeers': (
-			prop: 'border-end-end-radius',
-			base_type: 0,
-			utilities: '0',
-		),
-		'bdesrs': (
-			prop: 'border-end-start-radius',
-			base_type: 0,
-			utilities: '0',
-		),
-		'gap': (
-			prop: 'gap',
-			base_type: 1,
-			utilities: s em,
+			// inner などで変数使う
 			bp: 1,
 		),
+		// 'bdssrs': (
+		// 	prop: 'border-start-start-radius',
+		// 	base_type: 0,
+		// 	utilities: '0',
+		// ),
+		// 'bdsers': (
+		// 	prop: 'border-start-end-radius',
+		// 	base_type: 0,
+		// 	utilities: '0',
+		// ),
+		// 'bdeers': (
+		// 	prop: 'border-end-end-radius',
+		// 	base_type: 0,
+		// 	utilities: '0',
+		// ),
+		// 'bdesrs': (
+		// 	prop: 'border-end-start-radius',
+		// 	base_type: 0,
+		// 	utilities: '0',
+		// ),
+		'gap':
+			(
+				prop: 'gap',
+				base_type: 1,
+				utilities: s em,
+				bp: 1,
+			),
 		'colg': (
 			prop: 'column-gap',
 			base_type: 1,
@@ -540,14 +553,14 @@ $props: map.deep-merge(
 			base_type: 2,
 			important: 1,
 			bp: 1,
-			utilities: 's' 'em',
+			utilities: 's',
 		),
 		'py': (
 			prop: 'padding-block',
 			base_type: 2,
 			important: 1,
 			bp: 1,
-			utilities: 's' 'em',
+			utilities: 's',
 		),
 		'pt': (
 			prop: 'padding-top',
@@ -642,7 +655,7 @@ $props: map.deep-merge(
 		),
 		'ga': (
 			prop: 'grid-area',
-			base_type: 1,
+			base_type: 0,
 		),
 		'gr': (
 			prop: 'grid-row',
@@ -699,10 +712,9 @@ $props: map.deep-merge(
 			prop: 'justify-self',
 			base_type: 0,
 		),
-		'bdw': (
-			prop: '--bdw',
+		'pslf': (
+			prop: 'place-self',
 			base_type: 0,
-			bp: 1,
 		),
 		'cols': (
 			prop: '--cols',
@@ -711,6 +723,11 @@ $props: map.deep-merge(
 		),
 		'rows': (
 			prop: '--rows',
+			base_type: 0,
+			bp: 1,
+		),
+		'isRow': (
+			prop: '--isRow',
 			base_type: 0,
 			bp: 1,
 		),

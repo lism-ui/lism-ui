@@ -32,9 +32,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`c`|`color`|`COLOR.PALETTE`, `COLOR.TXT`|`COLOR.TXT`|-|
-|`bgc`|`background-color`|`COLOR.PALETTE`, `COLOR.BG`|`COLOR.BG`|-|
-|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`COLOR.BD`|-|
+|`c`|`color`|`COLOR.PALETTE`, `COLOR.TXT`|`content`,`content-2`,`content-3`,`base`,`boxcolor`|-|
+|`bgc`|`background-color`|`COLOR.PALETTE`, `COLOR.BG`|`base`,`base-2`,`base-3`,`content`,`t`,`i`,`cc`,`boxcolor`|-|
+|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`boxcolor`|-|
 |`boxcolor`|`--boxcolor`|`COLOR.PALETTE`|`COLOR.PALETTE`|-|
 
 
@@ -104,7 +104,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Reference>
-[SPACE Tokens](/docs/tokens/spacing)
+[SPACE Tokens](/ja/css/tokens/)
 </Reference>
 
 {/* Utility Class: 
@@ -153,13 +153,35 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |d|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
 |v|visibility|-|`hidden`(`h`), `visible`(`v`)||
 |op|opacity|`OPACITY`|`OPACITY`||
-|`bxsh`,shadow|box-shadow|`SHADOW`|`SHADOW`||
-|`bdrs`,radius|border-radius|`RADIUS`|`RADIUS`||
+|`bxsh`|box-shadow|`SHADOW`|`SHADOW`||
+|`bdrs`|border-radius|`RADIUS`|`RADIUS`||
 |ov|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovx|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovy|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 
 {/* `none`,`"block"`,`"flex"`,`"grid"`,`"inline"`,`"inline-block"`,`"inline-flex"`,`"inline-grid"` */}
+
+
+## Borders
+
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`bd`|`border`|-|`n`,`l`,`r`,`t`,`b`,`is`,`bs`||
+|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`boxcolor`|-|
+|`bdw`|`border-width`||||
+|`bds`|`border-style`||||
+|`bdl`|`border-left`||||
+|`bdr`|`border-right`||||
+|`bdt`|`border-top`||||
+|`bdb`|`border-bottom`||||
+|`bdis`|`border-inline-start`||||
+|`bdbs`|`border-block-start`||||
+
+
+<Reference>
+borderに関する仕様は少し特殊になっています。詳しくは[borderページ](/ja/styles/border/)をご覧ください。
+</Reference>
+
 
 
 
@@ -270,14 +292,14 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 <PreviewTitle>基本的なgrid系プロパティの使用例</PreviewTitle>
 ```jsx
-<Lism d='grid' grid={{gtc:'1fr 1fr', gap:40, ai:'center'}}>...</Lism>
+<Lism d='grid' ai='center' grid={{gtc:'1fr 1fr', gap:40}}>...</Lism>
 ```
 
 <PreviewTitle>`Grid`コンポーネントでは、`grid`オブジェクトを挟まずにそのまま指定できます。</PreviewTitle>
 
 ```jsx
 // Grid系のコンポーネントを使う場合は、gridオブジェクトは不要です。
-<Grid gtc='1fr 1fr' gap={40} ai='center'>...</Grid>
+<Grid ai='center'gtc='1fr 1fr' gap={40}>...</Grid>
 ```
 {/* <Grid gtc='1fr 1fr' gap={40} ai='center'>
 <Box>aaa<br/>bbb</Box>
@@ -309,7 +331,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 <PreviewTitle>使用例</PreviewTitle>
 ```jsx
 // gridItemオブジェクトで各プロパティを指定します。
-<Lism gridItem={{gc:'2', aslf:'end'}}>...</Lism>
+<Lism gridItem={{gc:'2'}} aslf='end'>...</Lism>
 
 // GridItemのコンポーネントを使う場合は、gridItemオブジェクトは不要です。
 <GridItem gc='2' aslf='end'>...</GridItem>
@@ -402,8 +424,8 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |css.rotate|rotate||`45`,`-45`,`90`,`-90`,`180`||
 |css.scale|scale||||
 |css.clipPath|scale||||
-|css.filter|filter|`FILTER.BLUR`|||
-|css.backdropFilter|backdropFilter|`FILTER.BLUR`|||
+|css.filter|filter||||
+|css.backdropFilter|backdropFilter||||
 
 {/* transform: { map: 1, style: 1, utils: 1, utilKey: 'trf' },
 transformOrigin: { style: 1, utilKey: 'trfo', utils: 'origin' },

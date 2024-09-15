@@ -18,7 +18,7 @@ const FolderIcon = (props) => (
 
 export default function content() {
 	return (
-		<Lism isFlow hasGutter py={50} isContainer='s' alignfull id='demo-wrapper' _dir='rtl'>
+		<Lism isFlow hasGutter py={50} isContainer='s' id='demo-wrapper' _dir='rtl'>
 			<h1>timeline</h1>
 			<Spacer h='20' />
 			<h2>Timeline</h2>

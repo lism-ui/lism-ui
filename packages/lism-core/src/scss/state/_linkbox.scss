@@ -27,13 +27,13 @@
 	}
 }
 
-.a--hiddenLink {
+.is--hiddenLink {
 	position: absolute;
 	inset: 0;
-	z-index: 0;
+	// z-index: 1; // is--linkbox a が適用されるので不要
 }
 
-.a--overlayLink {
+.is--overlayLink {
 	position: static;
 	color: inherit;
 	--link-td: none; // text-decoration: none;
@@ -45,11 +45,6 @@
 		// display: block;
 		content: '';
 	}
-}
-
-// position relative な要素が上にきてしまう
-.a--hiddenLink ~ .is--frame {
-	pointer-events: none;
 }
 
 /*

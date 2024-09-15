@@ -97,8 +97,8 @@ export function getMaybeColorVar(value, propType) {
 }
 
 export function getMaybeSizeVar(size) {
-	if (isTokenValue('size', size)) {
-		return `var(--size--${size})`;
+	if (isTokenValue('contentSize', size)) {
+		return `var(--contentSize--${size})`;
 	}
 	// else if (isPresetValue('size', size)) {
 	// 	return `var(--size--${size})`;
@@ -169,9 +169,6 @@ export function getMaybeFilterVar(filter) {
 	if (isTokenValue('filter', filter)) {
 		return `var(--filter--${filter})`;
 	}
-	// else if (isPresetValue('size', size)) {
-	// 	return `var(--size--${size})`;
-	// }
 
 	return filter;
 }

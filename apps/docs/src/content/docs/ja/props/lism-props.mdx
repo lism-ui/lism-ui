@@ -15,17 +15,41 @@ Lismが配布しているReactやAstro用のコンポーネントでは、Lism C
 
 |種別||
 |---|---|
-|State Props|[Design State](/ja/css/design-state/) に分類されるクラスを出力するためのプロパティ|
+|State Props|[Layout State](/ja/css/layout-state/) に分類されるクラスを出力するためのプロパティ|
 |CSS Props|[Prop Utilities](/ja/css/utility-class/) に分類されるクラスを出力するためのプロパティ|
 |Component Props|その他、Lismコンポーネントで使えるプロパティ|
 
 
 ## State Props
 
-たとえば、`is--flow`クラスに対応する State Propsは`isFlow`です。
+[Layout State](/ja/css/layout-state/) クラスに対応するプロパティ群です。
+
+たとえば、`is--flow`クラスに対応する State Propsは`isFlow`となります。
+
+
+| Prop | 出力クラス |
+|---|---|
+| `isFlow` | `is--flow` |
+| `isFlow='s'` | `is--flow -flow:s` |
+| `isFlow='l'` | `is--flow:l` |
+| `isFrame` | `is--frame` |
+| `isLayer` | `is--layer` |
+| `isLinkBox` | `is--linkBox` |
+| `isWide` | `is--wide` |
+| `isFullwide` | `is--fullwide` |
+| `isOverwide` | `is--overwide` |
+| `hasGutter` | `has--gutter` |
+| `hasDivider` | `has--divider` |
+
+{/* | `isContainer` | `is--container` |
+| `isContainer='s'` | `is--container:s` |
+| `isContainer='m'` | `is--container:m` |
+| `isContainer='l'` | `is--container:l` | */}
+
+
 
 <Reference>
-- [Design State クラスの一覧](/ja/css/design-state/) 
+- [Layout State クラスの一覧](/ja/css/layout-state/) 
 - [それに対応した State Props一覧](/ja/props/state-props/) 
 </Reference>
 
@@ -35,7 +59,9 @@ Lismが配布しているReactやAstro用のコンポーネントでは、Lism C
 
 一部のCSSプロパティはユーティリティクラスが用意されていなくても指定できるようになっており、インラインスタイルとして出力することもできます。
 
+<Reference>
 詳しくは [CSS Props](/ja/props/css-props/) の一覧ページを参照してください。
+</Reference>
 
 ## getLismProps()
 
@@ -93,6 +119,21 @@ const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
 
 その他、Lismコンポーネントの挙動を調整するために使用できるプロパティがあります。
 
+### tag
+
+Lism Component が出力するHTMLのタグを指定できます。
+
+<Preview>
+	<PreviewTitle>例: `<Text>`を`span`で出力する</PreviewTitle>
+	<PreviewCode>
+```jsx "tag='span'"
+<Text tag='span' fz='l'>...</Text>
+```
+	</PreviewCode>
+</Preview>
+
+
+
 ### as
 
 Lismコンポーネントを別のコンポーネントとして展開することができます。
@@ -141,20 +182,6 @@ Hoge コンポーネント側で`size`を受け取るためには、以下のよ
 	</PreviewCode>
 </Preview>
 
-
-### tag
-
-Lism Componentが出力するHTMLのタグを指定できます。
-
-
-<Preview>
-	<PreviewTitle>例: `<Text>`を`span`で出力する</PreviewTitle>
-	<PreviewCode>
-```jsx
-<Text tag='span' fz='l'>...</Text>
-```
-	</PreviewCode>
-</Preview>
 
 
 ### variant

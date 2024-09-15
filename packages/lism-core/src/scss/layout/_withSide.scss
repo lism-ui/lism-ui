@@ -9,11 +9,13 @@
 // memo: flex-grow は 変数指定だと挙動が変になる。
 .l--withSide {
 	--side-w: auto;
-	--gd: '.' 'side' / auto;
-	--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
 
-	display: grid;
-	grid: var(--gd);
+	&:where([data-lism-side]) {
+		--gd: '.' 'side' / auto;
+		--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
+		display: grid;
+		grid: var(--gd);
+	}
 
 	// "xxx start": 縦並びの時に side を上
 	&:where([data-lism-side$='start']) {
@@ -40,7 +42,7 @@
 }
 
 .l--withSide:where(:not([data-lism-side])) {
-	--main-minW: max(16rem, 50%);
+	--main-minW: max(var(--contentSize--min), 50%);
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -60,3 +62,15 @@
 		min-width: min(100%, var(--main-minW)); // このサイズが折り返しポイント
 	}
 }
+
+// :where(.c--card__media) {
+// 	flex-shrink: 0;
+// }
+
+// :where(.l--flex > .c--card__media) {
+// 	flex-basis: 50%;
+// }
+
+// :where(.c--card__body) {
+// 	flex-grow: 1;
+// }

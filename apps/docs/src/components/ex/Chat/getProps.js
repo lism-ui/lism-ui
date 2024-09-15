@@ -63,9 +63,9 @@ export function getContentProps(direction, variant, contentProps) {
 		maxW: 's',
 	};
 	if ('speak' === variant && direction === 'start') {
-		returnProps.bdradii = { ss: 0 };
+		returnProps.radii = { ss: 0 };
 	} else if ('speak' === variant && direction === 'end') {
-		returnProps.bdradii = { se: 0 };
+		returnProps.radii = { se: 0 };
 	}
 
 	return { ...returnProps, ...contentProps };

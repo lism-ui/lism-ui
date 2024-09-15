@@ -7,27 +7,11 @@ import separateMediaAttrs from '@lism-ui/core/components/separateMediaAttrs';
 // Propsの定義
 interface Props extends LismProps {}
 
-let props = Astro.props || {};
-let layerProps = {};
-let mediaProps = {};
+let { layout, ...props } = Astro.props || {};
 
-if (props?.src) {
-	const { mediaAttrs, otherProps } = separateMediaAttrs(props);
-	layerProps = otherProps;
-	mediaProps = mediaAttrs;
-} else {
-	layerProps = props;
-}
+const Layout = layout || Lism;
 ---
 
-{
-	props?.src ? (
-		<Lism isFrame {...getLayerProps(layerProps)}>
-			<Media {...mediaProps} />
-		</Lism>
-	) : (
-		<Lism {...getLayerProps(layerProps)}>
-			<slot />
-		</Lism>
-	)
-}
+<Layout {...getLayerProps(props)}>
+	<slot />
+</Layout>

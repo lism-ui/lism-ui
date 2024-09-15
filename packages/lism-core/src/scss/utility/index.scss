@@ -34,3 +34,7 @@
 	height: 100dvh;
 	// height: calc(100vw - var(--sbar))
 }
+
+.-bdrs\:inner {
+	border-radius: calc(var(--bdrs, 0) - var(--p, 0) * 0.9);
+}

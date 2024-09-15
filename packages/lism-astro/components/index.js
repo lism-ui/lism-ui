@@ -28,7 +28,6 @@ export * from './ShapeDivider';
 export * from './Icon';
 
 export * from './LinkBox';
-export * from './OverlayLink';
 
 export * from './Accordion';
 export * from './Callout';

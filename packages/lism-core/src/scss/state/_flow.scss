@@ -7,39 +7,32 @@
 	.-mbs で上書きできるように 0-1-0 を超えないように注意。
 */
 
-:where(.is--flow) > * {
-	--mbs: var(--flowGap--m); // --base?
+:where(.is--flow) {
+	> * {
+		--mbs: var(--flowGap--m);
+		margin-block-end: 0;
+		margin-block-start: var(--mbs); // resetCSSがlismであれば、これは不要
+	}
 }
-:where(.is--flow\:s) > * {
-	--mbs: var(--flowGap--s);
-}
-:where(.is--flow\:l) > * {
-	--mbs: var(--flowGap--l);
-}
-// カスタム値 Note: ネストに注意が必要
-:where(.is--flow\:) > * {
+:where(.-flowGap\:) > * {
 	--mbs: var(--flowGap);
 }
+:where(.-flowGap\:s) > * {
+	--mbs: var(--flowGap--s);
+}
+// :where(.-flow\:l) > * {
+// 	--mbs: var(--flowGap--l);
+// }
+
 // 見出しの上部余白は少しだけ広くする. ただし、見出し直後の見出しの場合を除く。
 // Note: :first-child での打消しのほうが優先度高くなるように注意する
 :where(h1, h2, h3:not(h2 + h3), h4:not(h3 + h4), h5:not(h4 + h5), h6:not(h5 + h6)) {
 	--mbs: var(--flowGap--htag);
 }
-// :where(:is(h1, h2, h3, h4, h5, h6):not(:is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6))) {
-// 	--mbs: var(--flowGap--htag);
-// }
 
 // :first-child への上書きのほうが優先度高くなるように。
-:is(.is--flow, [class*='is--flow:']) {
-	> * {
-		margin-block-end: 0;
-		margin-block-start: var(--mbs); // resetCSSがlismであれば、これは不要
-	}
-
-	// :empty どうする？
-	> :where(:first-child) {
-		--mbs: 0;
-	}
+.is--flow > :where(:first-child) {
+	--mbs: 0;
 }
 
 // .is--skipFlow の次の要素は mbs を 0 にする。

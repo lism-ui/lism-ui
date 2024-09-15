@@ -20,11 +20,7 @@
 // 方眼 : graph paper, grid paper, squared paper
 :where(.-bg\:grid, .-bg\:stripe) {
 	// --bg-bdc: var(--base-2);
-	--bg-bdc: color-mix(
-		in srgb,
-		var(--bgc-mixcolor, var(--boxcolor, currentColor)),
-		transparent 95%
-	);
+	--bg-bdc: color-mix(in srgb, var(--boxcolor, currentColor), transparent 95%);
 }
 .-bg\:grid {
 	--grid-bdc: var(--bg-bdc);

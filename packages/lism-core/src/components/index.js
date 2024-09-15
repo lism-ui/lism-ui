@@ -22,7 +22,6 @@ export * from './Layer';
 export * from './Spacer';
 
 export * from './LinkBox';
-export * from './OverlayLink';
 
 // Elements
 export * from './Avatar';

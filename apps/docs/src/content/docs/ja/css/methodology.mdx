@@ -64,7 +64,7 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td>HTML要素に対するスタイルの初期セット</td>
 		</tr>
 		<tr>
-			<td colSpan='2'>Design State</td>
+			<td colSpan='2'>Layout State</td>
 			<td>レイアウト・デザインを組む上で特定の役割を持つ要素。かつ、汎用性が高く複数のモジュールに対してつけ外しできるようなもの。</td>
 			<td>0-1-0</td>
 		</tr>
@@ -171,12 +171,12 @@ Blocks はAtom,Layoutクラスで構成されるような粒度で、Component�
 
 |分類|形式|例|
 |---|---|---|
-|Design State<HelpText>状態として付け外しできるようなデザイン機能を持つもの</HelpText>|`.is\|has--{stateName}`|`.is--flow`, `has--divider`|
+|Layout State<HelpText>状態として付け外しできるようなデザイン機能を持つもの</HelpText>|`.is\|has--{stateName}`|`.is--flow`, `has--divider`|
 |Temporary State<HelpText>js操作等によって付け外しされるようなクラス</HelpText>|`.-{state}`|`.-active`, `.-opened`|
 
-Design State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
+Layout State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
 
-また、Design State のバリエーションは `.[is|has]--{stateName}:{modifier}` としています。
+また、Layout State のバリエーションは `.[is|has]--{stateName}:{modifier}` としています。
 
 - 例: `.is--flow:s`, `.is--container:l`
 

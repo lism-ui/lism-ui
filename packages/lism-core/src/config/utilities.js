@@ -3,14 +3,14 @@ const places = {
 	center: 'c',
 	start: 's',
 	end: 'e',
-	// left: 'l',
-	// right: 'r',
-};
-const flexPlaces = {
 	'flex-start': 'fs',
 	'flex-end': 'fe',
-	// left: 'l',
-	// right: 'r',
+};
+const selfPlaces = {
+	center: 'c',
+	start: 's',
+	end: 'e',
+	stretch: 'str',
 };
 export default {
 	// color: {},
@@ -21,9 +21,9 @@ export default {
 	bgcp: { text: 'tx' },
 	margin: { auto: 'a', '0px': '0' },
 	place: places,
-	placeItems: { ...places, ...flexPlaces, stretch: 'str' },
-	placeContent: { ...places, ...flexPlaces, 'space-between': 'sb' },
-	selfPlace: { ...places, ...flexPlaces, stretch: 'str' },
+	placeItems: { ...places, stretch: 'str' },
+	placeContent: { ...places, 'space-between': 'sb' },
+	selfPlace: selfPlaces,
 	ta: { center: 'c', left: 'l', right: 'r' },
 	td: { underline: 'u', none: 'n' },
 
@@ -33,8 +33,6 @@ export default {
 	f: { inherit: 'i' },
 	// lh: {},
 	// lts:{},
-
-	fx: { '1 1 0': '1' },
 	fxw: { wrap: 'w', nowrap: 'nw' }, // nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
 	fxd: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' },
 
@@ -70,7 +68,9 @@ export default {
 		inline: 'x',
 		block: 'y',
 		'inline-start': 'is',
+		'inline-end': 'ie',
 		'block-start': 'bs',
+		'block-end': 'be',
 	},
 
 	pos: {

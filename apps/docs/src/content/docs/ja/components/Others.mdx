@@ -4,8 +4,8 @@ description: ...
 ---
 
 
-import { Grid, Text, Badge, Lism, Flex, Stack, Icon, Center, Decorator, Spacer } from '@lism-ui/core';
-import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Grid, Text, Badge, Lism, Flex, Stack, Icon, Center, Decorator, Spacer, Button, Layer, Media, DammyText } from '@lism-ui/core';
+import { Reference, MemoBadge, HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import {Question,ChatCircleDots} from '@phosphor-icons/react';
 import { ArrowFatLinesDown } from '@phosphor-icons/react';
@@ -85,6 +85,43 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 				<Decorator bd='block-start' bdc='divider' />
 				<Text whs='nowrap'>500円</Text>
 			</Grid>
+		</Stack>
+		```
+	</PreviewCode>
+</Preview>
+
+
+---
+
+<Preview>
+	<PreviewTitle>コンテンツの高さに追従しつつ、最低限維持する比率を指定する</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Stack pos='r' bdrs='l' ov='h'>
+			<Layer isFrame>
+				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			</Layer>
+			<Flex aspect='16/9'>
+				<Stack flexItem={{fx:'1'}} pos='r' gap='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
+					<h3>Card Title</h3>
+					<DammyText lh='s' mb='auto' length='l'/>
+					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>
+				</Stack>
+			</Flex>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Stack pos='r' bdrs='l' ov='h'>
+			<Layer isFrame>
+				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			</Layer>
+			<Flex aspect='16/9'>
+				<Stack flexItem={{fx:'1'}} pos='r' gap='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
+					<h3>Card Title</h3>
+					<DammyText lh='s' mb='auto' length='l'/>
+					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>
+				</Stack>
+			</Flex>
 		</Stack>
 		```
 	</PreviewCode>

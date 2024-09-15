@@ -1,39 +1,50 @@
 import isPresetValue from './isPresetValue';
 import getMaybeCssVar from './getMaybeCssVar';
 
-const LAYOUT_STATE = {
-	// 'is--container': {
-	// 	varName: '--containerSize',
-	// 	tokenKey: 'contentSize',
-	// 	converter: null,
-	// },
-	'is--container': {
-		varName: '--contentSize',
-		tokenKey: 'contentSize',
-		converter: 'size',
-	},
-	'is--flow': {
-		varName: '--flowGap',
-		tokenKey: 'flow',
-		converter: 'space',
-	},
-	// lismState.push(className
-};
+// const LAYOUT_STATE = {
+// 	'is--container': {
+// 		varName: '--contentSize',
+// 		tokenKey: 'contentSize',
+// 		converter: 'size',
+// 	},
+// 	'is--flow': {
+// 		varName: '--flowGap',
+// 		tokenKey: 'flow',
+// 		converter: 'space',
+// 	},
+// };
 
 // 特殊な処理が必要なレイアウトステート
-export function getTheStateData(stateName, value) {
-	const { varName, tokenKey, converter } = LAYOUT_STATE[stateName];
+export function getContainerData(value) {
+	// const { varName, tokenKey, converter } = LAYOUT_STATE[stateName];
 	let className = '';
 	let style = null;
 
-	if (value === true || value === 'm') {
-		className = stateName;
+	if (value === true) {
+		className = 'is--container';
 	} else if (value) {
-		if (tokenKey && isPresetValue(tokenKey, value)) {
-			className = `${stateName}:${value}`;
+		if (isPresetValue('contentSize', value)) {
+			className = `is--container -contentSize:${value}`;
 		} else {
-			className = `${stateName}:`;
-			style = { [varName]: converter ? getMaybeCssVar(value, converter) : value };
+			className = `is--container -contentSize:`;
+			style = { '--contentSize': getMaybeCssVar(value, 'space') };
+		}
+	}
+	return { className, style };
+}
+
+export function getFlowData(value) {
+	let className = '';
+	let style = null;
+
+	if (value === true) {
+		className = 'is--flow';
+	} else if (value) {
+		if (isPresetValue('flow', value)) {
+			className = `is--flow -flowGap:${value}`;
+		} else {
+			className = `is--flow -flowGap:`;
+			style = { ['--flowGap']: getMaybeCssVar(value, 'space') };
 		}
 	}
 	return { className, style };
@@ -55,12 +66,12 @@ export default function getStateProps({
 }) {
 	if (isContainer) {
 		// lismState.push('is--container');
-		const { className, style } = getTheStateData('is--container', isContainer);
+		const { className, style } = getContainerData(isContainer);
 		lismState.push(className);
 		Object.assign(lismStyle, style);
 	}
 	if (isFlow) {
-		const { className, style } = getTheStateData('is--flow', isFlow);
+		const { className, style } = getFlowData(isFlow);
 		lismState.push(className);
 		Object.assign(lismStyle, style);
 	}

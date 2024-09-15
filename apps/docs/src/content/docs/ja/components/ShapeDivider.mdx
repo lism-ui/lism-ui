@@ -42,22 +42,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 ## Import
 
 <Preview>
-	<PreviewCode slot='tab' label='React'>
+<PreviewCode slot='tab' label='React'>
 ```jsx
 import { ShapeDivider } from '@lism-ui/core';
 ```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
+</PreviewCode>
+<PreviewCode slot='tab' label='Astro'>
 ```jsx
 import { ShapeDivider } from '@lism-ui/astro';
 ```
-	</PreviewCode>
+</PreviewCode>
 </Preview>
 
 
 ## Shapes
 
-<Tabs alignfull panelProps={{isFlow: true}}>
+<Tabs panelProps={{isFlow: true}}>
 	<TabItem label="Slope">
 		<Preview>
 			<PreviewArea resize>
@@ -66,11 +66,11 @@ import { ShapeDivider } from '@lism-ui/astro';
 				<ShapeDivider shape="slope3" c="black"/>
 			</PreviewArea>
 			<PreviewCode>
-				```jsx
-				<ShapeDivider shape="slope1" c="black"/>
-				<ShapeDivider shape="slope2" c="black"/>
-				<ShapeDivider shape="slope3" c="black"/>
-				```
+			```jsx
+			<ShapeDivider shape="slope1" c="black"/>
+			<ShapeDivider shape="slope2" c="black"/>
+			<ShapeDivider shape="slope3" c="black"/>
+			```
 			</PreviewCode>
 		</Preview>
 
@@ -163,7 +163,7 @@ import { ShapeDivider } from '@lism-ui/astro';
 - カラーは、`c` propで指定します。
 - コンテンツ上部に配置する場合は、`isFlip` を指定します。
 
-<Tabs alignfull panelProps={{isFlow: true}}>
+<Tabs isFullwide panelProps={{isFlow: true}}>
 	<TabItem label="Slope">
 		<SlopeDemo />
 	</TabItem>

@@ -2,16 +2,16 @@
 title: 'Frame'
 description: ...
 ---
-import { Box, Flex, Media, Text, Layer, Frame, Center, Columns } from '@lism-ui/astro';
+import { Box, Flex, Media, Text, Layer, Frame, Center, Columns, DammyText } from '@lism-ui/astro';
 
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-// import Image from "next/image";
+
 
 
 # Frame
 
-[`is--frame`](/ja/css/design-state/#is--frame)をデフォルトで出力するコンポーネントです。(`<Lism isFrame>`のエイリアスです。)
+[`is--frame`](/ja/css/layout-state/#is--frame)をデフォルトで出力するコンポーネントです。(`<Lism isFrame>`のエイリアスです。)
 
 アスペクト比や高さを指定し、直下のメディア要素（`img`,`vieo`,`picture`,`iframe`）を `object-fit:cover` でFrameサイズいっぱいに表示することができます。
 
@@ -21,8 +21,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 | プロパティ | 説明 |
 |---|---|
 | `aspect` | フレームの比率を指定できます。|
-| `objectPosition` | 直下のメディア要素のobject-positionを指定できます。 |
 | `layout` | 展開したい Lismコンポーネント を指定できます。|
+{/* | `objectPosition` | 直下のメディア要素のobject-positionを指定できます。 | */}
 
 <HelpText mbs="em10">(aspect自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
 
@@ -68,34 +68,29 @@ import { Frame } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-
 <Preview>
 	<PreviewTitle>
 		`figure`, `figcaption`の使用
 	</PreviewTitle>
 	<PreviewArea resize>
-		<Frame tag='figure' aspect='2/1'>
-			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<figcaption className='-pos:a -b:0 -w:100 -ta:c -bgc:' style={{'--bgc':'hsl(var(--hsl-white) / 50%)'}}>An elephant at sunset</figcaption>
+		<Frame tag='figure' aspect='16/9'>
+			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
+			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='black:40%'>Lorem ipsum text.</Text>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame tag='figure' aspect='2/1'>
-			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<figcaption className='-pos:a -b:0 -w:100 -ta:c -bgc:' style={{'--bgc':'hsl(var(--hsl-white) / 50%)'}}>
-				An elephant at sunset
-			</figcaption>
+		<Frame tag='figure' aspect='16/9'>
+			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
+			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='black:40%'>Lorem ipsum text.</Text>
 		</Frame>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<figure class="is--frame -aspect:2/1">
-			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<figcaption className='-pos:a -b:0 -w:100 -ta:c -bgc:' style={{'--bgc':'hsl(var(--hsl-white) / 50%)'}}>
-				An elephant at sunset
-			</figcaption>
+		<figure class="is--frame -aspect:16/9">
+			<img src="/img/img-2.jpg" width="960" height="640">
+			<figcaption class="-pos:a -z:1 -b:0 -p:5 -w:100 -c: -ta:c -bgc:" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 40%)">Lorem ipsum text.</figcaption>
 		</figure>
 		```
 	</PreviewCode>
@@ -171,7 +166,7 @@ import { Frame } from '@lism-ui/astro';
 			<Layer p='box:l' ov='auto'>
 				<Center minH='100' gap='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
-					<DammyText length='m' />
+					<DammyText />
 				</Center>
 			</Layer>
 		</Frame>
@@ -268,73 +263,42 @@ export const FrameRatios = () => {
 
 
 
-### `objectPosition`
-
-`<Frame>`に`objectPosition`を指定すると、直下のメディア要素に反映されます。
-
-<Preview>
-	<PreviewTitle>
-		`objectPosition='bottom'`
-	</PreviewTitle>
-	<PreviewArea p='0' bxsh='0'>
-		<Frame h='30vh' objectPosition='bottom'>
-			<img src='/img/img-3.jpg' alt='' width='960' height='640' />
-		</Frame>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Frame h='30vh' objectPosition='bottom'>
-			<img src='/img/img-3.jpg' alt='' width='960' height='640' />
-		</Frame>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<div class="is--frame -h:" style="--objectPosition:bottom;--h:30vh">
-			<img src="/img/img-3.jpg" alt="" width="960" height="640">
-		</div>
-		```
-	</PreviewCode>
-</Preview>
-
-
 
 ### Flexの子要素として使用する場合の注意点
 
 Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響に注意してください。
 
-
-他の兄弟要素の高さの方が高い場合、そちらと同じ高さになってしまうため、それを回避したい場合は`align-items`を調整するか、Frame要素をBoxで囲むなどの対処が必要です。
+他の兄弟要素の高さの方が高い場合、そちらと同じ高さになってしまうため、それを回避したい場合は`align-items`を調整するか、Frame要素をさらにBoxで囲むなどの対処が必要です。
 
 <Preview>
 	<PreviewTitle>
-		問題となる例 (横並びの時、画像の比率を4/3で表示したいのにコンテンツサイズと揃ってしまっている)
+		コンテンツ側の高さと揃っている例
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex gap={20} fxw={['wrap', 'nowrap']}>
+		<Flex gap={20}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='box' />
+				<DammyText length='l' p='box' />
 			</Box>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "4/3" "4/3"
-		<Flex gap={20} fxw={['wrap', 'nowrap']}>
+		<Flex gap={20}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='box' />
+				<DammyText length='l' p='box' />
 			</Box>
 		</Flex>
 		```
 	</PreviewCode>
 </Preview>
 
-
+{/* 
 <Preview>
 	<PreviewTitle>
 		対処例（親のFlex要素を`align-items:start;`にする）
@@ -361,30 +325,29 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 		</Flex>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 
 ### aspect はどのコンポーネントにも指定できます
 
-`is--frame` は直下のメディア要素に影響を与えてしまうため、特定のアスペクト比率で固定したエリア内にコンテンツを配置したいというケースでは、Frameを使う必要はありません。
+`is--frame` は直下のメディア要素に影響を与えてしまいます。
 
-`aspect`はBoxなどどのコンポーネントにも指定できるCSS Propsですので、次のような書き方ができます。
-
+単純にアスペクト比率を固定したエリア内にコンテンツを配置したいというケースでは、`Frame`を使う必要はありません。  
+`aspect`は`Box`など他のコンポーネントでも指定できるので、次のような書き方ができます。
 
 <Preview>
 	<PreviewTitle>
-		対処例親Flexを`align-items:start;`にする
+		Boxにaspectを指定する例
 	</PreviewTitle>
-	<PreviewArea resize p={0}>
-		<Box aspect='2/1' ovy='auto' isFlow p='box:l' bgc='base' bxsh='-1'>
+	<PreviewArea resize p='5'>
+		<Box aspect='2/1' ovy='auto' isFlow p='box:l' bgc='base'>
 			<DammyText />
-			<DammyText length="m" />
 			<DammyText length="l" />
 			<Frame aspect='2/1' maxW='50%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<DammyText length="xl" />
-			<DammyText length="m" />
+			<DammyText />
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>

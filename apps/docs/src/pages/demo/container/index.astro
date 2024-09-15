@@ -1,293 +1,172 @@
 ---
 import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
-import { TipCode, AlignWide, AlignFull, Overwide, LoremContent } from './components.jsx';
-import GutterGuide from './GutterGuide.astro';
-import { Box, Container, Layer, Frame, Spacer, Text } from '@lism-ui/astro';
-import { Note } from '~/components/ex/Note';
+import { AttsLabels, TipCode, GutterGuide, LoremContent } from './components.js';
+import { Lism, Box, Container, Divider, Spacer, Text } from '@lism-ui/astro';
 import './style.scss';
-
-// import './style.scss';
 ---
 
 <DemoPageLayout>
-	<Container isFlow hasGutter py={50} alignfull id='demo-wrapper' _dir='rtl'>
-		<!-- <Container size='m'> -->
-		<Note title='このページの注意点' type='warning'>
-			<p>
-				小めの画面でも確認しやすいように、各コンテナサイズをLismのデフォルト値よりも狭くなるように上書きセットしています。
-			</p>
-		</Note>
-
-		<h2>is--container(size指定あり)</h2>
-		<p>内部のコンテンツ幅が制御されます。</p>
-		<!-- </Container> -->
-		<Container size='m'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:m' />
-			</Text>
-			<LoremContent />
-		</Container>
-		<Container isContainer='s' isFlow>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:s' />
-				<TipCode text='is--flow' color='green' />
-			</Text>
-			<LoremContent />
-			<LoremContent />
-		</Container>
-		<Container size='m' hasGutter isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container' />
-				<TipCode text='has--gutter' />
-				<TipCode text='is--flow:s' color='green' />
-			</Text>
-			<LoremContent />
-			<LoremContent />
-			<GutterGuide />
-		</Container>
-		{
-			/* <Container isContainer='400px' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='isContainer=400px' />
-			
-				<TipCode text='is--flow:s' color='green' />
-			</Text>
-			<LoremContent />
-			<LoremContent />
-		</Container> */
-		}
-		<h2>is--container(size指定なし)</h2>
-		<p>単体では、効果としてはcontaner-type:inline-size がセットされるだけです。</p>
+	<Lism id='demo-wrapper' isFlow py={50} p='1px'>
+		<h2>is--container</h2>
+		<p>
+			<TipCode text='is--container' />単体では、効果としては主に contaner-type:inline-size
+			が適用されるだけです。
+		</p>
 		<Container>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container' />
-			</Text>
+			<AttsLabels atts='is--container' />
 			<LoremContent />
 		</Container>
 		<p>
-			margin-inline:auto
-			が適用されているので、自身の横幅がセットされている時は中央寄せされます。
+			また、margin-inline:auto
+			も適用されているので、自身の横幅がセットされている時は中央寄せされます。
 		</p>
-		<Container maxW='m'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container,-maxW:m' />
-			</Text>
+		<Container maxW='s'>
+			<AttsLabels atts='is--container.-maxW:' />
 			<LoremContent />
 		</Container>
-		<hr />
 
-		<h2>is--containerの子要素の振る舞い</h2>
+		<Spacer h='1rem' />
 
-		<h3>alignfull</h3>
-		<p>alignfull は、親が has--gutter を持っていても全幅に広がります。</p>
-		<Container size='m' hasGutter isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:m' />
-				<TipCode text='has--gutter' />
-			</Text>
+		<h2>is--container (-contentSize: あり)</h2>
+		<p>.-contentSize:クラスにより、内部のコンテンツ幅を制御できます。</p>
+		<!-- </Container> -->
+		<Container size='m' isFlow>
+			<AttsLabels atts='is--container,-contentSize:m' />
 			<LoremContent />
-
-			<AlignFull />
-			<!-- <AlignWide /> -->
-			<Box maxW='100' ta='c' bgc='gray:20%'>
-				<TipCode text='maxW:100%' m='5' color='gray' />
-			</Box>
-
 			<LoremContent />
-			<GutterGuide />
+			<!-- <GutterGuide /> -->
 		</Container>
-		<h3>alignwide</h3>
-		<p>containerの幅によってかわります。</p>
-
-		<Container size='s' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:s' />
-			</Text>
+		<Container size='s' isFlow>
+			<AttsLabels atts='is--container,-contentSize:s' />
 			<LoremContent />
-			<AlignWide>
-				<!-- : <code>--size--m</code> -->
-			</AlignWide>
-			{/* <LoremContent /> */}
-		</Container>
-		<Container size='m' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container' />
-			</Text>
 			<LoremContent />
-			<AlignWide>
-				<!-- : <code>--size--l</code> -->
-			</AlignWide>
-			{/* <LoremContent /> */}
+			<!-- <GutterGuide /> -->
 		</Container>
 		<Container size='l' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:l' />
-			</Text>
+			<AttsLabels atts='is--container,-contentSize:l' />
 			<LoremContent />
-			<AlignWide>
-				<!-- : <code>100%</code> -->
-			</AlignWide>
-			{/* <LoremContent /> */}
+			<LoremContent />
+			<!-- <GutterGuide /> -->
 		</Container>
 
-		<!-- <h3>is--containerのネスト</h3>
+		<Spacer h='1rem' />
+
+		<h2>-contentSize: のネスト</h2>
+
 		<p>
-			<code>{`is--container:{size}`}</code> は基本的に子要素の幅を制限するものですが、
-			<code>{`is--container:{size}`}</code>
-			 の直下で さらに <code>{`is--container:{size}`}</code>
-			 をネストすると自身の幅も親の
-			<code>{`is--container:{size}`}</code>で指定したサイズになります。
+			<code>is--container[data-content-size]</code> は子要素の幅を変数で制限するため、同じ変数を扱うコンテナがネストされると、（子要素側の）コンテナの幅がそのコンテンツサイズと同じ大きさになります。
 		</p>
 		<Container size='m' hasGutter isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:m' />
-				<TipCode text='has--gutter' />
-			</Text>
+			<AttsLabels atts='is--container,-contentSize:m,has--gutter' />
 			<LoremContent />
+			<LoremContent />
+			<Spacer h='.5rem' />
 			<Container size='s' isFlow='s'>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='is--container:s' />
-				</Text>
+				<AttsLabels atts='is--container,-contentSize:s' />
 				<LoremContent />
 				<LoremContent />
 			</Container>
 			{/* guide */}
-			<GutterGuide/>
-		</Container> -->
+			<GutterGuide />
+		</Container>
 
-		<hr />
+		<Spacer h='1rem' />
 
-		<h3>コンテナクエリの挙動について</h3>
+		<h2>コンテナクエリの挙動について</h2>
 		<p>
-			<code>{`is--container:{size}`}</code>
-			は、その子要素でのコンテナクエリの判定値に注意が必要です。
 			<br />
-			コンテナクエリの判定値は直前のコンテナ要素の幅になりますが、
-			<code>{`is--container:{size}`}</code>
-			自身の幅は100%のため、コンテナクエリの判定値もそのサイズとなります。 子要素側のサイズを基準に判定したい時は、内部でさらに
-			<code>{`is--container`}</code>を使ってコンテナを定義する必要があります。
+			コンテナクエリの判定値は<b>直前の親コンテナの幅</b>になりますが、
+			<code>-contentSize:</code>は子要素の幅を制限しているだけで、
+			自身の横幅は100%です。つまり、コンテナクエリの判定値もこの100%サイズが基準となります。
 		</p>
 
 		<Container size='s' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:s' />
-			</Text>
+			<AttsLabels atts='is--container,-contentSize:s' />
 			{/* <LoremContent /> */}
-			<Box bd>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='box' />
-				</Text>
-				<Box p='10' isFlow='s'>
-					<Box w='50cqw' bgc='base-2' p='5' bd fz='xs' whs='nw'>w=50cqw</Box>
+			<Box isFlow='s'>
+				<AttsLabels atts='div' />
+				<p>
+					ここでのコンテナクエリの判定値は、外側の（青色の点線で囲われた）コンテナ要素のサイズです。
+				</p>
+				<Lism p='10' isFlow='s'>
+					<Lism bd bdc='blue'>
+						<Lism
+							w='50cqw'
+							bgc='blue:20%'
+							p='10'
+							bg='u:stripe'
+							bd='r'
+							bdc='blue'
+							whs='nw'>width: 50cqw を適用したBOX</Lism
+						></Lism
+					>
 					<p>
-						コンテナクエリ:
-						<Text tag='span' bd d={['n', 'inline-block']}>@sm~</Text>
-						<Text tag='span' bd d={['n', null, 'inline-block']}>@md~</Text>
-						<Text tag='span' bd d={['n', null, null, 'inline-block']}>@lg~</Text>
+						コンテナクエリ適用状態 :
+						<Text tag='span' lh='1' p='5' bd boxcolor='blue' d={['n', 'inline-block']}
+							>@sm~</Text
+						>
+						<Text
+							tag='span'
+							lh='1'
+							p='5'
+							bd
+							boxcolor='blue'
+							d={['n', null, 'inline-block']}>@md~</Text
+						>
+						<Text
+							tag='span'
+							lh='1'
+							p='5'
+							bd
+							boxcolor='blue'
+							d={['n', null, null, 'inline-block']}>@lg~</Text
+						>
 					</p>
-				</Box>
+				</Lism>
 			</Box>
+			<Spacer h='1rem' />
 			<Container>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='is--container' />
-				</Text>
-				<Box p='10' isFlow='s'>
-					<Box w='50cqw' bgc='base-2' p='5' bd fz='xs' whs='nw'>w=50cqw</Box>
+				<AttsLabels atts='is--container' />
+				<p>
+					ここでのコンテナクエリの判定値は、内部でさらに配置している（緑色の点線で囲われた）コンテナ要素のサイズです。
+				</p>
+				<Lism p='10' isFlow='s'>
+					<Lism bd bdc='green'>
+						<Lism
+							w='50cqw'
+							bgc='green:20%'
+							p='10'
+							bg='u:stripe'
+							bd='r'
+							bdc='green'
+							whs='nw'>width: 50cqw を適用したBOX</Lism
+						></Lism
+					>
 					<p>
-						コンテナクエリ:
-						<Text tag='span' bd d={['n', 'inline-block']}>@sm~</Text>
-						<Text tag='span' bd d={['n', null, 'inline-block']}>@md~</Text>
-						<Text tag='span' bd d={['n', null, null, 'inline-block']}>@lg~</Text>
+						コンテナクエリ適用状態 :
+						<Text tag='span' lh='1' p='5' bd boxcolor='green' d={['n', 'inline-block']}
+							>@sm~</Text
+						>
+						<Text
+							tag='span'
+							lh='1'
+							p='5'
+							bd
+							boxcolor='green'
+							d={['n', null, 'inline-block']}>@md~</Text
+						>
+						<Text
+							tag='span'
+							lh='1'
+							p='5'
+							bd
+							boxcolor='green'
+							d={['n', null, null, 'inline-block']}>@lg~</Text
+						>
 					</p>
-				</Box>
+				</Lism>
 			</Container>
-			<AlignFull />
 		</Container>
-		<p>
-			もしくは、<code>{`is--container`}</code>とmaxWを組み合わせてコンテンツをラップします。
-		</p>
-		<Container maxW='s' isFlow='s'>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container,maxW:s' />
-			</Text>
-			{/* <LoremContent /> */}
-			<Box bd>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='box' />
-				</Text>
-				<Box p='10' isFlow='s'>
-					<Box w='50cqw' bgc='base-2' p='5' bd fz='xs' whs='nw'>w=50cqw</Box>
-					<p>
-						コンテナクエリ:
-						<Text tag='span' bd d={['n', 'inline-block']}>@sm~</Text>
-						<Text tag='span' bd d={['n', null, 'inline-block']}>@md~</Text>
-						<Text tag='span' bd d={['n', null, null, 'inline-block']}>@lg~</Text>
-					</p>
-				</Box>
-			</Box>
-			<Container>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='is--container' />
-				</Text>
-				<Box p='10' isFlow='s'>
-					<Box w='50cqw' bgc='base-2' p='5' bd fz='xs' whs='nw'>w=50cqw</Box>
-					<p>
-						コンテナクエリ:
-						<Text tag='span' bd d={['n', 'inline-block']}>@sm~</Text>
-						<Text tag='span' bd d={['n', null, 'inline-block']}>@md~</Text>
-						<Text tag='span' bd d={['n', null, null, 'inline-block']}>@lg~</Text>
-					</p>
-				</Box>
-			</Container>
-			<AlignFull />
-			<Overwide />
-		</Container>
-		<p>
-			この時、is--fullsizeもその内部に収まるので、幅広要素をコンテナ内部で利用したい場合は注意が必要です。
-			（<code>@propetry</code>がサポートされているモダンブラウザであれば、
-			<code>is--overwide</code>を代わりに活用できます。）
-		</p>
-		<hr />
-
-		<h3>is--overwide の子要素の振る舞い</h3>
-		<p>
-			<code>@propetry</code>
-			が有効なブラウザでは、直前のコンテナ要素が呼び出された位置基準としたコンテナ幅（100cqw）まで広がります。
-		</p>
-
-		<Container size='m' isFlow='s' hasGutter>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='is--container:m' />
-			</Text>
-			<LoremContent />
-			<AlignFull />
-			<Box bd isFlow='s'>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='box' />
-				</Text>
-				<LoremContent />
-				<AlignFull />
-				<Overwide />
-				<LoremContent />
-			</Box>
-			<LoremContent />
-			<GutterGuide />
-		</Container>
-		<Box isFlow='s' hasGutter bd>
-			<Text ta='c' lh='1' mt='-1em'>
-				<TipCode text='box' />
-			</Text>
-			<Container maxW='s' isFlow='s'>
-				<Text ta='c' lh='1' mt='-1em'>
-					<TipCode text='is--container' />
-				</Text>
-				<LoremContent />
-				<AlignFull />
-				<Overwide />
-				<LoremContent />
-			</Container>
-			<GutterGuide />
-		</Box>
 		<Spacer h='10rem' />
-	</Container>
+	</Lism>
 </DemoPageLayout>

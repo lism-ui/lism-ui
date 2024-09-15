@@ -13,35 +13,46 @@
 */
 
 // hasBorder?
-// .has--border {
+// .has--bd {
 // 	--bds: solid;
 // 	--bdw: 1px;
 // 	--bdc: currentColor; //var(--base-3);
 // 	--bd: var(--bdw) var(--bds) var(--bdc);
 // }
 
-// hasBorder
-
 // .-bd\:→all
 
 // bdc, bdw などでカラーや太さを上書きできるように border 自体を変数管理
 
 // :where( .-bd\:, .-bdl\:, .-bdr\:, .-bdt\:, .-bdb\:, .-bdx\:, .-bdy\:, .-bdis\:, .-bdbs\:, .-bdie\:, .-bdbe\: )
+:root {
+	--bds--default: solid;
+	--bdw--default: 1px;
+	--bdc--default: currentColor; //var(--base-3);
+}
+// :root, .has--bd,
 :where([class*='-bd:']) {
-	--bds: solid;
-	--bdw: 1px;
-	--bdc: currentColor; //var(--base-3);
+	--bds: var(--bds--default);
+	--bdw: var(--bdw--default);
+	--bdc: var(--bdc--default);
 	--bd: var(--bdw) var(--bds) var(--bdc);
 }
 
 // 使用される環境（resetCSS）によって挙動が変わりやすいので 各プロパティを変数で管理する。
 // ブラウザのデフォルト挙動では、bds指定でborder出現してくるが、nextraのresetCSSみたいな特殊な環境だとbdwの指定でborderでてきたりする。
 // .-bd\:a,
+
+// .has--bd:not([class*='-bd:'])
 .-bd\: {
 	// --bd: var(--bdw) var(--bds) var(--bdc);
 	border: var(--bd);
 }
 
+// .has--bd .-bd:
+
+// .has--bd .-bdl: .-bdr:
+
+// .has--bd .-bd:l .-bd:r
 // --------------------
 // bd:presets
 // --------------------
@@ -85,17 +96,23 @@
 .-bd\:b {
 	border-bottom: var(--bd);
 }
-.-bd\:x {
-	border-inline: var(--bd);
-}
-.-bd\:y {
-	border-block: var(--bd);
-}
+// .-bd\:x {
+// 	border-inline: var(--bd);
+// }
+// .-bd\:y {
+// 	border-block: var(--bd);
+// }
 .-bd\:is {
 	border-inline-start: var(--bd);
 }
+.-bd\:ie {
+	border-inline-end: var(--bd);
+}
 .-bd\:bs {
 	border-block-start: var(--bd);
+}
+.-bd\:be {
+	border-block-end: var(--bd);
 }
 
 // bd, bdl, bdr,...
@@ -110,29 +127,23 @@
 // .-bdt\:{border-top: var(--bdt);}
 // .-bdb\:{border-bottom: var(--bdb);}
 
-.-bd\:l\:n {
-	border-left: none;
-}
-.-bd\:r\:n {
-	border-right: none;
-}
-.-bd\:t\:n {
-	border-top: none;
-}
-.-bd\:b\:n {
-	border-bottom: none;
-}
-.-bd\:is\:n {
-	border-inline-start: none;
-}
-.-bd\:bs\:n {
-	border-block-start: none;
-}
-// .-bdie\:n {
-// 	border-inline-end: none;
+// .-bdl\:n {
+// 	border-left: none;
 // }
-// .-bdbe\:n {
-// 	border-block-end: none;
+// .-bdr\:n {
+// 	border-right: none;
+// }
+// .-bdt\:n {
+// 	border-top: none;
+// }
+// .-bdb\:n {
+// 	border-bottom: none;
+// }
+// .-bdis\:n {
+// 	border-inline-start: none;
+// }
+// .-bdbs\:n {
+// 	border-block-start: none;
 // }
 
 // bdw="1px 1px 0 0" とかでも指定できる

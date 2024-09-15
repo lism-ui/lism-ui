@@ -1,0 +1,521 @@
+---
+title: 'Layout State'
+description: ...
+sidebar:
+  order: 4
+---
+
+
+import { Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Spacer } from '@lism-ui/core';
+import { Accordion,AccordionHeader, AccordionBody } from '@lism-ui/astro';
+import { Desktop } from '@phosphor-icons/react';
+import { MemoBadge,HelpText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import PreviewFrame from '~/components/PreviewFrame.astro';
+import { Note } from '~/components/ex/Note';
+
+Lismでは、レイアウトを組む上で特定の役割を持ち、複数のモジュールに対してつけ外しできるような汎用性の高いセレクタを Layout State として分類しています。
+
+
+{/* - `is--container` : コンテナ要素で、かつ**自身の横幅**を制御できるクラス
+- `is--constrained` : コンテナ要素で、かつ**子要素の横幅**を制御するためのクラス
+- `is--flow` : コンテンツ間隔の余白量を制御するためのクラス
+- `has--gutter` : サイトを通してコンテンツの左右に統一された余白をつけるためのクラス
+- etc... */}
+
+
+## `is--flow`
+
+Lismでは、**コンテンツ間の余白を管理するためのクラス**として、`.is--flow` を用意しています。
+
+<Callout type='point'>
+`.is--flow`系の直下では、コンテンツの間隔が `margin-block-start` で管理されます。
+</Callout>
+
+| クラス名 | 余白量 |
+|---|---|
+| `.is--flow` | `--flowGap--m` |
+| `.is--flow.-flowGap:s` | `--flowGap--s` |
+| `.is--flow.-flowGap:` | `--flowGap`で任意の値をセットできます。 |
+{/* | `.is--flow.-flowGap:l` | `--flowGap--l` (`--s--50`) | */}
+
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Box isFlow p='10'>
+			<Text bd='guide'>Content...</Text>
+			<Text bd='guide'>Content...</Text>
+			<Box isFlow='s' p='10' bd bdc='divider'>
+				<Text bd='guide'>Content...</Text>
+				<Text bd='guide'>Content...</Text>
+				<Text bd='guide'>Content...</Text>
+			</Box>
+			<Text bd='guide'>Content...</Text>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--flow -p:10">
+		<p>Content...</p>
+		<p>Content...</p>
+		<div class="is--flow -flowGap:s -p:10">
+			<p>Content...</p>
+			<p>Content...</p>
+			<p>Content...</p>
+		</div>
+		<p>Content...</p>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Box isFlow p='10'>
+		<p>Content...</p>
+		<p>Content...</p>
+		<Box isFlow='s' p='10'>
+			<Text>Content...</Text>
+			<Text>Content...</Text>
+			<Text>Content...</Text>
+		</Box>
+		<p>Content...</p>
+	</Box>
+	```
+	</PreviewCode>
+</Preview>
+
+
+任意の余白量をセットしたい場合は、`-flowGap:`クラスと`--flowGap`変数を組み合わせます。
+
+<Preview>
+	<PreviewTitle>任意の値をセットする</PreviewTitle>
+	<PreviewArea p='30'>
+		<Lism isFlow='10px'>
+			<Text bd='guide'>Contents...</Text>
+			<Text bd='guide'>Contents...</Text>
+			<Text bd='guide'>Contents...</Text>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--flow -flowGap:" style="--flowGap:10px">
+		<p>Contents...</p>
+		<p>Contents...</p>
+		<p>Contents...</p>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism isFlow='10px'>
+		<p>Contents...</p>
+		<p>Contents...</p>
+		<p>Contents...</p>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+
+<Box fz='l' fw='bold' mbs='50'>
+`is--flow` をネストする時の注意点
+</Box>
+
+
+`-flowGap:`の直下でさらに`-flowGap:`を配置すると、子要素側が自身の `--flowGap` に干渉してしまいます。
+
+<Preview>
+	<PreviewTitle>NG例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Box isFlow='2em'>
+			<p className='-bd:guide'>Contents...</p>
+			<p className='-bd:guide'>Contents...</p>
+			<Box isFlow='0.5em' bgc='blue:8%'>
+				<p className='-bd:guide'>Nested contents...</p>
+				<p className='-bd:guide'>Nested contents...</p>
+			</Box>
+			<p className='-bd:guide'>Contents...</p>
+			<p className='-bd:guide'>Contents...</p>
+		</Box>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx {1,4}
+	<Box isFlow='2em'>
+		<p>Contents...</p>
+		<p>Contents...</p>
+		<Box isFlow='0.5em'>
+			<p>Nested contents...</p>
+			<p>Nested contents...</p>
+		</Box>
+		<p>Contents...</p>
+		<p>Contents...</p>
+	</Box>
+	```
+	</PreviewCode>
+</Preview>
+
+<Callout type='info'>
+	`.is--flow`, `.is--flow.-flowGap:s` をネストするのは問題ありません.
+</Callout>
+
+
+
+## has--gutter
+
+コンテンツの左右に余白をつけることができるクラスです。  
+サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
+
+| クラス名 |  初期値 |
+|---|---|
+| `has--gutter` | `--s--40` |
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Lism hasGutter bd='guide'>
+			<div>Contents...</div>
+			<div>Contents...</div>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="has--gutter">
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism hasGutter>
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+## `is--container`
+
+`is--container`はコンテナ要素を定義するためのクラスです。  
+`-contentSize:{s|m|l}`のようにサイズを指定することで、子要素のコンテンツサイズを制御することができます。
+
+| クラス名 | コンテンツ幅 |
+|---|---|
+| `is--container`| |
+| `-contentSize:s` | `--contentSize--s` |
+| `-contentSize:m` | `--contentSize--m` |
+| `-contentSize:l` | `--contentSize--l` |
+| `-contentSize:` | `--contentSize`で任意の値をセットできます。 |
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Lism isContainer='s' bd='guide'>
+			<div>Contents...</div>
+			<div>Contents...</div>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--container -contentSize:s">
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism isContainer='s'>
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+
+<Callout type='info'>
+	`-contentSize:{s|m|l}`を使用すると、`--contentSize`だけではなく `.is--wide`の幅（`.--wide-size`）も同時に調整されます。
+</Callout>
+
+
+
+<Box fz='l' fw='bold' mbs='50'>
+`.is--container` に 任意の値をセットする方法
+</Box>
+
+
+
+s, m, l 以外の値をセットしたい場合は、`is--container:`クラスと`--contentSize`変数を組み合わせます。
+
+<Preview>
+	<PreviewTitle>is--container に任意の値をセットする</PreviewTitle>
+	<PreviewArea resize p={30}>
+		<Lism isContainer='20em' bd='guide'>
+			<div>Contents...</div>
+			<div>Contents...</div>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--container -contentSize:" style="--contentSize:20em">
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism isContainer='20em'>
+		<div>Contents...</div>
+		<div>Contents...</div>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Spacer h='1rem' />
+<Callout icon={Desktop} boxcolor='purple'>
+`is--container`関連の挙動を確認できるデモページを用意しています。  
+ぜひ広い画面でご確認ください。
+</Callout>
+
+<PreviewFrame url='/demo/container' />
+
+
+
+## `is--wide|fullwide|overwide`
+
+コンテンツサイズの制御クラスを3種類用意しています。
+
+{/* flow, flow:s, container, container:s */}
+
+| クラス名 | 説明 |
+|---|---|
+| `is--wide` | `.-contentSize:\{s\|m\|l\}`クラス直下では、コンテンツ幅よりも1段階広いサイズになります.  |
+| `is--fullwide` | `has--gutter`の直下でも、親要素のサイズいっぱいに広がります。 |
+| `is--overwide` | 直前のコンテナ要素が呼び出された位置を基準としたコンテナ幅（`100cqw`）まで広がります。（`@propetry`が有効なブラウザでのみ有効。） |
+
+
+これらのクラスの挙動についても、別ページで確認できます。
+
+<PreviewFrame url='/demo/content-size' />
+
+
+## `is--frame`
+
+高さやアスペクトを固定して、内部のコンテンツをはみ出さないようにするためのクラスです。
+直下のメディア要素（`img`,`vieo`,`iframe`）を `object-fit:cover` でサイズいっぱいに表示することもできます。
+
+活用例は [Frame](/ja/components/frame) を参照してください。
+
+
+## `is--linkBox`
+
+ボックス全体をリンク化するためのクラスです。
+
+活用例は [LinkBox](/ja/components/linkbox) を参照してください。
+
+
+## `has--divider`
+
+子要素の間に仕切り線を表示します。デフォルトでは`border-bottom`で区切り線が描画されます。
+
+<Preview>
+	<PreviewTitle>`has--divider`</PreviewTitle>
+	<PreviewArea nogrid p='20'>
+		<Box hasDivider>
+			<Box p='20'>Content</Box>
+			<Box p='20'>Content</Box>
+			<Box p='20'>Content</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="l--box has--divider">
+		<div class="-p:20">Content</div>
+		<div class="-p:20">Content</div>
+		<div class="-p:20">Content</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Stack hasDivider>
+		<Box p='20'>Content</Box>
+		<Box p='20'>Content</Box>
+		<Box p='20'>Content</Box>
+	</Stack>
+	```
+	</PreviewCode>
+</Preview>
+
+
+`--isRow`変数が`1`の時、区切り線は`border-inline-end`で描画されます。  
+また、`l--flex`と併用された時、`--isRow`変数は`1`にセットされるようにもなっています。
+
+<Preview>
+	<PreviewTitle>`l--flex`で使用する</PreviewTitle>
+	<PreviewArea p='20' nogrid>
+		<Flex hasDivider>
+			<Box px='20' py='5'>Content</Box>
+			<Box px='20' py='5'>Content</Box>
+			<Box px='20' py='5'>Content</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="l--flex has--divider">
+		<div class="-px:em10">Content</div>
+		<div class="-px:em10">Content</div>
+		<div class="-px:em10">Content</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Flex hasDivider>
+		<Box px='em10'>Content</Box>
+		<Box px='em10'>Content</Box>
+		<Box px='em10'>Content</Box>
+	</Flex>
+	```
+	</PreviewCode>
+</Preview>
+
+`--isRow`はブレイクポイントの指定に対応しているため、`flex-direction`の切り替えに合わせて区切り線の方向を変えることができます。
+
+<Preview>
+	<PreviewTitle>`--isRow`で方向を管理する</PreviewTitle>
+	<PreviewArea resize p='20' nogrid>
+		<Flex hasDivider fxd={['column','row']} isRow={[0,1]} bdw='2px' bdc='blue'>
+			<Box px='20' py='5'>Content</Box>
+			<Box px='20' py='5'>Content</Box>
+			<Box px='20' py='5'>Content</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div
+		class="l--flex has--divider -isRow@sm -fxd:c -fxd@sm"
+		style="--isRow:0;--sm-isRow:1;--bdw:2px;--bdc:var(--blue);--sm-fxd:row">
+		<div class="-px:em10">Content</div>
+		<div class="-px:em10">Content</div>
+		<div class="-px:em10">Content</div>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Flex hasDivider fxd={['column','row']} isRow={[0,1]} bdw='2px' bdc='blue'>
+		<Box px='em10'>Content</Box>
+		<Box px='em10'>Content</Box>
+		<Box px='em10'>Content</Box>
+	</Flex>
+	```
+	</PreviewCode>
+</Preview>
+
+
+
+## 補足
+
+### コンテンツのサイズ制御について
+
+ページのコンテンツエリアが次のような構造をしているとします。
+
+```html {3}
+<main>
+	<article>
+		...コンテンツ...
+	</article>
+</main>
+```
+
+ここで、例えば`article`内のコンテンツ幅を`800px`にしたい時を考えてみてください。
+
+主に、次の①か②の選択肢があると思います。
+
+```css
+/* ① コンテナ自身(コンテンツの親要素)の幅を制御する */
+article{
+	max-width: 800px;
+}
+
+/* ② 各コンテンツ（コンテナの直下要素）の幅を制御する */
+article > * {
+	max-width: 800px;
+	margin-inline: auto;
+}
+```
+
+どちらも一長一短ありますが、とくに理由がなければ①を採用することが多いのではないでしょうか。
+
+<Callout type="point">
+しかし、Lismでは ② の方法を推奨しています。  
+</Callout>
+{/* <HelpText>（もちろん、どちらのアプローチも可能です。）</HelpText> */}
+
+この②のアプローチに対応するためのコンテンツ制御クラスが、`-contentSize:`クラスです。また、②を前提として`is--wide`や`is--fullwide`クラスは設計されています。
+
+これはなぜかというと、① のアプローチをベースにした場合、途中で**全幅サイズで表示したいコンテンツ**を作る場合の処理が複雑になってしまうためです。
+
+<Preview>
+<PreviewTitle>こういうやつ</PreviewTitle>
+<PreviewArea>
+	<Container size='30rem' hasGutter py='40' bd='guide' bdc='blue'>
+		<Box bd='guide' py='10'>コンテンツ...</Box>
+		<Box isFullwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
+		<Box bd='guide' py='10'>コンテンツ...</Box>
+	</Container>
+</PreviewArea>
+</Preview>
+
+②であれば、基本のCSSは`max-width:100%`だけでOKで、少しの例外処理を加えれば済みます。
+
+しかし①では、次のようなCSSになってしまいます。
+
+```css
+.fullwide{
+	max-width: 100vw;
+	left: calc(50% - 50vw);
+}
+
+/* その他環境を考慮したCSS... */
+```
+
+これだけみるとそこまで複雑ではないように見えますが、`vw`では**スクロールバーの幅が考慮されない**という問題点があったり、汎用性を考慮するとCSSがどんどん複雑化していきます。
+
+ただし、`@property`が有効なブラウザでは①の問題点もほぼ解消されるようになってきました。
+
+そこで、Lismでは、`is--overwide` を用意しています。
+
+①のようなアプローチを採用するには、`is--container`にmax-widthを指定して運用し、全幅コンテンツに対して`is--overwide`クラスを使用てください。
+
+<Preview>
+<PreviewTitle>例</PreviewTitle>
+<PreviewArea>
+<Box hasGutter>
+	<Container maxW='30rem' py='40' bd='guide' bdc='blue'>
+		<Box bd='guide' py='10'>...コンテンツ...</Box>
+		<Box isOverwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
+		<Box bd='guide' py='10'>...コンテンツ...</Box>
+	</Container>
+</Box>
+</PreviewArea>
+<PreviewCode>
+```jsx "isOverwide"
+<Box hasGutter>
+	<Container maxW='30rem' py='40' bd='guide' bdc='blue'>
+		<Box bd='guide' py='10'>...コンテンツ...</Box>
+		<Box isOverwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
+		<Box bd='guide' py='10'>...コンテンツ...</Box>
+	</Container>
+</Box>
+```
+</PreviewCode>
+</Preview>

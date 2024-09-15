@@ -174,16 +174,19 @@ export const PropTable = ({data={}, ...props}) => {
 			't': 'border-top: var(--bd)',
 			'b': 'border-bottom: var(--bd)',
 			'is': 'border-inline-start: var(--bd)',
+			'ie': 'border-inline-end: var(--bd)',
 			'bs': 'border-block-start: var(--bd)',
-			'x': 'border-inline: var(--bd)',
-			'y': 'border-block: var(--bd)',
+			'be': 'border-block-end: var(--bd)',
+			'n': 'border: none',
+			//'x': 'border-inline: var(--bd)',
+			//'y': 'border-block: var(--bd)',
 		},
-		'bd:l':{'n':'border-left: none'},
-		'bd:r':{'n':'border-right: none'},
-		'bd:t':{'n':'border-top: none'},
-		'bd:b':{'n':'border-bottom: none'},
-		'bd:is':{'n':'border-inline-start: none'},
-		'bd:bs':{'n':'border-block-start: none'},
+		//'bd:l':{'n':'border-left: none'},
+		//'bd:r':{'n':'border-right: none'},
+		//'bd:t':{'n':'border-top: none'},
+		//'bd:b':{'n':'border-bottom: none'},
+		//'bd:is':{'n':'border-inline-start: none'},
+		//'bd:bs':{'n':'border-block-start: none'},
 		//'bdie':{'n':'border-inline-end: none'},
 		//'bdbe':{'n':'border-block-end: none'},
 	}}
@@ -195,15 +198,10 @@ export const PropTable = ({data={}, ...props}) => {
 	data={{
 		bdc:{
 			't': '--bdc:transparent',
+			'i': '--bdc:inherit',
+			'cc': '--bdc:currentColor',
 			'divider': '--bdc:var(---divider-bdc)',
-			'table': '--bdc:var(---table-bdc)',
 		},
-		bds: {
-			'dt': '--bds:dotted',
-			'ds': '--bds:dashed',
-			's': '--bds:solid',
-			'db': '--bds:double',
-		}
 	}}
 />
 

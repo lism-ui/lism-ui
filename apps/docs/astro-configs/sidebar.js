@@ -124,10 +124,6 @@ export default [
 			},
 
 			{
-				label: 'Layer',
-				link: '/components/layer/',
-			},
-			{
 				label: 'WithSide',
 				link: '/components/withside/',
 			},
@@ -138,6 +134,10 @@ export default [
 			{
 				label: 'Container',
 				link: '/components/container/',
+			},
+			{
+				label: 'Layer',
+				link: '/components/layer/',
 			},
 			{
 				label: 'Frame',

@@ -5,14 +5,14 @@ const emPresets = ['em1', 'em2', 'em3', 'em4', 'em6', 'em8', 'em10', 'em12', 'em
 
 // ユーティリティクラス化するキーワード
 export default {
-	radius: ['0', ...TOKENS.radius],
+	radius: ['inner', '0', ...TOKENS.radius],
 	shadow: TOKENS.shadow,
 	fz: TOKENS.fz,
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,
 	ff: TOKENS.ff,
 	fw: TOKENS.fw,
-	tsh: ['black', 'white'],
+	// tsh: ['black', 'white'],
 	c: [
 		'main',
 		// 'accent',
@@ -97,7 +97,7 @@ export default {
 	// transform: ['flip:x', 'flip:y', 'flip:xy'],
 	animation: [],
 
-	contentSize: ['xs', 's', 'l', 'xl', 'full'], // container, constrained のユーティリティクラス
+	contentSize: ['xs', 's', 'm', 'l', 'xl', 'full'], // container, constrained のユーティリティクラス
 	flow: ['xs', 's', 'l'], // flowのユーティリティクラス
 	// mbs: ['s', 'm', 'l'], // --mbs--xxx トークン
 };

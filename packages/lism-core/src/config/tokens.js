@@ -33,7 +33,8 @@ export default {
 	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],
 
 	// size:['container', 'container:s', 'container:l'],
-	size: ['xs', 's', 'm', 'l', 'xl', 'item'], // --size--xxx トークン
+	contentSize: ['xs', 's', 'm', 'l', 'xl', 'item'], // --contentSize--xxx トークン
+	size: [],
 
 	// --変数化できるキーワード
 	color: [

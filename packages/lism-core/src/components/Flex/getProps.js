@@ -24,7 +24,13 @@ export function getFlexProps({ _flex = 'flex', variant, _lismClass = [], ...prop
 export function getFlexItemProps(props) {
 	if (null == props.flexItem) props.flexItem = {};
 
-	['fx', 'fxg', 'fxsh', 'fxb', 'aslf', 'jslf', 'pslf', 'ord'].forEach((key) => {
+	[
+		'fx',
+		'fxg',
+		'fxsh',
+		'fxb',
+		//'aslf', 'jslf', 'pslf', 'ord'
+	].forEach((key) => {
 		if (null != props[key]) {
 			props.flexItem[key] = props[key];
 			delete props[key];

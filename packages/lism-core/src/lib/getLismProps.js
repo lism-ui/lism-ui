@@ -46,6 +46,9 @@ const HOV_PROPS = {
 	// },
 };
 
+const PROPS_KEYS = Object.keys(PROPS);
+const CONTEXT_PROPS_KEYS = Object.keys(CONTEXT_PROPS);
+
 // const PROP_FULL_NAMES = {
 // 	padding: 'p',
 // 	margin: 'm',
@@ -74,12 +77,14 @@ class LismPropsData {
 			style = {},
 			lismClass,
 			_lismClass = [],
+			_componentClass,
 			// lismVar,
 			passProps,
 			getProps,
 			skipState,
 			isSide,
 			isFrame,
+			isLayer,
 			isLinkBox,
 			_context,
 			..._props
@@ -94,14 +99,16 @@ class LismPropsData {
 		// isFrame, isLinkBoxは skipStateに関係なくチェック
 		if (isFrame) {
 			lismState.push('is--frame');
-			if (others.objectPosition) {
-				lismStyle['--objectPosition'] = others.objectPosition;
-				delete others.objectPosition;
-			}
+			// if (others.objectPosition) {
+			// 	lismStyle['--objectPosition'] = others.objectPosition;
+			// 	delete others.objectPosition;
+			// }
+		}
+		if (isLayer) {
+			lismState.push('is--layer');
 		}
 		if (isLinkBox) {
 			lismState.push('is--linkBox');
-			if (others.hov == null) others.hov = 'fade';
 		}
 		if (isSide) {
 			lismState.push('is--side');
@@ -125,6 +132,7 @@ class LismPropsData {
 		this.className = joinAtts(
 			classFromAstro,
 			className, // ユーザー指定のクラス
+			_componentClass,
 			lismClassNames, // l--, c--, e-- などのクラス
 			_lismClass,
 			lismState // is, has
@@ -181,15 +189,15 @@ class LismPropsData {
 	}
 
 	// 特定の条件下で受け取るpropの処理
-	setContextProps(context, propObject) {
-		// if (typeof propObject !== 'object') return;
+	setContextProps(name, values) {
+		// if (typeof values !== 'object') return;
 
-		const contextProps = CONTEXT_PROPS[context];
+		const contextProps = CONTEXT_PROPS[name];
 		if (!contextProps) return;
 
-		Object.keys(propObject).forEach((propName) => {
+		Object.keys(values).forEach((propName) => {
 			const propData = contextProps[propName];
-			const propValue = propObject[propName];
+			const propValue = values[propName];
 
 			// console.log(propName, propValue, propData);
 			this.analyzeProp(propName, propValue, propData);
@@ -245,14 +253,22 @@ class LismPropsData {
 
 			// if (PROP_FULL_NAMES[propName]) propName = PROP_FULL_NAMES[propName];
 
-			// Lismで処理する prop 以外はここでスキップ
-			if (!PROPS[propName]) return;
+			// Lism系のプロパティかどうか
+			const isLismProp = PROPS_KEYS.includes(propName);
+			const isContextProp = CONTEXT_PROPS_KEYS.includes(propName);
+
+			// それ以外はここでスキップ
+			if (!isLismProp && !isContextProp) return;
 
 			// value取得して attrsリストから削除しておく
 			const propVal = this.attrs[propName];
 			delete this.attrs[propName];
 
-			this.analyzeProp(propName, propVal);
+			if (isContextProp) {
+				this.setContextProps(propName, propVal);
+			} else {
+				this.analyzeProp(propName, propVal);
+			}
 		});
 	}
 
@@ -264,7 +280,7 @@ class LismPropsData {
 		propData = propData || PROPS[propName] || null;
 		if (null === propData) return; // 一応 nullチェックここでも
 
-		const { name, objProcessor, map, ...options } = propData;
+		const { name, objProcessor, ...options } = propData;
 
 		// ブレイクポイント指定用のオブジェクト{base,sm,md,lg,xl}かどうかをチェック
 		const { base: baseValue, ...bpValues } = getBpData(propVal);
@@ -282,12 +298,6 @@ class LismPropsData {
 
 		// BP指定意外で成分プロパティが指定されている場合
 		if (null != propVal && typeof propVal === 'object') {
-			// mapを持つ場合. CONTET_PROPSからデータを取得する
-			if (map) {
-				this.setContextProps(propName, propVal);
-				return;
-			}
-
 			// 各成分の解析
 			if (objProcessor) {
 				// this.analyzeSideObj(propVal, objProcessor);
@@ -399,7 +409,8 @@ class LismPropsData {
 		}
 
 		// .-prop: だけ出力するケース
-		if ((!style && true === val) || '-' === val) {
+		// if ((!style && true === val) || '-' === val) {
+		if (true === val || '-' === val) {
 			this.addUtil(utilName);
 			return;
 		}

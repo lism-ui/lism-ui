@@ -47,15 +47,13 @@
 	    1080 にしてるのは、 1920 * 1080画像がきれいに配置できるため？
 	------------------------------------------------------------ */
 	// コンテンツサイズは960 ~ 1120 くらいがよさそう. @lg よりは大きく?
-	// --size--xl: 1600px;
-	--size--l: 1440px; // = --wp--style--global--wide-size. alignwide で使う.
-	--size--m: 1120px; // = --wp--style--global--content-size.
-	--size--s: 45rem; // slim幅1カラムテンプレートで使う. fz:16px時 = 720px
-	--size--xs: 30rem;
+	// --contentSize--xl: 1600px;
+	--contentSize--l: 1240px; // ヘッダーなどワイドエリアのサイズ
+	--contentSize--m: 1080px; // 基本のコンテンツエリア
+	--contentSize--s: 720px; //45rem; // slim幅1カラムテンプレート用
+	// --contentSize--xs: 30rem;
 
-	--size--item: 16em; // タイルグリッドなどのアイテムサイズの標準値
-
-	// --contentSize--full: 特殊
+	--contentSize--min: 16rem; // 最低限維持したいアイテムサイズの標準値
 
 	/* ------------------------------------------------------------
 	    タイポグラフィ
@@ -155,8 +153,8 @@
 	// ------------------------------
 	// text-shadow 変数
 	// ------------------------------
-	--tsh--black: 0.5px 1px 0px hsl(var(--hsl-black) / 0.25);
-	--tsh--white: 0.5px 1px 0px hsl(var(--hsl-white) / 0.25);
+	// --tsh--black: 0.5px 1px 1px hsl(var(--hsl-black) / 0.25);
+	// --tsh--white: 0.5px 1px 1px hsl(var(--hsl-white) / 0.25);
 
 	// ------------------------------------------------------------
 	// カラー
@@ -309,9 +307,9 @@
 	--p--box--l: 1.375em 1.5em;
 
 	// .is--flow の blockGap 管理用変数
-	--flowGap--s: var(--s--20); // --mbs--s?
+	--flowGap--s: var(--s--30); // --mbs--s?
 	--flowGap--m: var(--s--40); // --mbs--m?
-	--flowGap--l: var(--s--50);
+	// --flowGap--l: var(--s--50);
 	--flowGap--htag: 2.5em; // var(--s--50); // フォントサイズ依存
 
 	/* ------------------------------------------------------------
@@ -333,7 +331,7 @@
 	  shadow
 	------------------------------------------------------------ */
 	--sh-hsl: 215 8% 12%;
-	--sh-a: 15%;
+	--sh-a: 8%;
 
 	// --sh-a--base: calc(var(--sh-a) - 4%);
 	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));
@@ -358,10 +356,10 @@
 	/* ------------------------------------------------------------
 	  filter
 	------------------------------------------------------------ */
-	--filter--blur: blur(4px);
+	// --filter--blur: blur(4px);
 	// --filter--blur--l: blur(8px);
-	--filter--lighten: brightness(1.15);
-	--filter--darken: brightness(0.85);
+	// --filter--lighten: brightness(1.15);
+	// --filter--darken: brightness(0.85);
 }
 
 :root,
@@ -378,21 +376,6 @@
 	--sh--i1: inset var(--sh-size--0) var(--sh-color), inset var(--sh-size--1) var(--sh-color);
 	--sh--i2: inset var(--sh-size--1) var(--sh-color), inset var(--sh-size--2) var(--sh-color);
 	--sh--i3: inset var(--sh-size--2) var(--sh-color), inset var(--sh-size--3) var(--sh-color);
-}
-// .-bxsh\:3 {
-// 	--sh--3: var(--sh-size--2) hsl(var(--sh-hsl) / var(--sh-a)),
-// 		var(--sh-size--3) hsl(var(--sh-hsl) / calc(var(--sh-a) + 6%));
-// }
-
-@supports (content-visibility: auto) or (top: 0lh) {
-	// cqw を算出値で保持するために登録済みカスタムプロパティとして定義
-	// @property --sh-color {
-	// 	syntax: '<color>';
-	// 	initial-value: hsl(215 8% 8% / 8%);
-	// 	inherits: false;
-	// }
-
-	// <length> inherit <color>
 }
 
 // ↓ space: これでもわりとしっくりくる...？ 2:.25, 3: 0.375

@@ -1,15 +1,7 @@
-import { Lism, Media } from '../Lism';
+import { Lism } from '../Lism';
 import { getLayerProps } from './getProps';
-import separateMediaAttrs from '../separateMediaAttrs';
 
-export default function Layer(props) {
-	if (props?.src) {
-		const { mediaAttrs, otherProps } = separateMediaAttrs(props);
-		return (
-			<Lism isFrame {...getLayerProps(otherProps)}>
-				<Media {...mediaAttrs} />
-			</Lism>
-		);
-	}
-	return <Lism {...getLayerProps(props)} />;
+export default function Layer({ layout, ...props }) {
+	const Layout = layout || Lism;
+	return <Layout {...getLayerProps(props)} />;
 }

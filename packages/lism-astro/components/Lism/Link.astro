@@ -1,17 +1,14 @@
 ---
 import { LismProps } from '../types';
-import getLismProps from '@lism-ui/core/lib/getLismProps';
-import separateLinkProps from '@lism-ui/core/components/separateLinkProps';
+import getLinkProps from '@lism-ui/core/components/getLinkProps';
 
 // Propsの定義
 interface Props extends LismProps {}
 const { as, exProps, ...props } = Astro.props || {};
 
-const { linkProps, otherProps } = separateLinkProps(props);
-const lismProps = getLismProps(otherProps, { hov: 'fade' });
 const JSX = as || 'a';
 ---
 
-<JSX {...linkProps} {...lismProps} {...exProps}>
+<JSX {...getLinkProps(props)} {...exProps}>
 	<slot />
 </JSX>

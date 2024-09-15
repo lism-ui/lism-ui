@@ -1,10 +1,6 @@
-import getLismProps from '../../lib/getLismProps';
-import separateLinkProps from '../separateLinkProps';
+import getLinkProps from '../getLinkProps';
 
 export default function Link({ as, exProps = {}, ...props }) {
-	const { linkProps, otherProps } = separateLinkProps(props);
-	const lismProps = getLismProps(otherProps, { hover: 'fade' });
-
 	const JSX = as || 'a';
-	return <JSX {...linkProps} {...lismProps} {...exProps} />;
+	return <JSX {...getLinkProps(props)} {...exProps} />;
 }
