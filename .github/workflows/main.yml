@@ -23,12 +23,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
-        run: pnpm build:core
-
       - name: Publish lism-core
         if: contains(github.event.head_commit.message, '[core]')
-        run: pnpx pkg-pr-new publish './packages/lism-core'
+        run: |
+          pnpm build:core
+          pnpx pkg-pr-new publish './packages/lism-core'
 
       - name: Publish lism-astro
         if: contains(github.event.head_commit.message, '[astro]')
