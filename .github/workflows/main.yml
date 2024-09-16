@@ -26,4 +26,14 @@ jobs:
       - name: Build
         run: pnpm build:core
 
-      - run: pnpx pkg-pr-new publish './packages/lism-core' './packages/lism-astro'
+      - name: Publish lism-core
+        if: contains(github.event.head_commit.message, '[core]')
+        run: pnpx pkg-pr-new publish './packages/lism-core'
+
+      - name: Publish lism-astro
+        if: contains(github.event.head_commit.message, '[astro]')
+        run: pnpx pkg-pr-new publish './packages/lism-astro'
+
+      - name: Publish lism-next
+        if: contains(github.event.head_commit.message, '[next]')
+        run: pnpx pkg-pr-new publish './packages/lism-next'
