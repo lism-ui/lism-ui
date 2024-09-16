@@ -74,12 +74,21 @@ rt {
 }
 
 /* テキストのオーバーフローを回避 */
-:is(p, h1, h2, h3, h4, h5, h6) {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	overflow-wrap: break-word;
 }
 
 /* フォーム要素のフォントとカラーをリセット */
-:is(input, button, textarea, select) {
+input,
+button,
+textarea,
+select {
 	font: inherit;
 	color: inherit;
 }
@@ -123,9 +132,4 @@ summary,
 /* Specify the progress cursor of updating elements */
 [aria-busy='true'] {
 	cursor: progress;
-}
-
-/* fill指定のない svg にテキストカラーを継承させる */
-svg:where(:not([fill])) {
-	fill: currentcolor;
 }

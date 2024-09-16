@@ -27,9 +27,8 @@ export * from '@lism-ui/core';
 	use client をつけて返すもの
 */
 export { default as Accordion } from './Accordion';
-export { default as AccordionHeader } from './AccordionHeader';
-export { default as AccordionBody } from './AccordionBody';
-
-// export { Accordion, AccordionBody, AccordionHeader } from './AccordionHeader';
-
-// export { Tab, TabItem } from './Tab';
+// export { default as AccordionHeader } from './AccordionHeader';
+// export { default as AccordionBody } from './AccordionBody';
+export { default as Tabs } from './Tabs';
+export { default as TabItem } from './TabItem';
+// export { default as Dialog } from './Dialog';

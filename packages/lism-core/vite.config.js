@@ -10,28 +10,30 @@ import svgr from 'vite-plugin-svgr'; // svg を React Component として import
 // import reactJsx from 'vite-react-jsx';
 // import { terser } from 'rollup-plugin-terser'
 
-// function deleteDuplicateDir(filePath) {
-// 	const componentDir = filePath.split('/').slice(-1)[0];
+// components/Box/Box → components/Box/index に変換
+function deleteDuplicateDir(filePath) {
+	const componentDir = filePath.split('/').slice(-1)[0];
 
-// 	// 正規表現でパターンを作成
-// 	const regex = new RegExp(`${componentDir}/${componentDir}$`);
+	// 正規表現でパターンを作成
+	const regex = new RegExp(`${componentDir}/${componentDir}$`);
 
-// 	// ファイルパスが指定したパターンと一致するか確認
-// 	if (regex.test(filePath)) {
-// 		// 一致する場合、パス中の最後のコンポーネント名を "index" に置換
-// 		const newPath = filePath.replace(regex, componentDir);
-// 		return newPath;
-// 	}
+	// ファイルパスが指定したパターンと一致するか確認
+	if (regex.test(filePath)) {
+		// 一致する場合、パス中の最後のコンポーネント名を "index" に置換
+		const newPath = filePath.replace(regex, componentDir);
+		return newPath + '/index';
+	}
 
-// 	// 一致しない場合、元のパスをそのまま返す
-// 	return filePath;
-// }
+	// 一致しない場合、元のパスをそのまま返す
+	return filePath;
+}
 
 // front用のスクリプトファイルのビルドは要検討
 
 // ファイルパスは大文字・小文字まで一致しないと Vercel でこけるので注意。
 const entries = {
 	index: resolve(__dirname, 'src/components/index.js'),
+	// 'components/Box/index': resolve(__dirname, 'src/components/Box/index.js'),
 	config: resolve(__dirname, 'src/config/index.js'),
 	// ↓ scripts.jsのビルドと、setEvent.js もこれでビルドされる.
 	'scripts/tabs': resolve(__dirname, 'src/components/Tabs/script.js'),
@@ -86,6 +88,18 @@ export default defineConfig({
 				// exports: 'named',
 				preserveModules: true, // モジュールツリーの構造を保持する
 				preserveModulesRoot: 'src',
+				entryFileNames: (chunkInfo) => {
+					// console.log('chunkInfo', chunkInfo);
+					const fileName = chunkInfo.name;
+
+					//fileName に components が含まれている場合
+					if (fileName.indexOf('components') !== -1) {
+						// 重複するディレクトリ構造を削除して返す
+						const componentPath = deleteDuplicateDir(fileName);
+						return `${componentPath}.js`;
+					}
+					return `${fileName}.js`;
+				},
 				// entryFileNames: (chunkInfo) => {
 				// 	console.log('chunkInfo', chunkInfo);
 				// 	//fileName に components が含まれているかチェックする

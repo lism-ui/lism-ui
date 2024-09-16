@@ -33,6 +33,7 @@
 		"./*": "./dist/*",
 		"./css/*": "./dist/css/*",
 		"./scss/*": "./src/scss/*",
+		"./react/*": "./dist/components/*",
 		"./svg/*": "./src/svg/*"
 	},
 	"homepage": "https://www.lism.style",

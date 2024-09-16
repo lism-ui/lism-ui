@@ -1,5 +1,3 @@
-// import { UTILITIES } from '../config';
-
 import isNumStr from './helper/isNumStr';
 import isPresetValue from './isPresetValue';
 import isTokenValue from './isTokenValue';
