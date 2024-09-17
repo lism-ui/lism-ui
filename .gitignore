@@ -1,5 +1,6 @@
 # 一旦除外
 apps/wp-theme
+**/*.local.*[jsx|js|ts|tsx|astro]
 
 # production
 build/

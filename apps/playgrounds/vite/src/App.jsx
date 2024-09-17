@@ -1,5 +1,4 @@
 import { Box, Flex, Container, Button, DammyText, Divider, Columns } from '@lism-ui/core';
-import LocalTest from './LocalTest';
 
 function App() {
 	return (
@@ -27,7 +26,6 @@ function App() {
 				<Button href='###'>Button</Button>
 			</Flex>
 			<Divider />
-			<LocalTest />
 		</Container>
 	);
 }

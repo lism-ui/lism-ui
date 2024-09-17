@@ -8,11 +8,9 @@
 
 import {
 	Box,
-	Test,
 	Accordion,
 	AccordionHeader,
 	AccordionBody,
-	// Dialog,
 	Tabs,
 	TabItem,
 	DammyText,
@@ -23,11 +21,8 @@ export default function Home() {
 	return (
 		<Box isFlow>
 			<Box p={40} bgc='base-2' h='20vh'>
-				あaaaaaaああ
+				This is Box
 			</Box>
-			<Test.Root>
-				<Test.Item>hoge</Test.Item>
-			</Test.Root>
 			<Tabs>
 				<TabItem label='tab1'>
 					<DammyText />
@@ -36,14 +31,10 @@ export default function Home() {
 					<DammyText length='l' />
 				</TabItem>
 			</Tabs>
-			{/* <LinkBox href='###' as={Link} layout={Stack} gap='20' bd>
-				<p>あaaaaaaああ</p>
-				<p>あaaaaaaああ</p>
-			</LinkBox> */}
 			<Accordion>
 				<AccordionHeader>アコーディオンのタイトル</AccordionHeader>
 				<AccordionBody>
-					<p>bbb</p>
+					<DammyText />
 				</AccordionBody>
 			</Accordion>
 		</Box>
