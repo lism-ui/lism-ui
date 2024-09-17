@@ -47,6 +47,8 @@ export * from './Accordion';
 export * from './Tabs';
 // export { DynamicCSS } from './DynamicCSS';
 
+export { default as Test } from './Test';
+
 // export * from './Card';
 // export * from './Chat';
 // export * from './Hero';

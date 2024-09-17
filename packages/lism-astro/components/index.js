@@ -41,5 +41,7 @@ export * from './Banner';
 
 export * from './NavMenu';
 
+export { default as Test } from './Test';
+
 // export * from './Card';
 // export * from './Chat';
