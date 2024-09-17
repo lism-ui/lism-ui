@@ -5,10 +5,10 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: var(--fw--bold);
+	font-weight: bolder;
 	font-size: var(--fz);
 	line-height: var(--lh);
-	font-family: var(--ff--heading);
+	font-family: var(--heading-ff);
 }
 
 h1 {

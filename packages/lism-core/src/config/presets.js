@@ -11,7 +11,7 @@ export default {
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,
 	ff: TOKENS.ff,
-	fw: TOKENS.fw,
+	// fw: TOKENS.fw,
 	// tsh: ['black', 'white'],
 	c: [
 		'main',

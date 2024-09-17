@@ -118,7 +118,11 @@ export default {
 	f: { style: 'font', utils: 1 },
 	fz: { presets: 1, converter: 'fz' },
 	lh: { presets: 1, style: 'lineHeight' },
-	fw: { style: 'fontWeight', presets: 1 },
+	fw: {
+		style: 'fontWeight',
+		utils: 1,
+		//presets: 1
+	},
 	ff: { style: 'fontFamiry', presets: 1 },
 	fs: { style: 'fontStyle', utils: 1 },
 	lts: { style: 'letterSpacing', presets: 1 }, // utilityあってもいい

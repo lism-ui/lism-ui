@@ -29,6 +29,7 @@ export default {
 
 	// Note: 数値指定でユーティリティ化したい時、文字列で渡す。 700 → '700'
 	// fw: { thin: '100', light: '300', normal: '400', medium: '500', bold: '700' },
+	fw: { 300: 'l', 400: 'n', 700: 'b', bold: 'b', normal: 'n', light: 'l' },
 	fs: { italic: 'i', normal: 'n' },
 	f: { inherit: 'i' },
 	// lh: {},

@@ -10,6 +10,9 @@
 
 :root {
 	--list-pis: 1.5em;
+
+	--heading-ff: var(--ff--sans);
+
 	--hov-trsdu: 0.3s;
 	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color,
 		background-color;
@@ -89,4 +92,12 @@ figcaption {
 
 small {
 	font-size: var(--fz--xs);
+}
+
+dialog:not([open]) {
+	pointer-events: none;
+}
+// showModal()にのみ適用するため、 dialog ではなく :modal を使用
+body:has(:modal[open]) {
+	overflow: hidden;
 }

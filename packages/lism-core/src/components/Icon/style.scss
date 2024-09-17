@@ -1,3 +1,8 @@
+/* fill指定のない svg にテキストカラーを継承させる */
+:where(.a--icon:not([fill])) {
+	fill: currentcolor;
+}
+
 :where(.a--icon:not([width])) {
 	width: 1em;
 	height: 1em;

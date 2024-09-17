@@ -105,8 +105,18 @@ $utilities: (
 		'emoji': 'var(--ff--emoji)',
 	),
 	'fw': (
-		'bold': 'var(--fw--bold)',
-		'thin': 'var(--fw--thin)',
+		// 'bold': 'var(--fw--bold)',
+		// 'thin': 'var(--fw--thin)',
+		// 'bk': '900',
+		'b': '700',
+		// 'sb': '600',
+		// 'm': '500',
+		// 'br': 'bolder',
+		'n': '400',
+		// 'lr': 'lighter',
+		// lightがない
+		'l': '300',
+		// 'tn': '100',
 	),
 	'fs': (
 		'n': 'normal',
