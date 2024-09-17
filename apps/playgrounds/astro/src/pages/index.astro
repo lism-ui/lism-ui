@@ -1,21 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Lism, Text, Flex, Box, Container, FlexItem } from '@lism-ui/astro';
-// import Lism from "@lism-ui/astro/components/Lism/Lism.astro";
+import { Lism, Text, Flex, Box, DammyText, Container, Icon } from '@lism-ui/astro';
+import AstroIcon from '../icons/astro-icon.astro';
 ---
 
 <Layout title='Welcome to Astro.'>
-	<main>
-		<Lism bgc='base-2' p='box'>
-			<h1>Lism UI with Astro</h1>
-			<Text fz='xs'>This site is a playground for testing <code>@lism-ui/astro</code></Text>
-		</Lism>
-		<Container size='m'>
-			<Flex gap={[20, 30, 40]} p={[20, 30, 40]} bd>
-				<FlexItem lh='1' p='box' bd>1</FlexItem>
-				<FlexItem lh='1' p='box' bd>2</FlexItem>
-				<FlexItem lh='1' p='box' bd>3</FlexItem>
-			</Flex>
-		</Container>
-	</main>
+	<Lism hasGutter bgc='base-2' py='30'>
+		<Flex ai='c' gap='20'>
+			<Icon icon={AstroIcon} fz='3rem' />
+			<h1>Lism with Astro</h1>
+		</Flex>
+		<Text fz='xs'>This site is a playground for testing <code>@lism-ui/astro</code></Text>
+	</Lism>
+	<Container size='m' hasGutter isFlow mbs='50'>
+		<DammyText length='l' />
+		<Flex gap={[20, 30, 40]} p={[20, 30, 40]} bd>
+			<Box lh='1' p='box' bd>1</Box>
+			<Box lh='1' p='box' bd>2</Box>
+			<Box lh='1' p='box' bd>3</Box>
+		</Flex>
+	</Container>
 </Layout>
