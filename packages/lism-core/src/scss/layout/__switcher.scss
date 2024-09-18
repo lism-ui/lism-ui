@@ -1,0 +1,11 @@
+.l--switcher {
+	display: flex;
+	flex-wrap: wrap;
+	// gap: 1rem;
+	--threshold: 480px;
+}
+
+.l--switcher > * {
+	flex-grow: 1;
+	flex-basis: calc((var(--threshold) - 100%) * 9999);
+}
