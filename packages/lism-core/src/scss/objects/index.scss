@@ -5,17 +5,20 @@
 
 // block
 @forward '../../components/Avatar/style.scss';
-@forward '../../components/Accordion/style.scss';
 @forward '../../components/Badge/style.scss';
 @forward '../../components/Button/style.scss';
 @forward '../../components/Divider/style.scss';
 @forward '../../components/ShapeDivider/style.scss';
 
 // components
-@forward '../../components/Tabs/style.scss';
 @forward '../../components/Callout/style.scss';
 @forward '../../components/NavMenu/style.scss';
 @forward '../../components/Reel/style.scss';
+
+// dialogs
+@forward '../../components/Tabs/style.scss';
+@forward '../../components/Accordion/style.scss';
+@forward '../../components/Dialog/style.scss';
 
 // @forward '../../components/Note/style.scss';
 // @forward '../../components/Chat/style.scss';
@@ -25,3 +28,15 @@
 
 // デフォルトスタイル
 // コンポーネントの初期値にセットするよりCSSで一括上書きできたほうが楽そうなものをここに書く
+
+.a--srText {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
