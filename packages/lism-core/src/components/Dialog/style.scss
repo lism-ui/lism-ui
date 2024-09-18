@@ -1,0 +1,48 @@
+// dialog,
+:where(.d--modal) {
+	--contentSize: 100%; // container直下にきても影響しないように
+	--mbs: 0; // flow直下にきても影響しないように
+	--offset: -50% 0;
+	--duration: 0.5s;
+
+	width: auto;
+	height: auto;
+
+	// 以下、is--reset で。
+	// max-width: unset;
+	// max-height: unset;
+	// padding: unset;
+	// color: unset;
+	// background: unset;
+	// border: unset;
+}
+
+// .d--modal__inner {
+// 	max-height: 100%;
+// }
+
+.d--modal__body {
+	overscroll-behavior: contain;
+	overflow: auto;
+	// max-height: 100%;
+}
+
+.d--modal::backdrop {
+	background: rgba(0, 0, 0, 0.5);
+}
+.d--modal[open] {
+	transition-property: opacity, translate;
+	transition-duration: var(--duration);
+
+	&::backdrop {
+		transition: opacity var(--duration);
+	}
+}
+.d--modal:not([data-is-open]),
+.d--modal:not([data-is-open])::backdrop {
+	opacity: 0;
+}
+
+.d--modal--drawer:not([data-is-open]) {
+	translate: var(--offset);
+}

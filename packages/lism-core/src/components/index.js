@@ -45,6 +45,7 @@ export * from './NavMenu';
 // appルーターで use client がいるもの
 export * from './Accordion';
 export * from './Tabs';
+export { default as Dialog } from './Dialog';
 // export { DynamicCSS } from './DynamicCSS';
 
 export { default as Test } from './Test';
