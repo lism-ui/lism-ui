@@ -3,8 +3,13 @@ const DELAY = 5;
 
 // :scope 使う？
 
+// モーダルのアニメーションが完了するのを待つ.
+const waitAnimation = (element) => {
+	return Promise.all(element.getAnimations().map((a) => a.finished));
+};
+
 // animationTime: [ms]
-const clickedEvent = (details, durationTime, force = false) => {
+const clickedEvent = async (details, force = false) => {
 	// すぐに open 属性が切り替わらないようにする
 	// e.preventDefault();
 	// console.log(e.target, e.currentTarget);
@@ -12,26 +17,27 @@ const clickedEvent = (details, durationTime, force = false) => {
 	if (details.dataset.animating && !force) return;
 	details.dataset.animating = '1';
 
+	const body = details.querySelector('.c--accordion__body');
+
 	// オープン / クローズ 処理
 	if (!details.open) {
 		details.open = true;
 		// 少しだけ遅らせた方が動作が安定する
-		setTimeout(() => {
+		setTimeout(async () => {
 			details.classList.add('-opened'); // クラスの追加
-		}, DELAY);
 
-		// アニメーション完了後に dataset を除去。
-		setTimeout(() => {
+			// アニメーション完了後に dataset を除去。
+			await waitAnimation(body);
 			delete details.dataset.animating;
-		}, durationTime + DELAY);
+		}, DELAY);
 	} else if (details.open) {
 		details.classList.remove('-opened'); // クラスを削除
 
-		// アニメーション完了後に open属性 を除去。（CSS側のアニメーション時間 + 少しだけ余裕をもたせている）
-		setTimeout(() => {
-			details.open = false;
-			delete details.dataset.animating;
-		}, durationTime + DELAY);
+		// アニメーション完了後に open属性 を除去。
+		await waitAnimation(body);
+
+		delete details.dataset.animating;
+		details.open = false;
 	}
 };
 
@@ -52,24 +58,6 @@ const toggleEvent = (e, details) => {
 	}
 };
 
-function convertToMsNumber(time) {
-	let totalMilliseconds = 0;
-
-	// 秒を変換
-	const secondsMatch = time.match(/([\d.]+)s/);
-	if (secondsMatch) {
-		totalMilliseconds = parseFloat(secondsMatch[1]) * 1000;
-	}
-
-	// ミリ秒を変換
-	const millisecondsMatch = time.match(/([\d.]+)ms/);
-	if (millisecondsMatch) {
-		totalMilliseconds = parseFloat(millisecondsMatch[1]);
-	}
-
-	return Math.round(totalMilliseconds); // 少数点以下を丸める
-}
-
 export const setEvent = (currentRef) => {
 	const details = currentRef;
 	// トリガーが明示的に指定されていない場合は、<summary> 要素をトリガーとする
@@ -79,12 +67,10 @@ export const setEvent = (currentRef) => {
 	if (!clickBtn) return;
 
 	// カスタムプロパティ --duration の値を取得
-	const computedStyle = getComputedStyle(details);
-	let durationTime = computedStyle.getPropertyValue('--duration').trim();
-
+	// const computedStyle = getComputedStyle(details);
+	// let durationTime = computedStyle.getPropertyValue('--duration').trim();
 	// ms単位の数値に変換
-	durationTime = convertToMsNumber(durationTime);
-	// console.log('durationTime', durationTime);
+	// durationTime = convertToMsNumber(durationTime);
 
 	// 複数展開を許可するかどうか
 	let allowMultiple = false;
@@ -101,11 +87,11 @@ export const setEvent = (currentRef) => {
 		// 複数展開を許可しない場合、（開く処理の直前で）他の開いているアイテムがあれば閉じる
 		if (!allowMultiple && !details.open) {
 			const openedItem = parent.querySelector(`.-opened`);
-			if (null != openedItem) clickedEvent(openedItem, durationTime, true);
+			if (null != openedItem) clickedEvent(openedItem, true);
 		}
 
 		// 自身のクリック処理
-		clickedEvent(details, durationTime);
+		clickedEvent(details);
 	};
 	const _toggleEvent = (e) => {
 		toggleEvent(e, details);
