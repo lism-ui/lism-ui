@@ -15,6 +15,8 @@ const Dialog = ({ children, variant, ...props }) => {
 	let lismClass = 'd--modal';
 	if (variant) lismClass += ` d--modal--${variant}`;
 
+	lismClass += ' is--reset';
+
 	return (
 		<Lism forwardedRef={ref} tag='dialog' lismClass={lismClass} p='40' ac='c' {...props}>
 			{children}
