@@ -30,7 +30,6 @@ export * from './Button';
 export * from './Badge';
 export * from './Delimiter';
 export * from './Decorator';
-export * from './DecoBox';
 
 // Blocks
 export * from './Banner';
@@ -46,9 +45,10 @@ export * from './NavMenu';
 export * from './Accordion';
 export * from './Tabs';
 export { default as Dialog } from './Dialog';
-// export { DynamicCSS } from './DynamicCSS';
 
 export { default as Test } from './Test';
+
+// export { DynamicCSS } from './DynamicCSS';
 
 // export * from './Card';
 // export * from './Chat';

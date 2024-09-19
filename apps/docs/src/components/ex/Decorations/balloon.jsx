@@ -11,8 +11,8 @@ export default function BalloonBox({
 	children,
 	...props
 }) {
-	const lismClass = ['c--balloon'];
-	if (variant) lismClass.push(`c--balloon--${variant}`);
+	const lismClass = ['b--balloonBox'];
+	if (variant) lismClass.push(`b--balloonBox--${variant}`);
 
 	let ParentComponent = null;
 	let parentProps = {};

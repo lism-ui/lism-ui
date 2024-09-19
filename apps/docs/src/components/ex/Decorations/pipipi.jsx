@@ -3,8 +3,8 @@
 import { Grid, Flex, GridItem, FlexItem, Decorator } from '@lism-ui/core';
 
 export default function PipipiBox({ variant = 'left', children, ...props }) {
-	const lismClass = ['c--pipipi'];
-	if (variant) lismClass.push(`c--pipipi--${variant}`);
+	const lismClass = ['b--pipipi'];
+	if (variant) lismClass.push(`b--pipipi--${variant}`);
 
 	let parentProps = {};
 	let bodyProps = {};

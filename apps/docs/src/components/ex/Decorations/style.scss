@@ -1,8 +1,8 @@
-:where(.c--decoBox > .a--decorator) {
-	--size: 1em;
-	width: var(--size);
-	height: var(--size);
-}
+// :where(.c--decoBox > .a--decorator) {
+// 	--size: 1em;
+// 	width: var(--size);
+// 	height: var(--size);
+// }
 
 // ユーティリティクラスの importantを上書きするため、@layer
 // @layer lism-init {
@@ -10,18 +10,6 @@
 // 		background-color: transparent !important; // innnerに背景色を渡すだけ
 // 	}
 // }
-
-// .c--decoBox--sticky {}
-.c--decoBox--sticky > .l--box {
-	min-width: 8em;
-	max-width: 30em;
-	// box-shadow: 1px 1px 2px 0px hsl(var(--hsl--shadow) / 0.08);
-}
-.c--decoBox--sticky > .a--decorator {
-	max-width: 12em;
-	background-color: hsl(var(--hsl--shadow) / 0.2);
-	filter: blur(4px);
-}
 
 // .c--decoBox--pipipi {}
 // .c--decoBox--pipipi > .l--box {}

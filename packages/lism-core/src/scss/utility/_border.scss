@@ -96,12 +96,12 @@
 .-bd\:b {
 	border-bottom: var(--bd);
 }
-// .-bd\:x {
-// 	border-inline: var(--bd);
-// }
-// .-bd\:y {
-// 	border-block: var(--bd);
-// }
+.-bd\:x {
+	border-inline: var(--bd);
+}
+.-bd\:y {
+	border-block: var(--bd);
+}
 .-bd\:is {
 	border-inline-start: var(--bd);
 }
