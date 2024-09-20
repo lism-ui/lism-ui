@@ -3,7 +3,7 @@ import { Frame } from '../Frame';
 import getProps from './getProps';
 
 // srcがあれば自身をmediaにする？この時、objectFit適用する
-export default function Avatar({ children, name, src, ...props }) {
+export default function Avatar({ children, src, ...props }) {
 	const hasChildren = !!children;
 	const { avatarProps, mediaProps } = getProps(props);
 
@@ -17,7 +17,7 @@ export default function Avatar({ children, name, src, ...props }) {
 
 	return (
 		<Frame skipState {...avatarProps}>
-			<Media src={src} alt={name} {...mediaProps} />
+			<Media src={src} {...mediaProps} />
 		</Frame>
 	);
 }

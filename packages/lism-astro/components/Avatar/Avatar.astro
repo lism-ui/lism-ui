@@ -7,7 +7,7 @@ import getProps from '@lism-ui/core/components/Avatar/getProps';
 // Propsの定義
 interface Props extends LismProps {}
 
-const { name, src, ...props } = Astro.props || {};
+const { src, ...props } = Astro.props || {};
 
 const hasSlot = Astro.slots.has('default');
 const { avatarProps, mediaProps } = getProps(props);
@@ -20,7 +20,7 @@ const { avatarProps, mediaProps } = getProps(props);
 		</Frame>
 	) : (
 		<Frame skipState {...avatarProps}>
-			{<Media src={src} alt={name} {...mediaProps} />}
+			{<Media src={src} {...mediaProps} />}
 		</Frame>
 	)
 }

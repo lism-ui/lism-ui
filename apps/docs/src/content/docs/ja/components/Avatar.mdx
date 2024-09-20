@@ -5,6 +5,8 @@ description: ...
 import { Flex, Avatar, Media } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import ImportCode from "~/components/code-template/Import.astro";
+
 
 アバター画像用のコンポーネントです。
 
@@ -13,10 +15,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 | プロパティ | 説明 |
 |---|---|
+|`variant`| `b--avatar--{variant}` クラスを出力します。|
 |`size`| アバターのサイズを指定します。|
-|`name`| アバターの名前を指定します。`alt`属性に出力されます。|
 |`src`| `src`が指定されていれば子要素にメディアを表示します。(`children`がある場合は無視されます。)|
-|`mediaProps`| 上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。|
+{/* |`mediaProps`| 上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。| */}
 
 {/* - 画像パスのプリセットを呼び出せるようにしたい <MemoBadge>未実装</MemoBadge>
 - `placeholder`で画像じゃなくて一文字とかで表示できるようにしたい <MemoBadge>未実装</MemoBadge> */}
@@ -24,18 +26,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Avatar } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Avatar } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Avatar' />
 
 
 ## Usage
@@ -43,50 +34,54 @@ import { Avatar } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex gap='20'>
-			<Avatar size='4rem' src='/img/avatar01.jpg' name='name'/>
-			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
-			{/* <Avatar name='name' size='4rem' jc='c' d='if' bgc='gray' c='base'>
-				<span className='-m:a -d:ib'>S</span>
-			</Avatar> */}
-		</Flex>
+		{/* <Flex variant='cluster' gap='20'> */}
+			<Avatar size='4rem' src='/img/avatar01.jpg' alt='Avatar of xxxx'/>
+			{/* <Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/> */}
+		{/* </Flex> */}
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<Flex gap='20'>
-			<Avatar src='/img/avatar01.jpg' name='name' size='4rem'/>
-			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
-		</Flex>
+		<Avatar size='4rem' src='/img/avatar01.jpg' alt='Avatar of xxxx'/>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--flex -gap:20">
-			<div class="b--avatar is--frame -bdrs:full" style="--size:4rem">
-				<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
-			</div>
-			<div class="b--avatar is--frame -bdrs:full" style="--size:56px">
-				<img src="/img/avatar02.jpg" alt="avatar-name" width="100%" height="100%" decoding="async">
-			</div>
-		</div>
+		<div class="b--avatar is--frame -bdrs:full" style="--size:4rem">
+			<img src="/img/avatar01.jpg" alt="Avatar of xxxx" width="100%" height="100%" decoding="async">
+		</div>	
 		```
 	</PreviewCode>
 </Preview>
 
+<Preview>
+	<PreviewTitle>Avatarのsrcを使わない例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Avatar size='4rem'>
+			<Media src='/img/avatar01.jpg' alt='Avatar of xxxx' width='100%' height='100%' decoding='async'/>
+		</Avatar>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Avatar size='4rem'>
+			<Media src='/img/avatar01.jpg' alt='Avatar of xxxx' width='100%' height='100%' decoding='async'/>
+		</Avatar>
+		```
+	</PreviewCode>
+</Preview>
 
 
 <Preview>
 	<PreviewTitle>カスタマイズ例</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Flex gap='20'>
-			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd bdw='3px' bdc='pink:80%' />
-			<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
+			<Avatar size='5em' src="/img/avatar01.jpg" alt='Avatar of xxxx' bd bdw='3px' bdc='pink:80%' />
+			<Avatar size='5em' src="/img/avatar02.jpg" alt='Avatar of xxxx' bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd bdw='3px' bdc='pink:80%' />
-		<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
+		<Avatar size='5em' src="/img/avatar01.jpg" alt='Avatar of xxxx' bd bdw='3px' bdc='pink:80%' />
+		<Avatar size='5em' src="/img/avatar02.jpg" alt='Avatar of xxxx' bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
 		```
 	</PreviewCode>
 </Preview>

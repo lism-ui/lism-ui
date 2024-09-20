@@ -1,32 +1,29 @@
+import atts from '../../lib/helper/atts';
 import separateMediaAttrs from '../separateMediaAttrs';
 
 export default function getAvatarProps({
-	_lismClass = [],
-	// lismState = [],
+	lismClass,
 	variant,
 	mediaProps = {},
 	size,
 	style = {},
 	...props
 }) {
-	_lismClass.push('b--avatar');
-	if (variant) _lismClass.push(`b--avatar--${variant}`);
-
 	if (size) style['--size'] = size;
-	props.style = style;
-
-	const defaultMediaProps = {
-		width: '100%',
-		height: '100%',
-		decoding: 'async',
-		// objectFit='cover'
-	};
 
 	const { mediaAttrs, otherProps } = separateMediaAttrs(props);
 	return {
-		avatarProps: { _lismClass, bdrs: 'full', ...otherProps },
+		avatarProps: {
+			lismClass: atts(lismClass, 'b--avatar', variant && `b--avatar--${variant}`),
+			bdrs: 'full',
+			style,
+			...otherProps,
+		},
 		mediaProps: {
-			...defaultMediaProps,
+			width: '100%',
+			height: '100%',
+			decoding: 'async',
+			// objectFit:'cover',
 			...mediaAttrs,
 			...mediaProps,
 		},
