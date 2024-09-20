@@ -4,22 +4,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>`shape="arrow1"`</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewTitle>`shape='arrow1'`</PreviewTitle>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow1" c="gray"/>
+			<ShapeDivider shape='arrow1' c='gray'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "arrow1" "isFlip"
+		```jsx "arrow1" "shapeFlip='xy'"
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="arrow1" c="gray"/>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='arrow1' c='gray'/>
 		</Box>
 		```
 	</PreviewCode>
@@ -27,21 +27,21 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`level`をマイナスに</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip level={-4} c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' level={-4} c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow1" level={-4} c="gray"/>
+			<ShapeDivider shape='arrow1' level={-4} c='gray'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "level="
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip level={-4} c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="arrow1" level={-4} c="gray"/>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' level={-4} c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='arrow1' level={-4} c='gray'/>
 		</Box>
 		```
 	</PreviewCode>
@@ -49,10 +49,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`stretch`の活用</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} stretch={.25} />
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray' level={5} stretch={.25} />
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
 		</Box>
@@ -60,8 +60,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 	<PreviewCode>
 		```jsx
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} stretch={.25} />
-			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray' level={5} stretch={.25} />
+			<Box hasGutter py='50'>...</Box>
 		</Box>
 		```
 	</PreviewCode>
@@ -69,10 +69,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`w`,`h` でサイズ固定</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} w="4em" h="2em" mx='auto' />
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray' level={5} w='4em' h='2em' mx='auto' />
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
 		</Box>
@@ -80,8 +80,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 	<PreviewCode>
 		```jsx
 		<Box>
-			<ShapeDivider shape="arrow1" isFlip c="gray" level={5} w="4em" h="2em" mx='auto' />
-			<Box isFlow hasGutter py={50}>...</Box>
+			<ShapeDivider shape='arrow1' shapeFlip='xy' c='gray' level={5} w='4em' h='2em' mx='auto' />
+			<Box hasGutter py='50'>...</Box>
 		</Box>
 		```
 	</PreviewCode>
@@ -90,22 +90,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>`shape="arrow2"`</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewTitle>`shape='arrow2'`</PreviewTitle>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="arrow2" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='arrow2' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow2" c="gray" />
+			<ShapeDivider shape='arrow2' c='gray' />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "arrow2"
 		<Box>
-			<ShapeDivider shape="arrow2" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="arrow2" c="gray" />
+			<ShapeDivider shape='arrow2' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='arrow2' c='gray' />
 		</Box>
 		```
 	</PreviewCode>
@@ -113,22 +113,20 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>`shape="arrow3"`</PreviewTitle>
-	<PreviewArea resize p='0'>
-		<Box>
-			<ShapeDivider shape="arrow3" level={5} isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
+	<PreviewTitle>`shape='arrow3'`</PreviewTitle>
+	<PreviewArea resize p='5'>
+		<Box bgc='gray' c='base'>
+			<ShapeDivider shape='arrow3' level={5} shapeFlip='xy' c='base'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="arrow3" level={-5} c="gray" />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "arrow3"
-		<Box>
-			<ShapeDivider shape="arrow3" level={5} isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="arrow3" level={-5} c="gray" />
+		<Box bgc='gray' c='base'>
+			<ShapeDivider shape='arrow3' level={5} shapeFlip='xy' c='base'/>
+			<Box hasGutter py='50'>...</Box>
 		</Box>
 		```
 	</PreviewCode>

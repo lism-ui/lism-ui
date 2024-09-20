@@ -1,25 +1,25 @@
 import { ShapeDivider, Box } from '@lism-ui/astro';
-import { DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
 
 <Preview>
-	<PreviewTitle>`shape="wave1"`</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewTitle>`shape='wave1'`</PreviewTitle>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="wave1" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='wave1' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="wave1" c="gray"/>
+			<ShapeDivider shape='wave1' c='gray'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "wave1" "isFlip"
+		```jsx "wave1" "shapeFlip='xy'"
 		<Box>
-			<ShapeDivider shape="wave1" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave1" c="gray"/>
+			<ShapeDivider shape='wave1' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave1' c='gray'/>
 		</Box>
 		```
 	</PreviewCode>
@@ -27,21 +27,21 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`stretch`,`offset`の活用</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="wave1" isFlip level={5} stretch={1.5} offset="5%" c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='wave1' shapeFlip='xy' level={5} stretch={1.5} offset='5%' c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="wave1" level={5} stretch={1.5} offset="25%" c="gray"/>
+			<ShapeDivider shape='wave1' level={5} stretch={1.5} offset='25%' c='gray'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "stretch=" "offset="
 		<Box>
-			<ShapeDivider shape="wave1" isFlip level={5} stretch={1.5} offset="5%" c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave1" level={5} stretch={1.5} offset="25%" c="gray"/>
+			<ShapeDivider shape='wave1' shapeFlip='xy' level={5} stretch={1.5} offset='5%' c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave1' level={5} stretch={1.5} offset='25%' c='gray'/>
 		</Box>
 		```
 	</PreviewCode>
@@ -50,44 +50,45 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`level`をマイナスに</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="wave1" isFlip level={-4} c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='wave1' shapeFlip='xy' level={-4} c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="wave1" level={-4} c="gray"/>
+			<ShapeDivider shape='wave1' level={-4} c='gray'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "level="
 		<Box>
-			<ShapeDivider shape="wave1" isFlip level={-4} c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave1" level={-4} c="gray"/>
+			<ShapeDivider shape='wave1' shapeFlip='xy' level={-4} c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave1' level={-4} c='gray'/>
 		</Box>
 		```
 	</PreviewCode>
 </Preview>
 
 
+
 <Preview>
-	<PreviewTitle>`shape="wave2"`</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewTitle>`shape='wave2'`</PreviewTitle>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="wave2" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='wave2' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="wave2" c="gray" />
+			<ShapeDivider shape='wave2' c='gray' />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "wave2"
 		<Box>
-			<ShapeDivider shape="wave2" isFlip c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave2" c="gray" />
+			<ShapeDivider shape='wave2' shapeFlip='xy' c='gray'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave2' c='gray' />
 		</Box>
 		```
 	</PreviewCode>
@@ -95,22 +96,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 
 <Preview>
-	<PreviewTitle>`shape="wave3"`</PreviewTitle>
-	<PreviewArea resize p='0'>
+	<PreviewTitle>`shape='wave3'`</PreviewTitle>
+	<PreviewArea resize p='5'>
 		<Box>
-			<ShapeDivider shape="wave3" isFlip c="gray" level={6} stretch={1.5} offset="20%" />
-			<Box isFlow hasGutter py={50}>
+			<ShapeDivider shape='wave3' shapeFlip='xy' c='gray' level={6} stretch={1.5} offset='20%' />
+			<Box hasGutter py='50'>
 				<DammyText length='l' />
 			</Box>
-			<ShapeDivider shape="wave3" c="gray" level={6} stretch={1.5} offset="-20%" />
+			<ShapeDivider shape='wave3' c='gray' level={6} stretch={1.5} offset='-20%' />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Box>
-			<ShapeDivider shape="wave3" isFlip c="gray" level={6} stretch={1.5} offset="20%" />
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave3" c="gray" level={6} stretch={1.5} offset="-20%" />
+			<ShapeDivider shape='wave3' shapeFlip='xy' c='gray' level={6} stretch={1.5} offset='20%' />
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave3' c='gray' level={6} stretch={1.5} offset='-20%' />
 		</Box>
 		```
 	</PreviewCode>
@@ -118,21 +119,19 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 <Preview>
 	<PreviewTitle>`isAnimation`</PreviewTitle>
-	<PreviewArea resize p='0'>
-		<Box>
-			<ShapeDivider shape="wave3" isFlip isAnimation c="gray"/>
-			<Box isFlow hasGutter py={50}>
-				<DammyText length='l' />
-			</Box>
-			<ShapeDivider shape="wave3" isAnimation c="gray" />
+	<PreviewArea resize p='5'>
+		<Box bgc='gray' c='base'>
+			<ShapeDivider shape='wave3' shapeFlip='xy' isAnimation c='base'/>
+			<Box hasGutter py='50'><DammyText length='l' /></Box>
+			<ShapeDivider shape='wave3' isAnimation c='base' />
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "isAnimation"
-		<Box>
-			<ShapeDivider shape="wave3" isFlip isAnimation c="gray"/>
-			<Box isFlow hasGutter py={50}>...</Box>
-			<ShapeDivider shape="wave3" isAnimation c="gray" />
+		<Box bgc='gray' c='base'>
+			<ShapeDivider shape='wave3' shapeFlip='xy' isAnimation c='base'/>
+			<Box hasGutter py='50'>...</Box>
+			<ShapeDivider shape='wave3' isAnimation c='base' />
 		</Box>
 		```
 	</PreviewCode>

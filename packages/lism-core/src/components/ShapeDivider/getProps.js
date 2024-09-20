@@ -1,23 +1,27 @@
+import atts from '../../lib/helper/atts';
+
 export function getShapeDividerProps({
-	_lismClass = [],
+	lismClass = '',
 	style = {},
 	variant,
 	shape = 'wave1',
 	isFlip,
+	shapeFlip = '',
 	isAnimation,
 	level = 5, // -10~10?
 	stretch, // 1~2
 	offset, // -25% ~ 25%
 	...props
 }) {
-	_lismClass.push('b--shapeDivider');
-	if (isAnimation) _lismClass.push('b--shapeDivider--animation');
-	if (variant) _lismClass.push(`b--divider--${variant}`);
+	props.lismClass = atts(lismClass, 'b--shapeDivider');
+	if (variant) props.lismClass += ` b--shapeDivider--${variant}`;
 
-	props._lismClass = _lismClass;
+	if (isAnimation) props['data-shape-animation'] = '1';
 
-	let flipX = isFlip; // X(垂直)方向の反転 ↔
-	let flipY = isFlip; // Y(水平)方向の反転 ↕
+	if (isFlip) shapeFlip = 'xy';
+
+	// let flipX = isFlip; // X(垂直)方向の反転 ↔
+	// let flipY = isFlip; // Y(水平)方向の反転 ↕
 
 	// 1文字目を大文字にする
 	shape = shape.charAt(0).toUpperCase() + shape.slice(1);
@@ -28,21 +32,26 @@ export function getShapeDividerProps({
 		if (shape.match(/^(Circle|Arrow)/)) {
 			shape += '_R';
 		} else {
-			flipX = !flipX; // それ以外は左右反転する
+			// それ以外はx(左右）反転する
+			// shapeFlipに'x'含まれているなら削除、なければ追加
+			if (shapeFlip.includes('x')) {
+				shapeFlip = shapeFlip.replace('x', '');
+			} else {
+				shapeFlip += 'x';
+			}
 		}
 	}
-	props.shape = shape;
 
-	// const dataFlip = classnames(flipX && 'x', flipY && 'y');
-	let dataFlip = '';
-	if (flipX) dataFlip += 'x';
-	if (flipY) dataFlip += 'y';
+	// // const shapeFlip = classnames(flipX && 'x', flipY && 'y');
+	// let shapeFlip = '';
+	// if (flipX) shapeFlip += 'x';
+	// if (flipY) shapeFlip += 'y';
 
 	// const transforms = [];
 	// if (flipX) transforms.push('scaleX(-1)');
 	// if (flipY) transforms.push('scaleY(-1)');
 
-	if (dataFlip) props['data-flip'] = dataFlip;
+	if (shapeFlip) props['data-shape-flip'] = shapeFlip;
 
 	style = Object.assign(style, {
 		'--level': level || null,
@@ -51,7 +60,7 @@ export function getShapeDividerProps({
 	});
 	props.style = style;
 
-	return props;
+	return { shape, props };
 }
 
 export const svgDefaultProps = {
@@ -62,5 +71,6 @@ export const svgDefaultProps = {
 	preserveAspectRatio: 'none',
 	width: '100%',
 	height: '100%',
+	fill: 'currentColor',
 	style: null,
 };

@@ -16,7 +16,7 @@
 
 	position: relative;
 	overflow: hidden;
-	color: var(--base);
+	// color: var(--base);
 
 	// 高さを svg ではなく親でセットしているのは、 <Divider h='hoge'> で簡単に上書きできるようにするため。
 	// 600px時点を最小値, 1200px時点を最大値にして、clampで高さを変動させる
@@ -25,21 +25,20 @@
 
 	scale: var(--scaleX) var(--scaleY);
 	translate: var(--trnslt);
-
-	// 上下にわずかな隙間ができてしまうのを防ぐ
-	&[data-flip*='y'] {
-		// top: -0.5px;
-		--scaleY: -1;
-		--trnslt: 0 -0.5px;
-	}
-	&[data-flip*='x'] {
-		--scaleX: -1;
-	}
-	// &:not([data-flip*='y']) {
-	// 	bottom: -0.5px;
-	// }
 }
-.b--shapeDivider--animation {
+// 上下にわずかな隙間ができてしまうのを防ぐ
+[data-shape-flip*='y'] {
+	// top: -0.5px;
+	--scaleY: -1;
+	--trnslt: 0 -0.5px;
+}
+[data-shape-flip*='x'] {
+	--scaleX: -1;
+}
+// &:not([data-shape-flip*='y']) {
+// 	bottom: -0.5px;
+// }
+[data-shape-animation] {
 	/* ↓ X 100% にしてるのは translateXのcalc計算で * -1 をしなくていいように。*/
 	--svg-trfo: 100% 0;
 	--svg-anim: LismShapeSlide var(--duration) infinite alternate linear;
@@ -50,12 +49,15 @@
 	// inset: 0;
 	scale: var(--stretch) 1;
 	translate: var(--offset);
-	// height: 100%;
+	height: 100%;
 }
 
 .b--shapeDivider__svg {
+	fill: currentColor;
+	height: 100%;
 	transform-origin: var(--svg-trfo);
 	animation: var(--svg-anim);
+	display: block;
 }
 
 // 左右にスライドする

@@ -9,11 +9,11 @@ import SlopeDemo from '~/demos/divider/slope.mdx';
 import ArrowDemo from '~/demos/divider/arrow.mdx';
 import CircleDemo from '~/demos/divider/circle.mdx';
 import WaveDemo from '~/demos/divider/wave.mdx';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 
 
-境界線
+svgで境界線を描画するコンポーネントです。
 
 
 ## Props
@@ -21,15 +21,15 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 | プロパティ | 説明 |
 |---|---|
 | `shape` |  形状の指定。svgで描画されます。 `slope`, `wave`, `arrow`, `circle` が指定できます。|
-| `isFlip` | シェイプの上下反転をするかどうか。 |
-| `level` | 高さのレベル。正の数・負の数を指定できます。 `5` がデフォルト。|
+| `shapeFlip` | シェイプの上下反転を指定できます。 `y`で上下反転、`x`で左右反転、`xy`で両方反転です。|
+| `level` | 高さのレベルを指定できます。 `5` がデフォルトで、コンポーネントでは正の数・負の数が指定できます。（負の数の時は出力されるsvgに関する処理が加わり、出力される変数はその絶対値になります。）|
 | `stretch` | 横方向の伸縮率。 `1` がデフォルトです。 |
 | `offset` | X方向の位置をずらす。 `stretch`と合わせて`%`単位で指定してください。（例: `stretch:1.5` なら、`offset:-25%~25%`の範囲が有効です。） |
 
 
-- 任意のsvgの受け渡しができるようにしたい<MemoBadge>未実装</MemoBadge>
+{/* - 任意のsvgの受け渡しができるようにしたい<MemoBadge>未実装</MemoBadge> */}
 - `level`について
-	- `level * 1cqw` で`<Divider>`の高さが計算され、`600px`時点の値(`level * 6px`)が最小値、`1200px`時点の値(`level * 12px`)が最大値となります。
+	- `level * 1cqw` での高さが計算され、`600px`時点の値(`level * 6px`)が最小値、`1200px`時点の値(`level * 12px`)が最大値となります。
 	- `level` が マイナスの時、図形の描画方向が反転します。
 
 
@@ -55,125 +55,135 @@ import { ShapeDivider } from '@lism-ui/astro';
 </Preview>
 
 
+## HTML構造
+
+```pug
+.b--shapeDivider([data-flip])(--level,--stretch,--offset)
+	.b--shapeDivider__inner
+		svg.b--shapeDivider__svg
+```
+
 ## Shapes
 
-<Tabs panelProps={{isFlow: true}}>
-	<TabItem label="Slope">
+<Tabs variant='line' panelProps={{isFlow: true}}>
+	<TabItem label='Slope'>
 		<Preview>
+			<PreviewTitle>slope1~3</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="slope1" c="black"/>
-				<ShapeDivider shape="slope2" c="black"/>
-				<ShapeDivider shape="slope3" c="black"/>
+				<ShapeDivider shape='slope1'/>
+				<ShapeDivider shape='slope2'/>
+				<ShapeDivider shape='slope3'/>
 			</PreviewArea>
 			<PreviewCode>
 			```jsx
-			<ShapeDivider shape="slope1" c="black"/>
-			<ShapeDivider shape="slope2" c="black"/>
-			<ShapeDivider shape="slope3" c="black"/>
+			<ShapeDivider shape='slope1'/>
+			<ShapeDivider shape='slope2'/>
+			<ShapeDivider shape='slope3'/>
 			```
 			</PreviewCode>
 		</Preview>
-
 		<Preview>
 			<PreviewTitle>with Animation</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="slope1" isAnimation c="black"/>
-				<ShapeDivider shape="slope2" isAnimation c="black"/>
-				<ShapeDivider shape="slope3" isAnimation c="black"/>
+				<ShapeDivider shape='slope1' isAnimation/>
+				<ShapeDivider shape='slope2' isAnimation/>
+				<ShapeDivider shape='slope3' isAnimation/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="slope1" isAnimation c="black"/>
-				<ShapeDivider shape="slope2" isAnimation c="black"/>
-				<ShapeDivider shape="slope3" isAnimation c="black"/>
+				<ShapeDivider shape='slope1' isAnimation/>
+				<ShapeDivider shape='slope2' isAnimation/>
+				<ShapeDivider shape='slope3' isAnimation/>
 				```
 			</PreviewCode>
 		</Preview>
 	</TabItem>
-	<TabItem label="Wave">
+	<TabItem label='Wave'>
 		<Preview>
+			<PreviewTitle>wave1~3</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="wave1" c="black"/>
-				<ShapeDivider shape="wave2" c="black"/>
-				<ShapeDivider shape="wave3" c="black"/>
+				<ShapeDivider shape='wave1'/>
+				<ShapeDivider shape='wave2'/>
+				<ShapeDivider shape='wave3'/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="wave1" c="black"/>
-				<ShapeDivider shape="wave2" c="black"/>
-				<ShapeDivider shape="wave3" c="black"/>
+				<ShapeDivider shape='wave1'/>
+				<ShapeDivider shape='wave2'/>
+				<ShapeDivider shape='wave3'/>
 				```
 			</PreviewCode>
 		</Preview>
-
 		<Preview>
 			<PreviewTitle>with Animation</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="wave1" isAnimation c="black"/>
-				<ShapeDivider shape="wave2" isAnimation c="black"/>
-				<ShapeDivider shape="wave3" isAnimation c="black"/>
+				<ShapeDivider shape='wave1' isAnimation/>
+				<ShapeDivider shape='wave2' isAnimation/>
+				<ShapeDivider shape='wave3' isAnimation/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="wave1" isAnimation c="black"/>
-				<ShapeDivider shape="wave2" isAnimation c="black"/>
-				<ShapeDivider shape="wave3" isAnimation c="black"/>
+				<ShapeDivider shape='wave1' isAnimation/>
+				<ShapeDivider shape='wave2' isAnimation/>
+				<ShapeDivider shape='wave3' isAnimation/>
 				```
 			</PreviewCode>
 		</Preview>
 	</TabItem>
-	<TabItem label="Arrow">
+	<TabItem label='Arrow'>
 		<Preview>
+			<PreviewTitle>arrow1~3</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="arrow1" c="black"/>
-				<ShapeDivider shape="arrow2" c="black"/>
-				<ShapeDivider shape="arrow3" c="black"/>
+				<ShapeDivider shape='arrow1'/>
+				<ShapeDivider shape='arrow2'/>
+				<ShapeDivider shape='arrow3'/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="arrow1" c="black"/>
-				<ShapeDivider shape="arrow2" c="black"/>
-				<ShapeDivider shape="arrow3" c="black"/>
+				<ShapeDivider shape='arrow1'/>
+				<ShapeDivider shape='arrow2'/>
+				<ShapeDivider shape='arrow3'/>
 				```
 			</PreviewCode>
 		</Preview>
 
 	</TabItem>
-	<TabItem label="Circle">
+	<TabItem label='Circle'>
 		<Preview>
+			<PreviewTitle>circle1~3</PreviewTitle>
 			<PreviewArea resize>
-				<ShapeDivider shape="circle1" c="black"/>
-				<ShapeDivider shape="circle2" c="black"/>
-				<ShapeDivider shape="circle3" c="black"/>
+				<ShapeDivider shape='circle1'/>
+				<ShapeDivider shape='circle2'/>
+				<ShapeDivider shape='circle3'/>
 			</PreviewArea>
 			<PreviewCode>
 				```jsx
-				<ShapeDivider shape="circle1" c="black"/>
-				<ShapeDivider shape="circle2" c="black"/>
-				<ShapeDivider shape="circle3" c="black"/>
+				<ShapeDivider shape='circle1'/>
+				<ShapeDivider shape='circle2'/>
+				<ShapeDivider shape='circle3'/>
 				```
 			</PreviewCode>
 		</Preview>
 	</TabItem>
 </Tabs>
 
+- シェイプのカラーは、`ShapeDivider`の`c`(`b--shapeDivider`の`color`) で指定できます。  
+	（`.b--shapeDivider__svg` は `fill:currentColor` になっています）
+
 
 ## Usage
 
-- カラーは、`c` propで指定します。
-- コンテンツ上部に配置する場合は、`isFlip` を指定します。
-
-<Tabs isFullwide panelProps={{isFlow: true}}>
-	<TabItem label="Slope">
+<Tabs variant='line' panelProps={{isFlow: true}}>
+	<TabItem label='Slope'>
 		<SlopeDemo />
 	</TabItem>
-	<TabItem label="Wave">
+	<TabItem label='Wave'>
 		<WaveDemo />
 	</TabItem>
-	<TabItem label="Arrow">
+	<TabItem label='Arrow'>
 		<ArrowDemo />
 	</TabItem>
-	<TabItem label="Circle">
+	<TabItem label='Circle'>
 		<CircleDemo />
 	</TabItem>
 </Tabs>

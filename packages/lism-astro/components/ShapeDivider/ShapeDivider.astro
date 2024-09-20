@@ -8,12 +8,12 @@ import { getShapeDividerProps } from '@lism-ui/core/components/ShapeDivider/getP
 interface Props extends LismProps {}
 
 const props = Astro.props || {};
-const { shape, ...attrs } = getShapeDividerProps(props);
+const { shape, props: dividerProps } = getShapeDividerProps(props);
 if (props.level === 0) return null;
 ---
 
-<Lism skipState data-shape={shape} {...attrs}>
-	<Lism skipState className='c--shapeDivider__inner -h:100'>
-		<ShapeSVG className='c--shapeDivider__svg -d:b' shape={shape} />
+<Lism skipState {...dividerProps}>
+	<Lism skipState lismClass='b--shapeDivider__inner'>
+		<ShapeSVG className='b--shapeDivider__svg' shape={shape} />
 	</Lism>
 </Lism>
