@@ -9,7 +9,7 @@
  *   flat()やfilter()を使うとシンプルになるが、処理速度が数倍になる。
  */
 // spacedAttr, attrConcat
-export default function joinAtts(...args) {
+export default function atts(...args) {
 	let classes = [];
 	for (let i = 0; i < args.length; i++) {
 		const mix = args[i];
@@ -21,6 +21,8 @@ export default function joinAtts(...args) {
 		} else if (Array.isArray(mix)) {
 			// 0 残す
 			classes.push(...mix.filter((v) => null != v));
+		} else if (typeof mix === 'object') {
+			classes.push(...Object.keys(mix).filter((k) => !!mix[k]));
 		}
 	}
 

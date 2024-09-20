@@ -4,7 +4,7 @@ import getMaybeUtilValue from './getMaybeUtilValue';
 import getMaybeCssVar from './getMaybeCssVar';
 import getBpData from './getBpData';
 import getStateProps from './getStateProps';
-import joinAtts from './helper/joinAtts';
+import atts from './helper/atts';
 import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
 import splitWithComma from './helper/splitWithComma';
@@ -116,24 +116,12 @@ class LismPropsData {
 
 		this.styles = Object.assign({}, lismStyle, style);
 
-		let lismClassNames = [];
-
-		if (lismClass && typeof lismClass === 'string') {
-			lismClassNames.push(lismClass);
-		}
-		if (typeof lismClass === 'object') {
-			['c', 'e', 'l'].forEach((prefix) => {
-				if (!lismClass[prefix]) return;
-				lismClassNames.push(lismClass[prefix]);
-			});
-		}
-
 		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
-		this.className = joinAtts(
+		this.className = atts(
 			classFromAstro,
 			className, // ユーザー指定のクラス
 			_componentClass,
-			lismClassNames, // l--, c--, e-- などのクラス
+			lismClass,
 			_lismClass,
 			lismState // is, has
 			// lismUtil
@@ -601,7 +589,7 @@ export default function getLismProps(props, options = {}) {
 	// if (theTime > 0) console.log('TIME ' + theTime + ' ms');
 
 	return filterEmptyObj({
-		className: joinAtts(propObj.className, propObj.utilityClasses),
+		className: atts(propObj.className, propObj.utilityClasses),
 		style: filterEmptyObj(propObj.styles), //filterEmptyObj(styles), // filterEmptyObj は最後にかける
 		...propObj.attrs, // 処理されずに残っているprops
 	});
