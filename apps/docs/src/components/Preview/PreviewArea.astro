@@ -7,14 +7,7 @@ interface Props {
 	as?: any;
 	tag?: string;
 }
-const {
-	resize,
-	nogrid = false,
-	bg = 'u:grid',
-	isFlow = true,
-	p = '5',
-	...props
-} = Astro.props || {};
+const { resize, nogrid = false, isFlow = true, p = '5', ...props } = Astro.props || {};
 
 const lismState = [];
 if (resize) lismState.push('is--resize');
@@ -25,9 +18,9 @@ if (resize) lismState.push('is--resize');
 		className='c--preview_inner'
 		lismState={lismState}
 		isFlow={isFlow}
-		bg={!nogrid && bg}
 		p={p}
 		bxsh='-1'
+		data-bg-grid={nogrid ? '0' : '1'}
 		{...props}
 	>
 		<slot />
