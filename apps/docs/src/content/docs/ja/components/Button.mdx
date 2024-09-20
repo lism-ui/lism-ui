@@ -5,7 +5,7 @@ description: ...
 
 import { DammyText, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Callout, Box, Flex, Button, IconButton, Icon, Cluster, Layer } from '@lism-ui/astro';
+import { Callout, Box, Flex, Text, Media, Button, IconButton, Icon, Cluster, Layer } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
@@ -374,56 +374,64 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 	</PreviewCode>
 </Preview>
 
+<br />
+
 <Callout type='warning'>
-テキストカラー反転してるようなエリアでは、真っ白になったり真っ黒になったりすることに注意が必要です。その場合、ホバー時の文字色を明示的に指定してください。
+テキストカラーを反転してるようなエリアでは、真っ白になったり真っ黒になったりすることに注意が必要です。その場合、ホバー時の文字色を明示的に指定してください。
 </Callout>
 
 <Preview>
 	<PreviewTitle>NG例: 真っ白になってしまう</PreviewTitle>
 	<PreviewArea p='20'>
-		<Box p='40' pos='r' c='base'>
-			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+		<Box isFrame p='40' pos='r' c='base'>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
-			<DammyText />
+			<Text>NG:</Text>
 			<Cluster mbs={30} gap='20'>
 				<Button href='###' keycolor='base' hov='reverse' variant='outline'>Button</Button>
 				<Button href='###' c='base' hov='reverse' variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		...
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>解決策</PreviewTitle>
-	<PreviewArea resize p='20'>
-		<Box p='40' pos='r' c='base'>
-			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+		<Box isFrame p='40' pos='r' c='base'>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
-			<DammyText />
+			<Text>OK:</Text>
 			<Cluster mbs={30} gap='20'>
-				<Button href='###' keycolor='base' hov={['reverse', { c:'content' }]} variant='outline'>Button</Button>
-				<Button href='###' c='base' hov={['reverse', { c:'content' }]} variant='ghost'>Button</Button>
+				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		...
+		<Box isFrame p='40' pos='r' c='base'>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Layer blur='4px' bgc='black:50%' z='-1'/>
+			<Text>NG:</Text>
+			<Cluster mbs={30} gap='20'>
+				<Button href='###' keycolor='base' hov='reverse' variant='outline'>Button</Button>
+				<Button href='###' c='base' hov='reverse' variant='ghost'>Button</Button>
+			</Cluster>
+		</Box>
+		<Box isFrame p='40' pos='r' c='base'>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Layer blur='4px' bgc='black:50%' z='-1'/>
+			<Text>OK:</Text>
+			<Cluster mbs={30} gap='20'>
+				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
+			</Cluster>
+		</Box>
 		```
 	</PreviewCode>
 </Preview>
 
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>白黒反転エリアでのテスト</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Box p='40' pos='r' c='base'>
-			<Layer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
 			<Cluster mbs={30} gap='20'>
@@ -438,5 +446,5 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 		...
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 

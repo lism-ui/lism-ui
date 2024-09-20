@@ -158,58 +158,43 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 
 ### メディアレイヤー
 
-`is--frame`と`is--layer`を組み合わせることで、親要素のサイズに合わせたメディアレイヤーを配置することができるので、背景画像として使用することができます。
+親要素に`is--frame`、直下のメディア要素に`is--layer`を指定することで、親要素のサイズに合わせたメディアレイヤーを配置することができます。
 
-{/* `MediaLayer` */}
-{/* **メディア（画像・動画）を親要素サイズに合わせてabsolute配置する**ための`<Layer>`の拡張コンポーネントです。 */}
-
-{/* また、`<MediaLayer>`は、Propsの処理が`<Layer>`とは少し異なります。 */}
-{/* | プロパティ | 説明 |
-|---|---|
-| `src` | `src`が指定されていれば子要素にメディアを表示します。|
-| `media`| `src`が指定されている場合の、そのメディアのHTMLタグ、またはコンポーネントを指定できます。デフォルトは`'img'`です。|
-| `width`, `height`,`alt`, `loading`, `decoding`,`hover` | `src`が指定されている場合、これらのプロパティはメディア側に振り分けられます。|
-| `mediaProps`|上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。| */}
-
-{/* |`loop`, `muted`, `controls`, `autoplay`, `playsinline`, `poster` | `src`が指定されていて`media`が`'video'`の場合にこれらのプロパティはメディア側に振り分けられます。| */}
 
 <Preview>
 	<PreviewTitle>
 		例
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Box hasGutter pos='r' bgc='base'>
-			<Layer isFrame z='0' opacity='.4'>
-				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
-			</Layer>
-			<Stack pos='r' z='1' py='50' gap='20'>
+		<Frame bgc='base'>
+			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			<Stack hasGutter pos='r' py='50' gap='40' c='white' bgc='black:50%'>
 				<DammyText/>
 				<DammyText length='l' />
 			</Stack>
-		</Box>
+		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Box hasGutter pos='r' bgc='base'>
-			<Layer isFrame z='0' opacity='.4'>
-				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
-			</Layer>
-			<Stack pos='r' z='1' py='50' gap='20'>
+		```jsx "isFrame" "isLayer"
+		<Frame bgc='base'>
+			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			<Stack hasGutter pos='r' py='50' gap='40' c='base' bgc='black:50%'>
 				<DammyText/>
 				<DammyText length='l' />
 			</Stack>
-		</Box>
+		</Frame>
 		```
 	</PreviewCode>
-	{/* <PreviewCode slot='tab' label='HTML'>
+	<PreviewCode slot='tab' label='HTML'>
 		```html {2-4}
-		<div class="l--center -aspect:cinema -pos:r -bgc:base">
-			<div class="is--layer is--frame -z:0" style="opacity:.5">
-				<img src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
+		<div class="is--frame -bgc:base">
+			<img class="is--layer" src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
+			<div class="l--stack has--gutter -pos:r -py:50 -c: -bgc: -gap:40" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 50%)">
+				<p>Lorem ipsum dolor sit amet...</p>
+				<p>Lorem ipsum dolor sit, amet...</p>
 			</div>
-			<p class="-z:1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-		</div>
+		 </div>
 		```
-	</PreviewCode> */}
+	</PreviewCode>
 </Preview>
 

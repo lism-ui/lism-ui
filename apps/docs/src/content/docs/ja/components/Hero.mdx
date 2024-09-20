@@ -3,7 +3,7 @@ title: 'Hero'
 description: ...
 ---
 
-import { Spacer, Box, Grid, DammyText, Text, Container, Layer, Stack, FlexItem, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
+import { Spacer, Box, Grid, Media, DammyText, Text, Container, Layer, Stack, FlexItem, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
 import { Reference, MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import PreviewFrame from "~/components/PreviewFrame.astro";
@@ -142,7 +142,7 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>With Layers</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
@@ -151,9 +151,9 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "\<Layer" "\<Layer"
+		```jsx "isFrame" "isLayer" "\<Layer"
 		<Stack isFullwide isFrame minH='50vh'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
@@ -172,7 +172,7 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>With ShapDivide & Layers</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer blur='4px' bgc='black:50%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
@@ -184,9 +184,9 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "\<Layer" "\<Layer" "\<ShapeDivider"
+		```jsx "isFrame" "isLayer" "\<Layer" "\<ShapeDivider"
 		<Stack isFullwide isFrame minH='50vh' c='white' gap='20'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer blur='4px' bgc='black:40%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
@@ -218,7 +218,7 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 
 {/* -  */}
 
-Hero 自体の高さを`height`で固定している場合は、普通に子要素であるHeroContentや、そのさらに子要素の`height`や`min-height`にも`%`を使うことができます。
+{/* Hero 自体の高さを`height`で固定している場合は、普通に子要素であるHeroContentや、そのさらに子要素の`height`や`min-height`にも`%`を使うことができます。
 
 <Preview>
 	<PreviewTitle>親の高さが`h`で指定されるケース</PreviewTitle>
@@ -242,14 +242,14 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 		</Stack>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 
-問題は、Heroコンテンツ の高さを minH やアスペクト比で指定したいケースです。  
-(ウインドウ幅が広い時は特定の高さに制限したいが、ウインドウ幅が狭くなって内部のコンテンツ量がはみ出す時は高さが伸びてくれるようなレイアウトを作りたいケース。)
+Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する場合、子要素の `height` や `min-height` に%を指定しても無効になってしまいます。
 
+{/* (ウインドウ幅が広い時は特定の高さに制限したいが、ウインドウ幅が狭くなって内部のコンテンツ量がはみ出す時は高さが伸びてくれるようなレイアウトを作りたいケース。)
 
-基本的に、`min-height`を指定した要素の子要素では、`height`や`min-height`に`%`を使っても無効となります。
+基本的に、`min-height`を指定した要素の子要素では、`height`や`min-height`に`%`を使っても無効となります。 */}
 
 
 <Preview>
@@ -264,7 +264,7 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "minH='400px'"
+		```jsx "minH='400px'" "minH='50%'"
 		<Stack isFullwide minH='400px' bgc='base-3'>
 			<Box minH='50%' my='auto' px='40'>
 				<Center minH='100%' bgc='base' bxsh='1'>
@@ -291,7 +291,7 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "Grid" "fxg='1' ai='c'"
+		```jsx "Grid" "fxg='1' ai='c'" "minH='50%'"
 		<Stack isFullwide minH='400px' bgc='base-3'>
 			<FlexItem layout={Grid} fxg='1' ai='c' px='40'>
 				<Center minH='50%' bgc='base' bxsh='1' gap='20' p='box'>
@@ -317,7 +317,7 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 	<PreviewTitle>活用例</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide isFrame minH='50vh'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer bgc='black:20%' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
 				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
@@ -330,7 +330,7 @@ Hero 自体の高さを`height`で固定している場合は、普通に子要�
 	<PreviewCode>
 		```jsx
 		<Stack isFullwide isFrame minH='50vh'>
-			<Layer src='/img.jpg' alt='' width='960' height='640'/>
+			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer bgc='black:20%' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
 				<Center minH='50%' bg='glass' p='box' c='white' bdrs='s' gap={20}>
