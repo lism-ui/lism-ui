@@ -1,3 +1,5 @@
+import atts from '../../lib/helper/atts';
+
 // gt + gtc, gtr の併用がなければ、コンテキストをセットして変数だけの出力にする
 // export function getGridContext(gridProps = {}) {
 // 	if (gridProps?.gt && (gridProps?.gtc || gridProps?.gtr)) {
@@ -9,39 +11,7 @@
 export function mergeGridContextProps(props) {
 	if (null == props.grid) props.grid = {};
 
-	// ratioの扱い
-	// if (props.ratio) {
-	// 	props.gtc = objMap(getBpData(props.ratio), getMaybeFrs);
-	// 	delete props.ratio;
-	// }
-
-	// gtc,gtr自体を N:M の形式で指定できるように？
-	// ['gtc', 'gtr'].forEach((key) => {
-	// 	if (null != props[key]) {
-	// 		props.grid[key] = objMap(getBpData(props[key], getMaybeFrs));
-	// 		delete props[key];
-	// 	}
-	// });
-
-	[
-		'gd',
-		'gt',
-		'gta',
-		'gtc',
-		'gtr',
-		'gaf',
-		'gar',
-		'gac',
-		'gap',
-		'rowg',
-		'colg',
-		'ai',
-		'ac',
-		'ji',
-		'jc',
-		'pi',
-		'pc',
-	].forEach((key) => {
+	['gd', 'gt', 'gta', 'gtc', 'gtr', 'gaf', 'gar', 'gac', 'gap', 'rowg', 'colg'].forEach((key) => {
 		if (null != props[key]) {
 			props.grid[key] = props[key];
 			delete props[key];
@@ -51,23 +21,11 @@ export function mergeGridContextProps(props) {
 	return props;
 }
 
-export function getGridProps({
-	_grid = 'grid',
-	variant,
-	_lismClass = [],
-	lismStyle = {},
-	...props
-}) {
-	_lismClass.push(`l--${_grid}`);
-	if (variant) _lismClass.push(`l--${_grid}--${variant}`);
-
+export function getGridProps({ _grid = 'grid', variant, lismClass, ...props }) {
 	// grid 系の props をまとめる
 	let returnProps = mergeGridContextProps(props);
 	returnProps._context = 'grid'; //getGridContext(props?.grid);
-
-	returnProps._lismClass = _lismClass;
-	returnProps.lismStyle = lismStyle;
-
+	returnProps.lismClass = atts(lismClass, `l--${_grid}`, variant && `l--${_grid}--${variant}`);
 	return returnProps;
 }
 

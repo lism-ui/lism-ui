@@ -3,7 +3,6 @@ export const NotePresets = CalloutPresets;
 
 export default function getProps({
 	_lismClass = [],
-	// lismStyle = {},
 	variant = '',
 	preset = 'note',
 	boxcolor = '',

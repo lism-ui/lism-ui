@@ -10,7 +10,6 @@ export function getNavMenuProps({ _lismClass = [], variant, nestLevel, hovC, hov
 	const theProps = { _lismClass, tag: 'ul', hov, ...props };
 
 	if (nestLevel) {
-		// lismStyle['--level'] = parseInt(nestLevel);
 		theProps['data-nest-level'] = nestLevel;
 	}
 

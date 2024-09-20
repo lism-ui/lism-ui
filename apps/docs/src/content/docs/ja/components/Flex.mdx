@@ -28,10 +28,10 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 |`gap`|`gap`|
 |`rowg`|`row-gap`|
 |`colg`|`column-gap`|
-|`ai`|`align-items`|
+{/* |`ai`|`align-items`|
 |`ac`|`align-content`|
 |`ji`|`justify-items`|
-|`jc`|`justify-content`|
+|`jc`|`justify-content`| */}
 
 
 
@@ -46,7 +46,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 			<div>Item</div>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Flex>
 		<div>Item</div>
@@ -75,7 +75,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 			<div>Flex Content</div>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Flex fxw='wrap' jc='center' gap='20'>
 		<div>Item</div>
@@ -141,7 +141,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 			<p>CCC</p>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 		<Flex gap='20'>
 			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
@@ -190,7 +190,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 			<Badge>Adipisicing</Badge>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot="tab" label="React, Astro">
+	<PreviewCode slot="tab" label="JSX">
 	```jsx
 	<Flex variant='cluster' gap='20'>
 		<Badge>Lorem ipsum</Badge>
@@ -237,7 +237,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 				<Box bgc='green'>box-3</Box>
 			</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "variant='ltr'"
 	<Flex variant='ltr' gap='20'>
 		<div>box-1</div>
@@ -268,7 +268,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 			</Flex>
 		</div>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "variant='ltr'"
 	<div dir="rtl">
 		<Flex variant='ltr' gap='20'>

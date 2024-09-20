@@ -1,6 +1,6 @@
-export default function getBoxProps({ _lismClass = [], variant = '', ...props }) {
-	_lismClass.push('l--box');
-	if (variant) _lismClass.push(`l--box--${variant}`);
+import atts from '../../lib/helper/atts';
+export default function getBoxProps({ lismClass, variant = '', ...props }) {
+	props.lismClass = atts(lismClass, 'l--box', variant && `l--box--${variant}`);
 
-	return { _lismClass, ...props };
+	return props;
 }

@@ -166,16 +166,30 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`bd`|`border`|-|`n`,`l`,`r`,`t`,`b`,`is`,`bs`||
+|`bd`|`border`|-|`n`,`l`,`r`,`t`,`b`,`is`,`ie`,`bs`,`be`, `x`,`y`||
 |`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`boxcolor`|-|
-|`bdw`|`border-width`||||
-|`bds`|`border-style`||||
-|`bdl`|`border-left`||||
-|`bdr`|`border-right`||||
-|`bdt`|`border-top`||||
-|`bdb`|`border-bottom`||||
-|`bdis`|`border-inline-start`||||
-|`bdbs`|`border-block-start`||||
+|`bdw`|`border-width`|-|-|-|
+|`bds`|`border-style`|-|-|-|
+{/* |`bdl`|`border-left`|-|-|-|
+|`bdr`|`border-right`|-|-|-|
+|`bdt`|`border-top`|-|-|-|
+|`bdb`|`border-bottom`|-|-|-|
+|`bdis`|`border-inline-start`|-|-|-|
+|`bdbs`|`border-block-start`|-|-|-| */}
+
+さらに、以下のものを `borders` オブジェクト内で指定することができます。
+
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`l`|`border-left`||- |-|
+|`r`|`border-right`||- |-|
+|`t`|`border-top`||- |-|
+|`b`|`border-bottom`||- |-|
+|`is`|`border-inline-start`||- |-|
+|`ie`|`border-inline-end`||- |-|
+|`bs`|`border-block-start`||-|-|
+|`be`|`border-block-end`||-|-|
+
 
 
 <Reference>
@@ -205,6 +219,29 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 |`ie`|`inset-inline-end`|`SPACE`|`0`|-|
 |`bs`|`inset-block-start`|`SPACE`|-|-|
 |`be`|`inset-block-end`|`SPACE`|-|-|
+
+
+## Places
+
+
+|Prop|CSS|To Class|BP|
+|---|---|---|---|
+|`ai`|`align-items`|`c`, `s`, `e`, `fs`, `fe`, `str`|-|
+|`ac`|`align-content`|`c`, `s`, `e`, `fs`, `fe`, `sb`|-|
+|`ji`|`justify-items`|`c`, `s`, `e`, `fs`, `fe`, `str`|-|
+|`jc`|`justify-content`|`c`, `s`, `e`, `fs`, `fe`, `sb`|-|
+|`pi`|`place-items`|-|-|
+|`pc`|`place-content`|-|-|
+
+
+
+|Prop|CSS|To Class|BP|
+|---|---|---|---|
+|`aslf`|`align-self`|`c`, `s`, `e`, `str`|-|
+|`jslf`|`justify-self`|`c`, `s`, `e`, `str`|-|
+|`pslf`|`place-self`|-|-|
+|`ord`|`order`|`-1`, `0`, `1`|-|
+
 
 
 ## Grid & Flex
@@ -242,30 +279,6 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 	```
 	</PreviewCode>
 </Preview> */}
-
-### places
-
-以下のものは `grid`, `flex` オブジェクト内で指定することができます。
-
-|Prop|CSS|To Class|BP|
-|---|---|---|---|
-|`ai`|`align-items`|`c`, `s`, `e`, `fs`, `fe`, `str`|-|
-|`ac`|`align-content`|`c`, `s`, `e`, `fs`, `fe`, `sb`|-|
-|`ji`|`justify-items`|`c`, `s`, `e`, `fs`, `fe`, `str`|-|
-|`jc`|`justify-content`|`c`, `s`, `e`, `fs`, `fe`, `sb`|-|
-|`pi`|`place-items`|-|-|
-|`pc`|`place-content`|-|-|
-
-
-以下のものは `gridItem`, `flexItem` オブジェクト内で指定することができます。
-
-
-|Prop|CSS|To Class|BP|
-|---|---|---|---|
-|`aslf`|`align-self`|`c`, `s`, `e`, `fs`, `fe`|-|
-|`jslf`|`justify-self`|`c`, `s`, `e`, `fs`, `fe`|-|
-|`pslf`|`place-self`|-|-|
-|`ord`|`order`|`-1`, `0`, `1`|-|
 
 
 

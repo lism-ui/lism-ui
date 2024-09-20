@@ -6,6 +6,7 @@ description: ...
 import { Center, Grid, GridItem } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import ImportCode from "~/components/code-template/Import.astro";
 
 **Gridの子要素**のためのコンポーネントです。  
 [`<Grid>`](/ja/components/grid/)と組み合わせて活用してください。
@@ -31,24 +32,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 |`gre`|`grid-row-end`|
 
 
-このほか、`aslf`(`align-self`)など。
-
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Grid, GridItem } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Grid, GridItem } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
-
+<ImportCode component='Grid, GridItem' />
 
 
 ## Usage
@@ -73,7 +60,7 @@ import { Grid, GridItem } from '@lism-ui/astro';
 			<GridItem layout={Center} gc='3' gr='1 / -1' p='box' bgc='blue'>item6</GridItem>
 		</Grid>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx " gc=" " gr="
 		<Grid variant='repeat' cols='3' rows='3'>
 			<GridItem p='box' bgc='base-2'>item1</GridItem>

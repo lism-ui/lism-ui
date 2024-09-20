@@ -1,23 +1,21 @@
+import atts from '../../lib/helper/atts';
+
 export function mergeFlexContextProps(props) {
 	if (null == props.flex) props.flex = {};
 
-	['fxf', 'fxd', 'fxw', 'gap', 'rowg', 'colg', 'ai', 'ac', 'ji', 'jc', 'pi', 'pc'].forEach(
-		(key) => {
-			if (null != props[key]) {
-				props.flex[key] = props[key];
-				delete props[key];
-			}
+	['fxf', 'fxd', 'fxw', 'gap', 'rowg', 'colg'].forEach((key) => {
+		if (null != props[key]) {
+			props.flex[key] = props[key];
+			delete props[key];
 		}
-	);
+	});
 
 	return props;
 }
 
-export function getFlexProps({ _flex = 'flex', variant, _lismClass = [], ...props }) {
-	_lismClass.push(`l--${_flex}`);
-	if (variant) _lismClass.push(`l--${_flex}--${variant}`);
+export function getFlexProps({ _flex = 'flex', variant, lismClass, ...props }) {
+	props.lismClass = atts(lismClass, `l--${_flex}`, variant && `l--${_flex}--${variant}`);
 
-	props._lismClass = _lismClass;
 	return mergeFlexContextProps(props);
 }
 
