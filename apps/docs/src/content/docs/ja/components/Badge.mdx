@@ -46,7 +46,7 @@ export const ColorDemos = ({colors, variant=''}) => {
 		<Cluster gap='20'>
 			{colors.map((colorname) => {
 				return (
-					<Badge key={colorname} boxcolor={colorname} variant={variant}>{colorname}</Badge>
+					<Badge key={colorname} boxcolor={colorname} variant={variant} bdrs='xs'>{colorname}</Badge>
 				);
 			})}
 
@@ -55,24 +55,23 @@ export const ColorDemos = ({colors, variant=''}) => {
 }
 
 
-`<Badge>`(`.b--badge`)は、`-boxcolor:` の指定が必須です。  
-追加で、 `variant` を指定することでスタイルを変更できます。
+`<Badge>`(`.b--badge`)は、[boxcolor(`-boxcolor:`)](/ja/styles/boxcolor/) でカラーを指定します。
 
 <Preview>
 	<PreviewTitle>`<Badge>`の使用例</PreviewTitle>
-	<PreviewArea p='20' isShadow={0}>
-		<Cluster gap='20'>
+	<PreviewArea p='30' isShadow={0}>
+		<Cluster gap='30'>
 			<Badge boxcolor='blue'>Badge</Badge>
-			<Badge boxcolor='#609e0e'>Badge</Badge>
-			<Badge boxcolor='pink' variant='fill'>Badge</Badge>
+			<Badge boxcolor='#549005' variant='outline' bdrs='s'>Badge</Badge>
+			<Badge boxcolor='pink' variant='fill' bdrs='full'>Badge</Badge>
 		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Cluster gap='20'>
+		<Cluster gap='30'>
 			<Badge boxcolor='blue'>Badge</Badge>
-			<Badge boxcolor='#609e0e'>Badge</Badge>
-			<Badge boxcolor='pink' variant='fill'>Badge</Badge>
+			<Badge boxcolor='#549005' variant='outline' bdrs='s'>Badge</Badge>
+			<Badge boxcolor='pink' variant='fill' bdrs='full'>Badge</Badge>
 		</Cluster>
 		```
 	</PreviewCode>
@@ -95,23 +94,38 @@ export const ColorDemos = ({colors, variant=''}) => {
 
 <Preview>
 	<PreviewTitle>`variant`なしで`boxcolor`だけを使った場合のカラーバリエーションの例</PreviewTitle>
-	<PreviewArea p='20' isShadow={0}>
-		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']}  />
+	<PreviewArea p='30' isShadow={0}>
+		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray']}  />
 	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Badge boxcolor={boxcolor} bdrs='xs'>{boxcolor}</Badge>
+		```
+	</PreviewCode>
 </Preview>
 
 <Preview>
 	<PreviewTitle>`variant='fill'`でのカラーバリエーションの例</PreviewTitle>
-	<PreviewArea p='20' isShadow={0}>
-		<ColorDemos variant='fill' colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']} />
+	<PreviewArea p='30' isShadow={0}>
+		<ColorDemos variant='fill' colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray']} />
 	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Badge boxcolor={boxcolor} variant='fill' bdrs='xs'>{boxcolor}</Badge>
+		```
+	</PreviewCode>
 </Preview>
 
 <Preview> 
 	<PreviewTitle>`variant='outline'`でのカラーバリエーションの例</PreviewTitle>
-	<PreviewArea p='20' isShadow={0}>
-		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray', 'main']} variant='outline' />
+	<PreviewArea p='30' isShadow={0}>
+		<ColorDemos colors={['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray']} variant='outline' />
 	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Badge boxcolor={boxcolor} variant='outline' bdrs='xs'>{boxcolor}</Badge>
+		```
+	</PreviewCode>
 </Preview>
 
 
@@ -126,16 +140,16 @@ export const ColorDemos = ({colors, variant=''}) => {
 <Preview>
 	<PreviewTitle>`icon`の使用例</PreviewTitle>
 	<PreviewArea p='20'>
-		<Cluster gap='20' ai='c'>
-			<Badge variant='outline' gap='em2' icon='star'>Badge</Badge>
-			<Badge variant='fill' gap='em2' icon={Book}>Badge</Badge>
+		<Cluster gap='30' ai='c'>
+			<Badge variant='outline' bdrs='s' gap='5' icon='star' ai='c'>Badge</Badge>
+			<Badge variant='fill' bdrs='s' gap='5' icon={Book} ai='c'>Badge</Badge>
 		</Cluster>
 	</PreviewArea>
-<PreviewCode slot='tab' label='React, Astro'>
+<PreviewCode slot='tab' label='JSX'>
 ```jsx
-<Cluster gap='20' ai='c'>
-	<Badge variant='outline' gap='em2' icon='star'>Badge</Badge>
-	<Badge variant='fill' gap='em2' icon={Book}>Badge</Badge>
+<Cluster gap='30' ai='c'>
+	<Badge variant='outline' gap='5' icon='star' ai='c' bdrs='s'>Badge</Badge>
+	<Badge variant='fill' gap='5' icon={Book} ai='c' bdrs='s'>Badge</Badge>
 </Cluster>
 ```
 </PreviewCode>
@@ -144,13 +158,11 @@ export const ColorDemos = ({colors, variant=''}) => {
 <Preview>
 	<PreviewTitle>`<Icon>`を使ってももちろんOKです。</PreviewTitle>
 	<PreviewArea p='20'>
-		<Badge variant='outline' gap='em4'><Icon icon={Cat} size='1.5em'/>Badge</Badge>
+		<Badge variant='outline' gap='5' ai='c' bdrs='s'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 	</PreviewArea>
-<PreviewCode slot='tab' label='React, Astro'>
+<PreviewCode slot='tab' label='JSX'>
 ```jsx
-<Badge variant='outline' gap='em4'>
-	<Icon icon={Cat} size='1.5em'/>Badge
-</Badge>
+<Badge variant='outline' gap='5' ai='c' bdrs='s'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 ```
 </PreviewCode>
 </Preview>
