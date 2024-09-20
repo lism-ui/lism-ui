@@ -68,7 +68,7 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 			<Button href='###' variant='ghost'>Text</Button>
 		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "variant"
 		<Button href='###'>Fill Button</Button>
 		<Button href='###' variant='outline'>Outline Button</Button>
@@ -97,21 +97,21 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 	<PreviewTitle>左にアイコン</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster gap='20'>
-			<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
-			<Button href='###' leftIcon={ShoppingCartSimple} variant='outline'>Button</Button>
-			<Button href='###' leftIcon={ShoppingCartSimple} variant='ghost'>Button</Button>
+			<Button href='###' leftIcon={ShoppingCartSimple} bdrs='s'>Button</Button>
+			<Button href='###' leftIcon={ShoppingCartSimple} variant='outline' bdrs='s'>Button</Button>
+			<Button href='###' leftIcon={ShoppingCartSimple} variant='ghost' bdrs='s'>Button</Button>
 		</Cluster>
 	</PreviewArea>
-<PreviewCode slot='tab' label='Component'>
+<PreviewCode slot='tab' label='JSX'>
 ```jsx "leftIcon"
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 
-<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
+<Button href='###' leftIcon={ShoppingCartSimple} bdrs='s'>Button</Button>
 ```
 </PreviewCode>
 <PreviewCode slot='tab' label='HTML'>
 ```html {2}
-<a class="b--button b--button--fill l--flex -hov:fade" href="###">
+<a class="b--button b--button--fill l--flex -hov:fade -bdrs:s" href="###">
 	<svg class="b--button__leftIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 	<span class="b--button__text">Button</span>
 </a>
@@ -123,19 +123,19 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewTitle>アイコンを右に</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster gap='20'>
-			<Button href='###' rightIcon={ArrowRight}>Button</Button>
-			<Button href='###' rightIcon={ArrowRight} variant='outline'>Button</Button>
-			<Button href='###' rightIcon={ArrowRight} variant='ghost'>Button</Button>
+			<Button href='###' rightIcon={ArrowRight} bdrs='full'>Button</Button>
+			<Button href='###' rightIcon={ArrowRight} variant='outline' bdrs='full'>Button</Button>
+			<Button href='###' rightIcon={ArrowRight} variant='ghost' bdrs='full'>Button</Button>
 		</Cluster>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "rightIcon"
-	<Button href='###' rightIcon={ArrowRight}>Button</Button>
+	<Button href='###' rightIcon={ArrowRight} bdrs='full'>Button</Button>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html {3}
-	<a class="b--button b--button--fill l--flex -hov:fade" href="###">
+	<a class="b--button b--button--fill l--flex -hov:fade -bdrs:full" href="###">
 		<span class="b--button__text">Button</span>
 		<svg class="b--button__rightIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 	</a>
@@ -152,7 +152,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 			<Button href='###' variant='outline' w='50%' leftIcon={ShoppingCartSimple}>Button</Button>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Flex gap='20'>
 		<Button href='###' w='50%'>Button</Button>
@@ -185,7 +185,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 			<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
 			<Button isGrid href='###' leftIcon={ShoppingCartSimple} rightIcon={ArrowRight} minW='15em'>Button</Button>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "isGrid"
 		<Button isGrid href='###' leftIcon={ShoppingCartSimple} minW='15em'>Button</Button>
 		<Button isGrid href='###' rightIcon={ArrowRight} minW='15em'>Button</Button>
@@ -215,7 +215,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
 		<Button href='###' iconOffset="-20%" leftIcon={ShoppingCartSimple}>Button</Button>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "iconOffset"
 		<Button href='###' leftIcon={ShoppingCartSimple}>Button</Button>
 		<Button href='###' iconOffset="20%" leftIcon={ShoppingCartSimple}>Button</Button>
@@ -248,7 +248,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewArea resize p='20'>
 		<IconButton href='###' icon={ShoppingCartSimple} /> 
 	</PreviewArea>
-<PreviewCode slot='tab' label='Component'>
+<PreviewCode slot='tab' label='JSX'>
 ```jsx
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 
@@ -272,7 +272,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewArea resize p='20'>
 		<IconButton size='32px' fz='16px' href='###' icon={ShoppingCartSimple} /> 
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<IconButton size='32px' fz='16px' href='###' icon={ShoppingCartSimple} />
 		```

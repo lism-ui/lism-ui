@@ -8,13 +8,12 @@
 	--bdc: transparent; // reverse用
 	--c: currentColor; // filledColor?
 
-	border-radius: var(--radius--xs);
-	line-height: var(--lh--xs);
+	// border-radius: var(--radius--xs);
+	// line-height: var(--lh--xs);
 	padding: 0.375em 0.875em; // bdrs=full を考慮すると 1em くらいあった方がいいが...
-	gap: var(--em--4);
+	gap: 0.5em;
 	align-items: center;
 	justify-content: center;
-	// min-block-size: 2.75em;
 	min-block-size: 2.5em;
 }
 

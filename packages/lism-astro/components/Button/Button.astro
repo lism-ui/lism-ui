@@ -15,9 +15,9 @@ const BtnComponent = props.isGrid ? Grid : Flex;
 ---
 
 <BtnComponent {...btnProps}>
-	{leftIcon && <Icon className='c--button__leftIcon' icon={leftIcon} />}
+	{leftIcon && <Icon className='b--button__leftIcon' icon={leftIcon} />}
 	<Lism {...textProps}>
 		<slot />
 	</Lism>
-	{rightIcon && <Icon className='c--button__leftIcon' icon={rightIcon} />}
+	{rightIcon && <Icon className='b--button__leftIcon' icon={rightIcon} />}
 </BtnComponent>
