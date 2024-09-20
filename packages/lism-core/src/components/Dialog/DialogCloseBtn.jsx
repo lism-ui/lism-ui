@@ -1,13 +1,5 @@
-// import React from 'react';
-// import { useEffect, useRef } from 'react';
-// import { Lism } from '../Lism';
-// import { Stack } from '../Flex';
 import { Center } from '../Center';
 import { Icon } from '../Icon';
-// import { setEvent } from './setDialog';
-// import getLismProps from '../../lib/getLismProps';
-// import { getAccProps } from './getProps';
-// import { AccContext } from './context';
 
 // duration: [s]
 const DialogCloseBtn = ({

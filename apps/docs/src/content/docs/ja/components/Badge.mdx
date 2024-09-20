@@ -3,7 +3,7 @@ title: 'Badge'
 description: ...
 ---
 
-import { Badge, Cluster, Icon, Callout } from '@lism-ui/astro';
+import { Badge, Flex, Icon, Callout } from '@lism-ui/astro';
 import {
 	Book,
 	Cat,
@@ -43,14 +43,14 @@ import { Badge } from '@lism-ui/astro';
 
 export const ColorDemos = ({colors, variant=''}) => {
 	return (
-		<Cluster gap='20'>
+		<Flex variant='cluster' gap='20'>
 			{colors.map((colorname) => {
 				return (
 					<Badge key={colorname} boxcolor={colorname} variant={variant} bdrs='xs'>{colorname}</Badge>
 				);
 			})}
 
-		</Cluster>
+		</Flex>
 	);
 }
 
@@ -60,24 +60,24 @@ export const ColorDemos = ({colors, variant=''}) => {
 <Preview>
 	<PreviewTitle>`<Badge>`の使用例</PreviewTitle>
 	<PreviewArea p='30' isShadow={0}>
-		<Cluster gap='30'>
+		<Flex variant='cluster' gap='30'>
 			<Badge boxcolor='blue'>Badge</Badge>
 			<Badge boxcolor='#549005' variant='outline' bdrs='s'>Badge</Badge>
 			<Badge boxcolor='pink' variant='fill' bdrs='full'>Badge</Badge>
-		</Cluster>
+		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Cluster gap='30'>
+		<Flex variant='cluster' gap='30'>
 			<Badge boxcolor='blue'>Badge</Badge>
 			<Badge boxcolor='#549005' variant='outline' bdrs='s'>Badge</Badge>
 			<Badge boxcolor='pink' variant='fill' bdrs='full'>Badge</Badge>
-		</Cluster>
+		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--cluster -gap:20">
+		<div class="l--flex l--flex--cluster -gap:20">
 			<span class="b--badge -boxcolor:blue">Badge</span>
 			<span class="b--badge -boxcolor:" style="--boxcolor:#609e0e;">Badge</span>
 			<span class="b--badge b--badge--fill -boxcolor:pink">Badge</span>
@@ -140,17 +140,17 @@ export const ColorDemos = ({colors, variant=''}) => {
 <Preview>
 	<PreviewTitle>`icon`の使用例</PreviewTitle>
 	<PreviewArea p='20'>
-		<Cluster gap='30' ai='c'>
+		<Flex gap='30' ai='c'>
 			<Badge variant='outline' bdrs='s' gap='5' icon='star' ai='c'>Badge</Badge>
 			<Badge variant='fill' bdrs='s' gap='5' icon={Book} ai='c'>Badge</Badge>
-		</Cluster>
+		</Flex>
 	</PreviewArea>
 <PreviewCode slot='tab' label='JSX'>
 ```jsx
-<Cluster gap='30' ai='c'>
+<Flex gap='30' ai='c'>
 	<Badge variant='outline' gap='5' icon='star' ai='c' bdrs='s'>Badge</Badge>
 	<Badge variant='fill' gap='5' icon={Book} ai='c' bdrs='s'>Badge</Badge>
-</Cluster>
+</Flex>
 ```
 </PreviewCode>
 </Preview>

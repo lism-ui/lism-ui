@@ -1,4 +1,4 @@
-import { Stack } from '../Flex';
+import { Stack } from '../Stack';
 
 export default function DialogInner({ children, ...props }) {
 	return (

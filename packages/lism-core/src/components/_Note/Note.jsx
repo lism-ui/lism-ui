@@ -1,5 +1,6 @@
 import { Lism } from '../Lism';
-import { Flex, Stack } from '../Flex';
+import { Flex } from '../Flex';
+import { Stack } from '../Stack';
 import { Icon } from '../Icon';
 import { Center } from '../Center';
 import getProps from './getProps';

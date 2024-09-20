@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from '../Flex';
+import { Stack } from '../Stack';
 import { getAccGroupProps } from './getProps';
 
 // duration: [s]

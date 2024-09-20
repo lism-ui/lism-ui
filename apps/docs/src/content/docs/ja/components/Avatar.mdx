@@ -2,7 +2,7 @@
 title: 'Avatar'
 description: ...
 ---
-import { Cluster, Avatar, Media } from '@lism-ui/astro';
+import { Flex, Avatar, Media } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -43,25 +43,25 @@ import { Avatar } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap='20'>
+		<Flex gap='20'>
 			<Avatar size='4rem' src='/img/avatar01.jpg' name='name'/>
 			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
 			{/* <Avatar name='name' size='4rem' jc='c' d='if' bgc='gray' c='base'>
 				<span className='-m:a -d:ib'>S</span>
 			</Avatar> */}
-		</Cluster>
+		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<Cluster gap='20'>
+		<Flex gap='20'>
 			<Avatar src='/img/avatar01.jpg' name='name' size='4rem'/>
 			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
-		</Cluster>
+		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--flex l--flex--cluster -gap:20">
+		<div class="l--flex -gap:20">
 			<div class="b--avatar is--frame -bdrs:full" style="--size:4rem">
 				<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
 			</div>
@@ -78,10 +78,10 @@ import { Avatar } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>カスタマイズ例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap='20'>
+		<Flex gap='20'>
 			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd bdw='3px' bdc='pink:80%' />
 			<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
-		</Cluster>
+		</Flex>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
