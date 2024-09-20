@@ -24,7 +24,7 @@ export default function getAvatarProps({
 
 	const { mediaAttrs, otherProps } = separateMediaAttrs(props);
 	return {
-		avatarProps: { _lismClass, aspect: '1/1', bdrs: 'full', ...otherProps },
+		avatarProps: { _lismClass, bdrs: 'full', ...otherProps },
 		mediaProps: {
 			...defaultMediaProps,
 			...mediaAttrs,

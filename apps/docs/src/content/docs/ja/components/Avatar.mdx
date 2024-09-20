@@ -43,63 +43,50 @@ import { Avatar } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
-			<Avatar src="/img/avatar01.jpg" name='name' size='5em'/>
+		<Cluster gap='20'>
+			<Avatar size='4rem' src='/img/avatar01.jpg' name='name'/>
+			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
+			{/* <Avatar name='name' size='4rem' jc='c' d='if' bgc='gray' c='base'>
+				<span className='-m:a -d:ib'>S</span>
+			</Avatar> */}
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React, Astro'>
 		```jsx
-		<Avatar src="/img/avatar01.jpg" name='name' size='5em'/>
+		<Cluster gap='20'>
+			<Avatar src='/img/avatar01.jpg' name='name' size='4rem'/>
+			<Avatar size='56px' src='/img/avatar02.jpg' name='avatar-name'/>
+		</Cluster>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="b--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:5em">
-			<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
+		<div class="l--flex l--flex--cluster -gap:20">
+			<div class="b--avatar is--frame -bdrs:full" style="--size:4rem">
+				<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
+			</div>
+			<div class="b--avatar is--frame -bdrs:full" style="--size:56px">
+				<img src="/img/avatar02.jpg" alt="avatar-name" width="100%" height="100%" decoding="async">
+			</div>
 		</div>
 		```
 	</PreviewCode>
 </Preview>
 
-<Preview>
-	<PreviewTitle>サイズ変更</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
-			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" />
-			<Avatar size='4em' name='avatar-name' src="/img/avatar02.jpg" />
-		</Cluster>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='React, Astro'>
-		```jsx "size="
-		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" />
-		<Avatar size='4em' name='avatar-name' src="/img/avatar02.jpg" />
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "--size:"
-		<div class="b--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:5em">
-			<img src="/img/avatar01.jpg" alt="name" width="100%" height="100%" decoding="async">
-		</div>
-		<div class="b--avatar is--frame -aspect:1/1 -bdrs:full" style="--size:4em">
-			<img src="/img/avatar02.jpg" alt="name" width="100%" height="100%" decoding="async">
-		</div>
-		```
-	</PreviewCode>
-</Preview>
 
 
 <Preview>
 	<PreviewTitle>カスタマイズ例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
-			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd={{w:'2px', c:'pink:80%'}}/>
-			<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd={{w:'2px', c: 'white'}}/>
+		<Cluster gap='20'>
+			<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd bdw='3px' bdc='pink:80%' />
+			<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd={{w:'2px', c:'pink:80%'}}/>
-		<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd={{w:'2px', c: 'white'}}/>
+		<Avatar size='5em' name='avatar-name' src="/img/avatar01.jpg" bd bdw='3px' bdc='pink:80%' />
+		<Avatar size='5em' name='avatar-name' src="/img/avatar02.jpg" bdrs='l' bxsh='2' bd bdw='2px' bdc='white'/>
 		```
 	</PreviewCode>
 </Preview>

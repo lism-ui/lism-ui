@@ -2,11 +2,14 @@
 // 	--size: auto;
 // }
 .b--avatar {
-	--size: auto;
-	display: inline-flex;
-	inline-size: var(--size);
+	--size: 2rem;
+	// display: inline-flex;
+	width: var(--size);
+	height: var(--size);
 	// aspect-ratio: 1/1;
-	// width: var(--size);
-	// height: var(--size);
-	// overflow: hidden;
+
+	// > span {
+	// 	line-height: 1;
+	// 	font-size: calc(var(--size) * 0.625);
+	// }
 }
