@@ -118,7 +118,7 @@
 .-hov\:get\:slide {
 	grid-template-rows: var(--hov1fr); // calc() で fr単位が使えない
 	opacity: var(--isHover);
-	transition-property: var(--acc-trsp);
+	transition-property: var(--acc-trsprop);
 }
 
 // .-hov\:get\:slide > * {

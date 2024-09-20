@@ -14,7 +14,7 @@ export default function atts(...args) {
 	for (let i = 0; i < args.length; i++) {
 		const mix = args[i];
 
-		if (null == mix) continue;
+		if (!mix) continue;
 
 		if (typeof mix === 'string' || typeof mix === 'number') {
 			classes.push(mix);

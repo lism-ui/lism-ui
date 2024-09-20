@@ -77,7 +77,6 @@ class LismPropsData {
 			style = {},
 			lismClass,
 			_lismClass = [],
-			_componentClass,
 			// lismVar,
 			passProps,
 			getProps,
@@ -120,7 +119,6 @@ class LismPropsData {
 		this.className = atts(
 			classFromAstro,
 			className, // ユーザー指定のクラス
-			_componentClass,
 			lismClass,
 			_lismClass,
 			lismState // is, has

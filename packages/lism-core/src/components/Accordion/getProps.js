@@ -1,31 +1,28 @@
-// import { mergeFlexContextProps } from '../Flex/getProps';
-// import { getChildIconProps } from '../Icon/getProps';
+import atts from '../../lib/helper/atts';
 
 // duration: [s]
-export function getAccProps({ _lismClass = [], variant, style = {}, duration, ...props }) {
-	_lismClass.push('c--accordion');
-	if (variant) _lismClass.push(`c--accordion--${variant}`);
-	props._lismClass = _lismClass;
+export function getAccProps({ lismClass, variant, style = {}, duration, ...props }) {
+	props.lismClass = atts(lismClass, 'c--accordion', variant && `c--accordion--${variant}`);
 
-	if (duration) {
-		style['--duration'] = duration;
-	}
-
+	if (duration) style['--duration'] = duration;
 	props.style = style;
 
 	return props; //mergeFlexContextProps(props);
 }
 
 export function getAccGroupProps({
-	_lismClass = [],
+	lismClass,
 	variant,
 	style = {},
 	duration,
 	allowMultiple = true,
 	...props
 }) {
-	_lismClass.push('c--accordionGroup');
-	if (variant) _lismClass.push('c--accordionGroup--' + variant);
+	props.lismClass = atts(
+		lismClass,
+		'c--accordionGroup',
+		variant && `c--accordionGroup--${variant}`
+	);
 
 	if (duration) {
 		style['--acc-trsdu'] = duration;
@@ -35,16 +32,15 @@ export function getAccGroupProps({
 		props['data-acc-multiple'] = 'disallow';
 	}
 
-	props._lismClass = _lismClass;
 	props.style = style;
 	return props;
 }
 
-export function getAccHeadProps({ _lismClass = [], ...props }) {
-	_lismClass.push('c--accordion__header');
+export function getAccHeadProps({ lismClass, ...props }) {
+	lismClass = atts(lismClass, 'c--accordion__header');
 
 	const defaultProps = {
-		_lismClass,
+		lismClass,
 		ai: 'c',
 		//p: 'box:s', gap: 20
 	};
@@ -66,21 +62,19 @@ export function getAccHeadProps({ _lismClass = [], ...props }) {
 	return Object.assign(defaultProps, props);
 }
 
-export function getAccBodyProps({ isFlow, innerProps = {}, ...props }) {
-	// 初期値とマージ
-	const defaultProps = { _lismClass: ['c--accordion__body'] };
-	const bodyProps = Object.assign(defaultProps, props);
+export function getAccBodyProps({ lismClass, isFlow, innerProps = {}, ...props }) {
+	props.lismClass = atts(lismClass, 'c--accordion__body');
 
-	innerProps._lismClass = ['c--accordion__inner'];
+	innerProps.lismClass = 'c--accordion__inner';
 	innerProps.ov = 'hidden';
 
 	if (null != isFlow) innerProps.isFlow = isFlow;
 
-	return { bodyProps, innerProps };
+	return { bodyProps: props, innerProps };
 }
 
 export function getAccIconProps(trigger) {
-	const props = { _lismClass: ['c--accordion__icon'], tag: 'span', d: 'inline-flex' };
+	const props = { lismClass: 'c--accordion__icon', tag: 'span', d: 'inline-flex' };
 
 	// isTrigger なら、buttun にする
 	if (trigger === 'icon') {
@@ -93,7 +87,7 @@ export function getAccIconProps(trigger) {
 
 export function getAccLabelProps(tag = 'span') {
 	// 初期値
-	const props = { _lismClass: ['c--accordion__label'], tag, fx: '1' };
+	const props = { lismClass: 'c--accordion__label', tag, fx: '1' };
 
 	// span以外（hタグなど）になっても見た目は変わらないように
 	if ('span' !== tag) props.f = 'inherit';

@@ -1,6 +1,6 @@
 .c--accordion {
 	--opened: 0;
-	--duration: var(--acc-trsdu); // jsからも取得することに注意
+	--duration: var(--acc-trsdu);
 	// overflow: clip; // bdrs考慮
 }
 
@@ -29,7 +29,7 @@
 .c--accordion__body {
 	// display: grid;
 	grid-template-rows: 1fr;
-	transition-property: var(--acc-trsp);
+	transition-property: var(--acc-trsprop);
 	transition-duration: var(--duration);
 }
 
