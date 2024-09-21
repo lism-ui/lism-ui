@@ -15,10 +15,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 | プロパティ | 出力 | 説明 |
 |---|---|---|
-| `dataSide` | <PropBadge type="attr">`[data-lism-side]`</PropBadge> | サイド要素の配置を指定できます。 |
+| `sidePosition` | <PropBadge type="attr">`[data-side-position]`</PropBadge> | サイド要素の配置を指定できます。 |
 | `sideW` | <PropBadge type="cssvar">`--side-w`</PropBadge> | Side要素の横幅 |
-| `mainMinW` | <PropBadge type="cssvar">`--main-minW`</PropBadge>| もう一方の流動幅の要素が維持する最小幅<br/> (`dataSide`がない時のみ有効) |
-| `bp`| <PropBadge type="class">`.-gt@{bp}`</PropBadge> | `dataSide`の指定がある時の、カラム折り返しタイミングを指定できます<br/> (`dataSide`がない時は無効) |
+| `mainMinW` | <PropBadge type="cssvar">`--main-minW`</PropBadge>| もう一方の流動幅の要素が維持する最小幅<br/> (`sidePosition`がない時のみ有効) |
+| `bp`| <PropBadge type="class">`.-gt@{bp}`</PropBadge> | `sidePosition`の指定がある時の、カラム折り返しタイミングを指定できます<br/> (`sidePosition`がない時は無効) |
 
 {/* その他、[`<Flex>`で使えるProps](/ja/components/flex#props)が使えます。 */}
 
@@ -38,16 +38,16 @@ import ImportCode from "~/components/code-template/Import.astro";
 (デフォルトでは`sm`サイズでレイアウトが切り替わります)
 
 
-`dataSide`(`[data-lism-side]`)で横並び時と縦並び時のside要素の配置を指定できます。  
-`dataSide`の指定方法は、`"{横並び時の配置} {縦並び時の配置}"` という形式で、それぞれ`start`または`end`で指定します。
+`sidePosition`(`[data-side-position]`)で横並び時と縦並び時のside要素の配置を指定できます。  
+`sidePosition`の指定方法は、`"{横並び時の配置} {縦並び時の配置}"` という形式で、それぞれ`start`または`end`で指定します。
 
 {/* `bp` `-gt@sm` */}
 
 
 <Preview>
-	<PreviewTitle>`dataSide='start end'`</PreviewTitle>
+	<PreviewTitle>`sidePosition='start end'`</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide dataSide='start end' sideW='10rem' gap='30'>
+		<WithSide sidePosition='start end' sideW='10rem' gap='30'>
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -55,8 +55,8 @@ import ImportCode from "~/components/code-template/Import.astro";
 		</WithSide>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "dataSide='start end'"
-		<WithSide dataSide='start end' sideW='10rem' gap='30'>
+		```jsx "sidePosition='start end'"
+		<WithSide sidePosition='start end' sideW='10rem' gap='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -65,8 +65,8 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx "data-lism-side"
-		<div class="l--withSide -gap:30" data-lism-side="start end" style="--side-w:10rem;">
+		```jsx "data-side-position"
+		<div class="l--withSide -gap:30" data-side-position="start end" style="--side-w:10rem;">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -77,9 +77,9 @@ import ImportCode from "~/components/code-template/Import.astro";
 </Preview>
 
 
-#### `dataSide`指定パターン一覧
+#### `sidePosition`指定パターン一覧
 
-`dataSide`(`[data-lism-side]`)は以下の値をサポートしています。
+`sidePosition`(`[data-side-position]`)は以下の値をサポートしています。
 
 - `'start start'` ( = `'start'`)
 - `'start end'`
@@ -92,8 +92,8 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 		<PreviewArea resize p='30' isFlow='l'>
 			{dataArray.map((datSide) => (
 				<div key={datSide}>
-						<div>↓<code>dataSide="{datSide}"</code></div>
-						<WithSide dataSide={datSide} sideW='10rem' gap='20' mbs='20'>
+						<div>↓<code>sidePosition="{datSide}"</code></div>
+						<WithSide sidePosition={datSide} sideW='10rem' gap='20' mbs='20'>
 							<Box bd='guide'>
 								<DammyText />
 							</Box>
@@ -108,7 +108,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 
 {/* ['start start', 'start end', ] */}
 
-{/* <PreviewTitle>`dataSide='start xxx'`</PreviewTitle> */}
+{/* <PreviewTitle>`sidePosition='start xxx'`</PreviewTitle> */}
 <WithSideDemos dataArray={['start start', 'start end']} />
 <WithSideDemos dataArray={['end start', 'end end']} />
 
@@ -123,7 +123,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 <Preview>
 	<PreviewTitle>`bp='md'`にセット</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
+		<WithSide sidePosition='end' bp='md' sideW='10rem' gap='30'>
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -132,7 +132,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "bp='md'"
-		<WithSide dataSide='end' bp='md' sideW='10rem' gap='30'>
+		<WithSide sidePosition='end' bp='md' sideW='10rem' gap='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -142,7 +142,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "-gd@md" "--md-gd:var(--gd--hz)"
-		<div class="l--withSide -gd@md -gap:30" data-lism-side="end" style="--side-w:10rem;--md-gd:var(--gd--hz)">
+		<div class="l--withSide -gd@md -gap:30" data-side-position="end" style="--side-w:10rem;--md-gd:var(--gd--hz)">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -156,7 +156,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 
 ### メディアクエリに依存しない配置切り替え
 
-`dataSide`(`[data-lism-side]`) の指定を省くことで、メディアクエリに依存せずに横並びと縦並びの切り替えを行うこともできます。
+`sidePosition`(`[data-side-position]`) の指定を省くことで、メディアクエリに依存せずに横並びと縦並びの切り替えを行うこともできます。
 
 この時、side要素ではない方の要素の幅が、`--main-minW`の値を下回ると1カラムに切り替わるようになっています。
 

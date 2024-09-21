@@ -4,13 +4,13 @@
 	grid-area: side;
 }
 
-// data-lism-side が指定されている時、gridで配置を切り替える
+// data-side-position が指定されている時、gridで配置を切り替える
 // point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
 // memo: flex-grow は 変数指定だと挙動が変になる。
 .l--withSide {
 	--side-w: auto;
 
-	&:where([data-lism-side]) {
+	&:where([data-side-position]) {
 		--gd: '.' 'side' / auto;
 		--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
 		display: grid;
@@ -18,12 +18,12 @@
 	}
 
 	// "xxx start": 縦並びの時に side を上
-	&:where([data-lism-side$='start']) {
+	&:where([data-side-position$='start']) {
 		--gd: 'side' '.' / auto;
 	}
 
 	// "end xxx": 横並びの時に side を end 方向
-	&:where([data-lism-side^='end']) {
+	&:where([data-side-position^='end']) {
 		--gd--hz: '. side' / 1fr var(--side-w);
 	}
 
@@ -41,12 +41,12 @@
 	}
 }
 
-.l--withSide:where(:not([data-lism-side])) {
+.l--withSide:where(:not([data-side-position])) {
 	--main-minW: max(var(--contentSize--min), 50%);
 	display: flex;
 	flex-wrap: wrap;
 }
-:where(.l--withSide:not([data-lism-side])) {
+:where(.l--withSide:not([data-side-position])) {
 	// &[data-side='first'] > :first-child,
 	// &[data-side='last'] > :last-child,
 	> .is--side {
