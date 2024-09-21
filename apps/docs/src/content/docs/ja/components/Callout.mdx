@@ -15,11 +15,21 @@ import ImportCode from "~/components/code-template/Import.astro";
 内部で`<WithSide>`を使用しており、コンテンツ側が`16rem`を下回るとアイコンとコンテンツが縦並びになります。  
 また、`.-boxcolor:`との併用によって、`--boxcolor`から背景色やボーダー色を自動生成します。
 
+## 構造
+
+```pug
+.c--callout.l--withSide.-boxcolor:
+	.c--callout__icon.l--center.is--side.-c:boxcolor
+		svg.a--icon
+	.c--callout__body
+```
+
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
+|`variant`| `c--callout--{variant}` クラスを出力します。|
 |`icon`| アイコンを指定できます。デフォルトは `"alert"`です。|
 |`boxcolor`| ボックスカラーを指定します。デフォルトは `"red"`です。(`color-mix`で色の生成をしているため、未対応ブラウザでは表示が変わります。)|
 |`type`|`boxcolor`と`icon`の組み合わせを呼び出すキーワードを指定できます。初期値:`"alert"`|
@@ -46,7 +56,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 			<DammyText lang='ja' />
 		</Callout>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Callout>
 			<p>ロレムイプサムの座り雨、トマ好き学習だったエリット、しかし時と活力はそのような木々と楽しみ。</p>
@@ -73,40 +83,40 @@ import ImportCode from "~/components/code-template/Import.astro";
 		typeの指定
 	</PreviewTitle>
 	<PreviewArea p='30'>
-		<Callout type='alert'>
+		<Callout type='alert' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='point'>
+		<Callout type='point' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='warning'>
+		<Callout type='warning' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='check'>
+		<Callout type='check' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='info'>
+		<Callout type='info' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='help'>
+		<Callout type='help' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout type='note'>
+		<Callout type='note' bdrs='s'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
 		{/* <Callout icon={Book}>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
 		</Callout> */}
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Callout type='alert'>...</Callout>
-	<Callout type='point'>...</Callout>
-	<Callout type='warning'>...</Callout>
-	<Callout type='check'>...</Callout>
-	<Callout type='info'>...</Callout>
-	<Callout type='help'>...</Callout>
-	<Callout type='note'>...</Callout>
+	<Callout type='alert' bdrs='s'>...</Callout>
+	<Callout type='point' bdrs='s'>...</Callout>
+	<Callout type='warning' bdrs='s'>...</Callout>
+	<Callout type='check' bdrs='s'>...</Callout>
+	<Callout type='info' bdrs='s'>...</Callout>
+	<Callout type='help' bdrs='s'>...</Callout>
+	<Callout type='note' bdrs='s'>...</Callout>
 	```
 	</PreviewCode>
 </Preview>
@@ -120,17 +130,17 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Callout icon='good' boxcolor='green'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout icon='bad' boxcolor='blue'>
+		{/* <Callout icon='bad' boxcolor='blue'>
+			<DammyText lang='ja' length='codes' />
+		</Callout> */}
+		<Callout icon='book-open' boxcolor='#185b6e'>
 			<DammyText lang='ja' length='codes' />
 		</Callout>
-		<Callout icon='book-open' boxcolor='#185b6e'>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
-		</Callout>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Callout icon='good' boxcolor='green'>...</Callout>
-	<Callout icon='bad' boxcolor='blue'>...</Callout>
+	<Callout icon='book-open' boxcolor='#185b6e'>...</Callout>
 	```
 	</PreviewCode>
 </Preview>
@@ -138,7 +148,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 <Preview>
 	<PreviewTitle>
-		Astroのアイコンをslotで指定する例
+		Astroでアイコンをslotから指定する例
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Callout boxcolor='#185b6e'>
@@ -148,7 +158,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 			<DammyText />
 		</Callout>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='Astro'>
 		```jsx "slot='icon'"
 		<Callout boxcolor='#185b6e'>
 			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
@@ -160,25 +170,25 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewCode>
 </Preview>
 
-### isFlow
+
+{/* ## デフォルトスタイルのカスタマイズ
+
+最低限のスタイリングのみになっていますので、好きに調節してください。
+
 
 <Preview>
 	<PreviewTitle>
-		isFlowの指定
+		Astroでアイコンをslotから指定する例
 	</PreviewTitle>
-	<PreviewArea p='30'>
-		<Callout isFlow='s'>
-			<DammyText lang='ja' length='xs'/>
-			<DammyText lang='ja' />
+	<PreviewArea resize p='30' className='is--setStyle:callout'>
+		<Callout type='alert'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='point'>
+			<DammyText lang='ja' length='codes' />
+		</Callout>
+		<Callout type='warning'>
+			<DammyText lang='ja' length='codes' />
 		</Callout>
 	</PreviewArea>
-	<PreviewCode>
-		```jsx "isFlow='s'"
-		<Callout isFlow='s'>
-			<p>...</p>
-			<p>...</p>
-		</Callout>
-		```
-	</PreviewCode>
-</Preview>
-
+</Preview> */}

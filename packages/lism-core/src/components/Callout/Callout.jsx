@@ -3,7 +3,6 @@ import { Lism } from '../Lism';
 import { Center } from '../Center';
 import { Icon } from '../Icon';
 import { WithSide } from '../WithSide';
-
 import getProps from './getProps';
 
 export default function Callout({ children, ...props }) {

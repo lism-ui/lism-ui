@@ -1,8 +1,9 @@
+import atts from '../../lib/helper/atts';
 import CalloutPresets from './presets';
 
 // isPlain とかで初期スタイルなしにする？
 export default function getProps({
-	_lismClass = [],
+	lismClass,
 	variant,
 	type = 'alert',
 	icon,
@@ -12,13 +13,8 @@ export default function getProps({
 	// bodyProps = {},
 	...props
 }) {
-	_lismClass.push('c--callout');
-	if (variant) _lismClass.push(`c--callout--${variant}`);
-	// props._lismClass = _lismClass;
-
-	const theProps = { _lismClass };
-	const iconProps = { _lismClass: ['c--callout__icon'], c: 'boxcolor' };
-	const bodyProps = { _lismClass: ['c--callout__body'] };
+	const iconProps = { lismClass: 'c--callout__icon', c: 'boxcolor' };
+	const bodyProps = { lismClass: 'c--callout__body' };
 
 	// isFlowはbody側へ渡す
 	if (null != isFlow) bodyProps.isFlow = isFlow;
@@ -30,7 +26,8 @@ export default function getProps({
 		icon = icon || presets.icon || null;
 	}
 
-	theProps.boxcolor = boxcolor || 'gray';
+	props.lismClass = atts(lismClass, 'c--callout', variant && `c--callout--${variant}`);
+	props.boxcolor = boxcolor || 'gray';
 
-	return { calloutProps: { ...theProps, ...props }, icon, iconProps, bodyProps };
+	return { calloutProps: props, icon, iconProps, bodyProps };
 }
