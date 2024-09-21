@@ -1,17 +1,12 @@
+import atts from '../../lib/helper/atts';
 import { mergeFlexContextProps } from '../Flex/getProps';
 
-export default function getBadgeProps({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('b--badge');
-	if (variant) _lismClass.push(`b--badge--${variant}`);
-
+export default function getBadgeProps({ lismClass, variant, ...props }) {
 	const defaultProps = {
-		_lismClass,
+		lismClass: atts(lismClass, 'b--badge', variant && `b--badge--${variant}`),
 		tag: 'span',
 		skipState: true,
 		boxcolor: '-',
-		// bdrs: 'xs',
-		// fz: 'xs',
-		// px: '10',
 	};
 	// if (icon) {
 	// 	defaultProps.d = 'inline-flex';

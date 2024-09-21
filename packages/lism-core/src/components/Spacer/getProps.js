@@ -1,10 +1,9 @@
+import atts from '../../lib/helper/atts';
 import getBpData from '../../lib/getBpData';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
-export default function getSpacerProps({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('b--spacer');
-	if (variant) _lismClass.push(`b--spacer--${variant}`);
-	props._lismClass = _lismClass;
+export default function getSpacerProps({ lismClass, variant, ...props }) {
+	props.lismClass = atts(lismClass, 'b--spacer', variant && `b--spacer--${variant}`);
 
 	if (null != props.h) {
 		let hObj = getBpData(props.h);

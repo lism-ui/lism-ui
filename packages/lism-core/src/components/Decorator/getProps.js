@@ -1,12 +1,10 @@
+import atts from '../../lib/helper/atts';
+
 import getEffectProps from '../getEffectProps';
 import getInsetProps from '../getInsetProps';
 
-export default function ({ _lismClass = [], variant, size, ...props }) {
+export default function ({ lismClass, variant, size, ...props }) {
 	props = getEffectProps(getInsetProps(props));
-
-	_lismClass.push('a--decorator');
-	if (variant) _lismClass.push(`a--decorator--${variant}`);
-	props._lismClass = _lismClass;
 
 	if (size) {
 		props.aspect = '1/1';
@@ -17,7 +15,7 @@ export default function ({ _lismClass = [], variant, size, ...props }) {
 	// props.style = style;
 
 	const defaultProps = {
-		_lismClass,
+		lismClass: atts(lismClass, `a--decorator`, variant && `a--decorator--${variant}`),
 		skipState: true,
 		'aria-hidden': 'true',
 	};

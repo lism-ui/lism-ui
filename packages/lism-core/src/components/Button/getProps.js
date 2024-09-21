@@ -1,19 +1,16 @@
+import atts from '../../lib/helper/atts';
 import separateLinkProps from '../separateLinkProps';
 
 export function getButtonProps({
-	_lismClass = [],
+	lismClass,
 	variant = 'fill',
-	isGrid,
 	iconOffset,
 	style = {},
 	textProps = {},
 	...props
 }) {
-	_lismClass.push('b--button');
-	if (variant) _lismClass.push(` b--button--${variant}`);
-
 	const defaultProps = {
-		_lismClass,
+		lismClass: atts(lismClass, 'b--button', variant && `b--button--${variant}`),
 		skipState: true,
 		tag: 'a',
 		hov: 'fade',
@@ -21,9 +18,9 @@ export function getButtonProps({
 		// ai: 'center',
 	};
 	const defaultTextProps = {
-		skipState: true,
 		tag: 'span',
-		_lismClass: ['b--button__text'],
+		lismClass: 'b--button__text',
+		skipState: true,
 	};
 
 	const { linkProps, otherProps } = separateLinkProps(props);
@@ -46,23 +43,18 @@ export function getButtonProps({
 	};
 }
 
-export function getIconButtonProps({
-	_lismClass = [],
-	variant = 'fill',
-	size,
-	style = {},
-	...props
-}) {
-	_lismClass.push('b--button');
-	_lismClass.push('b--button--icon');
-	if (variant) _lismClass.push(`b--button--${variant}`);
-
+export function getIconButtonProps({ lismClass, variant = 'fill', size, style = {}, ...props }) {
 	if (size) {
 		style['--size'] = size;
 	}
 
 	const defaultProps = {
-		_lismClass,
+		lismClass: atts(
+			lismClass,
+			'b--button',
+			'b--button--icon',
+			variant && `b--button--${variant}`
+		),
 		skipState: true,
 		tag: 'a',
 		hov: 'fade',

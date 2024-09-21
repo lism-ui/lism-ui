@@ -3,5 +3,5 @@ import { getLayerProps } from './getProps';
 
 export default function Layer({ layout, ...props }) {
 	const Layout = layout || Lism;
-	return <Layout {...getLayerProps(props)} />;
+	return <Layout isLayer {...getLayerProps(props)} />;
 }

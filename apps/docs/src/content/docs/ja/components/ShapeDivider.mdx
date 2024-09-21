@@ -11,9 +11,17 @@ import CircleDemo from '~/demos/divider/circle.mdx';
 import WaveDemo from '~/demos/divider/wave.mdx';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 svgで境界線を描画するコンポーネントです。
+
+## HTML構造
+
+```pug
+.b--shapeDivider([data-flip])(--level,--stretch,--offset)
+	.b--shapeDivider__inner
+		svg.b--shapeDivider__svg
+```
 
 
 ## Props
@@ -41,27 +49,9 @@ svgで境界線を描画するコンポーネントです。
 
 ## Import
 
-<Preview>
-<PreviewCode slot='tab' label='React'>
-```jsx
-import { ShapeDivider } from '@lism-ui/core';
-```
-</PreviewCode>
-<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { ShapeDivider } from '@lism-ui/astro';
-```
-</PreviewCode>
-</Preview>
+<ImportCode component='ShapeDivider' />
 
 
-## HTML構造
-
-```pug
-.b--shapeDivider([data-flip])(--level,--stretch,--offset)
-	.b--shapeDivider__inner
-		svg.b--shapeDivider__svg
-```
 
 ## Shapes
 

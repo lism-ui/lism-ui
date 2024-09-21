@@ -8,10 +8,10 @@ import { getButtonProps } from '@lism-ui/core/components/Button/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
-const { leftIcon, rightIcon, ...props } = Astro.props || {};
+const { isGrid, leftIcon, rightIcon, ...props } = Astro.props || {};
 
 const { btnProps, textProps } = getButtonProps(props);
-const BtnComponent = props.isGrid ? Grid : Flex;
+const BtnComponent = isGrid ? Grid : Flex;
 ---
 
 <BtnComponent {...btnProps}>

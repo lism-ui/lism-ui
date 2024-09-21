@@ -6,6 +6,7 @@ description: ...
 import { Text, Cluster, Delimiter } from '@lism-ui/astro';
 import { Reference, MemoBadge, PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import ImportCode from "~/components/code-template/Import.astro";
 
 テキストレベルの小さな要素を区切るための要素に使用するコンポーネントです。
 
@@ -13,27 +14,25 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 また、等幅フォント（<PropBadge type="cssvar">`--ff--mono`</PropBadge>）が適用されるため、記号でデータを区切る際に便利になっています。
 
 
+
+## 構造
+```pug
+span.a--delimiter
+```
+
+
 ## Props
 
-特に専用のプロパティはありません。
+| プロパティ | 説明 |
+|---|---|
+|`variant`| `a--delimiter--{variant}` クラスを出力します。|
 
 {/* が、親に<PropBadge type="cssvar">`--delimiter--c`</PropBadge>を指定することで、デリミタのカラーを一括で変更することができます。 */}
 
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Delimiter } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Delimiter } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Delimiter' />
 
 
 ## Usage

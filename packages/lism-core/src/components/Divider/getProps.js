@@ -1,11 +1,6 @@
-export function getDividerProps({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('a--divider');
-	if (variant) _lismClass.push(`a--divider--${variant}`);
+import atts from '../../lib/helper/atts';
 
-	return {
-		_lismClass,
-		// tag: 'span',
-		...props,
-		// bd: isVertical ? 'l' : 't',
-	};
+export function getDividerProps({ lismClass, variant, ...props }) {
+	props.lismClass = atts(lismClass, `a--divider`, variant && `a--divider--${variant}`);
+	return props;
 }

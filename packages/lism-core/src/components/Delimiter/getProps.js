@@ -1,14 +1,12 @@
-export default function ({ _lismClass = [], variant, ...props }) {
-	_lismClass.push('a--delimiter');
-	if (variant) _lismClass.push(`a--delimiter--${variant}`);
+import atts from '../../lib/helper/atts';
 
+export default function ({ lismClass, variant, ...props }) {
 	const defaultProps = {
+		lismClass: atts(lismClass, `a--delimiter`, variant && `a--delimiter--${variant}`),
 		skipState: true,
 		tag: 'span',
-		_lismClass,
 	};
 
 	// aria-hidden='true'、デフォルトでつける？
-
 	return Object.assign(defaultProps, props);
 }

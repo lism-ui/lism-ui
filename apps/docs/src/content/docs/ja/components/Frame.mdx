@@ -3,10 +3,9 @@ title: 'Frame'
 description: ...
 ---
 import { Box, Flex, Media, Text, Layer, Frame, Center, Columns, DammyText } from '@lism-ui/astro';
-
 import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 
 # Frame
@@ -28,18 +27,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Frame } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Frame } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Frame' />
 
 ## Usage
 

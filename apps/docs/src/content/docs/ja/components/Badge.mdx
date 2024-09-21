@@ -11,33 +11,27 @@ import {
 } from '@phosphor-icons/react';
 import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import ImportCode from "~/components/code-template/Import.astro";
+
 
 バッジを表示するコンポーネントです。
 
+## 構造
+```pug
+span.b--badge.-boxcolor:
+```
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
+|`variant`| `b--badge--{variant}` クラスを出力します。`fill`, `outline` の2種類を標準で用意しています。|
 |`boxcolor`| バッジのカラー。[`COLOR`トークン](/ja/css/tokens/#color)の他、任意のカラーコードを指定できます。|
-|`variant`| 表示スタイル。`fill`, `outline` の2種類を標準で用意しています。|
 
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Badge } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Badge } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
-
+<ImportCode component='Badge' />
 
 ## Usage
 

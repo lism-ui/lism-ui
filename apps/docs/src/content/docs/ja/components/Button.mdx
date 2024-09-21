@@ -12,15 +12,26 @@ import {
 	ShoppingCartSimple,
 	ArrowCircleRight,
 } from "@phosphor-icons/react";
+import ImportCode from "~/components/code-template/Import.astro";
 
 ボタンを表示するコンポーネントです。
+
+
+## 構造
+```pug
+a.b--button.b--button--{fill|outline|ghost}.l--flex|grid
+	svg.b--button__leftIcon
+	span.b--button__text
+	svg.b--button__rightIcon
+```
+
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
+|`variant`| `b--button--{variant}` クラスを出力します。デフォルトで`fill`が指定されます。そのほか、`outline`、`ghost`の2種類のスタイルを用意しています。|
 |`keycolor`| ボタンのカラー。[`COLOR`トークン](/ja/css/tokens/#color)の他、任意のカラーコードを指定できます。|
-|`variant`| ボタンの表示スタイル。`outline`、`ghost`の2種類を用意しています。|
 |<PropBadge>`Button`</PropBadge><br/>`leftIcon`, `rightIcon` | ボタンテキストの左右に表示するアイコンを指定できます。|
 |<PropBadge>`Button`</PropBadge><br/>`isGrid`| テキストとアイコンの並びがgridレイアウトになり、アイコンを端に寄せることができます。|
 |<PropBadge>`IconButton`</PropBadge><br/>`icon`| `icon`に指定するとアイコンのみ表示される。|
@@ -39,19 +50,7 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Button, IconButton } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Button, IconButton } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
-
+<ImportCode component='Button' />
 
 export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "gray"];
 

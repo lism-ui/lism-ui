@@ -3,19 +3,13 @@ import getInsetProps from '../getInsetProps';
 import getFilterProps from '../getFilterProps';
 
 export function getLayerProps(props) {
-	const { _lismClass = [], ...otherProps } = props;
-
-	_lismClass.push('is--layer');
-
 	// positon から得られたデータを props とマージ
 	// const positionProps = getLayerPositions(position);
-	let layerProps = otherProps; //Object.assign({}, positionProps, otherProps);
 
-	layerProps = getInsetProps(layerProps); // l,r,t,b などのコンテキストpropsのマージ
+	let layerProps = getInsetProps(props); // l,r,t,b などのコンテキストpropsのマージ
 	layerProps = getFilterProps(layerProps, 'backdropFilter'); // filter系propsのマージ
 	// layerProps = getEffectProps(layerProps); // effect系propsのマージ
 
-	layerProps._lismClass = _lismClass;
 	return layerProps;
 }
 

@@ -1,4 +1,5 @@
 import presets from './presets';
+import atts from '../../lib/helper/atts';
 
 /**
  * html文字列をminify
@@ -55,7 +56,7 @@ Icon の出力パターン
   - as が指定された場合 → asで渡される外部コンポーネントを呼び出す
 */
 export default function getProps({
-	_lismClass = [],
+	lismClass,
 	isInline,
 	variant,
 	as,
@@ -70,9 +71,9 @@ export default function getProps({
 	...props
 }) {
 	// props.skipState = true;
-	_lismClass.push('a--icon');
-	if (isInline) _lismClass.push('a--icon--inline');
-	if (variant) _lismClass.push(`a--icon--${variant}`);
+	const iconClasses = [`a--icon`];
+	if (isInline) iconClasses.push('a--icon--inline');
+	if (variant) iconClasses.push(`a--icon--${variant}`);
 
 	let Component = tag || 'span';
 
@@ -81,9 +82,9 @@ export default function getProps({
 	if (props.viewBox) {
 		Component = 'svg';
 	} else if (emoji) {
-		_lismClass.push('a--icon--emoji');
+		iconClasses.push('a--icon--emoji');
 	} else if (mask) {
-		_lismClass.push('a--icon--mask');
+		iconClasses.push('a--icon--mask');
 
 		// maskが文字列で、かつ <svg で始まる場合
 		if (typeof mask === 'string' && mask.startsWith('<svg')) {
@@ -123,11 +124,11 @@ export default function getProps({
 	// 専用変数
 	if (scale) style['--scale'] = scale;
 
-	props._lismClass = _lismClass;
+	props.lismClass = atts(lismClass, iconClasses);
 	props.style = style;
 
 	return { Component, lismProps: props, exProps, emoji };
 }
 
 // 子要素に Icon を持つコンポーネントが icon, iconProps で Icon 用の props を生成する処理
-export function getChildIconProps({ icon, iconProps }) {}
+// export function getChildIconProps({ icon, iconProps }) {}

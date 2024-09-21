@@ -5,9 +5,9 @@ import { Icon } from '../Icon';
 import { getButtonProps } from './getProps';
 
 // variant
-export default function Button({ leftIcon, rightIcon, children, ...props }) {
+export default function Button({ isGrid, leftIcon, rightIcon, children, ...props }) {
 	const { btnProps, textProps } = getButtonProps(props);
-	const BtnComponent = props.isGrid ? Grid : Flex;
+	const BtnComponent = isGrid ? Grid : Flex;
 
 	return (
 		<BtnComponent {...btnProps}>

@@ -5,7 +5,7 @@ description: ...
 import { Container } from "@lism-ui/astro";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 [`is--container`](/ja/css/layout-state/#is--container)をデフォルトで出力するコンポーネントです。
 
@@ -31,9 +31,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ## Import
 
-```js
-import { Container } from '@lism-ui/core';
-```
+<ImportCode component='Container' />
+
 
 ## Usage
 

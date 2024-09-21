@@ -1,17 +1,15 @@
 ---
 import { LismProps } from '../types';
-import { Lism, Media } from '../Lism';
-// import { Frame } from '../Frame';
+import { Lism } from '../Lism';
 import { getLayerProps } from '@lism-ui/core/components/Layer/getProps';
-import separateMediaAttrs from '@lism-ui/core/components/separateMediaAttrs';
+
 // Propsの定義
 interface Props extends LismProps {}
 
 let { layout, ...props } = Astro.props || {};
-
 const Layout = layout || Lism;
 ---
 
-<Layout {...getLayerProps(props)}>
+<Layout isLayer {...getLayerProps(props)}>
 	<slot />
 </Layout>

@@ -6,7 +6,7 @@ import { LinkBox, Link, Stack, Callout, Text, Spacer } from '@lism-ui/astro';
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Note } from '~/components/ex/Note';
-
+import ImportCode from "~/components/code-template/Import.astro";
 
 ボックス全体がリンクになったモジュールです。
 
@@ -25,18 +25,16 @@ import { Note } from '~/components/ex/Note';
 
 ## Import
 
-```js
-import { LinkBox, Link } from '@lism-ui/core';
-```
+<ImportCode component='LinkBox, Link' />
 
 
 ## Usage
 
-LinkBoxは、次の3通りの使い方ができます。
+`LinkBox`(`.is--linkBox`）は、次の3通りの使い方ができます。
 
-1. `<LinkBox>`自体を`<a>`タグにする。
-2. `<LinkBox>`は`<div>`で、内部に`a.is--overlayLink`を配置する。
-3. `<LinkBox>`は`<div>`で、内部に`a.is--hiddenLink`を配置する。
+1. `.is--linkBox`自体を`<a>`タグにする。
+2. `.is--linkBox`は`<div>`で、内部に`a.is--overlayLink`を配置する。
+3. `.is--linkBox`は`<div>`で、内部に`a.is--hiddenLink`を配置する。
 
 <Callout type='info'>
 2, 3 では、LinkBox内部に**別のリンク**も配置できます。
