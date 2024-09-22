@@ -8,9 +8,7 @@
 	--cbox-mixper--bg: 4%;
 	--cbox-mixper--bdc: 20%;
 	--cbox-mixper--txt: 20%;
-	--cbox-mixper--link: 80%;
-	// --cbox-mixbase--bg: var(--base); //transparent;
-	// --cbox-mixbase--c: var(--content);
+	// --cbox-mixper--link: 80%;
 }
 
 /* stylelint-disable */
@@ -31,12 +29,8 @@
 		--cbox-bgc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bg));
 		--cbox-bdc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bdc));
 		// --cbox-c--link を使いたい時もあるので、--link-c への直接セットはしない。(color-mix未対応のブラウザを考慮）
-		--cbox-c--link: color-mix( in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--link));
-		--link-c: var(--cbox-c--link);
-
-		// --shadowColor:
-		// --code-c: var(--link-c);
-		// --code-bgc: color-mix(in srgb, transparent, currentColor 4%);
+		// --cbox-c--link: color-mix( in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--link));
+		--link-c: var(--boxcolor); // var(--cbox-c--link);
 	}
 }
 
