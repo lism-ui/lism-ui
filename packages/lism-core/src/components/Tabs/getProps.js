@@ -1,64 +1,45 @@
-import getMaybeCssVar from '../../lib/getMaybeCssVar';
+import atts from '../../lib/helper/atts';
+// import getMaybeCssVar from '../../lib/getMaybeCssVar';
+
 export default function getTabsProps({
-	_lismClass = [],
+	lismClass,
 	variant = 'default',
-	isVertical,
+	isHorizontal,
 	keepHeight,
 	listProps = {},
 	panelProps = {},
-	tabPadding,
+	// tabPadding,
+	isFlow,
 	style = {},
 	...props
 }) {
-	_lismClass.push('c--tabs');
-	variant && _lismClass.push(`c--tabs--${variant}`);
-
-	let dataTabs = [];
 	let _listProps = {};
 	let _panelProps = {};
 
-	if (null != tabPadding) {
-		style['--tab-p'] = getMaybeCssVar(tabPadding, 'space', 'p');
-	}
+	// if (null != tabPadding) {
+	// 	style['--tab-p'] = getMaybeCssVar(tabPadding, 'space', 'p');
+	// }
 
 	const defaultProps = {
-		_lismClass,
-		// gap: 'em8',
+		lismClass: atts(lismClass, 'c--tabs', variant && `c--tabs--${variant}`),
 		style,
 	};
 
-	if (isVertical) {
-		// props.gt = 'side:s';
-		// _panelProps.gcs = 2;
-		// _panelProps.grs = 1;
-		// _listProps.as = 'Stack';
-		// _panelProps.ai = 's';
-
-		dataTabs.push('vertical');
-	} else {
-		// panelProps = Object.assign({}, panelProps, { gcs: 1, grs: 2 });
+	if (isFlow) {
+		_panelProps.isFlow = isFlow;
 	}
 
-	if (variant === 'box') {
-		_listProps.bgc = 'base-3';
-		_listProps.p = '5';
-		_listProps.gap = 'em4';
-		_listProps.bdrs = 's';
+	if (isHorizontal) {
+		defaultProps.gd = [null, 'var(--gd--hz)'];
+		_listProps.fxd = [null, 'column'];
 	}
 
 	if (keepHeight) {
-		dataTabs.push('keep-height');
-	}
-	if (dataTabs.length) {
-		props['data-tabs'] = dataTabs.join(' ');
-	}
-
-	if (dataTabs.length) {
-		props['data-tabs'] = dataTabs.join(' ');
+		props['data-tabs-height'] = 'keep';
 	}
 
 	return {
-		tabProps: Object.assign(defaultProps, props),
+		tabsProps: Object.assign(defaultProps, props),
 		listProps: Object.assign(_listProps, listProps),
 		panelProps: Object.assign(_panelProps, panelProps),
 	};
@@ -93,8 +74,8 @@ export function getTabProps({ _lismClass = [], ...props }, isActive) {
 		skipState: true,
 		_lismClass,
 		tag: 'button',
-		fz: 's',
-		lh: 'xs',
+		// fz: 's',
+		// lh: 'xs',
 		lismState: ['is--reset'],
 		role: 'tab',
 		'aria-selected': isActive ? 'true' : 'false',

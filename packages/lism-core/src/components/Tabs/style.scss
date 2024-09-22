@@ -1,40 +1,39 @@
 @use '../../scss/query' as query;
 
 :where(.c--tabs) {
-	// position: relative;
-	--active-c: var(--content);
-	--active-bgc: transparent;
-	--tab-radii: 0;
-	--tab-p: var(--p--box--s); //var(--em--4) var(--em--6);
-	gap: var(--em--6);
+	--tab-c: var(--content);
+	--tab-c--active: var(--base);
+	--tab-bgc: var(--base-2);
+	--tab-bgc--active: var(--content);
+	gap: 1em;
 }
 .c--tabs {
 	grid: 'list' 'panel' / 100%;
+	--gd--hz: 'list panel' auto / auto 1fr; //--gd--vt?
 }
 
-.c--tabs--default {
-	--active-bgc: var(--base-2);
-}
+// .c--tabs--default {
+// 	--tab-c--active: var(--base);
+// 	--tab-bgc--bgc: var(--content);
+// }
 
 .c--tabs__list {
-	position: relative;
+	// position: relative;
 	grid-area: list;
 }
 
 .c--tabs__tab {
-	display: flex;
-	padding: var(--tab-p);
-	border-radius: var(--tab-radii);
-	align-items: center;
-	gap: var(--em--2);
-
-	:where(&) > .a--icon {
-		font-size: 1.25em;
-	}
+	// display: flex;
+	padding: 0.5em 0.75em;
+	line-height: 1.5;
+	// align-items: center;
+	// gap: 0.25em;
+	color: var(--tab-c);
+	background-color: var(--tab-bgc);
 
 	&:where([aria-selected='true']) {
-		color: var(--active-c);
-		background-color: var(--active-bgc);
+		color: var(--tab-c--active);
+		background-color: var(--tab-bgc--active);
 	}
 	// &[aria-selected='false'] {}
 }
@@ -48,7 +47,8 @@
 	}
 }
 
-[data-tabs~='keep-height'] {
+// [data-tabs-height="keep"]
+[data-tabs-height='keep'] {
 	> :where([aria-hidden='true']) {
 		display: block;
 		visibility: hidden;
@@ -58,16 +58,17 @@
 	}
 }
 
-@include query.bp-up('sm') {
-	.c--tabs:where([data-tabs~='vertical']) {
-		grid: 'list panel' auto / auto 1fr;
+// [data-tabs-align="vertical"]
+// @include query.bp-up('sm') {
+// 	.c--tabs:where([data-tabs~='vertical']) {
+// 		grid: var(--gd--hz);
 
-		// 縦並びの時・ memo: rtl対応必要
-		// :where(.c--tabs--line)[data-tabs~='vertical'] {
-		// }
-		> .c--tabs__list {
-			--shadowOfset: 2px 0; // .c--tabs--line用
-			flex-direction: column;
-		}
-	}
-}
+// 		// 縦並びの時・ memo: rtl対応必要
+// 		// :where(.c--tabs--line)[data-tabs~='vertical'] {
+// 		// }
+// 		> .c--tabs__list {
+// 			// --shadowOfset: inset -2px 0; // .c--tabs--line用
+// 			flex-direction: column;
+// 		}
+// 	}
+// }

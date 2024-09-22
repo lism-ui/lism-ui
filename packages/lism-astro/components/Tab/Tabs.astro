@@ -13,14 +13,14 @@ import getTabsProps from '@lism-ui/core/components/Tabs/getProps';
 
 // Propsの定義
 interface Props extends LismProps {
-	uuid?: string | number;
+	uid?: string | number;
 	defaultIndex?: string | number;
 }
 // propsの取得
-const { defaultIndex = 0, uuid, ...props } = Astro.props || {};
+const { defaultIndex = 0, uid, tabProps = {}, ...props } = Astro.props || {};
 
 // 生成したhtmlを格納する配列
-const tabID = uuid ? uuid : uuidv4();
+const tabID = uid ? uid : uuidv4();
 
 // 子要素の方から順番に処理されていくので、文字列処理でデータを抽出する。(より厳密に処理するなら、rehype などでHTMLをパースして処理を行った方がいいかも)
 const { btns, panels } = transformTabitems(
@@ -29,19 +29,19 @@ const { btns, panels } = transformTabitems(
 	defaultIndex
 );
 
-const { tabProps, listProps, panelProps } = getTabsProps(props);
+const { tabsProps, listProps, panelProps } = getTabsProps(props);
 
 const hasItems = btns.length > 0;
 ---
 
-<Grid {...tabProps}>
+<Grid {...tabsProps}>
 	{
 		hasItems ? (
 			<>
 				<TabList {...listProps}>
 					{btns.map((btn, index) => {
 						return (
-							<Tab tabID={tabID} index={index} isActive={btn.isActive}>
+							<Tab tabID={tabID} index={index} isActive={btn.isActive} {...tabProps}>
 								<Fragment set:html={btn.content} />
 							</Tab>
 						);

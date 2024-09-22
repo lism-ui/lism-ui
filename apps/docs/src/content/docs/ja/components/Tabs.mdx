@@ -5,20 +5,35 @@ description: ...
 
 import { Reference, PropBadge, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { DammyText, Tabs, TabItem, Tab, TabList, TabPanel, Icon } from '@lism-ui/astro';
+import { DammyText, Tabs, TabItem, Tab, TabList, TabPanel, Icon, Callout } from '@lism-ui/astro';
+import ImportCode from "~/components/code-template/Import.astro";
+
 
 タブ要素を作成できるコンポーネントです。  
-最低限の実装にしているので、デザインは適宜カスタマイズしてください。
+スタイリングは最低限にしているので、適宜カスタマイズしてご利用ください。
 
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
-|<PropBadge>`<Tabs>`</PropBadge><br/>`variant`|`c--tabs--{variant}`クラスが出力されます。デフォルトは`"default"です。`|
-|<PropBadge>`<Tabs>`</PropBadge><br/>`keepHeight`|`data-tabs="keep-height"`属性が出力され、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。`|
-|<PropBadge>`<Tabs>`</PropBadge><br/>`isVertical`|`data-tabs="vertical"`属性が出力され、タブ部分が縦並びになります。`|
+|<PropBadge>`<Tabs>`</PropBadge><br/>`variant`|`c--tabs--{variant}`クラスが出力されます。デフォルトは`"default"`です。|
+|<PropBadge>`<Tabs>`</PropBadge><br/>`keepHeight`|`[data-tabs-height="keep"]`が出力され、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。`|
 |<PropBadge>`<TabItem>`</PropBadge><br/>`label` | タブテキストを指定します。 |
+
+
+**ボタンカラーについて**
+
+平常時のカラーと、アクティブ時のカラーをそれぞれ専用の変数で管理しています。
+
+```css
+:where(.c--tabs) {
+	--tab-c: var(--content);
+	--tab-c--active: var(--base);
+	--tab-bgc: var(--base-2);
+	--tab-bgc--active: var(--content);
+}
+```
 
 
 
@@ -31,31 +46,22 @@ import { DammyText, Tabs, TabItem, Tab, TabList, TabPanel, Icon } from '@lism-ui
 
 ## Import
 
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-```jsx
-import { Tab, TabItem } from '@lism-ui/core';
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='Astro'>
-```jsx
-import { Tab, TabItem } from '@lism-ui/astro';
-```
-	</PreviewCode>
-</Preview>
+<ImportCode component='Tabs, TabItem' />
 
 
 ## Usage
+
+
 
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -63,10 +69,10 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewCode>
 		```jsx
 		<Tabs>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -75,19 +81,17 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview>
 
 
-### タブテキストにJSX式を渡す
-
 各タブテキストは`<TabItem>`の`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>タブテキストにJSX式を渡す</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabItem>
-				<Fragment slot='label'><Icon icon='good'/>Tab<small>small text</small></Fragment>
+				<Fragment slot='label'><Icon isInline icon='good'/> Tab <small>small text</small></Fragment>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -95,10 +99,10 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewCode slot='tab' label='React'>
 		```jsx {2}
 		<Tabs>
-			<TabItem label={<><Icon icon='good'/>Tab<small>small text</small></>}>
+			<TabItem label={<><Icon isInline icon='good'/> Tab <small>small text</small></>}>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -108,9 +112,9 @@ import { Tab, TabItem } from '@lism-ui/astro';
 		```jsx {3}
 		<Tabs>
 			<TabItem>
-				<Fragment slot='label'><Icon icon='good'/>Tab<small>small text</small></Fragment>
+				<Fragment slot='label'><Icon isInline icon='good'/>Tab<small>small text</small></Fragment>
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -119,18 +123,16 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview>
 
 
-### タブリストの中央寄せ
-
-`<Tabs>`に `ji='center'` を指定すると、タブリストを中央寄せにすることができます。
+`<Tabs>`に `ji='center'` を指定すると、タブボタンを中央寄せにすることができます。
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>タブリストの中央寄せ</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs ji='center'>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -138,10 +140,10 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	<PreviewCode>
 		```jsx "ji='center'"
 		<Tabs ji='center'>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -154,7 +156,7 @@ import { Tab, TabItem } from '@lism-ui/astro';
 ### 高さが変わらないようにする
 
 タブを切り替えた時、デフォルトでは、表示されるコンテンツ量が変わることでタブ全体の高さも変わります。  
-`<Tabs>`に `keepHeight`(`data-tabs="keep-height"`) を指定すると、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。
+`<Tabs>`に `keepHeight`(`[data-tabs-height="keep"]`) を指定すると、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
@@ -218,99 +220,45 @@ import { Tab, TabItem } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
-### タブの縦並びレイアウト
-
-<Preview>
-	<PreviewArea p={30} resize>
-		<Tabs isVertical keepHeight panelProps={{isFlow: 's'}}>
-			<TabItem label='title1'>
-				<p>index:0</p>
-				<DammyText />
-			</TabItem>
-			<TabItem label='title2'>
-				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "isVertical"
-		<Tabs isVertical keepHeight panelProps={{isFlow: 's'}}>
-			<TabItem label='title1'>
-				<p>index:0</p>
-				<DammyText />
-			</TabItem>
-			<TabItem label='title2'>
-				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewArea p={30} resize>
-		<Tabs variant='box' isVertical keepHeight ai='s' ji='c' panelProps={{isFlow: 's'}}>
-			<TabItem label='title1'>
-				<p>index:0</p>
-				<DammyText />
-			</TabItem>
-			<TabItem label='title2'>
-				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "isVertical"
-		<Tabs variant='box' isVertical keepHeight ai='s' ji='c' panelProps={{isFlow: 's'}}>
-			<TabItem label='title1'>
-				<p>index:0</p>
-				<DammyText />
-			</TabItem>
-			<TabItem label='title2'>
-				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
-			</TabItem>
-		</Tabs>
-		```
-	</PreviewCode>
-</Preview>
 
 
-### Tabパネル（コンテンツ部分）に対するpropsの指定
+### Tabs 子要素に対するpropsの指定
 
-`<Tabs>`に `listProps`, `panelProps` を指定でき、それぞれリスト部分とパネル部分に対するpropsを指定できます。
-{/* btnProps? */}
+`<Tabs>`に `tabProps`,`listProps`, `panelProps` を指定でき、それぞれタブボタン部分、リスト部分、パネル部分に対するpropsを指定できます。
 
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs variant='line' bgc='base-2' bxsh='1' gap='0' tabPadding='box' listProps={{c:'content-3'}} panelProps={{p:'40', isFlow:'s'}}>
-			<TabItem label='tab1'>
+	<PreviewArea p='40'>
+		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
+			style={{'--tab-bgc':'transparent'}}
+			tabProps={{px:'30', py:'20', mb:'-1px'}}
+			listProps={{fz:'s',bd:'b'}}
+			panelProps={{p:'40'}}
+		>
+			<TabItem label='Tab 1'>
 				<DammyText />
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "listProps" "panelProps"
-		<Tabs bgc='base-2' bxsh='1' gap='0' tabPadding='box' listProps={{c:'content-3'}} panelProps={{p:'40', isFlow:'s'}}>
-			<TabItem label='tab1'>
+		```jsx "tabProps" "listProps" "panelProps"
+		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
+			style={{'--tab-bgc':'transparent'}}
+			tabProps={{px:'30', py:'20', mb:'-1px'}}
+			listProps={{fz:'s',bd:'b'}}
+			panelProps={{p:'40'}}
+		>
+			<TabItem label='Tab 1'>
 				<DammyText />
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
@@ -320,65 +268,138 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview>
 
 
-{/* reactコンポーネントでは、`<TabItem>`に対して対応するpanelのpropsを個別に指定できます。
+### タブコンテンツを横並び配置にする
+
+`<Tabs>`(`.c--tabs`)に`grid:var(--gd--hz);` を指定すると、タブリストとコンテンツが横並びになります。
+
+それと同時に、タブリスト(`.c--tabs__list`)のボタンを縦並び（`flex-direction:column;`）に変更すると、以下のようなレイアウトが実現できます。
 
 <Preview>
-	<PreviewCode>
-		```jsx "p='20' isFlow" "p='20' c='content-2'"
-		<Tabs>
-			<TabItem label='tab1' p='20' isFlow>
-				...
+	<PreviewTitle>`@sm`サイズより大きい場合、コンテンツを横並びにする例</PreviewTitle>
+	<PreviewArea p={30} resize>
+		<Tabs keepHeight isFlow='s' ji='c' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
+			<TabItem label='Tab 1'>
+				<p>index:0</p>
+				<DammyText />
 			</TabItem>
-			<TabItem label='tab2' p='20' c='content-2'>
-				...
+			<TabItem label='Tab 2'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "isHorizontal"
+		<Tabs keepHeight isFlow='s' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
+			<TabItem label='Tab 1'>
+				<p>index:0</p>
+				<DammyText />
+			</TabItem>
+			<TabItem label='Tab 2'>
+				<p>index:1</p>
+				<DammyText />
+				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 		```
 	</PreviewCode>
-</Preview> */}
+</Preview>
 
-
+<Callout type='info'>
+`<Tabs>`に`isHorizontal`を指定すると、上記の`gd`,`listProps`が自動的に適用されるようにもなっています。
+</Callout>
 
 ### variant 作成例
 
 <Preview>
 	<PreviewTitle>`variant='line'`</PreviewTitle>
-	<PreviewArea p={30}>
+	<PreviewArea p={30} resize>
 		<Tabs variant='line'>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='使用コード'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "variant='line'"
 		<Tabs variant='line'>
-			<TabItem label='tab1'>
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='SCSS'>
+	<PreviewCode slot='tab' label='CSS'>
 ```scss
 :where(.c--tabs--line) {
+	--tab-c: var(--content);
+	--tab-c--active: var(--content);
+	--tab-bgc: transparent;
+	--tab-bgc--active: transparent;
+	--sh-size: inset 0 -2px;
+
+	.c--tabs__list {
+		box-shadow: var(--sh-size) 0 var(--divider-bdc);
+	}
+	.c--tabs__tab[aria-selected='true'] {
+		box-shadow: var(--sh-size) 0 0 currentColor;
+	}
+}
+```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>`variant='emboss'`</PreviewTitle>
+	<PreviewArea p={30} resize>
+		<Tabs variant='emboss' ji='c'>
+			<TabItem label='Tab 1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='Tab 2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "variant='emboss'"
+		<Tabs variant='emboss' ji='c'>
+			<TabItem label='Tab 1'>
+				<DammyText />
+			</TabItem>
+			<TabItem label='Tab 2'>
+				<DammyText length='l' />
+			</TabItem>
+		</Tabs>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='CSS'>
+```scss
+:where(.c--tabs--emboss) {
+	--tab-c: var(--content);
+	--tab-c--active: var(--content);
+	--tab-bgc: transparent;
+	--tab-bgc--active: var(--base);
 
 	> .c--tabs__list {
-		--shadowOfset: 0 2px; // inset 0 -2px
-		--tab--shadowColor: transparent;
-		box-shadow: var(--shadowOfset) 0 0 var(--base-3);
+		background-color: var(--base-3);
+		padding: 4px;
+		gap: 0.5em;
+		border-radius: var(--radius--s);
 	}
 	.c--tabs__tab {
-		box-shadow: var(--shadowOfset) 0 0 var(--tab--shadowColor);
+		border-radius: calc(var(--radius--s) - 2px);
 	}
-	[aria-selected='true'] {
-		--tab--shadowColor: currentColor;
+	.c--tabs__tab:where([aria-selected='true']) {
+		box-shadow: var(--sh--1);
 	}
 }
 ```
@@ -386,44 +407,34 @@ import { Tab, TabItem } from '@lism-ui/astro';
 </Preview>
 
 <Preview>
-	<PreviewTitle>`variant='box'`</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs variant='box' ji='center'>
-			<TabItem label='tab1'>
+	<PreviewTitle>`variant='emboss'`でisHorizontalがオン</PreviewTitle>
+	<PreviewArea p={30} resize>
+		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' listProps={{fz:'s'}} isFlow='s'>
+			<TabItem label='Tab 1'>
+				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
+				<p>index:1</p>
+				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='使用コード'>
-		```jsx "variant='box'"
-		<Tabs variant='box' ji='center'>
-			<TabItem label='tab1'>
+	<PreviewCode>
+		```jsx
+		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' listProps={{fz:'s'}} isFlow='s'>
+			<TabItem label='Tab 1'>
+				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label='tab2'>
+			<TabItem label='Tab 2'>
+				<p>index:1</p>
+				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
 		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='SCSS'>
-```scss
-.c--tabs--box {
-	--bdrs: var(--radius--s);
-	--active-bgc: var(--base);
-}
-:where(.c--tabs--box) {
-	> .c--tabs__list {
-		--tab-radii: calc(var(--bdrs, 0) - 0.125em);
-	}
-	[aria-selected='true'] {
-		box-shadow: var(--sh--1);
-	}
-}
-```
 	</PreviewCode>
 </Preview>
 
@@ -433,78 +444,61 @@ import { Tab, TabItem } from '@lism-ui/astro';
 
 より細かいprops指定が必要な場合、`<TabItem>`を使わずに、`<TabList>`,`<Tab>`,`<TabPanel>`を使って書くこともできます。
 
-ただし、ReactとAstroでは少し書き方が異なるので注意してください。
-
-{/* <Preview>
-	<PreviewArea p={30}>
-		<Tabs>
-			<TabList>
-				<Tab tabID='hoge' isActive index={0}>tab1</Tab>
-				<Tab tabID='hoge' index={1}>tab2</Tab>
-			</TabList>
-			<TabPanel tabID='hoge' isActive index={0}>
-				<DammyText />
-			</TabPanel>
-			<TabPanel tabID='hoge' index={1}>
-				<DammyText length='l' />
-			</TabPanel>
-		</Tabs>
-	</PreviewArea>
-</Preview> */}
-
+ただし、**ReactとAstroでは少し書き方が異なる**ので注意してください
 
 <Preview>
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabList>
-				<Tab tabID='the-tabid' isActive index={0}><Icon icon='good'/>tab1</Tab>
-				<Tab tabID='the-tabid' index={1}><Icon icon='bad'/>tab2</Tab>
+				<Tab tabID='tab-uid' isActive index={0}><Icon isInline icon='good'/> Tab 1</Tab>
+				<Tab tabID='tab-uid' index={1}><Icon isInline icon='bad'/> Tab 2</Tab>
 			</TabList>
-			<TabPanel tabID='the-tabid' isActive index={0}>
+			<TabPanel tabID='tab-uid' isActive index={0}>
 				<DammyText length='s' />
 				<DammyText />
 			</TabPanel>
-			<TabPanel tabID='the-tabid' index={1}>
+			<TabPanel tabID='tab-uid' index={1}>
 				<DammyText length='l' />
 			</TabPanel>
 		</Tabs>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
-		```jsx "defaultIndex" "index"
-		<Tabs>
+		```jsx "tab-uid" "defaultIndex" "index"
+		<Tabs uid='tab-uid' defaultIndex={0}>
 			<TabList>
-				<Tab tabID='the-tabid' isActive index={0}>
-					<Icon icon='good'/>tab1
+				<Tab index={0}>
+					<Icon isInline icon='good' /> Tab 1
 				</Tab>
-				<Tab tabID='the-tabid' index={1}>
-					<Icon icon='bad'/>tab2
+				<Tab index={1}>
+					<Icon isInline icon='bad' /> Tab 2
 				</Tab>
 			</TabList>
-			<TabPanel tabID='the-tabid' isActive index={0}>
+			<TabPanel index={0}>
 				<DammyText length='s' />
 				<DammyText />
 			</TabPanel>
-			<TabPanel tabID='the-tabid' index={1}>
+			<TabPanel index={1}>
 				<DammyText length='l' />
 			</TabPanel>
 		</Tabs>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
-		```jsx "isActive" "index" "tabID"
+		```jsx "isActive" "index" "tab-uid"
 		<Tabs>
 			<TabList>
-				<Tab tabID='the-tabid' isActive index={0}>
-					<Icon icon='good'/>tab1
+				<Tab tabID='tab-uid' isActive index={0}>
+					<Icon isInline icon='good' /> Tab 1
 				</Tab>
-				<Tab tabID='the-tabid' index={1}>
-					<Icon icon='bad'/>tab2
+				<Tab tabID='tab-uid' index={1}>
+					<Icon isInline icon='bad' /> Tab 2
 				</Tab>
 			</TabList>
-			<TabPanel tabID='the-tabid' isActive index={0}>
+			<TabPanel tabID='tab-uid' isActive index={0}>
+				<DammyText length='s' />
 				<DammyText />
 			</TabPanel>
-			<TabPanel tabID='the-tabid' index={1}>
+			<TabPanel tabID='tab-uid' index={1}>
 				<DammyText length='l' />
 			</TabPanel>
 		</Tabs>
