@@ -14,7 +14,7 @@ const selfPlaces = {
 };
 export default {
 	// color: {},
-	// c: {},
+	c: { inherit: 'i' },
 	bgc: { none: 't', transparent: 't', currentColor: 'cc', inherit: 'i' },
 	bdc: { none: 't', transparent: 't', inherit: 'i' },
 	bg: { none: 'n' },

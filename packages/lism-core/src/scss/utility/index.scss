@@ -25,6 +25,13 @@
 @forward './filter';
 @forward './others';
 
+.-c\:i {
+	color: inherit !important;
+}
+.-bgc\:i {
+	background-color: inherit !important;
+}
+
 // とりあえずいらないか...?
 //@forward './lism';
 

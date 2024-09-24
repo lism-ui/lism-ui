@@ -98,7 +98,7 @@ export default {
 	minH: { style: 'minHeight', utils: 'minSize', converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
-	c: { presets: 1, converter: 'color' },
+	c: { presets: 1, utils: 1, converter: 'color' },
 	bgc: { presets: 1, utils: 1, converter: 'color' },
 	keycolor: { style: '--keycolor', converter: 'color' },
 	boxcolor: { presets: 'palette', converter: 'color' },
@@ -142,10 +142,8 @@ export default {
 
 	bdrs: { presets: 'radius', converter: 'radius' },
 	// radii: { map: 1 },
-	// radius: { name: 'bdrs', presets: 'radius', converter: 'radius' },
 
 	bxsh: { presets: 'shadow', converter: 'shadow' },
-	// shadow: { name: 'bxsh', presets: 'shadow', converter: 'shadow' },
 	// shColor: { converter: 'color', style: '--sh-color' },
 
 	//display
@@ -340,6 +338,7 @@ export const CONTEXT_PROPS = {
 
 	css: {
 		lis: { style: 'listStyle', utils: { none: 'n' } },
+		boxSizing: { style: 1, utils: { 'content-box': 'cb' }, utilKey: 'bxz' },
 		transform: { style: 1, utils: 1, utilKey: 'trf' },
 		transformOrigin: { style: 1, utilKey: 'trfo', utils: 'origin' },
 		translate: { style: 1, utils: 1, utilKey: 'trnslt' },

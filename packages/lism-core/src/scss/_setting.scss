@@ -169,7 +169,6 @@ $utilities: (
 			'base': 'var(--base)',
 			'boxcolor': 'var(--boxcolor,currentColor)',
 			// 'cbox': 'var(--cbox-c, var(--content))',
-			'i': 'inherit',
 		),
 	'bgc': (
 		'main': 'var(--main)',
@@ -179,7 +178,6 @@ $utilities: (
 		'base-3': 'var(--base-3)',
 		'content': 'var(--content)',
 		't': 'transparent',
-		'i': 'inherit',
 		'cc': 'currentColor',
 		'boxcolor': 'var(--boxcolor,currentColor)',
 		// // 'cbox': 'var(--cbox-bgc, var(--base-2))',

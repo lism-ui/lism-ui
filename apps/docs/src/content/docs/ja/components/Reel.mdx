@@ -10,6 +10,12 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 コンテンツを横スクロールで表示するコンポーネントです。
 
+## 構造
+
+```pug
+.c--reel.l--flex[tabindex="0"](--item-size)(--snap-align)
+```
+
 
 ## Import
 
@@ -20,9 +26,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 | プロパティ | 出力 | 説明 |
 |---|---|---|
+|`variant`| <PropBadge type="attr">`.c--reel--{variant}`</PropBadge> | バリエーションクラスを出力します。|
 | `itemSize` | <PropBadge type="cssvar">`--item-size`</PropBadge> | 各アイテムのサイズを指定できます。 |
 | `snapAlign` | <PropBadge type="cssvar">`--snap-align`</PropBadge> | 子要素に適用する scroll-snap-align の値 |
-| `unreel` | | 横スクロールを解除するブレイクポイントを指定できます。 |
+| `unreel` | <PropBadge type="attr">`.-d@{bp}.-gtc@{bp}`</PropBadge> | 横スクロールを解除するブレイクポイントを指定できます。 |
 
 
 {/* ### 検討事項MEMO
