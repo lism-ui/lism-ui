@@ -1,6 +1,6 @@
 ---
 import { LismProps } from '../types';
-import { Lism } from '../Lism';
+import { FlexItem } from '../Flex';
 import { getTabProps } from '@lism-ui/core/components/Tabs/getProps';
 
 export interface Props extends LismProps {
@@ -13,6 +13,6 @@ const { tabID = '', index = 0, isActive, ...props } = Astro.props;
 const controlId = `${tabID}-${index}`;
 ---
 
-<Lism aria-controls={controlId} {...getTabProps(props, isActive)}>
+<FlexItem aria-controls={controlId} {...getTabProps(props, isActive)}>
 	<slot />
-</Lism>
+</FlexItem>

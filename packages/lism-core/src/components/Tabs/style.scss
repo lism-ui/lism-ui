@@ -20,16 +20,24 @@
 .c--tabs__list {
 	// position: relative;
 	grid-area: list;
+
+	// 以下のどっちか
+	overflow-x: auto;
+	// flex-wrap: wrap;
 }
 
 .c--tabs__tab {
 	// display: flex;
-	padding: 0.5em 0.75em;
+	padding: 0.625em 0.875em;
 	line-height: 1.5;
 	// align-items: center;
 	// gap: 0.25em;
 	color: var(--tab-c);
 	background-color: var(--tab-bgc);
+
+	// 以下をオンオフできると便利か
+	// flex: 1;
+	// white-space: nowrap;
 
 	&:where([aria-selected='true']) {
 		color: var(--tab-c--active);
