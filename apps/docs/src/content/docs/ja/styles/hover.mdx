@@ -28,17 +28,17 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 }
 
 
-hover時の挙動を`hov`に指定できます。
-
-
 ## Points
 
+hover時の挙動を`hov`に指定できます。
+
 - 文字列を指定すると、ユーティリティクラス `.-hov:xxx` を出力します。。
-	- `-hov:fade`, `-hov:bxsh` などいくつかユーティリティクラスを標準で用意しています。
+	- `-hov:fade`, `-hov:shadow` などいくつかユーティリティクラスを標準で用意しています。
 	- `,`で区切りで複数のユーティリティクラスを指定することができます。
 	- `-hov:pass`と`-hov:get:xxx`を組み合わせることで、子要素にもホバー効果をつけることができるようになっています。
 - オブジェクトでの指定
-	- `hov={{c, bgc, bdc, bxsh }}` でhover時のプロパティの変化を詳細に指定できます。
+	- `hov={{c, bgc, bdc, bxsh, filter }}` でhover時のプロパティの変化を詳細に指定できます。
+	- この時、`-hov:c:`と`--hov-c`, `-hov:bgc:`と`--hov-bgc`のように、クラスと変数のセットで出力されます。
 - 配列での指定
 	- `hov={['foo', 'bar', {...}]}`で複数のユーティリティクラスや、ユーティリティクラスとオブジェクト形式での指定を併用することができます。
 
@@ -46,7 +46,7 @@ hover時の挙動を`hov`に指定できます。
 
 {/* ## ユーティリティプリセット
 
-`'fade'`, `'dark'`, `'bxsh'`, `'up'`, `'scale'` */}
+`'fade'`, `'dark'`, `'shadow'`, `'up'`, `'scale'` */}
 
 
 ## Usage
@@ -78,20 +78,20 @@ hover時の挙動を`hov`に指定できます。
 </Preview>
 
 <Preview>
-	<PreviewTitle>`hov='bxsh'`</PreviewTitle>
+	<PreviewTitle>`hov='shadow'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<PreviewBoxs hov='bxsh'/>
+		<PreviewBoxs hov='shadow'/>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
 	```jsx "hov="
-	<LinkBox hov='bxsh' href='###' p='box'>
+	<LinkBox hov='shadow' href='###' p='box'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:bxsh -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:shadow -p:box -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -121,23 +121,23 @@ hover時の挙動を`hov`に指定できます。
 </Preview>
 
 
-#### カンマ区切りで複数指定
+### カンマ区切りで複数指定
 
 <Preview>
-	<PreviewTitle>`hov='up,bxsh'`</PreviewTitle>
+	<PreviewTitle>`hov='up,shadow'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<PreviewBoxs hov='up,bxsh'/>
+		<PreviewBoxs hov='up,shadow'/>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Component'>
-	```jsx "hov="
-	<LinkBox hov='up,bxsh' href='###' p='box'>
+	```jsx "hov='up,shadow'"
+	<LinkBox hov='up,shadow' href='###' p='box'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-	```html "-hov:"
-	<a class="is--linkBox -hov:up -hov:bxsh -p:box -bgc:base-2 -bd:" href="###">
+	```html "-hov:up" "-hov:shadow"
+	<a class="is--linkBox -hov:up -hov:shadow -p:box -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -183,10 +183,10 @@ hover時の挙動を`hov`に指定できます。
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-	```html "-hov:bgc" "-hov:c" "--hov--bgc" "--hov--c"
+	```html "-hov:bgc" "-hov:c" "--hov-bgc" "--hov-c"
 	<a
 		class="is--linkBox -hov:bgc -hov:c -bgc:base-2 -p:box"
-		style="--hov--bgc:var(--main);--hov--c:var(--white)"
+		style="--hov-bgc:var(--main);--hov-c:var(--white)"
 		href="###"
 	>...</a>
 	```
@@ -225,16 +225,16 @@ hover時の挙動を`hov`に指定できます。
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-	```html "-hov:bxsh" "--hov--bxsh"
+	```html "-hov:bxsh:" "--hov-bxsh"
 	<a
 		href="###"
-		class="is--linkBox -hov:bxsh -bxsh:2 -bgc:base-2 -p:box"
-		style="--hov--bxsh:var(--sh--5)"
+		class="is--linkBox -hov:bxsh: -bxsh:2 -bgc:base-2 -p:box"
+		style="--hov-bxsh:var(--sh--5)"
 	>...</a>
 	<a
 		href="###"
-		class="is--linkBox -hov:bxsh -bxsh:3 -bgc:base-2 -p:box"
-		style="--hov--bxsh:none"
+		class="is--linkBox -hov:bxsh: -bxsh:3 -bgc:base-2 -p:box"
+		style="--hov-bxsh:none"
 	>...</a>
 	```
 	</PreviewCode>

@@ -8,31 +8,33 @@
 .c--navMenu:where(:not([data-nest-level])) {
 	padding-inline-start: 0; // 自身のpadding
 
-	--pass--p: var(--p--box--s); // var(--em--4) var(--em--6);
-	--pass--gap: var(--em--4);
-	--hov--c: currentColor;
-	--hov--bgc: var(--base-2);
+	// --link-p: var(--p--box--s);
+	--pass-p: var(--p--box--s);
+	// --hov-c: currentColor;
+	--hov-bgc: var(--base-2);
 
 	// 子リストのpadding
 	--list-pis: 1.25em; //var(--s--30);
 }
 
 // <li>
-.c--navMenu__item {
-	.c--accordion__header {
-		padding-inline-end: var(--em--4);
-	}
-}
+// .c--navMenu__item {
+// 	.c--accordion__header {
+// 		padding-inline-end: var(--em--4);
+// 	}
+// }
 
 .c--navMenu__link {
 	--link-td: none; // text-decoration: none;
-	color: inherit;
+	// color: inherit;
+	// gap: 0.5em;
+	padding: var(--pass-p);
 	outline-offset: -1px;
 }
-:where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {
-	color: var(--hov--c);
-	background-color: var(--hov--bgc);
-}
+// :where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {
+// 	color: var(--hov-c);
+// 	background-color: var(--hov-bgc);
+// }
 
 // 横並び
 .c--navMenu:where(.l--flex) {

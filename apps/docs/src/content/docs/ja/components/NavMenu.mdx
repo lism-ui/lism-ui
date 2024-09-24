@@ -17,11 +17,12 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 | プロパティ | 説明 |
 |---|---|
 | <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`nestLevel` | メニューのネストレベルを指定します。 |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovBgc` | メニューホバー時の背景色 |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovC` | メニューホバー時の文字色 |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passProps.p` | 各メニューのpaddingを一括調整できます |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passProps.gap` | 各メニューのgapを一括調整できます |
-| <PropBadge ml='-1px'>`<NavMenuItem>`</PropBadge><br/>`href` | NavMenuにhrefを指定すると、NavMenuLinkを省略できます。 |
+| <PropBadge ml='-1px'>`<NavMenuLink>`</PropBadge><br/>`hov` | hover時のスタイルを指定できます。デフォルトは`fade`が指定されています。 |
+| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovBgc` | `--hov-bgc`を出力します。（`.c--navMenu__link`に`.-hov:bgc:`を付けた時用）|
+| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovC` | `--hov-c`を出力します。 （`.c--navMenu__link`に`.-hov:c:`を付けた時用）|
+{/* | <PropBadge ml='-1px'>`<NavMenuItem>`</PropBadge><br/>`href` | NavMenuにhrefを指定すると、NavMenuLinkを省略できます。 | */}
+{/* | <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passProps.p` | 各メニューのpaddingを一括調整できます |
+| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passProps.gap` | 各メニューのgapを一括調整できます | */}
 
 
 
@@ -34,61 +35,42 @@ import { NavMenu } from '@lism-ui/core';
 
 ## Usage
 
-export const Items = ({ length = 3, ...props }) => {
-	// const array = Array.from({length:3});
-	return (
-		<>
-			{[...Array(length)].map((_,i) => {
-				return <NavMenuItem key={i} href={`#menu${i+1}`} {...props}>
-					Menu item {i+1}
-				</NavMenuItem>;
-			})}
-		</>
-	);
-
-	// return array.map((v,i) => {
-	// 	return <p key={i}>aaa</p>;
-	// 	// <NavMenuItem key={i}>
-	// 	// 	<NavMenuLink href={`#menu${i+1}`} {...props}>Menu item</NavMenuLink>
-	// 	// </NavMenuItem> 
-	// });
-};
-
-export const DemoBadge = ({ num = "10", ml = "auto" }) => {
-	return (
-		<Badge fz="12px" ml={ml} fw="400" color="gray">
-			{num}
-		</Badge>
-	);
-};
-
 <Preview>
-	<PreviewTitle>基本構造</PreviewTitle>
+	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<NavMenu>
-			<Items />
-		</NavMenu>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<NavMenu>
+		<NavMenu hasDivider bd='y'>
 			<NavMenuItem>
 				<NavMenuLink href='#menu'>Menu item 1</NavMenuLink>
 			</NavMenuItem>
 			<NavMenuItem>
 				<NavMenuLink href='#menu'>Menu item 2</NavMenuLink>
 			</NavMenuItem>
-			...
+			<NavMenuItem>
+				<NavMenuLink href='#menu'>Menu item 3</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<NavMenu hasDivider bd='y'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu'>Menu item 1</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu'>Menu item 2</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu'>Menu item 3</NavMenuLink>
+			</NavMenuItem>
 		</NavMenu>
 		```
 	</PreviewCode>
 </Preview>
 
 
-<Spacer h='10' />
+{/* <Spacer h='10' />
 
 メニューの内容が複雑でない場合は、次のように`<NavMenuLink>`の記述を省略できます。
-
 
 <Preview>
 	<PreviewTitle>シンプルなテキストメニュー</PreviewTitle>
@@ -105,27 +87,10 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 
 <Callout type='info' mbs='20'>
 `<NavMenuItem>`に`href`指定すると、内部で`<NavMenuLink>`が自動生成されるようになっています。  
-</Callout>
+</Callout> */}
 
 <Spacer h='10' />
 
-<Preview>
-	<PreviewTitle>`hasDivider`と上下ボーダーを指定</PreviewTitle>
-	<PreviewArea p='30'>
-		<NavMenu hasDivider bd='block'>
-			<Items />
-		</NavMenu>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<NavMenu hasDivider bd='block'>
-			<NavMenuItem href='#menu'>Menu item 1</NavMenuItem>
-			<NavMenuItem href='#menu'>Menu item 2</NavMenuItem>
-			...
-		</NavMenu>
-		```
-	</PreviewCode>
-</Preview>
 
 
 {/* テキストをspanで囲んで -fx:1 でも可 */}
@@ -133,18 +98,24 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 	<PreviewTitle>アイコンやバッジを使った例</PreviewTitle>
 	<PreviewArea p='30'>
 		<NavMenu hasDivider bd>
-			<NavMenuItem href='#menu1'>
-				<Icon icon={FolderSimple} />
-				<span>Menu item</span>
-				<Badge variant='outline' fw='700' mis='auto'>New</Badge>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1' gap='10' ai='c'>
+					<Icon icon={FolderSimple} />
+					<span>Menu item</span>
+					<Badge variant='outline' fz='xs' fw='700' mis='auto'>New</Badge>
+				</NavMenuLink>
 			</NavMenuItem>
-			<NavMenuItem href='#menu2'>
-				<Icon icon={FolderSimple} />
-				<span>Menu item</span>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2' gap='10' ai='c'>
+					<Icon icon={FolderSimple} />
+					<span>Menu item</span>
+				</NavMenuLink>
 			</NavMenuItem>
-			<NavMenuItem href='#menu3'>
-				<Icon icon={FolderSimple} />
-				<span>Menu item</span>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3' gap='10' ai='c'>
+					<Icon icon={FolderSimple} />
+					<span>Menu item</span>
+				</NavMenuLink>
 			</NavMenuItem>
 		</NavMenu>
 	</PreviewArea>
@@ -153,18 +124,24 @@ export const DemoBadge = ({ num = "10", ml = "auto" }) => {
 import { FolderSimple } from "@phosphor-icons/react";
 
 <NavMenu hasDivider bd>
-	<NavMenuItem href='#menu1'>
-		<Icon icon={FolderSimple} />
-		<span>Menu item</span>
-		<Badge variant='outline' fw='700' mis='auto'>New</Badge>
+	<NavMenuItem>
+		<NavMenuLink href='#menu1' gap='10' ai='c'>
+			<Icon icon={FolderSimple} />
+			<span>Menu item</span>
+			<Badge variant='outline' fz='xs' fw='700' mis='auto'>New</Badge>
+		</NavMenuLink>
 	</NavMenuItem>
-	<NavMenuItem href='#menu2'>
-		<Icon icon={FolderSimple} />
-		<span>Menu item</span>
+	<NavMenuItem>
+		<NavMenuLink href='#menu2' gap='10' ai='c'>
+			<Icon icon={FolderSimple} />
+			<span>Menu item</span>
+		</NavMenuLink>
 	</NavMenuItem>
-	<NavMenuItem href='#menu3'>
-		<Icon icon={FolderSimple} />
-		<span>Menu item</span>
+	<NavMenuItem>
+		<NavMenuLink href='#menu3' gap='10' ai='c'>
+			<Icon icon={FolderSimple} />
+			<span>Menu item</span>
+		</NavMenuLink>
 	</NavMenuItem>
 </NavMenu>
 ```
@@ -172,29 +149,135 @@ import { FolderSimple } from "@phosphor-icons/react";
 </Preview>
 
 
+### ホバースタイルの調整
+
+`<NavMenuLink>`からデフォルトで出力されるのは`-hov:fade`になっています。  
+カラーを変化させたい場合、`<NavMenu>`（`.c--navMenu`）に`hovBgc`や`hovC`(`--hov-c`や`--hov-bgc`)を指定し、`<NavMenuLink>`（`.c--navMenu__link`）側で`-hov:c`や`-hov:bgc`を指定して受け取ります。
+
+<Reference>
+[hover（`hov`）の指定について](/ja/styles/hover)
+</Reference>
+
+<Preview>
+	<PreviewTitle>hover時のカラー指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<NavMenu bd hasDivider hovBgc='content' hovC='base'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu4' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "hovBgc" "hovC" "hov='c:,bgc:'"
+		<NavMenu bd hasDivider hovBgc='content' hovC='base'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu4' hov='c:,bgc:'>Menu item</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+変数をセットしなければ親から受け取れることを利用して、上の例では親の`<NavMenu>`にだけ変数をセットしています。  
+
+各メニューリンク部分を以下のようにしても同じことができます。
+
+```jsx
+<NavMenuLink href='#menu1' hov={{c: 'base', bgc: 'content'}}>Menu item</NavMenuLink>
+```
+
+
+
+### 各リストのpaddingを一括で調整する方法
+
+`<NavMenuLink>`(`.c--navMenu__link`)の`padding`は、`--pass-p`変数を受けとるようになっています。
+
+これにより、`<NavMenu>`(`.c--navMenu`)側から`passProps.p`(`--pass-p`)をセットして各メニューリンク部分のpaddingを一括調整できます。
+
+<Reference>
+[pass-getについて](/ja/styles/pass-get)
+</Reference>
+
+<Preview>
+	<PreviewTitle>`passProps` でpaddingやgapを一括指定</PreviewTitle>
+	<PreviewArea p='30'>
+		<NavMenu bd hasDivider passProps={{p:'30'}}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "passProps"
+		<NavMenu bd hasDivider passProps={{p:'30'}}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
+			</NavMenuItem>
+		</NavMenu>
+		```
+	</PreviewCode>
+</Preview>
+
+各`<NavMenuLink>`にpaddingを指定してももちろん大丈夫ですが、ネストしたメニューをアコーディオン化する場合などを想定し、`--pass-p`での管理が可能になっています。
+
+
 
 ### メニューのネスト
 
-`<NavMenuItem>`に`href`を渡す省略方式ではなく、`<NavMenuLink>`を使ってリンク部分とネストするリストを分けて記述する必要があります。
-
-また、ネストの深さに応じて`nestLevel`を指定してください。
+`<NavMenuItem>`内に`<NavMenu>`をネストする場合、ネストの深さに応じて`nestLevel`を指定してください。
 
 <Preview>
 	<PreviewTitle>メニューのネスト</PreviewTitle>
 	<PreviewArea p='30'>
-		<NavMenu hasDivider>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		<NavMenu hasDivider hovBgc='base-2'>
 			<NavMenuItem>
-				<NavMenuLink href='#menu3'>Has Child Menu</NavMenuLink>
+				<NavMenuLink hov='bgc:' href='#menu1'>Menu item 1</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu2'>Menu item 2</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu3'>Menu item 3</NavMenuLink>
 				<NavMenu hasDivider bd="top" nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Nested Menu item</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Nested Menu item</NavMenuItem>
 					<NavMenuItem>
-						<NavMenuLink href='#child-menu3'>Has Child Menu</NavMenuLink>
+						<NavMenuLink hov='bgc:' href='#child-menu1'>Nested item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink hov='bgc:' href='#child-menu2'>Nested item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink hov='bgc:' href='#child-menu3'>Nested item</NavMenuLink>
 						<NavMenu hasDivider bd="top" nestLevel={2}>
-							<NavMenuItem href='#child-menu4'>Nested (level 2) Menu item</NavMenuItem>
-							<NavMenuItem href='#child-menu5'>Nested (level 2) Menu item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu4'>Nested level 2 item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu5'>Nested level 2 item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</NavMenuItem>
 				</NavMenu>
@@ -203,19 +286,31 @@ import { FolderSimple } from "@phosphor-icons/react";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "nestLevel"
-		<NavMenu hasDivider>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		<NavMenu hasDivider hovBgc='base-2'>
 			<NavMenuItem>
-				<NavMenuLink href='#menu3'>Has Child Menu</NavMenuLink>
+				<NavMenuLink hov='bgc:' href='#menu1'>Menu item 1</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu2'>Menu item 2</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu3'>Menu item 3</NavMenuLink>
 				<NavMenu hasDivider bd="top" nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Nested Menu item</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Nested Menu item</NavMenuItem>
 					<NavMenuItem>
-						<NavMenuLink href='#child-menu3'>Has Child Menu</NavMenuLink>
+						<NavMenuLink hov='bgc:' href='#child-menu1'>Nested item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink hov='bgc:' href='#child-menu2'>Nested item</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink hov='bgc:' href='#child-menu3'>Nested item</NavMenuLink>
 						<NavMenu hasDivider bd="top" nestLevel={2}>
-							<NavMenuItem href='#child-menu4'>Nested (level 2) Menu item</NavMenuItem>
-							<NavMenuItem href='#child-menu5'>Nested (level 2) Menu item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu4'>Nested level 2 item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu5'>Nested level 2 item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</NavMenuItem>
 				</NavMenu>
@@ -228,21 +323,30 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 ### ネストしたメニューをアコーディオンで展開する
 
+リンクのpaddingは`--pass-p`で管理されているため、アコーディオン化した時に `-get:p`クラスを使えば同じ量のpaddingを受け取れます。  
+
+
 <Preview>
-	<PreviewTitle>展開メニューにリンクなし</PreviewTitle>
+	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<NavMenu bd='block'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		<NavMenu bd='y' hovBgc='base-2'>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem>
 				<Accordion>
-					<AccordionHeader>
-						<NavMenuLink>Menu item</NavMenuLink>
-					</AccordionHeader>
+					<AccordionHeader hov='bgc:' getProps='p'>Menu item</AccordionHeader>
 					<AccordionBody>
 						<NavMenu nestLevel={1}>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu1'>Nested item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu2'>Nested item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -250,19 +354,25 @@ import { FolderSimple } from "@phosphor-icons/react";
 		</NavMenu>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<NavMenu bd='block'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		```jsx "\<Accordion\>" "\<\/Accordion\>" "getProps='p'"
+		<NavMenu bd='y' hovBgc='base-2'>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink hov='bgc:' href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem>
 				<Accordion>
-					<AccordionHeader>
-						<NavMenuLink>Menu item</NavMenuLink>
-					</AccordionHeader>
+					<AccordionHeader hov='bgc:' getProps='p'>Menu item</AccordionHeader>
 					<AccordionBody>
 						<NavMenu nestLevel={1}>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu1'>Nested item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink hov='bgc:' href='#child-menu2'>Nested item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -274,20 +384,28 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 
 <Preview>
-	<PreviewTitle>メニューはリンクのまま子要素のリストをアコーディオンで展開</PreviewTitle>
+	<PreviewTitle>親メニューのリンクも残してアコーディオンで展開</PreviewTitle>
 	<PreviewArea p='30'>
-		<NavMenu bd='block'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		<NavMenu bd='y'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem>
 				<Accordion>
-					<AccordionHeader trigger='icon'>
+					<AccordionHeader trigger='icon' pr='10'>
 						<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
 					</AccordionHeader>
 					<AccordionBody>
 						<NavMenu nestLevel={1}>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Nested item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Nested item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -295,19 +413,27 @@ import { FolderSimple } from "@phosphor-icons/react";
 		</NavMenu>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
-		<NavMenu bd='block'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
+		```jsx "trigger='icon'" "\<Accordion\>" "\<\/Accordion\>"
+		<NavMenu bd='y'>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
+			<NavMenuItem>
+				<NavMenuLink href='#menu2'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem>
 				<Accordion>
-					<AccordionHeader trigger='icon'>
+					<AccordionHeader trigger='icon' pr='10'>
 						<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
 					</AccordionHeader>
 					<AccordionBody>
 						<NavMenu nestLevel={1}>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Nested item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Nested item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -317,119 +443,6 @@ import { FolderSimple } from "@phosphor-icons/react";
 	</PreviewCode>
 </Preview>
 
-
-### 各リストのpaddingとgapを一括で調整する方法
-
-`passProps`を使って、各リストのpaddingやgapを一括で指定できます。
-
-<Preview>
-	<PreviewTitle>`passProps` でpaddingやgapを一括指定</PreviewTitle>
-	<PreviewArea p='30'>
-		<NavMenu bd hasDivider lh='xs' passProps={{ p:'em8', gap:'em6' }}>
-			<NavMenuItem href='#menu1'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu2'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem>
-				<NavMenuLink href='#menu3'>
-					<Icon icon={FolderSimple} fz='l' weight='fill' />
-					<span>Menu item</span>
-				</NavMenuLink>
-				<NavMenu nestLevel={1} passProps={{ p:'em6' }}>
-					<NavMenuItem href='#child-menu1'>
-						<Icon icon={FolderSimple} fz='l' />
-						<span>Child item</span>
-					</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>
-						<Icon icon={FolderSimple} fz='l' />
-						<span>Child item</span>
-					</NavMenuItem>
-				</NavMenu>
-			</NavMenuItem>
-			<NavMenuItem href='#menu4'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-		</NavMenu>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "passProps"
-		<NavMenu bd hasDivider lh='xs' passProps={{ p:'em8', gap:'em6' }}>
-			<NavMenuItem href='#menu1'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem href='#menu2'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-			<NavMenuItem>
-				<NavMenuLink href='#menu3'>
-					<Icon icon={FolderSimple} fz='l' weight='fill' />
-					<span>Menu item</span>
-				</NavMenuLink>
-				<NavMenu nestLevel={1} passProps={{ p:'em6' }}>
-					<NavMenuItem href='#child-menu1'>
-						<Icon icon={FolderSimple} fz='l' />
-						<span>Child item</span>
-					</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>
-						<Icon icon={FolderSimple} fz='l' />
-						<span>Child item</span>
-					</NavMenuItem>
-				</NavMenu>
-			</NavMenuItem>
-			<NavMenuItem href='#menu4'>
-				<Icon icon={FolderSimple} fz='l' weight='fill' />
-				<span>Menu item</span>
-			</NavMenuItem>
-		</NavMenu>
-		```
-	</PreviewCode>
-</Preview>
-
-
-### ホバースタイルの調整
-
-`hovC`, `hovBgc`で調整できるようになっています。
-
-<Preview>
-	<PreviewTitle>hover時のカラー指定</PreviewTitle>
-	<PreviewArea p='30'>
-		<NavMenu bd hasDivider hovBgc='black' hovC='white'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
-			<NavMenuItem>
-				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
-				<NavMenu nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-				</NavMenu>
-			</NavMenuItem>
-			<NavMenuItem href='#menu4'>Menu item</NavMenuItem>
-		</NavMenu>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "hovBgc" "hovC"
-		<NavMenu bd hasDivider hovBgc='black' hovC='white'>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem>
-			<NavMenuItem>
-				<NavMenuLink href='#menu3'>Menu item</NavMenuLink>
-				<NavMenu nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-				</NavMenu>
-			</NavMenuItem>
-			<NavMenuItem href='#menu4'>Menu item</NavMenuItem>
-		</NavMenu>
-		```
-	</PreviewCode>
-</Preview>
 
 
 ### 横並びメニュー
@@ -437,31 +450,41 @@ import { FolderSimple } from "@phosphor-icons/react";
 `<NavMenu>`に`isFlex`を指定すると、横並びになります。
 
 <Preview>
-	<PreviewTitle>横並び</PreviewTitle>
+	<PreviewTitle>横並びで3種類のメニュー展開</PreviewTitle>
 	<PreviewArea p='30'>
 		<Box minH="20rem">
-		<NavMenu isFlex hasDivider passProps={{ p: 'em6 em8' }}>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
+		<NavMenu isFlex hasDivider lh='s' passProps={{p:'20 30'}}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem hov='pass' pos='r'>
 				<NavMenuLink href='#menu3'>
 					<>Hover Menu</>
 				</NavMenuLink>
 				<NavMenu hov='get:show' pos='a' t='100%' bgc='base' bxsh='2' bdrs='xs' hasDivider nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Nested Menu</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Nested Menu item</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu1'>Nested Menu</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu2'>Nested Menu item</NavMenuLink>
+					</NavMenuItem>
 				</NavMenu>
 			</NavMenuItem>
 
 			<NavMenuItem pos='r'>
 				<Accordion>
-					<AccordionHeader gap='0'>
-						<NavMenuLink>Acc Menu</NavMenuLink>
-					</AccordionHeader>
+					<AccordionHeader getProps='p' pr='20'>Acc Menu</AccordionHeader>
 					<AccordionBody pos='a' bxsh='2' bgc='base' w='100'>
 						<NavMenu nestLevel={1} hasDivider>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu3'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu3'>Child item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -469,47 +492,61 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 			<NavMenuItem pos='r'>
 				<Accordion>
-					<AccordionHeader gap='0' trigger='icon'>
+					<AccordionHeader gap='0' pr='20' trigger='icon'>
 						<NavMenuLink href='###'>Acc Menu</NavMenuLink>
 					</AccordionHeader>
 					<AccordionBody pos='a' bxsh='2' bgc='base' w='100'>
 						<NavMenu nestLevel={1} hasDivider>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu3'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu3'>Child item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
 			</NavMenuItem>
-
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem> 
 		</NavMenu>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<NavMenu isFlex hasDivider passProps={{ p: 'em6 em8' }}>
-			<NavMenuItem href='#menu1'>Menu item</NavMenuItem>
+		<NavMenu isFlex hasDivider lh='s' passProps={{p:'20 30'}}>
+			<NavMenuItem>
+				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
+			</NavMenuItem>
 			<NavMenuItem hov='pass' pos='r'>
 				<NavMenuLink href='#menu3'>
 					<>Hover Menu</>
 				</NavMenuLink>
 				<NavMenu hov='get:show' pos='a' t='100%' bgc='base' bxsh='2' bdrs='xs' hasDivider nestLevel={1}>
-					<NavMenuItem href='#child-menu1'>Nested Menu</NavMenuItem>
-					<NavMenuItem href='#child-menu2'>Nested Menu item</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu1'>Nested Menu</NavMenuLink>
+					</NavMenuItem>
+					<NavMenuItem>
+						<NavMenuLink href='#child-menu2'>Nested Menu item</NavMenuLink>
+					</NavMenuItem>
 				</NavMenu>
 			</NavMenuItem>
 
 			<NavMenuItem pos='r'>
 				<Accordion>
-					<AccordionHeader gap='0'>
-						<NavMenuLink>Acc Menu</NavMenuLink>
-					</AccordionHeader>
+					<AccordionHeader getProps='p' pr='20'>Acc Menu</AccordionHeader>
 					<AccordionBody pos='a' bxsh='2' bgc='base' w='100'>
 						<NavMenu nestLevel={1} hasDivider>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu3'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu3'>Child item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
@@ -517,20 +554,24 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 			<NavMenuItem pos='r'>
 				<Accordion>
-					<AccordionHeader gap='0' trigger='icon'>
+					<AccordionHeader gap='0' pr='20' trigger='icon'>
 						<NavMenuLink href='###'>Acc Menu</NavMenuLink>
 					</AccordionHeader>
 					<AccordionBody pos='a' bxsh='2' bgc='base' w='100'>
 						<NavMenu nestLevel={1} hasDivider>
-							<NavMenuItem href='#child-menu1'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu2'>Child item</NavMenuItem>
-							<NavMenuItem href='#child-menu3'>Child item</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu1'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu2'>Child item</NavMenuLink>
+							</NavMenuItem>
+							<NavMenuItem>
+								<NavMenuLink href='#child-menu3'>Child item</NavMenuLink>
+							</NavMenuItem>
 						</NavMenu>
 					</AccordionBody>
 				</Accordion>
 			</NavMenuItem>
-
-			<NavMenuItem href='#menu2'>Menu item</NavMenuItem> 
 		</NavMenu>
 		```
 	</PreviewCode>

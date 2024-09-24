@@ -162,10 +162,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs keepHeight>
-			<TabItem label="tab1">
+			<TabItem label='Tab 1'>
 				<DammyText />
 			</TabItem>
-			<TabItem label="tab2">
+			<TabItem label='Tab text 2'>
 				<DammyText length="xl" />
 			</TabItem>
 		</Tabs>
@@ -173,10 +173,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewCode>
 		```jsx "keepHeight"
 		<Tabs keepHeight>
-			<TabItem label="tab1">
+			<TabItem label='Tab 1'>
 				<p>...</p>
 			</TabItem>
-			<TabItem label="tab2">
+			<TabItem label='Tab 2'>
 				<p>...</p>
 			</TabItem>
 		</Tabs>
@@ -194,11 +194,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p={30}>
 		<Tabs defaultIndex={1}>
-			<TabItem label="tab1">
+			<TabItem label='Tab 1'>
 				<p>index:0</p>
 				<DammyText />
 			</TabItem>
-			<TabItem label="tab2">
+			<TabItem label='Tab 2'>
 				<p>index:1</p>
 				<DammyText length="l" />
 			</TabItem>
@@ -207,11 +207,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewCode>
 		```jsx "defaultIndex="
 		<Tabs defaultIndex={1}>
-			<TabItem label="tab1">
+			<TabItem label='Tab 1'>
 				<p>index:0</p>
 				<p>...</p>
 			</TabItem>
-			<TabItem label="tab2">
+			<TabItem label='Tab 2'>
 				<p>index:1</p>
 				<p>...</p>
 			</TabItem>
@@ -229,11 +229,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p='40'>
+	<PreviewArea resize p='40'>
 		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
-			tabProps={{px:'30', py:'20', mb:'-1px'}}
-			listProps={{fz:'s',bd:'b'}}
+			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
+			listProps={{fz:'m',bd:'b'}}
 			panelProps={{p:'40'}}
 		>
 			<TabItem label='Tab 1'>
@@ -244,14 +244,21 @@ import ImportCode from "~/components/code-template/Import.astro";
 				<DammyText />
 				<DammyText length='l' />
 			</TabItem>
+			<TabItem label='Tab 3'>
+				<DammyText length='s'/>
+				<DammyText />
+			</TabItem>
+			<TabItem label='Tab 4'>
+				<DammyText length='l' />
+			</TabItem>
 		</Tabs>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "tabProps" "listProps" "panelProps"
 		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
-			tabProps={{px:'30', py:'20', mb:'-1px'}}
-			listProps={{fz:'s',bd:'b'}}
+			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
+			listProps={{fz:'m',bd:'b'}}
 			panelProps={{p:'40'}}
 		>
 			<TabItem label='Tab 1'>
@@ -260,6 +267,13 @@ import ImportCode from "~/components/code-template/Import.astro";
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<DammyText />
+				<DammyText length='l' />
+			</TabItem>
+			<TabItem label='Tab 3'>
+				<DammyText length='s'/>
+				<DammyText />
+			</TabItem>
+			<TabItem label='Tab 4'>
 				<DammyText length='l' />
 			</TabItem>
 		</Tabs>
@@ -409,7 +423,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 <Preview>
 	<PreviewTitle>`variant='emboss'`でisHorizontalがオン</PreviewTitle>
 	<PreviewArea p={30} resize>
-		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' listProps={{fz:'s'}} isFlow='s'>
+		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
 				<DammyText />
@@ -423,7 +437,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' listProps={{fz:'s'}} isFlow='s'>
+		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
 				<DammyText />

@@ -15,8 +15,8 @@
 // }
 [class*="hov:bxsh:"]:hover {
 	// 非ホバー時の --bxsh が カスタム値でも動作するように変数分けて再度指定。
-	--hov--bxsh: var(--sh-size--base) var(--sh-color), var(--sh-size) var(--sh-color);
-	box-shadow: var(--hov--bxsh);
+	--hov-bxsh: var(--sh-size--base) var(--sh-color), var(--sh-size) var(--sh-color);
+	box-shadow: var(--hov-bxsh);
 }
 // [class*="bxsh\:-"]{
 // 	--bxsh: inset var(--sh-size-) var(--sh-color), inset var(--sh-size) var(--sh-color);

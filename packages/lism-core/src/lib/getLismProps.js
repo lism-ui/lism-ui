@@ -9,41 +9,14 @@ import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
 import splitWithComma from './helper/splitWithComma';
 
-const ProvidableProps = {
-	c: 'color',
-	bgc: 'color',
-	bdc: 'color',
-	p: 'space',
-	gap: 'space',
-	bdrs: 'radius',
-	// shadow: 'shadow',
-	// bxsh: 'shadow',
-};
-const HOV_PROPS = {
-	c: {
-		converter: 'color',
-	},
-	bgc: {
-		converter: 'color',
-	},
-	bdc: {
-		converter: 'color',
-	},
-	bxsh: {
-		converter: 'shadow',
-		// presets: 'shadow', //['0', '1', '2', '3', '4'],
-	},
-	// shSize: {
-	// 	utilKey: 'bxsh',
-	// 	converter: 'shadowSize',
-	// },
-	// shSize02: {
-	// 	utilKey: 'bxsh',
-	// 	converter: 'shadowSize',
-	// },
-	// shColor: {
-	// 	converter: 'color',
-	// },
+const getConverter = (propName) => {
+	if (propName === 'gap') return 'space';
+
+	const propData = PROPS[propName];
+	if (!propData) return null;
+
+	const { converter } = propData;
+	return converter || null;
 };
 
 const PROPS_KEYS = Object.keys(PROPS);
@@ -442,12 +415,12 @@ class LismPropsData {
 			if (null === value) return;
 
 			// コンバーター通して取得
-			const converterName = ProvidableProps[propName];
+			const converterName = getConverter(propName);
 			if (converterName) {
 				value = getMaybeCssVar(value, converterName, propName);
 			}
 
-			this.addStyle(`--pass--${propName}`, value);
+			this.addStyle(`--pass-${propName}`, value);
 		});
 	}
 
@@ -481,19 +454,11 @@ class LismPropsData {
 				let value = hoverData[propName];
 
 				// データ取得
-				const {
-					//presets = [],
-					converter = '',
-					utilKey = '',
-				} = HOV_PROPS[propName] || {};
-				// if (isPresetValue(presets, value)) {
-				// 	this.addUtil(`-hov:${utilKey || propName}:${value}`);
-				// 	return;
-				// }
-
+				const converter = getConverter(propName);
 				if (converter) value = getMaybeCssVar(value, converter, propName);
-				this.addUtil(`-hov:${utilKey || propName}`);
-				this.addStyle(`--hov--${propName}`, value);
+
+				this.addUtil(`-hov:${propName}:`);
+				this.addStyle(`--hov-${propName}`, value);
 			});
 		}
 	}
