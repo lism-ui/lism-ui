@@ -4,22 +4,6 @@
   ----------------------
 */
 
-// flex, grid なリストはスタイルをリセット ?
-:is(ul, ol):is(.l--flex, .l--cluster, .l--grid, .l--columns, .l--tileGrid) {
-	--list-style: none;
-	--list--padding: 0;
-}
-
-// styleクエリ？
-/*
-@container style(--is-flex:1) {
-	:is(ul, ol) {
-		--list-style: none;
-		--list--padding: 0;
-	}
-}
-*/
-
 // defaultのmarkerの色を変更？
 // ::marker {color: var(--list-icon-color);}
 

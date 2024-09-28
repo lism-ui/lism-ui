@@ -15,7 +15,7 @@ export const PreviewBoxs = ({hover, ...attrs}) => {
 		{ ariaLabel: '黒系のコンテンツでのテスト', bgc: 'content', c: 'base' },
 	];
 	return (
-		<Columns cols={[2]} gap={20}>
+		<Columns cols={[2]} g={20}>
 			{DEMO_BOX.map((boxProps, i) => {
 				return (
 					<LinkBox key={i} href='###' hov={hover} p='box' {...boxProps} {...attrs}>
@@ -61,7 +61,7 @@ hover時の挙動を`hov`に指定できます。
 	<PreviewArea p={40}>
 		<PreviewBoxs hov='fade'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
 	<LinkBox hov='fade' href='###' p='box'>
 		...
@@ -82,7 +82,7 @@ hover時の挙動を`hov`に指定できます。
 	<PreviewArea p={40}>
 		<PreviewBoxs hov='shadow'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
 	<LinkBox hov='shadow' href='###' p='box'>
 		...
@@ -104,7 +104,7 @@ hover時の挙動を`hov`に指定できます。
 	<PreviewArea p={40}>
 		<PreviewBoxs hov='up'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
 	<LinkBox hov='up' href='###' p='box'>
 		...
@@ -128,7 +128,7 @@ hover時の挙動を`hov`に指定できます。
 	<PreviewArea p={40}>
 		<PreviewBoxs hov='up,shadow'/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov='up,shadow'"
 	<LinkBox hov='up,shadow' href='###' p='box'>
 		...
@@ -175,7 +175,7 @@ hover時の挙動を`hov`に指定できます。
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov=" "bgc:'main'" "c:'white'"
 		<LinkBox href='###' hov={{ bgc:'main', c:'white'}} bgc='base-2' p='box'>
 			...
@@ -214,7 +214,7 @@ hover時の挙動を`hov`に指定できます。
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox> */}
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov=" "bgc:'main'" "c:'white'"
 		<LinkBox href='###' hov={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
 			<p>bxsh:2→hoverで5</p>
@@ -308,19 +308,15 @@ hover時の挙動を`hov`に指定できます。
 		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer hov='get:show' bgc='black:20%' blur='4px'/>
-			<Layer hov='get:show' inset='c' c='white' bgc='black:50%' bdrs='l'>
-				<Text p='box'>View More</Text>
-			</Layer>
+			<Box hov='get:show' pos='a' t='50' l='50' css={{translate:'-50XY'}} c='white' bgc='black' bdrs='full' px='30' py='10'>View More</Box>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:show'"
 		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer hov='get:show' bgc='black:20%' blur='4px'/>
-			<Layer hov='get:show' inset='c' c='white' bgc='black:50%' bdrs='l'>
-				<Text p='box'>View More</Text>
-			</Layer>
+			<Box hov='get:show' pos='a' t='50' l='50' css={{translate:'-50XY'}} c='white' bgc='black' bdrs='full' px='30' py='10'>View More</Box>
 		</LinkBox>
 		```
 	</PreviewCode>
@@ -329,9 +325,7 @@ hover時の挙動を`hov`に指定できます。
 	<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
 		<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
 		<div class="is--layer -hov:get:show -bgc:" style="--bgc:hsl(var(--hsl-black) / 20%);backdrop-filter:blur(4px)"></div>
-		<div class="is--layer -hov:get:show -inset:c -c: -bgc: -bdrs:l" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 50%)">
-			<p class="-p:box">View More</p>
-		</div>
+		<div class="l--box -hov:get:show -pos:a -t:50 -l:50 -trslt:-50XY -c: -bgc: -bdrs:full -px:30 -py:10" style="--c:var(--white);--bgc:var(--black)">View More</div>
 	</a>
 	```
 	</PreviewCode>
@@ -344,7 +338,7 @@ hover時の挙動を`hov`に指定できます。
 			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:zoom'"
 		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
 			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
@@ -353,8 +347,8 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:pass" "-hov:get:zoom"
-	<a class="c--banner is--frame -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
-		<img class="is--layer-hov:get:zoom -obf:cv" loading="lazy" decoding="async" src="/img/img-2.jpg" width="960" height="640">
+	<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy">
 	</a>
 	```
 	</PreviewCode>
@@ -368,13 +362,13 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>`hov='reverse'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box' >
+		<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box'>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box' >
+	<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box'>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 	</LinkBox>
 	```

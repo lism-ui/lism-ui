@@ -176,9 +176,6 @@ Blocks はAtom,Layoutクラスで構成されるような粒度で、Component�
 
 Layout State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
 
-また、Layout State のバリエーションは `.[is|has]--{stateName}:{modifier}` としています。
-
-- 例: `.is--flow:s`, `.is--container:l`
 
 
 ### Utility クラス
@@ -343,8 +340,6 @@ Emmet で明確に定義されていないものは、それっぽく省略し�
 
 また、次のように例外 (Emmetと違うもの、Emmetっぽくないもの)もあります。
 
-- `gap`
-	- Emmet では `g` だが、`grid` を連想してしまうのと、そのままでも3文字と少ないのでそのまま`gap`としています。
 - `colg`: (`column-gap`)
 	- Emmet では `colmg` だが、`column`→`col`, `columns` → `cols` とLism全体で揃えている。
 - `aslf`, `jslf`

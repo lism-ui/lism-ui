@@ -7,7 +7,7 @@
 	--stretch: 1;
 	--scaleX: 1;
 	--scaleY: 1;
-	--trnslt: 0 0.5px;
+	--trslt: 0 0.5px;
 	--svg-trfo: unset;
 	--svg-anim: unset;
 
@@ -24,13 +24,13 @@
 	max-width: 100%; // is--constrained の影響を受けないようにする
 
 	scale: var(--scaleX) var(--scaleY);
-	translate: var(--trnslt);
+	translate: var(--trslt);
 }
 // 上下にわずかな隙間ができてしまうのを防ぐ
 [data-shape-flip*='y'] {
 	// top: -0.5px;
 	--scaleY: -1;
-	--trnslt: 0 -0.5px;
+	--trslt: 0 -0.5px;
 }
 [data-shape-flip*='x'] {
 	--scaleX: -1;

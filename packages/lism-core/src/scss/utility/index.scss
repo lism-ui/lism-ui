@@ -1,3 +1,4 @@
+@use '../query' as query;
 @forward './pass-get';
 @forward './colorbox'; // Note: 他のカラー系（auto_output) より前に読み込む必要あり
 // @forward './color'; // Note: colorboxより後ろに読み込む必要あり
@@ -45,3 +46,39 @@
 .-bdrs\:inner {
 	border-radius: calc(var(--bdrs, 0) - var(--p, 0) * 0.9);
 }
+
+.-fl\:l {
+	float: left;
+}
+.-fl\:r {
+	float: right;
+}
+.-cl\:b {
+	clear: both;
+}
+
+// --------------------
+// Utility
+// --------------------
+
+// for screen reader
+.is--hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+// clear float
+// .u--cf::after {
+// 	display: block;
+// 	clear: both;
+// 	width: 0;
+// 	height: 0;
+// 	content: '';
+// }

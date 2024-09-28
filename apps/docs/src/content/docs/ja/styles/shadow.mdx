@@ -16,51 +16,48 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 <Preview>
 	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
 	<PreviewArea p={50} nogrid>
-		<Columns cols={[3, 5, 5]} gap={50}>
-			<Box bxsh='1' p='20'>...</Box>
-			<Box bxsh='2' p='20'>...</Box>
-			<Box bxsh='3' p='20'>...</Box>
-			<Box bxsh='4' p='20'>...</Box>
-			<Box bxsh='5' p='20'>...</Box>
+		<Columns cols={[3, 5, 5]} g={50}>
+			<Box bxsh='1' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='2' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='3' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='4' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='5' aspect='1/1' bdrs='s'></Box>
 		</Columns>
 		<br />
-		<Columns cols={[3, 5, 5]} gap={50}>
-			<Box bxsh='-1' p='20'>...</Box>
-			<Box bxsh='-2' p='20'>...</Box>
-			<Box bxsh='-3' p='20'>...</Box>
+		<Columns cols={[3, 5, 5]} g={50}>
+			<Box bxsh='-1' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='-2' aspect='1/1' bdrs='s'></Box>
 		</Columns>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Columns cols={[3, 5, 5]} gap={50}>
-			<Box bxsh='1' p='20'>...</Box>
-			<Box bxsh='2' p='20'>...</Box>
-			<Box bxsh='3' p='20'>...</Box>
-			<Box bxsh='4' p='20'>...</Box>
-			<Box bxsh='5' p='20'>...</Box>
+		<Columns cols={[3, 5, 5]} g={50}>
+			<Box bxsh='1' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='2' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='3' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='4' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='5' aspect='1/1' bdrs='s'></Box>
 		</Columns>
 		<br />
-		<Columns cols={[3, 5, 5]} gap={50}>
-			<Box bxsh='-1' p='20'>...</Box>
-			<Box bxsh='-2' p='20'>...</Box>
-			<Box bxsh='-3' p='20'>...</Box>
+		<Columns cols={[3, 5, 5]} g={50}>
+			<Box bxsh='-1' aspect='1/1' bdrs='s'></Box>
+			<Box bxsh='-2' aspect='1/1' bdrs='s'></Box>
 		</Columns>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--columns -cols@sm -cols@md -gap:50" style="--cols:3;--sm-cols:5;--md-cols:5">
-			<div class="-bxsh:1 -p:20">...</div>
-			<div class="-bxsh:2 -p:20">...</div>
-			<div class="-bxsh:3 -p:20">...</div>
-			<div class="-bxsh:4 -p:20">...</div>
-			<div class="-bxsh:5 -p:20">...</div>
+		<div class="l--columns -cols@sm -cols@md -g:50" style="--cols:3;--sm-cols:5;--md-cols:5">
+			<div class="-bxsh:1 -aspect:1/1 -bdrs:s">...</div>
+			<div class="-bxsh:2 -aspect:1/1 -bdrs:s">...</div>
+			<div class="-bxsh:3 -aspect:1/1 -bdrs:s">...</div>
+			<div class="-bxsh:4 -aspect:1/1 -bdrs:s">...</div>
+			<div class="-bxsh:5 -aspect:1/1 -bdrs:s">...</div>
 		</div>
 		<br />
-		<div class="l--columns -cols@sm -cols@md -gap:50" style="--cols:3;--sm-cols:5;--md-cols:5">
-			<div class="-bxsh:-1 -p:20">...</div>
-			<div class="-bxsh:-2 -p:20">...</div>
-			<div class="-bxsh:-3 -p:20">...</div>
+		<div class="l--columns -cols@sm -cols@md -g:50" style="--cols:3;--sm-cols:5;--md-cols:5">
+			<div class="-bxsh:-1 -aspect:1/1 -bdrs:s">...</div>
+			<div class="-bxsh:-2 -aspect:1/1 -bdrs:s">...</div>
 		</div>
 		```
 	</PreviewCode>
@@ -69,26 +66,31 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 ### シャドウカラーの上書き
 
-`.is--resetShVar` クラスを指定すると、その要素でシャドウ用の各変数が再定義されます。  
+`.is--resetShVar` クラス(仮) を指定すると、その要素でシャドウ用の各変数が再定義されます。  
 この時、シャドウを構成する変数を上書きすることでシャドウの色味などを調整することが可能です。 
 
 <Preview>
 	<PreviewTitle>シャドウの上書き例</PreviewTitle>
-	<PreviewArea p={40} nogrid>
-		<Box className='is--resetShVar' style={{'--sh-hsl': '20 80% 80%', '--sh-a':'50%'}}>
-			<Box bxsh='3' p='30' >Box</Box>
-		</Box>
+	<PreviewArea p='40' nogrid>
+		<Flex className='is--resetShVar -g:40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+			<Box bxsh='1' p='40' bdrs='m'>Box</Box>
+			<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Box className='is--resetShVar' style={{'--sh-hsl': '20 80% 80%', '--sh-a':'50%'}}>
-			<Box bxsh='3' p='30' >Box</Box>
-		</Box>
+		```jsx "is--resetShVar"
+		<Flex className='is--resetShVar -g:40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+			<Box bxsh='1' p='40' bdrs='m'>Box</Box>
+			<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<div class="is--resetShVar l--box" style="--sh-hsl:20 80% 80%;--sh-a:50%"><div class="l--box -bxsh:3 -p:30">Box</div></div>
+		```html "is--resetShVar"
+		<div class="is--resetShVar l--flex" style="--sh-hsl:200 50% 50%;--sh-a:20%">
+			<div class="l--box -bxsh:1 -p:40 -bdrs:m">Box</div>
+			<div class="l--box -bxsh:4 -p:40 -bdrs:m">Box</div>
+		</div>
 		```
 	</PreviewCode>
 </Preview>

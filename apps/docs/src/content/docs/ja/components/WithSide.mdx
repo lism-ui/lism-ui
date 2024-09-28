@@ -47,7 +47,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 <Preview>
 	<PreviewTitle>`sidePosition='start end'`</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide sidePosition='start end' sideW='10rem' gap='30'>
+		<WithSide sidePosition='start end' sideW='10rem' g='30'>
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -56,7 +56,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "sidePosition='start end'"
-		<WithSide sidePosition='start end' sideW='10rem' gap='30'>
+		<WithSide sidePosition='start end' sideW='10rem' g='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -66,7 +66,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "data-side-position"
-		<div class="l--withSide -gap:30" data-side-position="start end" style="--side-w:10rem;">
+		<div class="l--withSide -g:30" data-side-position="start end" style="--side-w:10rem;">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -93,7 +93,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 			{dataArray.map((datSide) => (
 				<div key={datSide}>
 						<div>↓<code>sidePosition="{datSide}"</code></div>
-						<WithSide sidePosition={datSide} sideW='10rem' gap='20' mbs='20'>
+						<WithSide sidePosition={datSide} sideW='10rem' g='20' mbs='20'>
 							<Box bd='guide'>
 								<DammyText />
 							</Box>
@@ -123,7 +123,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 <Preview>
 	<PreviewTitle>`bp='md'`にセット</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide sidePosition='end' bp='md' sideW='10rem' gap='30'>
+		<WithSide sidePosition='end' bp='md' sideW='10rem' g='30'>
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -132,7 +132,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "bp='md'"
-		<WithSide sidePosition='end' bp='md' sideW='10rem' gap='30'>
+		<WithSide sidePosition='end' bp='md' sideW='10rem' g='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -142,7 +142,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "-gd@md" "--md-gd:var(--gd--hz)"
-		<div class="l--withSide -gd@md -gap:30" data-side-position="end" style="--side-w:10rem;--md-gd:var(--gd--hz)">
+		<div class="l--withSide -gd@md -g:30" data-side-position="end" style="--side-w:10rem;--md-gd:var(--gd--hz)">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -166,7 +166,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 		デフォルトではmax(16rem,50%)の幅を最低限維持します
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide sideW='10rem' gap='30' >
+		<WithSide sideW='10rem' g='30' >
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -175,7 +175,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "sideW" "isSide"
-		<WithSide sideW='10rem' gap='30'>
+		<WithSide sideW='10rem' g='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -185,7 +185,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "is--side" "--side-w"
-		<div class="l--withSide -gap:30" style="--side-w:10rem;">
+		<div class="l--withSide -g:30" style="--side-w:10rem;">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>
@@ -201,7 +201,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 		メイン要素が`30rem`を下回る時、1カラムに切り替える
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide sideW='10rem' mainMinW='30rem' gap='30'>
+		<WithSide sideW='10rem' mainMinW='30rem' g='30'>
 			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
 			<Box bd='guide'>
 				<DammyText />
@@ -210,7 +210,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
 		```jsx "mainMinW"
-		<WithSide sideW='10rem' mainMinW='30rem' gap='30'>
+		<WithSide sideW='10rem' mainMinW='30rem' g='30'>
 			<Box isSide>Side Content</Box>
 			<Box bd='guide'>
 				<DammyText />
@@ -220,7 +220,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx {2} "--main-minW"
-		<div class="l--withSide -gap:30" style="--side-w:10rem;--main-minW:30rem">
+		<div class="l--withSide -g:30" style="--side-w:10rem;--main-minW:30rem">
 			<div class="l--box is--side">Side Content</div>
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
@@ -242,7 +242,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<WithSide fxd='rr' sideW='10rem' gap='30' >
+		<WithSide fxd='rr' sideW='10rem' g='30' >
 			<Box bd='guide'>
 				<DammyText />
 			</Box>
@@ -251,7 +251,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "fxd='rr'"
-		<WithSide fxd='rr' sideW='10rem' gap='30'>
+		<WithSide fxd='rr' sideW='10rem' g='30'>
 			<Box>
 				<DammyText />
 			</Box>
@@ -261,7 +261,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-fxd:rr"
-		<div class="l--withSide -fxd:rr -gap:30" style="--side-w:10rem;">
+		<div class="l--withSide -fxd:rr -g:30" style="--side-w:10rem;">
 			<div class="l--box">
 				<p>Lorem ipsum dolor sit amet, ...</p>
 			</div>

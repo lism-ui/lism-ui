@@ -1,7 +1,6 @@
 import TOKENS from './tokens';
 
 const spacingPresets = ['0', '5', '10', '20', '30', '40', '50'];
-const emPresets = ['em1', 'em2', 'em3', 'em4', 'em6', 'em8', 'em10', 'em12', 'em14', 'em16'];
 
 // ユーティリティクラス化するキーワード
 export default {
@@ -10,7 +9,7 @@ export default {
 	fz: TOKENS.fz,
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,
-	ff: TOKENS.ff,
+	ff: ['mono', 'sans', 'serif'],
 	// fw: TOKENS.fw,
 	// tsh: ['black', 'white'],
 	c: [
@@ -20,7 +19,7 @@ export default {
 		'content-2',
 		'content-3',
 		'boxcolor',
-		'cbox',
+		// 'cbox',
 	],
 	bgc: [
 		'main',
@@ -30,7 +29,7 @@ export default {
 		'base-3',
 		'content',
 		'boxcolor',
-		'cbox',
+		// 'cbox',
 	],
 	bdc: [
 		'main',
@@ -39,7 +38,7 @@ export default {
 		'divider',
 		// 'table',
 		'boxcolor',
-		'cbox',
+		// 'cbox',
 	],
 	palette: [
 		// 'main',
@@ -60,8 +59,7 @@ export default {
 	// ユーティリティ化
 	space: spacingPresets,
 	p: [...spacingPresets, ...TOKENS.p],
-	pxy: [...spacingPresets],
-	gap: [...spacingPresets, ...emPresets],
+	gap: spacingPresets,
 
 	// align-content
 	// "space-between"
@@ -72,7 +70,7 @@ export default {
 
 	bg: ['glass', 'stripe', 'grid'],
 	z: ['-1', '0', '1'],
-	inset: ['c', 'cX', 'cY'], // inset は 0% だけ
+	// inset: ['c', 'cX', 'cY'], // inset は 0% だけ
 	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',
 
 	// fx: ['1'],
@@ -93,7 +91,7 @@ export default {
 	// 	'side',
 	// 	//'start', 'c', 'end'
 	// ],
-	gradient: ['sunset', 'blackToBottom'],
+	gradient: [],
 	// transform: ['flip:x', 'flip:y', 'flip:xy'],
 	animation: [],
 

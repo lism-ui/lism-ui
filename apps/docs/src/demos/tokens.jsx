@@ -6,7 +6,7 @@ export const ColorDemos = ({ colors = [] }) => {
 		<>
 			{colors.map((name) => {
 				return (
-					<Stack key={name} gap='10'>
+					<Stack key={name} g='10'>
 						<Text bd='left' bdw='2px' lh='1.25' pl='20' fz='xs'>
 							<code>--{name}</code>
 						</Text>
@@ -29,7 +29,7 @@ export const FzDemos = () => (
 	<>
 		{['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'].map((fz, i) => {
 			return (
-				<Stack key={fz} gap='0'>
+				<Stack key={fz} g='0'>
 					<Text className='is--sizeTip' fz='12px'>
 						<code>{fz}</code>
 					</Text>
@@ -46,7 +46,7 @@ export const LhDemos = ({ lang = 'en' }) => (
 	<>
 		{['xs', 's', 'base', 'l', 'xl'].map((lh, i) => {
 			return (
-				<Stack key={lh} gap='0'>
+				<Stack key={lh} g='0'>
 					<Text className='is--sizeTip' fz='12px'>
 						<code>{lh}</code>
 					</Text>
@@ -61,7 +61,7 @@ export const LtsDemos = () => (
 	<>
 		{['s', 'base', 'l', 'xl'].map((lts, i) => {
 			return (
-				<Stack key={lts} gap='0'>
+				<Stack key={lts} g='0'>
 					<Text className='is--sizeTip' fz='12px'>
 						<code>{lts}</code>
 					</Text>
@@ -77,7 +77,7 @@ export const ShadowDemos = ({ shadows = [] }) => {
 		<>
 			{shadows.map((name) => {
 				return (
-					<Stack key={name} gap='20'>
+					<Stack key={name} g='20'>
 						<Frame aspect='1/1' bgc='base' bxsh={`var(--shdw-${name})`} bdrs='s'>
 							<Center h='100' ff='mono' fz='s' c='content-2'>
 								{name}
@@ -94,7 +94,7 @@ export const BoxShadowDemos = ({ shadows = [] }) => {
 		<>
 			{shadows.map((name) => {
 				return (
-					<Stack key={name} gap='20'>
+					<Stack key={name} g='20'>
 						{/* <Text bd='left' bdw='2px' lh='1' pl='20' fz='xs'>
 							<code>{name}</code>
 						</Text> */}
@@ -115,7 +115,7 @@ export const RadiusDemos = () => {
 		<>
 			{['xs', 's', 'm', 'l', 'xl', 'full'].map((r) => {
 				return (
-					<Stack key={r} gap='20'>
+					<Stack key={r} g='20'>
 						{/* <Text bd='left' bdw='2px' lh='1' pl='20' fz='xs'>
 							<code>{r}</code>
 						</Text> */}
@@ -136,7 +136,7 @@ export const SpacingDemos = ({ spaces, isValueLabel }) => {
 			{spaces.map((s, i) => {
 				const label = isValueLabel ? <code>{s}</code> : <code>{i}</code>;
 				return (
-					<Stack key={s} gap='5'>
+					<Stack key={s} g='5'>
 						{!isValueLabel && (
 							<Text bd='left' bdw='2px' lh='1' pl='10' fz='2xs'>
 								{s}
@@ -161,7 +161,7 @@ export const SpacingDemos = ({ spaces, isValueLabel }) => {
 // 				let space = num * unit;
 
 // 				return (
-// 					<Stack key={num} gap='5'>
+// 					<Stack key={num} g='5'>
 // 						<Text bd='left' bdw='2px' lh='1' pl='10' fz='2xs'>{`${space}rem`}</Text>
 // 						<Box pl={`${space}rem`} bgc='content'>
 // 							<Text bgc='base' pl={10} fz='xs'>
@@ -191,7 +191,7 @@ export const SpacingDemos = ({ spaces, isValueLabel }) => {
 // 				}
 
 // 				return (
-// 					<Stack key={s} gap='5'>
+// 					<Stack key={s} g='5'>
 // 						<Text bd='left' bdw='2px' lh='1' pl='10' fz='2xs'>{`${pl}rem`}</Text>
 // 						<Box pl={`${pl}rem`} bgc='content'>
 // 							<Text bgc='base' pl={10} fz='xs'>

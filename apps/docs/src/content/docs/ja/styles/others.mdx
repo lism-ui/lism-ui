@@ -1,0 +1,490 @@
+---
+title: 'others'
+description: ...
+sidebar: 
+  order: 99
+---
+
+import { Box, Frame, Layer, Media, Center, Columns } from '@lism-ui/core';
+import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+
+
+
+## bg, backgrounds
+
+Lismコンポーネントでは、`background`用のプロパティとして`bg`,`backgrounds`の2種類があります。
+
+| プロパティ | 説明 |
+|---|---|
+|`bg`| 指定した文字列をそのまま `background` として出力されます。 |
+|`backgrounds`| オブジェクト形式で各プロパティを指定できます。|
+{/* |`bgc`| `background-color` として出力されます。 | */}
+
+
+{/* bg一つでオブジェクトかどうかで判断する？ */}
+
+
+### `bg`
+
+<Preview>
+	<PreviewTitle>`bg`に指定</PreviewTitle>
+	<PreviewArea p={0}>
+		<Box aspect='16/9' bg="url(/img.jpg) center / 50%"></Box>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg"
+		<Box aspect='16/9' bg="url(/img.jpg) center / 50%"></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### `backgrounds`
+
+
+| キー | 対応するCSSプロパティ |
+|---|---|
+|image|background-image|
+|size|background-size|
+|repeat|background-repeat|
+|position|background-position|
+|color|background-color|
+|attachment|background-attachment|
+|blendMode|background-blend-mode|
+|clip|background-clip|
+|origin|background-origin|
+
+
+
+<Preview>
+	<PreviewTitle>`backgrounds`で指定する例</PreviewTitle>
+	<PreviewArea p={0}>
+		<Box
+			aspect='16/9'
+			backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}
+		></Box>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "backgrounds" {3}
+		<Box
+			aspect='16/9'
+			backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}
+		></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### bg用ユーティリティクラスの例
+
+Lismのパッケージ内で用意しているクラスはありませんが、いくつか独自のユーティリティクラスを用意してそれを呼び出す例を紹介します。
+
+[ユーティリティクラスとして強制出力する方法](/ja/props/lism-props#output-utility)を活用します。
+
+
+<Preview>
+	<PreviewTitle>glass</PreviewTitle>
+	<PreviewArea p='20' resize>
+		<Center isFrame minH='25rem' p='40'>
+			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
+				<Box pos='r' z='1' bg='glass' px='40' py='40' bdrs='m' bxsh='3'>
+					<DammyText length='l'/>
+				</Box>
+		</Center>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+```css
+:where(.-bg\:glass) {
+/* --bxsh初期値セット（ ユーティリティと共存できるように、--bxsh を受け取るようにしている。） */
+--bxsh: 0 0 0 transparent;
+}
+
+.-bg\:glass {
+	backdrop-filter: brightness(1.2) blur(16px);
+
+	/* 白の1pxボーダーは、透過白背景をグラデーションにするとバグるので、borderではなくshadowで表現している。 */
+	/* shadowユーティリティに負けないように important あり. */
+	box-shadow:
+		inset 0 0 0 1px rgb(255 255 255 / 0.2),
+		inset 10px 20px 40px -20px rgb(255 255 255 / 0.2),
+		var(--bxsh) !important;
+}
+```
+	</PreviewCode>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg='u:glass'"
+		<Frame aspect='16/9'>
+			<Media src='/img/img-1.jpg' alt='' width='960' height='640'/>
+			<Box bg='u:glass' pos='a' inset='c' p='box:l' bdrs='m' bxsh='3'>
+				<DammyText />
+			</Box>
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "-bg:glass"
+		<div class="l--center is--frame -p:40" style="min-height:25rem">
+			<img class="is--layer -z:0" src="/img/img-3.jpg" width="960" height="640">
+			<div class="l--box -pos:r -z:1 -bg:glass -px:40 -py:40 -bdrs:m -bxsh:3">
+				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident libero, eum nulla sunt, porro sed dicta. Impedit ullam eveniet obcaecati minima.</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>stripe</PreviewTitle>
+	<PreviewArea resize nogrid p='30'>
+		<Box bg='u:stripe' p='40'>
+			<DammyText />
+		</Box>
+		<Box bg='u:stripe' p='40' boxcolor='blue'>
+			<DammyText />
+		</Box>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+```css
+.-bg\:stripe {
+	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--stripe-bdw: 1px;
+	--stripe-deg: -40deg;
+	--stripe-interval: 6px;
+	background-image: repeating-linear-gradient(
+		var(--stripe-deg),
+		var(--stripe-bdc),
+		var(--stripe-bdc) var(--stripe-bdw),
+		transparent var(--stripe-bdw),
+		transparent var(--stripe-interval)
+	);
+
+	background-position: center;
+}
+```
+	</PreviewCode>
+		<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg='u:stripe'"
+		<Box bg='u:stripe' p='40'>
+			<DammyText />
+		</Box>
+		<Box bg='u:stripe' p='40' boxcolor='blue'>
+			<DammyText />
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "-bg:stripe"
+		<div class="l--box -bg:stripe -p:40">
+			<p>...</p>
+		</div>
+		<div class="l--box -bg:stripe -p:40 -boxcolor:blue">
+			<p>...</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>grid</PreviewTitle>
+	<PreviewArea resize nogrid p='30'>
+		<Box bg='u:grid' p='40'>
+			<DammyText />
+		</Box>
+		<Box bg='u:grid' p='40' boxcolor='green'>
+			<DammyText />
+		</Box>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+```css
+.-bg\:grid {
+	--grid-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--grid-size: 1rem;
+	--grid-offset: calc(var(--grid-size) / 2);
+	background-image: linear-gradient(
+			transparent calc(100% - 1px),
+			var(--grid-bdc) 50%,
+			var(--grid-bdc)
+		),
+		linear-gradient(90deg, transparent calc(100% - 1px), var(--grid-bdc) 50%, var(--grid-bdc));
+	background-position: var(--grid-offset) var(--grid-offset);
+	background-size: var(--grid-size) var(--grid-size);
+}
+```
+	</PreviewCode>
+		<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg='u:grid'"
+		<Box bg='u:grid' p='40'>
+			<DammyText />
+		</Box>
+		<Box bg='u:grid' p='40' boxcolor='green'>
+			<DammyText />
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "-bg:grid"
+		<div class="l--box -bg:grid -p:40">
+			<p>...</p>
+		</div>
+		<div class="l--box -bg:grid -p:40 -boxcolor:green">
+			<p>...</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+## gradient
+
+`gradient`で背景にグラデーションをつけることができます。
+
+文字列またはオブジェクト形式で指定できます。
+
+### 文字列での指定
+
+`gradient`の指定が文字列の場合、下記の2パターンに分かれます。
+
+- 基本的には、インラインスタイルで `background-image` に指定された値が出力されます。
+- 登録済みのユーティリティクラス名と一致する場合、`.-gradient:{utilityName}`クラスとして出力されます。（ただし、現状コアで登録しているのは `blackToBottom` のみです。）
+
+<Preview>
+	<PreviewTitle>値を直書き</PreviewTitle>
+	<PreviewArea resize p='20'>	
+		<Frame aspect='2/1' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
+		{/* <Frame aspect='16/9' gradient='blackToBottom'/> */}
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Frame aspect='2/1' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-gradient:blackToBottom"
+		<div class="is--frame -aspect:2/1" style="background-image:linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+#### 独自ユーティリティクラスを用意して活用する
+
+[ユーティリティクラスとして強制出力する方法](/ja/props/lism-props#output-utility)を活用します。
+
+<Preview>
+	<PreviewTitle>`gradient="u:sunset"`</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Frame aspect='cinema' gradient='u:sunset'/>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+	```css
+	/* まずは以下のようなCSSを追記しておく */
+	.-gradient\:sunset{
+		background: linear-gradient(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
+	}
+	```
+	</PreviewCode>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "gradient='u:sunset'"
+		<Frame aspect='cinema' gradient='u:sunset'/>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```jsx "-gradient:sunset"
+		<div class="is--frame -aspect:cinema -gradient:sunset"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### オブジェクトでの指定
+
+オブジェクト指定では、以下のプロパティを指定できます。
+
+- `type`: `linear` | `radial` | `repeating-linear` | `repeating-radial` | `conic`
+- `angle`: `45deg`, `to left`など、カラー入力前に指定できるアングル値。`type` によって何が有効か値かは異なります。
+- `colors`: `,`が含まれていないければ `var(--grad--xxx)` 変数として出力され、それ以外の場合はそのまま出力されます。
+
+#### 各成分の指定
+
+`type`, `angle`, `colors`を個別に指定します。
+
+<Preview>
+	<PreviewTitle>オブジェクト指定</PreviewTitle>
+	<PreviewArea resize p='20'>
+	<Columns g='20' fz='xs' itemMinW="12rem">
+		<Frame
+			aspect="16/9"
+			gradient={{
+				angle: '35deg',
+				colors: '#ff9a9e 0%, #fad0c4 99%, #fad0c4 100%'
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'radial',
+				angle: 'circle at top right',
+				colors: 'yellow, #f06d06 50%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'repeating-linear',
+				angle: '45deg',
+				colors: '#3f87a6, #ebf8e1 20%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'conic',
+				angle: 'from -45deg',
+				colors: '#fff, #000, #fff',
+			}}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "gradient="
+		<Frame
+			aspect="16/9"
+			gradient={{
+				angle: '35deg',
+				colors: '#ff9a9e 0%, #fad0c4 99%, #fad0c4 100%'
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'radial',
+				angle: 'circle at top right',
+				colors: 'yellow, #f06d06 50%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'repeating-linear',
+				angle: '45deg',
+				colors: '#3f87a6, #ebf8e1 20%',
+			}}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{
+				type: 'conic',
+				angle: 'from -45deg',
+				colors: '#fff, #000, #fff',
+			}}
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### color変数を指定する
+
+オブジェクト指定時、`colors`で指定した値に`,`がない場合、`var(--grad--{colors})` として出力されます。  
+事前にカラー変数を定義しておくことで、同じカラーセットを流用して異なるグラデーションを作成することができます。
+
+Lismが標準で用意しているのは`--grad--toBlack`のみです。
+
+<Preview>
+	<PreviewTitle>Lismで用意している`toBlack`を指定する</PreviewTitle>
+	<PreviewArea resize p='20'>
+	<Columns g='20' fz='s'>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to right', colors: 'toBlack' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'toBlack' }}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "colors: 'toBlack'"
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to right', colors: 'toBlack' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'toBlack' }}
+		/>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "var(--grad--toBlack)" "radial"
+		<div class="is--frame -aspect:16/9" style="background-image:linear-gradient(to right, var(--grad--toBlack))"></div>
+		<div class="is--frame -aspect:16/9" style="background-image:radial-gradient(var(--grad--toBlack))"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+#### 独自変数を用意する
+
+<Preview>
+	<PreviewTitle>別途用意した場合の例</PreviewTitle>
+	<PreviewArea resize p='20'>
+	<Columns g='20' fz='s'>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '45deg', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to bottom', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '-45deg', colors: 'denseWater' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'denseWater' }}
+		/>
+	</Columns>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "colors: 'lime'" colors: 'denseWater'
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '45deg', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: 'to bottom', colors: 'lime' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ angle: '-45deg', colors: 'denseWater' }}
+		/>
+		<Frame
+			aspect="16/9"
+			gradient={{ type: 'radial', colors: 'denseWater' }}
+		/>
+		```
+	</PreviewCode>
+</Preview>
+
+
+上記の例では、以下のように追加で変数を定義しているものを呼び出しています。
+
+```css
+:root {
+	--grad--lime: #abecd6 0%, #fbed96 100%;
+	--grad--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
+}
+```
+
+

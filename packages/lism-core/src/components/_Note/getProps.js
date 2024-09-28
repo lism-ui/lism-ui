@@ -28,7 +28,6 @@ export default function getProps({
 		skipState: true,
 		fw: 'bold',
 		ai: 'c',
-		gap: 'em4',
 	};
 	const bodyProps = { _lismClass: ['c--note__body'] };
 

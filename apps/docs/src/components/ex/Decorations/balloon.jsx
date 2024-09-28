@@ -44,11 +44,11 @@ export default function BalloonBox({
 			parentProps = { jc: 'e', pr: '1em' };
 			decoProps = {
 				t: '50%',
-				r: '0',
+				l: '100%',
 				css: {
 					boxSizing: 'cb',
 					rotate: '-45deg',
-					translate: '50% -50%',
+					translate: '-50% -50%',
 					clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%)',
 				},
 			};
@@ -69,12 +69,12 @@ export default function BalloonBox({
 		case 'bottom':
 			parentProps = { jc: 'c', pb: '1em' };
 			decoProps = {
-				b: '0',
+				t: '100%',
 				l: '50%',
 				css: {
 					boxSizing: 'cb',
 					rotate: '45deg',
-					translate: '-50% 50%',
+					translate: '-50% -50%',
 					clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
 				},
 			};

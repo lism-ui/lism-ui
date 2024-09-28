@@ -19,8 +19,6 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 [`<Grid>`で使えるprops](/ja/components/grid#props)が使えます。
 
-{/* - `gap` : 子要素間の余白を指定します。 */}
-
 
 ## Import
 
@@ -70,7 +68,7 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 		長いテキストの改行は左寄せになるので、テキストの読みやすさを損ないません。
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p='box' gap={20}>
+		<Center p='box' g={20}>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='m' lang='ja'/>
@@ -78,7 +76,7 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Center p='box' gap={20}>
+		<Center p='box' g={20}>
 			<Text fz='l'>TEXT</Text>
 			<p>...</p>
 			<p>...</p>
@@ -87,7 +85,7 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--center -p:box -gap:20">
+		<div class="l--center -p:box -g:20">
 			<p class="-fz:l">TEXT</p>
 			<p>...</p>
 			<p>...</p>
@@ -106,20 +104,20 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		高さを設定した時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p={30} gap={20} h='40vh'>
+		<Center p={30} g={20} h='40vh'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "h='40vh'"
-		<Center h='40vh' p={30} gap={20}>
+		<Center h='40vh' p={30} g={20}>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-h:" "--h:"
-		<div class="l--center -p:30 -h: -gap:20" style="--h:40vh">
+		<div class="l--center -p:30 -h: -g:20" style="--h:40vh">
 			<p class="-fz:l">TEXT</p>
 		</div>
 		```
@@ -131,20 +129,20 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		アスペクト比を設定した時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' p={30} gap={20}>
+		<Center aspect='2/1' p={30} g={20}>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "aspect='2/1'"
-		<Center aspect='2/1' p={30} gap={20}>
+		<Center aspect='2/1' p={30} g={20}>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-aspect:2/1"
-		<div class="l--center -aspect:2/1 -p:30 -gap:20">
+		<div class="l--center -aspect:2/1 -p:30 -g:20">
 			<p class="-fz:l">TEXT</p>
 		</div>
 		```
@@ -161,7 +159,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		垂直方向のみ中央揃えに
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p={30} gap={20} h='50vh' ji='start'>
+		<Center p={30} g={20} h='50vh' ji='start'>
 			<Text fz='l' fw='700'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='m' lang='ja'/>
@@ -169,7 +167,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "ji='start'" "h='50vh'"
-		<Center ji='start' h='50vh' p={30} gap={20}>
+		<Center ji='start' h='50vh' p={30} g={20}>
 			<Text fz='l' fw='700'>TEXT</Text>
 			<p>...</p>
 			<p>...</p>
@@ -178,7 +176,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-ji:s"
-		<div class="l--center -p:30 -h: -gap:20 -ji:s" style="--h:50vh">
+		<div class="l--center -p:30 -h: -g:20 -ji:s" style="--h:50vh">
 			<p class="-fz:l">TEXT</p>
 			<p>ロレムイプサムの座り雨。</p>
 			<p>ロレムイプサムの座り雨、トマ好き学習だったエリット、しかし時と活力はそのような木々と楽しみ。ブラインド行うにはいくつかの重要な事柄が流れます。長年にわたり、私は学区と長寿であれば。</p>
@@ -289,7 +287,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		スクロール時にコンテンツが全て見えない 😱
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center px={30} py={50} gap={20} h='45vh' ovy='auto' bd>
+		<Center px={30} py={50} g={20} h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
 			<DammyText length='l' />
 			<DammyText length='xl' />
@@ -297,7 +295,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "\<Center" "h='45vh' ovy='auto'"
-		<Center px={30} py={50} gap={20} h='45vh' ovy='auto' bd>
+		<Center px={30} py={50} g={20} h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
 			<DammyText length='l' />
 			<DammyText length='xl' />
@@ -323,7 +321,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
 		<Box px={30} py={50} h='45vh' ovy='auto' bd>
-			<Center gap={20} minH='100%'>
+			<Center g={20} minH='100%'>
 				<Text fz='l' fw='700'>DEMO</Text>
 				<DammyText length='l' />
 				<DammyText length='xl' />
@@ -333,7 +331,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "h='45vh'" "ovy='auto'" "minH='100%'"
 		<Box px={30} py={50} h='45vh' ovy='auto' bd>
-			<Center minH='100%' gap={20}>
+			<Center minH='100%' g={20}>
 				<Text fz='l' fw='700'>DEMO</Text>
 				<DammyText length='l' />
 				<DammyText length='xl' />
@@ -348,8 +346,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>OK</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Frame aspect='2/1' ovy='auto' bd p={30} gap={20}>
-			<Center minH='100%' gap={20}>
+		<Frame aspect='2/1' ovy='auto' bd p={30} g={20}>
+			<Center minH='100%' g={20}>
 				<Text fz='l'>TEXT</Text>
 				<DammyText length='xs' lang='ja'/>
 				<DammyText length='xl' lang='ja'/>
@@ -358,8 +356,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Frame aspect='2/1' ovy='auto' bd p={30} gap={20}>
-			<Center minH='100%' gap={20}>
+		<Frame aspect='2/1' ovy='auto' bd p={30} g={20}>
+			<Center minH='100%' g={20}>
 				<Text fz='l'>TEXT</Text>
 				<DammyText length='xs' lang='ja'/>
 				<DammyText length='xl' lang='ja'/>
@@ -372,7 +370,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>NG</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' ovy='auto' bd p={30} gap={20}>
+		<Center aspect='2/1' ovy='auto' bd p={30} g={20}>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='xl' lang='ja'/>
@@ -380,7 +378,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Center aspect='2/1' ovy='auto' bd p={30} gap={20}>
+		<Center aspect='2/1' ovy='auto' bd p={30} g={20}>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='xl' lang='ja'/>

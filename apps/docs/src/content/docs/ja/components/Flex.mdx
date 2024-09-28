@@ -25,7 +25,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 |---|---|
 |`fxw`|`flex-wrap`|
 |`fxd`|`flex-direction`|
-|`gap`|`gap`|
+|`g`|`gap`|
 |`rowg`|`row-gap`|
 |`colg`|`column-gap`|
 {/* |`ai`|`align-items`|
@@ -69,7 +69,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 <Preview>
 	<PreviewTitle>flexオプションの指定</PreviewTitle>
 	<PreviewArea resize p={40}>
-		<Flex gap={30} fxw='wrap' jc="center" className='has--itemGuide'>
+		<Flex g={30} fxw='wrap' jc={["baseline", "center"]} className='has--itemGuide'>
 			<div>Flex Content</div>
 			<div>Flex Content</div>
 			<div>Flex Content</div>
@@ -77,7 +77,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Flex fxw='wrap' jc='center' gap='20'>
+	<Flex fxw='wrap' jc='center' g='20'>
 		<div>Item</div>
 		<div>Item</div>
 		<div>Item</div>
@@ -86,7 +86,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx
-	<div class="l--flex -fxw:w -gap:30 -jc:c">
+	<div class="l--flex -fxw:w -g:30 -jc:c">
 		<div>Item</div>
 		<div>Item</div>
 		<div>Item</div>
@@ -109,7 +109,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 		画面幅が狭い時に横にはみ出す例(resizeして確認してください)
 	</PreviewTitle>
 	<PreviewArea resize p={40}>
-		<Flex gap='20' className='has--itemGuide'>
+		<Flex g='20' className='has--itemGuide'>
 			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -119,7 +119,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	
 	<PreviewCode>
 		```jsx
-		<Flex gap='20'>
+		<Flex g='20'>
 			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -134,7 +134,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 		はみ出す原因となるテキストに `-ovw:any` を適用
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Flex gap='20' className='has--itemGuide'>
+		<Flex g='20' className='has--itemGuide'>
 			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
 			<p>AAA</p>
 			<p>BBB</p>
@@ -143,7 +143,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-		<Flex gap='20'>
+		<Flex g='20'>
 			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
 			<Text>AAA</Text>
 			<Text>BBB</Text>
@@ -153,7 +153,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx
-	<div class="l--flex -gap:20">
+	<div class="l--flex -g:20">
 		<p className="-ovw:any">LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
 		<p>AAA</p>
 		<p>BBB</p>
@@ -182,7 +182,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 <Preview>
 	<PreviewTitle>シンプルな`<Cluster>`の例</PreviewTitle>
 	<PreviewArea resize p='box:l'>
-		<Flex variant='cluster' gap='20'>
+		<Flex variant='cluster' g='20'>
 			<Badge>Lorem ipsum</Badge>
 			<Badge>Dolor</Badge>
 			<Badge>Sit amet</Badge>
@@ -192,7 +192,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewArea>
 	<PreviewCode slot="tab" label="JSX">
 	```jsx
-	<Flex variant='cluster' gap='20'>
+	<Flex variant='cluster' g='20'>
 		<Badge>Lorem ipsum</Badge>
 		<Badge>Dolor</Badge>
 		<Badge>Sit amet</Badge>
@@ -203,7 +203,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewCode>
 	<PreviewCode slot="tab" label="HTML">
 	```html
-	<div class="l--flex l--flex--cluster -gap:20">
+	<div class="l--flex l--flex--cluster -g:20">
 		<span class="b--badge">Lorem ipsum</span>
 		<span class="b--badge">Dolor</span>
 		<span class="b--badge">Sit amet</span>
@@ -231,7 +231,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 <Preview>
 	<PreviewTitle>ltr言語での標準動作</PreviewTitle>
 	<PreviewArea p={40}>
-			<Flex variant='ltr' gap='20' className='has--itemGuide'>
+			<Flex variant='ltr' g='20' className='has--itemGuide'>
 				<Box bgc='red'>box-1</Box>
 				<Box bgc='blue'>box-2</Box>
 				<Box bgc='green'>box-3</Box>
@@ -239,7 +239,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "variant='ltr'"
-	<Flex variant='ltr' gap='20'>
+	<Flex variant='ltr' g='20'>
 		<div>box-1</div>
 		<div>box-2</div>
 		<div>box-3</div>
@@ -248,7 +248,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "l--flex--ltr"
-	<div class="l--flex l--flex--ltr -gap:20">
+	<div class="l--flex l--flex--ltr -g:20">
 		<div>box-1</div>
 		<div>box-2</div>
 		<div>box-3</div>
@@ -261,7 +261,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 	<PreviewTitle>rtl言語での動作</PreviewTitle>
 	<PreviewArea p={40}>
 		<div dir="rtl">
-			<Flex className='has--itemGuide' variant='ltr' gap='20'>
+			<Flex className='has--itemGuide' variant='ltr' g='20'>
 				<Box bgc='red'>صندوق-1</Box>
 				<Box bgc='blue'>صندوق-2</Box>
 				<Box bgc='green'>صندوق-3</Box>
@@ -271,7 +271,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "variant='ltr'"
 	<div dir="rtl">
-		<Flex variant='ltr' gap='20'>
+		<Flex variant='ltr' g='20'>
 			<div>صندوق-1</div>
 			<div>صندوق-2</div>
 			<div>صندوق-3</div>
@@ -282,7 +282,7 @@ ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリ�
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx "l--flex--ltr"
 	<div dir="rtl">
-		<div class="l--flex l--flex--ltr -gap:20">
+		<div class="l--flex l--flex--ltr -g:20">
 			<div>صندوق-1</div>
 			<div>صندوق-2</div>
 			<div>صندوق-3</div>

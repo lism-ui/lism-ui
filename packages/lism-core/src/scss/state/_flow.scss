@@ -1,5 +1,5 @@
 /*
-	flowGap はクエリ調整不可。クエリ調整必要な場合はStack使ってもらえばいい。
+	flowG はクエリ調整不可。クエリ調整必要な場合はStack使ってもらえばいい。
 	end:0 がどうせ :first-child に必要なので、 mbs も > * + * 使わず上書き形式で。
 
 	memo: :first-child , :last-child の詳細度は 0-1-0
@@ -9,25 +9,26 @@
 
 :where(.is--flow) {
 	> * {
-		--mbs: var(--flowGap--m);
+		--mbs: var(--flowG--r);
 		margin-block-end: 0;
 		margin-block-start: var(--mbs); // resetCSSがlismであれば、これは不要
 	}
 }
-:where(.-flowGap\:) > * {
-	--mbs: var(--flowGap);
+:where(.-flowG\:s) > * {
+	--mbs: var(--flowG--s);
 }
-:where(.-flowGap\:s) > * {
-	--mbs: var(--flowGap--s);
+:where(.-flowG\:) > * {
+	--mbs: var(--flowG);
 }
+
 // :where(.-flow\:l) > * {
-// 	--mbs: var(--flowGap--l);
+// 	--mbs: var(--flowG--l);
 // }
 
 // 見出しの上部余白は少しだけ広くする. ただし、見出し直後の見出しの場合を除く。
 // Note: :first-child での打消しのほうが優先度高くなるように注意する
 :where(h1, h2, h3:not(h2 + h3), h4:not(h3 + h4), h5:not(h4 + h5), h6:not(h5 + h6)) {
-	--mbs: var(--flowGap--htag);
+	--mbs: var(--flowG--h);
 }
 
 // :first-child への上書きのほうが優先度高くなるように。
@@ -38,6 +39,5 @@
 // .is--skipFlow の次の要素は mbs を 0 にする。
 // hidden要素 や absoluteな要素が先頭に入り込んでいる時などに活用できる。
 .is--skipFlow + * {
-	// margin-block-start: 0;
 	--mbs: 0;
 }

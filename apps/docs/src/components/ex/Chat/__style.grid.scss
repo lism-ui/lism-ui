@@ -1,0 +1,86 @@
+:where(.c--chat) {
+	// border-radius: var(--radii--l);
+	--boxcolor: var(--gray);
+}
+
+// --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
+// --avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:48px~640:64px
+// --avator-size: clamp(40px, 16px + 7.5cqw, 64px); // 320:40px~640:64px
+
+.c--chat {
+	// --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
+	--avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:40px~640:64px
+	--body-offset: calc(var(--avator-size) / 2);
+	--deco-size: 1rem;
+	--cbox-mixper--bg: 10%;
+	// --cbox-mixper--txt: 0%;
+
+	// auto のとこに --avator-size を使うと、アバターなしの時にスペースできてしまう。
+	grid:
+		'icon name' var(--body-offset)
+		'icon body'
+		'.    foot' / auto 1fr;
+	gap: 0.125em calc(var(--deco-size) + 0.125rem);
+}
+
+// .c--chat--start {
+// 	&.c--chat--speak .c--chat__content {
+// 		border-start-start-radius: 0;
+// 	}
+// 	> .c--chat__body > .a--decorator {
+// 		inset-inline-end: 100%;
+// 	}
+// }
+
+.c--chat--end {
+	grid: 'name icon' var(--body-offset) 'body icon' 'foot .' / 1fr auto;
+	// > [data-type='chat'] > .c--chat__content {border-start-end-radius: 0;}
+	// > .c--chat__body > .a--decorator {
+	// 	inset-inline-start: 100%;
+	// 	transform: scaleX(-1);
+	// }
+}
+
+.c--chat__avatar {
+	grid-area: icon;
+	--size: var(--avator-size); //  avatar に渡す
+}
+
+.c--chat__name {
+	grid-area: name;
+	// align-self: end;
+	// justify-content: inherit;
+}
+.c--chat__footer {
+	grid-area: foot;
+}
+
+// .b--chatText,
+.c--chat__body {
+	grid-area: body;
+	// margin-top: var(--body--mt);
+}
+
+// .c--chat__content {
+// 	.c--chat--start.c--chat--speak & {
+// 		border-start-start-radius: 0;
+// 	}
+// 	.c--chat--end.c--chat--speak & {
+// 		border-start-end-radius: 0;
+// 	}
+// }
+
+// decorator
+:where(.c--chat__body) > .a--decorator {
+	// background: var(--cbox-bgc, var(--gray));
+	width: var(--deco-size);
+	height: var(--deco-size);
+}
+.c--chat--speak .a--decorator {
+	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path d="M8,8L8,8C7.4,4.8,5.4,2,2.6,0.4L2,0h6V8z"/></svg>');
+	// --mask-img: url(data:image/svg+xml;base64,...);
+}
+// think
+.c--chat--think .a--decorator {
+	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><circle cx="2" cy="2" r="1.5"/><circle cx="5" cy="5" r="2.2"/></svg>');
+}

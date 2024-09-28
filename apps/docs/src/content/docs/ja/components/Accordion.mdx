@@ -306,12 +306,12 @@ import { Minus, Plus } from '@phosphor-icons/react';
 </Preview>
 
 
-`AccordionGroup`は`Stack`で構成されているため、`gap`でアコーディオン間の余白を調整できます。
+`AccordionGroup`は`Stack`で構成されているため、`g`でアコーディオン間の`gap`を調整できます。
 
 <Preview>
 	<PreviewTitle>別の例</PreviewTitle>
 	<PreviewArea p={30}>
-		<AccordionGroup gap='20'>
+		<AccordionGroup g='20'>
 			<Accordion bgc='base-2' bxsh='1' bdrs='m'>
 				<AccordionHeader p='box'>Accordion</AccordionHeader>
 				<AccordionBody p='box' bd='t' bdc='divider'>
@@ -333,8 +333,8 @@ import { Minus, Plus } from '@phosphor-icons/react';
 		</AccordionGroup>
 	</PreviewArea>
 	<PreviewCode>
-```jsx "gap="
-<AccordionGroup gap='20'>
+```jsx "g="
+<AccordionGroup g='20'>
 	<Accordion bgc='base-2' bxsh='1' bdrs='m'>
 		<AccordionHeader p='box'>Accordion</AccordionHeader>
 		<AccordionBody p='box' bd='t' bdc='divider'>...</AccordionBody>
@@ -483,7 +483,7 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 	<PreviewArea p='20'>
 		<Accordion>
 			<AccordionHeader isFreeMode>
-				<AccordionLabel layout={Flex} ai='c' gap='em3' tag='h3'>
+				<AccordionLabel layout={Flex} ai='c' g='5' tag='h3'>
 					<><Icon as={Question} fz='2xl' />AccordionHeader</>
 				</AccordionLabel>
 				<AccordionIcon />
@@ -497,7 +497,7 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 ```jsx "isFreeMode" "layout="
 <Accordion>
 	<AccordionHeader isFreeMode>
-		<AccordionLabel layout={Flex} ai='c' gap='em3' tag='h3'>
+		<AccordionLabel layout={Flex} ai='c' g='5' tag='h3'>
 			<Icon as={Question} fz='2xl' />
 			アコーディオンヘッダー
 		</AccordionLabel>

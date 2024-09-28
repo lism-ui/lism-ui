@@ -42,7 +42,6 @@ export function getAccHeadProps({ lismClass, ...props }) {
 	const defaultProps = {
 		lismClass,
 		ai: 'c',
-		//p: 'box:s', gap: 20
 	};
 
 	// getProps に 'p', 'gap' が含まれている場合、p, gap のデフォルト値を消す

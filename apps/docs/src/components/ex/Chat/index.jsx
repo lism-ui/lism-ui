@@ -1,104 +1,128 @@
 import React from 'react';
-import { Lism, Grid, Avatar, Decorator } from '@lism-ui/core';
-// import ChatName from './ChatName';
-// import ChatAvatar from './ChatAvatar';
-// import ChatContent from './ChatContent';
-// import ChatFooter from './ChatFooter';
-// import { ChatContext } from './context';
-import {
-	getProps,
-	getNameProps,
-	getAvatarProps,
-	getContentProps,
-	getDecoProps,
-	getFooterProps,
-} from './getProps';
+import { Lism, FlexItem, Flex, Stack, WithSide, Grid, Avatar, Decorator } from '@lism-ui/core';
+
+// function getContentProps(direction, variant) {
+// 	const returnProps = {};
+// 	if ('speak' === variant && direction === 'start') {
+// 		returnProps.radii = { ss: 0 };
+// 	} else if ('speak' === variant && direction === 'end') {
+// 		returnProps.radii = { se: 0 };
+// 	}
+
+// 	return returnProps;
+// }
 
 export function Chat({
-	_lismClass = [],
-	lismState = [],
+	variant = 'speak',
+	direction = 'start',
 	name,
 	avatar,
 	footer,
-	variant = 'speak',
-	direction = 'start',
 	isFlow = 's',
-	bodyProps = {},
-	contentProps = {},
 	children,
+	boxcolor = '-',
+	layout,
 	...props
 }) {
-	_lismClass.push(`c--chat c--chat--${direction}`);
-	if (variant) _lismClass.push(`c--chat--${variant}`);
+	let lismClass = `c--chat`;
+	if (variant) lismClass += ` c--chat--${variant}`;
+	// if (direction === 'end') lismClass += ' c--chat--end';
 
-	// const contextData = { direction, variant };
-	return (
-		// <ChatContext.Provider value={contextData}>
-		<Grid
-			_lismClass={_lismClass}
-			lismState={lismState}
-			{...getProps(direction, variant)}
-			{...props}
-		>
-			{name && <ChatName>{name}</ChatName>}
-			{avatar && <ChatAvatar src={avatar} />}
-			<ChatContent
-				isFlow={isFlow}
-				variant={variant}
-				direction={direction}
-				contentProps={contentProps}
-				{...bodyProps}
-			>
-				{children}
-			</ChatContent>
-			{footer && <ChatFooter>{footer}</ChatFooter>}
-		</Grid>
-		// </ChatContext.Provider>
-	);
-}
-
-export function ChatName({ children, ...props }) {
-	return (
-		<Lism skipState _lismClass={['c--chat__name']} {...getNameProps(props)}>
-			{children}
-		</Lism>
-	);
-}
-export function ChatAvatar(props) {
-	return <Avatar _lismClass={['c--chat__avatar']} {...getAvatarProps(props)} />;
-}
-
-export function ChatContent({
-	direction = 'start',
-	variant = 'speak',
-	isFlow,
-	contentProps = {},
-	children,
-	...props
-}) {
-	let decorator = null;
-	if ('speak' === variant || 'think' === variant) {
-		decorator = <Decorator {...getDecoProps(direction, variant)} />;
+	let Layout = Flex;
+	if (variant === 'box') {
+		Layout = WithSide;
+		props.sidePosition = `${direction} start`;
+	} else {
+		props.fxd = direction === 'end' ? 'row-reverse' : '';
 	}
 
 	return (
-		<Lism _lismClass={['c--chat__body']} {...props}>
-			{decorator}
-			<Lism
-				_lismClass={['c--chat__content']}
-				isFlow={isFlow}
-				{...getContentProps(direction, variant, contentProps)}
-			>
-				{children}
-			</Lism>
-		</Lism>
-	);
-}
+		<Layout
+			lismClass={lismClass}
+			boxcolor={boxcolor}
+			bg='none'
+			data-chat-direction={direction}
+			// {...getProps(direction, variant)}
+			{...props}
+		>
+			{avatar && (
+				<Avatar
+					lismClass='c--chat__avatar'
+					isSide
+					src={avatar}
+					alt=''
+					bgc='base'
+					bdrs='full'
+					width='60'
+					height='60'
+					aria-hidden='true'
+					jslf={direction}
+				/>
+			)}
+			{/* l--grid--overlap */}
+			<FlexItem layout={Grid} lismClass='c--chat__body' pos='r' fx='1'>
+				{name && (
+					<Lism
+						lismClass='c--chat__name'
+						c='content-3'
+						fs='i'
+						fz='2xs'
+						lh='1'
+						py='5'
+						px='10'
+						aslf='e'
+						// jslf={direction === 'end' ? 'start' : 'end'}
+						jslf={direction}
+						// gridItem={{ gr: '1' }}
+					>
+						{name}
+					</Lism>
+				)}
+				<Lism
+					lismClass='c--chat__content'
+					pos='r'
+					// gridItem={{ gr: '2', gc: '1' }}
+					bgc
+					bdrs='l'
+					p='box'
+					// p='20'
+					isFlow={isFlow}
+					jslf={direction}
+					// {...getContentProps(direction, variant)}
+				>
+					{variant !== 'box' && (
+						<Decorator
+							lismClass='c--chat__deco'
+							lismState={['has--mask is--skipFlow']}
+							bgc
+							// gridItem={{ gr: '2', gc: '1' }}
+							pos='a'
+							// t='0'
+							insets={direction === 'start' ? { ie: '100%' } : { is: '100%' }}
+							// jslf={direction}
+							scale={direction === 'start' ? '' : '-X'}
+							uClass='-fxsh:0'
+							// {...getDecoProps(direction, variant)}
+						/>
+					)}
+					{children}
+				</Lism>
 
-export function ChatFooter({ children, ...props }) {
-	return (
-		<Lism skipState _lismClass={['c--chat__footer']} {...getFooterProps(props)}>
-			{children}
-		</Lism>
+				{/* {footer && (
+					<Lism
+						lismClass='c--chat__footer'
+						fz='2xs'
+						lh='xs'
+						px='5'
+						c='content-3'
+						fs='i'
+						aslf={direction === 'end' ? 'start' : 'end'}
+						// gridItem={{ gr: '3' }}
+					>
+						{footer}
+					</Lism>
+				)} */}
+			</FlexItem>
+		</Layout>
 	);
 }

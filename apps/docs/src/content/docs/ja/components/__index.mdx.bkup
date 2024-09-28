@@ -71,7 +71,7 @@ export const CLinks = () => {
 }
 
 
-<Cluster cols={[2,3,4]} gap={20}>
+<Cluster cols={[2,3,4]} g={20}>
 	<CLinks />
 </Cluster>
 

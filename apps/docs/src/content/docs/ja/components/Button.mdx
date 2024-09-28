@@ -61,7 +61,7 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 <Preview>
 	<PreviewTitle>各`variant`</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' variant='fill'>Fill</Button>
 			<Button href='###' variant='outline'>Outline</Button>
 			<Button href='###' variant='ghost'>Text</Button>
@@ -95,7 +95,7 @@ export const cboxKeywords = ["red", "blue", "green", "yellow", "purple", "orange
 <Preview>
 	<PreviewTitle>左にアイコン</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' leftIcon={ShoppingCartSimple} bdrs='s'>Button</Button>
 			<Button href='###' leftIcon={ShoppingCartSimple} variant='outline' bdrs='s'>Button</Button>
 			<Button href='###' leftIcon={ShoppingCartSimple} variant='ghost' bdrs='s'>Button</Button>
@@ -121,7 +121,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 <Preview>
 	<PreviewTitle>アイコンを右に</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' rightIcon={ArrowRight} bdrs='full'>Button</Button>
 			<Button href='###' rightIcon={ArrowRight} variant='outline' bdrs='full'>Button</Button>
 			<Button href='###' rightIcon={ArrowRight} variant='ghost' bdrs='full'>Button</Button>
@@ -146,14 +146,14 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 <Preview>
 	<PreviewTitle>横並び</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Flex gap='20'>
+		<Flex g='20'>
 			<Button href='###' w='50%'>Button</Button>
 			<Button href='###' variant='outline' w='50%' leftIcon={ShoppingCartSimple}>Button</Button>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Flex gap='20'>
+	<Flex g='20'>
 		<Button href='###' w='50%'>Button</Button>
 		<Button href='###' variant='outline' w='50%' leftIcon={ShoppingCartSimple}>Button</Button>
 	</Flex>
@@ -288,7 +288,7 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 <Preview>
 	<PreviewTitle>子要素に`Icon`を配置してもOKです。</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<IconButton hov='up'>
 				<Icon icon={ShoppingCartSimple} weight='fill'/>
 			</IconButton>
@@ -314,7 +314,7 @@ p, fz, w などの基本Propで調整できます。
 <Preview>
 	<PreviewTitle>小さいサイズのボタン</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' keycolor='purple' fz='xs' p='10' leftIcon={ArrowRight}>Button</Button>
 			<IconButton href='###' fz='xs' icon={ShoppingCartSimple} />
 		</Cluster>
@@ -340,7 +340,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 <Preview>
 	<PreviewTitle>`hov='reverse'`</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' hov='reverse'>Fill</Button>
 			<Button href='###' hov='reverse' variant='outline'>Outline</Button>
 			<Button href='###' hov='reverse' variant='ghost'>Ghost</Button>
@@ -348,7 +348,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' hov='reverse'>Fill</Button>
 			<Button href='###' hov='reverse' variant='outline'>Outline</Button>
 			<Button href='###' hov='reverse' variant='ghost'>Ghost</Button>
@@ -360,7 +360,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 <Preview>
 	<PreviewTitle>keycolor指定ありでのreverse</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Cluster gap='20'>
+		<Cluster g='20'>
 			<Button href='###' hov='reverse' keycolor='blue'>Button</Button>
 			<Button href='###' hov='reverse' variant='outline' keycolor='pink'>Button</Button>
 			<Button href='###' hov='reverse' variant='ghost' bgc='base-2'>Button</Button>
@@ -386,7 +386,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>NG:</Text>
-			<Cluster mbs={30} gap='20'>
+			<Cluster mbs={30} g='20'>
 				<Button href='###' keycolor='base' hov='reverse' variant='outline'>Button</Button>
 				<Button href='###' c='base' hov='reverse' variant='ghost'>Button</Button>
 			</Cluster>
@@ -395,7 +395,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>OK:</Text>
-			<Cluster mbs={30} gap='20'>
+			<Cluster mbs={30} g='20'>
 				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
 				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
 			</Cluster>
@@ -407,7 +407,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>NG:</Text>
-			<Cluster mbs={30} gap='20'>
+			<Cluster mbs={30} g='20'>
 				<Button href='###' keycolor='base' hov='reverse' variant='outline'>Button</Button>
 				<Button href='###' c='base' hov='reverse' variant='ghost'>Button</Button>
 			</Cluster>
@@ -416,7 +416,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>OK:</Text>
-			<Cluster mbs={30} gap='20'>
+			<Cluster mbs={30} g='20'>
 				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
 				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
 			</Cluster>
@@ -433,7 +433,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<DammyText />
-			<Cluster mbs={30} gap='20'>
+			<Cluster mbs={30} g='20'>
 				<Button href='###' hov='reverse' variant='fill'>Button</Button>
 				<Button href='###' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
 				<Button href='###' bgc='base' c='content' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>

@@ -66,8 +66,7 @@
 		Meiryo, sans-serif, 'Segoe UI Emoji';
 	// --ff--sans: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
 	--ff--mono: Menlo, Consolas, monaco, monospace;
-	--ff--emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji',
-		'Segoe UI Symbol';
+	--ff--emoji: 'Apple Color Emoji', 'Segoe UI Emoji', 'Android Emoji', 'Segoe UI Symbol';
 
 	--ff--root: var(--ff--sans);
 
@@ -288,16 +287,16 @@
 	// --s--90: calc(var(--s--80) * 1.5);
 
 	// --g--2,4,6,8,...にしてもいいか。or, --S--, --s-- で分ける...?（gapのg)
-	--em--1: 0.125em;
-	--em--2: 0.25em;
-	--em--3: 0.375em;
-	--em--4: 0.5em;
-	--em--6: 0.75em;
-	--em--8: 1em;
-	--em--10: 1.25em;
-	--em--12: 1.5em;
-	--em--14: 1.75em;
-	--em--16: 2em;
+	// --em--1: 0.125em;
+	// --em--2: 0.25em;
+	// --em--3: 0.375em;
+	// --em--4: 0.5em;
+	// --em--6: 0.75em;
+	// --em--8: 1em;
+	// --em--10: 1.25em;
+	// --em--12: 1.5em;
+	// --em--14: 1.75em;
+	// --em--16: 2em;
 
 	// --p--box--s: 0.75em 0.875em;
 	// --p:box:{padding: var(--p--box) calc(--p--box + 0.125em);}
@@ -305,11 +304,11 @@
 	--p--box: 0.875em 1em;
 	--p--box--l: 1.375em 1.5em;
 
-	// .is--flow の blockGap 管理用変数
-	--flowGap--s: var(--s--30); // --mbs--s?
-	--flowGap--m: var(--s--40); // --mbs--m?
-	// --flowGap--l: var(--s--50);
-	--flowGap--htag: 2.5em; // var(--s--50); // フォントサイズ依存
+	// .is--flow の余白
+	--flowG--r: var(--s--40);
+	--flowG--s: var(--s--30);
+	// --flowG--l: var(--s--50);
+	--flowG--h: 2.5em; // for Headings. em.
 
 	/* ------------------------------------------------------------
 	  radius
@@ -318,32 +317,49 @@
 
 	// rads
 	// 10,20,30,..?
-	--radius--xs: 0.125rem; // ≒ 2px
-	--radius--s: 0.25rem; // ≒ 4px
-	--radius--m: 0.625rem; // ≒ 8px
-	--radius--l: 1rem; // ≒ 12px
-	--radius--xl: 1.75rem; // ≒ 20px
-	// --radius--2xl: 1.875rem; // ≒ 30px
-	--radius--full: 999px;
+	--radii--xs: 0.125rem; // ≒ 2px
+	--radii--s: 0.25rem; // ≒ 4px
+	--radii--m: 0.625rem; // ≒ 8px
+	--radii--l: 1rem; // ≒ 12px
+	--radii--xl: 1.75rem; // ≒ 20px
+	// --radii--2xl: 1.875rem; // ≒ 30px
+	--radii--full: 999px;
 
 	/* ------------------------------------------------------------
 	  shadow
 	------------------------------------------------------------ */
-	--sh-hsl: 215 8% 12%;
-	--sh-a: 8%;
+	--sh-hsl: 210 20% 20%;
+	--sh-a: 10%;
 
 	// --sh-a--base: calc(var(--sh-a) - 4%);
 	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));
 
 	// shadow:
 
-	// 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
-	--sh-size--0: 1px 2px 3px -1px;
-	--sh-size--1: 2px 4px 6px -1px;
-	--sh-size--2: 3px 6px 9px -1px;
-	--sh-size--3: 5px 10px 15px -1px;
-	--sh-size--4: 8px 16px 24px -1px;
-	--sh-size--5: 13px 26px 39px -1px;
+	// x y blur
+	// x: 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+	// y: 3 で x:y が 1:2。高い位置にあるほど比率が大きくなる。
+	// blur: y + x
+	// --sh-size--0: 1px 1px 2px 0;
+	// --sh-size--1: 2px 3px 5px 0;
+	// --sh-size--2: 3px 5px 8px 0;
+	// --sh-size--3: 5px 10px 15px 0;
+	// --sh-size--4: 8px 18px 26px 0;
+	// --sh-size--5: 13px 30px 43px 0;
+
+	--sh-size--0: 1px 1px 2px 0;
+	--sh-size--1: 2px 3px 5px 0;
+	--sh-size--2: 4px 7px 11px 0;
+	--sh-size--3: 7px 14px 21px 0;
+	--sh-size--4: 11px 24px 35px 0;
+	--sh-size--5: 16px 36px 52px 0;
+
+	// --sh-size--0: 1px 2px 3px 0;
+	// --sh-size--1: 2px 4px 6px 0;
+	// --sh-size--2: 3px 6px 9px 0;
+	// --sh-size--3: 5px 10px 15px 0;
+	// --sh-size--4: 8px 16px 24px 0;
+	// --sh-size--5: 13px 26px 39px 0;
 
 	// --sh-size--0: 0.5px 1px 2px 0;
 	// --sh-size--1: 1px 2px 4px 0;
@@ -374,7 +390,7 @@
 
 	--sh--i1: inset var(--sh-size--0) var(--sh-color), inset var(--sh-size--1) var(--sh-color);
 	--sh--i2: inset var(--sh-size--1) var(--sh-color), inset var(--sh-size--2) var(--sh-color);
-	--sh--i3: inset var(--sh-size--2) var(--sh-color), inset var(--sh-size--3) var(--sh-color);
+	// --sh--i3: inset var(--sh-size--2) var(--sh-color), inset var(--sh-size--3) var(--sh-color);
 }
 
 // ↓ space: これでもわりとしっくりくる...？ 2:.25, 3: 0.375

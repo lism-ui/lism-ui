@@ -2,7 +2,7 @@ import { Badge } from '@lism-ui/core';
 
 export const MemoBadge = ({ children, color = 'orange', ...props }) => {
 	return (
-		<Badge fz='11px' lh='1' p='em3' variant='subtle' boxcolor={color} {...props}>
+		<Badge fz='xs' lh='1' p='5' variant='subtle' boxcolor={color} {...props}>
 			{children}
 		</Badge>
 	);
@@ -18,9 +18,9 @@ export const PropBadge = ({ type = '', ...props }) => {
 		<Badge
 			fz='xs'
 			ff='mono'
-			lh='1'
-			p='em2'
-			m='em2'
+			lh='xs'
+			px='5'
+			m='5'
 			whs='nw'
 			// d='if'
 			variant='subtle'

@@ -230,7 +230,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
+		<Tabs bgc='base-2' bxsh='2' g='0' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
 			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
 			listProps={{fz:'m',bd:'b'}}
@@ -255,7 +255,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "tabProps" "listProps" "panelProps"
-		<Tabs bgc='base-2' bxsh='2' gap='0' isFlow='s'
+		<Tabs bgc='base-2' bxsh='2' g='0' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
 			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
 			listProps={{fz:'m',bd:'b'}}
@@ -407,10 +407,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		background-color: var(--base-3);
 		padding: 4px;
 		gap: 0.5em;
-		border-radius: var(--radius--s);
+		border-radius: var(--radii--s);
 	}
 	.c--tabs__tab {
-		border-radius: calc(var(--radius--s) - 2px);
+		border-radius: calc(var(--radii--s) - 2px);
 	}
 	.c--tabs__tab:where([aria-selected='true']) {
 		box-shadow: var(--sh--1);

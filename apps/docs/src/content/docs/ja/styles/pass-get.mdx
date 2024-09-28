@@ -1,11 +1,103 @@
 ---
 title: 'pass-get'
 description: ...
+sidebar: 
+  order: 90
 ---
 
-import { Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
+import { Lism, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
 
-## Points
+親要素から複数の子要素に対して同じプロパティを一括で管理したい場合、Lism では `--pass-{prop}`変数を`-pass:{prop}`クラスで直下要素すべてに渡すか、子要素側に`-get:{prop}`クラスをつけて個別に取得する、というシステムを定めています。
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Flex variant='cluster' pass='minW,p' passVars={{p: '20 30', minW:'5rem'}} g='20' ta='c'>
+			<Box bd>Box</Box>
+			<Box bd>Box</Box>
+			<Box bd>Box</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "pass" "passVars"
+		<Flex variant='cluster' pass='minW,p' passVars={{p: '20 30', minW:'5rem'}} g='20' ta='c'>
+			<Box bd>Box</Box>
+			<Box bd>Box</Box>
+			<Box bd>Box</Box>
+		</Flex>
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx "--pass-p" "--pass-minW" "-pass:minW" "-pass:p"
+	<div class="l--flex l--flex--cluster -ta:c -g:20 -pass:minW -pass:p" style="--pass-p:var(--s--20) var(--s--30);--pass-minW:5rem">
+		<div class="l--box -bd:">Box</div>
+		<div class="l--box -bd:">Box</div>
+		<div class="l--box -bd:">Box</div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Flex variant='cluster' g='20' passVars={{c: 'red'}}>
+			<span>Lorem</span>
+			<Lism tag='span' get='c'>▶</Lism>
+			<span>Ipsum</span>
+			<Lism tag='span' get='c'>▶</Lism>
+			<span>Dolor</span>
+			<Lism tag='span' get='c'>▶</Lism>
+			<span>Sit amet</span>
+			<Lism tag='span' get='c'>▶</Lism>
+			<span>Consectetur</span>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx "passVars" "get"
+	<Flex variant='cluster' g='20' passVars={{c: 'red'}}>
+		<span>Lorem</span>
+		<Lism tag='span' get='c'>▶</Lism>
+		<span>Ipsum</span>
+		<Lism tag='span' get='c'>▶</Lism>
+		<span>Dolor</span>
+		<Lism tag='span' get='c'>▶</Lism>
+		<span>Sit amet</span>
+		<Lism tag='span' get='c'>▶</Lism>
+		<span>Consectetur</span>
+	</Cluster>
+	```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+	```jsx "--pass-c" "-get\:c"
+	<div class="l--flex l--flex--cluster -g:20" style="--pass-c:var(--red)">
+		<span>Lorem</span>
+		<span class="-get:c">▶</span>
+		<span>Ipsum</span>
+		<span class="-get:c">▶</span>
+		<span>Dolor</span>
+		<span class="-get:c">▶</span>
+		<span>Sit amet</span>
+		<span class="-get:c">▶</span>
+		<span>Consectetur</span>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
+
+同じスタイルを持った子要素の数が多く、HTMLのコード量が冗長的になりすぎる場合に、このシステムを利用してみてください。
+
+ただし、基本的には子要素ひとつひとつに値をセットすればよいことを別アプローチで行なっているだけですので、Lismのコアパッケージで用意しているクラスは最低限に抑えています。
+
+```css
+.-get\:c {
+	color: var(--pass-c);
+}
+```
+
+別プロパティに対しても同様のスタイリングを行いたい場合に、同じようなルールでクラスを追加していただくと統一性を保つことができます。

@@ -11,61 +11,109 @@ import {Question,ChatCircleDots} from '@phosphor-icons/react';
 import { ArrowFatLinesDown } from '@phosphor-icons/react';
 import { Step, StepBody, StepHead } from '~/components/ex/Step';
 
+<Preview>
+	<PreviewTitle>ステップナビゲーション</PreviewTitle>
+	<PreviewArea resize p='30' nogrid>
+		<Flex className='c--stepNav'>
+			<Flex className='c--stepNav__item' bgc='content-3' c='base' px='30' py='10' pos='r'>
+				<Lism className='c--stepNav__body'>
+					<Text>入力</Text>
+				</Lism>
+				<Decorator
+					pos='absolute'
+					z='1'
+					h='100%'
+					w='0.5em'
+					bgc='inherit'
+					l='100%'
+					t='0'
+					css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+				/>
+			</Flex>
+			<Flex className='c--stepNav__item' bgc='content-2' c='base' px='30' py='10' pos='r'>
+				<Spacer w='0.5em' />
+				<Lism className='c--stepNav__body'>
+					<Text>確認</Text>
+				</Lism>
+				<Decorator
+					pos='absolute'
+					z='1'
+					h='100%'
+					w='0.5em'
+					bgc='inherit'
+					l='100%'
+					t='0'
+					css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+				/>
+			</Flex>
+			<Flex className='c--stepNav__item' bgc='content' c='base' px='30' py='10'>
+				<Spacer w='0.5em' />
+				<Lism className='c--stepNav__body'>
+					<Text>完了</Text>
+				</Lism>
+			</Flex>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Flex className='c--stepNav'>
+			<Flex className='c--stepNav__item' bgc='content-3' c='base' px='30' py='10' pos='r'>
+				<Lism className='c--stepNav__body'>
+					<Text>入力</Text>
+				</Lism>
+				<Decorator
+					pos='absolute'
+					z='1'
+					h='100%'
+					w='0.5em'
+					bgc='inherit'
+					l='100%'
+					t='0'
+					css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+				/>
+			</Flex>
+			<Flex className='c--stepNav__item' bgc='content-2' c='base' px='30' py='10' pos='r'>
+				<Spacer w='0.5em' />
+				<Lism className='c--stepNav__body'>
+					<Text>確認</Text>
+				</Lism>
+				<Decorator
+					pos='absolute'
+					z='1'
+					h='100%'
+					w='0.5em'
+					bgc='inherit'
+					l='100%'
+					t='0'
+					css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
+				/>
+			</Flex>
+			<Flex className='c--stepNav__item' bgc='content' c='base' px='30' py='10'>
+				<Spacer w='0.5em' />
+				<Lism className='c--stepNav__body'>
+					<Text>完了</Text>
+				</Lism>
+			</Flex>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
 
 
-<Flex className='c--stepNav'>
-	<Flex className='c--stepNav__item' bgc='content-3' c='base' px='30' py='10' pos='r'>
-		<Lism className='c--stepNav__body'>
-			<Text>入力</Text>
-		</Lism>
-		<Decorator
-			pos='a'
-			z='1'
-			h='100%'
-			w='.5em'
-			bgc='inherit'
-			l='100%'
-			t='0'
-			css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
-		></Decorator>
-	</Flex>
-	<Flex className='c--stepNav__item' bgc='content-2' c='base' px='30' py='10' pos='r'>
-		<Spacer w='em4' />
-		<Lism className='c--stepNav__body'>
-			<Text>確認</Text>
-		</Lism>
-		<Decorator
-			pos='a'
-			z='1'
-			h='100%'
-			w='.5em'
-			bgc='inherit'
-			l='100%'
-			t='0'
-			css={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
-		></Decorator>
-	</Flex>
-	<Flex className='c--stepNav__item' bgc='content' c='base' px='30' py='10'>
-		<Spacer w='em4' />
-		<Lism className='c--stepNav__body'>
-			<Text>完了</Text>
-		</Lism>
-	</Flex>
-</Flex>
 
 ---
 
 <Preview>
-	<PreviewTitle>コード</PreviewTitle>
-	<PreviewArea resize p={30} nogrid>
-		<Stack className='c--priceMenu' gap={30} fz={['s','m']} lh='s'>
-			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+	<PreviewTitle>メニュー表</PreviewTitle>
+	<PreviewArea resize p='30' nogrid>
+		<Stack className='c--priceMenu' g='30' fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' g={20}>
 				<Text>とても美味しいトマトソースのスパゲッティ</Text>
 				{/* <Divider/> */}
 				<Decorator bd='block-start' bdc='divider' />
 				<Text whs='nowrap'>1,000円</Text>
 			</Grid>
-			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+			<Grid gtc='auto 1fr auto' ai='center' g={20}>
 				<Text>美味しいドリンク</Text>
 				<Decorator bd='block-start' bdc='divider' />
 				<Text whs='nowrap'>500円</Text>
@@ -74,13 +122,13 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Stack className='c--priceMenu' gap={30} fz={['s','m']} lh='s'>
-			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+		<Stack className='c--priceMenu' g='30' fz={['s','m']} lh='s'>
+			<Grid gtc='auto 1fr auto' ai='center' g={20}>
 				<Text>とても美味しいトマトソースのスパゲッティ</Text>
 				<Decorator bd='block-start' bdc='divider' />
 				<Text whs='nowrap'>1,000円</Text>
 			</Grid>
-			<Grid gtc='auto 1fr auto' ai='center' gap={20}>
+			<Grid gtc='auto 1fr auto' ai='center' g={20}>
 				<Text>美味しいドリンク</Text>
 				<Decorator bd='block-start' bdc='divider' />
 				<Text whs='nowrap'>500円</Text>
@@ -95,13 +143,13 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 
 <Preview>
 	<PreviewTitle>コンテンツの高さに追従しつつ、最低限維持する比率を指定する</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewArea resize p='30'>
 		<Stack pos='r' bdrs='l' ov='h'>
 			<Layer isFrame>
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Layer>
 			<Flex aspect='16/9'>
-				<Stack flexItem={{fx:'1'}} pos='r' gap='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
+				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
 					<DammyText lh='s' mb='auto' length='l'/>
 					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>
@@ -116,7 +164,7 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Layer>
 			<Flex aspect='16/9'>
-				<Stack flexItem={{fx:'1'}} pos='r' gap='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
+				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100' h='auto'  c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
 					<DammyText lh='s' mb='auto' length='l'/>
 					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>

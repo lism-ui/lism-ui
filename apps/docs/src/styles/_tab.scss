@@ -24,11 +24,11 @@
 		background-color: var(--base-3);
 		padding: 4px;
 		gap: 0.5em;
-		border-radius: var(--radius--s);
+		border-radius: var(--radii--s);
 	}
 	.c--tabs__tab {
 		// 親のbdrs - 親のpadding/2
-		border-radius: calc(var(--radius--s) - 2px);
+		border-radius: calc(var(--radii--s) - 2px);
 	}
 	.c--tabs__tab:where([aria-selected='true']) {
 		box-shadow: var(--sh--1);

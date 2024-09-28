@@ -6,7 +6,6 @@ description: ...
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Chat } from '~/components/ex/Chat';
-import '~/components/ex/Chat/style.scss';
 import { Lism } from '@lism-ui/astro';
 
 ## Props
@@ -42,17 +41,28 @@ import { Chat } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green'>
+	<PreviewArea resize p={20} _dir='rtl'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green' footer='Footer text...' isFlow='s'>
 			<DammyText length='codes' />
+			<DammyText length='s' />
 		</Chat>
 		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
 			<DammyText length='codes' />
 		</Chat>
+		<Chat avatar='/img/avatar03.jpg' boxcolor='blue'>
+			<DammyText length='xs' />
+		</Chat>
+		<Chat avatar='/img/avatar03.jpg' boxcolor='blue'>
+			<ul>
+				<li>Lorem ipsum...</li>
+				<li>Lorem ipsum...</li>
+				<li>Lorem ipsum...</li>
+			</ul>
+		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green' footer='Footer text...'>
 			<p>Lorem ipsum...</p>
 		</Chat>
 		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
@@ -61,15 +71,19 @@ import { Chat } from '@lism-ui/astro';
 		```
 	</PreviewCode>
 </Preview>
+
 
 <Preview>
 	<PreviewTitle>`variant='think'`</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p={20} _dir='rtl'>
 		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
 			<DammyText length='codes' />
 		</Chat>
 		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
 			<DammyText length='codes' />
+		</Chat>
+		<Chat variant='think' avatar='/img/avatar03.jpg' boxcolor='blue'>
+			<DammyText length='xs' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
@@ -84,7 +98,32 @@ import { Chat } from '@lism-ui/astro';
 	</PreviewCode>
 </Preview>
 
+{/* <Preview>
+	<PreviewTitle>`variant='box'`</PreviewTitle>
+	<PreviewArea resize p={20} _dir='rtl'>
+		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+			<DammyText length='codes' />
+		</Chat>
+		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+			<DammyText length='codes' />
+		</Chat>
+		<Chat variant='box' avatar='/img/avatar03.jpg' boxcolor='blue'>
+			<DammyText length='xs' />
+		</Chat>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+			<p>Lorem ipsum...</p>
+		</Chat>
+		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+			<p>Lorem ipsum...</p>
+		</Chat>
+		```
+	</PreviewCode>
+</Preview> */}
 
+{/* 
 ### Astroでのslotの活用
 
 Astroでは、name,footerをslotで指定することが可能です。
@@ -108,4 +147,4 @@ Astroでは、name,footerをslotで指定することが可能です。
 		```
 	</PreviewCode>
 </Preview>
-
+ */}

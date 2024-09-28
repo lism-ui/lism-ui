@@ -7,7 +7,7 @@ sidebar:
 
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Box, Callout, Flex, Stack, Divider, Spacer } from '@lism-ui/core';
+import { Box, Callout, Flex, FlexItem, Stack, Divider, Spacer } from '@lism-ui/astro';
 
 export const LismBorderPreviews = ({ directions = [] }) => {
 	return (
@@ -27,31 +27,41 @@ export const LismBorderPreviews = ({ directions = [] }) => {
 
 Lismでは、border系の指定が少し特殊になっています。
 
-`-bd:`クラスがベースにあり、`--bdc`, `--bdw`, `--bds` の3つの変数で各プロパティを管理しています。
+全方向用の`-bd:`クラスと、特定の方向だけにボーダーを表示するための`.-bd\:{side}`クラスがあります。  
+いずれも、細かなボーダースタイルは `--bdc`, `--bdw`, `--bds` の3つの変数で管理します。
 
 <PreviewTitle>css</PreviewTitle>
 ```scss
-[class*='-bd:'] {
-	// 初期値
+:where([class*='-bd:']) {
 	--bds: solid;
 	--bdw: 1px;
 	--bdc: currentColor;
-	--bd: var(--bdw) var(--bds) var(--bdc);
 }
-.-bd\: { border: var(--bd); }
-.-bd\:l { border-left: var(--bd); }
-.-bd\:t { border-top: var(--bd); }
-.-bd\:r { border-right: var(--bd); }
-.-bd\:b { border-bottom: var(--bd); }
+.-bd\: {
+	border-style: var(--bds);
+	border-width: var(--bdw);
+	border-color: var(--bdc);
+}
+
+.-bd\:l { border-left: var(--bdw) var(--bds) var(--bdc); }
+.-bd\:t { border-top: var(--bdw) var(--bds) var(--bdc); }
+.-bd\:r { border-right: var(--bdw) var(--bds) var(--bdc); }
+.-bd\:b { border-bottom: var(--bdw) var(--bds) var(--bdc); }
 // ...
 ```
 
-これに合わせて、コンポーネントでも `bd`, `bdc`, `bdw`, `bds` が指定できるようになっています。
+
+これに合わせて、コンポーネントでも `bd`, `bdc`, `bdw`, `bds` がそれぞれ指定できるようになっており、`bdc`, `bdw`, `bds` はCSS変数が出力されるようになっています。
+
+また、`bdw`はブレイクポイント指定も可能です。
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p='40'>
-		<Box bd bdc='red' bds='dashed' p='20'>
+		<Box bd p='20'>
+			<DammyText length='s'/>
+		</Box>
+		<Box bd bds='dashed' bdw='2px' bdc='red' p='20'>
 			<DammyText length='s'/>
 		</Box>
 		<Box bd='l' bdc='blue' bdw='0.4em' p='20'>
@@ -79,23 +89,6 @@ Lismでは、border系の指定が少し特殊になっています。
 		```
 	</PreviewCode>
 </Preview>
-
-
-{/* <Preview>
-	<PreviewTitle>オブジェクトで`bdc`,`bdw`,`bds`を一括指定</PreviewTitle>
-	<PreviewArea resize p='40'>
-		<Box bd={{ c:"accent", w:"3px", s:"dotted" }}>
-			<DammyText p='40'/>
-		</Box>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx {1}
-	<Box bd={{ c:"accent", w:"3px", s:"dotted" }}>
-		...
-	</Box>
-	```
-	</PreviewCode>
-</Preview> */}
 
 
 
@@ -171,74 +164,129 @@ Lismでは、border系の指定が少し特殊になっています。
 <Preview>
 	<PreviewTitle>`,`区切りで複数指定</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Box bd='l,b' p='10'>left,bottom</Box>
+		<Box bd='l,b' bdc='red' p='10'>left, bottom</Box>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
 		```jsx "bd='l,b'"
-		<Box bd='l,b' p='10'>left,bottom</Box>
+		<Box bd='l,b' bdc='red' p='10'>left, bottom</Box>
 		```
 	</PreviewCode>
 	<PreviewCode label='HTML' slot='tab'>
 		```html
-		<div class='-bd:l -bd:b -p:10'>left,bottom</div>
+		<div class='-bd:l -bd:b -p:10' style="--bdc:var(--red)">left, bottom</div>
 		```
 	</PreviewCode>
 </Preview>
 
 
-## ユーティリティクラスを出力
-
-デフォルトで用意しているのは次の通りです。（検討中）
-
-- `-bd:guide`
-- `-bd:emphasis`
-
+`.-bd\:`クラスが `border-style` `border-width` `border-color` を分割指定していることにより、以下のようなボーダーを出力することもできます。
 <Preview>
-	<PreviewTitle>ユーティリティクラスの活用</PreviewTitle>
-	<PreviewArea p='40'>
-		<div class='-bd:guide -p:10'>
-			<DammyText length='s'/>
-		</div>
-		<div class='-bd:emphasis -p:10'>
-			<DammyText length='s'/>
-		</div>
-		<div class='-bd:emphasis -p:10' style='--bdc:#39bae0'>
-			<DammyText length='s'/>
-		</div>
+	<PreviewTitle>`bdw`,`bds`,`bdc`それぞれの方向指定</PreviewTitle>
+	<PreviewArea resize p='40'>
+		<Box bd bdw='0 0 1px .5em' bds='dashed solid' bdc='var(--purple) var(--blue)' p='20'>
+			border
+		</Box>
 	</PreviewArea>
-	<PreviewCode>
-	```html
-	<div class='-bd:guide -p:10'>...</div>
-	<div class='-bd:emphasis -p:10'>...</div>
-	<div class='-bd:emphasis -p:10' style='--bdc:#39bae0'>...</div>
-	```
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx
+		<Box bd bdw='0 0 1px .5em' bds='dashed solid' bdc='var(--purple) var(--blue)' p='20'>
+			border
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class="l--box -bd: -p:20" style="--bdw:0 0 1px .5em;--bds:dashed solid;--bdc:var(--purple) var(--blue)">
+			border
+		</div>
+		```
 	</PreviewCode>
 </Preview>
+		
 
-### bdwをブレイクポイントで切り替える
+
+## bdwをブレイクポイントで切り替える
 
 `bdw`は、ブレイクポイント指定に対応しています。
 
 <Preview>
 	<PreviewTitle>`bd`の例</PreviewTitle>
 	<PreviewArea p='40' resize>
-		<Box bd bdw={['1px','2px','4px']} p='20'>border</Box>
+		<Box bd bdw={['1px','3px','6px']} p='20'>border</Box>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
 		```jsx
-		<Box bd bdw={['1px','2px','4px']} p='20'>border</Box>
+		<Box bd bdw={['1px','3px','6px']} p='20'>border</Box>
 		```
 	</PreviewCode>
 	<PreviewCode label='HTML' slot='tab'>
 		```html
-		<div class="l--box -bd: -bdw@sm -bdw@md -p:20" style="--bdw:1px;--sm-bdw:2px;--md-bdw:4px">border</div>
+		<div class="l--box -bd: -bdw@sm -bdw@md -p:20" style="--bdw:1px;--sm-bdw:3px;--md-bdw:6px">border</div>
 		```
 	</PreviewCode>
 </Preview>
 
-{/* hasBd */}
 
-### 任意の`border`をインライン出力する方法
+<Preview>
+	<PreviewTitle>ボーダーの方向を切り替える</PreviewTitle>
+	<PreviewArea p='40' resize>
+		<Flex fxd={['column','row']} bd bdc='blue'>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' p='20'>
+				Box
+			</FlexItem>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx
+		<Flex fxd={['column','row']} bd bdc='blue'>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' bd bdw={['0 0 1px 0','0 1px 0 0']} bdc='i' p='20'>
+				Box
+			</FlexItem>
+			<FlexItem fx='1' p='20'>
+				Box
+			</FlexItem>
+		</Flex>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html
+		<div class="l--flex -bd: -fxd:c -fxd@sm" style="--bdc:var(--blue);--sm-fxd:row">
+			<div class="-bd: -bdw@sm -bdc:i -p:20 -fx:1" style="--bdw:0 0 1px 0;--sm-bdw:0 1px 0 0">
+				Box
+			</div>
+			<div class="-bd: -bdw@sm -bdc:i -p:20 -fx:1" style="--bdw:0 0 1px 0;--sm-bdw:0 1px 0 0">
+				Box
+			</div>
+			<div class="-bd: -bdw@sm -bdc:i -p:20 -fx:1" style="--bdw:0 0 1px 0;--sm-bdw:0 1px 0 0">
+				Box
+			</div>
+			<div class="-p:20 -fx:1">
+				Box
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+## 任意の`border`をインライン出力する方法
 
 `bd`に直接値を指定することももちろん可能です。
 
@@ -260,7 +308,7 @@ Lismでは、border系の指定が少し特殊になっています。
 </Preview>
 
 
-各方向のボーダー(`border-left`,`border-top`など)に任意の値を指定するには、`borders`プロパティを使用します。
+{/* 各方向のボーダー(`border-left`,`border-top`など)に任意の値を指定するには、`borders`プロパティを使用します。
 
 `borders`には、オブジェクトを渡すことができ、`l`,`r`,`t`,`b`,`ie`,`is`,`be`,`bs`を指定できます。  
 これらは単純にインラインスタイルとして出力されます。
@@ -282,6 +330,6 @@ Lismでは、border系の指定が少し特殊になっています。
 		</div>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 

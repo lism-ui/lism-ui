@@ -8,7 +8,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 		props.fxd = 'column';
 	}
 	return (
-		<Flex className='b--dividerLabel' ai='c' gap='20' lh='1' c='content-3' {...props}>
+		<Flex className='b--dividerLabel' ai='c' g='20' lh='1' c='content-3' {...props}>
 			{labelPosition !== 'start' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
 			<Lism className='b--divider__label'>{children}</Lism>
 			{labelPosition !== 'end' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}

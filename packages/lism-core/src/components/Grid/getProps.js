@@ -11,12 +11,14 @@ import atts from '../../lib/helper/atts';
 export function mergeGridContextProps(props) {
 	if (null == props.grid) props.grid = {};
 
-	['gd', 'gt', 'gta', 'gtc', 'gtr', 'gaf', 'gar', 'gac', 'gap', 'rowg', 'colg'].forEach((key) => {
-		if (null != props[key]) {
-			props.grid[key] = props[key];
-			delete props[key];
+	['gd', 'gt', 'gta', 'gtc', 'gtr', 'gaf', 'gar', 'gac', 'g', 'gap', 'rowg', 'colg'].forEach(
+		(key) => {
+			if (null != props[key]) {
+				props.grid[key] = props[key];
+				delete props[key];
+			}
 		}
-	});
+	);
 
 	return props;
 }

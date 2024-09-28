@@ -1,6 +1,6 @@
 ---
 import { LismProps } from '../types';
-import { Lism } from '../Lism';
+import { Stack } from '../Stack';
 import { Flex } from '../Flex';
 import { getNavMenuProps } from '@lism-ui/core/components/NavMenu/getProps';
 
@@ -8,7 +8,7 @@ import { getNavMenuProps } from '@lism-ui/core/components/NavMenu/getProps';
 interface Props extends LismProps {}
 
 const { isFlex, ...props } = Astro.props || {};
-const JSX = isFlex ? Flex : Lism;
+const JSX = isFlex ? Flex : Stack;
 ---
 
 <JSX {...getNavMenuProps(props)} {...props}>

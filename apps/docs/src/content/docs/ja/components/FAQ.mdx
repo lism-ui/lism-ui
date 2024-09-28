@@ -13,12 +13,12 @@ Q&Aのレイアウト構築例を紹介します。
 
 export function FAQ({ q, children }) {
 	return (
-		<Stack className='c--faq' gap='20'>
-			<Flex className='c--faq__Q' gap='em4' ai='c'>
+		<Stack className='c--faq' g='20'>
+			<Flex className='c--faq__Q' g='10' ai='c'>
 				<Icon icon={Question} fz='2xl' c='purple'/>
 				<Lism tag='span' fw='bold'>{q}</Lism>
 			</Flex>
-			<Lism className='c--faq__A' px='em4' isFlow='s'>
+			<Lism className='c--faq__A' pis='10' isFlow='s'>
 				{children}
 			</Lism>
 		</Stack>
@@ -29,7 +29,7 @@ export function AccFAQ({ q, children }) {
 	return (
 		<Accordion className='c--faq' p='30' bgc='base-2' bdrs='m'>
 			<AccordionHeader>
-				<Flex gap='em4'>
+				<Flex g='10'>
 					<Icon icon={Question} fz='2xl' />
 					{q}
 				</Flex>
@@ -47,7 +47,7 @@ export function AccFAQ({ q, children }) {
 <Preview>
 	<PreviewTitle>表示</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<Stack gap='40'>
+		<Stack g='40'>
 			<FAQ q='Lorem ipsum, question 1'>
 				<DammyText length='l' />
 			</FAQ>
@@ -74,12 +74,12 @@ export function AccFAQ({ q, children }) {
 
 	export function FAQ({ q, children }) {
 		return (
-			<Stack className='c--faq' gap='20'>
-				<Flex className='c--faq__Q' gap='em4' ai='c'>
+			<Stack className='c--faq' g='20'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
 					<Icon icon={Question} fz='2xl' c='purple'/>
 					<Lism tag='span' fw='bold'>{q}</Lism>
 				</Flex>
-				<Lism className='c--faq__A' px='em4' isFlow='s'>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
 					{children}
 				</Lism>
 			</Stack>
@@ -132,7 +132,7 @@ import { FAQs, FAQ } from './path/to/.../steps';
 <Preview>
 	<PreviewTitle>表示</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<AccordionGroup gap={20}>
+		<AccordionGroup g={20}>
 			<AccFAQ q='Question 1'>
 				<DammyText length='l' />
 			</AccFAQ>
@@ -158,7 +158,7 @@ import { FAQs, FAQ } from './path/to/.../steps';
 		return (
 			<Accordion className='c--faq' p='30' bgc='base-2' bdrs='m'>
 				<AccordionHeader>
-					<Flex gap='em4'>
+					<Flex g='10'>
 						<Icon icon={Question} fz='2xl' />
 						{q}
 					</Flex>
@@ -180,7 +180,7 @@ import { FAQs, FAQ } from './path/to/.../steps';
 	import { AccordionGroup } from '@lism-ui/core';
 	import { AccFAQ } from './path/to/.../steps';
 
-	<AccordionGroup gap={20}>
+	<AccordionGroup g={20}>
 		<AccFAQ q='Lorem ipsum, question 1'>
 			<p>Answer...</p>
 		</AccFAQ>

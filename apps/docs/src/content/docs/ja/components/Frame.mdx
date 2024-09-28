@@ -152,7 +152,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='black:20%' />
 			<Layer p='box:l' ov='auto'>
-				<Center minH='100' gap='10'>
+				<Center minH='100' g='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<DammyText />
 				</Center>
@@ -165,7 +165,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='black:20%' />
 			<Layer p='box:l' ov='auto'>
-				<Center minH='100' gap='10'>
+				<Center minH='100' g='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<p>...</p>
 				</Center>
@@ -210,7 +210,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 ### 数値以外での比率指定
 
-- `golden`: 黄金比
+- `gold`: 黄金比
 - `silver`: 白銀比
 - `bronze`: 青銅比
 - `ogp`: OG Imageの比率
@@ -218,11 +218,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 export const FrameRatios = () => {
 	return (
-		<Columns cols={[1, 2]} gap={20} >
-			{['golden', 'silver', 'bronze', 'ogp'].map((ratio) => {
+		<Columns cols={[1, 2]} g={20} >
+			{['gold', 'silver', 'bronze', 'ogp'].map((ratio) => {
 				return (
 					<Frame key={ratio} aspect={ratio} bgc='base-2'>
-						<Text pos='a' inset='c' fz='s'>
+						<Text pos='a' t='50' l='50' fz='s' css={{translate:'-50XY'}}>
 							<code>{ratio}</code>
 						</Text>
 					</Frame>
@@ -242,7 +242,7 @@ export const FrameRatios = () => {
 	<PreviewCode>
 		```jsx
 		<Frame aspect='ogp'>...</Frame>
-		<Frame aspect='golden'>...</Frame>
+		<Frame aspect='gold'>...</Frame>
 		<Frame aspect='silver'>...</Frame>
 		<Frame aspect='bronze'>...</Frame>
 		```
@@ -263,7 +263,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 		コンテンツ側の高さと揃っている例
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex gap={20}>
+		<Flex g={20}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
@@ -274,7 +274,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "4/3" "4/3"
-		<Flex gap={20}>
+		<Flex g={20}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
@@ -292,7 +292,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 		対処例（親のFlex要素を`align-items:start;`にする）
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex ai='start' gap={20} fxw={['wrap', 'nowrap']}>
+		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
@@ -303,7 +303,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "ai='start'"
-		<Flex ai='start' gap={20} fxw={['wrap', 'nowrap']}>
+		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
 			<Frame aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>

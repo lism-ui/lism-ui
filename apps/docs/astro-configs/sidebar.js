@@ -46,26 +46,40 @@ export default [
 		// 	},
 		// ],
 	},
-	{
-		label: 'Props',
-		autogenerate: {
-			directory: 'props',
-			collapsed: true,
-		},
-	},
-	{
-		label: 'Styles',
-		autogenerate: {
-			directory: 'styles',
-			collapsed: true,
-		},
-	},
+	// {
+	// 	label: 'Props',
+	// 	autogenerate: {
+	// 		directory: 'props',
+	// 		collapsed: true,
+	// 	},
+	// },
+
 	{
 		label: 'Components',
 		items: [
 			{
 				label: 'Lism',
 				link: '/components/lism/',
+			},
+			{
+				label: 'props',
+				link: '###---',
+			},
+			{
+				label: 'Lism Props',
+				link: '/props/lism-props/',
+			},
+			{
+				label: 'CSS Props',
+				link: '/props/css-props/',
+			},
+			{
+				label: 'Responsive Props',
+				link: '/props/responsive-props/',
+			},
+			{
+				label: 'getLismProps()',
+				link: '/props/get-lism-props/',
 			},
 			{
 				label: 'Layouts',
@@ -284,6 +298,13 @@ export default [
 				link: '/components/others/',
 			},
 		],
+	},
+	{
+		label: 'Styles',
+		autogenerate: {
+			directory: 'styles',
+			collapsed: true,
+		},
 	},
 	// {
 	// 	label: 'Element Modules',

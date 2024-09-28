@@ -13,7 +13,7 @@
 	// cursor: pointer;
 	// align-items: center;
 	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうのを防ぐ
-	gap: var(--em--4);
+	gap: 0.5em;
 
 	/* Safariで表示されるデフォルトの三角形アイコンを消します */
 	&::-webkit-details-marker {
@@ -64,7 +64,7 @@
 	padding: 0.375em;
 	background-color: transparent;
 	border: solid 1px currentColor;
-	border-radius: var(--radius--xs);
+	border-radius: var(--radii--xs);
 }
 
 .c--accordion__openIcon {

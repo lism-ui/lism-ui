@@ -8,7 +8,7 @@ import getMaybeCssVar from './getMaybeCssVar';
 // 		converter: 'size',
 // 	},
 // 	'is--flow': {
-// 		varName: '--flowGap',
+// 		varName: '--flowG',
 // 		tokenKey: 'flow',
 // 		converter: 'space',
 // 	},
@@ -41,10 +41,10 @@ export function getFlowData(value) {
 		className = 'is--flow';
 	} else if (value) {
 		if (isPresetValue('flow', value)) {
-			className = `is--flow -flowGap:${value}`;
+			className = `is--flow -flowG:${value}`;
 		} else {
-			className = `is--flow -flowGap:`;
-			style = { ['--flowGap']: getMaybeCssVar(value, 'space') };
+			className = `is--flow -flowG:`;
+			style = { ['--flowG']: getMaybeCssVar(value, 'space') };
 		}
 	}
 	return { className, style };
@@ -52,7 +52,6 @@ export function getFlowData(value) {
 
 export default function getStateProps({
 	lismState = [],
-	lismStyle = {},
 	isOverwide,
 	isFullwide,
 	isWide,
@@ -61,19 +60,20 @@ export default function getStateProps({
 	// isConstrained,
 	hasGutter,
 	hasDivider,
+	style = {},
 
 	...props
 }) {
 	if (isContainer) {
 		// lismState.push('is--container');
-		const { className, style } = getContainerData(isContainer);
+		const { className, style: _style } = getContainerData(isContainer);
 		lismState.push(className);
-		Object.assign(lismStyle, style);
+		Object.assign(style, _style);
 	}
 	if (isFlow) {
-		const { className, style } = getFlowData(isFlow);
+		const { className, style: _style } = getFlowData(isFlow);
 		lismState.push(className);
-		Object.assign(lismStyle, style);
+		Object.assign(style, _style);
 	}
 
 	hasGutter && lismState.push('has--gutter');
@@ -95,7 +95,7 @@ export default function getStateProps({
 
 	// console.log('lismState', lismState);
 	props.lismState = [...new Set(lismState)]; // strictモードで2重レンダリングされる時の重複を削除;
-	props.lismStyle = lismStyle;
+	props.style = style;
 
 	return props;
 }

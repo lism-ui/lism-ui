@@ -7,22 +7,15 @@
 @forward './linkbox';
 @forward './frame';
 
-// 切り分ける？
-//is--mediaFrame > :where(img, video),
-// .is--objectFit {
-// 	> :where(img, video) {
-// 		width: 100%;
-// 		height: 100%;
-// 		object-fit: cover;
-// 		// display: block;
-// 	}
-// }
-
 // .is--square ?
 // .has--size {
 // 	width: var(--size);
 // 	height: var(--size);
 // }
+
+.has--mask {
+	mask: var(--mask-img) no-repeat 50% 50% / contain;
+}
 
 // Note: dialog に影響する
 :where(.is--reset) {

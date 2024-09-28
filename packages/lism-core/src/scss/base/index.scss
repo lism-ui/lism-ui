@@ -9,8 +9,6 @@
 @forward './html/code';
 
 :root {
-	--list-pis: 1.5em;
-
 	--heading-ff: var(--ff--sans);
 
 	--hov-trsdu: 0.3s;
@@ -43,14 +41,15 @@ body {
 	// 子孫要素の position:fixed の挙動が変わってしまうので body には使わない
 	// container-type: inline-size;
 }
-:where(p, li) {
-	--link-td: underline;
-}
 
 :where(a) {
-	text-decoration: var(--link-td, none);
+	--td: var(--link-td, underline);
+	text-decoration: var(--td);
 	// text-underline-offset: var(--link-underlineOffset);
 }
+// :where(p, li) {
+// 	--link-td: underline;
+// }
 a {
 	// linkbox を考慮して、リンクの pointer-events: auto;は 明示的に指定しておく?
 	// pointer-events: auto;

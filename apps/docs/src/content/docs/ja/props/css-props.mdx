@@ -83,7 +83,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|p|padding|`SPACE`|`SPACE`, `SPACE`, `PADDING`, `0`|○|
+|p|padding|`SPACE`|`SPACE`, `PADDING`, `0`|○|
 |px|padding-inline|`SPACE`|`SPACE`, `0`|○|
 |py|padding-block|`SPACE`|`SPACE`, `0`|○|
 |pis|padding-inline-start|`SPACE`|`0`|○|
@@ -92,15 +92,15 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 |pr|padding-right|`SPACE`|`0`|○|
 |pt|padding-top|`SPACE`|`0`|○|
 |pb|padding-bottom|`SPACE`|`0`|○|
-|m|margin|`SPACE`|`auto`, `0`|○|
-|mx|margin-inline|`SPACE`|`auto`, `0`|○|
-|my|margin-block|`SPACE`|`auto`, `0`|○|
-|mis|margin-inline-start|`SPACE`|`auto`, `0`|○|
-|mbs|margin-block-start|`SPACE`|`SPACE.S`, `auto`, `0`|○|
-|ml|margin-left|`SPACE`|`auto`, `0`|○|
-|mr|margin-right|`SPACE`|`auto`, `0`|○|
-|mt|margin-top|`SPACE`|`auto`, `0`|○|
-|mb|margin-bottom|`SPACE`|`auto`, `0`|○|
+|m|margin|`SPACE`|`auto`|○|
+|mx|margin-inline|`SPACE`|`auto`|○|
+|my|margin-block|`SPACE`|`auto`|○|
+|mis|margin-inline-start|`SPACE`|`auto`|○|
+|mbs|margin-block-start|`SPACE`|`SPACE`, `auto`|○|
+|ml|margin-left|`SPACE`|`auto`|○|
+|mr|margin-right|`SPACE`|`auto`|○|
+|mt|margin-top|`SPACE`|`auto`|○|
+|mb|margin-bottom|`SPACE`|`auto`|○|
 
 
 <Reference>
@@ -177,7 +177,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |`bdis`|`border-inline-start`|-|-|-|
 |`bdbs`|`border-block-start`|-|-|-| */}
 
-さらに、以下のものを `borders` オブジェクト内で指定することができます。
+{/* さらに、以下のものを `borders` オブジェクト内で指定することができます。
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
@@ -188,7 +188,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |`is`|`border-inline-start`||- |-|
 |`ie`|`border-inline-end`||- |-|
 |`bs`|`border-block-start`||-|-|
-|`be`|`border-block-end`||-|-|
+|`be`|`border-block-end`||-|-| */}
 
 
 
@@ -255,7 +255,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`gap`|`gap`|`SPACE`|`SPACE`|○|
+|`g`|`gap`|`SPACE`|`SPACE`|○|
 |`rowg`|`row-gap`|`SPACE`|-|○|
 |`colg`|`column-gap`|`SPACE`|-|○|
 
@@ -264,8 +264,8 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 	<PreviewTitle>Examples</PreviewTitle>
 	<PreviewCode>
 	```jsx
-	<Flex gap={40}>...</Flex>
-	<Grid gap="1rem">...</Grid>
+	<Flex g={40}>...</Flex>
+	<Grid g="1rem">...</Grid>
 	<Columns rowg={[15, 20]} colg={[20, 30]}>...</Columns>
 	```
 	</PreviewCode>
@@ -275,7 +275,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 	<PreviewTitle>各方向の値をgapに対してオブジェクトで指定することも可能？</PreviewTitle>
 	<PreviewCode>
 	```jsx
-	<Columns gap={{row:20, column:30}}>...</Columns>
+	<Columns g={{row:20, column:30}}>...</Columns>
 	```
 	</PreviewCode>
 </Preview> */}
@@ -305,16 +305,16 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 <PreviewTitle>基本的なgrid系プロパティの使用例</PreviewTitle>
 ```jsx
-<Lism d='grid' ai='center' grid={{gtc:'1fr 1fr', gap:40}}>...</Lism>
+<Lism d='grid' ai='center' grid={{gtc:'1fr 1fr', g:40}}>...</Lism>
 ```
 
 <PreviewTitle>`Grid`コンポーネントでは、`grid`オブジェクトを挟まずにそのまま指定できます。</PreviewTitle>
 
 ```jsx
 // Grid系のコンポーネントを使う場合は、gridオブジェクトは不要です。
-<Grid ai='center'gtc='1fr 1fr' gap={40}>...</Grid>
+<Grid ai='center'gtc='1fr 1fr' g={40}>...</Grid>
 ```
-{/* <Grid gtc='1fr 1fr' gap={40} ai='center'>
+{/* <Grid gtc='1fr 1fr' g={40} ai='center'>
 <Box>aaa<br/>bbb</Box>
 <Box>aaa</Box>
 <Box>aaa</Box>
@@ -430,7 +430,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 |Context|Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|---|
-|css.lis|listStyle||`none`||
+|css.listStyle|listStyle||`none`||
 |css.transform|transform||`flipX`,`flipY`,`flipXY`||
 |css.transformOrigin|transformOrigin||`lt`,`lb`,`rt`,`rb`||
 |css.translate|translate||`-50`,`-50X`,`-50Y`,`-100X`,`-100Y`||
@@ -440,15 +440,17 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |css.filter|filter||||
 |css.backdropFilter|backdropFilter||||
 
-{/* transform: { map: 1, style: 1, utils: 1, utilKey: 'trf' },
+{/*
+transform: { map: 1, style: 1, utils: 1, utilKey: 'trf' },
 transformOrigin: { style: 1, utilKey: 'trfo', utils: 'origin' },
-translate: { style: 1, utils: 1, utilKey: 'trnslt' },
+translate: { style: 1, utils: 1, utilKey: 'trslt' },
 rotate: { style: 1, utils: 1 },
 scale: { style: 1 },
 clipPath: { style: 1 }, // cpp ?
 // animation: { map:1, style: 1, presets: 1 },
 filter: { style: 1, converter: 'filter' },
-backdropFilter: { style: 1, utilKey: 'bdFilter', presets: ['blur'], converter: 'filter' }, */}
+backdropFilter: { style: 1, utilKey: 'bdFilter', presets: ['blur'], converter: 'filter' }
+*/}
 
 ## 対応トークンとユーティリティクラスでの出力について
 
@@ -515,7 +517,7 @@ utilities側で定義しているものは、キーと省略形のどちらを�
 - ユーティリティクラスが多く`[class*='-prop:']`にすると文字数の省略になりそうなもの
 - `-{prop}:`クラスによって何か値を指定していることが分かったほうが便利なケースがありそうなプロパティ
 
-#### `-prop:`クラスだけを出力する方法
+**`-prop:`クラスだけを出力する方法**
 
 このパターン1での出力がされるLism Propsに対して `"-"` または `true` を指定することで、`.-{prop}:` クラスだけの出力が可能です。
 
@@ -523,12 +525,12 @@ CSSファイル側で具体的な値を指定したい場合などに活用で�
 
 <Preview>
 	<PreviewCode label="例" slot="tab">
-	```jsx
-	<Box bd w="-" p={['-', '-']}>...</Box>
+	```jsx "bd" "'-'"
+	<Box bd w='-' p={['-', '-']}>...</Box>
 	```
 	</PreviewCode>
 	<PreviewCode label="出力" slot="tab">
-	```jsx
+	```html "-bd:" "-w:" "-p:" "-p@sm"
 	<div class="l--box -bd: -w: -p: -p@sm">...</div>
 	```
 	</PreviewCode>

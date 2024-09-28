@@ -1,12 +1,7 @@
 // Note は は boxcolor とセットで使う
-:where(.c--note) {
-	// --boxcolor: var(--gray);
-	// border-radius: var(--radius--xs);
-	// padding: var(--p--box);
-	// gap: var(--s--20);
-	border-inline-start: solid 4px var(--boxcolor);
-	// box-shadow: var(--sh--1);
-}
+// :where(.c--note) {
+// 	border-inline-start: solid 4px var(--boxcolor);
+// }
 
 // .c--note {
 // 	--boxcolor: var(--gray);
@@ -14,10 +9,4 @@
 
 // .c--note__icon {
 // 	margin-left: -1px;
-// }
-
-// .c--note__head {
-// 	color: var(--cbox-c--link, currentColor);
-// 	gap: var(--em--3);
-// 	margin-block-end: var(--s--20);
 // }

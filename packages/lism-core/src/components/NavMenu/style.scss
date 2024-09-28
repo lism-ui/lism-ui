@@ -1,33 +1,17 @@
 // <ul>
 .c--navMenu {
-	--list-style: none;
-	// line-height: var(--lh--xs);
+	// トップ要素でのみ定義
+	&:where(:not(.c--navMenu .c--navMenu)) {
+		--pass-p: var(--p--box--s);
+	}
+
+	// &:where(:not([data-nest-level])) {
+	// 	--pass-p: var(--p--box--s);
+	// }
 }
-
-// トップ要素でのみ定義
-.c--navMenu:where(:not([data-nest-level])) {
-	padding-inline-start: 0; // 自身のpadding
-
-	// --link-p: var(--p--box--s);
-	--pass-p: var(--p--box--s);
-	// --hov-c: currentColor;
-	--hov-bgc: var(--base-2);
-
-	// 子リストのpadding
-	--list-pis: 1.25em; //var(--s--30);
-}
-
-// <li>
-// .c--navMenu__item {
-// 	.c--accordion__header {
-// 		padding-inline-end: var(--em--4);
-// 	}
-// }
 
 .c--navMenu__link {
-	--link-td: none; // text-decoration: none;
-	// color: inherit;
-	// gap: 0.5em;
+	--td: none; // text-decoration: none;
 	padding: var(--pass-p);
 	outline-offset: -1px;
 }
@@ -35,17 +19,6 @@
 // 	color: var(--hov-c);
 // 	background-color: var(--hov-bgc);
 // }
-
-// 横並び
-.c--navMenu:where(.l--flex) {
-	--list-pis: 0;
-
-	// 直接指定すればいいか
-	// --subMenu--maxW: 10em;
-	// .c--navMenu[data-nest-level='1'] {
-	// 	max-width: var(--subMenu--maxW);
-	// }
-}
 
 // 子項目の余白をliで調整する場合
 // .c--navMenu[data-nest-level] > .c--navMenu__item {

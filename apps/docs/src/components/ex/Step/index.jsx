@@ -1,23 +1,23 @@
 import { Lism, Flex, Stack, Badge } from '@lism-ui/core';
 
 export function Step(props) {
-	return <Stack className='c--step' gap='em8' bdrs='m' bxsh='3' p='em12' {...props} />;
+	return <Stack className='c--step' g='20' p='30' bdrs='m' bxsh='3' {...props} />;
 }
 
 export function StepBody(props) {
-	return <Lism isFlow='s' pis='em4' {...props} />;
+	return <Lism isFlow='s' {...props} />;
 }
 
 export function StepHead({ tag = 'div', num = '1', label = '', children, ...props }) {
 	return (
-		<Flex className='c--stepHead' gap='em8' ai='c' {...props}>
-			<Badge variant='fill' tag='div' lh='1' px='em6' py='em3' gap='em2' bdrs='full'>
+		<Flex className='c--stepHead' g='20' ai='c' {...props}>
+			<Badge tag='div' variant='fill' lh='1' px='20' py='5' g='5' ai='c' bdrs='full'>
 				{label && (
 					<Lism tag='span' fz='xs' fs='i'>
 						{label}
 					</Lism>
 				)}
-				<Lism tag='span' fz='2xl' ff='mono' fs='i'>
+				<Lism tag='span' fz='xl' ff='mono' fs='i'>
 					{num}
 				</Lism>
 			</Badge>

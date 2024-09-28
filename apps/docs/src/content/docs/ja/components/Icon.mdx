@@ -12,10 +12,10 @@ import { Note } from '~/components/ex/Note';
 import ImportCode from "~/components/code-template/Import.astro";
 
 export const PrestIcons = () => {
-	return <Columns variant='liquid' colSize='10rem' gap='20'>
+	return <Columns variant='liquid' colSize='10rem' g='20'>
 			{Object.keys(presetIcons).map((iconName) => {
 				return (
-					<Stack key={iconName} gap='10' ai='c' bgc='base-2' bdrs='xs' p='box' lh='1'>
+					<Stack key={iconName} g='10' ai='c' bgc='base-2' bdrs='xs' p='box' lh='1'>
 						<Icon icon={iconName} fz="xl" />
 						<code class='-fz:xs'>{iconName}</code>
 					</Stack>
@@ -167,14 +167,14 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 <Preview>
 	<PreviewTitle>プリセット指定例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20}>
+		<Cluster g={20}>
 			<Icon icon='lightbulb' size='40px' />
 			<Icon icon='warning' fz='2xl' c='blue' />
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Cluster gap={20}>
+		<Cluster g={20}>
 			<Icon icon='lightbulb' size='40px' />
 			<Icon icon='warning' fz='2xl' c='blue' />
 		</Cluster>
@@ -221,13 +221,12 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 <Preview>
 	<PreviewTitle>絵文字を使う</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Flex gap='20'>
+		<Flex g='20'>
 			<Icon emoji='✍️' fz='2xl' />
-			{/* <Icon variant='emoji' fz='2xl'>✍️</Icon> */}
 			<Icon emoji='💡' fz='2xl' />
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Icon emoji='✍️' fz='2xl' />
 		<Icon emoji='💡' fz='2xl' />
@@ -255,7 +254,7 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 			mask='<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M216,64H176a48,48,0,0,0-96,0H40A16,16,0,0,0,24,80V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm88,168H40V80H80V96a8,8,0,0,0,16,0V80h64V96a8,8,0,0,0,16,0V80h40Z"></path></svg>'
 		/>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='Component'>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Icon
 			fz='3xl'
@@ -308,73 +307,3 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 	</PreviewCode>
 </Preview>
 
-
-
-{/* ## その他活用例 */}
-
-{/* <Preview>
-	<PreviewTitle>アイコンにボーダーや余白をつける時の挙動の差</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<p>↓ Iconにつける</p>
-		<Center>
-			<Icon as={Horse} weight="fill" size="3rem" c="red" p="1rem" bd="solid 1px" bdc="red" bdrs='full' />
-		</Center>
-
-		<p>↓ 親のCenterなどにつける</p>
-		<Center size="content" c="red" bd="solid 1px" bdc="red" bdrs='full' p="1rem"> 
-			<Icon as={Horse} weight="fill" size="3rem"/>
-		</Center>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Center>
-			<Icon as={Horse} weight="fill" size="3rem" c="red" p="1rem" bd="solid 1px" bdc="red" bdrs='full' />
-		</Center>
-		<Center size="content" c="red" bd="solid 1px" bdc="red" bdrs='full' p="1rem"> 
-			<Icon as={Horse} weight="fill" size="3rem"/>
-		</Center>
-		```
-	</PreviewCode>
-</Preview> */}
-
-
-{/* <Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex ai="center" gap='em7' bd={{ c:"red" }} p='box:s' bdrs='m'>
-			<Icon as={WarningCircle} weight="fill" size="1.5rem" c="red" flexItem={{ shrink:'0' }} />
-			<DammyText length="m" />
-		</Flex>
-	</PreviewArea>
-	<PreviewCode>
-```jsx
-<Flex ai="center" gap='em7' bd={{ c:"red" }} p='box:s' bdrs='m'>
-	<Icon as={WarningCircle} weight="fill" size="1.5rem" c="red" flexItem={{ shrink:'0' }} />
-	<p>...text...</p>
-</Flex>
-```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Stack ai="center" gap={10} p={10} bgc="main" bxsh="1" bdrs='m'>
-			<Icon as={ChatCenteredDots} size="2em" c="white" weight="fill" />
-			<Box bgc="white" p='box:s' bdrs='s' lh='s'>
-				<DammyText length="l" />
-			</Box>
-		</Stack>
-	</PreviewArea>
-	<PreviewCode>
-```jsx
-<Stack ai="center" gap={10} p={10} bgc="main" bxsh="1" bdrs='m'>
-	<Icon as={ChatCenteredDots} size="2em" c="white" weight="fill" />
-	<Box bgc="white" p='box:s' bdrs='s' lh='s'>
-		<DammyText length="l" />
-	</Box>
-</Stack>
-```
-	</PreviewCode>
-</Preview>
- */}

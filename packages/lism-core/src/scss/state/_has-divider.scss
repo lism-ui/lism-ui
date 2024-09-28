@@ -15,20 +15,18 @@
 // 	border-inline-end: var(--bdw) var(--bds) var(--bdc);
 // }
 
-// is--divided?
 // .has--divider {
 // 	--bdc: var(--divider-bdc);
-// 	> :not(:last-child) {
-// 		border-bottom: solid 1px var(--bdc);
-// 	}
+// 	--bds: solid;
+// 	--bdw: 1px;
 // }
 
-// .has--divider\:i {
-// 	--bdc: var(--divider-bdc);
+// :where(.has--divider:not(.l--flex)) > :not(:last-child) {
+// 	border-block-end: var(--bds) var(--bdw) var(--bdc);
+// }
 
-// 	> :not(:last-child) {
-// 		border-inline-end: solid 1px var(--bdc);
-// 	}
+// :where(.has--divider.l--flex) > :not(:last-child) {
+// 	border-inline-end: var(--bds) var(--bdw) var(--bdc);
 // }
 
 .has--divider {
@@ -36,18 +34,13 @@
 	--bds: solid;
 	--bdw: 1px;
 	--isRow: 0;
-	--_dvdW: calc(var(--isRow, 0) * var(--bdw)); // isRow 1 なら 1px, isRow 0 なら 0px
+	--_bdw: calc(var(--isRow, 0) * var(--bdw)); // isRow 1 なら 1px, isRow 0 なら 0px
 	&:where(.l--flex) {
 		--isRow: 1;
 	}
 
 	> :not(:last-child) {
-		border-inline-end: var(--bds) var(--_dvdW) var(--bdc);
-		border-bottom: var(--bds) calc(var(--bdw) - var(--_dvdW)) var(--bdc);
-		// border-bottom: solid 1px var(--bdc);
-
-		// @container style(--isFlex: 1) {
-		// 	color: red;
-		// }
+		border-inline-end: var(--bds) var(--_bdw) var(--bdc);
+		border-block-end: var(--bds) calc(var(--bdw) - var(--_bdw)) var(--bdc);
 	}
 }

@@ -25,55 +25,15 @@ export function getProps(direction, variant) {
 		};
 	}
 }
-export function getNameProps(props = {}) {
-	return {
-		fz: '2xs',
-		lh: 'xs',
-		px: '5',
-		c: 'content-2',
-		// translate: '0 -100%',
-		...props,
-	};
-}
-export function getAvatarProps(props = {}) {
-	return {
-		bgc: 'base',
-		bdrs: 'full',
-		alt: '',
-		width: '60',
-		height: '60',
-		'aria-hidden': 'true',
-		...props,
-	};
-}
-export function getFooterProps(props = {}) {
-	return {
-		fz: '2xs',
-		lh: 'xs',
-		px: '5',
-		c: 'content-3',
-		fs: 'i',
-		...props,
-	};
-}
-
-export function getContentProps(direction, variant, contentProps) {
-	const returnProps = {
-		pos: 'relative',
-		maxW: 's',
-	};
+export function getContentProps(direction, variant) {
+	const returnProps = {};
 	if ('speak' === variant && direction === 'start') {
 		returnProps.radii = { ss: 0 };
 	} else if ('speak' === variant && direction === 'end') {
 		returnProps.radii = { se: 0 };
 	}
 
-	return { ...returnProps, ...contentProps };
-	// return {
-	// 	className: 'c--chat__content',
-	// 	pos: 'relative',
-	// 	maxW: 's',
-	// };
+	return returnProps;
 }
 
 export function getDecoProps(direction, variant) {

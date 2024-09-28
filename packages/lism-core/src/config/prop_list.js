@@ -8,7 +8,7 @@ options.name: 受け取るprop名と実際に出力するutilクラス名、styl
 options.utilKey: 受け取るprop名と、ユーティリティクラスとして出力される時のキー名が異なる場合に指定する。
 	[string]
 
-	例: translate → '.-trnslt:{val}'
+	例: translate → '.-trslt:{val}'
 
 options.presets: 指定された値をそのままユーティリティクラス名に使用する時のリスト(またはそれを取得するキー）
 	[array, string, or 1]
@@ -123,7 +123,7 @@ export default {
 		utils: 1,
 		//presets: 1
 	},
-	ff: { style: 'fontFamiry', presets: 1 },
+	ff: { style: 'fontFamily', presets: 1 },
 	fs: { style: 'fontStyle', utils: 1 },
 	lts: { style: 'letterSpacing', presets: 1 }, // utilityあってもいい
 	ta: { style: 'textAlign', utils: 1 },
@@ -133,7 +133,7 @@ export default {
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
 
 	// others
-	bdw: { style: '--bdw' }, // --bdw のみ
+	bdw: { style: '--bdw', utils: 1 }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
 	bdc: { style: '--bdc', presets: 1, utils: 1, converter: 'color' },
 	// borders: { map: 1 },
@@ -161,7 +161,7 @@ export default {
 	l: { ...insetsProps, style: 'left' },
 	r: { ...insetsProps, style: 'right' },
 	b: { ...insetsProps, style: 'bottom' },
-	inset: { style: 1, utils: 1, presets: 1, converter: 'space' },
+	inset: { style: 1, utils: 1, converter: 'space' },
 
 	// isolation
 	// flip: {},
@@ -173,14 +173,14 @@ export default {
 		// {x, y, t, b, l, r, is, bs } でも指定可能にする
 		objProcessor: (d) => `p${d}`,
 	},
-	px: Object.assign({}, paddingOption, { presets: 'pxy' }),
-	py: Object.assign({}, paddingOption, { presets: 'pxy' }),
+	px: Object.assign({}, paddingOption, { presets: 'space' }),
+	py: Object.assign({}, paddingOption, { presets: 'space' }),
 	pl: paddingOption,
 	pr: paddingOption,
 	pt: paddingOption,
 	pb: paddingOption,
 	// pis, pbs, pin, pbl
-	pis: paddingOption,
+	pis: Object.assign({}, paddingOption, { presets: 'space' }),
 	pbs: paddingOption,
 	// pinln, pblck
 	// pse: paddingOption,
@@ -203,7 +203,6 @@ export default {
 
 	cols: { style: '--cols' },
 	rows: { style: '--rows' },
-	isRow: { style: '--isRow' },
 
 	...placeProps,
 	...itemProps,
@@ -219,9 +218,14 @@ export default {
 export const GAP_PROPS = {
 	gap: {
 		presets: 'gap',
+		utilKey: 'g',
 		converter: 'space',
 		// gap={row, clm} の場合の処理
-		objProcessor: (d) => `${d}g`,
+		// objProcessor: (d) => `${d}g`,
+	},
+	g: {
+		presets: 'gap',
+		converter: 'space',
 	},
 	rowg: { converter: 'space' },
 	colg: { converter: 'space' },
@@ -271,7 +275,7 @@ export const CONTEXT_PROPS = {
 	// transform: {
 	// 	// transform
 	// 	transformOrigin: { style: 1, utilKey: 'trfo', utils: 'origin' },
-	// 	translate: { style: 1, utils: 1, utilKey: 'trnslt' },
+	// 	translate: { style: 1, utils: 1, utilKey: 'trslt' },
 	// 	rotate: { style: 1, utils: 1 },
 	// 	scale: { style: 1 },
 	// },
@@ -287,16 +291,16 @@ export const CONTEXT_PROPS = {
 		ee: { style: 'borderEndEndRadius', utilKey: 'bdeers', converter: 'radius' },
 	},
 
-	borders: {
-		l: { style: 'borderLeft', utilKey: 'bdl' },
-		r: { style: 'borderRight', utilKey: 'bdr' },
-		t: { style: 'borderTop', utilKey: 'bdt' },
-		b: { style: 'borderBottom', utilKey: 'bdb' },
-		is: { style: 'borderInlineStart', utilKey: 'bdis' },
-		bs: { style: 'borderBlockStart', utilKey: 'bdbs' },
-		ie: { style: 'borderInlineEnd', utilKey: 'bdie' },
-		be: { style: 'borderBlockEnd', utilKey: 'bdbe' },
-	},
+	// borders: {
+	// 	l: { style: 'borderLeft', utilKey: 'bdl' },
+	// 	r: { style: 'borderRight', utilKey: 'bdr' },
+	// 	t: { style: 'borderTop', utilKey: 'bdt' },
+	// 	b: { style: 'borderBottom', utilKey: 'bdb' },
+	// 	is: { style: 'borderInlineStart', utilKey: 'bdis' },
+	// 	bs: { style: 'borderBlockStart', utilKey: 'bdbs' },
+	// 	ie: { style: 'borderInlineEnd', utilKey: 'bdie' },
+	// 	be: { style: 'borderBlockEnd', utilKey: 'bdbe' },
+	// },
 	insets: {
 		// t: { ...insetsProps, style: 'top' },
 		// l: { ...insetsProps, style: 'left' },
@@ -337,18 +341,18 @@ export const CONTEXT_PROPS = {
 	// animation: {},
 
 	css: {
-		lis: { style: 'listStyle', utils: { none: 'n' } },
+		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
 		boxSizing: { style: 1, utils: { 'content-box': 'cb' }, utilKey: 'bxz' },
 		transform: { style: 1, utils: 1, utilKey: 'trf' },
-		transformOrigin: { style: 1, utilKey: 'trfo', utils: 'origin' },
-		translate: { style: 1, utils: 1, utilKey: 'trnslt' },
+		transformOrigin: { style: 1, utilKey: 'trfo', utils: 1 },
+		translate: { style: 1, utils: 1, utilKey: 'trslt' },
 		rotate: { style: 1, utils: 1 }, // rot?
 		scale: { style: 1, utils: 1 }, //
 		// flip: { style: 1 },
 		clipPath: { style: 1 }, // cpp ?
 
 		// appearance: { style: 1, utils: { none: 'n' } },
-		objectFit: { style: 1, utilKey: 'obf', utils: 1 },
+		objectFit: { style: 1, utilKey: 'obf', utils: { cover: 'cv', contain: 'cn' } },
 		objectPosition: { style: 1 },
 
 		// animation: { map:1, style: 1, presets: 1 },

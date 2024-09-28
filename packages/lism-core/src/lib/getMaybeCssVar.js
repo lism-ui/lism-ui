@@ -54,12 +54,10 @@ export function getMaybeSpaceVar(value, propName) {
 	}
 
 	// emトークン
-	if (typeof value === 'string' && value.startsWith('em')) {
-		const emVal = value.replace('em', '');
-		// if (isTokenValue('em')) {
-		return `var(--em--${emVal})`;
-		// }
-	}
+	// if (typeof value === 'string' && value.startsWith('em')) {
+	// 	const emVal = value.replace('em', '');
+	// 	return `var(--em--${emVal})`;
+	// }
 
 	// box:s → --p--box--s
 	if (propName && isTokenValue(propName, value)) {
@@ -107,7 +105,7 @@ export function getMaybeSizeVar(size) {
 
 export function getMaybeRadiusVar(radius) {
 	if (isTokenValue('radius', radius)) {
-		return 'var(--radius--' + radius + ')';
+		return 'var(--radii--' + radius + ')';
 	}
 	return radius;
 }

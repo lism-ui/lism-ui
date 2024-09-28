@@ -166,7 +166,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 	<PreviewArea resize p={20}>
 		<Frame bgc='base'>
 			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
-			<Stack hasGutter pos='r' py='50' gap='40' c='white' bgc='black:50%'>
+			<Stack hasGutter pos='r' py='50' g='40' c='white' bgc='black:50%'>
 				<DammyText/>
 				<DammyText length='l' />
 			</Stack>
@@ -176,7 +176,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 		```jsx "isFrame" "isLayer"
 		<Frame bgc='base'>
 			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
-			<Stack hasGutter pos='r' py='50' gap='40' c='base' bgc='black:50%'>
+			<Stack hasGutter pos='r' py='50' g='40' c='base' bgc='black:50%'>
 				<DammyText/>
 				<DammyText length='l' />
 			</Stack>
@@ -187,7 +187,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 		```html {2-4}
 		<div class="is--frame -bgc:base">
 			<img class="is--layer" src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
-			<div class="l--stack has--gutter -pos:r -py:50 -c: -bgc: -gap:40" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 50%)">
+			<div class="l--stack has--gutter -pos:r -py:50 -c: -bgc: -g:40" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 50%)">
 				<p>Lorem ipsum dolor sit amet...</p>
 				<p>Lorem ipsum dolor sit, amet...</p>
 			</div>

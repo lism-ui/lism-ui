@@ -47,17 +47,18 @@ class LismPropsData {
 			forwardedRef,
 			class: classFromAstro,
 			className,
-			style = {},
 			lismClass,
-			_lismClass = [],
+			uClass,
 			// lismVar,
-			passProps,
-			getProps,
+			passVars,
+			pass,
+			get,
 			skipState,
 			isSide,
 			isFrame,
 			isLayer,
 			isLinkBox,
+			// hasBd,
 			_context,
 			..._props
 		} = props;
@@ -66,15 +67,11 @@ class LismPropsData {
 
 		_props = skipState ? _props : getStateProps(_props);
 
-		const { lismState = [], lismStyle = {}, ...others } = _props;
+		const { lismState = [], style = {}, ...others } = _props;
 
 		// isFrame, isLinkBoxは skipStateに関係なくチェック
 		if (isFrame) {
 			lismState.push('is--frame');
-			// if (others.objectPosition) {
-			// 	lismStyle['--objectPosition'] = others.objectPosition;
-			// 	delete others.objectPosition;
-			// }
 		}
 		if (isLayer) {
 			lismState.push('is--layer');
@@ -85,16 +82,19 @@ class LismPropsData {
 		if (isSide) {
 			lismState.push('is--side');
 		}
+		// if (hasBd) {
+		// 	lismState.push('has--bd');
+		// }
 
-		this.styles = Object.assign({}, lismStyle, style);
+		this.styles = style;
 
 		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
 		this.className = atts(
 			classFromAstro,
 			className, // ユーザー指定のクラス
 			lismClass,
-			_lismClass,
-			lismState // is, has
+			lismState, // is, has
+			uClass
 			// lismUtil
 		);
 
@@ -135,13 +135,20 @@ class LismPropsData {
 			this.attrs.ref = forwardedRef;
 		}
 
-		if (null != passProps && typeof passProps === 'object') {
-			this.setPassProps(passProps);
+		if (null != passVars && typeof passVars === 'object') {
+			this.setPassProps(passVars);
 		}
 
-		if (null != getProps) {
+		if (null != pass) {
 			// , 区切りでユーティリティクラスを複数出力可能
-			splitWithComma(getProps).forEach((_propName) => {
+			splitWithComma(pass).forEach((_propName) => {
+				this.addUtil(`-pass:${_propName}`);
+			});
+		}
+
+		if (null != get) {
+			// , 区切りでユーティリティクラスを複数出力可能
+			splitWithComma(get).forEach((_propName) => {
 				this.addUtil(`-get:${_propName}`);
 			});
 		}
@@ -404,14 +411,14 @@ class LismPropsData {
 		this.addStyle(styleName, val);
 	}
 
-	setPassProps(passProps) {
+	setPassProps(passVars) {
 		let dataList = [];
-		Object.keys(passProps).forEach((propName) => {
+		Object.keys(passVars).forEach((propName) => {
 			// プロバイダーリストに追加
 			dataList.push(propName);
 
 			// 渡す値
-			let value = passProps[propName];
+			let value = passVars[propName];
 			if (null === value) return;
 
 			// コンバーター通して取得
@@ -520,7 +527,7 @@ class LismPropsData {
 			if (colors.includes(',')) {
 				gradient += colors;
 			} else {
-				gradient += `var(--gradColor--${colors})`;
+				gradient += `var(--grad--${colors})`;
 			}
 			this.addStyle('backgroundImage', `${type}-gradient(${gradient})`);
 		}

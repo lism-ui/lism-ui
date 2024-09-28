@@ -8,8 +8,6 @@
 	--bdc: transparent; // reverse用
 	--c: currentColor; // filledColor?
 
-	// border-radius: var(--radius--xs);
-	// line-height: var(--lh--xs);
 	padding: 0.375em 0.875em; // bdrs=full を考慮すると 1em くらいあった方がいいが...
 	gap: 0.5em;
 	align-items: center;
@@ -19,7 +17,7 @@
 
 // py は小さめにして、minHで最低限の高さを確保.
 .b--button {
-	--link-td: none; // pタグ内にくるかもしれないので
+	--td: none;
 	--gtc: 1em 1fr 1em; // grid化した時用。左右のアイコン部分を固定幅にすることで、テキストを常に中央に配置
 	width: fit-content;
 	color: var(--c);
@@ -99,7 +97,6 @@
 
 .b--button--icon {
 	--size: 2.5em;
-	// gap: 0;
 	width: var(--size);
 	height: var(--size);
 	min-height: unset;

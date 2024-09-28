@@ -34,7 +34,7 @@ const DialogCloseBtn = ({
 				<>
 					<Icon icon={icon} />
 					{text && <span>{text}</span>}
-					<span className='a--srText'>{closeSrText}</span>
+					<span className='is--hidden'>{closeSrText}</span>
 				</>
 			)}
 		</Center>

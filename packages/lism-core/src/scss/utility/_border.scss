@@ -12,41 +12,51 @@
 
 */
 
-// hasBorder?
-// .has--bd {
-// 	--bds: solid;
-// 	--bdw: 1px;
-// 	--bdc: currentColor; //var(--base-3);
-// 	--bd: var(--bdw) var(--bds) var(--bdc);
-// }
-
-// .-bd\:→all
-
 // bdc, bdw などでカラーや太さを上書きできるように border 自体を変数管理
 
-// :where( .-bd\:, .-bdl\:, .-bdr\:, .-bdt\:, .-bdb\:, .-bdx\:, .-bdy\:, .-bdis\:, .-bdbs\:, .-bdie\:, .-bdbe\: )
-:root {
-	--bds--default: solid;
-	--bdw--default: 1px;
-	--bdc--default: currentColor; //var(--base-3);
-}
-// :root, .has--bd,
+// :root {
+// --bds--default: solid;
+// --bdw--default: 1px;
+// --bdc--default: currentColor; //var(--base-3);
+// }
+
 :where([class*='-bd:']) {
-	--bds: var(--bds--default);
-	--bdw: var(--bdw--default);
-	--bdc: var(--bdc--default);
+	--bds: solid;
+	--bdw: 1px;
+	--bdc: currentColor;
 	--bd: var(--bdw) var(--bds) var(--bdc);
 }
+.-bd\: {
+	border-style: var(--bds);
+	border-width: var(--bdw);
+	border-color: var(--bdc);
+}
+
+// :where([class*='-bd:']),
+// :where(.has--bd) {
+// 	--bds: solid;
+// 	--bdw: 1px;
+// 	--bdc: currentColor;
+// 	--bd: var(--bdw) var(--bds) var(--bdc);
+// }
+// .has--bd:where(:not([class*='-bd:'])) {
+// 	border-style: var(--bds);
+// 	border-width: var(--bdw);
+// 	border-color: var(--bdc);
+// }
+
+// .bd\:l {
+// 	--bds: none none none solid;
+// }
 
 // 使用される環境（resetCSS）によって挙動が変わりやすいので 各プロパティを変数で管理する。
 // ブラウザのデフォルト挙動では、bds指定でborder出現してくるが、nextraのresetCSSみたいな特殊な環境だとbdwの指定でborderでてきたりする。
 // .-bd\:a,
 
-// .has--bd:not([class*='-bd:'])
-.-bd\: {
-	// --bd: var(--bdw) var(--bds) var(--bdc);
-	border: var(--bd);
-}
+// .has--bd:not([class*='-bd:']),
+// .-bd\: {
+// 	border: var(--bd);
+// }
 
 // .has--bd .-bd:
 
@@ -59,12 +69,11 @@
 .-bd\:n {
 	border: none;
 }
-.-bd\:emphasis {
-	--bds: double;
-	--bdw: 5px;
-	border: var(--bd);
-	// border: 5px double currentColor;
-}
+// .-bd\:emphasis {
+// 	--bds: double;
+// 	--bdw: 5px;
+// 	border: var(--bd);
+// }
 .-bd\:guide {
 	--bds: dashed;
 	--bdc: hsl(var(--hsl-gray) / 0.25);

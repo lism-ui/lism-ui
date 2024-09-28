@@ -73,7 +73,7 @@ export default {
 		'block-start': 'bs',
 		'block-end': 'be',
 	},
-
+	bdw: { inherit: 'i' },
 	pos: {
 		relative: 'r',
 		absolute: 'a',
@@ -94,8 +94,8 @@ export default {
 		'inline-flex': 'if',
 		'inline-block': 'ib',
 	},
-	rotate: { '45deg': '45', '-45deg': '-45', '90deg': '90', '-90deg': '-90', '180deg': '180' },
-	origin: {
+	rotate: { '45deg': '45', '-45deg': '-45', '90deg': '90', '-90deg': '-90' },
+	transformOrigin: {
 		center: 'c',
 		'left top': 'lt',
 		'right top': 'rt',
@@ -109,9 +109,9 @@ export default {
 	},
 
 	transform: {
-		'scaleX(-1)': 'flipX',
-		'scaleY(-1)': 'flipY',
-		'scaleX(-1) scaleY(-1)': 'flipXY',
+		// 'scaleX(-1)': 'flipX',
+		// 'scaleY(-1)': 'flipY',
+		// 'scaleX(-1) scaleY(-1)': 'flipXY',
 	},
 	scale: {
 		'-1 1': '-X',
@@ -119,18 +119,18 @@ export default {
 		'-1 -1': '-XY',
 	},
 	translate: {
-		// '-100% -100%': '-100',
-		'-50% -50%': '-50',
-		'-100%': '-100X',
-		'-100% 0': '-100X',
-		'0 -100%': '-100Y',
-		// 50%
+		'-50% -50%': '-50XY',
 		'-50%': '-50X',
 		'-50% 0': '-50X',
 		'0 -50%': '-50Y',
+		// '-100% -100%': '-100',
+		// '50% 50%': '50XY',
+		// '-100%': '-100X',
+		// '-100% 0': '-100X',
+		// '0 -100%': '-100Y',
+		// 50%
 	},
 	// whs: { nowrap: 'nw' },
 	// ovw: { anywhere: 'any' },
 	// lis: { none: 'n' },
-	objectFit: { cover: 'cv', contain: 'cn' },
 };

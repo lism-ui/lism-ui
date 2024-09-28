@@ -12,7 +12,7 @@ import { Lism, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabI
 
 
 export const ColorBadge = ({color, label}) => {
-	return <span className='-d:f -ai:c -gap:em3'>
+	return <span className='-d:f -ai:c -g:10'>
 			<Lism skipState tag='span' w='1.5em' aspect='1/1' bgc={color} bdrs='s' bxsh='1' />
 			<code>{label || color}</code>
 		</span>;
@@ -339,7 +339,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 <Preview>
 	<PreviewTitle>Headings</PreviewTitle>
 	<PreviewArea p={20} isFlow='s'>
-		<div class="l--stack -gap:30">
+		<div class="l--stack -g:30">
 			<h1>Heading 1: <DammyText tag='span' lang='ja' /></h1>
 			<h2>Heading 2: <DammyText tag='span' lang='ja' /></h2>
 			<h3>Heading 3: <DammyText tag='span' lang='ja' /></h3>
@@ -407,7 +407,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 |`sans`|`--ff--sans`|`.-ff:sans`|<small>`-apple-system, 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',Meiryo, sans-serif, 'Segoe UI Emoji'`</small>|
 |`serif`|`--ff--serif`|`.-ff:serif`|<small>`serif`</small>|
 |`mono`|`--ff--mono`|`.-ff:mono`|<small>`Menlo, Consolas, monaco, monospace`</small>|
-|`emoji`|`--ff--emoji`|`.-ff:emoji`|<small>`'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji','Segoe UI Symbol'`</small>|
+|`emoji`|`--ff--emoji`|-|<small>`'Apple Color Emoji', 'Segoe UI Emoji', 'Android Emoji','Segoe UI Symbol'`</small>|
 
 {/* |base|--ff--base|--ff--sans|
 |heading|--ff--heading|--ff--sans| */}
@@ -418,7 +418,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 		<DammyText ff='sans' />
 		<DammyText ff='serif' />
 		<DammyText ff='mono' />
-		<Text ff='emoji'>💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
+		<Text ff='var(--ff--emoji)'>💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
@@ -449,18 +449,10 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 
 ## `SPACE` トークン
 
-`SPACE`トークンは、次の2種類があります。
-
-|種類|<span class="-whs:nw">変数</span>|説明|
-|---|---|---|
-|`SPACE.S`|`--s--VAL`|レイアウトの役割としての余白や、コンテンツ間の余白をコントロールするために設計されたトークン。<br />デフォルトでは`rem`単位で、フィボナッチ数に基づいて計算されています。|
-|`SPACE.EM`|`--em--VAL`|ボックス内の余白や文字とアイコン要素の間隔など、その要素自体のテキストサイズに合わせて微調整したい時に使用するトークン。`em`単位。|
-
 
 {/* paddingやmargin, gap等で利用できます。(p,py,px,pl,pr,pt,pb,m,my,mx,ml,mr,mt,mb,gap,colg,rowg,top,left,bottom,right,inset) */}
 
 
-### `SPACE.S` トークン
 
 |トークン値|変数|デフォルト値|
 |---|---|---|
@@ -498,45 +490,13 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりにするがおす�
 paddingやmarginの全方向・全トークンに対してクラスを用意すると膨大になってしまうので、デフォルトでは主要なものに対してのみでクラスを用意しています。
 
 
-デフォルトでは、`-mbs:{SPACE}`, `-p:{SPACE}`, `-[py|px]:{SPACE}`, `-gap:{SPACE}` のみ用意しています。<MemoBadge>検討中</MemoBadge>
+デフォルトでは、`-mbs:{SPACE}`, `-p:{SPACE}`, `-[py|px]:{SPACE}`, `-g:{SPACE}` のみ用意しています。<MemoBadge>検討中</MemoBadge>
 
 また、それぞれクラスを用意しているのは `50` としています。<MemoBadge>検討中</MemoBadge>
 
 {/* - ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...? */}
 
 
-### `SPACE.EM` トークン
-
-`em`単位でのスペーストークンです。  
-文字サイズを基準とした余白や、微調整レベルの細かな余白に活用してください。
-
-|トークン値|変数|デフォルト値|
-|---|---|---|
-|`1`|`--em--1`|`0.125em`|
-|`2`|`--em--2`|`0.25em`|
-|`3`|`--em--3`|`0.375em`|
-|`4`|`--em--4`|`0.5em`|
-|`6`|`--em--6`|`0.75em`|
-|`8`|`--em--8`|`1em`|
-|`10`|`--em--10`|`1.25em`|
-|`12`|`--em--12`|`1.5em`|
-|`14`|`--em--12`|`1.75em`|
-|`16`|`--em--12`|`2em`|
-
-<Preview>
-	<PreviewTitle>DEMO</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
-		<SpacingDemos spaces={['em1','em2','em3','em4','em6','em8','em10','em12','em14','em16']} isValueLabel />
-	</PreviewArea>
-</Preview>
-
-#### 対応するUtilityクラス
-
-こちらも、主要なものに対してのみクラスを用意しています。
-
-デフォルトでは、`-gap:{EM}` のみ用意しています。<MemoBadge>要検討</MemoBadge>
-
-- ツリーシェーキングできる環境であれば全て用意していても大丈夫なので、最低限のファイルと全てのファイルの読み込みを切り替えれるようにする...?
 
 
 {/* ## カスタマイズ方法
@@ -643,14 +603,35 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 
 ## `RADIUS` トークン
 
+|トークン値|変数|クラス|
+|---|---|---|
+|`xs`|`--radii--xs`|`.-bdrs:xs`|
+|`s`|`--radii--s`|`.-bdrs:s`|
+|`m`|`--radii--m`|`.-bdrs:m`|
+|`l`|`--radii--l`|`.-bdrs:l`|
+|`xl`|`--radii--xl`|`.-bdrs:xl`|
+|`full`|`--radii--full`|`.-bdrs:full`|
+
+
 <Preview>
-	<PreviewTitle>radius: `1` ~ `5`, `99`</PreviewTitle>
-	<PreviewArea p={40}>
-		<Columns cols={[3, 6]} gap={40}>
+	<PreviewTitle>-bdrsクラス</PreviewTitle>
+	<PreviewArea p={50} nogrid>
+		<Columns cols={[3, 6]} g={40}>
 			<RadiusDemos />
 		</Columns>
 	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="-bdrs:xs">...</div>
+		<div class="-bdrs:s">...</div>
+		<div class="-bdrs:m">...</div>
+		<div class="-bdrs:l">...</div>
+		<div class="-bdrs:xl">...</div>
+		<div class="-bdrs:full">...</div>
+		```
+	</PreviewCode>
 </Preview>
+
 
 
 ## `SHADOW` トークン
@@ -670,7 +651,7 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 |`5`|`--sh--5`|`-bxsh:5`|
 |`-1`|`--sh--i1`|`-bxsh:-1`|
 |`-2`|`--sh--i2`|`-bxsh:-2`|
-|`-3`|`--sh--i3`|`-bxsh:-3`|
+{/* |`-3`|`--sh--i3`|`-bxsh:-3`| */}
 
 `--sh--{token}`の値の中身は、次の変数で構成されます。
 
@@ -691,7 +672,7 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 <Preview>
 	<PreviewTitle>bxshクラス</PreviewTitle>
 	<PreviewArea p={50} nogrid>
-		<Columns cols={[3 , 5, 5]} gap={60}>
+		<Columns cols={[3 , 5, 5]} g={60}>
 			<BoxShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
 		</Columns>
 	</PreviewArea>
@@ -718,15 +699,14 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 <Preview>
 	<PreviewTitle>bxshクラス(inset)</PreviewTitle>
 	<PreviewArea p={50} nogrid>
-		<Columns cols={[3 , 5, 5]} gap={60}>
-			<BoxShadowDemos shadows={[ -1, -2, -3 ]}/>
+		<Columns cols={[3, 5, 5]} g={60}>
+			<BoxShadowDemos shadows={[ -1, -2 ]}/>
 		</Columns>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div class="-bxsh:-1">...</div>
 		<div class="-bxsh:-2">...</div>
-		<div class="-bxsh:-3">...</div>
 		```
 	</PreviewCode>
 </Preview>

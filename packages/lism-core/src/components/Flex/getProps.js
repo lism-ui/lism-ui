@@ -3,7 +3,7 @@ import atts from '../../lib/helper/atts';
 export function mergeFlexContextProps(props) {
 	if (null == props.flex) props.flex = {};
 
-	['fxf', 'fxd', 'fxw', 'gap', 'rowg', 'colg'].forEach((key) => {
+	['fxf', 'fxd', 'fxw', 'g', 'gap', 'rowg', 'colg'].forEach((key) => {
 		if (null != props[key]) {
 			props.flex[key] = props[key];
 			delete props[key];

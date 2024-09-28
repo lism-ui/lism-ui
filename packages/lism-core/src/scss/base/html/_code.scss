@@ -17,11 +17,11 @@ kbd {
 code {
 	color: var(--code-c);
 	background-color: var(--code-bgc);
-	border-radius: var(--radius--s);
+	border-radius: var(--radii--s);
 }
 
 kbd {
-	border-radius: var(--radius--xs);
+	border-radius: var(--radii--xs);
 	border: solid 1px var(--base-3);
 	box-shadow: 0 1px 0 var(--base-3);
 	color: var(--content);

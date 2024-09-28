@@ -9,14 +9,14 @@ const componentMenu = sidebarData.find((item) => item.label === 'Components');
 ---
 
 <!-- componentMenuをループさせて label, link を出力 -->
-<Stack gap='10' {...props}>
+<Stack g='10' {...props}>
 	{
 		componentMenu.items.map((item) => {
 			if (item.link === '###---' && item.label === '---') {
 				return <Divider />;
 			} else if (item.link === '###---') {
 				return (
-					<Flex mbs='40' ai='c' gap='30'>
+					<Flex mbs='40' ai='c' g='30'>
 						<Lism c='content-3'>{item.label}</Lism>
 						<Divider class='-fx:1' />
 					</Flex>

@@ -15,12 +15,16 @@
 
 
 // memo: パレットカラーだけに限定すれば、hsl(var(--color / alpha )) でいける? → ただしその場合は半透明にすることしかできないので、どちらにせよ微妙。
+
+// is--cbox -cbox:red
 [class*="-boxcolor:"]{
 	// c,bdc は 変数セットのみ
 	// --c: var(--cbox-c, var(--content));
 	--bdc: var(--cbox-bdc, var(--base-3));
-	color: var(--cbox-c, var(--content));
-	background-color: var(--cbox-bgc, var(--base-2));
+	--c: var(--cbox-c, var(--content));
+	--bgc: var(--cbox-bgc, var(--base-2));
+	color: var(--c);
+	background-color: var(--bgc);
 }
 @supports (color: color-mix(in srgb, #000, #fff)) {
 	// --boxcolor 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない

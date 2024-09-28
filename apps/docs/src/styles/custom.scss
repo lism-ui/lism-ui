@@ -3,6 +3,7 @@
 @import './preview';
 @import './theme';
 @import './tab';
+@import '../components/ex/Chat/style';
 // @import './hero';
 
 // html,
@@ -13,7 +14,7 @@
 // 以下ではデフォルトのカラム幅を広げ、ページタイトルのテキストサイズを大きくしています。
 :root {
 	--sl-content-width: 50rem;
-	--codeBlock--radius: 0 0 var(--radius--s) var(--radius--s);
+	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
 	--sl-sidebar-width: 15rem;
 }
 
@@ -40,7 +41,7 @@
 .sidebar-content,
 .right-sidebar {
 	--list-pis: 0;
-	--list-style: none;
+	--lis: none;
 }
 
 .sidebar details ul summary span {
@@ -184,7 +185,7 @@ td:first-child > code:only-child {
 		padding-block: 0;
 		font-size: var(--sl-text-sm);
 		border-left: 1px solid var(--content-3);
-		// border-radius: var(--radius--s);
+		// border-radius: var(--radii--s);
 		// background-color: var(--base-2);
 	}
 	._divider {
@@ -217,26 +218,76 @@ td:first-child > code:only-child {
 // }
 
 .-gradient\:sunset {
-	// background-image: linear-gradient(
-	// 	to bottom,
-	// 	#416dc7 10%,
-	// 	#5383e5 40%,
-	// 	#f18271 75%,
-	// 	#f7d978 100%
-	// );
-	background: linear-gradient(
-		to top,
-		#a24525 0%,
-		#dd723c 15%,
-		#d7b97b 40%,
-		#a2b2b9 55%,
-		#5a718c 80%,
-		#36557e 100%
-	);
+	background: linear-gradient(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
 }
 
 :root {
 	/* // グラデーション用のカラープリセット */
-	--gradColor--lime: #abecd6 0%, #fbed96 100%;
-	--gradColor--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
+	--grad--lime: #abecd6 0%, #fbed96 100%;
+	--grad--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
+}
+
+:where(.-bg\:glass) {
+	// --bxsh初期値セット（ ユーティリティと共存できるように、--bxsh を受け取るようにしている。）
+	--bxsh: 0 0 0 transparent;
+	--blur: 16px;
+}
+
+.-bg\:glass {
+	backdrop-filter: brightness(1.2) blur(var(--blur));
+
+	// 白の1pxボーダーは、透過白背景をグラデーションにするとバグるので、borderではなくshadowで表現している。
+	// shadowユーティリティに負けないように important.
+	box-shadow:
+		inset 0 0 0 1px rgb(255 255 255 / 0.2),
+		inset 10px 20px 40px -20px rgb(255 255 255 / 0.2),
+		var(--bxsh) !important;
+	// background-color: transparent;
+	// background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+// 罫線 : Ruled paper, lined paper, rulied lines
+// 方眼 : graph paper, grid paper, squared paper
+.-bg\:grid {
+	--grid-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--grid-size: 1rem;
+	--grid-offset: calc(var(--grid-size) / 2);
+	background-image: linear-gradient(
+			transparent calc(100% - 1px),
+			var(--grid-bdc) 50%,
+			var(--grid-bdc)
+		),
+		linear-gradient(90deg, transparent calc(100% - 1px), var(--grid-bdc) 50%, var(--grid-bdc));
+	background-position: var(--grid-offset) var(--grid-offset);
+	background-size: var(--grid-size) var(--grid-size);
+}
+// .-bg\:grid[class*='-boxcolor'] {
+// 	--grid-bdc: color-mix(in srgb, var(--boxcolor), transparent 90%);
+// }
+.-bg\:stripe {
+	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--stripe-bdw: 1px;
+	--stripe-deg: -40deg;
+	--stripe-interval: 6px;
+	background-image: repeating-linear-gradient(
+		var(--stripe-deg),
+		var(--stripe-bdc),
+		var(--stripe-bdc) var(--stripe-bdw),
+		transparent var(--stripe-bdw),
+		transparent var(--stripe-interval)
+	);
+
+	background-position: center;
+}
+
+.-fxd\:c2r\@sm {
+	--isRow: 0;
+	flex-direction: column;
+}
+
+@container (min-width: 480px) {
+	.-fxd\:c2r\@sm {
+		--isRow: 1;
+		flex-direction: row;
+	}
 }

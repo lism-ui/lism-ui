@@ -6,8 +6,8 @@ sidebar:
 ---
 
 
-import { Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Spacer } from '@lism-ui/core';
-import { Accordion,AccordionHeader, AccordionBody } from '@lism-ui/astro';
+import { DammyText, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
+
 import { Desktop } from '@phosphor-icons/react';
 import { MemoBadge,HelpText } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
@@ -34,11 +34,11 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 
 | クラス名 | 余白量 |
 |---|---|
-| `.is--flow` | `--flowGap--m` |
-| `.is--flow.-flowGap:s` | `--flowGap--s` |
-| `.is--flow.-flowGap:` | `--flowGap`で任意の値をセットできます。 |
-{/* | `.is--flow.-flowGap:l` | `--flowGap--l` (`--s--50`) | */}
-
+| `.is--flow` | `--flowG--r` |
+| `.is--flow.-flowG:s` | `--flowG--s` |
+| `.is--flow.-flowG:` | `--flowG`で任意の値をセットできます。 |
+| `.is--skipFlow` | 次に続く兄弟要素との余白量を打ち消します。フローコンテンツの先頭に absolute な要素を配置したい場合などに活用できます。 |
+{/* | `.is--flow.-flowG:l` | `--flowG--l` (`--s--50`) | */}
 
 
 <Preview>
@@ -48,6 +48,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 			<Text bd='guide'>Content...</Text>
 			<Text bd='guide'>Content...</Text>
 			<Box isFlow='s' p='10' bd bdc='divider'>
+				<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
 				<Text bd='guide'>Content...</Text>
 				<Text bd='guide'>Content...</Text>
 				<Text bd='guide'>Content...</Text>
@@ -60,7 +61,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	<div class="is--flow -p:10">
 		<p>Content...</p>
 		<p>Content...</p>
-		<div class="is--flow -flowGap:s -p:10">
+		<div class="is--flow -flowG:s -p:10">
 			<p>Content...</p>
 			<p>Content...</p>
 			<p>Content...</p>
@@ -86,7 +87,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Preview>
 
 
-任意の余白量をセットしたい場合は、`-flowGap:`クラスと`--flowGap`変数を組み合わせます。
+任意の余白量をセットしたい場合は、`-flowG:`クラスと`--flowG`変数を組み合わせます。
 
 <Preview>
 	<PreviewTitle>任意の値をセットする</PreviewTitle>
@@ -99,7 +100,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--flow -flowGap:" style="--flowGap:10px">
+	<div class="is--flow -flowG:" style="--flowG:10px">
 		<p>Contents...</p>
 		<p>Contents...</p>
 		<p>Contents...</p>
@@ -122,7 +123,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Box>
 
 
-`-flowGap:`の直下でさらに`-flowGap:`を配置すると、子要素側が自身の `--flowGap` に干渉してしまいます。
+`-flowG:`の直下でさらに`-flowG:`を配置すると、子要素側が自身の `--flowG` に干渉してしまいます。
 
 <Preview>
 	<PreviewTitle>NG例</PreviewTitle>
@@ -155,7 +156,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Preview>
 
 <Callout type='info'>
-	`.is--flow`, `.is--flow.-flowGap:s` をネストするのは問題ありません.
+	`.is--flow`, `.is--flow.-flowG:s` をネストするのは問題ありません.
 </Callout>
 
 
@@ -292,8 +293,6 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 
 コンテンツサイズの制御クラスを3種類用意しています。
 
-{/* flow, flow:s, container, container:s */}
-
 | クラス名 | 説明 |
 |---|---|
 | `is--wide` | `.-contentSize:\{s\|m\|l\}`クラス直下では、コンテンツ幅よりも1段階広いサイズになります.  |
@@ -323,7 +322,9 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 
 ## `has--divider`
 
-子要素の間に仕切り線を表示します。デフォルトでは`border-bottom`で区切り線が描画されます。
+子要素の間にボーダーを表示します。デフォルトでは`border-block-end`で線が描画されます。
+
+ボーダーの色や太さは、[`-bd:`クラス](/ja/styles/border)と同じく`--bdw`や`--bdc`変数で変更できます。
 
 <Preview>
 	<PreviewTitle>`has--divider`</PreviewTitle>
@@ -370,56 +371,67 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 	<PreviewCode slot='tab' label='HTML'>
 	```html
 	<div class="l--flex has--divider">
-		<div class="-px:em10">Content</div>
-		<div class="-px:em10">Content</div>
-		<div class="-px:em10">Content</div>
+		<div class="-px:20">Content</div>
+		<div class="-px:20">Content</div>
+		<div class="-px:20">Content</div>
 	</div>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Flex hasDivider>
-		<Box px='em10'>Content</Box>
-		<Box px='em10'>Content</Box>
-		<Box px='em10'>Content</Box>
+		<Box px='20'>Content</Box>
+		<Box px='20'>Content</Box>
+		<Box px='20'>Content</Box>
 	</Flex>
 	```
 	</PreviewCode>
 </Preview>
 
-`--isRow`はブレイクポイントの指定に対応しているため、`flex-direction`の切り替えに合わせて区切り線の方向を変えることができます。
+
+`--isRow`と flex-direction をクエリで切り替えるようなクラスを作っておくと、以下のように方向を切り替えることもできます。
 
 <Preview>
-	<PreviewTitle>`--isRow`で方向を管理する</PreviewTitle>
+	<PreviewTitle>`--isRow`で方向を管理する`.-fxd:c2r@sm`を作る</PreviewTitle>
 	<PreviewArea resize p='20' nogrid>
-		<Flex hasDivider fxd={['column','row']} isRow={[0,1]} bdw='2px' bdc='blue'>
+		<Flex fxd='u:c2r@sm' hasDivider bdw='2px' bdc='blue'>
 			<Box px='20' py='5'>Content</Box>
 			<Box px='20' py='5'>Content</Box>
 			<Box px='20' py='5'>Content</Box>
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-	```html
-	<div
-		class="l--flex has--divider -isRow@sm -fxd:c -fxd@sm"
-		style="--isRow:0;--sm-isRow:1;--bdw:2px;--bdc:var(--blue);--sm-fxd:row">
-		<div class="-px:em10">Content</div>
-		<div class="-px:em10">Content</div>
-		<div class="-px:em10">Content</div>
-	</div>
-	```
+	<PreviewCode slot='tab' label='CSS'>
+```css
+.-fxd\:c2r\@sm {
+	--isRow: 0;
+	flex-direction: column;
+}
+
+@container (min-width: 480px) {
+	.-fxd\:c2r\@sm {
+		--isRow: 1;
+		flex-direction: row;
+	}
+}
+```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Flex hasDivider fxd={['column','row']} isRow={[0,1]} bdw='2px' bdc='blue'>
-		<Box px='em10'>Content</Box>
-		<Box px='em10'>Content</Box>
-		<Box px='em10'>Content</Box>
+	<Flex fxd='u:c2r@sm' hasDivider bdw='2px' bdc='blue'>
+		<Box px='20' py='5'>Content</Box>
+		<Box px='20' py='5'>Content</Box>
+		<Box px='20' py='5'>Content</Box>
 	</Flex>
 	```
 	</PreviewCode>
 </Preview>
 
+
+## `is--hidden`
+
+要素を視覚的に隠すことができるクラスです。
+
+スクリーンリーダー用のテキストなどに利用してください。
 
 
 ## 補足

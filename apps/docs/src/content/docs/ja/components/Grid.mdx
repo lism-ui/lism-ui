@@ -157,7 +157,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 	<PreviewTitle>ブレイクポイントでエリアを切り替える</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Grid
-			gap='20'
+			g='20'
 			gtc={['1fr 1fr', '8em 1fr 8em']}
 			gta={[
 				`'main main' 'left right'`,
@@ -172,7 +172,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Grid
-			gap='20'
+			g='20'
 			gtc={['1fr 1fr', '8em 1fr 8em']}
 			gta={[
 				`'main main' 'left right'`,
@@ -188,7 +188,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div
-			class="l--grid -gta@sm -gtc@sm -gap:20"
+			class="l--grid -gta@sm -gtc@sm -g:20"
 			style="--gta:'main main' 'left right';--sm-gta:'left main right';--gtc:1fr 1fr;--sm-gtc:8em 1fr 8em"
 		>
 			<div class="-p:20 -ga:" style="--ga:left">Left</div>
@@ -235,7 +235,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 		1:2, 2:1 で順番にコンテンツを表示
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Grid variant='repeat' cols='3' gap='10'>
+		<Grid variant='repeat' cols='3' g='10'>
 			<GridItem px='20' bgc='base-2'></GridItem>
 			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText /></GridItem>
 			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText length='l'/></GridItem>
@@ -244,7 +244,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Grid variant='repeat' cols='3' gap='10'>
+		<Grid variant='repeat' cols='3' g='10'>
 			<GridItem px='20' bgc='base-2'></GridItem>
 			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText /></GridItem>
 			<GridItem px='20' bgc='base-3' gc='span 2'><DammyText length='l'/></GridItem>
@@ -317,7 +317,7 @@ gc, gr もブレイクポイントに対応しています。
 {/* <Preview>
 	<PreviewTitle>1列 → 2列 → 幅200pxで3列かつ、中央よせ</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap='20' className='has--itemGuide'>
+		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' g='20' className='has--itemGuide'>
 			<DammyText/>
 			<DammyText/>
 			<DammyText/>
@@ -328,7 +328,7 @@ gc, gr もブレイクポイントに対応しています。
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' gap='20'>
+	<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' g='20'>
 		...
 	</Grid>
 	```

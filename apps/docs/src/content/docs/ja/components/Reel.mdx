@@ -111,13 +111,13 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 		`itemSize`で子要素の横幅を指定する
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel itemSize="45%" gap='20'>
+		<Reel itemSize="45%" g='20'>
 			<ReelImages />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "itemSize="
-		<Reel itemSize="45%" gap='20'>
+		<Reel itemSize="45%" g='20'>
 			<img src='...' alt='' width='960' height='640' />
 			<img src='...' alt='' width='960' height='640' />
 			...
@@ -126,7 +126,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "--item-size:"
-		<div class="c--reel l--flex -gap:20" style="--item-size:45%" tabindex="0">
+		<div class="c--reel l--flex -g:20" style="--item-size:45%" tabindex="0">
 			<img src="..." alt="" width="960" height="640" />
 			<img src="..." alt="" width="960" height="640" />
 			...
@@ -141,13 +141,13 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 		`snapAlign="center"`
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel itemSize="40%" snapAlign="center" gap='20'>
+		<Reel itemSize="40%" snapAlign="center" g='20'>
 			<ReelImages />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "snapAlign="
-		<Reel itemSize="45%" snapAlign="center" gap='20'>
+		<Reel itemSize="45%" snapAlign="center" g='20'>
 			<img src='...' alt='' width='960' height='640' />
 			<img src='...' alt='' width='960' height='640' />
 			...
@@ -156,7 +156,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "data-snapAlign="
-		<div class="c--reel l--flex -gap:20" style="--item-size:45%" data-snapAlign="center" tabindex="0">
+		<div class="c--reel l--flex -g:20" style="--item-size:45%" data-snapAlign="center" tabindex="0">
 			<img src="..." alt="" width="960" height="640" />
 			<img src="..." alt="" width="960" height="640" />
 			...
@@ -175,10 +175,10 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 		ボタンナビゲーションをつける
 	</PreviewTitle>
 	<PreviewArea p='20' isFlow='s'>
-		<Reel itemSize='60%' snapAlign='center' gap='20'>
+		<Reel itemSize='60%' snapAlign='center' g='20'>
 			<ReelImages hasID/>
 		</Reel>
-		<Flex gap='20' jc='c' lh='1'>
+		<Flex g='20' jc='c' lh='1'>
 			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>1</FlexItem>
 			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>2</FlexItem>
 			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>3</FlexItem>
@@ -189,7 +189,7 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "image-1"
-		<Reel itemSize='40%' snapAlign='center' gap='20'>
+		<Reel itemSize='40%' snapAlign='center' g='20'>
 			<Frame id='image-1' ascpect='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
@@ -201,7 +201,7 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 			</Frame>
 			...
 		</Reel>
-		<Flex gap='20' jc='c' lh='1'>
+		<Flex g='20' jc='c' lh='1'>
 			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>1</FlexItem>
 			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>2</FlexItem>
 			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>3</FlexItem>
@@ -218,14 +218,14 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	<PreviewTitle>`fxd='column'`で縦方向に</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Box maxW='24rem' mx='a'>
-			<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} gap={30}>
+			<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} g={30}>
 				<ReelImages isV bdrs='m' />
 			</Reel> 
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "fxd='column'"
-		<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} gap={30}>
+		<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='l' bgc='black' p={30} g={30}>
 			<Frame aspect='3/4' bdrs='m'>
 				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
@@ -247,13 +247,13 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 <Preview>
 	<PreviewTitle>@mdでReel解除</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel unreel='md' gap='20'>
+		<Reel unreel='md' g='20'>
 			<ReelImages />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "unreel"
-		<Reel unreel='md' gap='20'>
+		<Reel unreel='md' g='20'>
 			...
 		</Reel>
 		```
@@ -263,13 +263,13 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 <Preview>
 	<PreviewTitle>@smでReel解除, itemSize 指定あり</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel unreel='sm' itemSize='12rem' gap='20'>
+		<Reel unreel='sm' itemSize='12rem' g='20'>
 			<ReelImages />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Reel unreel='sm' gap='20'>
+		<Reel unreel='sm' g='20'>
 			...
 		</Reel>
 		```
@@ -282,13 +282,13 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 <Preview>
 	<PreviewTitle>@smでReel解除し、2:3の比率でコンテンツを表示</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel gap='20' d={[null, 'grid']} gtc={[null,'2fr 3fr']}>
+		<Reel g='20' d={[null, 'grid']} gtc={[null,'2fr 3fr']}>
 			<ReelContents />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Reel gap='20' d={[null, 'grid']} gtc={[null,'2fr 3fr']}>
+		<Reel g='20' d={[null, 'grid']} gtc={[null,'2fr 3fr']}>
 			...
 		</Reel>
 		```
@@ -305,7 +305,7 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 		子要素の数が少ない例
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel gap='20' showScrollbar="always">
+		<Reel g='20' showScrollbar="always">
 			<Box bgc='base-2' p="box:s">
 				<p>Lorem ipsum, dolor sit amet.</p>
 			</Box>

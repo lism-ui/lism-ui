@@ -6,13 +6,13 @@
 	--bdw: 1px;
 	--bds: solid;
 	// display: block;
-	border-top: var(--bdw) var(--bds) var(--bdc);
+	border-block-start: var(--bdw) var(--bds) var(--bdc);
 	// place-self: stretch;
 }
 
 .a--divider--vertical {
-	border-top: none;
-	border-left: var(--bdw) var(--bds) var(--bdc);
+	border-block-start: none;
+	border-inline-start: var(--bdw) var(--bds) var(--bdc);
 	min-height: 1em;
 	// align-self: stretch;
 }

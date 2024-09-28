@@ -9,9 +9,19 @@ export function Note({ type = 'note', boxcolor, icon, title, children, isFlow, .
 	}
 
 	return (
-		<Stack className='c--note' boxcolor={boxcolor} p='box' gap='20' bdrs='xs' {...props}>
+		<Stack
+			lismClass='c--note'
+			boxcolor={boxcolor}
+			p='box'
+			g='20'
+			bd='is'
+			bdc='boxcolor'
+			bdw='4px'
+			bdrs='xs'
+			{...props}
+		>
 			{title && (
-				<Flex className='c--note__head' fw='bold' ai='c' gap='em4' skipState>
+				<Flex className='c--note__head' fw='bold' ai='c' g='10' skipState>
 					<Center className='c--note__icon' fz='xl' c='boxcolor' skipState>
 						<Icon icon={icon} />
 					</Center>

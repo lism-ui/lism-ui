@@ -1,14 +1,4 @@
 // Note: utility の最初で読み込む ? layout-state?
-
-.-get\:p {
-	padding: var(--pass-p);
-}
-// .-get\:m {
-// 	margin: var(--pass-m);
-// }
-.-get\:gap {
-	gap: var(--pass-gap);
-}
 .-get\:c {
 	color: var(--pass-c);
 }
@@ -18,12 +8,32 @@
 .-get\:bdc {
 	--bdc: var(--pass-bdc);
 }
+.-get\:p,
+.-pass\:p > * {
+	padding: var(--pass-p);
+}
+
+.-pass\:minW > * {
+	min-width: var(--pass-minW);
+}
+
+// .-pass\:minH > * {
+// 	min-height: var(--pass-minH);
+// }
+
+// .-get\:m {
+// 	margin: var(--pass-m);
+// }
+// .-get\:gap {
+// 	gap: var(--pass-gap);
+// }
+
 // .-get\:bdw {
 // 	--bdw: var(--pass-bdw);
 // }
-// [data-lism-get~='shadow'] {
+// [data-get-prop~='shadow'] {
 // 	box-shadow: var(--pass-shadow);
 // }
-// [data-lism-get~='radius'] {
+// [data-get-prop~='radius'] {
 // 	border-radius: var(--pass-radius);
 // }

@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { Box, Flex } from "@lism-ui/astro";
+import { Lism,Box, Flex } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Note } from '~/components/ex/Note';
@@ -30,8 +30,9 @@ Lismが配布しているReactやAstro用のコンポーネントでは、Lism C
 | Prop | 出力クラス |
 |---|---|
 | `isFlow` | `is--flow` |
-| `isFlow='s'` | `is--flow -flow:s` |
-| `isFlow='l'` | `is--flow:l` |
+| `isFlow='s\|l'` | `is--flow,-flowG:s\|l` |
+| `isContainer` | `is--container` |
+| `isContainer='s\|m\|l'` | `is--container,-contentSize:s\|m\|l` |
 | `isFrame` | `is--frame` |
 | `isLayer` | `is--layer` |
 | `isLinkBox` | `is--linkBox` |
@@ -41,87 +42,110 @@ Lismが配布しているReactやAstro用のコンポーネントでは、Lism C
 | `hasGutter` | `has--gutter` |
 | `hasDivider` | `has--divider` |
 
-{/* | `isContainer` | `is--container` |
-| `isContainer='s'` | `is--container:s` |
-| `isContainer='m'` | `is--container:m` |
-| `isContainer='l'` | `is--container:l` | */}
-
-
 
 <Reference>
-- [Layout State クラスの一覧](/ja/css/layout-state/) 
-- [それに対応した State Props一覧](/ja/props/state-props/) 
+[Layout State クラスについて](/ja/css/layout-state/)
 </Reference>
+
 
 ## CSS Props
 
-[Prop Utilities](/ja/css/utility-class/) に分類されるユーティリティクラスなどを簡単に指定できるようになっています。
+主要なCSSプロパティに対して、それぞれ省略記法でコンポーネントに指定できるようになっています。
 
-一部のCSSプロパティはユーティリティクラスが用意されていなくても指定できるようになっており、インラインスタイルとして出力することもできます。
+例えば、`font-size` は `fz`、`padding` は `p` で指定できます。
 
 <Reference>
-詳しくは [CSS Props](/ja/props/css-props/) の一覧ページを参照してください。
+[指定可能なCSS Props一覧はこちら](/ja/props/css-props/)
 </Reference>
 
-## getLismProps()
 
-Lismコンポーネント以外にもLism Propsを活用するための関数、`getLismProps()`も用意されています。 
-
-
-例えば、下記 ①、② はそれぞれ同じ出力になります。
-
-```jsx
-// ①
-<Box p='20' bgc='base-2' fz='xl'>text</Box>
-
-// ②
-<div {...getLismProps({className:'l--box', p:'20', fz:'xl'})}>text</div>
-```
-
-
-引数に渡したオブジェクトを解析し、Lism Props として処理できるものを`className`と`style`に変換して返します。
-
-
-- 引数:  Lism Props として解析したいプロパティをオブジェクトで指定します。
-- 返り値: `className`, `style` を含むオブジェクトです。Lismで処理できないPropsがあった場合はそのまま返ってきます。
-
-下記のようにして使用できます。
-
+<Preview>
 <PreviewTitle>例</PreviewTitle>
+<PreviewCode>
 ```jsx
-import getLismProps from '@lism-ui/core/lib/getLismProps';
-
-const returnProps = getLismProps({className:'foo', fz:'xl', p:['30', '40']});
+<Lism fz='l' p='20' mt='2rem'>contents</Lism>
+↓
+<div class="-fz:l -p:20">contents</div>
 ```
+</PreviewCode>
+</Preview>
 
-<PreviewTitle>返り値</PreviewTitle>
-```js
-{
-	className: 'foo -fz:l -p:30 -p@sm',
-	style: {'--sm-p':'var(--s--40)'},
-}
+この時、[Prop Utilities](/ja/css/utility-class/) に分類されるユーティリティクラスに対応する値が指定されれば、上記のようにクラスが出力されるようになっています。
+
+該当するユーティリティクラスがない場合、単純にstyle属性にインラインで出力されるか、または`-{prop}:`と`--{prop}`の組み合わせで出力されます。
+
+<Preview>
+<PreviewTitle>ユーティリティクラスがない場合の例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism fz='20px' tsh='0 0 8px #555'>contents</Lism>
+↓
+<div class="-fz:" style="--fz:20px;text-shadow:0 0 8px #555">contents</div>
 ```
+</PreviewCode>
+</Preview>
 
-{/* // const { className, style, ...otherProps} = getLismProps(exampleProps); */}
-
-<Note title='注意点' type='warning' isFlow='s'>
-	`getLismProps`をスプレッド構文で展開する際、classNameとstyleが含まれることに注意してください。  
-	例えば、次のようにclassNameの指定を分離すると、classNameが上書きされてしまいます。
-
-	<PreviewTitle>NG</PreviewTitle>
-	```jsx
-	<div className='foo' {...getLismProps({p:'20', fz:'xl'})}>text</div>
-	```
-</Note>
+`-{prop}:`と`--{prop}`の組み合わせで出力されるものは、基本的にブレイクポイントでの切り替えに対応しているプロパティです。（そのほか、変数管理できた方が色々と便利なので、主要なプロパティは基本的に変数化されるようになっています。）
 
 
-## Component Props
+<Preview>
+<PreviewTitle>ブレイクポイントに対応しているプロパティの例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism fz={['20px','30px']}>contents</Lism>
+↓
+<div class="-fz: -fz@sm" style="--fz:20px;--sm-fz:30px">contents</div>
+```
+</PreviewCode>
+</Preview>
 
-その他、Lismコンポーネントの挙動を調整するために使用できるプロパティがあります。
+<Reference>
+[Responsive Propsについて](/ja/props/responsive-props/)
+</Reference>
+
+
+<div id='output-utility'></div>
+### ユーティリティクラスとして強制的に出力する方法
+
+`u:`で始まる文字列を指定することで、ユーティリティクラスとして強制的に出力することができます。
+
+<Preview>
+<PreviewTitle>例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism bg='u:hoge'>contents</Lism>
+↓
+<div class="-bg:hoge">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+これにより、Lismが用意しているユーティリティクラスではなく、自身で任意のユーティリティクラスを用意して活用しやすくなっています。
+
+このほか、`"-"`を指定するか、`true`を指定すると、変数なしで`-{prop}:`クラスのみを出力します。
+
+<Preview>
+<PreviewTitle>例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism p='-' bdrs>contents</Lism>
+↓
+<div class="-p: -bdrs:">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+CSS側で変数の中身を記述したい場合や、親と同じ変数を受け取りたい場合などに活用できます。
+
+
+
+## その他共通のプロパティ
+
+その他、Lismコンポーネントで共通して使用できるプロパティがあります。
 
 ### tag
 
-Lism Component が出力するHTMLのタグを指定できます。
+最終的に出力するHTMLのタグを指定できます。
 
 <Preview>
 	<PreviewTitle>例: `<Text>`を`span`で出力する</PreviewTitle>
@@ -157,35 +181,24 @@ import Image from 'next/image';
 
 ### exProps
 
-Lism側での処理をスキップしたいpropsを指定できます。  
-`as`で指定したコンポーネントが受け取れるPropsと、Lism Props の名前が被っていた場合、Lism側での処理が優先されてしまうので、それを回避する際に活用できます。
+Lism側での処理をスキップしたいpropsを指定できます。
 
-たとえば、`<Hoge>` というコンポーネントが`size`というプロパティを受け取れる時、以下のようにすると Lism Props の`size`として優先的に処理されてしまいます。
-
-<Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewCode>
-```jsx
-<Lism as={Hoge} size='...' p='em10' fz='l'>...</Lism>
-```
-	</PreviewCode>
-</Preview>
-
-Hoge コンポーネント側で`size`を受け取るためには、以下のように`exProps`で指定する必要があります。
+`as`で指定した外部コンポーネント用のプロパティを明示的に指定する際にも便利です。外部コンポーネントが受け取れるプロパティと、Lism Props の名前が被っていた場合の対処法としても活用できます。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewCode>
 ```jsx
-<Lism as={Hoge} exProps={{size:'...'}} p='em10' fz='l'>...</Lism>
+<Icon as={Hoge} exProps={{size:'1em'}} p='10' fz='l'>...</Icon>
 ```
 	</PreviewCode>
 </Preview>
 
+上記のようにすることで、Lismの`Icon`コンポーネントで`p`, `fz` を受け取り、`Hoge`という外部コンポーネント側で`size`を受け取ることができます。
 
 
 ### variant
 
-モジュールクラスのバリエーションを指定できます。
+多くのコンポーネントで、バリエーションクラスを出力することができるようになっています。
 
-`l--box--{variant}` というようなクラスが出力できます。
+`<Box variant='hoge'>`のようにすることで、`l--box--hoge` というようなクラスが出力できます。

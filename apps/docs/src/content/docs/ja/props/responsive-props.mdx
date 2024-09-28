@@ -12,7 +12,7 @@ import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 [CSS Props](/ja/props/css-props) は、次の2通りの指定方法によってレスポンシブに対応できます。
 
 
-1. 配列で順番に指定（ _ → sm → md → ...）
+1. 配列で順番に指定（ base → sm → md → ...）
 2. オブジェクトで直接ブレイクポイントを指定
 
 どちらも最終的に出力されるHTMLは同じで、ユーティリティクラスとカスタムプロパティのペアで出力されます。
@@ -22,14 +22,14 @@ import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 	<PreviewTitle>例1</PreviewTitle>
 	<PreviewCode label="配列形式" slot="tab">
 	```jsx
-	<Box p={[20, 30, '5rem']}>
+	<Box p={['20', '30', '5rem']}>
 		...
 	</Box>
 	```
 	</PreviewCode>
 	<PreviewCode label="オブジェクト形式" slot="tab">
 	```jsx
-	<Box p={{ base: 20, sm: 30, md: '5rem' }}>
+	<Box p={{ base: '20', sm: '30', md: '5rem' }}>
 		...
 	</Box>
 	```
@@ -56,14 +56,14 @@ CSS側でクラスが用意されていないと実際に値は切り替わり�
 	<PreviewTitle>例2:`@md`の値のみ指定</PreviewTitle>
 	<PreviewCode label="配列形式" slot="tab">
 	```jsx
-	<Box p={[null, null, 40]}>
+	<Box p={[null, null, '40']}>
 		...
 	</Box>
 	```
 	</PreviewCode>
 	<PreviewCode label="オブジェクト形式" slot="tab">
 	```jsx
-	<Box p={{ md: 40 }}>
+	<Box p={{ md: '40' }}>
 		...
 	</Box>
 	```

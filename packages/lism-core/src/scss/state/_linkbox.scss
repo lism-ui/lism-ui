@@ -3,7 +3,7 @@
 // }
 
 .is--linkBox {
-	--link-td: none;
+	--td: none;
 	display: block;
 	position: relative;
 	color: inherit;
@@ -34,9 +34,9 @@
 }
 
 .is--overlayLink {
+	--td: none;
 	position: static;
 	color: inherit;
-	--link-td: none; // text-decoration: none;
 
 	&::before {
 		position: absolute;

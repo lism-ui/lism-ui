@@ -25,7 +25,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 		props.fxd = 'column';
 	}
 	return (
-		<Flex className='b--dividerLabel' ai='c' gap='20' fz='s' lh='1' c='content-3' {...props}>
+		<Flex className='b--dividerLabel' ai='c' g='20' fz='s' lh='1' c='content-3' {...props}>
 			{labelPosition !== 'start' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
 			<Lism className='b--divider__label'>{children}</Lism>
 			{labelPosition !== 'end' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
@@ -87,7 +87,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
-		<Flex ai='c' gap='20'>
+		<Flex ai='c' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 			<DividerLabel isVertical fz='s' aslf='stretch'>Label</DividerLabel>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
@@ -95,7 +95,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {3}
-		<Flex ai='c' gap='20'>
+		<Flex ai='c' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 			<DividerLabel isVertical fz='s' aslf='stretch'>Label</DividerLabel>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
@@ -107,7 +107,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
-		<Flex ai='stretch' gap='20'>
+		<Flex ai='stretch' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 			<DividerLabel isVertical labelPosition='start'>
 				<Text className='-wm:v-lr' fz='xs'>Label</Text>
@@ -121,7 +121,7 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Flex ai='stretch' gap='20'>
+		<Flex ai='stretch' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 			<DividerLabel isVertical labelPosition='start'>
 				<Text className='-wm:v-lr' fz='xs'>Label</Text>

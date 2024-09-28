@@ -81,34 +81,34 @@ span.a--delimiter
 
 
 <Preview>
-	<PreviewTitle>passProps/getProps を使ってデリミタのカラーを一括で変更する</PreviewTitle>
+	<PreviewTitle>pass/get を使ってデリミタのカラーを一括で変更する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Cluster gap={20} passProps={{c: 'accent'}}>
-			<span >Lorem ipsum</span>
-			<Delimiter getProps="c">▶</Delimiter>
-			<span >Dolor</span>
-			<Delimiter getProps="c">▶</Delimiter>
-			<span >Sit amet</span>
-			<Delimiter getProps="c">▶</Delimiter>
-			<span >Consectetur</span>
+		<Cluster g={20} passVars={{c: 'accent'}}>
+			<span>Lorem ipsum</span>
+			<Delimiter get="c">▶</Delimiter>
+			<span>Dolor</span>
+			<Delimiter get="c">▶</Delimiter>
+			<span>Sit amet</span>
+			<Delimiter get="c">▶</Delimiter>
+			<span>Consectetur</span>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="JSX">
-	```jsx "passProps" "getProps"
-	<Cluster gap={20} passProps={{c: 'accent'}}>
-		<span >Lorem ipsum</span>
-		<Delimiter getProps="c">▶</Delimiter>
-		<span >Dolor</span>
-		<Delimiter getProps="c">▶</Delimiter>
-		<span >Sit amet</span>
-		<Delimiter getProps="c">▶</Delimiter>
-		<span >Consectetur</span>
+	```jsx "passVars" "get"
+	<Cluster g={20} passVars={{c: 'accent'}}>
+		<span>Lorem ipsum</span>
+		<Delimiter get="c">▶</Delimiter>
+		<span>Dolor</span>
+		<Delimiter get="c">▶</Delimiter>
+		<span>Sit amet</span>
+		<Delimiter get="c">▶</Delimiter>
+		<span>Consectetur</span>
 	</Cluster>
 	```
 	</PreviewCode>
 	<PreviewCode slot="tab" label="HTML">
 	```jsx "--pass-c" "-get\:c"
-	<div class="l--cluster -gap:20" style="--pass-c:var(--accent)">
+	<div class="l--cluster -g:20" style="--pass-c:var(--accent)">
 		<span>Lorem ipsum</span>
 		<span class="a--delimiter -get:c">▶</span>
 		<span>Dolor</span>

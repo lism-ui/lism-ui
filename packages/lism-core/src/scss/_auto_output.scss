@@ -46,8 +46,9 @@
 		}
 
 		@if $base_type == 2 {
+			// important は [class*=] についてるので不要
 			#{$selector} {
-				--#{$key}: #{$value} #{$important};
+				--#{$key}: #{$value};
 			}
 		} @else {
 			#{$selector} {
