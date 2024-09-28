@@ -90,14 +90,26 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 	</PreviewCode>
 </Preview>
 
-同じスタイルを持った子要素の数が多く、HTMLのコード量が冗長的になりすぎる場合に、このシステムを利用してみてください。
+同じスタイルを子要素全てに記述するとHTMLのコードが冗長的になりすぎる場合に、このシステムを利用してみてください。
 
-ただし、基本的には子要素ひとつひとつに値をセットすればよいことを別アプローチで行なっているだけですので、Lismのコアパッケージで用意しているクラスは最低限に抑えています。
+ただし、Lismのコアパッケージで用意しているクラスは最低限に抑えています。
+
 
 ```css
 .-get\:c {
 	color: var(--pass-c);
 }
+.-get\:bgc,
+.-pass\:bgc > * {
+	background-color: var(--pass-bgc);
+}
+.-get\:p,
+.-pass\:p > * {
+	padding: var(--pass-p);
+}
+.-pass\:minW > * {
+	min-width: var(--pass-minW);
+}
 ```
 
-別プロパティに対しても同様のスタイリングを行いたい場合に、同じようなルールでクラスを追加していただくと統一性を保つことができます。
+必要に応じて同じ形式でCSSを追加してください

@@ -2,17 +2,14 @@
 .-get\:c {
 	color: var(--pass-c);
 }
-.-get\:bgc {
+.-get\:bgc,
+.-pass\:bgc > * {
 	background-color: var(--pass-bgc);
-}
-.-get\:bdc {
-	--bdc: var(--pass-bdc);
 }
 .-get\:p,
 .-pass\:p > * {
 	padding: var(--pass-p);
 }
-
 .-pass\:minW > * {
 	min-width: var(--pass-minW);
 }
