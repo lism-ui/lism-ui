@@ -17,7 +17,7 @@ export function Note({ type = 'note', boxcolor, icon, title, children, isFlow, .
 			bd='is'
 			bdc='boxcolor'
 			bdw='4px'
-			bdrs='xs'
+			bdrs='2px'
 			{...props}
 		>
 			{title && (
