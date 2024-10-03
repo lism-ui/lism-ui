@@ -4,17 +4,23 @@
 // 　　　→ ベースは上下ボーダーのみにしてその問題に対処しやすくする。
 // @layer lism-init {
 
+:root {
+	--cell-p: 0.5em;
+
+	// collape にしているので、tfoot 1pxだと見えないことに注意。
+	--thead-bd: solid 2px var(--content);
+	--tfoot-bd: solid 2px var(--content);
+}
+
 table {
 	// width: 100%;
 	// max-width: 100%;
 	max-inline-size: 100%;
-	font-size: var(--fz--s);
-	line-height: var(--lh--s);
-
 	border: none;
 	border-collapse: collapse; // memo: oveflow の指定によっては separate にしないとborderが表示されない場合があるので横スクロール時には注意。
 	border-spacing: 0;
-	--bdc: var(--table-bdc);
+	line-height: var(--lh--xs);
+	--bdc: var(--divider-bdc, currentColor);
 	--bds: solid;
 	--bdwX: 0px;
 	--bdwY: 1px;
@@ -23,121 +29,35 @@ table {
 td,
 th {
 	padding: var(--cell-p);
-	border-inline: var(--bds) var(--bdwX) var(--bdc);
-	border-block: var(--bds) var(--bdwY) var(--bdc);
+	border-width: var(--bdwY) var(--bdwX);
+	border-color: var(--bdc);
+	border-style: var(--bds);
+	// border-inline: var(--bds) var(--bdwX) var(--bdc);
+	// border-block: var(--bds) var(--bdwY) var(--bdc);
 }
 
 th {
-	color: var(--th--c, inherit);
+	color: var(--th-c, inherit);
 	background-color: var(--th-bgc, transparent);
 }
 
 td {
-	color: var(--td--c, inherit);
+	color: var(--td-c, inherit);
 	background-color: var(--td-bgc, transparent);
 }
 
 thead {
 	// --th-bgc: #f8f9fa;
 	border-block-end: var(--thead-bd);
+	// --bdwY: 2px;
+	// --bdc: currentColor;
+}
+
+tfoot {
+	border-block-start: var(--tfoot-bd);
 }
 
 // tbody {
 // 	// --th-bgc: #f8f9fa;
 // 	// text-align: left; // tbody 内の th が中央寄せになるのを防ぐ？
 // }
-
-tfoot {
-	border-block-start: var(--tfoot-bd);
-}
-
-:where(table) > caption {
-	margin-bottom: 0.25em;
-	font-size: 0.9em;
-	opacity: 0.8;
-}
-// }
-
-/*
-  ----------------------
-    test style
-  ----------------------
-*/
-// table:relaxed
-.table--relaxed {
-	--cell-p: var(--p--box);
-}
-
-// borderで囲む
-.table--solid > table,
-.table--solid {
-	--bdwX: 1px;
-}
-
-.table--scrollable {
-	--cell--minW: 8rem;
-	display: block;
-	width: 100%;
-	max-width: 100%;
-	padding-bottom: 16px;
-	overflow-x: auto;
-
-	td,
-	th {
-		min-width: var(--cell--minW);
-	}
-
-	table {
-		max-width: unset;
-	}
-}
-
-.table--fix-column1 {
-	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
-	--td-bgc: var(--base);
-	--th-bgc: var(--base);
-
-	// rowspan 考慮必要 → cell--nofix クラス使ってもらう
-	tr > :first-child:not(.cell--nofix) {
-		position: sticky;
-		left: 0;
-		z-index: 2; // 他のセルが relative だと上に来てしまうので、 z-index を少し上げておく
-
-		// スクロール時にborderが表示されない問題への対処
-		border-inline: none;
-		&::before {
-			content: '';
-			position: absolute;
-			inset: 0 -1px 0 0;
-			border-inline: var(--bds) var(--bdwX) var(--bdc);
-		}
-	}
-}
-
-// rowspanの考慮
-// tr:has(> [rowspan]:first-child) + tr > :first-child,
-// tr:has(> [rowspan='3']:first-child) + tr + tr > :first-child, {
-// }
-
-.table--fix-thead {
-	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
-	--th-bgc: var(--base, white);
-	overflow-y: auto;
-
-	thead {
-		position: sticky;
-		top: 0px;
-		z-index: 3; // .fix-1st-row の z-index +1
-
-		// スクロール時にborderが表示されない問題への対処
-		border: none;
-		&::before {
-			content: '';
-			position: absolute;
-			z-index: 3;
-			inset: 0;
-			border-block-start: solid var(--bdwY) var(--bdc);
-			border-block-end: var(--thead-bd);
-		}
-	}
-}

@@ -382,16 +382,29 @@ class LismPropsData {
 		}
 
 		//converter color の時の特殊処理
-		// if (converter === 'color' && typeof val === 'string') {
-		// 	// color が ":数値%" で終わるかどうか
-		// 	if (val.endsWith('%')) {
-		// 		const [colorValue, mixper] = val.split(':');
-		// 		this.addUtil(`${utilName}mix`);
-		// 		this.addStyle(`--${name}-mixcolor`, getMaybeCssVar(colorValue, 'color', name));
-		// 		this.addStyle(`--${name}-mixper`, mixper);
-		// 		return;
-		// 	}
-		// }
+		if ((name === 'bgc' || name === 'c' || name === 'bdc') && typeof val === 'string') {
+			// if (val.startsWith('mix:'))
+
+			// bgc='col1:(colo2:)mix%'
+			// color が ":数値%" で終わるかどうか
+			if (val.endsWith('%')) {
+				const mixdata = val.split(':');
+				if (mixdata.length === 3) {
+					const [color1, color2, mixper] = mixdata;
+					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
+					this.addStyle(`--${name}2`, getMaybeCssVar(color2, 'color', name));
+					this.addStyle(`--${name}1-per`, mixper);
+				} else if (mixdata.length === 2) {
+					const [color1, mixper] = mixdata;
+					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
+					this.addStyle(`--${name}1-per`, mixper);
+				}
+				// [color1, mixper]
+				this.addUtil(`-${name}:mix`);
+
+				return;
+			}
+		}
 
 		// converter(getMaybe...)があればそれを通す
 		if (converter) {

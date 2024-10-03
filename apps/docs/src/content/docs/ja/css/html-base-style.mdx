@@ -7,17 +7,11 @@ sidebar:
 
 import { MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-
-
+import { Lism } from '@lism-ui/astro';
 
 HTMLのそれぞれのタグのデフォルトスタイルを確認するためのページです。
 
-- aaa
-- hohoho
-    - bbb
-    - ccc
 
-	
 ## Text & Headings
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
@@ -87,6 +81,7 @@ HTMLのそれぞれのタグのデフォルトスタイルを確認するため�
 </Preview>
 
 ## Table
+
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='box'>
@@ -145,6 +140,66 @@ HTMLのそれぞれのタグのデフォルトスタイルを確認するため�
 	</table>
 	</PreviewArea>
 </Preview>
+
+<Preview>
+	<PreviewTitle>Table styles</PreviewTitle>
+	<PreviewArea p='box' _dir='rtl' >
+	<div className='is--flow' _style={{'writing-mode':'vertical-rl'}}>
+	<table className='table--scrollable table--fix-column1 table--fix-thead' style={{'max-height':'20rem','--cell-minW':'10rem','--bdwwX': '1px', '--cell-p': 'var(--p--box)'}}>
+		<caption>Caption</caption>
+		<thead>
+			<tr>
+				<th>Table Header 1</th>
+				<th>Table Header 2</th>
+				<th>Table Header 3</th>
+				<th>Table Header 3</th><th>Table Header 3</th><th>Table Header 3</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3</td>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3</td>
+			</tr>
+			<tr>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3<br />text</td><th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3<br />text</td>
+			</tr>
+			<tr>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>...</td><th>Division 1</th>
+				<td>Division 2</td>
+				<td>...</td>
+			</tr>
+			<tr>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3<br />text</td><th>Division 1</th>
+				<td>Division 2</td>
+				<td>Division 3<br />text</td>
+			</tr>
+			<tr>
+				<th>Division 1</th>
+				<td>Division 2</td>
+				<td>...</td><th>Division 1</th>
+				<td>Division 2</td>
+				<td>...</td>
+			</tr>
+		</tbody>
+	</table>
+
+	</div>
+	</PreviewArea>
+</Preview>
+
+
 
 ## Others
 <Preview>

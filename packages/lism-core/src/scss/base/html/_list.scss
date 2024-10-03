@@ -5,11 +5,11 @@
 :where(ul, ol) {
 	padding: 0;
 	list-style: none;
-
-	&:not([class]) {
-		padding-inline-start: 1.25em;
-		list-style: revert;
-	}
+}
+:where(ul, ol):not([class]),
+.b--list {
+	padding-inline-start: 1.5em;
+	list-style: revert;
 }
 
 /*

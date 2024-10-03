@@ -32,17 +32,13 @@
 //   - content-visibility : chirome(85~),edge(85~),opera(71~), safari:x,firefox:x, Samsung(14~)
 //   - <length> lh : Safari(16.4~), Firefox(120~121 ?), Chrome,Edge(109~), Opera(95~), Samsung(21~)
 // ↓
-// @supports (content-visibility: auto) or (top: 0lh)
+
 @supports (content-visibility: auto) or (top: 0lh) {
 	// cqw を算出値で保持するために登録済みカスタムプロパティとして定義
 	@property --overwide-size {
 		syntax: '<length-percentage>';
 		initial-value: 100%;
 		inherits: true;
-	}
-
-	.is--container {
-		--overwide-size: 100cqw; // is--container が配置された時点での 100cqw をセット
 	}
 
 	// bodyにコンテナ適用して直下要素に100cqwをセットできればいいが、コンテナ内の fixed要素の挙動が変わるので廃止。

@@ -1,0 +1,91 @@
+:where(table) > caption {
+	margin-bottom: 0.25em;
+	font-size: 0.9em;
+	opacity: 0.8;
+}
+// }
+
+/*
+  ----------------------
+    test style
+  ----------------------
+*/
+// .table--relaxed {
+// 	--cell-p: var(--p--box);
+// }
+
+// borderで囲む
+.table--solid > table,
+.table--solid {
+	--bdwX: 1px;
+}
+
+.table--scrollable {
+	--cell-minW: 8rem;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	padding-bottom: 16px;
+	overflow-x: auto;
+
+	td,
+	th {
+		min-width: var(--cell-minW);
+	}
+
+	table {
+		max-width: unset;
+	}
+}
+
+.table--fix-column1 {
+	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
+	--td-bgc: var(--base);
+	--th-bgc: var(--base);
+	isolation: isolate;
+
+	// rowspan 考慮必要 → cell--nofix クラス使ってもらう
+	tr > :first-child:not(.cell--nofix) {
+		position: sticky;
+		left: 0;
+		z-index: 1; // 他のセルが relative だと上に来てしまうので、 z-index を少し上げておく
+
+		// スクロール時にborderが表示されない問題への対処
+		border-inline: none;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0 -1px 0 0;
+			border-inline: var(--bds) var(--bdwX) var(--bdc);
+		}
+	}
+}
+
+// rowspanの考慮
+// tr:has(> [rowspan]:first-child) + tr > :first-child,
+// tr:has(> [rowspan='3']:first-child) + tr + tr > :first-child, {
+// }
+
+.table--fix-thead {
+	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
+	--th-bgc: var(--base, white);
+	overflow-y: auto;
+	isolation: isolate;
+
+	thead {
+		position: sticky;
+		top: 0px;
+		z-index: 2; // .fix-1st-row の z-index +1
+
+		// スクロール時にborderが表示されない問題への対処
+		border: none;
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: 2;
+			inset: 0;
+			border-block-start: solid var(--bdwY) var(--bdc);
+			border-block-end: var(--thead-bd);
+		}
+	}
+}

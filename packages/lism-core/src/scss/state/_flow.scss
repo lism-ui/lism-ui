@@ -14,15 +14,14 @@
 		margin-block-start: var(--mbs); // resetCSSがlismであれば、これは不要
 	}
 }
-:where(.-flowG\:s) > * {
+:where(.-flow\:s) > * {
 	--mbs: var(--flowG--s);
 }
-:where(.-flowG\:) > * {
-	--mbs: var(--flowG);
+:where(.-flow\:l) > * {
+	--mbs: var(--flowG--l);
 }
-
-// :where(.-flow\:l) > * {
-// 	--mbs: var(--flowG--l);
+// :where(.is--flow\:) > * {
+// 	--mbs: calc(var(--flowG) - var(--herfLeading) * 2);
 // }
 
 // 見出しの上部余白は少しだけ広くする. ただし、見出し直後の見出しの場合を除く。

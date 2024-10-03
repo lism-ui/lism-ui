@@ -71,14 +71,8 @@ export function getMaybeSpaceVar(value, propName) {
 export function getMaybeColorVar(value, propType) {
 	// ユーティリティクラス化されない文脈で COLOR:数値% で指定されてしまった場合
 	if (typeof value === 'string' && value.endsWith('%')) {
-		const [colorName, alpha] = value.split(':');
-		// const mixColor = getMaybeColorVar(colorName, propType);
-		// return `color-mix(in srgb, transparent, ${mixColor} ${alpha})`;
-
-		// hslで変数用意しているものは α値の指定ができる
-		if (isTokenValue('color', colorName)) {
-			return `hsl(var(--hsl-${colorName}) / ${alpha})`;
-		}
+		const [color, alpha] = value.split(':');
+		return `color-mix(in srgb, ${getMaybeColorVar(color)} ${alpha}, transparent)`;
 	}
 
 	// 単純なカラートークンかどうか

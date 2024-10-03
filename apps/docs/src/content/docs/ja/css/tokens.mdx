@@ -1,5 +1,5 @@
 ---
-title: 'Tokens'
+title: 'Design Tokens'
 description: ...
 sidebar:
   order: 2
@@ -23,7 +23,7 @@ export const ColorBadge = ({color, label}) => {
 
 |分類|形式|例|
 |---|---|---|
-|カラー|`--{color}`,<br />`--{colorToken}-{variant}`|`--base`, `--base-2`,<br />`--blue`|
+|カラー|`--{color}`|`--blue`,`--red`,<br />`--base`, `--base-2`|
 |トークン|`--{token}--{variant}`|`--fz--s`,<br />`--shadow--1`|
 
 
@@ -50,7 +50,7 @@ export const ColorBadge = ({color, label}) => {
 	<PreviewArea p={20} isFlow='s'>
 		<Box><DammyText /></Box>
 		<Box c='content-2'><DammyText /></Box>
-		<Box c='content-3'><DammyText /></Box>
+		<Box c='content' op='50'><DammyText /></Box>
 	</PreviewArea>
 </Preview>
 

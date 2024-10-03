@@ -5,7 +5,7 @@ sidebar:
   order: 10
 ---
 
-import { Chat, Callout, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
+import { Lism, Callout, Flex, Button, Media, Layer, Text, Box, Stack, Frame, LinkBox, Columns, Banner } from "@lism-ui/core";
 import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -26,7 +26,7 @@ Lismでは、ボックス全体のカラーリングを行う`.-boxcolor:`クラ
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='box:l'>
+	<PreviewArea resize p='30'>
 		<Box boxcolor='blue' p='box'><DammyText length='codes' /></Box>
 		<Box boxcolor='red' p='box'><DammyText length='codes' /></Box>
 		<Box boxcolor='#688f04' p='box'><DammyText length='codes' /></Box>
@@ -51,7 +51,7 @@ Lismでは、ボックス全体のカラーリングを行う`.-boxcolor:`クラ
 
 <Preview>
 	<PreviewTitle>ボーダーとの組み合わせ例</PreviewTitle>
-	<PreviewArea resize p='box:l'>
+	<PreviewArea resize p='30'>
 		<Box boxcolor='purple' p='box' bd bdw='4px'><DammyText length='codes' /></Box>
 		<Box boxcolor='#688f04' p='box' bd><DammyText length='codes' /></Box>
 	</PreviewArea>
@@ -67,4 +67,36 @@ Lismでは、ボックス全体のカラーリングを行う`.-boxcolor:`クラ
 		<div class='l--box -boxcolor: -p:box -bd:' style='--boxcolor:#688f04'>...</div>
 	```
 	</PreviewCode>
+</Preview>
+
+
+---
+
+<div className='is--flow -flowG is--trimHL -bd: -p:40 -bgc:mix' style={{'--bgc1': 'var(--blue)', '--bgc1-per': '40%'}}>
+	<p className='-c:mix'>ABC: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<DammyText length='codes' />
+	<p>p: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</div>
+<Lism bgc='#555:50%'>
+	<p className='-c:mix'>p: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<p>p: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</Lism>
+
+
+<Preview>
+	<PreviewTitle>ボーダーとの組み合わせ例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<div className='is--flow -flowG:l is-trimHL -bd: -p:40 -bgc:mix' style={{'--bgc1': 'var(--blue)', '--bgc1-per': '10%'}}>
+		<h2>h2: Lorem ipsum dolor sit amet</h2>
+		<p className='-c:mix -bd: -p:10 is--trimHL'>ABC: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<DammyText length='codes' />
+		<DammyText length='l' bd bdw='4px' p='20'/>
+		<ul className='b--list -bd: -py:20'>
+			<li>list</li>
+			<li>list</li>
+			<li>list</li>
+		</ul>
+		<p>p: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	</div>
+	</PreviewArea>
 </Preview>

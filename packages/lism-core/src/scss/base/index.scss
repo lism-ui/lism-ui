@@ -2,23 +2,22 @@
 @forward './tokens';
 @forward './reset';
 
-@forward './html/body';
 @forward './html/heading';
 @forward './html/table';
+@forward './html/table.more';
 @forward './html/list';
-@forward './html/code';
+@forward './html/texts';
 
 :root {
 	--heading-ff: var(--ff--sans);
+	--link-c: #0c61e4;
+	// --link-underlineOffset: 0.2ex;
 
 	--hov-trsdu: 0.3s;
-	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color,
-		background-color;
+	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;
 
 	--acc-trsdu: 0.3s;
 	--acc-trsprop: margin-block, padding-block, opacity, grid-template-rows; // hov:get:slide でも使用
-
-	--cell-p: var(--p--box--s);
 
 	// is--overwide で使用
 	--overwide-size: 100vw;
@@ -32,8 +31,8 @@ body {
 	// WPでは、カラー・タイポグラフィなどについては theme.json 設定によって出力される
 	background-color: var(--base);
 	color: var(--content);
-	font-family: var(--ff--root);
 	font-size: 1rem;
+	font-family: var(--ff--root);
 	line-height: var(--lh--root);
 	// font: 1rem / var(--lh--root) var(--ff--root);
 	letter-spacing: var(--lts--root);
@@ -42,60 +41,20 @@ body {
 	// container-type: inline-size;
 }
 
-:where(a) {
-	--td: var(--link-td, underline);
-	text-decoration: var(--td);
-	// text-underline-offset: var(--link-underlineOffset);
-}
-// :where(p, li) {
-// 	--link-td: underline;
-// }
-a {
-	// linkbox を考慮して、リンクの pointer-events: auto;は 明示的に指定しておく?
-	// pointer-events: auto;
-	color: var(--link-c); // --c--link?
-}
-
 // @layer lism-init {
-// フォーカス要素
-:where(:focus-visible) {
-	outline-color: var(--focus--color, revert);
-	outline-offset: var(--focus--outlineOffset, revert);
-}
 
-/* hrのスタイリング. currentColor */
-hr {
-	--bdc: currentColor;
-	border: none;
-	border-block-start: 1px solid var(--bdc);
-	color: inherit;
-	block-size: 0;
-	// overflow: visible; ?
-}
-
-//mark
-
-blockquote {
-	// background: whitesmoke;
-	border-left: solid 2px currentColor;
-	padding: var(--p--box);
-}
-:where(blockquote) > :is(footer, cite) {
-	margin-block-start: 1em;
-}
-
-figcaption {
-	font-size: var(--fz--s);
-}
-
-small {
-	font-size: var(--fz--xs);
+// showModal()にのみ適用するため、 dialog ではなく :modal を使用
+body:has(:modal[open]) {
+	overflow: hidden;
 }
 
 dialog:not([open]) {
 	pointer-events: none;
 }
-// showModal()にのみ適用するため、 dialog ではなく :modal を使用
-body:has(:modal[open]) {
-	overflow: hidden;
+
+/* hrのスタイリング. currentColor */
+hr {
+	border: none;
+	border-block-start: 1px solid;
+	block-size: 0;
 }

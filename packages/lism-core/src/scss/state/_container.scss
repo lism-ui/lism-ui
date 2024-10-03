@@ -7,6 +7,7 @@
 
 // 基本的には .is--container と併用する
 // [data-content-size],
+// .has--contentSize
 [class*='-contentSize:'] {
 	--contentSize: 100%;
 	--wide-size: 100%;
@@ -17,6 +18,7 @@
 }
 
 // それぞれの直下要素( > * ) に対してスタイルをセットした方が、ネスト時の影響をなくせるが、constrainedのネストが多様されることは少ないと思うので、一旦親側の変数管理のみで実装。
+// .-container\:s
 .-contentSize\:xs {
 	--contentSize: var(--contentSize--xs);
 	--wide-size: var(--contentSize--s);

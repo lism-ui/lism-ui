@@ -181,6 +181,7 @@ $utilities: (
 	// ),
 	'ord':
 		(
+			'2': 2,
 			'1': 1,
 			'0': 0,
 			'-1': -1,
@@ -266,7 +267,7 @@ $props: map.deep-merge(
 				// 'accent': 'var(--accent)',
 				'content': 'var(--content)',
 				'content-2': 'var(--content-2)',
-				'content-3': 'var(--content-3)',
+				// 'content-3': 'var(--content-3)',
 				'base': 'var(--base)',
 				'boxcolor': 'var(--boxcolor,currentColor)',
 				// 'cbox': 'var(--cbox-c, var(--content))',
@@ -424,6 +425,23 @@ $props: map.deep-merge(
 				'cinema': '2.35/1',
 			),
 		),
+		'op': (
+			prop: 'opacity',
+			base_type: 0,
+			utilities: (
+				'0': '0',
+				'10': '0.1',
+				'20': '0.2',
+				'30': '0.3',
+				'40': '0.4',
+				'50': '0.5',
+				'60': '0.6',
+				'70': '0.7',
+				'80': '0.8',
+				'90': '0.9',
+				'100': '1',
+			),
+		),
 		'bg': (
 			prop: 'background',
 			base_type: 0,
@@ -457,7 +475,7 @@ $props: map.deep-merge(
 		'g':
 			(
 				prop: 'gap',
-				base_type: 1,
+				base_type: 2,
 				utilities: s,
 				bp: 1,
 			),
@@ -586,7 +604,7 @@ $props: map.deep-merge(
 		),
 		'pis': (
 			prop: 'padding-inline-start',
-			base_type: 1,
+			base_type: 2,
 			important: 0,
 			bp: 1,
 			utilities: 's',

@@ -14,32 +14,8 @@
  ------------------------------------------------------------ */
 
 :root {
-	// コンテンツの左右の余白
-	// --gutter: 2rem;
-	--gutter: var(--s--40);
-
 	// ボーダーカラー
-	// --ls--bdc--table: #dcdcdc;
-
-	// --table--bdc:
-	--th-bgc: var(--base-2);
-
-	// collape にしているので、tfoot 1pxだと見えないことに注意。
-	--thead-bd: solid 2px var(--content);
-	--tfoot-bd: solid 2px var(--content);
-	--table-bdc: var(--base-3);
 	--divider-bdc: var(--base-3);
-
-	--link-c: #0c61e4;
-	// --link-underlineOffset: 0.2ex;
-
-	--focus--color: revert;
-	--focus--outlineOffset: 1px;
-
-	// --code-c: var(--content);
-	// --code-bgc: var(--base-2);
-	--code-c: currentColor;
-	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
 
 	/* ------------------------------------------------------------
 	  コンテンツサイズ: ユーザー側で定義が必要
@@ -54,6 +30,49 @@
 	// --contentSize--xs: 30rem;
 
 	--contentSize--min: 16rem; // 最低限維持したいアイテムサイズの標準値
+
+	/* ------------------------------------------------------------
+	  Spacing
+	------------------------------------------------------------ */
+
+	--herfLeading: calc((1lh - 1em) / 2);
+
+	// コンテンツの左右の余白
+	// --gutter: 2rem;
+	--gutter: var(--s--40);
+
+	// フィボナッチ数列 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
+	// 0 .25rem, .5rem, .75rem, 1.25rem, M:(8):2rem, 3.25rem, 5.25rem, 8.5rem
+
+	// 1=0.125 Fibonacci数列
+	// --s--1: 0.125rem;
+	--s--5: 0.25rem;
+	--s--10: 0.375rem;
+	// --s--15: 0.375rem;
+	--s--20: 0.625rem;
+	--s--30: 1rem;
+	--s--40: 1.625rem;
+	--s--50: 2.625rem;
+	--s--60: 4.25rem;
+	--s--70: 6.875rem;
+	--s--80: 11.125rem;
+	--s--90: 18rem;
+
+	// 後半等比数列?
+	// --s--70: calc(var(--s--60) * 1.5);
+	// --s--80: calc(var(--s--70) * 1.5);
+	// --s--90: calc(var(--s--80) * 1.5);
+
+	// テキストのline-height分を考慮した上下左右の余白
+	--p--box--s: calc(0.5em - var(--herfLeading)) 0.5em; //0.625em 0.75em;
+	--p--box: calc(1em - var(--herfLeading)) 1em;
+	--p--box--l: calc(1.5em - var(--herfLeading)) 1.5em; //1.375em 1.5em;
+
+	// .is--flow の余白
+	--flowG--s: calc(var(--s--30) - var(--herfLeading) * 2);
+	--flowG--r: calc(var(--s--40) - var(--herfLeading) * 2);
+	--flowG--l: calc(var(--s--50) - var(--herfLeading) * 2);
+	--flowG--h: 2.5em; // for Headings. em.
 
 	/* ------------------------------------------------------------
 	    タイポグラフィ
@@ -161,26 +180,36 @@
 	// --------------------
 	// パレットカラー
 	// --------------------
-	--hsl-black: 0 0% 0%;
-	--hsl-white: 0 0% 100%;
-	--hsl-gray: 210 8% 40%;
-	--hsl-red: 4 72% 50%;
-	--hsl-orange: 28 76% 50%;
-	--hsl-yellow: 46 76% 48%;
-	--hsl-green: 145 80% 40%;
-	--hsl-blue: 205 76% 50%;
-	--hsl-purple: 258 72% 50%;
-	--hsl-pink: 325 72% 50%;
-	--black: hsl(var(--hsl-black));
-	--white: hsl(var(--hsl-white));
-	--gray: hsl(var(--hsl-gray));
-	--red: hsl(var(--hsl-red));
-	--orange: hsl(var(--hsl-orange));
-	--yellow: hsl(var(--hsl-yellow));
-	--green: hsl(var(--hsl-green));
-	--blue: hsl(var(--hsl-blue));
-	--purple: hsl(var(--hsl-purple));
-	--pink: hsl(var(--hsl-pink));
+	// --hsl-black: 0 0% 0%;
+	// --hsl-white: 0 0% 100%;
+	// --hsl-gray: 210 8% 40%;
+	// --hsl-red: 4 72% 50%;
+	// --hsl-orange: 28 76% 50%;
+	// --hsl-yellow: 46 76% 48%;
+	// --hsl-green: 145 80% 40%;
+	// --hsl-blue: 205 76% 50%;
+	// --hsl-purple: 258 72% 50%;
+	// --hsl-pink: 325 72% 50%;
+	// --black: hsl(var(--hsl-black));
+	// --white: hsl(var(--hsl-white));
+	// --gray: hsl(var(--hsl-gray));
+	// --red: hsl(var(--hsl-red));
+	// --orange: hsl(var(--hsl-orange));
+	// --yellow: hsl(var(--hsl-yellow));
+	// --green: hsl(var(--hsl-green));
+	// --blue: hsl(var(--hsl-blue));
+	// --purple: hsl(var(--hsl-purple));
+	// --pink: hsl(var(--hsl-pink));
+	--black: hsl(0 0% 0%);
+	--white: hsl(0 0% 100%);
+	--gray: hsl(210 8% 40%);
+	--red: hsl(4 72% 50%);
+	--orange: hsl(28 76% 50%);
+	--yellow: hsl(46 76% 48%);
+	--green: hsl(145 80% 40%);
+	--blue: hsl(205 76% 50%);
+	--purple: hsl(258 72% 50%);
+	--pink: hsl(325 72% 50%);
 
 	// --------------------
 	// basic カラー
@@ -214,15 +243,14 @@
 	--accent-3: #bc3453;
 
 	// base
-	--base-hs: 220 8%;
-	--base: hsl(var(--base-hs) 99%);
-	--base-2: hsl(var(--base-hs) 95%);
-	--base-3: hsl(var(--base-hs) 88%); // border に使う
+	--base: hsl(220 8% 99%);
+	--base-2: hsl(220 8% 94%);
+	--base-3: hsl(220 8% 86%); // border に使う
 
 	// content
 	--content: hsl(215 8% 8%);
-	--content-2: hsl(215 4% 32%);
-	--content-3: hsl(225, 4%, 50%); //hsl(200, 12%, 92%);
+	--content-2: hsl(215 4% 40%);
+	// --content-3: hsl(225, 4%, 50%); //hsl(200, 12%, 92%);
 
 	// divider (border-color)
 	// --divider?
@@ -233,82 +261,6 @@
 
 	// ボーダーはどちらでも使える感じか。
 	// --bdc-pale,base,strong
-
-	// pale→subtle?
-
-	// c(txc?),bgc,bdc
-
-	// old
-	// --c--base: rgb(240, 144, 216);
-	// --c--oppoite: rgb(214, 240, 144);
-	// --bgc--base: rgb(214, 240, 144);
-	// --bgc--opposite: rgb(240, 144, 216);
-	// --c--pale: green;
-	// --bgc--pale: red;
-
-	/* ------------------------------------------------------------
-	  カラー: ユーザー側で定義できる仕組みも必要
-	------------------------------------------------------------ */
-	// フィボナッチ数列 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
-	// 0 .25rem, .5rem, .75rem, 1.25rem, M:(8):2rem, 3.25rem, 5.25rem, 8.5rem
-
-	// 30: 2rem 前後
-
-	// --sUnit: 1rem;
-	// --s--0: 0rem;
-
-	// 1=0.25での Fibonacci数列, 5は例外的に 0.125 をセット
-	// --s--5: 0.25rem;
-	// --s--10: 0.5rem;
-	// --s--20: 0.75rem;
-	// --s--30: 1.25rem;
-	// --s--40: 2rem;
-	// --s--50: 3.25rem;
-	// --s--60: 5.25rem;
-	// --s--70: 8.5rem;
-
-	// 1=0.125 Fibonacci数列
-	// --s--1: 0.125rem;
-	--s--5: 0.25rem;
-	--s--10: 0.375rem;
-	// --s--15: 0.375rem;
-	--s--20: 0.625rem;
-	--s--30: 1rem;
-	--s--40: 1.625rem;
-	--s--50: 2.625rem;
-	--s--60: 4.25rem;
-	--s--70: 6.875rem;
-	--s--80: 11.125rem;
-	--s--90: 18rem;
-
-	// ここから等比数列?
-	// --s--70: calc(var(--s--60) * 1.5);
-	// --s--80: calc(var(--s--70) * 1.5);
-	// --s--90: calc(var(--s--80) * 1.5);
-
-	// --g--2,4,6,8,...にしてもいいか。or, --S--, --s-- で分ける...?（gapのg)
-	// --em--1: 0.125em;
-	// --em--2: 0.25em;
-	// --em--3: 0.375em;
-	// --em--4: 0.5em;
-	// --em--6: 0.75em;
-	// --em--8: 1em;
-	// --em--10: 1.25em;
-	// --em--12: 1.5em;
-	// --em--14: 1.75em;
-	// --em--16: 2em;
-
-	// --p--box--s: 0.75em 0.875em;
-	// --p:box:{padding: var(--p--box) calc(--p--box + 0.125em);}
-	--p--box--s: 0.625em 0.75em;
-	--p--box: 0.875em 1em;
-	--p--box--l: 1.375em 1.5em;
-
-	// .is--flow の余白
-	--flowG--r: var(--s--40);
-	--flowG--s: var(--s--30);
-	// --flowG--l: var(--s--50);
-	--flowG--h: 2.5em; // for Headings. em.
 
 	/* ------------------------------------------------------------
 	  radius
@@ -377,6 +329,23 @@
 	// --filter--darken: brightness(0.85);
 }
 
+// :lang(en) {
+// 	--herfLeading: calc((1lh - 1cap) / 2);
+// }
+// lh非サポートブラウザ用のフォールバック
+@supports not (gap: 1lh) {
+	:root {
+		--herfLeading: 0.125em;
+	}
+}
+.is--trimHL {
+	> :first-child {
+		margin-block-start: calc(var(--herfLeading) * -1);
+	}
+	> :last-child {
+		margin-block-end: calc(var(--herfLeading) * -1);
+	}
+}
 :root,
 .is--resetShVar {
 	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));

@@ -148,7 +148,10 @@ export default {
 
 	//display
 	d: { utils: 1 },
-	opacity: { style: 1 }, // op
+	op: {
+		style: 'opacity',
+		presets: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+	}, // op
 	v: { style: 'visibility', utils: 'visibility' },
 	ov: { style: 'overflow', utils: 1 },
 	ovx: { style: 'overflowX', utils: 'ov' },
