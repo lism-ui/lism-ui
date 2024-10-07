@@ -2,7 +2,7 @@
 
 .c--reel {
 	// --is--unreel: 1;
-	--item-size: var(--contentSize--min);
+	--item-size: var(--size--xs);
 	--snap-align: start;
 	--p: 0;
 	--unreel-gtc: repeat(auto-fit, minmax(min(var(--item-size), 100%), 1fr));

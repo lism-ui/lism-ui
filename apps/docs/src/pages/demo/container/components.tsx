@@ -7,10 +7,11 @@ export function AttsLabels({ atts = '', ...props }) {
 		<Flex
 			className='c--attsLabels is--skipFlow'
 			w='100'
+			maxW='100'
 			jc='c'
 			pos='a'
 			t='0'
-			inset='cX'
+			l='0'
 			ta='c'
 			lh='1'
 			mt='-1.1em'
@@ -39,7 +40,7 @@ export function TipCode({
 	// <TipCode text='is--container' color='orange' />
 
 	// text が "container:" を含むかどうかを判定
-	if (text.includes('contentSize:') || text.includes('data-content-size')) {
+	if (text.includes('container:') || text.includes('data-content-size')) {
 		color = 'blue';
 	} else if (text.includes('container')) {
 		color = 'green';

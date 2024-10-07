@@ -88,7 +88,7 @@ export function getMaybeColorVar(value, propType) {
 
 export function getMaybeSizeVar(size) {
 	if (isTokenValue('contentSize', size)) {
-		return `var(--contentSize--${size})`;
+		return `var(--size--${size})`;
 	}
 	// else if (isPresetValue('size', size)) {
 	// 	return `var(--size--${size})`;

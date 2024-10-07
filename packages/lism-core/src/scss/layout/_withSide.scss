@@ -42,7 +42,7 @@
 }
 
 .l--withSide:where(:not([data-side-position])) {
-	--main-minW: max(var(--contentSize--min), 50%);
+	--main-minW: max(var(--size--xs), 50%);
 	display: flex;
 	flex-wrap: wrap;
 }

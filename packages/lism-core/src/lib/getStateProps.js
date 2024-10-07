@@ -1,19 +1,6 @@
 import isPresetValue from './isPresetValue';
 import getMaybeCssVar from './getMaybeCssVar';
 
-// const LAYOUT_STATE = {
-// 	'is--container': {
-// 		varName: '--contentSize',
-// 		tokenKey: 'contentSize',
-// 		converter: 'size',
-// 	},
-// 	'is--flow': {
-// 		varName: '--flowG',
-// 		tokenKey: 'flow',
-// 		converter: 'space',
-// 	},
-// };
-
 // 特殊な処理が必要なレイアウトステート
 export function getContainerData(value) {
 	// const { varName, tokenKey, converter } = LAYOUT_STATE[stateName];
@@ -24,10 +11,10 @@ export function getContainerData(value) {
 		className = 'is--container';
 	} else if (value) {
 		if (isPresetValue('contentSize', value)) {
-			className = `is--container -contentSize:${value}`;
+			className = `is--container -container:${value}`;
 		} else {
-			className = `is--container -contentSize:`;
-			style = { '--contentSize': getMaybeCssVar(value, 'space') };
+			className = `is--container`;
+			style = { '--item-size': getMaybeCssVar(value, 'space') };
 		}
 	}
 	return { className, style };
@@ -41,10 +28,10 @@ export function getFlowData(value) {
 		className = 'is--flow';
 	} else if (value) {
 		if (isPresetValue('flow', value)) {
-			className = `is--flow -flowG:${value}`;
+			className = `is--flow -flow:${value}`;
 		} else {
-			className = `is--flow -flowG:`;
-			style = { ['--flowG']: getMaybeCssVar(value, 'space') };
+			className = `is--flow -flow:`;
+			style = { ['--flowGap']: getMaybeCssVar(value, 'space') };
 		}
 	}
 	return { className, style };

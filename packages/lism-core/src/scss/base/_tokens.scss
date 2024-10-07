@@ -23,23 +23,22 @@
 	    1080 にしてるのは、 1920 * 1080画像がきれいに配置できるため？
 	------------------------------------------------------------ */
 	// コンテンツサイズは960 ~ 1120 くらいがよさそう. @lg よりは大きく?
-	// --contentSize--xl: 1600px;
-	--contentSize--l: 1240px; // ヘッダーなどワイドエリアのサイズ
-	--contentSize--m: 1080px; // 基本のコンテンツエリア
-	--contentSize--s: 720px; //45rem; // slim幅1カラムテンプレート用
-	// --contentSize--xs: 30rem;
+	--size--xl: 1600px; // 80*20
+	--size--l: 1280px; // 80*16
+	--size--m: 960px; // 80*12
+	--size--s: 640px; // 80*8
+	// --size--xs: 320px; // 80*4
+	--size--xs: 16rem; // 最低限維持したいアイテムサイズの標準値。withSide,reel,columns で使用
 
-	--contentSize--min: 16rem; // 最低限維持したいアイテムサイズの標準値
+	// --size--l: 1240px; // ヘッダーなどワイドエリアのサイズ
+	// --size--m: 1080px; // 基本のコンテンツエリア
+	// --size--s: 720px; //45rem; // slim幅1カラムテンプレート用
 
 	/* ------------------------------------------------------------
 	  Spacing
 	------------------------------------------------------------ */
 
 	--herfLeading: calc((1lh - 1em) / 2);
-
-	// コンテンツの左右の余白
-	// --gutter: 2rem;
-	--gutter: var(--s--40);
 
 	// フィボナッチ数列 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
 	// 0 .25rem, .5rem, .75rem, 1.25rem, M:(8):2rem, 3.25rem, 5.25rem, 8.5rem
@@ -69,10 +68,14 @@
 	--p--box--l: calc(1.5em - var(--herfLeading)) 1.5em; //1.375em 1.5em;
 
 	// .is--flow の余白
-	--flowG--s: calc(var(--s--30) - var(--herfLeading) * 2);
-	--flowG--r: calc(var(--s--40) - var(--herfLeading) * 2);
-	--flowG--l: calc(var(--s--50) - var(--herfLeading) * 2);
-	--flowG--h: 2.5em; // for Headings. em.
+	// --flowGap-offset: calc(var(--herfLeading) * 2);
+	--flowGap: var(--s--40);
+	--flowGap--s: var(--s--30);
+	--flowGap--h: 2.5em;
+
+	// コンテンツの左右の余白
+	// --gutter: 2rem;
+	--gutter: var(--s--40);
 
 	/* ------------------------------------------------------------
 	    タイポグラフィ

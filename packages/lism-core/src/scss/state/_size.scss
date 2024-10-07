@@ -40,6 +40,9 @@
 		initial-value: 100%;
 		inherits: true;
 	}
+	.is--container {
+		--overwide-size: 100cqw;
+	}
 
 	// bodyにコンテナ適用して直下要素に100cqwをセットできればいいが、コンテナ内の fixed要素の挙動が変わるので廃止。
 	// @property --size--screenW {

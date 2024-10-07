@@ -26,70 +26,128 @@ Lismでは、レイアウトを組む上で特定の役割を持ち、複数の�
 
 ## `is--flow`
 
-Lismでは、**コンテンツ間の余白を管理するためのクラス**として、`.is--flow` を用意しています。
+Lismでは、**メインコンテンツ間の余白を管理するためのクラス**として、`.is--flow` を用意しています。
 
 <Callout type='point'>
 `.is--flow`系の直下では、コンテンツの間隔が `margin-block-start` で管理されます。
 </Callout>
 
-| クラス名 | 余白量 |
-|---|---|
-| `.is--flow` | `--flowG--r` |
-| `.is--flow.-flowG:s` | `--flowG--s` |
-| `.is--flow.-flowG:` | `--flowG`で任意の値をセットできます。 |
-| `.is--skipFlow` | 次に続く兄弟要素との余白量を打ち消します。フローコンテンツの先頭に absolute な要素を配置したい場合などに活用できます。 |
-{/* | `.is--flow.-flowG:l` | `--flowG--l` (`--s--50`) | */}
+| クラス名 | 余白量 | 初期値 |
+|---|---|---|
+| `.is--flow` | `--flowGap` | `--s--40` |
+| `.is--flow.-flow:s` | `--flowGap--s` | `--s--30` |
+{/* | `.is--flow.-flow:l` | `--flowGap--l` | */}
 
+見出しタグのみ、`--flowGap`が`--flowGap--h`に上書きされ、余白が広くなるようになっています。  
+`-flow:s`クラスを併用すると、余白が少し狭くなります。さらにこの時、見出しタグも同じ余白量になります。
 
+{/* <Lism isFlow> */}
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p='30'>
-		<Box isFlow='s'>
-			<Text bd='guide'>Content...</Text>
-			<Text bd='guide'>Content...</Text>
-			<Box isFlow='s' p='10' bd bdc='divider'>
-				<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
-				<Text bd='guide'>Content...</Text>
-				<Text bd='guide'>Content...</Text>
-				<Text bd='guide'>Content...</Text>
-			</Box>
-			<Text bd='guide'>Content...</Text>
-			<Text>Content...</Text>
-			<Text>Content...</Text>
-		</Box>
+	<PreviewTitle>`is--flow`</PreviewTitle>
+	<PreviewArea p='30' className='u--flowDemo' isFlow={null}>
+		<Lism isFlow>
+			<DammyText lang='ja' />
+			<h2>Heading</h2>
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='l' />
+			<ul>
+				<li>Lorem ipsum, LIST content...</li>
+				<li>Lorem ipsum, LIST content...</li>
+				<li>Lorem ipsum, LIST content...</li>
+			</ul>
+			<DammyText lang='ja' />
+		</Lism>
+		{/* <hr />
+		<Lism isFlow>
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='s' />
+		
+			<Lism isFlow bgc='green:8%'>
+				<DammyText lang='ja' length='s' />
+				<DammyText lang='ja' length='s' />
+				<h2>Heading</h2>
+			</Lism>
+			<Lism isFlow='s' bgc='blue:8%'>
+				<DammyText lang='ja' length='s' />
+				<DammyText lang='ja' length='s' />
+				<h2>Heading</h2>
+			</Lism>
+			<Lism isFlow='2.5rem' bgc='red:8%'>
+				<DammyText lang='ja' length='s' />
+				<DammyText lang='ja' length='s' />
+				<h2>Heading</h2>
+			</Lism>
+		</Lism> */}
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--flow -p:10">
-		<p>Content...</p>
-		<p>Content...</p>
-		<div class="is--flow -flowG:s -p:10">
-			<p>Content...</p>
-			<p>Content...</p>
-			<p>Content...</p>
-		</div>
-		<p>Content...</p>
+	<div class="is--flow">
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<h2>Heading</h2>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
 	</div>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Box isFlow p='10'>
-		<p>Content...</p>
-		<p>Content...</p>
-		<Box isFlow='s' p='10'>
-			<Text>Content...</Text>
-			<Text>Content...</Text>
-			<Text>Content...</Text>
-		</Box>
-		<p>Content...</p>
-	</Box>
+	<Lism isFlow>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<h2>Heading</h2>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+{/* </Lism> */}
+
+
+<Preview>
+	<PreviewTitle>`-flow:s`を併用する</PreviewTitle>
+	<PreviewArea p='30' className='u--flowDemo' isFlow={null}>
+		<Lism isFlow='s'>
+			<DammyText lang='ja' />
+			<h2>Heading</h2>
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='l' />
+			<ul>
+				<li>Lorem ipsum, LIST content...</li>
+				<li>Lorem ipsum, LIST content...</li>
+				<li>Lorem ipsum, LIST content...</li>
+			</ul>
+			<DammyText lang='ja' />
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--flow">
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<h2>Heading</h2>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism isFlow>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<h2>Heading</h2>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</Lism>
 	```
 	</PreviewCode>
 </Preview>
 
-
-任意の余白量をセットしたい場合は、`-flowG:`クラスと`--flowG`変数を組み合わせます。
+{/* 
+任意の余白量をセットしたい場合は、`-flow:`クラスと`--flowG`変数を組み合わせます。
 
 <Preview>
 	<PreviewTitle>任意の値をセットする</PreviewTitle>
@@ -102,7 +160,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--flow -flowG:" style="--flowG:10px">
+	<div class="is--flow -flow:" style="--flow:10px">
 		<p>Contents...</p>
 		<p>Contents...</p>
 		<p>Contents...</p>
@@ -125,7 +183,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Box>
 
 
-`-flowG:`の直下でさらに`-flowG:`を配置すると、子要素側が自身の `--flowG` に干渉してしまいます。
+`-flow:`の直下でさらに`-flow:`を配置すると、子要素側が自身の `--flowG` に干渉してしまいます。
 
 <Preview>
 	<PreviewTitle>NG例</PreviewTitle>
@@ -158,19 +216,55 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Preview>
 
 <Callout type='info'>
-	`.is--flow`, `.is--flow.-flowG:s` をネストするのは問題ありません.
-</Callout>
+	`.is--flow`, `.is--flow.-flow:s` をネストするのは問題ありません.
+</Callout> */}
 
 
+### `.is--skipFlow`
 
-## has--gutter
+次に続く兄弟要素との余白量を打ち消します。フローコンテンツの先頭に absolute な要素を配置したい場合などに活用できます。
+
+
+{/* <Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='30' className='u--flowDemo'>
+		<Box isFlow p='10' bd bdc='divider'>
+			<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='s' />
+			<DammyText lang='ja' length='s' />
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="is--flow -p:10">
+		<p>Lorem ipsum, EXAMPLE content...</p>
+		<p>Lorem ipsum, EXAMPLE content...</p>
+		<p>Lorem ipsum, EXAMPLE content...</p>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Box isFlow p='10' bd bdc='divider'>
+		<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
+		<DammyText lang='ja' length='s' />
+		<DammyText lang='ja' length='s' />
+		<DammyText lang='ja' length='s' />
+	</Box>
+	```
+	</PreviewCode>
+</Preview> */}
+
+
+## `has--gutter`
 
 コンテンツの左右に余白をつけることができるクラスです。  
 サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
 
-| クラス名 |  初期値 |
-|---|---|
-| `has--gutter` | `--s--40` |
+| クラス名 | 余白量 |初期値 |
+|---|---|---|
+| `has--gutter` | `--gutter` | `--gutter--s` |
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
@@ -203,15 +297,14 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 ## `is--container`
 
 `is--container`はコンテナ要素を定義するためのクラスです。  
-`-contentSize:{s|m|l}`のようにサイズを指定することで、子要素のコンテンツサイズを制御することができます。
+`-container:{s|m|l}`のいずれかでサイズを指定することで、子要素のコンテンツサイズを制御することもできます。
 
-| クラス名 | コンテンツ幅 |
-|---|---|
-| `is--container`| |
-| `-contentSize:s` | `--contentSize--s` |
-| `-contentSize:m` | `--contentSize--m` |
-| `-contentSize:l` | `--contentSize--l` |
-| `-contentSize:` | `--contentSize`で任意の値をセットできます。 |
+| クラス名 | コンテンツ幅 | 初期値 |
+|---|---|---|
+| `is--container`| `--item-size` | `100%` |
+| `-container:s` | | `--size--s` |
+| `-container:m` | | `--size--m` |
+| `-container:l` | | `--size--l` |
 
 
 <Preview>
@@ -224,7 +317,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--container -contentSize:s">
+	<div class="is--container -container:s">
 		<div>Contents...</div>
 		<div>Contents...</div>
 	</div>
@@ -241,7 +334,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Preview>
 
 <Callout type='info'>
-	`-contentSize:{s|m|l}`を使用すると、`--contentSize`だけではなく `.is--wide`の幅（`.--wide-size`）も同時に調整されます。
+	`-container:{s|m|l}`を使用すると、`--item-size`だけではなく `.is--wide`の幅（`.--wide-size`）も同時に調整されます。
 </Callout>
 
 
@@ -251,8 +344,7 @@ Lismでは、**コンテンツ間の余白を管理するためのクラス**と
 </Box>
 
 
-
-s, m, l 以外の値をセットしたい場合は、`is--container:`クラスと`--contentSize`変数を組み合わせます。
+s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指定します。
 
 <Preview>
 	<PreviewTitle>is--container に任意の値をセットする</PreviewTitle>
@@ -264,7 +356,7 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--container -contentSize:" style="--contentSize:20em">
+	<div class="is--container" style="--item-size:20em">
 		<div>Contents...</div>
 		<div>Contents...</div>
 	</div>
@@ -297,7 +389,7 @@ s, m, l 以外の値をセットしたい場合は、`is--container:`クラス�
 
 | クラス名 | 説明 |
 |---|---|
-| `is--wide` | `.-contentSize:\{s\|m\|l\}`クラス直下では、コンテンツ幅よりも1段階広いサイズになります.  |
+| `is--wide` | `.-container:\{s\|m\|l\}`クラス直下では、コンテンツ幅よりも1段階広いサイズになります.  |
 | `is--fullwide` | `has--gutter`の直下でも、親要素のサイズいっぱいに広がります。 |
 | `is--overwide` | 直前のコンテナ要素が呼び出された位置を基準としたコンテナ幅（`100cqw`）まで広がります。（`@propetry`が有効なブラウザでのみ有効。） |
 
@@ -474,7 +566,7 @@ article > * {
 </Callout>
 {/* <HelpText>（もちろん、どちらのアプローチも可能です。）</HelpText> */}
 
-この②のアプローチに対応するためのコンテンツ制御クラスが、`-contentSize:`クラスです。また、②を前提として`is--wide`や`is--fullwide`クラスは設計されています。
+この②のアプローチに対応するためのコンテンツ制御クラスが、`-container:`クラスです。また、②を前提として`is--wide`や`is--fullwide`クラスは設計されています。
 
 これはなぜかというと、① のアプローチをベースにした場合、途中で**全幅サイズで表示したいコンテンツ**を作る場合の処理が複雑になってしまうためです。
 

@@ -33,7 +33,7 @@ export default {
 	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],
 
 	// size:['container', 'container:s', 'container:l'],
-	contentSize: ['xs', 's', 'm', 'l', 'xl', 'item'], // --contentSize--xxx トークン
+	contentSize: ['xs', 's', 'm', 'l', 'xl'], // --size--xxx トークン
 	size: [],
 
 	// --変数化できるキーワード

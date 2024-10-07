@@ -3,39 +3,41 @@
 	container-type: inline-size;
 	margin-inline: auto;
 	inline-size: 100%; // gridやflex内での挙動を考慮。（container-type:inline-sizeだと横幅つぶれる）
-}
-
-// 基本的には .is--container と併用する
-// [data-content-size],
-// .has--contentSize
-[class*='-contentSize:'] {
-	--contentSize: 100%;
-	--wide-size: 100%;
+	// 	--wide-size: 100%;
 	> * {
-		max-inline-size: min(100%, var(--contentSize));
+		--maxIsz: var(--item-size, 100%);
+		max-inline-size: min(100%, var(--maxIsz, 100%));
 		margin-inline: auto;
 	}
 }
 
+// 基本的には .is--container と併用する
+// [data-content-size],
+// .has--size
+// [class*='-contentSize:'] {
+// 	--size: 100%;
+// 	--wide-size: 100%;
+// 	> * {
+// 		max-inline-size: min(100%, var(--size));
+// 		margin-inline: auto;
+// 	}
+// }
+
 // それぞれの直下要素( > * ) に対してスタイルをセットした方が、ネスト時の影響をなくせるが、constrainedのネストが多様されることは少ないと思うので、一旦親側の変数管理のみで実装。
 // .-container\:s
-.-contentSize\:xs {
-	--contentSize: var(--contentSize--xs);
-	--wide-size: var(--contentSize--s);
+// .-container\:xs {
+// 	--size: var(--size--xs);
+// 	--wide-size: var(--size--s);
+// }
+.-container\:s {
+	--item-size: var(--size--s);
+	--wide-size: var(--size--m);
 }
-.-contentSize\:s {
-	--contentSize: var(--contentSize--s);
-	--wide-size: var(--contentSize--m);
+.-container\:m {
+	--item-size: var(--size--m);
+	--wide-size: var(--size--l);
 }
-.-contentSize\:m {
-	--contentSize: var(--contentSize--m);
-	--wide-size: var(--contentSize--l);
-}
-.-contentSize\:l {
-	--contentSize: var(--contentSize--l);
-	--wide-size: 100%;
-}
-.-contentSize\:full {
-	--contentSize: 100%;
-	--wide-size: 100%;
+.-container\:l {
+	--item-size: var(--size--l);
+	--wide-size: var(--size--xl);
 }

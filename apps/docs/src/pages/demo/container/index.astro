@@ -17,7 +17,7 @@ import './style.scss';
 			<LoremContent />
 		</Container>
 		<p>
-			また、margin-inline:auto
+			ただし、margin-inline:auto
 			も適用されているので、自身の横幅がセットされている時は中央寄せされます。
 		</p>
 		<Container maxW='s'>
@@ -27,23 +27,23 @@ import './style.scss';
 
 		<Spacer h='1rem' />
 
-		<h2>is--container (-contentSize: あり)</h2>
-		<p>.-contentSize:クラスにより、内部のコンテンツ幅を制御できます。</p>
+		<h2>is--container (-container: あり)</h2>
+		<p><code>.-container:s|m|l</code> クラスにより、内部のコンテンツ幅を制御できます。</p>
 		<!-- </Container> -->
 		<Container size='m' isFlow>
-			<AttsLabels atts='is--container,-contentSize:m' />
+			<AttsLabels atts='is--container,-container:m' />
 			<LoremContent />
 			<LoremContent />
 			<!-- <GutterGuide /> -->
 		</Container>
 		<Container size='s' isFlow>
-			<AttsLabels atts='is--container,-contentSize:s' />
+			<AttsLabels atts='is--container,-container:s' />
 			<LoremContent />
 			<LoremContent />
 			<!-- <GutterGuide /> -->
 		</Container>
 		<Container size='l' isFlow='s'>
-			<AttsLabels atts='is--container,-contentSize:l' />
+			<AttsLabels atts='is--container,-container:l' />
 			<LoremContent />
 			<LoremContent />
 			<!-- <GutterGuide /> -->
@@ -51,18 +51,18 @@ import './style.scss';
 
 		<Spacer h='1rem' />
 
-		<h2>-contentSize: のネスト</h2>
+		<h2>container要素のネスト</h2>
 
 		<p>
-			<code>is--container[data-content-size]</code> は子要素の幅を変数で制限するため、同じ変数を扱うコンテナがネストされると、（子要素側の）コンテナの幅がそのコンテンツサイズと同じ大きさになります。
+			<code>is--container</code> は子要素の幅を変数で制限するため、同じ変数を扱うコンテナがネストされると、（子要素側の）コンテナの幅がそのコンテンツサイズと同じ大きさになります。
 		</p>
 		<Container size='m' hasGutter isFlow='s'>
-			<AttsLabels atts='is--container,-contentSize:m,has--gutter' />
+			<AttsLabels atts='is--container,-container:m,has--gutter' />
 			<LoremContent />
 			<LoremContent />
 			<Spacer h='.5rem' />
 			<Container size='s' isFlow='s'>
-				<AttsLabels atts='is--container,-contentSize:s' />
+				<AttsLabels atts='is--container,-container:s' />
 				<LoremContent />
 				<LoremContent />
 			</Container>
@@ -76,12 +76,11 @@ import './style.scss';
 		<p>
 			<br />
 			コンテナクエリの判定値は<b>直前の親コンテナの幅</b>になりますが、
-			<code>-contentSize:</code>は子要素の幅を制限しているだけで、
-			自身の横幅は100%です。つまり、コンテナクエリの判定値もこの100%サイズが基準となります。
+			<code>.-container:s|m|l</code> は子要素の幅を制限しているだけで、 自身の横幅は100%です。つまり、コンテナクエリの判定値もこの100%サイズが基準となります。
 		</p>
 
 		<Container size='s' isFlow='s'>
-			<AttsLabels atts='is--container,-contentSize:s' />
+			<AttsLabels atts='is--container,-container:s' />
 			{/* <LoremContent /> */}
 			<Box isFlow='s'>
 				<AttsLabels atts='div' />
