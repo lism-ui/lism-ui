@@ -44,8 +44,8 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 {/* <Lism isFlow> */}
 <Preview>
 	<PreviewTitle>`is--flow`</PreviewTitle>
-	<PreviewArea p='30' className='u--flowDemo' isFlow={null}>
-		<Lism isFlow>
+	<PreviewArea p='20' isFlow={null}>
+		<Lism isFlow className='-hov:itemGuide'>
 			<DammyText lang='ja' />
 			<h2>Heading</h2>
 			<DammyText lang='ja' length='s' />
@@ -108,8 +108,8 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 
 <Preview>
 	<PreviewTitle>`-flow:s`を併用する</PreviewTitle>
-	<PreviewArea p='30' className='u--flowDemo' isFlow={null}>
-		<Lism isFlow='s'>
+	<PreviewArea p='20' isFlow={null}>
+		<Lism isFlow='s' className='-hov:itemGuide'>
 			<DammyText lang='ja' />
 			<h2>Heading</h2>
 			<DammyText lang='ja' length='s' />
@@ -153,9 +153,9 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	<PreviewTitle>任意の値をセットする</PreviewTitle>
 	<PreviewArea p='30'>
 		<Lism isFlow='10px'>
-			<Text bd='guide'>Contents...</Text>
-			<Text bd='guide'>Contents...</Text>
-			<Text bd='guide'>Contents...</Text>
+			<Text>Contents...</Text>
+			<Text>Contents...</Text>
+			<Text>Contents...</Text>
 		</Lism>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
@@ -189,14 +189,14 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	<PreviewTitle>NG例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Box isFlow='2em'>
-			<p className='-bd:guide'>Contents...</p>
-			<p className='-bd:guide'>Contents...</p>
+			<p>Contents...</p>
+			<p>Contents...</p>
 			<Box isFlow='0.5em' bgc='blue:8%'>
-				<p className='-bd:guide'>Nested contents...</p>
-				<p className='-bd:guide'>Nested contents...</p>
+				<p>Nested contents...</p>
+				<p>Nested contents...</p>
 			</Box>
-			<p className='-bd:guide'>Contents...</p>
-			<p className='-bd:guide'>Contents...</p>
+			<p>Contents...</p>
+			<p>Contents...</p>
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
@@ -268,25 +268,28 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Lism hasGutter bd='guide'>
-			<div>Contents...</div>
-			<div>Contents...</div>
+	<PreviewArea resize p='20'>
+		<Lism hasGutter>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
 		</Lism>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
 	<div class="has--gutter">
-		<div>Contents...</div>
-		<div>Contents...</div>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
 	</div>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Lism hasGutter>
-		<div>Contents...</div>
-		<div>Contents...</div>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
 	</Lism>
 	```
 	</PreviewCode>
@@ -309,8 +312,8 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Lism isContainer='s' bd='guide'>
+	<PreviewArea resize p='20'>
+		<Lism isContainer='s' className='-bd:guide -hov:itemGuide'>
 			<div>Contents...</div>
 			<div>Contents...</div>
 		</Lism>
@@ -348,15 +351,15 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 
 <Preview>
 	<PreviewTitle>is--container に任意の値をセットする</PreviewTitle>
-	<PreviewArea resize p={30}>
-		<Lism isContainer='20em' bd='guide'>
+	<PreviewArea resize p='20'>
+		<Lism isContainer='20rem' className='-bd:guide -hov:itemGuide'>
 			<div>Contents...</div>
 			<div>Contents...</div>
 		</Lism>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="is--container" style="--item-size:20em">
+	<div class="is--container" style="--item-size:20rem">
 		<div>Contents...</div>
 		<div>Contents...</div>
 	</div>
@@ -364,7 +367,7 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
-	<Lism isContainer='20em'>
+	<Lism isContainer='20rem'>
 		<div>Contents...</div>
 		<div>Contents...</div>
 	</Lism>
@@ -573,10 +576,10 @@ article > * {
 <Preview>
 <PreviewTitle>こういうやつ</PreviewTitle>
 <PreviewArea>
-	<Container size='30rem' hasGutter py='40' bd='guide' bdc='blue'>
-		<Box bd='guide' py='10'>コンテンツ...</Box>
+	<Container size='30rem' hasGutter py='40' bd='u:guide' bdc='blue'>
+		<Box bd='u:guide' py='10'>コンテンツ...</Box>
 		<Box isFullwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
-		<Box bd='guide' py='10'>コンテンツ...</Box>
+		<Box bd='u:guide' py='10'>コンテンツ...</Box>
 	</Container>
 </PreviewArea>
 </Preview>
@@ -606,20 +609,20 @@ article > * {
 <PreviewTitle>例</PreviewTitle>
 <PreviewArea>
 <Box hasGutter>
-	<Container maxW='30rem' py='40' bd='guide' bdc='blue'>
-		<Box bd='guide' py='10'>...コンテンツ...</Box>
+	<Container maxW='30rem' py='40' bd='u:guide' bdc='blue'>
+		<Box bd='u:guide' py='10'>...コンテンツ...</Box>
 		<Box isOverwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
-		<Box bd='guide' py='10'>...コンテンツ...</Box>
+		<Box bd='u:guide' py='10'>...コンテンツ...</Box>
 	</Container>
 </Box>
 </PreviewArea>
 <PreviewCode>
 ```jsx "isOverwide"
 <Box hasGutter>
-	<Container maxW='30rem' py='40' bd='guide' bdc='blue'>
-		<Box bd='guide' py='10'>...コンテンツ...</Box>
+	<Container maxW='30rem' py='40' bd='u:guide' bdc='blue'>
+		<Box bd='u:guide' py='10'>...コンテンツ...</Box>
 		<Box isOverwide hasGutter bgc='gray:20%' py='20'>全幅コンテンツ</Box>
-		<Box bd='guide' py='10'>...コンテンツ...</Box>
+		<Box bd='u:guide' py='10'>...コンテンツ...</Box>
 	</Container>
 </Box>
 ```

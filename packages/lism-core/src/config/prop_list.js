@@ -70,7 +70,7 @@ const marginOption = { utils: 'margin', converter: 'space' };
 const paddingOption = { presets: ['0'], converter: 'space' };
 // const placeSelfProps = {};
 // const bdrsSidesProps = { presets: ['0'], converter: 'radius' };
-const insetsProps = { utils: 'insets', converter: 'space' };
+const insetsProps = { utils: 'insets' };
 
 // pi,pc
 const placeProps = {
@@ -105,14 +105,6 @@ export default {
 	bg: { style: 'background', presets: 1, utils: 1 },
 	backgrounds: { map: 1 },
 	// mask: { map: 1 },
-	bd: {
-		// map: 1,
-		style: 'border',
-		utilKey: 'bd',
-		presets: 1,
-		utils: 1,
-		// objProcessor: (d) => `bd${d}`, // {c,w,s}で指定できるようにする
-	},
 
 	// Typography
 	f: { style: 'font', utils: 1 },
@@ -133,15 +125,12 @@ export default {
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
 
 	// others
+	bd: { style: 'border', utilKey: 'bd', utils: 1 },
 	bdw: { style: '--bdw', utils: 1 }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
 	bdc: { style: '--bdc', presets: 1, utils: 1, converter: 'color' },
-	// borders: { map: 1 },
-	// borderSolid: { style: 1 },
-	// borderWidth: { style: 1 },
 
 	bdrs: { presets: 'radius', converter: 'radius' },
-	// radii: { map: 1 },
 
 	bxsh: { presets: 'shadow', converter: 'shadow' },
 	// shColor: { converter: 'color', style: '--sh-color' },

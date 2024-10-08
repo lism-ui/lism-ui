@@ -28,7 +28,7 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>例 1</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide minH='50vh' bgc='base-2'>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 01</Text>
 				<DammyText length='l' lang='ja'/>
 			</Container>
@@ -43,7 +43,7 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewCode>
 		```jsx
 		<Stack isFullwide minH='50vh' bgc='base-2'>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 01</Text>
 				<DammyText length='l' lang='ja'/>
 			</Container>
@@ -59,23 +59,23 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>例2: top,center,bottom を使用する</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide minH='50vh' bgc='base-2' g='30'>
-			<Box bd='guide' ta='c'>Header</Box>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Box bd='u:guide' ta='c'>Header</Box>
+			<Container size='m' hasGutter isFlow my='auto' bd='u:guide'>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<DammyText length='l' />
 			</Container>
-			<Box bd='guide' ta='c'>Footer</Box>
+			<Box bd='u:guide' ta='c'>Footer</Box>
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Stack isFullwide minH='50vh' bgc='base-2' g='30'>
-			<Box bd='guide' ta='c'>Header</Box>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Box ta='c'>Header</Box>
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<DammyText length='l' />
 			</Container>
-			<Box bd='guide' ta='c'>Footer</Box>
+			<Box ta='c'>Footer</Box>
 		</Stack>
 		```
 	</PreviewCode>
@@ -90,20 +90,21 @@ import PreviewFrame from "~/components/PreviewFrame.astro";
 	<PreviewTitle>例2: top,center,bottom を使用する</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide h='full' bgc='base-2' g='30'>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Container size='m' hasGutter isFlow my='auto' bd='u:guide'>
 				<Text fw='bold' fz='xl'>Full Screen</Text>
 				<DammyText length='xl' />
 			</Container>
-			<Box bd='guide' ta='c'>Footer</Box>
+			<Box bd='u:guide' ta='c'>Footer</Box>
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Stack isFullwide h='full' bgc='base-2' g='30'>
-			<Container size='m' hasGutter isFlow my='auto' bd='guide'>
+			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 03</Text>
 				<DammyText length='xl' />
 			</Container>
+			<Box ta='c'>Footer</Box>
 		</Stack>
 		```
 	</PreviewCode>

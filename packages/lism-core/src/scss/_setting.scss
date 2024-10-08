@@ -113,10 +113,10 @@ $utilities: (
 			'n': 'none',
 		),
 	'bds': (
-		'dt': dotted,
-		'ds': dashed,
-		's': solid,
-		'db': double,
+		// 's': solid,
+		// 'dt': dotted,
+		// 'ds': dashed,
+		// 'db': double,
 	),
 
 	'bdrs': (
@@ -270,6 +270,8 @@ $props: map.deep-merge(
 				// 'content-3': 'var(--content-3)',
 				'base': 'var(--base)',
 				'boxcolor': 'var(--boxcolor,currentColor)',
+				'black': 'var(--black)',
+				'white': 'var(--white)',
 				// 'cbox': 'var(--cbox-c, var(--content))',
 			),
 		),
@@ -290,6 +292,8 @@ $props: map.deep-merge(
 					't': 'transparent',
 					'cc': 'currentColor',
 					'boxcolor': 'var(--boxcolor,currentColor)',
+					'black': 'var(--black)',
+					'white': 'var(--white)',
 					// // 'cbox': 'var(--cbox-bgc, var(--base-2))',
 				),
 		),

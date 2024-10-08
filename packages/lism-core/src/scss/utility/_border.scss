@@ -69,17 +69,6 @@
 .-bd\:n {
 	border: none;
 }
-// .-bd\:emphasis {
-// 	--bds: double;
-// 	--bdw: 5px;
-// 	border: var(--bd);
-// }
-.-bd\:guide {
-	--bds: dashed;
-	--bdc: hsl(var(--hsl-gray) / 0.25);
-	border: var(--bd);
-	// border: 1px dashed rgba(160, 160, 160, 0.4);
-}
 
 // style固定での初期プリセット的なやつ?
 // .-bd\:solid{--bd: 1px solid var(--c--border)}

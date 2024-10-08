@@ -177,7 +177,6 @@ td:first-child > code:only-child {
 		display: block;
 		pointer-events: none;
 		color: inherit;
-		color: var(--content-3);
 		// font-weight: bold;
 		margin-inline-start: -1px;
 		// padding: 0.75em 0 0.5em;
@@ -185,7 +184,8 @@ td:first-child > code:only-child {
 		padding-inline-start: 0.5em;
 		padding-block: 0;
 		font-size: var(--sl-text-sm);
-		border-left: 1px solid var(--content-3);
+		border-inline-start: 1px solid;
+		opacity: 0.5;
 		// border-radius: var(--radii--s);
 		// background-color: var(--base-2);
 	}
@@ -290,5 +290,31 @@ td:first-child > code:only-child {
 	.-fxd\:c2r\@sm {
 		--isRow: 1;
 		flex-direction: row;
+	}
+}
+
+// .-bd\:emphasis {
+// 	--bds: double;
+// 	--bdw: 5px;
+// 	border: var(--bd);
+// }
+.-bd\:guide {
+	--bds: dashed;
+	--bdc: rgba(160, 160, 160, 0.3);
+	border: var(--bd);
+	// border: 1px dashed rgba(160, 160, 160, 0.4);
+}
+
+.-hov\:itemGuide {
+	> * {
+		position: relative;
+	}
+	&:hover > *:before {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		border: 1px dashed rgba(150, 150, 160, 0.4);
+		// box-sizing: border-box;
 	}
 }

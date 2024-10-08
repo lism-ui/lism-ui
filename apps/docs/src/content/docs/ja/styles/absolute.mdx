@@ -20,10 +20,10 @@ import { Note } from '~/components/ex/Note';
 - 配置位置を決めるプロパティが `inset`,`t`,`b`,`l`,`r` です。
 </Note>
 
-<Callout type='warning' fz='s'>
+{/* <Callout type='warning' fz='s'>
 ※ `inset`,`top` `right` `bottom` `left` は、数値指定するとスペーストークンとして認識されます。  
-また、この処理の都合上、値が`0`,`100`のユーティリティクラス（`-t:0`など）を出力させたい場合、 `t={0}` ではなく `t='0'` と文字列で指定する必要があります。
-</Callout>
+ただし、値が`0%`,`100%`のユーティリティクラス（`.-t:0`,`.-b:100`など）を出力させたい場合、 `t={0}` ではなく `t='0'` と文字列で指定する必要があります。
+</Callout> */}
 
 <Preview>
 	<PreviewTitle>
@@ -31,24 +31,18 @@ import { Note } from '~/components/ex/Note';
 	</PreviewTitle>
 	<PreviewArea p='20'>
 		<Box pos='r' p='40' bgc='base-2'>
-			<Text fz='4xl' fw='bold' c='content-3' ta='c' lts='l'>BG</Text>
-			<Box pos='a' t='0' l='0' bd='guide'>
-				<p>Content A</p>
-			</Box>
-			<Box pos='a' b='40' r='40' bd='guide'>
-				<p>Content B</p>
+			<Text fz='4xl' fw='bold' op='20' ta='c' lts='l'>BG</Text>
+			<Box pos='a' t='1em' l='1em' px='20' bd>
+				<p>Absolute Content</p>
 			</Box>
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "pos='a'" "top" "bottom" "left" "right"
+		```jsx "pos='a'"
 		<Box pos='r' p='40' bgc='base-2'>
-			<Text fz='4xl' fw='bold' c='content-3' ta='c' lts='l'>BG</Text>
-			<Box pos='a' t='0' l='0' bd='guide'>
-				<p>Content A</p>
-			</Box>
-			<Box pos='a' b='40' r='40' bd='guide'>
-				<p>Content B</p>
+			<Text fz='4xl' fw='bold' op='20' ta='c' lts='l'>BG</Text>
+			<Box pos='a' t='1em' l='1em' px='20' bd>
+				<p>Absolute Content</p>
 			</Box>
 		</Box>
 		```
@@ -56,12 +50,9 @@ import { Note } from '~/components/ex/Note';
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-inset:0"
 		<div class="l--box -pos:r -p:40 -bgc:base-2">
-			<p class="-fz:4xl -fw:b -c:content-3 -ta:c -lts:l">BG</p>
-			<div class="l--box -pos:a -t:0 -l:0 -bd:guide">
-				<p>Content A</p>
-			</div>
-			<div class="l--box -pos:a -bd:guide" style="bottom:var(--s--40);right:var(--s--40)">
-				<p>Content B</p>
+			<p class="-fz:4xl -fw:b -op:20 -ta:c -lts:l">BG</p>
+			<div class="l--box -pos:a -px:20 -bd:" style="top:1em;left:1em">
+				<p>Absolute Content</p>
 			</div>
 		</div>
 		```

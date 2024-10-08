@@ -19,6 +19,8 @@ export default {
 		'content-2',
 		'content-3',
 		'boxcolor',
+		'black',
+		'white',
 		// 'cbox',
 	],
 	bgc: [
@@ -29,6 +31,8 @@ export default {
 		'base-3',
 		'content',
 		'boxcolor',
+		'black',
+		'white',
 		// 'cbox',
 	],
 	bdc: [
@@ -64,11 +68,10 @@ export default {
 	// align-content
 	// "space-between"
 
-	bd: ['guide', 'emphasis'], // dashed?
-
+	// bd: [], // dashed?
 	//bds: dashed, solid, double, dotted,
 
-	bg: ['glass', 'stripe', 'grid'],
+	bg: [],
 	z: ['-1', '0', '1'],
 	// inset: ['c', 'cX', 'cY'], // inset は 0% だけ
 	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',

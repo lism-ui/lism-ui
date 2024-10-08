@@ -15,9 +15,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 | プロパティ | 出力 | 説明 |
 |---|---|---|
-| `sidePosition` | <PropBadge type="attr">`[data-side-position]`</PropBadge> | サイド要素の配置を指定できます。 |
+| `isSide` | <PropBadge type="class">`.is--side`</PropBadge> | サイド要素として扱いたい要素に指定します。 |
 | `sideW` | <PropBadge type="cssvar">`--side-w`</PropBadge> | Side要素の横幅 |
 | `mainMinW` | <PropBadge type="cssvar">`--main-minW`</PropBadge>| もう一方の流動幅の要素が維持する最小幅<br/> (`sidePosition`がない時のみ有効) |
+| `sidePosition` | <PropBadge type="attr">`[data-side-position]`</PropBadge> | サイド要素の配置を指定できます。 |
 | `bp`| <PropBadge type="class">`.-gt@{bp}`</PropBadge> | `sidePosition`の指定がある時の、カラム折り返しタイミングを指定できます<br/> (`sidePosition`がない時は無効) |
 
 {/* その他、[`<Flex>`で使えるProps](/ja/components/flex#props)が使えます。 */}
@@ -30,28 +31,29 @@ import ImportCode from "~/components/code-template/Import.astro";
 
 ## Usage
 
+<Callout type="point">
 子要素の一方に `isSide`(`.is--side`)を指定する必要があります。
+</Callout>
 
 ### ブレイクポイントでの折り返し
 
-基本はgridレイアウトで構成され、ブレイクポイントを起点に縦並び・横並びが切り替わります。
+`sidePosition`(`[data-side-position]`)を指定し、横並び時と縦並び時のside要素の配置を指定できます。
+この時、`<WithSide>`(`.l--withSide`)は grid レイアウトで構成されるようになり、ブレイクポイントを起点に縦並び・横並びが切り替わります。  
 (デフォルトでは`sm`サイズでレイアウトが切り替わります)
 
-
-`sidePosition`(`[data-side-position]`)で横並び時と縦並び時のside要素の配置を指定できます。  
-`sidePosition`の指定方法は、`"{横並び時の配置} {縦並び時の配置}"` という形式で、それぞれ`start`または`end`で指定します。
+`sidePosition`は、`"{横並び時の配置} {縦並び時の配置}"` という形式で指定します。  
+それぞれ`start`または`end`で指定します。
 
 {/* `bp` `-gt@sm` */}
-
 
 <Preview>
 	<PreviewTitle>`sidePosition='start end'`</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<WithSide sidePosition='start end' sideW='10rem' g='30'>
-			<Box bd='guide'>
+			<Box>
 				<DammyText />
 			</Box>
-			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			<Box isSide bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -94,10 +96,10 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 				<div key={datSide}>
 						<div>↓<code>sidePosition="{datSide}"</code></div>
 						<WithSide sidePosition={datSide} sideW='10rem' g='20' mbs='20'>
-							<Box bd='guide'>
+							<Box>
 								<DammyText />
 							</Box>
-							<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+							<Box isSide bgc='blue:20%'>Side Content</Box>
 						</WithSide>
 				</div>
 			))}
@@ -124,10 +126,10 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	<PreviewTitle>`bp='md'`にセット</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<WithSide sidePosition='end' bp='md' sideW='10rem' g='30'>
-			<Box bd='guide'>
+			<Box>
 				<DammyText />
 			</Box>
-			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			<Box isSide bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -167,10 +169,10 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<WithSide sideW='10rem' g='30' >
-			<Box bd='guide'>
+			<Box>
 				<DammyText />
 			</Box>
-			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			<Box isSide bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -202,8 +204,8 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<WithSide sideW='10rem' mainMinW='30rem' g='30'>
-			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
-			<Box bd='guide'>
+			<Box isSide bgc='blue:20%'>Side Content</Box>
+			<Box>
 				<DammyText />
 			</Box>
 		</WithSide>
@@ -212,7 +214,7 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 		```jsx "mainMinW"
 		<WithSide sideW='10rem' mainMinW='30rem' g='30'>
 			<Box isSide>Side Content</Box>
-			<Box bd='guide'>
+			<Box>
 				<DammyText />
 			</Box>
 		</WithSide>
@@ -243,10 +245,10 @@ export const WithSideDemos = ({ dataArray = [] }) => {
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<WithSide fxd='rr' sideW='10rem' g='30' >
-			<Box bd='guide'>
+			<Box>
 				<DammyText />
 			</Box>
-			<Box isSide bd='guide' bgc='blue:20%'>Side Content</Box>
+			<Box isSide bgc='blue:20%'>Side Content</Box>
 		</WithSide>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
