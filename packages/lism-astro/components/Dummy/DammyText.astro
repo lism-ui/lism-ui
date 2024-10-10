@@ -1,0 +1,10 @@
+---
+import { LismProps } from '../types';
+import Dummy from './Dummy.astro';
+
+// Propsの定義
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Dummy {...props} />

@@ -6,6 +6,7 @@
 // import React from 'react';
 
 export * from './Lism';
+export * from './Dummy';
 
 // Layout
 export * from './Box';
