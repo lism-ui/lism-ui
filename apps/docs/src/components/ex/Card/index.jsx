@@ -37,7 +37,7 @@ export function CardMedia(props) {
 
 export function CardBody({ children, ...props }) {
 	return (
-		<FlexItem lismClass='c--card__body' layout={Stack} p='30' {...props}>
+		<FlexItem lismClass='c--card__body' layout={Stack} {...props}>
 			{children}
 		</FlexItem>
 	);

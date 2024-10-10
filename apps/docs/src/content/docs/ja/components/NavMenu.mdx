@@ -161,7 +161,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 <Preview>
 	<PreviewTitle>hover時のカラー指定</PreviewTitle>
 	<PreviewArea p='30'>
-		<NavMenu bd hasDivider hovBgc='content' hovC='base'>
+		<NavMenu bd hasDivider hovBgc='text' hovC='base'>
 			<NavMenuItem>
 				<NavMenuLink href='#menu1' hov='c:,bgc:'>Menu item</NavMenuLink>
 			</NavMenuItem>
@@ -175,7 +175,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "hovBgc" "hovC" "hov='c:,bgc:'"
-		<NavMenu bd hasDivider hovBgc='content' hovC='base'>
+		<NavMenu bd hasDivider hovBgc='text' hovC='base'>
 			<NavMenuItem>
 				<NavMenuLink href='#menu1' hov='c:,bgc:'>Menu item</NavMenuLink>
 			</NavMenuItem>
@@ -195,7 +195,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 各メニューリンク部分を以下のようにしても同じことができます。
 
 ```jsx
-<NavMenuLink href='#menu1' hov={{c: 'base', bgc: 'content'}}>Menu item</NavMenuLink>
+<NavMenuLink href='#menu1' hov={{c: 'base', bgc: 'text'}}>Menu item</NavMenuLink>
 ```
 
 

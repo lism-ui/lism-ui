@@ -41,7 +41,7 @@ div.b--spacer[aria-hidden="true"]
 
 <Preview>
 	<PreviewTitle>`<Spacer>`の使用例</PreviewTitle>
-	<PreviewArea resize p={20} isFlow={false}>
+	<PreviewArea resize p='20' isFlow={false}>
 		<p>Content...</p>
 		<Spacer h="100px" />
 		<p>Content...</p>
@@ -64,15 +64,15 @@ div.b--spacer[aria-hidden="true"]
 
 <Preview>
 	<PreviewTitle>`SPACE`トークンを使う例</PreviewTitle>
-	<PreviewArea resize p={20} isFlow={false}>
+	<PreviewArea resize p='20' isFlow={false}>
 		<p>Box</p>
-		<Spacer h={60} />
+		<Spacer h='60' />
 		<p>Box</p>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx {2}
 		<p>Box</p>
-		<Spacer h={60} />
+		<Spacer h='60' />
 		<p>Box</p>
 		```
 	</PreviewCode>
@@ -88,21 +88,21 @@ div.b--spacer[aria-hidden="true"]
 
 <Preview>
 	<PreviewTitle>横方向のスペーサーの例</PreviewTitle>
-	<PreviewArea resize p={20} isFlow={false}>
+	<PreviewArea resize p='20' isFlow={false}>
 		<Flex g={10}>
-			<Box p='box' bd>Box</Box>
-			<Spacer w={50} />
-			<Box p='box' bd>Box</Box>
-			<Box p='box' bd>Box</Box>
+			<Box p='30' bd>Box</Box>
+			<Spacer w='40' />
+			<Box p='30' bd>Box</Box>
+			<Box p='30' bd>Box</Box>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "w="
 		<Flex g={10}>
-			<Box p='box' bd>Box</Box>
-			<Spacer w={50} />
-			<Box p='box' bd>Box</Box>
-			<Box p='box' bd>Box</Box>
+			<Box p='30' bd>Box</Box>
+			<Spacer w='40' />
+			<Box p='30' bd>Box</Box>
+			<Box p='30' bd>Box</Box>
 		</Flex>
 		```
 	</PreviewCode>

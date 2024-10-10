@@ -14,8 +14,13 @@
 	--cbox-mixper--bg: 10%;
 	// --cbox-mixper--txt: 0%;
 
+	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
+
 	// auto のとこに --avator-size を使うと、アバターなしの時にスペースできてしまう。
-	gap: var(--deco-size); //calc(var(--deco-size) + 1px);
+	gap: 0 var(--deco-size); //calc(var(--deco-size) + 1px);
+}
+[data-chat-direction='end'] {
+	grid: 'header avatar' minmax(1.5rem, auto) 'body avatar' / 1fr auto;
 }
 
 // .c--chat--start {
@@ -31,27 +36,22 @@
 // }
 
 .c--chat__avatar {
+	grid-area: avatar;
 	--size: var(--avator-size); //  avatar に渡す
 }
 
 .c--chat__name {
-	grid-row: 1;
-	// align-self: end;
-	// justify-content: inherit;
+	grid-area: header;
 }
 // .c--chat__footer {}
 
 .c--chat__body {
-	// grid: max(1.5rem, calc(var(--avator-size) / 3)) auto auto/ auto;
-	grid: 1.5rem auto auto/ auto;
+	grid-area: body;
 }
 .c--chat__content {
-	grid-row: 2;
 	max-width: 640px;
 }
-.c--chat__footer {
-	grid-row: 3;
-}
+// .c--chat__footer {}
 
 .c--chat__content {
 	.c--chat--speak[data-chat-direction='start'] & {

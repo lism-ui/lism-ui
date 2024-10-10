@@ -263,16 +263,20 @@ $props: map.deep-merge(
 			base_type: 2,
 			important: 0,
 			utilities: (
-				'main': 'var(--main)',
-				// 'accent': 'var(--accent)',
-				'content': 'var(--content)',
-				'content-2': 'var(--content-2)',
-				// 'content-3': 'var(--content-3)',
-				'base': 'var(--base)',
+				'main': 'var(--c--main)',
+				'accent': 'var(--c--accent)',
+				'base': 'var(--c--base)',
+				// 'base-2': 'var(--c--base-2)',
+				'text': 'var(--c--text)',
+				'text-2': 'var(--c--text-2)',
 				'boxcolor': 'var(--boxcolor,currentColor)',
 				'black': 'var(--black)',
 				'white': 'var(--white)',
-				// 'cbox': 'var(--cbox-c, var(--content))',
+			),
+			special_utilities: (
+				'i': (
+					'color': 'inherit',
+				),
 			),
 		),
 		'bgc': (
@@ -283,30 +287,31 @@ $props: map.deep-merge(
 			// base_type: 2 で inherit すると 変数の引き継ぎになr
 			utilities:
 				(
-					'main': 'var(--main)',
-					// 'accent': 'var(--accent)',
-					'base': 'var(--base)',
-					'base-2': 'var(--base-2)',
-					'base-3': 'var(--base-3)',
-					'content': 'var(--content)',
-					't': 'transparent',
-					'cc': 'currentColor',
+					'main': 'var(--c--main)',
+					'accent': 'var(--c--accent)',
+					'base': 'var(--c--base)',
+					'base-2': 'var(--c--base-2)',
+					'text': 'var(--c--text)',
+					// 'text-2': 'var(--c--text-2)',
 					'boxcolor': 'var(--boxcolor,currentColor)',
 					'black': 'var(--black)',
 					'white': 'var(--white)',
-					// // 'cbox': 'var(--cbox-bgc, var(--base-2))',
 				),
+			special_utilities: (
+				'i': (
+					'background-color': 'inherit',
+				),
+			),
 		),
 		'bdc': (
 			prop: '--bdc',
 			base_type: 0,
 			utilities: (
-				// 'main': 'var(--main)',
-				'divider': 'var(--divider-bdc)',
-				't': 'transparent',
-				'i': 'inherit',
+				'main': 'var(--c--main)',
+				'accent': 'var(--c--accent)',
+				'divider': 'var(--c--divider)',
 				'boxcolor': 'var(--boxcolor,currentColor)',
-				// // 'cbox': 'var(--cbox-bdc, var(--base-3))',
+				'i': 'inherit',
 			),
 		),
 		'bds': (

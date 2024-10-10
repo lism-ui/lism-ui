@@ -63,14 +63,14 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea resize>
 		<Frame tag='figure' aspect='16/9'>
 			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
-			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='black:40%'>Lorem ipsum text.</Text>
+			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='rgb(0 0 0 / 40%)'>Lorem ipsum text.</Text>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Frame tag='figure' aspect='16/9'>
 			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
-			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='black:40%'>Lorem ipsum text.</Text>
+			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='rgb(0 0 0 / 40%)'>Lorem ipsum text.</Text>
 		</Frame>
 		```
 	</PreviewCode>
@@ -78,7 +78,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```html
 		<figure class="is--frame -aspect:16/9">
 			<img src="/img/img-2.jpg" width="960" height="640">
-			<figcaption class="-pos:a -z:1 -b:0 -p:5 -w:100 -c: -ta:c -bgc:" style="--c:var(--white);--bgc:hsl(var(--hsl-black) / 40%)">Lorem ipsum text.</figcaption>
+			<figcaption class="-pos:a -z:1 -b:0 -p:5 -w:100 -c:white -ta:c -bgc:" style="--bgc:rgb(0 0 0 / 40%)">Lorem ipsum text.</figcaption>
 		</figure>
 		```
 	</PreviewCode>
@@ -150,8 +150,8 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea resize p={20}>
 		<Frame aspect='16/9' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<Layer blur='4px' bgc='rgb(0 0 0 / 20%)' />
-			<Layer p='box:l' ov='auto'>
+			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
+			<Layer p='40' ov='auto'>
 				<Center minH='100' g='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<DammyText />
@@ -163,8 +163,8 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx
 		<Frame aspect='16/9' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<Layer blur='4px' bgc='#00000020' />
-			<Layer p='box:l' ov='auto'>
+			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
+			<Layer p='40' ov='auto'>
 				<Center minH='100' g='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
 					<p>...</p>
@@ -173,36 +173,18 @@ import ImportCode from "~/components/code-template/Import.astro";
 		</Frame>
 		```
 	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>
-		比率をブレイクポイントで変更することも可能です。
-	</PreviewTitle>
-	<PreviewArea resize>
-		<Frame aspect={['1/1', '4/3', '16/9']}>
-			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-			<Box pos='a' l='0' t='0' bgc='content' c='base' p='10' lh='xs' fz='s' m='20' bdrs='s'>
-				{`比率:`}
-				<Text tag="span" d={['inline', 'none']}>1/1</Text>
-				<Text tag="span" d={['none', 'inline', 'none']}>4/3</Text>
-				<Text tag="span" d={['none', null, 'inline']}>16/9</Text>
-			</Box>
-		</Frame>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
+		<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<Frame aspect={['1/1', '4/3', '16/9']}>
-			...
-		</Frame>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<div
-			class="is--frame -aspect:1/1 -aspect@sm -aspect@md"
-			style="--sm-aspect:4/3;--md-aspect:16/9"
-		>...</div>
+		<div class="is--frame -aspect:16/9 -c:white">
+			<img src="/img/img-1.jpg" alt="" width="960" height="640">
+			<div class="is--layer -bgc:" style="--bgc:rgb(0 0 0 / 40%);backdrop-filter:blur(4px)"></div>
+			<div class="is--layer -p:40 -ov:a">
+				<div class="l--center -minH:100 -g:10">
+					<p class="-fz:2xl -lh:xs -fw:b">  Heading  </p>
+					<p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi.  </p>
+				</div>
+			</div>
+		</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -252,7 +234,7 @@ export const FrameRatios = () => {
 
 
 
-### Flexの子要素として使用する場合の注意点
+{/* ### Flexの子要素として使用する場合の注意点
 
 Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響に注意してください。
 
@@ -268,7 +250,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='l' p='box' />
+				<DammyText length='l' p='30' />
 			</Box>
 		</Flex>
 	</PreviewArea>
@@ -279,12 +261,12 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='l' p='box' />
+				<DammyText length='l' p='30' />
 			</Box>
 		</Flex>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 {/* 
 <Preview>
@@ -297,7 +279,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='box' />
+				<DammyText length='xl' p='40' />
 			</Box>
 		</Flex>
 	</PreviewArea>
@@ -308,7 +290,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='box' />
+				<DammyText length='xl' p='40' />
 			</Box>
 		</Flex>
 		```
@@ -318,17 +300,14 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 
 ### aspect はどのコンポーネントにも指定できます
 
-`is--frame` は直下のメディア要素に影響を与えてしまいます。
-
-単純にアスペクト比率を固定したエリア内にコンテンツを配置したいというケースでは、`Frame`を使う必要はありません。  
-`aspect`は`Box`など他のコンポーネントでも指定できるので、次のような書き方ができます。
+`aspect`は`Box`など他のコンポーネントでも指定できる汎用的なプロパティです。
 
 <Preview>
 	<PreviewTitle>
 		Boxにaspectを指定する例
 	</PreviewTitle>
 	<PreviewArea resize p='5'>
-		<Box aspect='2/1' ovy='auto' isFlow p='box:l' bgc='base'>
+		<Box aspect='2/1' ovy='auto' isFlow p='40' bgc='base'>
 			<DammyText />
 			<DammyText length="l" />
 			<Frame aspect='2/1' maxW='50%'>
@@ -340,10 +319,42 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Box aspect='2/1'" "ovy='auto'"
-		<Box aspect='2/1' ovy='auto' isFlow p='box:l'>
+		<Box aspect='2/1' ovy='auto' isFlow p='40'>
 			...
 		</Box>
 		```
 	</PreviewCode>
 </Preview>
 
+
+<Preview>
+	<PreviewTitle>
+		`aspect`はブレイクポイントで変更することも可能です。
+	</PreviewTitle>
+	<PreviewArea resize>
+		<Frame aspect={['1/1', '4/3', '16/9']}>
+			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
+			<Box pos='a' l='0' t='0' bgc='black' c='white' p='10' lh='xs' fz='s' m='20' bdrs='s'>
+				{`比率:`}
+				<Text tag="span" d={['inline', 'none']}>1/1</Text>
+				<Text tag="span" d={['none', 'inline', 'none']}>4/3</Text>
+				<Text tag="span" d={['none', null, 'inline']}>16/9</Text>
+			</Box>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Frame aspect={['1/1', '4/3', '16/9']}>
+			...
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div
+			class="is--frame -aspect:1/1 -aspect@sm -aspect@md"
+			style="--sm-aspect:4/3;--md-aspect:16/9"
+		>...</div>
+		```
+	</PreviewCode>
+</Preview>

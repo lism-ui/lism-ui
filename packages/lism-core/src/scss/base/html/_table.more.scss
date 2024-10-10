@@ -40,8 +40,8 @@
 
 .table--fix-column1 {
 	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
-	--td-bgc: var(--base);
-	--th-bgc: var(--base);
+	--td-bgc: var(--c--base);
+	--th-bgc: var(--c--base);
 	isolation: isolate;
 
 	// rowspan 考慮必要 → cell--nofix クラス使ってもらう
@@ -68,7 +68,7 @@
 
 .table--fix-thead {
 	// 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
-	--th-bgc: var(--base, white);
+	--th-bgc: var(--c--base, #fff);
 	overflow-y: auto;
 	isolation: isolate;
 

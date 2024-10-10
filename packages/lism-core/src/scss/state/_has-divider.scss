@@ -1,22 +1,5 @@
-// .has--divider\:B,
-// .has--divider\:I {
-// 	--bdc: red; //var(--base-3);
-// 	--bdw: 1px;
-// 	--bds: solid;
-// }
-
-// シンプルに * > *
-// .has--divider\:B > * + * {
-// 	border-block-start: var(--bdw) var(--bds) var(--bdc);
-// }
-
-// // flexでの折返しを考慮して、end方向につける
-// .has--divider\:I > :not(:last-child) {
-// 	border-inline-end: var(--bdw) var(--bds) var(--bdc);
-// }
-
 // .has--divider {
-// 	--bdc: var(--divider-bdc);
+// 	--bdc: var(--c--divider);
 // 	--bds: solid;
 // 	--bdw: 1px;
 // }
@@ -30,7 +13,7 @@
 // }
 
 .has--divider {
-	--bdc: var(--divider-bdc);
+	--bdc: var(--c--divider);
 	--bds: solid;
 	--bdw: 1px;
 	--isRow: 0;

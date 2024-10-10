@@ -3,7 +3,7 @@
 
 // @supports (color: color-mix(in srgb, #000, #fff)) {
 // .-c\:mix {
-// 	--c-mixbase: var(--content);
+// 	--c-mixbase: var(--c--text);
 // 	// --c-mixcolor: var(--keycolor);
 // 	--c-mixper: var(--cbox-mixper--txt);
 // 	--c: color-mix(in srgb, var(--c-mixbase), var(--c-mixcolor) var(--c-mixper));

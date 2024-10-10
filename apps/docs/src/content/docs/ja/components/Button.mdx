@@ -292,8 +292,6 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 			<IconButton hov='up'>
 				<Icon icon={ShoppingCartSimple} weight='fill'/>
 			</IconButton>
-			{/* <IconButton href='###' icon={ArrowFatDown} hov="bxsh:4" variant='outline' />
-			<IconButton href='###' icon={ArrowRight} hov={{bgc:'base-3'}} variant='ghost' /> */}
 		</Cluster>
 	</PreviewArea>
 <PreviewCode>
@@ -335,7 +333,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 `-hov:reverse`は、基本的には、 `--c`と`--bgc`を入れ替えるようになっていますが、Buttonでは、以下のような挙動になります。
 
 - `b--button--fill` で使うと、背景色が透明になり、文字色がホバー前の背景色になります。さらにボーダーも出現します。
-- `b--button--outline`, `b--button--ghost` で使うと、文字色 が `var(--base)`へ変化し, 背景色がホバー前の文字色になります。
+- `b--button--outline`, `b--button--ghost` で使うと、文字色 が `var(--c--base)`へ変化し, 背景色がホバー前の文字色になります。
 
 <Preview>
 	<PreviewTitle>`hov='reverse'`</PreviewTitle>
@@ -396,8 +394,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>OK:</Text>
 			<Cluster mbs={30} g='20'>
-				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
-				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
+				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'text' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hov={[{ bgc:'base', c:'text' }]} variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>
@@ -417,8 +415,8 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
 			<Text>OK:</Text>
 			<Cluster mbs={30} g='20'>
-				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'content' }]} variant='outline'>Button</Button>
-				<Button href='###' c='base' hov={[{ bgc:'base', c:'content' }]} variant='ghost'>Button</Button>
+				<Button href='###' keycolor='base' hov={[{ bgc:'base', c:'text' }]} variant='outline'>Button</Button>
+				<Button href='###' c='base' hov={[{ bgc:'base', c:'text' }]} variant='ghost'>Button</Button>
 			</Cluster>
 		</Box>
 		```
@@ -436,7 +434,7 @@ Buttonでは、`-hov:reverse`との相性が良くなるように調整を加え
 			<Cluster mbs={30} g='20'>
 				<Button href='###' hov='reverse' variant='fill'>Button</Button>
 				<Button href='###' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
-				<Button href='###' bgc='base' c='content' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
+				<Button href='###' bgc='base' c='text' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>
 			</Cluster>
 		</Box>
 	</PreviewArea>

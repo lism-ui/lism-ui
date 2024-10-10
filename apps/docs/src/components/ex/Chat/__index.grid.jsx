@@ -68,7 +68,7 @@ export function Chat({
 			{...props}
 		>
 			{name && (
-				<Lism lismClass='c--chat__name' fz='2xs' lh='xs' px='5' c='content-2' aslf='e'>
+				<Lism lismClass='c--chat__name' fz='2xs' lh='xs' px='5' c='text-2' aslf='e'>
 					{name}
 				</Lism>
 			)}
@@ -99,7 +99,7 @@ export function Chat({
 					lismClass='c--chat__content'
 					bgc
 					bdrs='l'
-					p='box'
+					p='30'
 					isFlow={isFlow}
 					{...getContentProps(direction, variant)}
 				>
@@ -108,7 +108,7 @@ export function Chat({
 			</Lism>
 			{/* <ChatContent {...bodyProps}>{children}</ChatContent> */}
 			{footer && (
-				<Lism lismClass='c--chat__footer' fz='2xs' lh='xs' px='5' c='content-3' fs='i'>
+				<Lism lismClass='c--chat__footer' fz='2xs' lh='xs' px='5' c='text-2' fs='i'>
 					{footer}
 				</Lism>
 			)}

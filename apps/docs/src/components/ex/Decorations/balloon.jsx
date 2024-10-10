@@ -85,7 +85,7 @@ export default function BalloonBox({
 
 	return (
 		<Flex lismClass={lismClass} {...parentProps} {...props}>
-			<Lism pos='r' bd p='box' w='fit-content' bdw={bdw} bdrs={bdrs} {...colorProps}>
+			<Lism pos='r' bd p='30' w='fit-content' bdw={bdw} bdrs={bdrs} {...colorProps}>
 				{children}
 				<Decorator
 					pos='a'

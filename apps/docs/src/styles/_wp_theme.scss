@@ -6,8 +6,8 @@
 	--focus--outlineColor: revert;
 	--focus--outlineOffset: 1px;
 
-	// --code-c: var(--content);
-	// --code-bgc: var(--base-2);
+	// --code-c: var(--c--text);
+	// --code-bgc: var(--c--base-2);
 	--code-c: currentColor;
 	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
 }
@@ -20,7 +20,7 @@
 
 pre {
 	padding: var(--p--box);
-	background-color: var(--base-2);
+	background-color: var(--c--base-2);
 
 	// 横にスクロールできるように
 	// overflow-inline: auto; ← まだ使えない
@@ -32,20 +32,19 @@ kbd {
 	font-size: 0.9em;
 	font-family: var(--ff--mono);
 	padding: 0.25em 0.375em;
+	border-radius: var(--radii--s);
 }
 
 code {
 	color: var(--code-c);
 	background-color: var(--code-bgc);
-	border-radius: var(--radii--s);
 }
 
 kbd {
-	border-radius: var(--radii--xs);
-	border: solid 1px var(--base-3);
-	box-shadow: 0 1px 0 var(--base-3);
-	color: var(--content);
-	background-color: var(--base);
+	border: solid 1px var(--c--divider);
+	box-shadow: 0 1px 0 var(--c--divider);
+	// color: var(--c--text);
+	// background-color: var(--c--base);
 }
 
 blockquote {

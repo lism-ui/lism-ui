@@ -1,10 +1,10 @@
 @use '../../scss/query' as query;
 
 :where(.c--tabs) {
-	--tab-c: var(--content);
-	--tab-c--active: var(--base);
-	--tab-bgc: var(--base-2);
-	--tab-bgc--active: var(--content);
+	--tab-c: var(--c--text);
+	--tab-c--active: var(--c--base);
+	--tab-bgc: var(--c--base-2);
+	--tab-bgc--active: var(--c--text);
 	gap: 1em;
 }
 .c--tabs {
@@ -13,8 +13,8 @@
 }
 
 // .c--tabs--default {
-// 	--tab-c--active: var(--base);
-// 	--tab-bgc--bgc: var(--content);
+// 	--tab-c--active: var(--c--base);
+// 	--tab-bgc--bgc: var(--c--text);
 // }
 
 .c--tabs__list {

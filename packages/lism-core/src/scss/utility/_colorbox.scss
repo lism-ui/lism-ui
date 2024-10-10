@@ -19,21 +19,21 @@
 // is--cbox -cbox:red
 [class*="-boxcolor:"]{
 	// c,bdc は 変数セットのみ
-	// --c: var(--cbox-c, var(--content));
-	--bdc: var(--cbox-bdc, var(--base-3));
-	--c: var(--cbox-c, var(--content));
-	--bgc: var(--cbox-bgc, var(--base-2));
+	// --c: var(--cbox-c, var(--c--text));
+	--bdc: var(--cbox-bdc, var(--c--divider));
+	--c: var(--cbox-c, var(--c--text));
+	--bgc: var(--cbox-bgc, var(--c--base-2));
 	color: var(--c);
 	background-color: var(--bgc);
 }
 @supports (color: color-mix(in srgb, #000, #fff)) {
 	// --boxcolor 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
 	:where([class*="-boxcolor:"]){
-		--cbox-c: color-mix(in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--txt));
-		--cbox-bgc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bg));
-		--cbox-bdc: color-mix(in srgb, var(--base), var(--boxcolor) var(--cbox-mixper--bdc));
+		--cbox-c: color-mix(in srgb, var(--c--text), var(--boxcolor) var(--cbox-mixper--txt));
+		--cbox-bgc: color-mix(in srgb, var(--c--base), var(--boxcolor) var(--cbox-mixper--bg));
+		--cbox-bdc: color-mix(in srgb, var(--c--base), var(--boxcolor) var(--cbox-mixper--bdc));
 		// --cbox-c--link を使いたい時もあるので、--link-c への直接セットはしない。(color-mix未対応のブラウザを考慮）
-		// --cbox-c--link: color-mix( in srgb, var(--content), var(--boxcolor) var(--cbox-mixper--link));
+		// --cbox-c--link: color-mix( in srgb, var(--c--text), var(--boxcolor) var(--cbox-mixper--link));
 		--link-c: var(--boxcolor); // var(--cbox-c--link);
 	}
 }

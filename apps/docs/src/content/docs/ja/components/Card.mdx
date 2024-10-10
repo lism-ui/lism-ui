@@ -47,7 +47,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -57,7 +57,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -70,7 +70,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -80,7 +80,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -98,7 +98,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -108,7 +108,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -121,7 +121,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -131,7 +131,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect={['16/9','4/3']} w='100' h='100'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -142,41 +142,7 @@ radiusのデフォルト、`1`にする？ */}
 </Preview>
 
 
-<Preview>
-	<PreviewTitle>横向きの時はコンテンツ側の高さにあわせる</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Card sideW='40%' sidePosition='start start'>
-			<CardMedia isSide aspect={['2/1', 'unset']}>
-				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</CardMedia>
-			<CardBody g='10'>
-				<h3 className='-fz:m'>Card Title</h3>
-				<DammyText lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
-			</CardBody>
-		</Card>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx "layout='Flex'"
-		```
-	</PreviewCode>
-</Preview>
 
-
-{/* <Preview>
-	<PreviewTitle>flexを使う</PreviewTitle>
-	<PreviewArea resize p='30'>
-	<Card layout='Flex' fxd={['column','row']}>
-		<CardMedia fxb='40%' fxsh='0' aspect='16/9'>
-			<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-		</CardMedia>
-		<CardBody>
-			<h3 className='-fz:m'>Card Title</h3>
-			<DammyText lang='ja' fz='s' />
-		</CardBody>
-	</Card>
-	</PreviewArea>
-</Preview> */}
 
 
 ### カードにリンクをつける
@@ -190,7 +156,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 			</CardBody>
@@ -202,7 +168,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' mb='10' />
 			</CardBody>
@@ -221,7 +187,7 @@ radiusのデフォルト、`1`にする？ */}
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
@@ -232,14 +198,14 @@ radiusのデフォルト、`1`にする？ */}
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "#inner-link" "href='#badge-link'" "\<Link isOverlayLink href=\'#card-link\'"
 		<Card isLinkBox hov='shadow'>
 			<CardMedia aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
@@ -261,7 +227,7 @@ radiusのデフォルト、`1`にする？ */}
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Text ta='right' mt='auto' fz='s'>
@@ -270,14 +236,14 @@ radiusのデフォルト、`1`にする？ */}
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "setHiddenLink" "#inner-link" "href='#badge-link'" "href='#card-hiddenlink'"
 		<Card href='#card-hiddenlink' setHiddenLink sideW='50%' hov='shadow' >
 			<CardMedia aspect='4/3' isSide>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' boxcolor='black' pos='a' z='1'  bdrs='xl' hov='up' t='20' r='20'>Category</Badge>
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Text ta='right' mt='auto' fz='s'>
@@ -303,7 +269,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody fxg='1' g='10'>
+			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -313,20 +279,30 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody fxg='1' g='10'>
+			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "layout='Flex'" "fxsh='0'" "fxg='1'"
 		<Card layout='Flex'>
-			<CardMedia w={['40%','50%']} fxsh='0'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			<CardMedia w={['32%','40%','50%']} fxsh='0'>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody fxg='1' g='10'>
+			<CardBody fxg='1' g='10' p='30'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		<Card layout='Flex' fxd='rr'>
+			<CardMedia w={['32%','40%','50%']} fxsh='0'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -346,20 +322,20 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia aspect='1/1' h='100%' w='100%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx 
 		<Card layout={Grid} gtc='40% 1fr'>
 			<CardMedia>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody g='10'>
+			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' fz='s' />
 				<Button href='#button-link' aslf='end' mt='auto'>Button</Button>
@@ -377,20 +353,20 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia aspect='1/1' w='36%' fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody fxg='1' g='10'>
+			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' length='s' fz='s'/>
 				<Text aslf='end' mt='auto' fz='s'>Bottom Text</Text>
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card layout='Flex' href='###' hov='bxsh,up'>
-			<CardMedia w='40%' aspect='1/1' fxsh='0'>
-				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+			<CardMedia aspect='1/1' w='36%' fxsh='0'>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody fxg='1' g='10'>
+			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<DammyText lang='ja' length='s' fz='s'/>
 				<Text aslf='end' mt='auto' fz='s'>Bottom Text</Text>
@@ -430,7 +406,7 @@ radiusのデフォルト、`1`にする？ */}
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody fxg='1'>
+				<CardBody fxg='1' p='30'>
 					<h3 className='-fz:m'>Card Title</h3>
 					<DammyText lang='ja' fz='s' />
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
@@ -440,7 +416,7 @@ radiusのデフォルト、`1`にする？ */}
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody fxg='1'>
+				<CardBody fxg='1' p='30'>
 					<h3 className='-fz:m'>Card Title</h3>
 					<DammyText lang='ja' length='s' fz='s'/>
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
@@ -448,26 +424,26 @@ radiusのデフォルト、`1`にする？ */}
 			</Card>
 		</Columns>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx "href"
-		<Columns g='40'>
-			<Card href='#card-1'>
+		<Columns variant='liquid' g='40'>
+			<Card layout='Stack' href='#card-1'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody>
+				<CardBody fxg='1' p='30'>
 					<h3 className='-fz:m'>Card Title</h3>
 					<DammyText lang='ja' fz='s' />
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
 			</Card>
-			<Card href='#card-2'>
+			<Card layout='Stack' href='#card-2'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody>
+				<CardBody fxg='1' p='30'>
 					<h3 className='-fz:m'>Card Title</h3>
-					<DammyText lang='ja' length='m' fz='s'/>
+					<DammyText lang='ja' length='s' fz='s'/>
 					<Text ta='right' mt='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
 			</Card>
@@ -491,7 +467,7 @@ radiusのデフォルト、`1`にする？ */}
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card isFlex dir='rtl'>
 			<CardMedia w='40%'>
@@ -524,7 +500,7 @@ radiusのデフォルト、`1`にする？ */}
 			</CardBody>
 		</Card>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='40%' p='20' g='20' bdrs='l'>
 			<CardMedia isSide aspect='16/9' bdrs='inner'>
@@ -545,22 +521,22 @@ radiusのデフォルト、`1`にする？ */}
 {/* Note: PreviewAreaにresize つけると Filterの挙動変わることに注意。 */}
 <Preview>
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
-	<PreviewArea p='30'>
+	<PreviewArea p='30' resize>
 		<Columns variant='liquid' colSize='20rem' g='30'>
 			<Card href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
-								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+								<DammyText py='5' fz='s' lh='xs' op='70' />
 							</Box>
 						</Grid>
-						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+						<Text fz='xs' op='70'>2000.01.01 / Author</Text>
 					</Box>
 				</CardBody>
 			</Card>
@@ -568,39 +544,39 @@ radiusのデフォルト、`1`にする？ */}
 				<CardMedia aspect='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
-				<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
 						<h3 className='-fz:m'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
-								<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+								<DammyText py='5' fz='s' lh='xs' op='70' />
 							</Box>
 						</Grid>
-						<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+						<Text fz='xs' op='70'>2000.01.01 / Author</Text>
 					</Box>
 				</CardBody>
 			</Card>
 		</Columns>
 
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 	<Columns variant='liquid' colSize='20rem' g='30'>
 		<Card href='#card-a' pos='r' bdrs='s' hov='bxsh,pass'>
 			<CardMedia aspect='4/3'>
 				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 				<Layer blur='4px' brightness='1.1'/>
 				<Box pos='relative' z='1' c='black' lh='s'>
 					<h3 className='-fz:m'>Card Title</h3>
 					<Grid hov='get:slide'>
 						<Box ov='h'>
-							<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+							<DammyText py='5' fz='s' lh='xs' op='70' />
 						</Box>
 					</Grid>
-					<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+					<Text fz='xs' op='70'>2000.01.01 / Author</Text>
 				</Box>
 			</CardBody>
 		</Card>
@@ -608,16 +584,16 @@ radiusのデフォルト、`1`にする？ */}
 			<CardMedia aspect='4/3'>
 				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
-			<CardBody pos='a' b='0' w='100%' p='box:s' bgc='white:50%'>
+			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 				<Layer blur='4px' brightness='1.1'/>
 				<Box pos='relative' z='1' c='black' lh='s'>
 					<h3 className='-fz:m'>Card Title</h3>
 					<Grid hov='get:slide'>
 						<Box ov='h'>
-							<DammyText py='5' fz='s' lh='xs' opacity='.7' />
+							<DammyText py='5' fz='s' lh='xs' op='70' />
 						</Box>
 					</Grid>
-					<Text fz='xs' opacity='.7'>2000.01.01 / Author</Text>
+					<Text fz='xs' op='70'>2000.01.01 / Author</Text>
 				</Box>
 			</CardBody>
 		</Card>
@@ -641,3 +617,37 @@ radiusのデフォルト、`1`にする？ */}
 	opacity: 1;
 }
 ``` */}
+
+
+#### 横並びの時はコンテンツ側の高さにあわせ、縦並びの時はアスペクト比を維持する例
+
+<Preview>
+	<PreviewTitle>ブレイクポイントで切り替える場合</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='50%' sidePosition='start start'>
+			<CardMedia isSide aspect={['16/9', 'unset']}>
+				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody g='10' p='30'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mbs='10' bdrs='s'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "layout='Flex'"
+		<Card sideW='50%' sidePosition='start start'>
+			<CardMedia isSide aspect={['16/9', 'unset']}>
+				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody g='10' p='30'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<DammyText lang='ja' fz='s' />
+				<Button href='#button-link' aslf='end' mbs='10' bdrs='s'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
+

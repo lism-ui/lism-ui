@@ -17,7 +17,8 @@
 	}
 
 	> .__decorator {
-		background-color: var(--base-3);
+		background-color: var(--c--base-2);
+		box-shadow: var(--sh-size--0) var(--sh-color);
 		height: 1.5em;
 		width: 1.5em;
 		border-radius: 2px;
@@ -52,7 +53,7 @@
 		--grid-color: rgba(185, 185, 185, 0.0005); //hsl(var(--hs--bc) 50% / 12%);
 	}
 
-	&[data-bg-grid='1'] {
+	&[_data-bg-grid='1'] {
 		--grid-bdc: var(--codeBlock--bgc); // gridの線
 		// --grid-bdc: color-mix(in srgb, var(--codeBlock--bgc), transparent 50%);
 		--grid-size: 24px;

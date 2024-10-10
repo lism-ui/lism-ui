@@ -8,32 +8,29 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 import DemoLismComponent from '~/demos/demo-lism-component.mdx';
 import SmileyXEyes from "~/components/icons/SmileyXEyes.astro";
 
+"**Lism UI**" は、WEBサイトの骨組みをサクっと作れる軽量なフレームワークプロジェクトです。
 
-<Box p='box' boxcolor='blue' bd bdrs='s'>
-	"**Lism UI**" は、WEBサイトの骨組みをサクっと作れる軽量なフレームワークプロジェクトです。
-</Box>
 
-Lism UI は以下のコンセプトを掲げています。
+独自の**CSS設計理論**（**Lism CSS**）と、それを元にした**コンポーネント集**（**Lism Components**）を提供します。
+
+以下のコンセプトを掲げています。
 
 - ゼロビルドで素のHTMLサイトにも導入できる。
 - 軽量で、かつ、汎用性も高い。
 
-独自の**CSS設計理論**（**Lism CSS**）と、それを元にした**コンポーネント集**（**Lism Components**）を提供します。
-
-入念に設計された Lism UI を学習することで、それ以降の車輪の再発明にかかる時間を削減できます。
-
+入念に設計された Lism UI を学習することで、HTML,CSSの設計を何度も何度も模索し直す時間を削減できます。
 
 <Callout boxcolor="green" icon='good'>
-似たようなCSS、似たようなHTML、似たようなコンポーネントを何度も書くのはもうお終いにしましょう。
+完成度の高い設計理論に基づいた、柔軟で、軽量で、どんなプロジェクトにも導入できるフレームワークがここにあります。
 </Callout>
 
-柔軟性で、軽量で、どんなプロジェクトにも導入できるフレームワークがここにあります。
+
 
 ## Lism CSS
 
 Lism CSS では、WEBサイトデザインを以下の概念に分類します。
 
-<Box p="box" bgc='base-2'>
+<Box p='30' bgc='base-2'>
 	- Design Tokens
 	- Layout State
 	- Layouts
@@ -71,7 +68,7 @@ Lismは、あくまでも**HTMLとCSSの設計が主体**になっており、�
 CSSを読み込むだけで**素のHTMLサイト**や**WordPressサイトでも利用できる**ものになっています。
 </Callout>
 
-<Text c="content-2" mbs="10" fz="s">（一部、アコーディオンやタブの動作に関するJavaScriptが付属しています。）</Text>
+<Text c="text-2" mbs="10" fz="s">（一部、アコーディオンやタブの動作に関するJavaScriptが付属しています。）</Text>
 
 ただし、**Lism Components**を使った方が圧倒的に開発体験は向上しますので、基本的には Vite や Next.js、Astro 等の開発環境上でのコンポーネントの活用を推奨しています。
 

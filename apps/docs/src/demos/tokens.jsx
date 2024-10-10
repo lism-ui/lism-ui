@@ -79,7 +79,7 @@ export const ShadowDemos = ({ shadows = [] }) => {
 				return (
 					<Stack key={name} g='20'>
 						<Frame aspect='1/1' bgc='base' bxsh={`var(--shdw-${name})`} bdrs='s'>
-							<Center h='100' ff='mono' fz='s' c='content-2'>
+							<Center h='100' ff='mono' fz='s' c='text-2'>
 								{name}
 							</Center>
 						</Frame>
@@ -99,7 +99,7 @@ export const BoxShadowDemos = ({ shadows = [] }) => {
 							<code>{name}</code>
 						</Text> */}
 						<Frame aspect='1/1' bgc='base' bxsh={name} bdrs='s'>
-							<Center h='100' ff='mono' fz='xs' c='content-2'>
+							<Center h='100' ff='mono' fz='xs' c='text-2'>
 								{name}
 							</Center>
 						</Frame>
@@ -120,7 +120,7 @@ export const RadiusDemos = () => {
 							<code>{r}</code>
 						</Text> */}
 						<Frame aspect='1/1' bdrs={r} bd>
-							<Center h='100' ff='mono' fz='xs' c='content-2'>
+							<Center h='100' ff='mono' fz='xs' c='text-2'>
 								{r}
 							</Center>
 						</Frame>
@@ -163,7 +163,7 @@ export const SpacingDemos = ({ spaces, isValueLabel }) => {
 // 				return (
 // 					<Stack key={num} g='5'>
 // 						<Text bd='left' bdw='2px' lh='1' pl='10' fz='2xs'>{`${space}rem`}</Text>
-// 						<Box pl={`${space}rem`} bgc='content'>
+// 						<Box pl={`${space}rem`} bgc='text'>
 // 							<Text bgc='base' pl={10} fz='xs'>
 // 								<code>{`${num}`}</code>
 // 							</Text>
@@ -193,7 +193,7 @@ export const SpacingDemos = ({ spaces, isValueLabel }) => {
 // 				return (
 // 					<Stack key={s} g='5'>
 // 						<Text bd='left' bdw='2px' lh='1' pl='10' fz='2xs'>{`${pl}rem`}</Text>
-// 						<Box pl={`${pl}rem`} bgc='content'>
+// 						<Box pl={`${pl}rem`} bgc='text'>
 // 							<Text bgc='base' pl={10} fz='xs'>
 // 								_
 // 							</Text>

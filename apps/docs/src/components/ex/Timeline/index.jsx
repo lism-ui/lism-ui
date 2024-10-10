@@ -10,14 +10,14 @@ export function Timelines({ children, ...props }) {
 
 export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, children, ...props }) {
 	let itemClass = 'c--timeline';
-	const lineProps = { bgc: 'base-3', jslf: 'c' };
+	const lineProps = { bgc: 'divider', jslf: 'c' };
 	const shapeProps = {
 		pos: 'r',
 		z: '1',
 		jslf: 'c',
 		bdrs: 'full',
 		c: 'base',
-		bgc: shapeColor || 'content',
+		bgc: shapeColor || 'text',
 	};
 
 	if (isStart) {
@@ -53,7 +53,7 @@ export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, chil
 	);
 }
 export function TimelineTime(props) {
-	return <GridItem className='c--timeline__time' fz='xs' lh='xs' c='content-2' {...props} />;
+	return <GridItem className='c--timeline__time' fz='xs' lh='xs' c='text-2' {...props} />;
 }
 
 export function TimelineBody(props) {

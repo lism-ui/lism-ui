@@ -19,13 +19,9 @@
 .-hov\:bdc\::hover {
 	border-color: var(--hov-bdc) !important;
 }
-
-// :where(.-hov\:bgc) {
-// 	--hov-bgc: var(--base-2);
+// .-hov\:bgc\:pale:hover {
+// 	background-color: var(--hov-bgc) !important;
 // }
-.-hov\:bgc\:pale:hover {
-	background-color: var(--hov-bgc) !important;
-}
 .-hov\:bgc\::hover {
 	background-color: var(--hov-bgc) !important;
 }

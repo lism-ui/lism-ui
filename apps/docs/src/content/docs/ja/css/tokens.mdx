@@ -19,106 +19,84 @@ export const ColorBadge = ({color, label}) => {
 }
 
 
-## トークンの命名規則
+{/* ## トークンの命名規則
 
 |分類|形式|例|
 |---|---|---|
-|カラー|`--{color}`|`--blue`,`--red`,<br />`--base`, `--base-2`|
-|トークン|`--{token}--{variant}`|`--fz--s`,<br />`--shadow--1`|
+|カラー|`--c--{palette}`, `--{palette}`|`--blue`,`--red`,<br />`--base`, `--base-2`|
+|トークン|`--{token}--{variant}`|`--fz--s`,<br />`--shadow--1`| */}
 
 
 ## COLOR
 
-### 基本トークン
-
-|基本トークン|変数|クラス|
+|トークン名|変数|クラス|
 |---|---|---|
-|<ColorBadge color='base' />|`--base`|`.-c:base`,<br/>`.-bgc:base`|
-|<ColorBadge color='base-2' />|`--base-2`|`.-bgc:base-2`|
-|<ColorBadge color='base-3' />|`--base-3`|`.-bgc:base-3`|
-|<ColorBadge color='content' />|`--content`|`.-c:content`,<br/>`.-bgc:content`|
-|<ColorBadge color='content-2' />|`--content-2`|`.-c:content-2`|
-|<ColorBadge color='content-3' />|`--content-3`|`.-c:content-3`|
-|<ColorBadge color='main' />|`--main`|`.-c:main`,<br/>`.-bgc:main`|
-|<ColorBadge color='accent' />|`--accent`|`.-c:accent`,<br/>`.-bgc:accent`|
-
-{/* |<ColorBadge color='accent-2' />|`--accent-2`|`.-c:accent-2`,<br/>`.-bgc:accent-2`|
-|<ColorBadge color='accent-3' />|`--accent-3`|`.-c:accent-3`,<br/>`.-bgc:accent-3`| */}
-
-<Preview>
-	<PreviewTitle>contentカラー</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
-		<Box><DammyText /></Box>
-		<Box c='content-2'><DammyText /></Box>
-		<Box c='content' op='50'><DammyText /></Box>
-	</PreviewArea>
-</Preview>
-
-<Preview>
-	<PreviewTitle>baseカラー</PreviewTitle>
-	<PreviewArea p={20} isFlow={false}>
-		<Box bgc='base' p='box'><DammyText /></Box>
-		<Box bgc='base-2' p='box'><DammyText /></Box>
-		<Box bgc='base-3' p='box'><DammyText /></Box>
-	</PreviewArea>
-</Preview>
-
+|<ColorBadge color='base' />|`--c--base`|`.-c:base`,<br/>`.-bgc:base`|
+|<ColorBadge color='base-2' />|`--c--base-2`|`.-bgc:base-2`|
+|<ColorBadge color='text' />|`--c--text`|`.-c:text`,<br/>`.-bgc:text`|
+|<ColorBadge color='text-2' />|`--c--text-2`|`.-c:text-2`|
+|<ColorBadge color='main' />|`--c--main`|`.-c:main`,<br/>`.-bgc:main`|
+|<ColorBadge color='accent' />|`--c--accent`|`.-c:accent`,<br/>`.-bgc:accent`|
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box bgc='base-2' bd bdc='base-3' p='box'><DammyText /></Box>
-		<Box bgc='base-3' c='content-3' p='box'><DammyText /></Box>
-		<Box bgc='content' c='base' p='box'><DammyText /></Box>
+		<Box bgc='base-2' bd bdc='divider' p='30'>
+			<DammyText />
+		</Box>
+		<Box bgc='text' c='base' p='30'>
+			<DammyText />
+		</Box>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Box bgc='base-2' bd bdc='base-3' p='box'>...</Box>
-		<Box bgc='base-3' c='content-3' p='box'>...</Box>
-		<Box bgc='content' c='base' p='box'>...</Box>
-		```
-	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--box -bgc:base-2 -bd: -p:box" style="--bdc:var(--base-3)">...</div>
-		<div class="l--box -bgc:base-3 -c:content-3 -p:box">...</div>
-		<div class="l--box -bgc:content -c:base -p:box">...</div>
+		<div class="l--box -bgc:base-2 -bd: -bdc:divider -p:30">...</div>
+		<div class="l--box -bgc:text -c:base -p:30">...</div>
 		```
 	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Box bgc='base-2' bd bdc='divider' p='30'>...</Box>
+		<Box bgc='text' c='base' p='30'>...</Box>
+		```
+	</PreviewCode>
+
 </Preview>
 
 
 ### パレットトークン
 
-|パレットトークン|変数|クラス|
-|---|---|---|
-|<ColorBadge color='red' />|`--red`|`.-boxcolor:red`|
-|<ColorBadge color='orange' />|`--orange`|`.-boxcolor:orange`|
-|<ColorBadge color='yellow' />|`--yellow`|`.-boxcolor:yellow`|
-|<ColorBadge color='green' />|`--green`|`.-boxcolor:green`|
-|<ColorBadge color='blue' />|`--blue`|`.-boxcolor:blue`|
-|<ColorBadge color='purple' />|`--purple`|`.-boxcolor:purple`|
-|<ColorBadge color='pink' />|`--pink`|`.-boxcolor:pink`|
-|<ColorBadge color='black' />|`--black`|`.-boxcolor:black`|
-|<ColorBadge color='white' />|`--white`|`.-boxcolor:white`|
+|パレットトークン|変数|
+|---|---|
+|<ColorBadge color='red' />|`--red`|
+|<ColorBadge color='orange' />|`--orange`|
+|<ColorBadge color='yellow' />|`--yellow`|
+|<ColorBadge color='green' />|`--green`|
+|<ColorBadge color='blue' />|`--blue`|
+|<ColorBadge color='purple' />|`--purple`|
+|<ColorBadge color='pink' />|`--pink`|
+|<ColorBadge color='gray' />|`--gray`|
+|<ColorBadge color='black' />|`--black`|
+|<ColorBadge color='white' />|`--white`|
 
+black,white のみ、`c`,`bgc`用のユーティリティクラスも用意しています。
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box c='blue' p='box'><DammyText /></Box>
-		<Box bgc='red' c='white' p='box'><DammyText /></Box>
+		<Box c='blue' bgc='blue:15%' p='30'><DammyText /></Box>
+		<Box c='white' bgc='black' p='30'><DammyText /></Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--box -c: -p:box" style="--c:var(--blue)">...</div>
-		<div class="l--box -bgc: -c: -p:box" style="--bgc:var(--red);--c:var(--white)">...</div>
+		<div class="l--box -c: -bgc:mix -p:30" style="--c:var(--blue);--bgc1:var(--blue);--bgc1-per:15%">...</div>
+		<div class="l--box -c:white -bgc:black -p:30">...</div>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Box c='blue' p='box'>...</Box>
-		<Box bgc='red' c='white' p='box'>...</Box>
+		<Box c='blue' bgc='blue:15%' p='30'><DammyText /></Box>
+		<Box c='white' bgc='black' p='30'><DammyText /></Box>
 		```
 	</PreviewCode>
 </Preview>
@@ -129,8 +107,8 @@ export const ColorBadge = ({color, label}) => {
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box boxcolor='green' p='box'><DammyText /></Box>
-		<Box boxcolor='blue' bd p='box'><DammyText /></Box>
+		<Box boxcolor='green' p='30'><DammyText /></Box>
+		<Box boxcolor='blue' bd p='30'><DammyText /></Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
@@ -140,25 +118,27 @@ export const ColorBadge = ({color, label}) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Box boxcolor='green' p='box'>...</Box>
-		<Box boxcolor='blue' bd p='box'>...</Box>
+		<Box boxcolor='green' p='30'>...</Box>
+		<Box boxcolor='blue' bd p='30'>...</Box>
 		```
 	</PreviewCode>
 </Preview>
 
 <Reference>
-	[boxcolorについて詳しくはこちら→](/ja/css/boxcolor/)
+	[boxcolorについて詳しくはこちら→](/ja/styles/boxcolor/)
 </Reference>
 
-### パレットカラーの不透明度の指定
 
-パレットトークンは、その元となるhslの値も変数として用意されているため。次のようにして不透明度の指定が可能です。
 
-<Preview>
+{/* ### パレットカラーの不透明度の指定
+
+パレットトークンは、その元となるhslの値も変数として用意されているため。次のようにして不透明度の指定が可能です。 */}
+
+{/* <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box bgc='black:40%' c='white' p='box'><DammyText /></Box>
-		<Box bgc='green:10%' c='blue:75%' p='box'><DammyText /></Box>
+		<Box bgc='black:40%' c='white' p='30'><DammyText /></Box>
+		<Box bgc='green:10%' c='blue:75%' p='30'><DammyText /></Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
@@ -174,18 +154,16 @@ export const ColorBadge = ({color, label}) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Box bgc='black:40%' c='white' p='box'>
+		<Box bgc='black:40%' c='white' p='30'>
 			...
 		</Box>
-		<Box bgc='green:10%' c='blue:75%' p='box'>
+		<Box bgc='green:10%' c='blue:75%' p='30'>
 			...
 		</Box>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
-
-		
 
 ## Typography
 

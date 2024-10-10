@@ -17,7 +17,8 @@ import {Note} from '~/components/ex/Note';
 	</PreviewTitle>
 	<PreviewArea p='30'>
 		<Note title='Note Title'>
-			<DammyText lang='ja'/>
+			<DammyText lang='ja' />
+			<DammyText lang='ja' length='l' offset='4'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
@@ -32,57 +33,12 @@ import {Note} from '~/components/ex/Note';
 
 ## コンポーネントの準備
 
-<PreviewTitle>構築例</PreviewTitle>
+<PreviewTitle>コンポーネントの準備</PreviewTitle>
 <Preview>
 	<PreviewCode slot='tab' label='React'>
-	```jsx
-	import { Lism, Flex, Stack, Icon, Center } from '@lism-ui/core';
-	import notePresets from '@lism-ui/core/components/Callout/presets.js';
-
-	export function Note({ type = 'note', boxcolor, icon, title, children, isFlow, ...props }) {
-		const presets = type ? notePresets[type] : null;
-		if (presets) {
-			boxcolor = boxcolor || presets?.color || null;
-			icon = icon || presets?.icon || null;
-		}
-
-		return (
-			<Stack
-				lismClass='c--note'
-				boxcolor={boxcolor}
-				p='box'
-				g='20'
-				bd='is'
-				bdc='boxcolor'
-				bdw='4px'
-				bdrs='2px'
-				{...props}
-			>
-				{title && (
-					<Flex className='c--note__head' fw='bold' ai='c' g='10' skipState>
-						<Center className='c--note__icon' fz='xl' c='boxcolor' skipState>
-							<Icon icon={icon} />
-						</Center>
-						<span className='c--note__title'>{title}</span>
-					</Flex>
-				)}
-				<Lism className='c--note__body' isFlow={isFlow}>
-					{children}
-				</Lism>
-			</Stack>
-		);
-	}
-	```
+	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2F1763302b9ba2484f42c616d940de4063c27e98db%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FNote%2Findex.jsx&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
 	</PreviewCode>
-	{/* <PreviewCode slot='tab' label='CSS'>
-	```scss
-	:where(.c--note) {
-		border-inline-start: solid 4px var(--boxcolor);
-	}
-	```
-	</PreviewCode> */}
 </Preview>
-
 
 
 ### Props

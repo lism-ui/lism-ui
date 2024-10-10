@@ -10,22 +10,20 @@
 	--preview--resize-bdc: hsl(200, 16%, 40%);
 	--preview--help-bg: rgba(50, 50, 55, 0.5);
 
-	--main: #4082aa;
-	--accent: #da3159;
-
-	// --accent-2: #bc3453;
-	// --accent-3: #bc3453;
+	--c--main: #4082aa;
+	--c--accent: #da3159;
 
 	// base
-	--base-hs: 215 8%;
-	--base: hsl(var(--base-hs) 8%);
-	--base-2: hsl(var(--base-hs) 14%);
-	--base-3: hsl(var(--base-hs) 20%); // border に使う
+	--c--base-hs: 215 8%;
+	--c--base: hsl(var(--c--base-hs) 8%);
+	--c--base-2: hsl(var(--c--base-hs) 14%);
+
+	--c--divider: hsl(var(--c--base-hs) 20%);
 
 	// content
-	--content: hsl(215 8% 99%);
-	--content-2: hsl(215 4% 88%);
-	--content-3: hsl(225 4% 75%); //hsl(200, 12%, 92%);
+	--c--text: hsl(215 8% 99%);
+	--c--text-2: hsl(215 4% 88%);
+	// --c--divider: hsl(225 4% 75%); //hsl(200, 12%, 92%);
 
 	// color mix
 	--cbox-mixper--bg: 12%;

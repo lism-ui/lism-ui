@@ -36,6 +36,12 @@ import { DecoBox } from '@lism-ui/core';
 
 ### Call
 
+{/* <Box p='30' bd uClass='is--trimHL'>
+	<h2>Call</h2>
+	<DammyText length='m' />
+	<img src='/img/img-1.jpg' alt='' width='960' height='640' />
+</Box> */}
+
 <Preview>
 	<PreviewTitle>Call</PreviewTitle>
 	<PreviewArea resize p='30'>
@@ -47,7 +53,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='left bottom'
 				mr='auto'
 			/>
-			<Box p='box:s'>
+			<Box p='30'>
 				<DammyText length='m' />
 			</Box>
 			<Decorator
@@ -66,7 +72,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 				ml='auto'
 			/>
-			<Box p='box:s'>
+			<Box p='30'>
 				<DammyText length='s' />
 			</Box>
 			<Decorator
@@ -138,7 +144,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='left bottom'
 				mr='auto'
 			/>
-			<Box p='box:s'>
+			<Box p='30'>
 				<DammyText length='m' />
 			</Box>
 			<Decorator
@@ -157,7 +163,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 				ml='auto'
 			/>
-			<Box p='box:s'>
+			<Box p='30'>
 				<DammyText length='s' />
 			</Box>
 			<Decorator
@@ -227,17 +233,17 @@ import { DecoBox } from '@lism-ui/core';
 <Preview>
 	<PreviewTitle>Kakko</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Box p='box' pos='r'>
+		<Box p='40' pos='r'>
 			<DammyText />
 			<Decorator size='1.25em' pos='a' t='0' l='0' bd='l,t' />
 			<Decorator size='1.25em' pos='a' r='0' b='0' bd='r,b' />
 		</Box>
-		<Box p='box' pos='r'>
+		{/* <Box p='40' pos='r'>
 			<DammyText />
 			<Decorator size='1.25em' pos='a' t='0' r='0' bd='r,t' />
 			<Decorator size='1.25em' pos='a' l='0' b='0' bd='l,b' />
-		</Box>
-		<Box p='box' pos='r'>
+		</Box> */}
+		<Box p='40' pos='r'>
 			<DammyText />
 			<Decorator pos='a' t='0' l='0' w='1em' h='100' bd='l,y' />
 			<Decorator pos='a' t='0' r='0' w='1em' h='100' bd='r,y' />
@@ -245,17 +251,12 @@ import { DecoBox } from '@lism-ui/core';
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<Box p='box' pos='r'>
+	<Box p='40' pos='r'>
 		<DammyText />
 		<Decorator size='1.25em' pos='a' t='0' l='0' bd='l,t' />
 		<Decorator size='1.25em' pos='a' r='0' b='0' bd='r,b' />
 	</Box>
-	<Box p='box' pos='r'>
-		<DammyText />
-		<Decorator size='1.25em' pos='a' t='0' r='0' bd='r,t' />
-		<Decorator size='1.25em' pos='a' l='0' b='0' bd='l,b' />
-	</Box>
-	<Box p='box' pos='r'>
+	<Box p='40' pos='r'>
 		<DammyText />
 		<Decorator pos='a' t='0' l='0' w='1em' h='100' bd='l,y' />
 		<Decorator pos='a' t='0' r='0' w='1em' h='100' bd='r,y' />
@@ -275,7 +276,7 @@ import { DecoBox } from '@lism-ui/core';
 				minW='8em'
 				maxW='30em'
 				bgc='base-2'
-				p='box'
+				p='40'
 				w='fit-content'
 				bd='r'
 				bdw='.5em'
@@ -304,7 +305,7 @@ import { DecoBox } from '@lism-ui/core';
 				minW='8em'
 				maxW='30em'
 				bgc='base-2'
-				p='box'
+				p='40'
 				w='fit-content'
 				bd='r'
 				bdw='.5em'
@@ -346,10 +347,10 @@ import { DecoBox } from '@lism-ui/core';
 			<DammyText />
 		</BalloonBox>
 		---
-		<BalloonBox variant='bottom' bdw='2px' bdc='base-3' bgc='base-2'>
+		<BalloonBox variant='bottom' bdc='divider' bgc='base-2'>
 			<DammyText />
 		</BalloonBox>
-		<BalloonBox variant='bottom' boxcolor='red'>
+		<BalloonBox variant='bottom' bdw='2px' boxcolor='red'>
 			<DammyText />
 		</BalloonBox>
 	</PreviewArea>

@@ -1,6 +1,5 @@
 // heightが.-h:で上書きできるかあとでチェック
 .b--shapeDivider {
-	// --c: var(--base);
 	--level: 0;
 	--duration: 12s;
 	--offset: 0;
@@ -16,7 +15,6 @@
 
 	position: relative;
 	overflow: hidden;
-	// color: var(--base);
 
 	// 高さを svg ではなく親でセットしているのは、 <Divider h='hoge'> で簡単に上書きできるようにするため。
 	// 600px時点を最小値, 1200px時点を最大値にして、clampで高さを変動させる

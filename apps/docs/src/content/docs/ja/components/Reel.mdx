@@ -3,7 +3,7 @@ title: 'Reel'
 description: ...
 ---
 
-import { Reel, DammyText, Frame, Box, FlexItem, Flex } from '@lism-ui/astro';
+import { Lism, Reel, DammyText, Frame, Box, FlexItem, Flex } from '@lism-ui/astro';
 import { PropBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import ImportCode from "~/components/code-template/Import.astro";
@@ -52,7 +52,7 @@ export const ReelContents = () => {
 			{Array.from({length: 6}, (v, i) => i).map((i) => {
 				// 偶数かどうか
 				const isEven = i % 2 === 0;
-				return <Box bgc={isEven ? 'base-2' : 'base-3'} p="box" key={i}>
+				return <Box bgc={isEven ? 'base-2' : 'base-2'} p='40' key={i}>
 					<p>Box</p>
 				</Box>
 			})}
@@ -68,7 +68,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 			{Array.from({length: 6}, (v, i) => i).map((i) => {
 				const isEven = i % 2 === 0;
 				const src = isEven ? imgPath + '1.jpg' : imgPath + '2.jpg';
-				return <Frame id={hasID ? `image-${i}` : ''} ascpect={aspect} key={i} {...props}>
+				return <Frame id={hasID ? `image-${i}` : ''} aspect={aspect} key={i} {...props}>
 					<img src={src} alt='' loading='lazy' width='960' height='640' />
 				</Frame>
 			})}
@@ -81,24 +81,24 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 		`<Reel>`デフォルト
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Reel>
+		<Reel g='10'>
 			<ReelContents />
 		</Reel>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Reel>
-			<Box p='box' bgc='base-2'>Box</Box>
-			<Box p='box' bgc='base-2'>Box</Box>
+		<Reel g='10'>
+			<Box p='40' bgc='base-2'>Box</Box>
+			<Box p='40' bgc='base-2'>Box</Box>
 			...
 		</Reel>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="c--reel l--flex" tabindex="0">
-			<div class="l--box -bgc:base-2 -p:box">Box</div>
-			<div class="l--box -bgc:base-2 -p:box">Box</div>
+		<div class="c--reel l--flex -g:10" tabindex="0">
+			<div class="l--box -bgc:base-2 -p:40">Box</div>
+			<div class="l--box -bgc:base-2 -p:40">Box</div>
 			...
 		</div>
 		```
@@ -174,38 +174,40 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	<PreviewTitle>
 		ボタンナビゲーションをつける
 	</PreviewTitle>
-	<PreviewArea p='20' isFlow='s'>
+	<PreviewArea p='20' isFlow={null}>
 		<Reel itemSize='60%' snapAlign='center' g='20'>
 			<ReelImages hasID/>
 		</Reel>
-		<Flex g='20' jc='c' lh='1'>
-			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>1</FlexItem>
-			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>2</FlexItem>
-			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>3</FlexItem>
-			<FlexItem tag='a' href='#image-4' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>4</FlexItem>
-			<FlexItem tag='a' href='#image-5' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>5</FlexItem>
-			<FlexItem tag='a' href='#image-6' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>6</FlexItem>
+		<Flex g='20' jc='c' lh='1' mbs='20'>
+			<Lism tag='a' href='#image-1' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>1</Lism>
+			<Lism tag='a' href='#image-2' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>2</Lism>
+			<Lism tag='a' href='#image-3' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>3</Lism>
+			<Lism tag='a' href='#image-4' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>4</Lism>
+			<Lism tag='a' href='#image-5' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>5</Lism>
+			<Lism tag='a' href='#image-6' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>6</Lism>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "image-1"
 		<Reel itemSize='40%' snapAlign='center' g='20'>
-			<Frame id='image-1' ascpect='16/9'>
+			<Frame id='image-1' aspect='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
-			<Frame id='image-2' ascpect='16/9'>
+			<Frame id='image-2' aspect='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
-			<Frame id='image-3' ascpect='16/9'>
+			<Frame id='image-3' aspect='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
 			...
 		</Reel>
-		<Flex g='20' jc='c' lh='1'>
-			<FlexItem tag='a' href='#image-1' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>1</FlexItem>
-			<FlexItem tag='a' href='#image-2' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>2</FlexItem>
-			<FlexItem tag='a' href='#image-3' c='inherit' bgc='base-3' p='box:s' bdrs='s' hov='bgc'>3</FlexItem>
-			...
+		<Flex g='20' jc='c' lh='1' mbs='20'>
+			<Lism tag='a' href='#image-1' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>1</Lism>
+			<Lism tag='a' href='#image-2' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>2</Lism>
+			<Lism tag='a' href='#image-3' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>3</Lism>
+			<Lism tag='a' href='#image-4' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>4</Lism>
+			<Lism tag='a' href='#image-5' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>5</Lism>
+			<Lism tag='a' href='#image-6' c='inherit' bgc='base-2' w='2em' h='2em' ta='c' ac='c' bdrs='s' td='none' hov='fade'>6</Lism>
 		</Flex>
 		```
 	</PreviewCode>
@@ -306,14 +308,14 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Reel g='20' showScrollbar="always">
-			<Box bgc='base-2' p="box:s">
+			<Box bgc='base-2' p="20">
 				<p>Lorem ipsum, dolor sit amet.</p>
 			</Box>
-			<Box bgc='base-2' p="box:s">
+			<Box bgc='base-2' p="20">
 				<p>Lorem ipsum, dolor sit amet.</p>
 				<p>consectetur adipisicing elit.</p>
 			</Box>
-			<Box bgc='base-2' p="box:s">
+			<Box bgc='base-2' p="20">
 				<p>Quisquam, voluptatum.</p>
 			</Box>
 		</Reel>

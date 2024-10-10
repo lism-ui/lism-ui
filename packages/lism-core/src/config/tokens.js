@@ -2,7 +2,9 @@
 
 // PRESETS
 export default {
-	p: ['box', 'box:s', 'box:l'],
+	p: [
+		//'box', 'box:s', 'box:l'
+	],
 	fz: [
 		'root',
 		'5xl',
@@ -25,10 +27,6 @@ export default {
 	ff: ['root', 'mono', 'sans', 'serif', 'emoji'],
 	// fw: ['bold', 'thin'],
 
-	// space: ['0', '5', '10', '15', '20', '25', '30', '40', '50', '60', '70', '80', '90', '100'],
-	// em: ['1', '2', '3', '4', '5', '10', '15', '20', '25', '30'],
-	// p: ['box', 'box:s', 'box:l'],
-
 	radius: ['full', '2xl', 'xl', 'l', 'm', 's', 'xs'],
 	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],
 
@@ -41,13 +39,17 @@ export default {
 		'base',
 		'base-2',
 		'base-3',
-		'content',
-		'content-2',
-		'content-3',
+		'text',
+		'text-2',
+		'text-3',
+		'divider',
+		'divider-2',
 		'main',
 		'accent',
 		'accent-2',
 		'accent-3',
+	],
+	palette: [
 		'red',
 		'blue',
 		'green',
@@ -55,9 +57,9 @@ export default {
 		'purple',
 		'orange',
 		'pink',
+		'gray',
 		'white',
 		'black',
-		'gray',
 	],
 	filter: ['blur', 'blur:s', 'blur:l', 'darken', 'lighten'],
 };

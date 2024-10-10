@@ -11,14 +11,14 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 export const PreviewBoxs = ({hover, ...attrs}) => {
 	const DEMO_BOX = [
-		{ ariaLabel: 'グレー系のコンテンツでのテスト', bgc: 'base-2', bd: '-' },
-		{ ariaLabel: '黒系のコンテンツでのテスト', bgc: 'content', c: 'base' },
+		{ ariaLabel: 'グレー系のコンテンツでのテスト', bgc: 'base', bd: '-' },
+		{ ariaLabel: '黒系のコンテンツでのテスト', bgc: 'text', c: 'base' },
 	];
 	return (
 		<Columns cols={[2]} g={20}>
 			{DEMO_BOX.map((boxProps, i) => {
 				return (
-					<LinkBox key={i} href='###' hov={hover} p='box' {...boxProps} {...attrs}>
+					<LinkBox key={i} href='###' hov={hover} p='30' {...boxProps} {...attrs}>
 						<Text fz='fluid'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 					</LinkBox>
 				);
@@ -63,14 +63,14 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
-	<LinkBox hov='fade' href='###' p='box'>
+	<LinkBox hov='fade' href='###' p='30'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:fade -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:fade -p:30 -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -84,14 +84,14 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
-	<LinkBox hov='shadow' href='###' p='box'>
+	<LinkBox hov='shadow' href='###' p='30'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:shadow -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:shadow -p:30 -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -106,14 +106,14 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
-	<LinkBox hov='up' href='###' p='box'>
+	<LinkBox hov='up' href='###' p='30'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:"
-	<a class="is--linkBox -hov:up -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:up -p:30 -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
@@ -130,37 +130,20 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov='up,shadow'"
-	<LinkBox hov='up,shadow' href='###' p='box'>
+	<LinkBox hov='up,shadow' href='###' p='30'>
 		...
 	</LinkBox>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:up" "-hov:shadow"
-	<a class="is--linkBox -hov:up -hov:shadow -p:box -bgc:base-2 -bd:" href="###">
+	<a class="is--linkBox -hov:up -hov:shadow -p:30 -bgc:base-2 -bd:" href="###">
 		...
 	</a>
 	```
 	</PreviewCode>
 </Preview>
 
-{/* 
-<Preview>
-	<PreviewTitle>`hov="dark"`</PreviewTitle>
-	<PreviewArea p={40}>
-		<PreviewBoxs hov="dark"/>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<LinkBox href="###" p="box" hov="dark">
-		...
-	</LinkBox>
-	```
-	</PreviewCode>
-</Preview> */}
-
-
-{/* bright? */}
 
 
 ### オブジェクトでの指定
@@ -170,14 +153,14 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>`bgc`を`'main'`, `c`を`'white'`に変化させる</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' bgc='base-2' p='box' hov={{ bgc:'main', c:'white'}}>
+		<LinkBox href='###' bgc='base-2' p='30' hov={{ bgc:'main', c:'white'}}>
 			<Text>LinkBox.</Text>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov=" "bgc:'main'" "c:'white'"
-		<LinkBox href='###' hov={{ bgc:'main', c:'white'}} bgc='base-2' p='box'>
+		<LinkBox href='###' hov={{ bgc:'main', c:'white'}} bgc='base-2' p='30'>
 			...
 		</LinkBox>
 	```
@@ -185,7 +168,7 @@ hover時の挙動を`hov`に指定できます。
 	<PreviewCode slot='tab' label='HTML'>
 	```html "-hov:bgc" "-hov:c" "--hov-bgc" "--hov-c"
 	<a
-		class="is--linkBox -hov:bgc -hov:c -bgc:base-2 -p:box"
+		class="is--linkBox -hov:bgc -hov:c -bgc:base-2 -p:30"
 		style="--hov-bgc:var(--main);--hov-c:var(--white)"
 		href="###"
 	>...</a>
@@ -197,29 +180,29 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>hover時のbxshの強さを指定する</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hov={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
+		<LinkBox href='###' hov={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='30'>
 			<p>bxsh:2→hoverで5</p>
 		</LinkBox>
-		<LinkBox href='###' hov={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='box'>
+		<LinkBox href='###' hov={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='30'>
 			<p>bxsh:3→hoverで0</p>
 		</LinkBox>
-		{/* <LinkBox href='###' hov='bxsh' bgc='base-2' p='box'>
+		{/* <LinkBox href='###' hov='bxsh' bgc='base-2' p='30'>
 			<Text>0→bxsh4 つける</Text>
 		</LinkBox>
-		<LinkBox href='###' hov='bxsh' bxsh='2' bgc='base-2' p='box'>
+		<LinkBox href='###' hov='bxsh' bxsh='2' bgc='base-2' p='30'>
 			<Text>2→hoverでbxsh5</Text>
 		</LinkBox> */}
-		{/* <LinkBox href='###' hov={{ bxsh: '4'}} bxsh='0 0 8px rgb(0 0 0 / 25%)' bgc='base-2' p='box'>
+		{/* <LinkBox href='###' hov={{ bxsh: '4'}} bxsh='0 0 8px rgb(0 0 0 / 25%)' bgc='base-2' p='30'>
 			<Text>カスタムシャドウからプリセット.</Text>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox> */}
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov=" "bgc:'main'" "c:'white'"
-		<LinkBox href='###' hov={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='box'>
+		<LinkBox href='###' hov={{ bxsh:'5'}} bxsh='2' bgc='base-2' p='30'>
 			<p>bxsh:2→hoverで5</p>
 		</LinkBox>
-		<LinkBox href='###' hov={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='box'>
+		<LinkBox href='###' hov={{ bxsh:'0'}} bxsh='3' bgc='base-2' p='30'>
 			<p>bxsh:3→hoverで0</p>
 		</LinkBox>
 	```
@@ -228,12 +211,12 @@ hover時の挙動を`hov`に指定できます。
 	```html "-hov:bxsh:" "--hov-bxsh"
 	<a
 		href="###"
-		class="is--linkBox -hov:bxsh: -bxsh:2 -bgc:base-2 -p:box"
+		class="is--linkBox -hov:bxsh: -bxsh:2 -bgc:base-2 -p:30"
 		style="--hov-bxsh:var(--sh--5)"
 	>...</a>
 	<a
 		href="###"
-		class="is--linkBox -hov:bxsh: -bxsh:3 -bgc:base-2 -p:box"
+		class="is--linkBox -hov:bxsh: -bxsh:3 -bgc:base-2 -p:30"
 		style="--hov-bxsh:none"
 	>...</a>
 	```
@@ -244,14 +227,14 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>ブラーをかける</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hov={{ filter:'blur(2px)' }} p='box' bd>
+		<LinkBox href='###' hov={{ filter:'blur(2px)' }} p='30' bd>
 			<Text>LinkBox.</Text>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx "hov=" "filter:'blur(2px)'"
-		<LinkBox href='###' hov={{ filter:'blur(2px)' }} p='box' bd>...</LinkBox>
+		<LinkBox href='###' hov={{ filter:'blur(2px)' }} p='30' bd>...</LinkBox>
 	```
 	</PreviewCode>
 </Preview>
@@ -268,7 +251,7 @@ hover時の挙動を`hov`に指定できます。
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<LinkBox href='###' p='box' hov={[ 'bxsh', 'up' ]}>...</LinkBox>
+	<LinkBox href='###' p='30' hov={[ 'bxsh', 'up' ]}>...</LinkBox>
 	```
 	</PreviewCode>
 </Preview>
@@ -276,7 +259,7 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>`'up'` に加え、オブジェクトで `c`, `bdc`, `bgc` を指定</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hov={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]} bd bdw='1px' p='box'>
+		<LinkBox href='###' hov={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]} bd bdw='1px' p='30'>
 			<Text>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
 		</LinkBox>
 	</PreviewArea>
@@ -287,7 +270,7 @@ hover時の挙動を`hov`に指定できます。
 			hov={['up', { c:'blue', bdc:'blue', bgc:'blue:5%' }]}
 			bd
 			bdw='1px'
-			p='box'
+			p='30'
 		>
 			...
 		</LinkBox>
@@ -324,8 +307,8 @@ hover時の挙動を`hov`に指定できます。
 	```html "-hov:pass" "-hov:get:show"
 	<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
 		<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
-		<div class="is--layer -hov:get:show -bgc:" style="--bgc:hsl(var(--hsl-black) / 20%);backdrop-filter:blur(4px)"></div>
-		<div class="l--box -hov:get:show -pos:a -t:50 -l:50 -trslt:-50XY -c: -bgc: -bdrs:full -px:30 -py:10" style="--c:var(--white);--bgc:var(--black)">View More</div>
+		<div class="is--layer -hov:get:show -bgc:mix" style="--bgc1:var(--black);--bgc1-per:20%;backdrop-filter:blur(4px)"></div>
+		<div class="l--box -hov:get:show -pos:a -t:50 -l:50 -trslt:-50XY -c:white -bgc:black -bdrs:full -px:30 -py:10">View More</div>
 	</a>
 	```
 	</PreviewCode>
@@ -362,13 +345,13 @@ hover時の挙動を`hov`に指定できます。
 <Preview>
 	<PreviewTitle>`hov='reverse'`</PreviewTitle>
 	<PreviewArea p={40}>
-		<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box'>
+		<LinkBox href='###' hov='reverse' c='text' bgc='base-2' p='30'>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-	<LinkBox href='###' hov='reverse' c='content' bgc='base-2' p='box'>
+	<LinkBox href='###' hov='reverse' c='text' bgc='base-2' p='30'>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 	</LinkBox>
 	```

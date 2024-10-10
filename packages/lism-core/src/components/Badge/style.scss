@@ -1,6 +1,6 @@
 // 初期スタイル
 :where(.b--badge) {
-	--boxcolor: var(--content);
+	--boxcolor: var(--c--text);
 	padding-inline: 0.5em;
 }
 
@@ -12,11 +12,8 @@
 }
 
 .b--badge--fill {
-	--cbox-c: var(--base);
+	--cbox-c: var(--c--base);
 	--cbox-bgc: var(--boxcolor);
-	// --c: var(--base);
-	// --bgc: var(--boxcolor);
-
 	--cbox-bdc: transparent;
 }
 .b--badge--outline {

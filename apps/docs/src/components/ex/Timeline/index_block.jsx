@@ -52,9 +52,9 @@ export function TimelineItem({
 	let shapeClass = 'c--timeline__shape';
 
 	const itemProps = { className: itemClass };
-	const lineProps = { bgc: 'base-3' };
-	const timeProps = { fz: 'xs', lh: 'xs', c: 'content-2' };
-	const shapeProps = { bdrs: 'full', c: 'base', bgc: shapeColor || 'content' };
+	const lineProps = { bgc: 'base-2' };
+	const timeProps = { fz: 'xs', lh: 'xs', c: 'text-2' };
+	const shapeProps = { bdrs: 'full', c: 'base', bgc: shapeColor || 'text' };
 	const bodyProps = { isFlow };
 
 	if (variant === 'horizontal') {

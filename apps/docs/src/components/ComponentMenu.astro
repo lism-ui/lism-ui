@@ -13,17 +13,17 @@ const componentMenu = sidebarData.find((item) => item.label === 'Components');
 	{
 		componentMenu.items.map((item) => {
 			if (item.link === '###---' && item.label === '---') {
-				return <Divider />;
+				return <Divider my='10' />;
 			} else if (item.link === '###---') {
 				return (
 					<Flex mbs='40' ai='c' g='30'>
-						<Lism c='content-3'>{item.label}</Lism>
+						<Lism op='50'>{item.label}</Lism>
 						<Divider class='-fx:1' />
 					</Flex>
 				);
 			}
 			return (
-				<Lism tag='a' href={`${langPath}${item.link}`} px='5' d='b'>
+				<Lism tag='a' href={`${langPath}${item.link}`} px='10' d='b'>
 					{item.label}
 				</Lism>
 			);

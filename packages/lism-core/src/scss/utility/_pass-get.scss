@@ -10,6 +10,12 @@
 .-pass\:p > * {
 	padding: var(--pass-p);
 }
+
+.-get\:w,
+.-pass\:w > * {
+	width: var(--pass-w);
+}
+.-get\:minW,
 .-pass\:minW > * {
 	min-width: var(--pass-minW);
 }

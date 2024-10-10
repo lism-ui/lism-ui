@@ -60,9 +60,9 @@ export function getMaybeSpaceVar(value, propName) {
 	// }
 
 	// box:s → --p--box--s
-	if (propName && isTokenValue(propName, value)) {
-		return `var(--${propName}--${value.replace(':', '--')})`;
-	}
+	// if (propName && isTokenValue(propName, value)) {
+	// 	return `var(--${propName}--${value.replace(':', '--')})`;
+	// }
 
 	// それ以外はそのまま返す
 	return value;
@@ -75,13 +75,16 @@ export function getMaybeColorVar(value, propType) {
 		return `color-mix(in srgb, ${getMaybeColorVar(color)} ${alpha}, transparent)`;
 	}
 
-	// 単純なカラートークンかどうか
+	// カラートークンかどうか
 	if (isTokenValue('color', value)) {
+		return `var(--c--${value})`;
+	} else if (isTokenValue('palette', value)) {
 		return `var(--${value})`;
-	} else if (propType && isPresetValue(propType, value)) {
-		// c,bgc などの各プロパティ専用トークン値の場合
-		return `var(--${propType}--${value.replace(':', '--')})`;
 	}
+	//  else if (propType && isPresetValue(propType, value)) {
+	// 	// c,bgc などの各プロパティ専用トークン値の場合
+	// 	return `var(--${propType}--${value.replace(':', '--')})`;
+	// }
 
 	return value;
 }

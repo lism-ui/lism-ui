@@ -43,20 +43,20 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 		高さの設定が特にない時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p='box'>
+		<Center p='30'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Center p='box'>
+		<Center p='30'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--center -p:box">
+		<div class="l--center -p:30">
 			<p class="-fz:l">TEXT</p>
 		</div>
 		```
@@ -65,10 +65,10 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 
 <Preview>
 	<PreviewTitle>
-		長いテキストの改行は左寄せになるので、テキストの読みやすさを損ないません。
+		長いテキストの改行は左寄せになります。テキストの読みやすさを損ないません。
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p='box' g={20}>
+		<Center p='40' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='m' lang='ja'/>
@@ -76,7 +76,7 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Center p='box' g={20}>
+		<Center p='40' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<p>...</p>
 			<p>...</p>
@@ -85,7 +85,7 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--center -p:box -g:20">
+		<div class="l--center -p:40 -g:20">
 			<p class="-fz:l">TEXT</p>
 			<p>...</p>
 			<p>...</p>
@@ -104,13 +104,13 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		高さを設定した時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p={30} g={20} h='40vh'>
+		<Center p='30' g='20' h='40vh'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "h='40vh'"
-		<Center h='40vh' p={30} g={20}>
+		<Center h='40vh' p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
@@ -129,13 +129,13 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		アスペクト比を設定した時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' p={30} g={20}>
+		<Center aspect='2/1' p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "aspect='2/1'"
-		<Center aspect='2/1' p={30} g={20}>
+		<Center aspect='2/1' p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
@@ -159,7 +159,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		垂直方向のみ中央揃えに
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center p={30} g={20} h='50vh' ji='start'>
+		<Center p='30' g='20' h='50vh' ji='start'>
 			<Text fz='l' fw='700'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='m' lang='ja'/>
@@ -167,7 +167,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "ji='start'" "h='50vh'"
-		<Center ji='start' h='50vh' p={30} g={20}>
+		<Center ji='start' h='50vh' p='30' g='20'>
 			<Text fz='l' fw='700'>TEXT</Text>
 			<p>...</p>
 			<p>...</p>
@@ -244,14 +244,14 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		`size='content'`
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center size='content' p='box' bgc='base-2' bxsh='1'>
+		<Center size='content' p='30' bgc='base-2' bxsh='1'>
 			<Text ff='emoji'>💡</Text>
 			<Text fw='bold'>`size='content'`</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "size='content'"
-		<Center size='content' p='box' bgc='base-2' bxsh='1'>
+		<Center size='content' p='30' bgc='base-2' bxsh='1'>
 			<Text ff='emoji'>💡</Text>
 			<p>...</p>
 		</Center>
@@ -259,7 +259,7 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "-w:fit -h:fit -mx:a"
-		<div class="l--center -w:fit -h:fit -mx:a -p:box -bgc:base-2 -bxsh:1">
+		<div class="l--center -w:fit -h:fit -mx:a -p:30 -bgc:base-2 -bxsh:1">
 			<p class="-ff:emoji">💡</p>
 			<p>...</p>
 		</div>
@@ -287,7 +287,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		スクロール時にコンテンツが全て見えない 😱
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center px={30} py={50} g={20} h='45vh' ovy='auto' bd>
+		<Center px='30' py='50' g='20' h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
 			<DammyText length='l' />
 			<DammyText length='xl' />
@@ -295,7 +295,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "\<Center" "h='45vh' ovy='auto'"
-		<Center px={30} py={50} g={20} h='45vh' ovy='auto' bd>
+		<Center px='30' py='50' g='20' h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
 			<DammyText length='l' />
 			<DammyText length='xl' />
@@ -320,8 +320,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		スクロール時、正常にコンテンツが見える 😄
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Box px={30} py={50} h='45vh' ovy='auto' bd>
-			<Center g={20} minH='100%'>
+		<Box px='30' py='50' h='45vh' ovy='auto' bd>
+			<Center g='20' minH='100%'>
 				<Text fz='l' fw='700'>DEMO</Text>
 				<DammyText length='l' />
 				<DammyText length='xl' />
@@ -330,8 +330,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "h='45vh'" "ovy='auto'" "minH='100%'"
-		<Box px={30} py={50} h='45vh' ovy='auto' bd>
-			<Center minH='100%' g={20}>
+		<Box px='30' py='50' h='45vh' ovy='auto' bd>
+			<Center minH='100%' g='20'>
 				<Text fz='l' fw='700'>DEMO</Text>
 				<DammyText length='l' />
 				<DammyText length='xl' />
@@ -346,8 +346,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>OK</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Frame aspect='2/1' ovy='auto' bd p={30} g={20}>
-			<Center minH='100%' g={20}>
+		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
+			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
 				<DammyText length='xs' lang='ja'/>
 				<DammyText length='xl' lang='ja'/>
@@ -356,8 +356,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Frame aspect='2/1' ovy='auto' bd p={30} g={20}>
-			<Center minH='100%' g={20}>
+		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
+			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
 				<DammyText length='xs' lang='ja'/>
 				<DammyText length='xl' lang='ja'/>
@@ -370,7 +370,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>NG</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' ovy='auto' bd p={30} g={20}>
+		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='xl' lang='ja'/>
@@ -378,7 +378,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Center aspect='2/1' ovy='auto' bd p={30} g={20}>
+		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<DammyText length='xs' lang='ja'/>
 			<DammyText length='xl' lang='ja'/>
@@ -415,13 +415,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewArea resize p={10}>
 		<Columns cols="2" fz="s" lh="s">
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" p='box'>
+				<Center h="100%" p='30'>
 					<Text fw="700">margin</Text>
 					<DammyText length='l' mbs={20}/>
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
-				<Stack ai="center" jc="center" h="100%" p='box'>
+				<Stack ai="center" jc="center" h="100%" p='30'>
 					<Text fw="700">justify-content</Text>
 					<DammyText length='l' mbs={20}/>
 				</Stack>
@@ -432,13 +432,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		```jsx {3, 9}
 		<Columns cols="2" fz="s" lh="s">
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" p='box'>
+				<Center h="100%" p='30'>
 					<Text fw="700">margin</Text>
 					...
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
-				<Stack ai="center" jc="center" h="100%" p='box'>
+				<Stack ai="center" jc="center" h="100%" p='30'>
 					<Text fw="700">justify-content</Text>
 					...
 				</Stack>
@@ -467,13 +467,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewArea resize p={10}>
 		<Columns cols="2" fz="s" lh="s">
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" px={30} py={40} ovy="auto">
+				<Center h="100%" px='30' py={40} ovy="auto">
 					<Text fz='l' fw="700">ovy "auto"</Text>
 					<DammyText length='l' mbs={20} />
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" px={30} py={40}>
+				<Center h="100%" px='30' py={40}>
 					<Text fz='l' fw="700">ovy なし</Text>
 					<DammyText length='l' mbs={20} />
 				</Center>
@@ -484,13 +484,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		```jsx {3,9}
 		<Columns cols="2" fz="s" lh="s">
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" px={30} py={40} ovy="auto">
+				<Center h="100%" px='30' py={40} ovy="auto">
 					<Text fz='l' fw="700">ovy "auto"</Text>
 					...
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
-				<Center h="100%" px={30} py={40}>
+				<Center h="100%" px='30' py={40}>
 					<Text fz='l' fw="700">ovy なし</Text>
 					...
 				</Center>

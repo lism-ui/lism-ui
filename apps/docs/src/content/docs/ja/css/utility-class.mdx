@@ -68,13 +68,19 @@ export const PropTable = ({data={}, ...props}) => {
 ### color
 
 <PropTable
-	data={{c: {'base':'--base', 'content': '--content', 'content-2': '--content-2', 'content-3': '--content-3'}}}
+	data={{c: {'base':'--c--base', 'text': '--c--text', 'text-2': '--c--text-2', 'i':'inherit'}}}
 />
 
 ### background-color
 
 <PropTable
-	data={{bgc:{'content':'--content', 'base': '--base', 'base-2': '--base-2', 'base-3': '--base-3'}}}
+	data={{bgc:{'text':'--c--text', 'base': '--c--base', 'base-2': '--c--base-2', 'i':'inherit'}}}
+/>
+
+### --bdc
+
+<PropTable
+	data={{bgc:{'divider':'--c--divider', 'i': 'inherit'}}}
 />
 
 
@@ -199,7 +205,7 @@ export const PropTable = ({data={}, ...props}) => {
 		bdc:{
 			't': '--bdc:transparent',
 			'i': '--bdc:inherit',
-			'divider': '--bdc:var(--divider-bdc)',
+			'divider': '--bdc:var(--c--divider)',
 		},
 	}}
 />

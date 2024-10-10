@@ -1,25 +1,15 @@
 // has--border?
 // bdc だけとかの指定でも -bd:出力？
 /*
-	borderはかなり特殊。
-	--bds, --bdw, --bdc で管理できるようにしていて、そのために基本的に .-bd: クラスを使う。
-	各方向も、 -bd:left, -bd:right など。　( -bd: で全方向。)
 
-	.-bd:{preset}: 方向 or ボーダー用のセマンティックプリセット。
+	使用される環境（resetCSS）によって挙動が変わりやすいので 各プロパティを変数で管理する。
+	ブラウザのデフォルト挙動では、bds指定でborder出現してくるが、nextraのresetCSSみたいな特殊な環境だとbdwの指定でborderでてきたりする。
 
-	まず bd を指定してもらう。
-	bdc, bdw などを追加で指定。
-
+	borderはLismの中でも特殊な仕様になっている。
+	--bds, --bdw, --bdc で管理できるようにしていて、そのために .-bd: クラスを使う。
 */
 
 // bdc, bdw などでカラーや太さを上書きできるように border 自体を変数管理
-
-// :root {
-// --bds--default: solid;
-// --bdw--default: 1px;
-// --bdc--default: currentColor; //var(--base-3);
-// }
-
 :where([class*='-bd:']) {
 	--bds: solid;
 	--bdw: 1px;
@@ -45,24 +35,11 @@
 // 	border-color: var(--bdc);
 // }
 
-// .bd\:l {
-// 	--bds: none none none solid;
-// }
-
-// 使用される環境（resetCSS）によって挙動が変わりやすいので 各プロパティを変数で管理する。
-// ブラウザのデフォルト挙動では、bds指定でborder出現してくるが、nextraのresetCSSみたいな特殊な環境だとbdwの指定でborderでてきたりする。
-// .-bd\:a,
-
 // .has--bd:not([class*='-bd:']),
 // .-bd\: {
 // 	border: var(--bd);
 // }
 
-// .has--bd .-bd:
-
-// .has--bd .-bdl: .-bdr:
-
-// .has--bd .-bd:l .-bd:r
 // --------------------
 // bd:presets
 // --------------------
@@ -83,6 +60,7 @@
 
 // 一方向のみborderを出現させたい時
 .-bd\:l {
+	// 	--bds: none none none solid;
 	border-left: var(--bd);
 }
 .-bd\:r {

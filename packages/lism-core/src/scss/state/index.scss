@@ -17,6 +17,18 @@
 	mask: var(--mask-img) no-repeat 50% 50% / contain;
 }
 
+.is--trimHL {
+	> :where(p, h1, h2, h3, h4, h5, h6):first-child {
+		margin-block-start: calc(var(--herfLeading) * -1);
+	}
+	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
+		margin-block-end: calc(var(--herfLeading) * -1);
+	}
+	// > img {
+	// 	--herfLeading: 0px;
+	// }
+}
+
 // Note: dialog に影響する
 :where(.is--reset) {
 	color: inherit;

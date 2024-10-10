@@ -1,13 +1,13 @@
 // ovx='auto' の時に margin がネガティブだとアウトなので、borderではなくbox-shadowで表現する。
 :where(.c--tabs--line) {
-	--tab-c: var(--content);
-	--tab-c--active: var(--content);
+	--tab-c: var(--c--text);
+	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
 	--tab-bgc--active: transparent;
 	--sh-size: inset 0 -2px;
 
 	.c--tabs__list {
-		box-shadow: var(--sh-size) 0 var(--divider-bdc);
+		box-shadow: var(--sh-size) 0 var(--c--divider);
 	}
 	.c--tabs__tab[aria-selected='true'] {
 		box-shadow: var(--sh-size) 0 0 currentColor;
@@ -15,13 +15,13 @@
 }
 
 :where(.c--tabs--emboss) {
-	--tab-c: var(--content);
-	--tab-c--active: var(--content);
+	--tab-c: var(--c--text);
+	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
-	--tab-bgc--active: var(--base);
+	--tab-bgc--active: var(--c--base);
 
 	> .c--tabs__list {
-		background-color: var(--base-3);
+		background-color: var(--c--base-2);
 		padding: 4px;
 		gap: 0.5em;
 		border-radius: var(--radii--s);
@@ -39,25 +39,3 @@
 	font-size: 0.95em;
 	padding: 0.75em 0.875em;
 }
-
-// .c--tabs__list--lifted {
-// 	--bdw: 1px;
-// 	// > .c--tabs__tab  {}
-
-// 	> [aria-selected='false'] {
-// 		border-bottom: var(--bdw) solid var(--base-3);
-// 	}
-// 	> [aria-selected='true'] {
-// 		border: var(--bdw) solid var(--base-3);
-// 		border-bottom: none;
-// 	}
-// 	&::after {
-// 		content: '';
-// 		position: absolute;
-// 		inset: 0;
-// 		display: block;
-// 		z-index: -1;
-// 		// flex: 1;
-// 		border-bottom: var(--bdw) solid var(--base-3);
-// 	}
-// }

@@ -8,8 +8,8 @@
 	--cell-p: 0.5em;
 
 	// collape にしているので、tfoot 1pxだと見えないことに注意。
-	--thead-bd: solid 2px var(--content);
-	--tfoot-bd: solid 2px var(--content);
+	--thead-bd: solid 2px var(--c--text);
+	--tfoot-bd: solid 2px var(--c--text);
 }
 
 table {
@@ -20,7 +20,7 @@ table {
 	border-collapse: collapse; // memo: oveflow の指定によっては separate にしないとborderが表示されない場合があるので横スクロール時には注意。
 	border-spacing: 0;
 	line-height: var(--lh--xs);
-	--bdc: var(--divider-bdc, currentColor);
+	--bdc: var(--c--divider, currentColor);
 	--bds: solid;
 	--bdwX: 0px;
 	--bdwY: 1px;

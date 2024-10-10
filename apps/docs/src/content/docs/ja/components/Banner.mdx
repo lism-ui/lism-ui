@@ -44,10 +44,8 @@ a.b--banner.is--linkBox.is--frame
 			<img src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy' />
 		</Banner>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='React'>
+	<PreviewCode slot='tab' label='JSX'>
 ```jsx "Banner"
-import { Banner } from '@lism-ui/core';
-
 <Banner href='#banner-link' aspect='bronze'>
 	<img src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
 </Banner>
@@ -68,7 +66,7 @@ import { Banner } from '@lism-ui/core';
 	<PreviewArea p={30}>
 		<Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Layer bgc='black:50%' blur='4px' />
+			<Layer bgc='black' op='50' />
 			<Stack pos='a' inset='0' jc='c' g='10' px='40' c='white' lh='s'>
 				<Text fz='xl' fw='bold'>Banner</Text>
 				<DammyText fz='s' lang='ja' length='s'/>
@@ -77,11 +75,9 @@ import { Banner } from '@lism-ui/core';
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { Banner, Stack, Layer, Text, DammyText } from '@lism-ui/core';
-
 <Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
 	<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
-	<Layer bgc='black:50%' blur='4px' />
+	<Layer bgc='black' op='50' />
 	<Stack pos='a' inset='0' jc='c' g='10' px='40' c='white' lh='s'>
 		<Text fz='xl' fw='bold'>Banner</Text>
 		<DammyText fz='s' lang='ja' length='s'/>
@@ -98,19 +94,17 @@ import { Banner, Stack, Layer, Text, DammyText } from '@lism-ui/core';
 			<Media hov='get:zoom' src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 			<Center isLayer hov='get:show'>
-				<Text bgc='black' c='white' bdrs='full' p='box' lh='1'>View More</Text>
+				<Text bgc='black' c='white' bdrs='full' px='30' py='20' lh='s'>View More</Text>
 			</Center>
 		</Banner>
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-import { Banner, Layer, Text } from '@lism-ui/core';
-
 <Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
 	<Media hov='get:zoom' src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 	<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 	<Center isLayer hov='get:show'>
-		<Text bgc='black' c='white' bdrs='full' p='box' lh='1'>View More</Text>
+		<Text bgc='black' c='white' bdrs='full' px='30' py='20' lh='s'>View More</Text>
 	</Center>
 </Banner>
 ```

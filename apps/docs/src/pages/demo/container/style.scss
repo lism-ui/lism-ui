@@ -45,7 +45,6 @@ body {
 	border: 2px dashed color-mix(in srgb, transparent, var(--blue) 70%) !important;
 }
 [class*='-container:'] > [class*='-container:'] {
-	// border: 2px dotted hsl(var(--hsl--blue) / 0.8) !important;
 	border: 2px dotted color-mix(in srgb, transparent, var(--blue) 70%) !important;
 }
 .l--box {

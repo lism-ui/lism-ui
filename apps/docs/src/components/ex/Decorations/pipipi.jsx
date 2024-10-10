@@ -39,7 +39,7 @@ export default function PipipiBox({ variant = 'left', children, ...props }) {
 			<FlexItem layout={Decorator} pos='r' size='.5em' variant='pipipi' {...decoProps}>
 				<Decorator pos='a' inset='c' />
 			</FlexItem>
-			<FlexItem p='box:s' pb='0' lh='s' mt='10' {...bodyProps}>
+			<FlexItem p='20' pb='0' lh='s' mt='10' {...bodyProps}>
 				{children}
 			</FlexItem>
 		</Flex>
