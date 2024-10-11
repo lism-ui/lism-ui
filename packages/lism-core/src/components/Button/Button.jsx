@@ -1,19 +1,18 @@
 import { Lism } from '../Lism';
 import { Flex } from '../Flex';
-import { Grid } from '../Grid';
 import { Icon } from '../Icon';
 import { getButtonProps } from './getProps';
 
 // variant
-export default function Button({ isGrid, leftIcon, rightIcon, children, ...props }) {
+export default function Button({ layout, icon, endIcon, iconScale, children, ...props }) {
 	const { btnProps, textProps } = getButtonProps(props);
-	const BtnComponent = isGrid ? Grid : Flex;
+	const BtnComponent = layout || Flex;
 
 	return (
 		<BtnComponent {...btnProps}>
-			{leftIcon && <Icon className='b--button__leftIcon' icon={leftIcon} />}
-			<Lism {...textProps}>{children}</Lism>
-			{rightIcon && <Icon className='b--button__leftIcon' icon={rightIcon} />}
+			{icon && <Icon className='b--button__icon' icon={icon} scale={iconScale} />}
+			{children && <Lism {...textProps}>{children}</Lism>}
+			{endIcon && <Icon className='b--button__icon' icon={endIcon} scale={iconScale} />}
 		</BtnComponent>
 	);
 }

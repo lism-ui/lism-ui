@@ -65,3 +65,18 @@ figcaption {
 // 		--keycolor: var(--#{$c});
 // 	}
 // }
+
+// Button
+// :where(.b--button) {
+// 	--icon-scale: 1.25;
+// 	--icon-offset: 0%;
+// }
+
+// .b--button__icon {
+// 	&:where(:first-child) {
+// 		translate: calc(0px - var(--icon-offset));
+// 	}
+// 	&:where(:last-child) {
+// 		translate: var(--icon-offset);
+// 	}
+// }

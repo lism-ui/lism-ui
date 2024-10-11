@@ -1,104 +1,51 @@
 :where(.b--button) {
-	--keycolor: var(--c--text);
-	--icon-scale: 1.25; // offsetとバランス合わせる
-	--icon-offset: 0%; //25%;
+	--td: none;
 
-	// default(fill)用
+	--keycolor: var(--c--text);
 	--bgc: transparent;
-	--bdc: transparent; // reverse用
+	--bdc: var(--keycolor); // reverse用
 	--c: currentColor; // filledColor?
 
-	padding: 0.375em 0.875em; // bdrs=full を考慮すると 1em くらいあった方がいいが...
+	padding: 0.375em 1em;
 	gap: 0.5em;
 	align-items: center;
 	justify-content: center;
-	min-block-size: 2.5em;
+	// min-block-size: 3em;
+	// line-height: 1.5;
 }
 
 // py は小さめにして、minHで最低限の高さを確保.
 .b--button {
-	--td: none;
-	--gtc: 1em 1fr 1em; // grid化した時用。左右のアイコン部分を固定幅にすることで、テキストを常に中央に配置
-	width: fit-content;
 	color: var(--c);
 	background-color: var(--bgc);
 	border: solid 1px var(--bdc); // アウトラインと並べたときにサイズに差がでないように
 }
-:where(.l--grid) > .b--button__text {
-	grid-column: 2;
-	justify-self: center;
+.b--button:where(.l--grid) {
+	--gtc: 1em 1fr 1em; // grid化した時用。
+	justify-items: center;
 }
-
-// .b--button:where(.-hov\:reverse):hover {
-// 	color: var(--hov-c);
-// 	background-color: var(--hov-bgc);
-// 	// border-color: var(--hov-bdc);
-// }
+.b--button__text {
+	grid-column: 2;
+}
 
 // デフォルトスタイル
 // .b--button:not([class*='b--button--'])
 .b--button--fill {
 	--c: var(--c--base);
 	--bgc: var(--keycolor);
-	--bdc: var(--bgc);
-	// --hov-bgc: transparent;
 }
 
-// b--button--style
 .b--button--outline {
 	--c: var(--keycolor);
-	// --bgc: transparent;
-	--bdc: var(--keycolor);
 	--hov-c: var(--c--base);
-	// --hov-bdc: var(--keycolor);
 }
 
-// b--button--style
 .b--button--ghost {
 	--c: var(--keycolor);
-	// --bgc: transparent;
-	// --bdc: transparent;
+	--bdc: transparent;
 	--hov-c: var(--c--base);
 }
 
-// .b--button.l--grid,
-// .b--button:where(.l--grid) {
-// }
-
-// :where(.l--grid) > .b--button__text {
-// 	justify-self: center;
-// }
-
-:where(.b--button) > .a--icon {
-	scale: var(--icon-scale);
-	// flex-shrink: 0; // → .a--icon についてる
-}
-
-.b--button__leftIcon {
-	translate: calc(0px - var(--icon-offset));
-}
-.b--button__rightIcon {
-	translate: calc(0px - var(--icon-offset));
-}
-
-// .b--button__icon で統一するならこっち
-// :where(.b--button > .a--icon) {
-// 	&:only-child {
-// 		--icon-offset: 0;
-// 	}
-// 	&:first-child {
-// 		translate: calc(0px - var(--icon-offset));
-// 	}
-// 	// &[data-position='right']
-// 	&:last-child {
-// 		translate: var(--icon-offset);
-// 	}
-// }
-
-.b--button--icon {
-	--size: 2.5em;
-	width: var(--size);
-	height: var(--size);
-	min-height: unset;
-	padding: 0.25em;
+.b--button__icon {
+	--scale: 1.125;
 }
