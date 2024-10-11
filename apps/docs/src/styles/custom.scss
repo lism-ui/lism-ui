@@ -268,8 +268,8 @@ td:first-child > code:only-child {
 	background-position: var(--grid-offset) var(--grid-offset);
 	background-size: var(--grid-size) var(--grid-size);
 }
-// .-bg\:grid[class*='-boxcolor'] {
-// 	--grid-bdc: color-mix(in srgb, var(--boxcolor), transparent 90%);
+// .-bg\:grid.is--colored {
+// 	--grid-bdc: color-mix(in srgb, var(--keycolor), transparent 88%);
 // }
 .-bg\:stripe {
 	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);

@@ -1,25 +1,17 @@
-// 初期スタイル
 :where(.b--badge) {
-	--boxcolor: var(--c--text);
+	--bdc: currentColor;
 	padding-inline: 0.5em;
-}
-
-// -boxcolor とセットで使う
-.b--badge {
-	// --cbox-mixper--txt: 50%; // ちょっと明るく？
 	display: inline-flex; // 文中でもpaddingが効くように
 	border: solid 1px var(--bdc); // 別スタイルを並べてもサイズに差が出ないようにborderを指定
 }
 
 .b--badge--fill {
-	--cbox-c: var(--c--base);
-	--cbox-bgc: var(--boxcolor);
-	--cbox-bdc: transparent;
+	background-color: var(--c--text);
+	color: var(--c--base);
+	--bdc: transparent;
 }
-.b--badge--outline {
-	--cbox-c: var(--boxcolor);
-	--cbox-bdc: var(--boxcolor);
-	--cbox-bgc: transparent;
-}
+// .b--badge--outline {
+// 	--bdc: currentColor;
+// }
 // .b--badge--subtle {
 // }

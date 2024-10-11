@@ -1,6 +1,5 @@
 :where(.c--chat) {
-	// border-radius: var(--radii--l);
-	--boxcolor: var(--gray);
+	--keycolor: var(--gray);
 }
 
 // --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
@@ -8,59 +7,43 @@
 // --avator-size: clamp(40px, 16px + 7.5cqw, 64px); // 320:40px~640:64px
 
 .c--chat {
-	// --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
 	--avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:40px~640:64px
 	--deco-size: 1.125rem; //calc(var(--avator-size) * 0.25);
-	--cbox-mixper--bg: 10%;
-	// --cbox-mixper--txt: 0%;
-
-	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
+	--colored-per--bg: 10%;
 
 	// auto のとこに --avator-size を使うと、アバターなしの時にスペースできてしまう。
-	gap: 0 var(--deco-size); //calc(var(--deco-size) + 1px);
+	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
+
+	gap: 0 var(--deco-size);
 }
 [data-chat-direction='end'] {
 	grid: 'header avatar' minmax(1.5rem, auto) 'body avatar' / 1fr auto;
 }
 
-// .c--chat--start {
-// 	&.c--chat--speak .c--chat__content {
-// 		border-start-start-radius: 0;
-// 	}
-// 	> .c--chat__body > .a--decorator {
-// 		inset-inline-end: 100%;
-// 	}
-// }
-
-// .c--chat--end {
-// }
-
 .c--chat__avatar {
+	--size: var(--avator-size); //  b--avatar に渡す
 	grid-area: avatar;
-	--size: var(--avator-size); //  avatar に渡す
 }
 
 .c--chat__name {
 	grid-area: header;
 }
-// .c--chat__footer {}
 
 .c--chat__body {
 	grid-area: body;
 }
 .c--chat__content {
 	max-width: 640px;
-}
-// .c--chat__footer {}
 
-.c--chat__content {
-	.c--chat--speak[data-chat-direction='start'] & {
+	// .c--chat--speak[data-chat-direction='start'] &
+	.c--chat--speak.-ji\:s & {
 		border-start-start-radius: 0;
 	}
-	.c--chat--speak[data-chat-direction='end'] & {
+	.c--chat--speak.-ji\:e & {
 		border-start-end-radius: 0;
 	}
 }
+// .c--chat__footer {}
 
 // decorator
 .c--chat__deco {

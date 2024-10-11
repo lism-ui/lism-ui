@@ -57,6 +57,7 @@ class LismPropsData {
 			isSide,
 			isFrame,
 			isLayer,
+			isColored,
 			isLinkBox,
 			// hasBd,
 			_context,
@@ -81,6 +82,9 @@ class LismPropsData {
 		}
 		if (isSide) {
 			lismState.push('is--side');
+		}
+		if (isColored || props.boxcolor) {
+			lismState.push('is--colored');
 		}
 		// if (hasBd) {
 		// 	lismState.push('has--bd');

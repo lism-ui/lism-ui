@@ -1,8 +1,5 @@
 @use '../query' as query;
-@forward './pass-get';
-@forward './colorbox'; // Note: 他のカラー系（auto_output) より前に読み込む必要あり
-// @forward './color'; // Note: colorboxより後ろに読み込む必要あり
-
+@forward './pass-get'; // 先に読み込む
 @forward '../auto_output';
 
 @forward './border';
@@ -31,6 +28,26 @@
 }
 .-bgc\:i {
 	background-color: inherit !important;
+}
+
+// c='(.*):(.+)%' で使用箇所検索
+.-c\:mix {
+	--c1-per: 50%;
+	--c1: currentColor;
+	--c2: transparent;
+	--c: color-mix(in srgb, var(--c1) var(--c1-per), var(--c2));
+}
+.-bgc\:mix {
+	--bgc1-per: 50%;
+	--bgc1: currentColor;
+	--bgc2: transparent;
+	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc1-per), var(--bgc2));
+}
+.-bdc\:mix {
+	--bdc1-per: 50%;
+	--bdc1: currentColor;
+	--bdc2: transparent;
+	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc1-per), var(--bdc2));
 }
 
 // とりあえずいらないか...?

@@ -6,7 +6,7 @@ export default function getBadgeProps({ lismClass, variant, ...props }) {
 		lismClass: atts(lismClass, 'b--badge', variant && `b--badge--${variant}`),
 		tag: 'span',
 		skipState: true,
-		boxcolor: '-',
+		isColored: variant === 'subtle',
 	};
 	// if (icon) {
 	// 	defaultProps.d = 'inline-flex';

@@ -101,7 +101,7 @@ export default {
 	c: { presets: 1, utils: 1, converter: 'color' },
 	bgc: { presets: 1, utils: 1, converter: 'color' },
 	keycolor: { style: '--keycolor', converter: 'color' },
-	boxcolor: { presets: 'palette', converter: 'color' },
+	boxcolor: { _presets: 'palette', style: '--keycolor', converter: 'color' },
 	bg: { style: 'background', presets: 1, utils: 1 },
 	backgrounds: { map: 1 },
 	// mask: { map: 1 },

@@ -377,7 +377,9 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 
 
 <Spacer h='1rem' />
-<Callout icon={Desktop} boxcolor='purple'>
+
+### DEMO
+<Callout icon={Desktop} keycolor='purple'>
 `is--container`関連の挙動を確認できるデモページを用意しています。  
 ぜひ広い画面でご確認ください。
 </Callout>
@@ -417,11 +419,44 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 活用例は [LinkBox](/ja/components/linkbox) を参照してください。
 
 
+
+## `is--colored`
+
+`--keycolor`変数をベースに、`--c`, `--bgc`, `--bdc` を `color-mix()` で生成します。
+
+`color`, `background-color` にそれぞれ生成された 変数がセットされますが、`--bdc`は変数定義のみになるため、ボーダーを表示する時は[`-bd:`クラス](/ja/css/border)との併用が必要です。
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Lism isColored keycolor='blue' p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='red' bd p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><DammyText length='codes' /></Lism>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+		```html
+		<div class='is--colored -p:30' style='--keycolor:var(--blue)'>...</div>
+		<div class='is--colored -bd: -p:30' style='--keycolor:var(--red)'>...</div>
+		<div class='is--colored -bd:is -bdc:keycolor -p:30' style='--keycolor:#688f04;--bdw:4px'>...</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label='JSX'>
+		```jsx
+		<Lism isColored keycolor='blue' p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='red' bd p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><DammyText length='codes' /></Lism>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
 ## `has--divider`
 
 子要素の間にボーダーを表示します。デフォルトでは`border-block-end`で線が描画されます。
 
-ボーダーの色や太さは、[`-bd:`クラス](/ja/styles/border)と同じく`--bdw`や`--bdc`変数で変更できます。
+ボーダーの色や太さは、[`-bd:`クラス](/ja/css/border)と同じく`--bdw`や`--bdc`変数で変更できます。
 
 <Preview>
 	<PreviewTitle>`has--divider`</PreviewTitle>

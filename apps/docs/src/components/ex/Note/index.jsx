@@ -1,28 +1,29 @@
 import { Lism, Flex, Stack, Icon, Center } from '@lism-ui/core';
 import notePresets from '@lism-ui/core/components/Callout/presets.js';
 
-export function Note({ type = 'note', boxcolor, icon, title, children, isFlow = 's', ...props }) {
+export function Note({ type = 'note', keycolor, icon, title, children, isFlow = 's', ...props }) {
 	const presets = type ? notePresets[type] : null;
 	if (presets) {
-		boxcolor = boxcolor || presets?.color || null;
+		keycolor = keycolor || presets?.color || null;
 		icon = icon || presets?.icon || null;
 	}
 
 	return (
 		<Stack
 			lismClass='c--note'
-			boxcolor={boxcolor}
+			isColored
+			keycolor={keycolor}
 			p='30'
 			g='20'
 			bd='is'
-			bdc='boxcolor'
+			bdc='keycolor'
 			bdw='4px'
 			bdrs='2px'
 			{...props}
 		>
 			{title && (
 				<Flex className='c--note__head' fw='bold' ai='c' g='10' skipState>
-					<Center className='c--note__icon' fz='xl' c='boxcolor' skipState>
+					<Center className='c--note__icon' fz='xl' c='keycolor' skipState>
 						<Icon icon={icon} />
 					</Center>
 					<span className='c--note__title'>{title}</span>

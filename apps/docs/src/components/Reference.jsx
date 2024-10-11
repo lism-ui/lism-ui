@@ -10,7 +10,7 @@ import {
 
 export default function Reference({ children }) {
 	return (
-		<Callout icon={BookOpenText} boxcolor='purple'>
+		<Callout icon={BookOpenText} keycolor='purple'>
 			{children}
 		</Callout>
 	);

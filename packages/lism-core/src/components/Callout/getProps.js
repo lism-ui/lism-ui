@@ -7,13 +7,13 @@ export default function getProps({
 	variant,
 	type = 'alert',
 	icon,
-	boxcolor,
+	keycolor,
 	isFlow,
 	// iconProps = {},
 	// bodyProps = {},
 	...props
 }) {
-	const iconProps = { lismClass: 'c--callout__icon', c: 'boxcolor' };
+	const iconProps = { lismClass: 'c--callout__icon', c: 'keycolor' };
 	const bodyProps = { lismClass: 'c--callout__body' };
 
 	// isFlowはbody側へ渡す
@@ -22,12 +22,13 @@ export default function getProps({
 	// preset 指定がある場合の処理
 	const presets = type ? CalloutPresets[type] : null;
 	if (presets) {
-		boxcolor = boxcolor || presets.color || null;
+		keycolor = keycolor || presets.color || null;
 		icon = icon || presets.icon || null;
 	}
 
 	props.lismClass = atts(lismClass, 'c--callout', variant && `c--callout--${variant}`);
-	props.boxcolor = boxcolor || 'gray';
+	props.keycolor = keycolor;
+	props.isColored = true;
 
 	return { calloutProps: props, icon, iconProps, bodyProps };
 }

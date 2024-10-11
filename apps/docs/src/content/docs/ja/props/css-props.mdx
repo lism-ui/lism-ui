@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Box, Grid } from "@lism-ui/astro";
+import { Lism, Box, Grid } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -32,10 +32,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`c`|`color`|`COLOR`|`text`,`text-2`,`base`,`boxcolor`|-|
-|`bgc`|`background-color`|`COLOR`|`base`,`base-2`,`text`,`i`,`boxcolor`|-|
-|`bdc`|`border-color`|`COLOR`|`divider`,`i`,`boxcolor`|-|
-|`boxcolor`|`--boxcolor`|`COLOR`|`COLOR.PALETTE`|-|
+|`c`|`color`|`COLOR`|`text`,`text-2`,`base`,`keycolor`,`i`,`mix`|-|
+|`bgc`|`background-color`|`COLOR`|`base`,`base-2`,`text`,`keycolor`,`i`,`mix`|-|
+|`bdc`|`border-color`|`COLOR`|`divider`,`keycolor`,`i`,`mix`|-|
+|`keycolor`|`--keycolor`|`COLOR`|-|-|
 
 
 {/* ※ `bdc`は[`bd`との併用が必要](/docs/proips/border)です。 */}
@@ -43,6 +43,39 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 <Reference>
 [COLOR Tokens](/ja/css/tokens/)
 </Reference>
+
+### コンポーネントでの `mix` クラスの呼び出し方
+
+`.-c:mix` や `.-bgc:mix` クラスは、3つの変数を受け取とるようになっています。
+
+`c='mix'`のようにしてCSS変数をstyleで定義してもよいですが、`'color1:(color2:)NUM%'` の書式で指定することで、自動で変数に分割されるようになっています。
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Lism bgc='blue:10%' c='blue:currentColor:40%' p='30'>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="JSX">
+		```jsx
+		<Lism bgc='blue:10%' c='blue:currentColor:40%' p='30'>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</Lism>
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label="HTML">
+		```html
+		<div
+			className='-bgc:mix -c:mix -p:30'
+			style='--bgc1:var(--blue);--bgc1-per:10%;--c1:var(--blue);--c2:currentColor;--c1-per:40%'
+		>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
 
 
 ## Typography
@@ -167,7 +200,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
 |`bd`|`border`|-|`n`,`l`,`r`,`t`,`b`,`is`,`ie`,`bs`,`be`, `x`,`y`||
-|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`boxcolor`|-|
+|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`keycolor`|-|
 |`bdw`|`border-width`|-|-|-|
 |`bds`|`border-style`|-|-|-|
 {/* |`bdl`|`border-left`|-|-|-|
@@ -193,7 +226,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 
 
 <Reference>
-borderに関する仕様は少し特殊になっています。詳しくは[borderページ](/ja/styles/border/)をご覧ください。
+borderに関する仕様は少し特殊になっています。詳しくは[borderページ](/ja/css/border/)をご覧ください。
 </Reference>
 
 

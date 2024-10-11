@@ -2,9 +2,10 @@
 
 // 初期値
 :where(.c--callout) {
+	--keycolor: currentColor;
 	padding: 0.75em; //var(--p--box--s);
 	gap: 0.5em 0.75em;
-	border: 1px solid var(--bdc); // .-boxcolor 側で定義している --bdc を使う
+	border: 1px solid var(--bdc); // .is--colored 側で定義している --bdc を使う
 	// align-items: center;
 }
 // .c--callout {
@@ -14,17 +15,3 @@
 :where(.c--callout__icon) {
 	font-size: 1.25em;
 }
-
-// .c--callout {
-// --boxcolor: var(--gray);
-// --bdc: var(--boxcolor);
-// align-items: center;
-// border: solid 1px var(--bdc); // .-boxcolor 側で定義している --bdc そのまま使う
-// background-color: var(--bgc);
-// }
-
-// .c--callout__icon {
-// 	padding-block: 0.125em;
-// 	color: var(--boxcolor, currentColor);
-// 	font-size: var(--fz--xl); //1.4rem;
-// }

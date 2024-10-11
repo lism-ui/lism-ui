@@ -8,16 +8,33 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 import { Chat } from '~/components/ex/Chat';
 import { Lism } from '@lism-ui/astro';
 
+
+<PreviewTitle>コンポーネントの準備</PreviewTitle>
+<Preview>
+	<PreviewCode slot='tab' label='React'>
+	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2F1763302b9ba2484f42c616d940de4063c27e98db%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FChat%2Findex.jsx&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+	</PreviewCode>
+	{/* <PreviewCode slot='tab' label='Astro'>
+	```jsx
+	```
+	</PreviewCode> */}
+	<PreviewCode slot='tab' label='SCSS'>
+	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FChat%2Fstyle.scss&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+	</PreviewCode>
+</Preview>
+
+
+
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
 | `avatar` | チャットアバター画像のsrcを指定します。 |
 | `name` | チャットに表示する名前を指定します。 |
-| `variant` | チャットタイプを指定できます。`speak` または `think` が有効です|
+| `variant` | チャットタイプを指定できます。`speak` または `think` を例では用意しています。|
 | `direction` | チャットの表示位置を指定します。`start`または`end`を指定します。 |
-| `boxcolor` | チャットボックスのキーカラーを指定します。|
-| `footer` | チャット本文の下に表示するフッターテキストを指定できます。 |
+| `keycolor` | チャットボックスのキーカラーを指定します。|
+{/* | `footer` | チャット本文の下に表示するフッターテキストを指定できます。 | */}
 
 
 ## Import
@@ -42,14 +59,14 @@ import { Chat } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
 	<PreviewArea resize p={20} _dir='rtl'>
-		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green' footer='Footer text...'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
 			<DammyText length='codes' />
 			<DammyText length='s' />
 		</Chat>
-		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycolor='red' footer='Footer text...'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat avatar='/img/avatar03.jpg' boxcolor='blue'>
+		<Chat avatar='/img/avatar03.jpg' keycolor='blue'>
 			<DammyText length='xs' />
 			<ul>
 				<li>Lorem ipsum...</li>
@@ -60,11 +77,12 @@ import { Chat } from '@lism-ui/astro';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat name='Taro' avatar='/img/avatar01.jpg' boxcolor='green' footer='Footer text...'>
-			<p>Lorem ipsum...</p>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
+			<DammyText length='codes' />
+			<DammyText length='s' />
 		</Chat>
-		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' boxcolor='red' footer='Footer text...'>
-			<p>Lorem ipsum...</p>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycolor='red' footer='Footer text...'>
+			<DammyText length='codes' />
 		</Chat>
 		```
 	</PreviewCode>
@@ -74,22 +92,22 @@ import { Chat } from '@lism-ui/astro';
 <Preview>
 	<PreviewTitle>`variant='think'`</PreviewTitle>
 	<PreviewArea resize p={20} _dir='rtl'>
-		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat variant='think' avatar='/img/avatar03.jpg' boxcolor='blue'>
+		<Chat variant='think' avatar='/img/avatar03.jpg' keycolor='blue'>
 			<DammyText length='xs' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<p>Lorem ipsum...</p>
 		</Chat>
-		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
 			<p>Lorem ipsum...</p>
 		</Chat>
 		```
@@ -99,22 +117,22 @@ import { Chat } from '@lism-ui/astro';
 {/* <Preview>
 	<PreviewTitle>`variant='box'`</PreviewTitle>
 	<PreviewArea resize p={20} _dir='rtl'>
-		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
 			<DammyText length='codes' />
 		</Chat>
-		<Chat variant='box' avatar='/img/avatar03.jpg' boxcolor='blue'>
+		<Chat variant='box' avatar='/img/avatar03.jpg' keycolor='blue'>
 			<DammyText length='xs' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' boxcolor='blue'>
+		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<p>Lorem ipsum...</p>
 		</Chat>
-		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' boxcolor='purple'>
+		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
 			<p>Lorem ipsum...</p>
 		</Chat>
 		```
@@ -129,7 +147,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 <Preview>
 	<PreviewTitle>`slot`の使用例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
 			<b slot='name'>Taro</b>
 			<DammyText length='codes' />
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
@@ -137,7 +155,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "slot='name'" "slot='footer'"
-		<Chat name='Name A' avatar='/img/avatar01.jpg' boxcolor='green'>
+		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
 			<b slot='name'>Taro</b>
 			<p>Lorem ipsum...</p>
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>

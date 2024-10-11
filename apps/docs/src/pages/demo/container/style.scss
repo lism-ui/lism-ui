@@ -23,7 +23,7 @@ body {
 
 .-bg\:stripe {
 	// --_bdc: rgba(200, 200, 200, 0.1);
-	--_bdc: color-mix(in srgb, var(--bgc, #555), transparent 80%);
+	--_bdc: color-mix(in srgb, var(--bgc, #555), transparent 50%);
 	--_bdw: 2px;
 	--_deg: -50deg;
 	--_interval: 6px;

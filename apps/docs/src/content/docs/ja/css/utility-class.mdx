@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 5
 ---
-import { Box, Flex, Note } from "@lism-ui/astro";
+import { Lism, Box, Flex, Note } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -12,34 +12,32 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 export const PropTable = ({data={}, ...props}) => {
 	const dataKyes = Object.keys(data);
 	return (
-		<>
-			<table>
-				<thead>
-					<tr>
-						<th>Class</th>
-						<th>Value</th>
-					</tr>
-				</thead>
-				<tbody>
-				{dataKyes.map((_propName) => {
-					const utils = data[_propName];
-					const utilsKeys = Object.keys(utils);
-					return (
-						<>
-							{utilsKeys.map((utilKey) => {
-								return (
-									<tr>
-										<td><code>{`.-${_propName}:${utilKey}`}</code></td>
-										<td><code>{`${utils[utilKey]}`}</code></td>
-									</tr>
-								);
-							})}
-						</>
-					)
-				})}
-				</tbody>
-			</table>
-		</>
+		<Lism tag='table' {...props}>
+			{/* <thead className='-ta:l'>
+				<tr>
+					<th>Class</th>
+					<th>Value</th>
+				</tr>
+			</thead> */}
+			<tbody>
+			{dataKyes.map((_propName) => {
+				const utils = data[_propName];
+				const utilsKeys = Object.keys(utils);
+				return (
+					<>
+						{utilsKeys.map((utilKey) => {
+							return (
+								<tr>
+									<td><code>{`.-${_propName}:${utilKey}`}</code></td>
+									<td><code>{`${utils[utilKey]}`}</code></td>
+								</tr>
+							);
+						})}
+					</>
+				)
+			})}
+			</tbody>
+		</Lism>
 	);
 
 // 				{showDemo && (
@@ -65,22 +63,66 @@ export const PropTable = ({data={}, ...props}) => {
 
 ## Colors
 
-### color
-
+<Lism mbs='50' fz='l' fw='b' px='20' bd='is'>`color`</Lism>
 <PropTable
-	data={{c: {'base':'--c--base', 'text': '--c--text', 'text-2': '--c--text-2', 'i':'inherit'}}}
+	data={{c: {'base':'--c--base', 'text': '--c--text', 'text-2': '--c--text-2', 'keycolor':'--keycolor', 'i':'inherit', 'mix': 'color-mix(...)'}}}
 />
 
-### background-color
 
+<Lism mbs='50' fz='l' fw='b' px='20' bd='is'>`background-color`</Lism>
 <PropTable
-	data={{bgc:{'text':'--c--text', 'base': '--c--base', 'base-2': '--c--base-2', 'i':'inherit'}}}
+	data={{bgc:{'text':'--c--text', 'base': '--c--base', 'base-2': '--c--base-2', 'keycolor':'--keycolor', 'i':'inherit', 'mix': 'color-mix(...)'}}}
 />
 
-### --bdc
-
+<Lism mbs='50' fz='l' fw='b' px='20' bd='is'>`--bdc`</Lism>
 <PropTable
-	data={{bgc:{'divider':'--c--divider', 'i': 'inherit'}}}
+	data={{bgc:{'divider':'--c--divider', 'keycolor':'--keycolor', 'i': 'inherit', 'mix': 'color-mix(...)'}}}
+/>
+
+### `mix` クラスについて
+
+例えば、`.-bgc:mix`クラスは以下のように定義されています。
+
+```css
+.-bgc\:mix {
+	--bgc1-per: 50%;
+	--bgc1: currentColor;
+	--bgc2: transparent;
+	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc1-per), var(--bgc2));
+}
+```
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<div className='-bgc:mix -p:30' style={{'--bgc1': 'var(--blue)', '--bgc1-per': '10%'}}>
+			<p className='-c:mix' style={{'--c1': 'var(--blue)', '--c1-per': '40%', '--c2': 'currentColor'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		</div>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+		```html
+		<div className='-bgc:mix -p:30' style='--bgc1:var(--blue);--bgc1-per:10%'>
+			<p className='-c:mix' style='--c1:var(--blue);--c1-per:40%;--c2:currentColor'>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+## Sizing
+
+<Lism mbs='50' fz='l' fw='b' px='20' bd='is'>`width, height`</Lism>
+<PropTable
+	data={{
+		'w': {'fit':'width:fit-content', '100': 'width:100%'},
+		'h': {'fit':'fit-content', 'screen':'...', '100': '100%'},
+		'maxW': {'100': '100%'}, // s,m,l
+		'maxH': {'100': '100%'},
+		'minW': {'100': '100%'},
+		'minH': {'100': '100%'},
+	}}
 />
 
 
@@ -210,37 +252,6 @@ export const PropTable = ({data={}, ...props}) => {
 	}}
 />
 
-
-## Sizing
-
-### width, height
-
-<PropTable
-	data={{
-		'w': {'fit':'fit-content', '100': '100%'},
-		'h': {'fit':'fit-content', 'screen':'...', '100': '100%'},
-	}}
-/>
-
-
-### max-width, max-height
-
-<PropTable
-	data={{
-		'maxW': {'100': '100%'}, // s,m,l
-		'maxH': {'100': '100%'},
-	}}
-/>
-
-
-### width, height
-
-<PropTable
-	data={{
-		'minW': {'100': '100%'},
-		'minH': {'100': '100%'},
-	}}
-/>
 
 
 ## Others

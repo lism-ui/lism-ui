@@ -53,13 +53,15 @@ export function TipCode({
 	return (
 		<Badge
 			tag='code'
-			fz='s'
-			lh='1'
 			d='ib'
+			fz='s'
+			lh='xs'
+			px='10'
 			m='5'
+			bdrs='xs'
 			whs='nw'
-			variant='subtle'
-			boxcolor={color}
+			isColored
+			keycolor={color}
 			{...props}
 		>
 			{text || children}

@@ -1,13 +1,12 @@
-// import React from 'react';
-
-import { Stack, Flex, Lism, FlexItem, Decorator } from '@lism-ui/core';
+import { Flex, Lism, Decorator } from '@lism-ui/core';
 
 export default function BalloonBox({
 	variant = 'left',
 	bdw = '1px',
 	bdc,
 	bgc,
-	boxcolor,
+
+	keycolor,
 	bdrs = 'l',
 	children,
 	...props
@@ -16,8 +15,9 @@ export default function BalloonBox({
 	if (variant) lismClass += ` b--balloonBox--${variant}`;
 
 	const colorProps = { bdc, bgc };
-	if (boxcolor) {
-		colorProps.boxcolor = boxcolor;
+	if (keycolor) {
+		colorProps.isColored = true;
+		colorProps.keycolor = keycolor;
 	} else {
 		colorProps.bgc = bgc || 'base';
 		colorProps.bdc = bdc || 'currentColor';

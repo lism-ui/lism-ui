@@ -1,26 +1,14 @@
 import React from 'react';
-import { Lism, GridItem, Flex, Stack, WithSide, Grid, Avatar, Decorator } from '@lism-ui/core';
-
-// function getContentProps(direction, variant) {
-// 	const returnProps = {};
-// 	if ('speak' === variant && direction === 'start') {
-// 		returnProps.radii = { ss: 0 };
-// 	} else if ('speak' === variant && direction === 'end') {
-// 		returnProps.radii = { se: 0 };
-// 	}
-
-// 	return returnProps;
-// }
+import { Lism, GridItem, Grid, Avatar, Decorator } from '@lism-ui/core';
 
 export function Chat({
 	variant = 'speak',
 	direction = 'start',
 	name,
 	avatar,
-	footer,
 	isFlow = 's',
 	children,
-	boxcolor = '-',
+	keycolor,
 	...props
 }) {
 	let lismClass = `c--chat`;
@@ -30,11 +18,10 @@ export function Chat({
 	return (
 		<Layout
 			lismClass={lismClass}
-			boxcolor={boxcolor}
+			keycolor={keycolor}
 			bg='none'
 			data-chat-direction={direction}
 			ji={direction}
-			// {...getProps(direction, variant)}
 			{...props}
 		>
 			{avatar && (
@@ -69,17 +56,16 @@ export function Chat({
 					<Decorator
 						lismClass='c--chat__deco'
 						lismState={['has--mask is--skipFlow']}
-						bgc
+						isColored
 						pos='a'
-						// t='0'
 						insets={direction === 'start' ? { ie: '100%' } : { is: '100%' }}
 						scale={direction === 'start' ? '' : '-X'}
-						// {...getDecoProps(direction, variant)}
 					/>
 				)}
 				<Lism
-					lismClass='c--chat__content is--trimHL'
-					bgc
+					lismClass='c--chat__content'
+					lismState={['is--trimHL']}
+					isColored
 					bdrs='l'
 					p='30'
 					isFlow={isFlow}
@@ -87,21 +73,6 @@ export function Chat({
 				>
 					{children}
 				</Lism>
-
-				{/* {footer && (
-					<Lism
-						lismClass='c--chat__footer'
-						fz='2xs'
-						lh='xs'
-						px='5'
-						c='text-2'
-						fs='i'
-						aslf={direction === 'end' ? 'start' : 'end'}
-						// gridItem={{ gr: '3' }}
-					>
-						{footer}
-					</Lism>
-				)} */}
 			</GridItem>
 		</Layout>
 	);
