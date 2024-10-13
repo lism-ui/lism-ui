@@ -36,27 +36,6 @@ export default {
 	fxw: { wrap: 'w', nowrap: 'nw' }, // nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
 	fxd: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' },
 
-	// width, height用のユーティリティ値
-	size: {
-		'100%': '100',
-		// '75%': '75',
-		// '50%': '50',
-		// '25%': '25',
-		'fit-content': 'fit',
-		// unset: 'un',
-	},
-
-	// maxW, maxH
-	maxSize: {
-		//unset: 'un',
-		'100%': '100',
-	},
-
-	// minW, minH
-	minSize: {
-		//unset: 'un',
-		'100%': '100',
-	},
 	bd: {
 		// current: 'cc',
 		// currentColor: 'cc',
@@ -81,7 +60,8 @@ export default {
 		sticky: 'sticky',
 	},
 	inset: { '0%': '0' }, // inset は 0% だけ
-	insets: { '0%': '0', '50%': '50', '100%': '100' }, // top,left,right,bottom 用
+	insets: { '0%': '0', '100%': '100%' }, // top,left,right,bottom 用
+	trbl: { '0%': '0', '50%': '50%', '100%': '100%' }, // top,left,right,bottom 用
 	ov: { scroll: 's', hidden: 'h', auto: 'a', clip: 'c' },
 	visibility: { hidden: 'h', visible: 'v' },
 	d: {

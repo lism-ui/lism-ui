@@ -66,11 +66,7 @@ memo:
 
 */
 
-const marginOption = { utils: 'margin', converter: 'space' };
-const paddingOption = { presets: ['0'], converter: 'space' };
-// const placeSelfProps = {};
-// const bdrsSidesProps = { presets: ['0'], converter: 'radius' };
-const insetsProps = { utils: 'insets' };
+// import presets from './presets';
 
 // pi,pc
 const placeProps = {
@@ -90,14 +86,14 @@ const itemProps = {
 
 export default {
 	// size
-	w: { utils: 'size', converter: 'size' },
-	h: { utils: 'size', presets: ['full'], converter: 'size' },
+	w: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
+	h: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
 	// isz: { style: 'inline-size', utils: 'size', converter: 'size' },
 	// bsz: { style: 'block-size', utils: 'size', converter: 'size' },
-	maxW: { style: 'maxWidth', utils: 'maxSize', converter: 'size' },
-	maxH: { style: 'maxHeight', utils: 'maxSize', converter: 'size' },
-	minW: { style: 'minWidth', utils: 'minSize', converter: 'size' },
-	minH: { style: 'minHeight', utils: 'minSize', converter: 'size' },
+	maxW: { style: 'maxWidth', presets: ['100%'], converter: 'size' },
+	maxH: { style: 'maxHeight', presets: ['100%'], converter: 'size' },
+	minW: { style: 'minWidth', presets: ['100%'], converter: 'size' },
+	minH: { style: 'minHeight', presets: ['100%'], converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
 	c: { presets: 1, utils: 1, converter: 'color' },
@@ -151,10 +147,10 @@ export default {
 
 	pos: { style: 'position', utils: 1 },
 	z: { style: 'zIndex', presets: ['-1', '0', '1', '2'] },
-	t: { ...insetsProps, style: 'top' },
-	l: { ...insetsProps, style: 'left' },
-	r: { ...insetsProps, style: 'right' },
-	b: { ...insetsProps, style: 'bottom' },
+	t: { utils: 'trbl', style: 'top', converter: 'space' },
+	l: { utils: 'trbl', style: 'left', converter: 'space' },
+	r: { utils: 'trbl', style: 'right', converter: 'space' },
+	b: { utils: 'trbl', style: 'bottom', converter: 'space' },
 	inset: { style: 1, utils: 1, converter: 'space' },
 
 	// isolation
@@ -298,24 +294,30 @@ export const CONTEXT_PROPS = {
 	// 	be: { style: 'borderBlockEnd', utilKey: 'bdbe' },
 	// },
 	insets: {
-		// t: { ...insetsProps, style: 'top' },
-		// l: { ...insetsProps, style: 'left' },
-		// r: { ...insetsProps, style: 'right' },
-		// b: { ...insetsProps, style: 'bottom' },
 		is: {
 			style: 'insetInlineStart',
 			utilKey: 'iis',
-			utils: { '100%': '100', '0%': '0' },
+			utils: 'insets',
 			converter: 'space',
 		},
 		ie: {
 			style: 'insetInlineEnd',
 			utilKey: 'iie',
-			utils: { '100%': '100', '0%': '0' },
+			utils: 'insets',
 			converter: 'space',
 		},
-		bs: { style: 'insetBlockStart', converter: 'space' },
-		be: { style: 'insetBlockEnd', converter: 'space' },
+		bs: {
+			style: 'insetBlockStart',
+			utilKey: 'ibs',
+			utils: 'insets',
+			converter: 'space',
+		},
+		be: {
+			style: 'insetBlockEnd',
+			utilKey: 'ibe',
+			utils: 'insets',
+			converter: 'space',
+		},
 	},
 
 	backgrounds: {

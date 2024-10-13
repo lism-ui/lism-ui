@@ -39,7 +39,7 @@ a.b--banner.is--linkBox.is--frame
 
 <Preview>
 	<PreviewTitle>16:9のバナーリンク</PreviewTitle>
-	<PreviewArea p={30}>
+	<PreviewArea p='30'>
 		<Banner href='#banner-link' aspect='bronze'>
 			<img src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy' />
 		</Banner>
@@ -63,33 +63,33 @@ a.b--banner.is--linkBox.is--frame
 
 <Preview>
 	<PreviewTitle>`Layer`で画像に被せてコンテンツを表示</PreviewTitle>
-	<PreviewArea p={30}>
-		<Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
+	<PreviewArea p='30'>
+		<Banner href='#banner-link' aspect='bronze' bdrs='l'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black' op='50' />
-			<Stack pos='a' inset='0' jc='c' g='10' px='40' c='white' lh='s'>
+			<Stack pos='a' inset='0' jc='c' g='5' px='40' c='white' lh='s'>
 				<Text fz='xl' fw='bold'>Banner</Text>
 				<DammyText fz='s' lang='ja' length='s'/>
 			</Stack>
 		</Banner>
 	</PreviewArea>
-<PreviewCode>
-```jsx
-<Banner href='#banner-link' aspect='5/1' minH='8em' w='100' bdrs='l'>
-	<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
-	<Layer bgc='black' op='50' />
-	<Stack pos='a' inset='0' jc='c' g='10' px='40' c='white' lh='s'>
-		<Text fz='xl' fw='bold'>Banner</Text>
-		<DammyText fz='s' lang='ja' length='s'/>
-	</Stack>
-</Banner>
-```
-</PreviewCode>
+	<PreviewCode>
+		```jsx
+		<Banner href='#banner-link' aspect='bronze' bdrs='l'>
+			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer bgc='black' op='50' />
+			<Stack pos='a' inset='0' jc='c' g='5' px='40' c='white' lh='s'>
+				<Text fz='xl' fw='bold'>Banner</Text>
+				<DammyText fz='s' lang='ja' length='s'/>
+			</Stack>
+		</Banner>
+		```
+	</PreviewCode>
 </Preview>
 
 <Preview>
 	<PreviewTitle>`hover`を活用する例</PreviewTitle>
-	<PreviewArea p={30}>
+	<PreviewArea p='30'>
 		<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
 			<Media hov='get:zoom' src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black:20%' blur='4px' hov='get:show'/>

@@ -7,7 +7,7 @@ sidebar:
 
 import { MemoBadge, DammyText, Reference } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { ColorDemos, FzDemos, LhDemos, LtsDemos, SpacingDemos, ShadowDemos,BoxShadowDemos, RadiusDemos } from "~/demos/tokens.jsx";
+import { ColorDemos, FzDemos, LhDemos, LtsDemos, SpacingDemos, BoxShadowDemos, RadiusDemos } from "~/demos/tokens.jsx";
 import { Lism, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabItem, Spacer } from '@lism-ui/astro';
 
 
@@ -584,9 +584,9 @@ paddingやmarginの全方向・全トークンに対してクラスを用意す�
 
 
 <Preview>
-	<PreviewTitle>-bdrsクラス</PreviewTitle>
+	<PreviewTitle>bdrsクラス</PreviewTitle>
 	<PreviewArea p={50} nogrid>
-		<Columns cols={[3, 6]} g={40}>
+		<Columns cols={[3, 6]} g='40'>
 			<RadiusDemos />
 		</Columns>
 	</PreviewArea>

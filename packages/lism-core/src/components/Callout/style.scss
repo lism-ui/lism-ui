@@ -3,7 +3,7 @@
 // 初期値
 :where(.c--callout) {
 	--keycolor: currentColor;
-	padding: 0.75em; //var(--p--box--s);
+	padding: 0.75em;
 	gap: 0.5em 0.75em;
 	border: 1px solid var(--bdc); // .is--colored 側で定義している --bdc を使う
 	// align-items: center;

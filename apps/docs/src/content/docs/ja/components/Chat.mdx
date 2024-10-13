@@ -58,7 +58,7 @@ import { Chat } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
-	<PreviewArea resize p={20} _dir='rtl'>
+	<PreviewArea resize p='20' _dir='rtl'>
 		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
 			<DammyText length='codes' />
 			<DammyText length='s' />
@@ -91,7 +91,7 @@ import { Chat } from '@lism-ui/astro';
 
 <Preview>
 	<PreviewTitle>`variant='think'`</PreviewTitle>
-	<PreviewArea resize p={20} _dir='rtl'>
+	<PreviewArea resize p='20' _dir='rtl'>
 		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<DammyText length='codes' />
 		</Chat>
@@ -116,7 +116,7 @@ import { Chat } from '@lism-ui/astro';
 
 {/* <Preview>
 	<PreviewTitle>`variant='box'`</PreviewTitle>
-	<PreviewArea resize p={20} _dir='rtl'>
+	<PreviewArea resize p='20' _dir='rtl'>
 		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<DammyText length='codes' />
 		</Chat>
@@ -146,7 +146,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 
 <Preview>
 	<PreviewTitle>`slot`の使用例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='20'>
 		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
 			<b slot='name'>Taro</b>
 			<DammyText length='codes' />

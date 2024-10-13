@@ -2,7 +2,7 @@
 .c--navMenu {
 	// トップ要素でのみ定義
 	&:where(:not(.c--navMenu .c--navMenu)) {
-		--pass-p: var(--p--box);
+		--pass-p: var(--s--20);
 	}
 
 	// &:where(:not([data-nest-level])) {

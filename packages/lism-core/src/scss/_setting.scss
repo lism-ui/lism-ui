@@ -71,17 +71,10 @@ $utilities: (
 		// '80': 'var(--s--80)',
 		// '90': 'var(--s--90)',
 	),
+	'p': (),
 	'm': (
 		// '0': '0',
 		'a': 'auto',
-	),
-	'p': (
-		'box': 'var(--p--box)',
-		'box\\:s': 'var(--p--box--s)',
-		'box\\:l': 'var(--p--box--l)',
-	),
-	'p-side': (
-		'0': '0',
 	),
 	'ov': (
 		'h': 'hidden',
@@ -91,15 +84,19 @@ $utilities: (
 	),
 	'size': (
 		'fit': 'fit-content',
-		'100': '100%',
-		// '75': '75%',
-		// '50': '50%',
+		'100\\%': '100%',
+		// '50\\%': '50%',
 	),
 	'max': (
-		'100': '100%',
+		'100\\%': '100%',
 	),
 	'min': (
-		'100': '100%',
+		'100\\%': '100%',
+	),
+	'trbl': (
+		'0': '0',
+		'50\\%': '50%',
+		'100\\%': '100%',
 	),
 
 	'gtc': (
@@ -468,25 +465,21 @@ $props: map.deep-merge(
 			prop: 'padding-top',
 			base_type: 1,
 			bp: 1,
-			// utilities: 'p-side',
 		),
 		'pr': (
 			prop: 'padding-right',
 			base_type: 1,
 			bp: 1,
-			// utilities: 'p-side',
 		),
 		'pb': (
 			prop: 'padding-bottom',
 			base_type: 1,
 			bp: 1,
-			// utilities: 'p-side',
 		),
 		'pl': (
 			prop: 'padding-left',
 			base_type: 1,
 			bp: 1,
-			// utilities: 'p-side',
 		),
 		'pis': (
 			prop: 'padding-inline-start',
@@ -728,12 +721,12 @@ $props: map.deep-merge(
 		),
 		'cols': (
 			prop: '--cols',
-			base_type: 1,
+			base_type: 0,
 			bp: 1,
 		),
 		'rows': (
 			prop: '--rows',
-			base_type: 1,
+			base_type: 0,
 			bp: 1,
 		),
 	),

@@ -72,34 +72,14 @@ export const LtsDemos = () => (
 	</>
 );
 
-export const ShadowDemos = ({ shadows = [] }) => {
-	return (
-		<>
-			{shadows.map((name) => {
-				return (
-					<Stack key={name} g='20'>
-						<Frame aspect='1/1' bgc='base' bxsh={`var(--shdw-${name})`} bdrs='s'>
-							<Center h='100' ff='mono' fz='s' c='text-2'>
-								{name}
-							</Center>
-						</Frame>
-					</Stack>
-				);
-			})}
-		</>
-	);
-};
 export const BoxShadowDemos = ({ shadows = [] }) => {
 	return (
 		<>
 			{shadows.map((name) => {
 				return (
 					<Stack key={name} g='20'>
-						{/* <Text bd='left' bdw='2px' lh='1' pl='20' fz='xs'>
-							<code>{name}</code>
-						</Text> */}
 						<Frame aspect='1/1' bgc='base' bxsh={name} bdrs='s'>
-							<Center h='100' ff='mono' fz='xs' c='text-2'>
+							<Center h='100%' ff='mono' fz='xs' c='text-2'>
 								{name}
 							</Center>
 						</Frame>
@@ -120,7 +100,7 @@ export const RadiusDemos = () => {
 							<code>{r}</code>
 						</Text> */}
 						<Frame aspect='1/1' bdrs={r} bd>
-							<Center h='100' ff='mono' fz='xs' c='text-2'>
+							<Center h='100%' ff='mono' fz='xs' c='text-2'>
 								{r}
 							</Center>
 						</Frame>
