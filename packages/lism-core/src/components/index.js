@@ -27,9 +27,9 @@ export * from './LinkBox';
 
 // Atoms
 export * from './Icon';
-export * from './Delimiter';
 export * from './Decorator';
 export * from './Divider';
+// export * from './Delimiter';
 
 // Blocks
 export * from './Avatar';

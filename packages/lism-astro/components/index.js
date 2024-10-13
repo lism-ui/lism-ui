@@ -23,7 +23,7 @@ export * from './Container';
 export * from './Frame';
 export * from './Spacer';
 export * from './Avatar';
-export * from './Delimiter';
+// export * from './Delimiter';
 export * from './Decorator';
 export * from './Divider';
 export * from './ShapeDivider';

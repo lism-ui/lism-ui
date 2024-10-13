@@ -174,10 +174,6 @@ export default [
 				link: '/components/decorator/',
 			},
 			{
-				label: 'Delimiter',
-				link: '/components/delimiter/',
-			},
-			{
 				label: 'Icon',
 				link: '/components/icon/',
 			},
