@@ -80,3 +80,29 @@ figcaption {
 // 		translate: var(--icon-offset);
 // 	}
 // }
+
+// ↓ 追加パックにいれる？
+// .-hov\:dark:hover {
+// 	filter: brightness(0.8) contrast(1.2); //grayscale(5%);
+// }
+// .-hov\:bright:hover {
+// 	filter: brightness(1.2) contrast(1.2); //grayscale(5%);
+// }
+// .-hov\:scale:hover {
+// 	scale: 1.05;
+// }
+
+.-hov\:get\:zoom {
+	scale: calc(1 + 0.1 * var(--isHover));
+}
+
+.-hov\:get\:slide {
+	--gtr: 0fr;
+	opacity: var(--isHover);
+	transition-property: var(--acc-trsprop);
+
+	// calc() で fr単位が使えない
+	.-hov\:pass:hover & {
+		--gtr: 1fr;
+	}
+}

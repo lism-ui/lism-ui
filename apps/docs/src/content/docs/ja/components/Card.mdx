@@ -518,6 +518,8 @@ radiusのデフォルト、`1`にする？ */}
 
 #### ホバーでコンテンツを出現する例
 
+以下の例では、`.-hov\:get\:slide`クラスを別途用意する必要があります。
+
 {/* Note: PreviewAreaにresize つけると Filterの挙動変わることに注意。 */}
 <Preview>
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
@@ -558,7 +560,6 @@ radiusのデフォルト、`1`にする？ */}
 				</CardBody>
 			</Card>
 		</Columns>
-
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
@@ -599,6 +600,19 @@ radiusのデフォルト、`1`にする？ */}
 		</Card>
 	</Columns>
 	```
+	</PreviewCode>
+		<PreviewCode slot='tab' label='追加CSS'>
+		```css
+		.-hov\:get\:slide {
+			--gtr: 0fr;
+			opacity: var(--isHover);
+			transition-property: var(--acc-trsprop);
+
+			.-hov\:pass:hover & {
+				--gtr: 1fr;
+			}
+		}
+		```
 	</PreviewCode>
 </Preview>
 

@@ -7,23 +7,49 @@
 }
 
 // ------------------------------------------------------------
+// プリセット
+// ------------------------------------------------------------
+.-hov\:fade:hover {
+	opacity: 0.6;
+}
+.-hov\:shadow:hover {
+	box-shadow: var(--sh--4);
+}
+.-hov\:up:hover {
+	translate: 0 -3px;
+}
+// .-hov\:u:hover {
+// 	text-decoration: underline !important;
+// }
+.-hov\:reverse {
+	:where(&) {
+		--hov-c: var(--bgc);
+		--hov-bgc: var(--c);
+	}
+	&:hover {
+		background-color: var(--hov-bgc) !important;
+		color: var(--hov-c) !important;
+		// --bdc: var(--hov-bdc, var(--bdc));
+	}
+}
+
+// ------------------------------------------------------------
 // 値指定
 // ------------------------------------------------------------
-// .-hov\:duration\:{}
-.-hov\:u:hover {
-	text-decoration: underline !important;
-}
 .-hov\:c\::hover {
 	color: var(--hov-c) !important;
 }
 .-hov\:bdc\::hover {
 	border-color: var(--hov-bdc) !important;
 }
-// .-hov\:bgc\:pale:hover {
-// 	background-color: var(--hov-bgc) !important;
-// }
+.-hov\:op\::hover {
+	opacity: var(--hov-op) !important;
+}
 .-hov\:bgc\::hover {
 	background-color: var(--hov-bgc) !important;
+}
+.-hov\:bxsh\::hover {
+	box-shadow: var(--hov-bxsh);
 }
 .-hov\:filter\::hover {
 	filter: var(--hov-filter) !important;
@@ -35,12 +61,6 @@
 // .-hov\:shadow\: {
 // 	box-shadow: var(--sh--4);
 // }
-.-hov\:shadow:hover {
-	box-shadow: var(--sh--4);
-}
-.-hov\:bxsh\::hover {
-	box-shadow: var(--hov-bxsh);
-}
 
 // .-hov\:bxsh:hover {
 // 	// shadowユーティリティに負けないように important
@@ -51,109 +71,33 @@
 // }
 
 // ------------------------------------------------------------
-// プリセット
-// ------------------------------------------------------------
-.-hov\:fade:hover {
-	opacity: 0.6;
-}
-.-hov\:up:hover {
-	translate: 0 -3px;
-}
-
-:where(.-hov\:reverse) {
-	--hov-c: var(--bgc);
-	--hov-bgc: var(--c);
-}
-
-.-hov\:reverse:hover {
-	background-color: var(--hov-bgc) !important;
-	color: var(--hov-c) !important;
-	// --bdc: var(--hov-bdc, var(--bdc));
-}
-
-// ↓ 追加パックにいれる？
-// .-hov\:dark:hover {
-// 	filter: brightness(0.8) contrast(1.2); //grayscale(5%);
-// }
-// .-hov\:bright:hover {
-// 	filter: brightness(1.2) contrast(1.2); //grayscale(5%);
-// }
-// .-hov\:scale:hover {
-// 	scale: 1.05;
-// }
-
-// ------------------------------------------------------------
 // hov:media:
 // ------------------------------------------------------------
 
 // pass-get/ privide-get/throw-get/parent-child/
 .-hov\:pass {
 	--isHover: 0;
-	--hovVisible: hidden;
-	--hov1fr: 0fr;
+	// --hovVisible: hidden;
 	&:hover {
 		--isHover: 1;
-		--hovVisible: visible;
-		--hov1fr: 1fr;
+		// --hovVisible: visible;
 	}
 }
 
-// .-hov\:get\:show
 .-hov\:get\:show {
 	opacity: var(--isHover);
-	visibility: var(--hovVisible);
-
-	// .-hov\:pass:hover & {
-	// 	opacity: 1;
-	// 	visibility: visible;
-	// }
+	visibility: hidden;
+	.-hov\:pass:hover & {
+		visibility: visible;
+	}
 }
 .-hov\:get\:hide {
 	opacity: calc(1 - 1 * var(--isHover));
 }
-.-hov\:get\:zoom {
-	scale: calc(1 + 0.1 * var(--isHover));
-}
-.-hov\:get\:slide {
-	grid-template-rows: var(--hov1fr); // calc() で fr単位が使えない
-	opacity: var(--isHover);
-	transition-property: var(--acc-trsprop);
-}
 
-// .-hov\:get\:slide > * {
-// 	overflow: hidden;
+// .-hov\:pass のhoverを起点に。
+// .-hov\:get\:xxx {
+// 	.-hov\:pass:hover & {
+// 		xxx: xxx;
+// 	}
 // }
-
-// [class*='-hov:media'] {
-// 	--hov-filter: unset;
-// 	--hov-scale: unset;
-// 	--hov-translate: unset;
-// }
-
-// .-hov:media:XXX で変化可能なメディア
-// .is--transitionMedia,
-// .is--hovMedia {
-// 	// .-hov:media:用
-// 	scale: var(--hov-scale);
-// 	filter: var(--hov-filter);
-// 	transition: all var(--hov-duration);
-// }
-
-// [data-hov-media="media:zoom media:bright"]
-
-// .-hov\:media\:zoom:hover {
-// 	--hov-scale: 1.1;
-// }
-// ※ filter どうしの同時使用はできないことに注意
-// .-hov\:media\:dark:hover {
-// 	--hov-filter: brightness(0.85);
-// }
-// .-hov\:media\:bright:hover {
-// 	--hov-filter: brightness(1.15);
-// }
-// .-hov\:target\:blur:hover {
-// 	--hov-filter: blur(4px);
-// }
-
-// ; transform: trf
-// hov: {c, bgc, bdc, radius, shadow, transform?, filter?}

@@ -21,6 +21,10 @@
 }
 
 .a--mdcontent {
+	> :where(p, ul, ol) code {
+		display: inline-block;
+		line-height: 1;
+	}
 	> table {
 		font-size: 0.95em;
 		max-inline-size: 100%;
@@ -335,5 +339,12 @@ td:first-child > code:only-child {
 		inset: 0;
 		border: 1px dashed rgba(150, 150, 160, 0.4);
 		// box-sizing: border-box;
+	}
+}
+
+.-hov\:get\:highlight {
+	.-hov\:pass:hover & {
+		color: var(--red);
+		background-color: rgba(255, 10, 10, 0.05);
 	}
 }
