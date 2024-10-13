@@ -1,72 +1,17 @@
-/* memo: 
+import TOKENS from './tokens';
+// import presets from './presets';
 
-options.name: 受け取るprop名と実際に出力するutilクラス名、style名がどちらも異なる場合に指定する
-	[string]
-
-	例: rowGap → rowg, shadow → bxsh
-
-options.utilKey: 受け取るprop名と、ユーティリティクラスとして出力される時のキー名が異なる場合に指定する。
-	[string]
-
-	例: translate → '.-trslt:{val}'
-
-options.presets: 指定された値をそのままユーティリティクラス名に使用する時のリスト(またはそれを取得するキー）
-	[array, string, or 1]
-
-	例: p={20} → .-p:20
-	配列で指定 → その中身との比較
-	文字列で指定→ PRESETS[str] でプリセット値のリストを取得してくる。
-
-options.utils: 指定された値を別の文字に変換してユーティリティクラス名に使用する時のリスト(またはそれを取得するキー）
-	[object, string, or 1]
-
-	objで指定 → その中身との比較
-	文字列で指定→ UTILITIES[str] でプリセット値のリストを取得してくる。
-	例: pos="absolute" → '.-pos:a'
-
-options.style: プリセット値以外の時に出力するスタイル名を指定する。
-	[string | 1]
-	この指定がある時、 .-prop: クラスは出力されず、styleのみ出力されるようになる。
-		例: maxW → maxWidth
-
-	1 を指定すると、prop名と同じキーでstyleに渡される。
-		例 opacity, alignSelf など
-
-	Note: styleを持てるのは BPサポートがないpropのみ.
-		(BPサポートするpropは .-prop:,--prop として出力するように統一する。)
-
-options.converter: 特定のプリセット値などに変換する処理をはさみたい時に指定する
-	[string | function]
-
-	例: space系の 20 → var(--s--20)
-	例: color系など
-
-options.objProcessor: 方向成分を指定できるpropで、そのオブジェクトをどう処理するかを指定する
-	[string | function]
-
-	例: p={{x:20, y:40}} → px, py としてそれぞれ処理
-
-↓ 未実装
-options.splitProcessor: スペース区切りで成分を指定できるpropで、その文字列をどう処理するかを指定する
-	[string | function]
-
-	例: p="20 40" → px, py としてそれぞれ処理
-
-
+/* 
 memo: 
 	ユーティリティクラス化されない時の挙動パターン
 		1.  .-prop: かつ --prop ( ほとんどこれ )
 		2.  普通のstyleとして出力するだけ ( alignSelf など ) → style をもつ
-		3.  --prop のみ出力.( keycolor や --bdc など ) → withUtil:0 かつ style をもつ
-		4. propのname と 出力name が変わる ( radius → bdrs) →  name をもつ
+		3.  --prop のみ出力.( keycolor や --bdc など ) →  style をもつ
+
 
 禁止パターン: 
 	styleを持っていて BP:1 
-	styleを持っていて withUtil:0
-
 */
-
-// import presets from './presets';
 
 // pi,pc
 const placeProps = {
@@ -100,24 +45,24 @@ export default {
 	bgc: { presets: 1, utils: 1, converter: 'color' },
 	keycolor: { style: '--keycolor', converter: 'color' },
 	boxcolor: { _presets: 'palette', style: '--keycolor', converter: 'color' },
-	bg: { style: 'background', presets: 1, utils: 1 },
+	bg: { style: 'background', utils: { none: 'n' } },
 	backgrounds: { map: 1 },
 	// mask: { map: 1 },
 
 	// Typography
-	f: { style: 'font', utils: 1 },
+	f: { style: 'font', utils: { inherit: 'i' } },
 	fz: { presets: 1, converter: 'fz' },
 	lh: { presets: 1, style: 'lineHeight' },
 	fw: {
 		style: 'fontWeight',
-		utils: 1,
+		presets: TOKENS.fw,
 		//presets: 1
 	},
-	ff: { style: 'fontFamily', presets: 1 },
-	fs: { style: 'fontStyle', utils: 1 },
-	lts: { style: 'letterSpacing', presets: 1 }, // utilityあってもいい
-	ta: { style: 'textAlign', utils: 1 },
-	td: { style: 'textDecoration', utils: 1 },
+	ff: { style: 'fontFamily', presets: 1, converter: 1 },
+	fs: { style: 'fontStyle', utils: { italic: 'i', normal: 'n' } },
+	lts: { style: 'letterSpacing', presets: 1 },
+	ta: { style: 'textAlign', utils: { center: 'c', left: 'l', right: 'r' } },
+	td: { style: 'textDecoration', utils: { underline: 'u', none: 'n' } },
 	tsh: { style: 'textShadow' },
 	whs: { style: 'whiteSpace', utils: { nowrap: 'nw' } },
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
@@ -137,13 +82,40 @@ export default {
 	d: { utils: 1 },
 	op: {
 		style: 'opacity',
-		presets: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+		presets: [
+			...TOKENS.op,
+			'0',
+			'0.1',
+			'0.2',
+			'0.3',
+			'0.4',
+			'0.5',
+			'0.6',
+			'0.7',
+			'0.8',
+			'0.9',
+			'1',
+		],
+		converter: 1,
 	}, // op
 	v: { style: 'visibility', utils: 'visibility' },
 	ov: { style: 'overflow', utils: 1 },
 	ovx: { style: 'overflowX', utils: 'ov' },
 	ovy: { style: 'overflowY', utils: 'ov' },
-	aspect: { presets: 1 },
+	aspect: {
+		presets: [
+			'16/9',
+			'4/3',
+			'3/2',
+			'2/1',
+			'1/1',
+			'golden',
+			'silver',
+			'bronze',
+			'ogp',
+			'cinema',
+		],
+	},
 
 	pos: { style: 'position', utils: 1 },
 	z: { style: 'zIndex', presets: ['-1', '0', '1', '2'] },
@@ -251,8 +223,9 @@ export const CONTEXT_PROPS = {
 
 	flex: {
 		fxf: { style: 'flex-flow' },
-		fxw: { utils: 1 },
-		fxd: { utils: 1 },
+		// nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
+		fxw: { utils: { wrap: 'w', nowrap: 'nw' } },
+		fxd: { utils: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' } },
 		...GAP_PROPS,
 	},
 

@@ -4,29 +4,37 @@ import isTokenValue from './isTokenValue';
 
 // 対応するCSS変数があれば返す
 export default function getMaybeCssVar(value, converter, propName = '') {
-	switch (converter) {
-		case 'space':
-			return getMaybeSpaceVar(value, propName);
-		case 'color':
-			return getMaybeColorVar(value, propName);
-		case 'size':
-			return getMaybeSizeVar(value);
-		case 'radius':
-			return getMaybeRadiusVar(value);
-		case 'shadow':
-			return getMaybeShadowVar(value);
-		// case 'shadowSize':
-		// 	return getMaybeShadowSizeVar(value);
-		case 'fz':
-			return getMaybeFzVar(value);
-		case 'filter':
-			return getMaybeFilterVar(value);
-		// case 'bg':
-		// 	return getMaybeBgVar(value, propName);
-		default:
-			if (typeof converter === 'function') return converter(value);
-			return value;
+	if (typeof converter === 'function') {
+		return converter(value);
+	} else if (typeof converter === 'string') {
+		switch (converter) {
+			case 'space':
+				return getMaybeSpaceVar(value, propName);
+			case 'color':
+				return getMaybeColorVar(value, propName);
+			case 'size':
+				return getMaybeSizeVar(value);
+			case 'radius':
+				return getMaybeRadiusVar(value);
+			case 'shadow':
+				return getMaybeShadowVar(value);
+			// case 'opacity':
+			// 	return getMaybeOpacityVar(value);
+			case 'fz':
+				return getMaybeFzVar(value);
+			case 'filter':
+				return getMaybeFilterVar(value);
+			// case 'bg':
+			// 	return getMaybeBgVar(value, propName);
+			default:
+				return value;
+		}
+	} else if (converter === 1) {
+		if (isTokenValue(propName, value)) {
+			return `var(--${propName}--${value})`;
+		}
 	}
+	return value;
 }
 
 // console.log('Number10%', Number('10%'));
@@ -151,6 +159,12 @@ export function getMaybeShadowVar(value) {
 // 	return value;
 // }
 
+// export function getMaybeOpacityVar(value) {
+// 	if (isTokenValue('op', value)) {
+// 		return 'var(--op--' + value + ')';
+// 	}
+// 	return value;
+// }
 export function getMaybeFzVar(value) {
 	if (isTokenValue('fz', value)) {
 		return 'var(--fz--' + value + ')';

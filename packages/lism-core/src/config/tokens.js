@@ -25,7 +25,8 @@ export default {
 	lh: ['root', '2xs', 'xs', 's', 'l', 'xl', '2xl'],
 	lts: ['root', '2xs', 'xs', 's', 'l', 'xl', '2xl'], //['-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6', '7'],
 	ff: ['root', 'mono', 'sans', 'serif', 'emoji'],
-	// fw: ['bold', 'thin'],
+	fw: ['thin', 'light', 'normal', 'medium', 'bold', 'heavy'],
+	op: ['low', 'mid', 'high'],
 
 	radius: ['full', '2xl', 'xl', 'l', 'm', 's', 'xs'],
 	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],

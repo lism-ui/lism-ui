@@ -1,5 +1,4 @@
-import { Box, Text, Stack, Frame, Center, Grid } from '@lism-ui/core';
-import { DammyText } from '~/components';
+import { Box, Text, Stack, Frame, Center, Grid, Dummy } from '@lism-ui/core';
 
 export const ColorDemos = ({ colors = [] }) => {
 	return (
@@ -25,51 +24,19 @@ export const ColorDemos = ({ colors = [] }) => {
 	);
 };
 
-export const FzDemos = () => (
-	<>
-		{['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl', '5xl'].map((fz, i) => {
+export const FzDemos = ({ lang = 'ja' }) => (
+	<Frame aspect='16/9' ovy='auto' isFlow='s'>
+		{['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl'].map((fz, i) => {
 			return (
-				<Stack key={fz} g='0'>
-					<Text className='is--sizeTip' fz='12px'>
+				<Stack key={fz} g='10'>
+					<Text className='is--sizeT ip' fz='12px' lh='s'>
 						<code>{fz}</code>
 					</Text>
-					<Text className='is--lipsum' fz={fz} whs='nw'>
-						ロレムイプサムのAmet、学部エリットとSeddo絵薄モッド。
-					</Text>
+					<Dummy lang={lang} length='s' fz={fz} whs='nw' lh='1' />
 				</Stack>
 			);
 		})}
-	</>
-);
-
-export const LhDemos = ({ lang = 'en' }) => (
-	<>
-		{['xs', 's', 'base', 'l', 'xl'].map((lh, i) => {
-			return (
-				<Stack key={lh} g='0'>
-					<Text className='is--sizeTip' fz='12px'>
-						<code>{lh}</code>
-					</Text>
-					<DammyText lang={lang} length='m' lh={lh} />
-				</Stack>
-			);
-		})}
-	</>
-);
-
-export const LtsDemos = () => (
-	<>
-		{['s', 'base', 'l', 'xl'].map((lts, i) => {
-			return (
-				<Stack key={lts} g='0'>
-					<Text className='is--sizeTip' fz='12px'>
-						<code>{lts}</code>
-					</Text>
-					<Text lts={lts}>Lorem Ipsum, 12345, ダミーの文字列</Text>
-				</Stack>
-			);
-		})}
-	</>
+	</Frame>
 );
 
 export const BoxShadowDemos = ({ shadows = [] }) => {

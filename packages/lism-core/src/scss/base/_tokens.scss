@@ -67,7 +67,7 @@
 	// .is--flow の余白
 	// --flowGap-offset: calc(var(--herfLeading) * 2);
 	--flowGap: var(--s--40);
-	--flowGap--s: var(--s--20);
+	--flowGap--s: var(--s--30);
 	--flowGap--h: 2.5em;
 
 	// コンテンツの左右の余白
@@ -91,8 +91,12 @@
 	// ------------------------------
 	// font-weight
 	// ------------------------------
-	// --fw--bold: 700;
 	// --fw--thin: 100;
+	--fw--light: 300;
+	--fw--normal: 400;
+	--fw--medium: 500;
+	--fw--bold: 700;
+	// --fw--heavy: 900;
 
 	// ------------------------------
 	// letter-spacing
@@ -102,46 +106,34 @@
 	--lts--l: 0.05em;
 	--lts--xl: 0.25em;
 
-	// --lts---2: -0.05em;
-	// --lts---1: -0.025em;
-	// --lts--0: 0em;
-	// --lts--1: 0.025em;
-	// --lts--2: 0.05em;
-	// --lts--3: 0.075em;
-	// --lts--4: 0.1em;
-	// --lts--5: 0.25em;
-	// --lts--6: 0.5em;
-
 	// ------------------------------
 	// font-size 変数
 	// ------------------------------
-	// font-size 変数
 	--fz--root: clamp(0.875rem, 0.625rem + 1vw, 1rem); // 400 - 600
-	// --fz--hero?
-	--fz--m: 1em; // デフォルトでフォントサイズ 変わっているものを1emにリセットしたい時に必要
-	--fz--r: 1rem; // → --fz--base?
 
 	// 倍音列(分子8) での計算値
-	--fz--5xl: 4em; //calc(1em * 8 / 2);
-	--fz--4xl: 2.667em; // calc(1em * 8 / 3);
-	--fz--3xl: 2em; //calc(1em * 8 / 4);
-	--fz--2xl: 1.6em; //calc(1em * 8 / 5);
-	--fz--xl: 1.333em; //calc(1em * 8 / 6);
-	--fz--l: 1.143em; //calc(1em * 8 / 7);
-	--fz--s: 0.889em; // calc(1em * 8 / 9);
-	--fz--xs: 0.8em; //calc(1em * 8 / 10);
-	--fz--2xs: 0.727em; //calc(1em * 8 / 11);
+	// --fz--5xl: 4em; //calc(1em * 8 / 2);
+	// --fz--4xl: 2.667em; // calc(1em * 8 / 3);
+	// --fz--3xl: 2em; //calc(1em * 8 / 4);
+	// --fz--2xl: 1.6em; //calc(1em * 8 / 5);
+	// --fz--xl: 1.333em; //calc(1em * 8 / 6);
+	// --fz--l: 1.143em; //calc(1em * 8 / 7);
+	// --fz--m: 1em; // デフォルトでフォントサイズ 変わっているものを1emにリセットしたい時に必要
+	// --fz--s: 0.889em; // calc(1em * 8 / 9);
+	// --fz--xs: 0.8em; //calc(1em * 8 / 10);
+	// --fz--2xs: 0.727em; //calc(1em * 8 / 11);
 
-	// --fzMolecule: 8; // 7~9に対応.
-	// --fz--5xl: min(5em, calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 6)));
-	// --fz--4xl: min(4em, calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 5)));
-	// --fz--3xl: calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 4));
-	// --fz--2xl: calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 3));
-	// --fz--xl: calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 2));
-	// --fz--l: calc(1em * var(--fzMolecule) / (var(--fzMolecule) - 1));
-	// --fz--s: calc(1em * var(--fzMolecule) / (var(--fzMolecule) + 1));
-	// --fz--xs: calc(1em * var(--fzMolecule) / (var(--fzMolecule) + 2));
-	// --fz--2xs: calc(1em * var(--fzMolecule) / (var(--fzMolecule) + 3));
+	--fz-mol: 8; // 7 ~ に対応.
+	// --fz--5xl: calc(1em * var(--fz-mol) / (var(--fz-mol) - 6));
+	--fz--4xl: calc(1em * var(--fz-mol) / (var(--fz-mol) - 5));
+	--fz--3xl: calc(1em * var(--fz-mol) / (var(--fz-mol) - 4));
+	--fz--2xl: calc(1em * var(--fz-mol) / (var(--fz-mol) - 3));
+	--fz--xl: calc(1em * var(--fz-mol) / (var(--fz-mol) - 2));
+	--fz--l: calc(1em * var(--fz-mol) / (var(--fz-mol) - 1));
+	--fz--m: 1em;
+	--fz--s: calc(1em * var(--fz-mol) / (var(--fz-mol) + 1));
+	--fz--xs: calc(1em * var(--fz-mol) / (var(--fz-mol) + 2));
+	--fz--2xs: calc(1em * var(--fz-mol) / (var(--fz-mol) + 3));
 
 	// clampでテキストサイズを変化させたい領域に指定する
 	// --fz-fluid--s: clamp(0.9rem, 0.75rem + 0.8cqw, 1rem); // 小さい方向のみ. 300: .9rem ~ 500: 1rem
@@ -200,7 +192,7 @@
 	--orange: hsl(26 80% 48%);
 	--yellow: hsl(48 92% 42%);
 	--green: hsl(140 80% 44%);
-	--blue: hsl(200 76% 50%);
+	--blue: hsl(204 74% 50%);
 	--purple: hsl(260 72% 50%);
 	--pink: hsl(320 72% 50%);
 
@@ -258,6 +250,13 @@
 
 	// ボーダーはどちらでも使える感じか。
 	// --bdc-pale,base,strong
+
+	/* ------------------------------------------------------------
+	  opacity
+	------------------------------------------------------------ */
+	--op--low: 0.25;
+	--op--mid: 0.5;
+	--op--high: 0.75;
 
 	/* ------------------------------------------------------------
 	  radius

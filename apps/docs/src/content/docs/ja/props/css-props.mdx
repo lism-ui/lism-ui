@@ -4,27 +4,32 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Lism, Text, Box, Grid } from "@lism-ui/astro";
-import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
+import { Lism, Text, Dummy, Box, Grid } from "@lism-ui/astro";
+import { Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Note } from '~/components/ex/Note';
 
 
 [Prop Utility](/ja/css/utility-class/) に対応するLism Propsを紹介します。
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>CSS Propsを指定する例</PreviewTitle>
 	<PreviewCode>
 	```jsx
 	<Box c="black" bgc="white" p={20} fz="xl">...</Box>
 	```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
-{/* <Note heading="Lism Propsの重要なポイント" type="point">
-- プロパティと値の組み合わせによってはユーティリティクラス化されて出力される。
-- ユーティリティクラス化されない時の挙動が数パターンある。
-- ブレイクポイントで値を切り替えることができるものがある。
-</Note> */}
+<Note title='このページの表の見方' type='info'>
+- `Prop`: コンポーネントに指定するプロパティの文字列。
+- `CSS`: 対応するCSSプロパティ。
+- `Token`: 対応するトークンの種類。  
+	`To Class`に該当しない値で、かつトークンキーと一致した場合、`var(--{prop}--{token})`という変数で値が出力されます。
+- `To Class`: ユーティリティクラスに変換される値。  
+	`-{prop}:{util}`というクラスが出力されます。
+- `BP`: ブレイクポイントで値を切り替えることができる場合は`○`。
+</Note>
 
 {/* また、Lismコンポーネント以外では使用できませんので注意してください。 */}
 
@@ -32,23 +37,53 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`c`|`color`|`COLOR`|`text`,`text-2`,`base`,`keycolor`,`i`,`mix`|-|
-|`bgc`|`background-color`|`COLOR`|`base`,`base-2`,`text`,`keycolor`,`i`,`mix`|-|
-|`bdc`|`border-color`|`COLOR`|`divider`,`keycolor`,`i`,`mix`|-|
-|`keycolor`|`--keycolor`|`COLOR`|-|-|
+|c|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`i`(`inherit`)|-|
+|bgc|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`i`(`inherit`)|-|
+|bdc|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`i`(`inherit`)|-|
+|keycolor|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
 
 
-{/* ※ `bdc`は[`bd`との併用が必要](/docs/proips/border)です。 */}
 
-<Reference>
-[COLOR Tokens](/ja/css/tokens/)
-</Reference>
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p={20}>
+		<Box c='main' bgc='base-2' bd bdc='divider' p='30'>
+			<Dummy />
+		</Box>
+		<Box c='white' bgc='black' p='30'>
+			<Dummy />
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Box c='main' bgc='base-2' bd bdc='divider' p='30'>
+			<Dummy />
+		</Box>
+		<Box c='white' bgc='black' p='30'>
+			<Dummy />
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--box -c:main -bgc:base-2 -bd: -bdc:divider -p:30">
+			<p>Lorem ipsum ...</p>
+		</div>
+		<div class="l--box -c:white -bgc:black -p:30">
+			<p>Lorem ipsum ...</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
 
-### コンポーネントでの `mix` クラスの呼び出し方
 
-`.-c:mix` や `.-bgc:mix` クラスは、3つの変数を受け取とるようになっています。
 
-`c='mix'`のようにしてCSS変数をstyleで定義してもよいですが、`'color1:(color2:)NUM%'` の書式で指定することで、自動で変数に分割されるようになっています。
+
+### `mix` クラスの呼び出し方
+
+`.-c|bgc|bdc:mix` クラスは、3つの変数を受け取とるようになっています。
+
+`c='mix'`で`.-c:mix`クラスを呼び出し、同時にCSS変数をstyleで定義してもよいですが、`c='color1:(color2:)NUM%'` の書式で指定することで、自動で変数に分割されるようになっています。
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
@@ -82,15 +117,16 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|f|font|-|`inherit`(`i`)|-|
-|fz|font-size|`FONT.FZ`|`FONT.FZ`|○|
-|lh|line-height|`FONT.LH`|`FONT.LH`|-|
-|ff|font-family|`FONT.FF`|`FONT.FF`|-|
-|lts|letter-spacing|`FONT.LTS`|`FONT.LTS`|-|
-|ta|text-align|-|`center`(`c`)<br/>`left`(`l`)<br/>`right`(`r`)|-|
-|td|text-decoration|-|`none`(`n`)<br/>`underline`(`u`)|-|
-|whs|white-space|-|`nowrap`(`nw`)|-|
-|ovw|overflowWrap|-|`anywhere`(`any`)|-|
+|f|`font`|-|`inherit`(`i`)|-|
+|fz|`font-size`|`TYPO.FZ`|`TYPO.FZ`|○|
+|ff|`font-family`|`TYPO.FF`|`TYPO.FF`|-|
+|fw|`font-weight`|`TYPO.FW`|`TYPO.FW`|-|
+|lh|`line-height`|`TYPO.LH`|`TYPO.LH`|-|
+|lts|`letter-spacing`|`TYPO.LTS`|`TYPO.LTS`|-|
+|ta|`text-align`|-|`center`(`c`)<br/>`left`(`l`)<br/>`right`(`r`)|-|
+|td|`text-decoration`|-|`none`(`n`)<br/>`underline`(`u`)|-|
+|whs|`white-space`|-|`nowrap`(`nw`)|-|
+|ovw|`overflow-wrap`|-|`anywhere`(`any`)|-|
 
 {/* |font?|font|inherit?|-|-|
 |td?|text-decoration|-|-|-| */}
@@ -104,12 +140,12 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS Property|Token|To Class|BP|
 |---|---|---|---|---|
-|w|width|`SIZE`|`100%`(`100`),<br/>`fit-content`(`fit`)|○|
-|h|height|`SIZE`|`100%`(`100`),<br/>`fit-content`(`fit`),<br/>`screen`|○|
-|maxW|max-width|`SIZE`|`100%`(`100`)|○|
-|maxH|max-height|`SIZE`|`100%`(`100`)|○|
-|minW|min-width|`SIZE`|`100%`(`100`)|○|
-|minH|min-height|`SIZE`|`100%`(`100`)|○|
+|w|width|`SIZE`|`100%`,<br/>`fit-content`(`fit`)|○|
+|h|height|`SIZE`|`100%`,<br/>`fit-content`(`fit`),<br/>`screen`|○|
+|maxW|max-width|`SIZE`|`100%`|○|
+|maxH|max-height|`SIZE`|`100%`|○|
+|minW|min-width|`SIZE`|`100%`|○|
+|minH|min-height|`SIZE`|`100%`|○|
 
 {/* max-widthは: s,m,l も? */}
 
@@ -119,20 +155,20 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|p|padding|`SPACE`|`SPACE`|○|
-|px|padding-inline|`SPACE`|`SPACE`|○|
-|py|padding-block|`SPACE`|`SPACE`|○|
-|pis|padding-inline-start|`SPACE`|`SPACE`|○|
+|p|padding|`SPACE`|`SPACE.0~50`|○|
+|px|padding-inline|`SPACE`|`SPACE.0~50`|○|
+|py|padding-block|`SPACE`|`SPACE.0~50`|○|
+|pis|padding-inline-start|`SPACE`|`SPACE.0~50`|○|
 |pbs|padding-block-start|`SPACE`|-|○|
 |pl|padding-left|`SPACE`|-|○|
 |pr|padding-right|`SPACE`|-|○|
 |pt|padding-top|`SPACE`|-|○|
 |pb|padding-bottom|`SPACE`|-|○|
-|m|margin|`SPACE`|`SPACE`,`auto`|○|
+|m|margin|`SPACE`|`SPACE.0~50`,`auto`|○|
 |mx|margin-inline|`SPACE`|`auto`|○|
 |my|margin-block|`SPACE`|`auto`|○|
 |mis|margin-inline-start|`SPACE`|`auto`|○|
-|mbs|margin-block-start|`SPACE`|`SPACE`, `auto`|○|
+|mbs|margin-block-start|`SPACE`|`SPACE.0~50`, `auto`|○|
 |ml|margin-left|`SPACE`|-|○|
 |mr|margin-right|`SPACE`|-|○|
 |mt|margin-top|`SPACE`|-|○|
@@ -191,11 +227,10 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |---|---|---|---|---|
 |d|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
 |v|visibility|-|`hidden`(`h`), `visible`(`v`)||
-|op|opacity|-|`0`,`10`,`20`,...,`100`||
 |ov|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovx|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovy|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
-
+|op|opacity|`OPACITY`|`OPACITY`,`0`,`10`,`20`,...,`100`||
 
 ## Styling
 
@@ -243,14 +278,14 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 |`pos`|`position`|-|`r`(`relative`),<br />`a`(`absolute`),<br />`s`(`static`),<br />`f`(`fixed`),<br />`sticky`|-|
 |`z`|`z-index`|-|`-1`, `0`, `1`, `2`|-|
 |`inset`|`inset`|`SPACE`|`0`|-|
-|`t`|`top`|`SPACE`|`0`,`50`,`100`|-|
-|`l`|`left`|`SPACE`|`0`,`50`,`100`|-|
-|`r`|`right`|`SPACE`|`0`,`50`,`100`|-|
-|`b`|`bottom`|`SPACE`|`0`,`50`,`100`|-|
-|`insets.is`|`inset-inline-start`|`SPACE`|`0`|-|
-|`insets.ie`|`inset-inline-end`|`SPACE`|`0`|-|
-|`insets.bs`|`inset-block-start`|`SPACE`|-|-|
-|`insets.be`|`inset-block-end`|`SPACE`|-|-|
+|`t`|`top`|`SPACE`|`0`,`50%`,`100%`|-|
+|`l`|`left`|`SPACE`|`0`,`50%`,`100%`|-|
+|`r`|`right`|`SPACE`|`0`,`50%`,`100%`|-|
+|`b`|`bottom`|`SPACE`|`0`,`50%`,`100%`|-|
+|`insets.is`|`inset-inline-start`|`SPACE`|`0`,`100%`|-|
+|`insets.ie`|`inset-inline-end`|`SPACE`|`0`,`100%`|-|
+|`insets.bs`|`inset-block-start`|`SPACE`,`100%`|-|-|
+|`insets.be`|`inset-block-end`|`SPACE`,`100%`|-|-|
 
 
 `position:absolute`で要素を配置する例をいくつか紹介します。

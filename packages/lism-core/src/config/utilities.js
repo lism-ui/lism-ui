@@ -17,24 +17,11 @@ export default {
 	c: { inherit: 'i' },
 	bgc: { none: 't', transparent: 't', currentColor: 'cc', inherit: 'i' },
 	bdc: { none: 't', transparent: 't', inherit: 'i' },
-	bg: { none: 'n' },
 	bgcp: { text: 'tx' },
 	place: places,
 	placeItems: { ...places, stretch: 'str' },
 	placeContent: { ...places, 'space-between': 'sb' },
 	selfPlace: selfPlaces,
-	ta: { center: 'c', left: 'l', right: 'r' },
-	td: { underline: 'u', none: 'n' },
-
-	// Note: 数値指定でユーティリティ化したい時、文字列で渡す。 700 → '700'
-	// fw: { thin: '100', light: '300', normal: '400', medium: '500', bold: '700' },
-	fw: { 300: 'l', 400: 'n', 700: 'b', bold: 'b', normal: 'n', light: 'l' },
-	fs: { italic: 'i', normal: 'n' },
-	f: { inherit: 'i' },
-	// lh: {},
-	// lts:{},
-	fxw: { wrap: 'w', nowrap: 'nw' }, // nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
-	fxd: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' },
 
 	bd: {
 		// current: 'cc',
