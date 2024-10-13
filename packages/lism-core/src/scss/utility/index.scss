@@ -17,7 +17,6 @@
 // @forward './radius';
 @forward './shadow';
 @forward './bg';
-@forward './mask';
 @forward './transform';
 @forward './positions';
 @forward './filter';
@@ -64,6 +63,9 @@
 	border-radius: calc(var(--bdrs, 0) - var(--p, 0) * 0.9);
 }
 
+// --------------------
+// float
+// --------------------
 .-fl\:l {
 	float: left;
 }

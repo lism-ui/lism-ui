@@ -13,17 +13,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 {/* [`is--container`](/ja/css/layout-state/#is--container) */}
 [`.is--layer`](/ja/css/layout-state/#is--layer)をデフォルトで出力するコンポーネント(`<Lism isLayer>`のエイリアス）です。
 
-`position:absolute`で要素を親要素サイズに合わせて配置できます。
 
-CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定された状態で配置されます。
-
-```css
-.is--layer {
-	position: absolute;
-	inset: 0;
-	overflow: hidden;
-}
-```
 
 <Reference>
 要素を単純に`position:absolute`で配置したいだけの場合は、`-pos:a`クラスなどを使用することもできます。
@@ -129,7 +119,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 		</Frame>
 		<Frame aspect='cinema'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
-			<Layer ml='auto' invert='1' grayscale='20%' w='50%' />
+			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>
 	</PreviewArea>
 	<PreviewCode>
@@ -145,7 +135,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 		</Frame>
 		<Frame aspect='cinema'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
-			<Layer ml='auto' invert='1' grayscale='20%' w='50%' />
+			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>
 		```
 	</PreviewCode>
@@ -172,7 +162,7 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isFrame" "isLayer"
+		```jsx "isLayer"
 		<Frame>
 			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			<Layer bgc='black' op='50' />

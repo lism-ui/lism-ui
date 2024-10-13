@@ -53,26 +53,26 @@
 		--grid-color: rgba(185, 185, 185, 0.0005); //hsl(var(--hs--bc) 50% / 12%);
 	}
 
-	&[_data-bg-grid='1'] {
-		--grid-bdc: var(--codeBlock--bgc); // gridの線
-		// --grid-bdc: color-mix(in srgb, var(--codeBlock--bgc), transparent 50%);
-		--grid-size: 24px;
+	// &[data-bg-grid='1'] {
+	// 	--grid-bdc: var(--codeBlock--bgc); // gridの線
+	// 	// --grid-bdc: color-mix(in srgb, var(--codeBlock--bgc), transparent 50%);
+	// 	--grid-size: 24px;
 
-		// --grid-bdc: color-mix(in srgb, currentColor, transparent 92%);
-		background-image: linear-gradient(
-				transparent calc(100% - 1px),
-				var(--grid-bdc) 50%,
-				var(--grid-bdc)
-			),
-			linear-gradient(
-				90deg,
-				transparent calc(100% - 1px),
-				var(--grid-bdc) 50%,
-				var(--grid-bdc)
-			);
-		background-position: calc(var(--grid-size) / 2);
-		background-size: var(--grid-size) var(--grid-size);
-	}
+	// 	// --grid-bdc: color-mix(in srgb, currentColor, transparent 92%);
+	// 	background-image: linear-gradient(
+	// 			transparent calc(100% - 1px),
+	// 			var(--grid-bdc) 50%,
+	// 			var(--grid-bdc)
+	// 		),
+	// 		linear-gradient(
+	// 			90deg,
+	// 			transparent calc(100% - 1px),
+	// 			var(--grid-bdc) 50%,
+	// 			var(--grid-bdc)
+	// 		);
+	// 	background-position: calc(var(--grid-size) / 2);
+	// 	background-size: var(--grid-size) var(--grid-size);
+	// }
 
 	&.is--resize {
 		min-width: min(100%, 320px);

@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Lism, Box, Grid } from "@lism-ui/astro";
+import { Lism, Text, Box, Grid } from "@lism-ui/astro";
 import { DammyText, Reference, MemoBadge, HelpText } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 
@@ -87,14 +87,17 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 |lh|line-height|`FONT.LH`|`FONT.LH`|-|
 |ff|font-family|`FONT.FF`|`FONT.FF`|-|
 |lts|letter-spacing|`FONT.LTS`|`FONT.LTS`|-|
-|ta|text-align|-|`center`(`c`),<br/>`left`(`l`),<br/>`right`(`r`)|-|
-|td|text-decoration|-|`underline`(`u`),<br/>`none`(`n`)|-|
+|ta|text-align|-|`center`(`c`)<br/>`left`(`l`)<br/>`right`(`r`)|-|
+|td|text-decoration|-|`none`(`n`)<br/>`underline`(`u`)|-|
 |whs|white-space|-|`nowrap`(`nw`)|-|
 |ovw|overflowWrap|-|`anywhere`(`any`)|-|
 
 {/* |font?|font|inherit?|-|-|
 |td?|text-decoration|-|-|-| */}
 
+{/* <Box fz='xl' lh='xl' lts='l' td='u'>
+	<Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+</Box> */}
 
 
 ## Width & Height
@@ -103,10 +106,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 |---|---|---|---|---|
 |w|width|`SIZE`|`100%`(`100`),<br/>`fit-content`(`fit`)|○|
 |h|height|`SIZE`|`100%`(`100`),<br/>`fit-content`(`fit`),<br/>`screen`|○|
-|maxW|max-width|`SIZE`|`100%`(`100`)|-|
-|maxH|max-height|`SIZE`|`100%`(`100`)|-|
-|minW|min-width|`SIZE`|`100%`(`100`)|-|
-|minH|min-height|`SIZE`|`100%`(`100`)|-|
+|maxW|max-width|`SIZE`|`100%`(`100`)|○|
+|maxH|max-height|`SIZE`|`100%`(`100`)|○|
+|minW|min-width|`SIZE`|`100%`(`100`)|○|
+|minH|min-height|`SIZE`|`100%`(`100`)|○|
 
 {/* max-widthは: s,m,l も? */}
 
@@ -125,16 +128,19 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Pr
 |pr|padding-right|`SPACE`|-|○|
 |pt|padding-top|`SPACE`|-|○|
 |pb|padding-bottom|`SPACE`|-|○|
-|m|margin|`SPACE`|`auto`|○|
+|m|margin|`SPACE`|`SPACE`,`auto`|○|
 |mx|margin-inline|`SPACE`|`auto`|○|
 |my|margin-block|`SPACE`|`auto`|○|
 |mis|margin-inline-start|`SPACE`|`auto`|○|
 |mbs|margin-block-start|`SPACE`|`SPACE`, `auto`|○|
-|ml|margin-left|`SPACE`|`auto`|○|
-|mr|margin-right|`SPACE`|`auto`|○|
-|mt|margin-top|`SPACE`|`auto`|○|
-|mb|margin-bottom|`SPACE`|`auto`|○|
+|ml|margin-left|`SPACE`|-|○|
+|mr|margin-right|`SPACE`|-|○|
+|mt|margin-top|`SPACE`|-|○|
+|mb|margin-bottom|`SPACE`|-|○|
 
+<Box p='40' m='40' pl='0'>
+	<Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+</Box>
 
 <Reference>
 [SPACE Tokens](/ja/css/tokens/)
@@ -185,24 +191,22 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |---|---|---|---|---|
 |d|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
 |v|visibility|-|`hidden`(`h`), `visible`(`v`)||
-|op|opacity|-|0,10,20,...,100|
-|`bxsh`|box-shadow|`SHADOW`|`SHADOW`||
-|`bdrs`|border-radius|`RADIUS`|`RADIUS`||
+|op|opacity|-|`0`,`10`,`20`,...,`100`||
 |ov|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovx|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |ovy|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 
-{/* `none`,`"block"`,`"flex"`,`"grid"`,`"inline"`,`"inline-block"`,`"inline-flex"`,`"inline-grid"` */}
 
-
-## Borders
+## Styling
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`bd`|`border`|-|`n`,`l`,`r`,`t`,`b`,`is`,`ie`,`bs`,`be`, `x`,`y`||
-|`bdc`|`border-color`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`t`,`i`,`cc`,`keycolor`|-|
-|`bdw`|`border-width`|-|-|-|
-|`bds`|`border-style`|-|-|-|
+|`bxsh`|`box-shadow`|`SHADOW`|`SHADOW`|-|
+|`bdrs`|`border-radius`|`RADIUS`|`RADIUS`|○|
+|`bd`|`border`|-|`n`(`none`),<br />`l`,`r`,`t`,`b`,<br />`is`,`ie`,`bs`,`be`,<br /> `x`,`y`|-|
+|`bdc`|`--bdc`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`i`,`keycolor`|-|
+|`bdw`|`--bdw`|-|-|○|
+|`bds`|`--bds`|-|-|-|
 {/* |`bdl`|`border-left`|-|-|-|
 |`bdr`|`border-right`|-|-|-|
 |`bdt`|`border-top`|-|-|-|
@@ -236,22 +240,123 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`pos`|`position`|-|`r`,`a`,`s`,`f`,`sticky`|-|
-|`inset`|`inset`|`SPACE`|`0`,`center`|-|
+|`pos`|`position`|-|`r`(`relative`),<br />`a`(`absolute`),<br />`s`(`static`),<br />`f`(`fixed`),<br />`sticky`|-|
+|`z`|`z-index`|-|`-1`, `0`, `1`, `2`|-|
+|`inset`|`inset`|`SPACE`|`0`|-|
 |`t`|`top`|`SPACE`|`0`,`50`,`100`|-|
 |`l`|`left`|`SPACE`|`0`,`50`,`100`|-|
 |`r`|`right`|`SPACE`|`0`,`50`,`100`|-|
 |`b`|`bottom`|`SPACE`|`0`,`50`,`100`|-|
-|`z`|`z-index`|-|`-1`, `0`, `1`|-|
+|`insets.is`|`inset-inline-start`|`SPACE`|`0`|-|
+|`insets.ie`|`inset-inline-end`|`SPACE`|`0`|-|
+|`insets.bs`|`inset-block-start`|`SPACE`|-|-|
+|`insets.be`|`inset-block-end`|`SPACE`|-|-|
 
-さらに、以下のものは `insets` オブジェクト内で指定することができます。
 
-|Prop|CSS|Token|To Class|BP|
-|---|---|---|---|---|
-|`is`|`inset-inline-start`|`SPACE`|`0`|-|
-|`ie`|`inset-inline-end`|`SPACE`|`0`|-|
-|`bs`|`inset-block-start`|`SPACE`|-|-|
-|`be`|`inset-block-end`|`SPACE`|-|-|
+`position:absolute`で要素を配置する例をいくつか紹介します。
+
+
+{/* <Callout type='warning' fz='s'>
+※ `inset`,`top` `right` `bottom` `left` は、数値指定するとスペーストークンとして認識されます。  
+ただし、値が`0%`,`100%`のユーティリティクラス（`.-t:0`,`.-b:100`など）を出力させたい場合、 `t={0}` ではなく `t='0'` と文字列で指定する必要があります。
+</Callout> */}
+
+<Preview>
+	<PreviewTitle>
+		`pos='a'`でabsolute配置する
+	</PreviewTitle>
+	<PreviewArea p='20'>
+		<Box pos='r' p='40' bgc='base-2'>
+			<Text fz='4xl' fw='bold' op='20' ta='c' lts='l'>BG</Text>
+			<Box pos='a' t='0' l='2em' px='20' bd>
+				<p>Absolute Content</p>
+			</Box>
+			<Box pos='a' insets={{ie:0, be:0}} px='20' bd>
+				<p>Absolute Content</p>
+			</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "pos='a'" "t=" "l=" "insets="
+		<Box pos='r' p='40' bgc='base-2'>
+			<Text fz='4xl' fw='bold' op='20' ta='c' lts='l'>BG</Text>
+			<Box pos='a' t='0' l='2em' px='20' bd>
+				<p>Absolute Content</p>
+			</Box>
+			<Box pos='a' insets={{ie:0, be:0}} px='20' bd>
+				<p>Absolute Content</p>
+			</Box>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-inset:0"
+		<div class="l--box -pos:r -p:40 -bgc:base-2">
+			<p class="-fz:4xl -fw:b -op:20 -ta:c -lts:l">  BG  </p>
+			<div class="l--box -pos:a -t:0 -px:20 -bd:" style="left:2em">
+				<p>Absolute Content</p>
+			</div>
+			<div class="l--box -pos:a -px:20 -bd:" style="inset-inline-end:0;inset-block-end:0">
+				<p>Absolute Content</p>
+			</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>
+		配置の指定例
+	</PreviewTitle>
+	<PreviewArea resize p='5'>
+		<Box pos='r' aspect='3/2' lh='1' ff='mono'>
+			<Box pos='a' l='0' t='0' bd p='20'>A</Box>
+			<Box pos='a' l='50' t='0' css={{translate:'-50X'}} bd p='20'>B</Box>
+			<Box pos='a' r='0' t='0' bd p='20'>C</Box>
+			<Box pos='a' l='0' t='50' css={{translate:'-50Y'}} bd p='20'>D</Box>
+			<Box pos='a' l='50' t='50' css={{translate:'-50XY'}} bd p='20'>E</Box>
+			<Box pos='a' r='0' t='50' css={{translate:'-50Y'}} bd p='20'>F</Box>
+			<Box pos='a' l='0' b='0' bd p='20'>G</Box>
+			<Box pos='a' l='50' b='0' css={{translate:'-50X'}} bd p='20'>H</Box>
+			<Box pos='a' r='0' b='0' bd p='20'>I</Box>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Box pos='r' aspect='3/2' lh='1' ff='mono'>
+			<Box pos='a' l='0' t='0' bd p='20'>A</Box>
+			<Box pos='a' l='50' t='0' css={{translate:'-50X'}} bd p='20'>B</Box>
+			<Box pos='a' r='0' t='0' bd p='20'>C</Box>
+			<Box pos='a' l='0' t='50' css={{translate:'-50Y'}} bd p='20'>D</Box>
+			<Box pos='a' l='50' t='50' css={{translate:'-50XY'}} bd p='20'>E</Box>
+			<Box pos='a' r='0' t='50' css={{translate:'-50Y'}} bd p='20'>F</Box>
+			<Box pos='a' l='0' b='0' bd p='20'>G</Box>
+			<Box pos='a' l='50' b='0' css={{translate:'-50X'}} bd p='20'>H</Box>
+			<Box pos='a' r='0' b='0' bd p='20'>I</Box>
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--box -pos:r -aspect:3/2 -lh:1 -ff:mono">
+			<div class="l--box -pos:a -l:0 -t:0 -bd: -p:20">A</div>
+			<div class="l--box -pos:a -l:50 -t:0 -trslt:-50X -bd: -p:20">B</div>
+			<div class="l--box -pos:a -r:0 -t:0 -bd: -p:20">C</div>
+			<div class="l--box -pos:a -l:0 -t:50 -trslt:-50Y -bd: -p:20">D</div>
+			<div class="l--box -pos:a -l:50 -t:50 -trslt:-50XY -bd: -p:20">E</div>
+			<div class="l--box -pos:a -r:0 -t:50 -trslt:-50Y -bd: -p:20">F</div>
+			<div class="l--box -pos:a -l:0 -b:0 -bd: -p:20">G</div>
+			<div class="l--box -pos:a -l:50 -b:0 -trslt:-50X -bd: -p:20">H</div>
+			<div class="l--box -pos:a -r:0 -b:0 -bd: -p:20">I</div>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
 
 
 ## Places
@@ -282,56 +387,26 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェクト、もしくは専用のコンポーネントのみで指定できるようになっています。
 
 
-### gap
-
-以下のものは `grid`, `flex` オブジェクト内で指定することができます。
-
-|Prop|CSS|Token|To Class|BP|
-|---|---|---|---|---|
-|`g`|`gap`|`SPACE`|`SPACE`|○|
-|`rowg`|`row-gap`|`SPACE`|-|○|
-|`colg`|`column-gap`|`SPACE`|-|○|
-
-
-{/* <Preview>
-	<PreviewTitle>Examples</PreviewTitle>
-	<PreviewCode>
-	```jsx
-	<Flex g={40}>...</Flex>
-	<Grid g="1rem">...</Grid>
-	<Columns rowg={[15, 20]} colg={[20, 30]}>...</Columns>
-	```
-	</PreviewCode>
-</Preview> */}
-
-{/* <Preview>
-	<PreviewTitle>各方向の値をgapに対してオブジェクトで指定することも可能？</PreviewTitle>
-	<PreviewCode>
-	```jsx
-	<Columns g={{row:20, column:30}}>...</Columns>
-	```
-	</PreviewCode>
-</Preview> */}
-
-
 
 ### grid
 
 以下のものは `grid` オブジェクト内で指定することができます。
 
-|Prop|CSS|To Class|BP|
-|---|---|---|---|
-|`gd`|`grid`|-|○|
-|`gt`|`grid-template`||-|
-|`gta`|`grid-template-areas`|-|○|
-|`gtc`|`grid-template-columns`|`a1a`|○|
-|`gtr`|`grid-template-rows`|`a1a`|○|
-|`gaf`|`grid-auto-flow`|-|-|
-|`gar`|`grid-auto-rows`|-|-|
-|`gac`|`grid-auto-columns`|-|-|
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`gd`|`grid`|-|-|○|
+|`gta`|`grid-template-areas`|-|-|○|
+|`gtc`|`grid-template-columns`|-|-|○|
+|`gtr`|`grid-template-rows`|-|-|○|
+|`gaf`|`grid-auto-flow`|-|-|-|
+|`gar`|`grid-auto-rows`|-|-|-|
+|`gac`|`grid-auto-columns`|-|-|-|
+|`g`|`gap`|`SPACE`|`SPACE`|○|
+|`rowg`|`row-gap`|`SPACE`|-|○|
+|`colg`|`column-gap`|`SPACE`|-|○|
 
-{/* autoFlow, autoRows, autoCols */}
-{/* area → fix: 'fix', left: 'l', right: 'r', center: 'c', top: 't', bottom: 'b' */}
+{/* |`gt`|`grid-template`||-| */}
+
 
 {/* - `-gt:side:l`, `-gt:side:r` クラスは、（追加CSSファイルを読み込むと）`[dir='rtl']`時に方向が反転するようになっており、ltr言語でもrtl言語でも方向が一致するようになっています。 */}
 
@@ -354,17 +429,22 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 </Grid> */}
 
 
+<Reference>
+詳しくは[`<Grid>`](/ja/components/grid/)をご覧ください。
+</Reference>
+
+
 ### gridItem
 
 以下のものは `gridItem` オブジェクト内で指定することができます。
 
 |Prop|CSS|To Class|BP|
 |---|---|---|---|
+|`gc`|`grid-column`|-|○|
+|`gr`|`grid-row`|-|○|
 |`ga`|`grid-area`|-|-|
-|`gc`|`grid-column`||○|
-|`gr`|`grid-row`||○|
-|`gcs`|`grid-column-start`||-|
-|`grs`|`grid-row-start`||-|
+|`gcs`|`grid-column-start`|-|-|
+|`grs`|`grid-row-start`|-|-|
 |`gce`|`grid-column-end`|-|-|
 |`gre`|`grid-row-end`|-|-|
 
@@ -388,11 +468,13 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 
 以下のものは `flex` オブジェクト内で指定することができます。
 
-|Prop|CSS|To Class|BP|
-|---|---|---|---|
-|`fxw`|`flex-wrap`|`w`, `nw`|○|
-|`fxd`|`flex-direction`|`c`, `cr`, `r`, `rr`|○|
-
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`fxw`|`flex-wrap`|-|`wrap`(`w`),<br /> `nowrap`(`nw`)|○|
+|`fxd`|`flex-direction`|-|`column`(`c`),<br /> `column-reverse`(`cr`),<br /> `row`(`r`),<br /> `row-reverse`(`rr`)|○|
+|`g`|`gap`|`SPACE`|`SPACE`|○|
+|`rowg`|`row-gap`|`SPACE`|-|○|
+|`colg`|`column-gap`|`SPACE`|-|○|
 
 ### flexItem
 

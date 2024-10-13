@@ -11,6 +11,8 @@ const { resize, nogrid = false, isFlow = true, p = '5', ...props } = Astro.props
 
 const lismState = [];
 if (resize) lismState.push('is--resize');
+
+// data-bg-grid={nogrid ? '0' : '1'}
 ---
 
 <Lism className='c--preview_area'>
@@ -20,7 +22,6 @@ if (resize) lismState.push('is--resize');
 		isFlow={isFlow}
 		p={p}
 		bxsh='-1'
-		data-bg-grid={nogrid ? '0' : '1'}
 		{...props}
 	>
 		<slot />

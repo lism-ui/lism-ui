@@ -1,8 +1,5 @@
 /* stylelint-disable */
 
-.-td\:n{text-decoration: none;}
-.-td\:u{text-decoration: underline;}
-
 .-lis\:n{list-style: none;}
 
 .-bxz\:cb{box-sizing: content-box;}
@@ -14,28 +11,6 @@
 // .-filter\:lighter{
 // 	filter: brightness(1.05);
 // }
-
-// overflow
-// .-ov\:v{overflow: visible;} // 初期値不要
-.-ov\:h{overflow: hidden;}
-.-ov\:a{overflow: auto;}
-.-ov\:c{overflow: clip;}
-.-ov\:s{overflow: scroll;}
-
-.-ovx\:a{overflow-x: auto;}
-.-ovx\:c{overflow-x: clip;}
-.-ovx\:h{overflow-x: hidden;}
-.-ovx\:s{overflow-x: scroll;}
-
-.-ovy\:a{overflow-y: auto;}
-.-ovy\:c{overflow-y: clip;}
-.-ovy\:h{overflow-y: hidden;}
-.-ovy\:s{overflow-y: scroll;}
-
-
-
-.-v\:h{visibility: hidden;}
-.-v\:v{visibility: visible;}
 
 
 

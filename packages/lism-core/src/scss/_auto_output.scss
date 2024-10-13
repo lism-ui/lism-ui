@@ -6,7 +6,7 @@
 @use './setting' as setting;
 
 @function get_important($is_important) {
-	@if $is_important {
+	@if $is_important == 1 {
 		@return ' !important';
 	}
 	@return '';

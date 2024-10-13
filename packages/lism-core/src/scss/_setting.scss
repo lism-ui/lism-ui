@@ -83,51 +83,11 @@ $utilities: (
 	'p-side': (
 		'0': '0',
 	),
-
-	'lh': (
-		'1': '1',
-		'root': 'var(--lh--root)',
-		'xs': 'var(--lh--xs)',
-		's': 'var(--lh--s)',
-		'l': 'var(--lh--l)',
-		'xl': 'var(--lh--xl)',
-	),
-	'lts': (
-		'root': 'var(--lts--root)',
-		's': 'var(--lts--s)',
-		'l': 'var(--lts--l)',
-		'xl': 'var(--lts--xl)',
-	),
-	'ta': (
-		'l': 'left',
-		'r': 'right',
-		'c': 'center',
-	),
-	// 'tsh': (
-	// 	'black': 'var(--tsh--black)',
-	// 	'white': 'var(--tsh--white)',
-	// 	'n': 'none',
-	// ),
-	'bg':
-		(
-			'n': 'none',
-		),
-	'bds': (
-		// 's': solid,
-		// 'dt': dotted,
-		// 'ds': dashed,
-		// 'db': double,
-	),
-
-	'bdrs': (
-		'0': '0;',
-		// '1': '1px;',
-		'xs': 'var(--radii--xs)',
-		's': 'var(--radii--s)',
-		'm': 'var(--radii--m)',
-		'l': 'var(--radii--l)',
-		'xl': 'var(--radii--xl)',
-		'full': 'var(--radii--full)',
+	'ov': (
+		'h': 'hidden',
+		'a': 'auto',
+		'c': 'clip',
+		's': 'scroll',
 	),
 	'size': (
 		'fit': 'fit-content',
@@ -142,11 +102,6 @@ $utilities: (
 		'100': '100%',
 	),
 
-	'gd': (
-		// 'cols:a1a': 'none / auto 1fr auto',
-		// 'side\\:s,side\\:l': "'side .' / auto 1fr",
-		// 'side\\:e,side\\:r': "'. side' / 1fr auto",
-	),
 	'gtc': (
 		'a1a': 'auto 1fr auto',
 	),
@@ -179,39 +134,6 @@ $utilities: (
 	// 'gce': (
 	// 	'-1': '-1',
 	// ),
-	'ord':
-		(
-			'2': 2,
-			'1': 1,
-			'0': 0,
-			'-1': -1,
-		),
-	'fxw': (
-		'w': 'wrap',
-		'nw': 'nowrap',
-	),
-	'fxd': (
-		'c': 'column',
-		'cr': 'column-reverse',
-		'r': 'row',
-		'rr': 'row-reverse',
-	),
-	'fx': (
-		'1': '1',
-	),
-	'fxsh': (
-		'0': '0',
-	),
-	'fxg': (
-		'1': '1',
-	),
-
-	// 'pslf': $place_self,
-	// 'cols': (
-	// 	'1': '1',
-	// 	'2': '2',
-	// 	'3': '3',
-	// ),
 );
 
 $props: map.deep-merge(
@@ -219,7 +141,7 @@ $props: map.deep-merge(
 		'w': (
 			prop: 'width',
 			base_type: 1,
-			// important: 0,
+
 			utilities: 'size',
 			bp: 1,
 		),
@@ -239,29 +161,32 @@ $props: map.deep-merge(
 		),
 		'maxW': (
 			prop: 'max-width',
-			base_type: 0,
+			base_type: 1,
 			utilities: 'max',
+			bp: 1,
 		),
 		'minW': (
 			prop: 'min-width',
-			base_type: 0,
+			base_type: 1,
 			utilities: 'min',
+			bp: 1,
 		),
 		'maxH': (
 			prop: 'max-height',
-			base_type: 0,
+			base_type: 1,
 			utilities: 'max',
+			bp: 1,
 		),
 		'minH': (
 			prop: 'min-height',
-			base_type: 0,
+			base_type: 1,
 			utilities: 'min',
+			bp: 1,
 		),
 		'c': (
 			prop: 'color',
 			// 主要カラーは変数をhoverやcolor-mixで活用するので、変数管理
 			base_type: 2,
-			important: 0,
 			utilities: (
 				'main': 'var(--c--main)',
 				'accent': 'var(--c--accent)',
@@ -283,7 +208,6 @@ $props: map.deep-merge(
 			prop: 'background-color',
 			// 主要カラーは変数をhoverやcolor-mixで活用するので、変数管理
 			base_type: 2,
-			important: 0,
 			// base_type: 2 で inherit すると 変数の引き継ぎになr
 			utilities:
 				(
@@ -392,19 +316,45 @@ $props: map.deep-merge(
 			prop: 'line-height',
 			//　BP対応増やしやすいように 1 でもいいかも?
 			base_type: 0,
+			utilities: (
+				'root': 'var(--lh--root)',
+				'xs': 'var(--lh--xs)',
+				's': 'var(--lh--s)',
+				'l': 'var(--lh--l)',
+				'xl': 'var(--lh--xl)',
+				'1': '1',
+			),
 		),
 		'lts': (
 			prop: 'letter-spacing',
 			base_type: 0,
+			utilities: (
+				'root': 'var(--lts--root)',
+				's': 'var(--lts--s)',
+				'l': 'var(--lts--l)',
+				'xl': 'var(--lts--xl)',
+			),
 		),
 		'ta': (
 			prop: 'text-align',
 			base_type: 0,
+			utilities: (
+				'l': 'left',
+				'r': 'right',
+				'c': 'center',
+			),
+		),
+		'td': (
+			prop: 'text-decoration',
+			base_type: 0,
+			utilities: (
+				'n': 'none',
+				'u': 'underline',
+			),
 		),
 		'd': (
 			prop: 'display',
 			base_type: 1,
-			important: 0,
 			bp: 1,
 			utilities: (
 				'n': 'none',
@@ -416,6 +366,29 @@ $props: map.deep-merge(
 				'ig': 'inline-grid',
 				'ib': 'inline-block',
 			),
+		),
+		'v': (
+			prop: 'visibility',
+			base_type: 0,
+			utilities: (
+				'h': 'hidden',
+				'v': 'visible',
+			),
+		),
+		'ov': (
+			prop: 'overflow',
+			base_type: 0,
+			utilities: 'ov',
+		),
+		'ovx': (
+			prop: 'overflow-x',
+			base_type: 0,
+			utilities: 'ov',
+		),
+		'ovy': (
+			prop: 'overflow-y',
+			base_type: 0,
+			utilities: 'ov',
 		),
 		'aspect': (
 			prop: 'aspect-ratio',
@@ -454,40 +427,142 @@ $props: map.deep-merge(
 		'bg': (
 			prop: 'background',
 			base_type: 0,
+			utilities: (
+				'n': 'none',
+			),
 		),
 		'bdrs': (
 			prop: 'border-radius',
 			base_type: 2,
 			// inner などで変数使う
 			bp: 1,
-		),
-		// 'bdssrs': (
-		// 	prop: 'border-start-start-radius',
-		// 	base_type: 0,
-		// 	utilities: '0',
-		// ),
-		// 'bdsers': (
-		// 	prop: 'border-start-end-radius',
-		// 	base_type: 0,
-		// 	utilities: '0',
-		// ),
-		// 'bdeers': (
-		// 	prop: 'border-end-end-radius',
-		// 	base_type: 0,
-		// 	utilities: '0',
-		// ),
-		// 'bdesrs': (
-		// 	prop: 'border-end-start-radius',
-		// 	base_type: 0,
-		// 	utilities: '0',
-		// ),
-		'g':
-			(
-				prop: 'gap',
-				base_type: 2,
-				utilities: s,
-				bp: 1,
+			utilities: (
+				'0': '0;',
+				'xs': 'var(--radii--xs)',
+				's': 'var(--radii--s)',
+				'm': 'var(--radii--m)',
+				'l': 'var(--radii--l)',
+				'xl': 'var(--radii--xl)',
+				'full': 'var(--radii--full)',
 			),
+		),
+		'p': (
+			prop: 'padding',
+			base_type: 2,
+			bp: 1,
+			utilities: 's' 'p',
+		),
+		'px': (
+			prop: 'padding-inline',
+			base_type: 2,
+			bp: 1,
+			utilities: 's',
+		),
+		'py': (
+			prop: 'padding-block',
+			base_type: 2,
+			bp: 1,
+			utilities: 's',
+		),
+		'pt': (
+			prop: 'padding-top',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'p-side',
+		),
+		'pr': (
+			prop: 'padding-right',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'p-side',
+		),
+		'pb': (
+			prop: 'padding-bottom',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'p-side',
+		),
+		'pl': (
+			prop: 'padding-left',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'p-side',
+		),
+		'pis': (
+			prop: 'padding-inline-start',
+			base_type: 2,
+			bp: 1,
+			utilities: 's',
+		),
+		'pbs': (
+			prop: 'padding-block-start',
+			base_type: 1,
+			bp: 1,
+			// utilities: (
+			// 	'0': '0',
+			// ),
+		),
+		'm': (
+			prop: 'margin',
+			base_type: 1,
+			bp: 1,
+			utilities: 'm' 's',
+		),
+		'mx': (
+			prop: 'margin-inline',
+			base_type: 1,
+			bp: 1,
+			utilities: 'm',
+		),
+		'my': (
+			prop: 'margin-block',
+			base_type: 1,
+			bp: 1,
+			utilities: 'm',
+		),
+		'mt': (
+			prop: 'margin-top',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'm',
+		),
+		'mr': (
+			prop: 'margin-right',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'm',
+		),
+		'mb': (
+			prop: 'margin-bottom',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'm',
+		),
+		'ml': (
+			prop: 'margin-left',
+			base_type: 1,
+			bp: 1,
+			// utilities: 'm',
+		),
+		'mis': (
+			prop: 'margin-inline-start',
+			base_type: 1,
+			bp: 1,
+			utilities: 'm',
+		),
+		'mbs': (
+			prop: 'margin-block-start',
+			base_type: 2,
+			bp: 1,
+			utilities: 'm' 's',
+		),
+
+		'g': (
+			prop: 'gap',
+			base_type: 2,
+			utilities: 's',
+			bp: 1,
+		),
 		'colg': (
 			prop: 'column-gap',
 			base_type: 1,
@@ -498,155 +573,68 @@ $props: map.deep-merge(
 			base_type: 1,
 			bp: 1,
 		),
-		'm': (
-			prop: 'margin',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm' 's',
-			// utilities: s m,
+		'z': (
+			prop: 'z-index',
+			base_type: 0,
+			utilities: (
+				'2': 2,
+				'1': 1,
+				'0': 0,
+				'-1': -1,
+			),
 		),
-		'mx': (
-			prop: 'margin-inline',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
+		'ord': (
+			prop: 'order',
+			base_type: 0,
+			utilities: (
+				// '2': 2,
+				'1': 1,
+				'0': 0,
+				'-1': -1,
+			),
 		),
-		'my': (
-			prop: 'margin-block',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'mt': (
-			prop: 'margin-top',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'mr': (
-			prop: 'margin-right',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'mb': (
-			prop: 'margin-bottom',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'ml': (
-			prop: 'margin-left',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'mis': (
-			prop: 'margin-inline-start',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			utilities: 'm',
-		),
-		'mbs': (
-			prop: 'margin-block-start',
-			base_type: 2,
-			important: 0,
-			bp: 1,
-			utilities: 'm' 's',
-		),
-		'p': (
-			prop: 'padding',
-			base_type: 2,
-			important: 0,
-			bp: 1,
-			utilities: 's' 'p',
-		),
-		'px': (
-			prop: 'padding-inline',
-			base_type: 2,
-			important: 0,
-			bp: 1,
-			utilities: 's',
-		),
-		'py': (
-			prop: 'padding-block',
-			base_type: 2,
-			important: 0,
-			bp: 1,
-			utilities: 's',
-		),
-		'pt': (
-			prop: 'padding-top',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			// utilities: 'p-side',
-		),
-		'pr': (
-			prop: 'padding-right',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			// utilities: 'p-side',
-		),
-		'pb': (
-			prop: 'padding-bottom',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			// utilities: 'p-side',
-		),
-		'pl': (
-			prop: 'padding-left',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			// utilities: 'p-side',
-		),
-		'pis': (
-			prop: 'padding-inline-start',
-			base_type: 2,
-			important: 0,
-			bp: 1,
-			utilities: 's',
-		),
-		'pbs': (
-			prop: 'padding-block-start',
-			base_type: 1,
-			important: 0,
-			bp: 1,
-			// utilities: 'p-side',
-		),
+
 		'fxw': (
 			prop: 'flex-wrap',
 			base_type: 1,
 			bp: 1,
+			utilities: (
+				'w': 'wrap',
+				'nw': 'nowrap',
+			),
 		),
 		'fxd': (
 			prop: 'flex-direction',
-			base_type: 0,
+			base_type: 1,
 			bp: 1,
+			utilities: (
+				'c': 'column',
+				'cr': 'column-reverse',
+				'r': 'row',
+				'rr': 'row-reverse',
+			),
 		),
 		'fx': (
 			prop: 'flex',
 			base_type: 1,
 			bp: 1,
+			utilities: (
+				'1': '1',
+			),
 		),
 		'fxsh': (
 			prop: 'flex-shrink',
-			base_type: 1,
+			base_type: 0,
+			utilities: (
+				'0': '0',
+			),
 		),
 		'fxg': (
 			prop: 'flex-grow',
-			base_type: 1,
+			base_type: 0,
+			utilities: (
+				'1': '1',
+			),
 		),
 		'fxb': (
 			prop: 'flex-basis',
@@ -658,17 +646,11 @@ $props: map.deep-merge(
 			base_type: 1,
 			bp: 1,
 		),
-		// 'gt': (
-		// 	prop: 'grid-template',
-		// 	base_type: 0,
-		// 	bp: 0,
-		// ),
-		'gta':
-			(
-				prop: 'grid-template-areas',
-				base_type: 1,
-				bp: 1,
-			),
+		'gta': (
+			prop: 'grid-template-areas',
+			base_type: 1,
+			bp: 1,
+		),
 		'gtc': (
 			prop: 'grid-template-columns',
 			base_type: 1,
@@ -709,17 +691,13 @@ $props: map.deep-merge(
 		// 	prop: 'grid-column-end',
 		// 	base_type: 0,
 		// ),
-		'ord':
+		'ai':
 			(
-				prop: 'order',
-				base_type: 0,
+				prop: 'align-items',
+				base_type: 1,
+				bp: 1,
+				utilities: $place_items,
 			),
-		'ai': (
-			prop: 'align-items',
-			base_type: 1,
-			bp: 1,
-			utilities: $place_items,
-		),
 		'ac': (
 			prop: 'align-content',
 			base_type: 1,
@@ -750,12 +728,12 @@ $props: map.deep-merge(
 		),
 		'cols': (
 			prop: '--cols',
-			base_type: 0,
+			base_type: 1,
 			bp: 1,
 		),
 		'rows': (
 			prop: '--rows',
-			base_type: 0,
+			base_type: 1,
 			bp: 1,
 		),
 	),

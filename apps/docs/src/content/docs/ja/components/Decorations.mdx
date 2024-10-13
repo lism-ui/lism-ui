@@ -42,9 +42,10 @@ import { DecoBox } from '@lism-ui/core';
 	<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 </Box> */}
 
+{/* mr:auto は rtlになっても同じ方向からでるように。 */}
 <Preview>
 	<PreviewTitle>Call</PreviewTitle>
-	<PreviewArea resize p='30'>
+	<PreviewArea resize p='30' dir='rtr'>
 		<Grid className='b--callBox b--callBox--left' ta='l'>
 			<Decorator
 				size='1.25em'

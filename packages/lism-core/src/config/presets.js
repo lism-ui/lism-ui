@@ -75,7 +75,6 @@ export default {
 	//bds: dashed, solid, double, dotted,
 
 	bg: [],
-	z: ['-1', '0', '1'],
 	// inset: ['c', 'cX', 'cY'], // inset は 0% だけ
 	aspect: ['16/9', '4/3', '3/2', '2/1', '1/1', 'golden', 'silver', 'bronze', 'ogp', 'cinema'], //'2/1',
 

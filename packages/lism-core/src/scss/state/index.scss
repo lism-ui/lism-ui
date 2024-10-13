@@ -8,6 +8,16 @@
 @forward './frame';
 @forward './is-colored';
 
+// Note: dialog に影響する
+:where(.is--reset, .reset--style) {
+	color: inherit;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+}
+
 // .is--square ?
 // .has--size {
 // 	width: var(--size);
@@ -15,7 +25,7 @@
 // }
 
 .has--mask {
-	mask: var(--mask-img) no-repeat 50% 50% / contain;
+	mask: var(--mask-img) no-repeat 50% / contain;
 }
 
 .is--trimHL {
@@ -25,27 +35,4 @@
 	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
 		margin-block-end: calc(var(--herfLeading) * -1);
 	}
-	// > img {
-	// 	--herfLeading: 0px;
-	// }
 }
-
-// Note: dialog に影響する
-:where(.is--reset) {
-	color: inherit;
-	background: none;
-	border: none;
-	padding: 0;
-	margin: 0;
-	max-width: unset;
-	max-height: unset;
-	font: inherit;
-}
-
-// .has--itemMinW {
-// 	--item-minW: 5rem;
-
-// 	> * {
-// 		min-width: var(--item-minW);
-// 	}
-// }

@@ -71,7 +71,6 @@
 	--flowGap--h: 2.5em;
 
 	// コンテンツの左右の余白
-	// --gutter: 2rem;
 	--gutter: var(--s--40);
 
 	/* ------------------------------------------------------------
@@ -338,7 +337,7 @@
 }
 
 :root,
-.is--resetShVar {
+.reset--sh {
 	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));
 	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
 	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);

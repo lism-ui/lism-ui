@@ -6,10 +6,10 @@ sidebar:
 ---
 
 
-import { DammyText, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
+import { DammyText, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Columns, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
 
 import { Desktop } from '@phosphor-icons/react';
-import { MemoBadge,HelpText } from '~/components';
+import { MemoBadge,HelpText,Reference } from '~/components';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
 import PreviewFrame from '~/components/PreviewFrame.astro';
 import { Note } from '~/components/ex/Note';
@@ -257,46 +257,6 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 </Preview> */}
 
 
-## `has--gutter`
-
-コンテンツの左右に余白をつけることができるクラスです。  
-サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
-
-| クラス名 | 余白量 |初期値 |
-|---|---|---|
-| `has--gutter` | `--gutter` | `--gutter--s` |
-
-<Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='20'>
-		<Lism hasGutter>
-			<p>Lorem ipsum content...</p>
-			<p>Lorem ipsum content...</p>
-			<p>Lorem ipsum content...</p>
-		</Lism>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-	```html
-	<div class="has--gutter">
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-	</div>
-	```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-	```jsx
-	<Lism hasGutter>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-	</Lism>
-	```
-	</PreviewCode>
-</Preview>
-
-
-
 ## `is--container`
 
 `is--container`はコンテナ要素を定義するためのクラスです。  
@@ -404,21 +364,91 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 <PreviewFrame url='/demo/content-size' />
 
 
+## `has--gutter`
+
+コンテンツの左右に余白をつけることができるクラスです。  
+サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
+
+| クラス名 | 余白量 |初期値 |
+|---|---|---|
+| `has--gutter` | `--gutter` | `--s--40` |
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Lism hasGutter>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="has--gutter">
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</div>
+	```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism hasGutter>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</Lism>
+	```
+	</PreviewCode>
+</Preview>
+
+
 ## `is--frame`
 
 高さやアスペクトを固定して、内部のコンテンツをはみ出さないようにするためのクラスです。
 直下のメディア要素（`img`,`vieo`,`iframe`）を `object-fit:cover` でサイズいっぱいに表示することもできます。
 
-活用例は [Frame](/ja/components/frame) を参照してください。
+<Reference>
+活用例は [`<Frame>`](/ja/components/frame) を参照してください。
+</Reference>
+
+
+## `is--layer`
+
+`position:absolute`で要素を親要素サイズに合わせて配置できます。
+
+CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定された状態で配置されます。
+
+```css
+.is--layer {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+```
+
+<Reference>
+活用例は [`<Layer>`](/ja/components/layer) を参照してください。
+</Reference>
 
 
 ## `is--linkBox`
 
 ボックス全体をリンク化するためのクラスです。
 
-活用例は [LinkBox](/ja/components/linkbox) を参照してください。
+<Reference>
+活用例は [`<LinkBox>`](/ja/components/linkbox) を参照してください。
+</Reference>
 
 
+
+### `is--hiddenLink`, `is--overlayLink`
+
+`is--linkBox`と併用して、内部のリンクをボックス全体に広げるために使用します。
+
+<Reference>
+活用例は [`<LinkBox>`](/ja/components/linkbox) を参照してください。
+</Reference>
 
 ## `is--colored`
 
@@ -450,6 +480,67 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 </Preview>
 
 
+## `is--trimHL`
+
+テキストのハーフレディング分の余白を調整するためのクラスです。
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Lism isTrimHL bd p='30'>
+			<DammyText />
+		</Lism>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+		```html
+		<div class="is--trimHL -bd: -p:30">
+			<p>...</p>
+		</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label='JSX'>
+		```jsx
+		<Lism isTrimHL bd p='30'>
+			<DammyText />
+		</Lism>
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label='CSS'>
+```scss
+.is--trimHL {
+	> :where(p, h1, h2, h3, h4, h5, h6):first-child {
+		margin-block-start: calc(var(--herfLeading) * -1);
+	}
+	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
+		margin-block-end: calc(var(--herfLeading) * -1);
+	}
+}
+```
+	</PreviewCode>
+</Preview>
+
+
+
+## `is--hidden`
+
+要素を視覚的に隠すことができるクラスです。
+
+スクリーンリーダー用のテキストなどに利用してください。
+
+
+## `has--mask`
+
+{/* is--masked ? */}
+
+`--mask-img`変数と組み合わせて、自身にmaskを適用します。
+
+
+```css
+.has--mask{
+	mask: var(--mask-img) no-repeat 50% / contain;
+}
+```
 
 
 ## `has--divider`
@@ -559,11 +650,87 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 </Preview>
 
 
-## `is--hidden`
 
-要素を視覚的に隠すことができるクラスです。
+## `.reset--sh`
 
-スクリーンリーダー用のテキストなどに利用してください。
+`.reset--sh` クラスを指定した要素で、シャドウを構成する各CSS変数が再定義されます。  
+
+変数を上書きすることでシャドウの色味などを調整することが可能です。 
+
+<Preview>
+	<PreviewTitle>シャドウの上書き例</PreviewTitle>
+	<PreviewArea p='40' nogrid>
+		<Stack gap='20'>
+			<Text> Default </Text>
+			<Flex className='reset--sh -g:40'>
+				<Box bxsh='2' p='40' bdrs='m'>Box</Box>
+				<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+			</Flex>
+			<Spacer h='40' />
+			<Text> Custom </Text>
+			<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+				<Box bxsh='2' p='40' bdrs='m'>Box</Box>
+				<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+			</Flex>
+		</Stack>
+	</PreviewArea>
+		<PreviewCode slot='tab' label='HTML'>
+		```html "reset--sh"
+		<div class="reset--sh l--flex -g:40" style="--sh-hsl:200 50% 50%;--sh-a:20%">
+			<div class="l--box -bxsh:1 -p:40 -bdrs:m">Box</div>
+			<div class="l--box -bxsh:4 -p:40 -bdrs:m">Box</div>
+		</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "reset--sh"
+		<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+			<Box bxsh='2' p='40' bdrs='m'>Box</Box>
+			<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
+
+## `.reset--style`
+
+基本的なスタイルがリセットされます。
+`buttun`要素などをスタイリングする際に便利です。
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='40' nogrid>
+		<div>
+			default: <button>Button</button>
+		</div>
+		<div>
+			reset: <button className='reset--style'>Button</button>
+		</div>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "reset--sh"
+		<div>
+			reset: <button className='reset--style'>Button</button>
+		</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='CSS'>
+```css
+:where(.reset--style) {
+	color: inherit;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+}
+```
+	</PreviewCode>
+</Preview>
+
+<Spacer h='1rem' />
+---
 
 
 ## 補足

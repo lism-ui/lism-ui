@@ -19,7 +19,6 @@ export default {
 	bdc: { none: 't', transparent: 't', inherit: 'i' },
 	bg: { none: 'n' },
 	bgcp: { text: 'tx' },
-	margin: { auto: 'a', '0px': '0' },
 	place: places,
 	placeItems: { ...places, stretch: 'str' },
 	placeContent: { ...places, 'space-between': 'sb' },
