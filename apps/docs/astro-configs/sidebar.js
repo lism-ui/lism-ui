@@ -202,7 +202,6 @@ export default [
 				label: 'Button',
 				link: '/components/button/',
 			},
-
 			{
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
@@ -210,6 +209,14 @@ export default [
 			{
 				label: 'Spacer',
 				link: '/components/spacer/',
+			},
+			{
+				label: 'List',
+				link: '/components/list/',
+			},
+			{
+				label: 'Table',
+				link: '/components/table/',
 			},
 			{
 				label: 'Components',

@@ -5,7 +5,8 @@
 @import './wp_theme';
 @import './tab';
 @import '../components/ex/Chat/style';
-// @import './hero';
+@import '../components/ex/Note/style';
+@import './ex/list';
 
 // html,
 // body {
@@ -22,6 +23,18 @@
 .a--mdcontent {
 	> table {
 		font-size: 0.95em;
+		max-inline-size: 100%;
+		border: none;
+		border-collapse: collapse; // memo: oveflow の指定によっては separate にしないとborderが表示されない場合があるので横スクロール時には注意。
+		border-spacing: 0;
+		isolation: isolate;
+
+		:where(td, th) {
+			border-block: 1px solid var(--c--divider);
+		}
+		thead {
+			border-block-end: solid 2px;
+		}
 	}
 }
 

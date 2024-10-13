@@ -35,6 +35,8 @@ export * from './Accordion';
 export * from './Callout';
 export * from './Badge';
 export * from './Button';
+export * from './Table';
+export * from './List';
 
 // export * from './Note';
 export * from './Reel';

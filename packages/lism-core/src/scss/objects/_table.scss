@@ -1,0 +1,93 @@
+.b--table {
+	:where(&) {
+		--bdwY: 1px;
+		--bdwX: 0px;
+		--bds: solid;
+		--bdc: var(--c--divider);
+
+		// collape にしているので、tfoot 1pxだと見えないことに注意。
+		--thead-bdbe: solid 2px;
+		--tfoot-bdbs: solid 2px;
+	}
+
+	max-inline-size: 100%;
+	border: none;
+	border-collapse: collapse; // memo: oveflow の指定によっては separate にしないとborderが表示されない場合があるので横スクロール時には注意。
+	border-spacing: 0;
+	isolation: isolate;
+
+	:where(&) > caption {
+		margin-block-end: 0.5em;
+	}
+
+	// insz
+	:where(td, th) {
+		min-inline-size: var(--cell-minIsz, unset);
+	}
+	:where(td, th),
+	:where(td, th)::before {
+		border-width: var(--bdwY) var(--bdwX);
+		border-color: var(--bdc);
+		border-style: var(--bds);
+	}
+
+	th {
+		color: var(--th-c, inherit);
+		background-color: var(--th-bgc, transparent);
+	}
+
+	td {
+		color: var(--td-c, inherit);
+		background-color: var(--td-bgc, transparent);
+	}
+
+	thead {
+		border-block-end: var(--thead-bdbe);
+	}
+
+	tfoot {
+		border-block-start: var(--tfoot-bdbs);
+	}
+}
+
+.b--table--fixCol1 {
+	// rowspan → .-nofix クラス使ってもらう
+	tr > :first-child:not(.-nofix) {
+		position: sticky;
+		left: 0;
+		z-index: 1; // 他のセルが relative だと上に来てしまうので、 z-index を少し上げておく
+
+		// スクロール時にborderが表示されない問題への対処
+		border-inline: none;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0 calc(var(--bdwX) * -1) 0 0;
+			border-block: none;
+		}
+	}
+}
+
+.b--table--fixHead {
+	thead {
+		position: sticky;
+		top: 0;
+		z-index: 2; // fixCol1 + 1
+
+		// スクロール時にborderが表示されない問題への対処
+		border-block: none;
+	}
+	thead::before {
+		content: '';
+		position: absolute;
+		z-index: 2;
+		inset: 0 0 calc(var(--bdwY) * -0.5) 0;
+		border-block: var(--bdwY) var(--bds) var(--bdc);
+		border-block-end: var(--thead-bdbe);
+	}
+}
+
+// rowspanの考慮
+// tr:has(> [rowspan]:first-child) + tr > :first-child,
+// tr:has(> [rowspan='3']:first-child) + tr + tr > :first-child, {
+// }

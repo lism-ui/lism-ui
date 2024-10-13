@@ -5,7 +5,7 @@ sidebar:
   order: 10
 ---
 
-import { MemoBadge } from "~/components";
+import { Reference, MemoBadge } from "~/components";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
 import { Lism } from '@lism-ui/astro';
 
@@ -42,43 +42,48 @@ HTMLのそれぞれのタグのデフォルトスタイルを確認するため�
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='30'>
-	<p>Unordered List:</p>
-	<ul>
-		<li>List item 1</li>
-		<li>
-			<>List item 2</>
-			<ul>
-				<li>Nested List</li>
-				<li>
-					<>...</>
-					<ul>
-						<li>Nested List</li>
-						<li>...</li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
+		<p>Unordered List:</p>
+		<ul>
+			<li>List item 1</li>
+			<li>
+				<>List item 2</>
+				<ul>
+					<li>Nested List</li>
+					<li>
+						<>...</>
+						<ul>
+							<li>Nested List</li>
+							<li>...</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
 
-	<p>Ordered List:</p>
-	<ol>
-		<li>List item 1</li>
-		<li>
-			<>List item 2</>
-			<ol>
-				<li>Nested List</li>
-				<li>
-					<>...</>
-					<ol>
-						<li>Nested List</li>
-						<li>...</li>
-					</ol>
-				</li>
-			</ol>
-		</li>
-	</ol>
+		<p>Ordered List:</p>
+		<ol>
+			<li>List item 1</li>
+			<li>
+				<>List item 2</>
+				<ol>
+					<li>Nested List</li>
+					<li>
+						<>...</>
+						<ol>
+							<li>Nested List</li>
+							<li>...</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
 	</PreviewArea>
 </Preview>
+
+<Reference>
+ul,liの標準スタイルはリセットした上で、class属性を持たないリストについては、ブラウザ標準のスタイルを再適用させています。  
+[`<List>`(`b--list`クラス)](/ja/components/list) を使っても、同様に標準スタイルを再適用させることができます。
+</Reference>
 
 ## Table
 
@@ -88,116 +93,71 @@ HTMLのそれぞれのタグのデフォルトスタイルを確認するため�
 	<table>
 		<tbody>
 			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3</td>
+				<th>Cell 1</th>
+				<td>Cell 2</td>
+				<td>Cell 3</td>
 			</tr>
 			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td>
+				<th>Cell 1</th>
+				<td>Cell 2</td>
+				<td>Cell 3</td>
 			</tr>
 			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>...</td>
+				<th>Cell 1</th>
+				<td>Cell 2</td>
+				<td>Cell 3</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<table>
+		<caption>Caption</caption>
 		<thead>
 			<tr>
-				<th>Table Header 1</th>
-				<th>Table Header 2</th>
-				<th>Table Header 3</th>
+				<th>Header 1</th>
+				<th>Header 2</th>
+				<th>Header 3</th>
+				<th>Header 4</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Division 1</td>
-				<td>Division 2</td>
-				<td>Division 3</td>
+				<td>Cell 1</td>
+				<td>Cell 2</td>
+				<td>Cell 3</td>
+				<td>Cell 4</td>
 			</tr>
 			<tr>
-				<td>Division 1</td>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td>
+				<td>Cell 2-1</td>
+				<td>Cell 2-2</td>
+				<td>Cell 2-3</td>
+				<td>Cell 2-4</td>
 			</tr>
 			<tr>
-				<td>Division 1</td>
-				<td>Division 2</td>
-				<td>...</td>
+				<td>Cell 3-1</td>
+				<td>Cell 3-2</td>
+				<td>Cell 3-3</td>
+				<td>Cell 3-4</td>
 			</tr>
+			
 		</tbody>
 		<tfoot>
 			<tr>
 				<td>Footer 1</td>
 				<td>Footer 2</td>
 				<td>Footer 3</td>
+				<td>Footer 4</td>
 			</tr>
 		</tfoot>
 	</table>
 	</PreviewArea>
 </Preview>
 
-<Preview>
-	<PreviewTitle>Table styles</PreviewTitle>
-	<PreviewArea p='30' _dir='rtl' >
-	<div className='is--flow' _style={{'writing-mode':'vertical-rl'}}>
-	<table className='table--scrollable table--fix-column1 table--fix-thead' style={{'max-height':'20rem','--cell-minW':'10rem','--bdwwX': '1px', '--cell-p': 'var(--p--box)'}}>
-		<caption>Caption</caption>
-		<thead>
-			<tr>
-				<th>Table Header 1</th>
-				<th>Table Header 2</th>
-				<th>Table Header 3</th>
-				<th>Table Header 3</th><th>Table Header 3</th><th>Table Header 3</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3</td>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3</td>
-			</tr>
-			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td><th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td>
-			</tr>
-			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>...</td><th>Division 1</th>
-				<td>Division 2</td>
-				<td>...</td>
-			</tr>
-			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td><th>Division 1</th>
-				<td>Division 2</td>
-				<td>Division 3<br />text</td>
-			</tr>
-			<tr>
-				<th>Division 1</th>
-				<td>Division 2</td>
-				<td>...</td><th>Division 1</th>
-				<td>Division 2</td>
-				<td>...</td>
-			</tr>
-		</tbody>
-	</table>
 
-	</div>
-	</PreviewArea>
-</Preview>
+<Reference>
+[`<Table>`(`b--table`クラス)](/ja/components/table)を使うことで、最低限のスタイリングが整ったテーブルを表示できます。
+</Reference>
+
 
 
 

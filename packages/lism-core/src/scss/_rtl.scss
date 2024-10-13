@@ -1,14 +1,5 @@
 // rtl サポート
 :where([dir='rtl']) {
-	// flip:rtl とか用意する...?
-	// .flip:rtl.flip:X
-	// .c--chat--start > .c--chat__body > .a--decorator {
-	// 	transform: scaleX(-1);
-	// }
-	// .c--chat--end > .c--chat__body > .a--decorator {
-	// 	transform: scaleX(1);
-	// }
-
 	// rtlでも左右を反転させない
 	.l--flex--ltr {
 		flex-direction: row-reverse;

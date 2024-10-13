@@ -1,10 +1,8 @@
-@forward './layer';
 @forward './tokens';
 @forward './reset';
 
 @forward './html/heading';
 @forward './html/table';
-@forward './html/table.more';
 @forward './html/list';
 @forward './html/texts';
 
@@ -12,6 +10,8 @@
 	--heading-ff: var(--ff--sans);
 	--link-c: #0c61e4;
 	// --link-underlineOffset: 0.2ex;
+
+	--cell-p: 0.5em;
 
 	--hov-trsdu: 0.3s;
 	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;

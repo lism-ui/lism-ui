@@ -1,0 +1,13 @@
+---
+import { LismProps } from '../types';
+import { Lism } from '../Lism';
+import getProps from '@lism-ui/core/components/Table/getProps';
+
+// Propsの定義
+interface Props extends LismProps {}
+const props = Astro.props || {};
+---
+
+<Lism tag='table' {...getProps(props)}>
+	<slot />
+</Lism>

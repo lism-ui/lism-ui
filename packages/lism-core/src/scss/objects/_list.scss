@@ -1,0 +1,9 @@
+// 明示的にドキュメント用のリストスタイルを復活させるクラス
+
+.b--list {
+	:where(&) {
+		--pis: 1.375em;
+	}
+	padding-inline-start: var(--pis);
+	list-style: revert;
+}

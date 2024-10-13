@@ -1,0 +1,256 @@
+---
+title: 'Table'
+description: ...
+---
+
+import { Frame, Table } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import ImportCode from "~/components/code-template/Import.astro";
+
+
+最低限のスタイルを適用した表を呼び出すコンポーネントです。
+
+
+## Import
+
+<ImportCode component='Table' />
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p='30'>
+		<Table>
+			<caption>Caption</caption>
+			<thead>
+				<tr>
+					<th>Header 1</th>
+					<th>Header 2</th>
+					<th>Header 3</th>
+					<th>Header 4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cell 1</td>
+					<td>Cell 2</td>
+					<td>Cell 3</td>
+					<td>Cell 4</td>
+				</tr>
+				<tr>
+					<td>Cell 2-1</td>
+					<td>Cell 2-2</td>
+					<td>Cell 2-3</td>
+					<td>Cell 2-4</td>
+				</tr>
+				<tr>
+					<td>Cell 3-1</td>
+					<td>Cell 3-2</td>
+					<td>Cell 3-3</td>
+					<td>Cell 3-4</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>Footer 1</td>
+					<td>Footer 2</td>
+					<td>Footer 3</td>
+					<td>Footer 4</td>
+				</tr>
+			</tfoot>
+		</Table>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Table>
+			<caption>Caption</caption>
+			<thead>...</thead>
+			<tbody>...</tbody>
+			<tfoot>...</tfoot>
+		</Table>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<table class='b--table'>
+			<caption>Caption</caption>
+			<thead>...</thead>
+			<tbody>...</tbody>
+			<tfoot>...</tfoot>
+		</table>
+		```
+	</PreviewCode>
+</Preview>
+
+`.b--table`は、次のようなCSSが適用されており、いくつかの変数でプロパティが管理されています。  
+これは、スクロール時に thead などを固定できるようにすることをあらかじめ考慮した設計になっています。
+
+	{/* <PreviewCode slot='tab' label='CSS'>
+		<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fpackages%2Flism-core%2Fsrc%2Fscss%2Futility%2F_pass-get.scss&style=default&type=code&showLineNumbers=on&showCopy=on"></script>
+	</PreviewCode> */}
+
+
+<Preview>
+	<PreviewTitle>--bdwXで水平方向のボーダー太さを指定、thのカラーリングを指定する例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Table thBgc='base-2' bdwX='1px'>
+			<thead>
+				<tr>
+					<th>Header 1</th>
+					<th>Header 2</th>
+					<th>Header 3</th>
+					<th>Header 4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cell 1</td>
+					<td>Cell 2</td>
+					<td>Cell 3</td>
+					<td>Cell 4</td>
+				</tr>
+				<tr>
+					<td>Cell 2-1</td>
+					<td>Cell 2-2</td>
+					<td>Cell 2-3</td>
+					<td>Cell 2-4</td>
+				</tr>
+				<tr>
+					<td>Cell 3-1</td>
+					<td>Cell 3-2</td>
+					<td>Cell 3-3</td>
+					<td>Cell 3-4</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>Footer 1</td>
+					<td>Footer 2</td>
+					<td>Footer 3</td>
+					<td>Footer 4</td>
+				</tr>
+			</tfoot>
+		</Table>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Table thBgc='base-2' bdwX='1px'>
+			<thead>...</thead>
+			<tbody>...</tbody>
+			<tfoot>...</tfoot>
+		</Table>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<table class='b--table' style="--bdwX:1px;--th-bgc:var(--c--base-2)">
+			<thead>...</thead>
+			<tbody>...</tbody>
+			<tfoot>...</tfoot>
+		</table>
+		```
+	</PreviewCode>
+</Preview>
+
+
+### variant
+
+2つのバリエーションクラスを用意しています。
+- セル１列目を固定する`b--table--fixCol1`
+- theadを固定する`b--table--fixHead`
+
+{/* // 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
+// --th-bgc: var(--c--base); */}
+<Preview>
+	<PreviewTitle>scroll時にtheadと、1列目のセルを固定する例</PreviewTitle>
+	<PreviewArea p='30' _dir='rtl'>
+	<Frame ov='auto' maxH='20rem'>
+		<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIsz':'10rem','--bdwwX': '1px'}}>
+			<thead>
+				<tr>
+					<th>Header 1</th>
+					<th>Header 2</th>
+					<th>Header 3</th>
+					<th>Header 3</th>
+					<th>Header 3</th>
+					<th>Header 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Cell 1</th>
+					<td>Cell 2</td>
+					<td>Cell 3</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>Cell 3</td>
+				</tr>
+				<tr>
+					<th rowSpan={2}>Cell 1</th>
+					<td>Cell 2</td>
+					<td>Cell 3<br />text</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>Cell 3<br />text</td>
+				</tr>
+				<tr>
+					{/* <th>Cell 1</th> */}
+					<td className='-nofix'>Cell 2</td>
+					<td>...</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>...</td>
+				</tr>
+				<tr>
+					<th>Cell 1</th>
+					<td>Cell 2</td>
+					<td>Cell 3<br />text</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>Cell 3<br />text</td>
+				</tr>
+				<tr>
+					<th>Cell 1</th>
+					<td>Cell 2</td>
+					<td>...</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>...</td>
+				</tr>
+				<tr>
+					<th>Cell 1</th>
+					<td>Cell 2</td>
+					<td>...</td>
+					<td>Cell 4</td>
+					<td>Cell 2</td>
+					<td>Cell 3<br />text</td>
+				</tr>
+			</tbody>
+		</Table>
+	</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "fixCol1,fixHead"
+		<Frame ov='auto' maxH='20rem'>
+			<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIsz':'10rem','--bdwwX': '1px'}}>
+				<thead>...</thead>
+				<tbody>...</tbody>
+				<tfoot>...</tfoot>
+			</Table>
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html " b--table--fixCol1" "b--table--fixHead"
+		<div class="is--frame -ov:a" style="max-height:20rem">
+			<table class='b--table b--table--fixCol1 b--table--fixHead' style="--cell-minIsz:10rem;--bdwwX:1px;--th-bgc:var(--c--base-2)">
+				<thead>...</thead>
+				<tbody>...</tbody>
+				<tfoot>...</tfoot>
+			</table>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+

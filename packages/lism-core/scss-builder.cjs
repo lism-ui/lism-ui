@@ -37,6 +37,7 @@ const COLOR = {
 	// const ignore = ['**/_*.scss'];
 	let files = [];
 	files = [
+		src + '/all_with_layout.scss',
 		src + '/all.scss',
 		// src + '/core-modules.scss',
 		// src + '/block-modules.scss',

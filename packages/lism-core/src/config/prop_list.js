@@ -92,6 +92,8 @@ export default {
 	// size
 	w: { utils: 'size', converter: 'size' },
 	h: { utils: 'size', presets: ['full'], converter: 'size' },
+	// isz: { style: 'inline-size', utils: 'size', converter: 'size' },
+	// bsz: { style: 'block-size', utils: 'size', converter: 'size' },
 	maxW: { style: 'maxWidth', utils: 'maxSize', converter: 'size' },
 	maxH: { style: 'maxHeight', utils: 'maxSize', converter: 'size' },
 	minW: { style: 'minWidth', utils: 'minSize', converter: 'size' },

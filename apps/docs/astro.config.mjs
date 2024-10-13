@@ -30,8 +30,6 @@ export default defineConfig({
 				'@lism-ui/core/scss/all.scss',
 				// './src/styles/lism-custom.scss', // カスタムCSSファイルへの相対パス
 
-				// 追加コンポーネント
-				'./src/components/ex/Note/style.scss',
 				// ドキュメントサイトCSS
 				'./src/styles/custom.scss',
 			],

@@ -25,18 +25,20 @@ export * from './Spacer';
 
 export * from './LinkBox';
 
-// Elements
-export * from './Avatar';
+// Atoms
 export * from './Icon';
-export * from './Button';
-export * from './Badge';
 export * from './Delimiter';
 export * from './Decorator';
+export * from './Divider';
 
 // Blocks
+export * from './Avatar';
+export * from './Button';
+export * from './Badge';
 export * from './Banner';
-export * from './Divider';
 export * from './ShapeDivider';
+export * from './List';
+export * from './Table';
 
 // Components
 export * from './Callout';

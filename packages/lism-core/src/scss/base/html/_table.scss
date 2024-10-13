@@ -1,63 +1,8 @@
-// 方針 → td,thにボーダーをつける。
-// Why? 特定のセルだけボーダーカスタマイズもしやすい.
-// ただし、スクロール時にsticky要素の border が表示されない問題があることに注意。
-// 　　　→ ベースは上下ボーダーのみにしてその問題に対処しやすくする。
-// @layer lism-init {
-
-:root {
-	--cell-p: 0.5em;
-
-	// collape にしているので、tfoot 1pxだと見えないことに注意。
-	--thead-bd: solid 2px var(--c--text);
-	--tfoot-bd: solid 2px var(--c--text);
-}
-
-table {
-	// width: 100%;
-	// max-width: 100%;
-	max-inline-size: 100%;
-	border: none;
-	border-collapse: collapse; // memo: oveflow の指定によっては separate にしないとborderが表示されない場合があるので横スクロール時には注意。
-	border-spacing: 0;
-	line-height: var(--lh--xs);
-	--bdc: var(--c--divider, currentColor);
-	--bds: solid;
-	--bdwX: 0px;
-	--bdwY: 1px;
-}
+// 方針 : td,thにボーダーをつける。
+//    そのほうが特定のセルだけのボーダーカスタマイズもしやすい.
+//    ただし、スクロール時にsticky要素の border が表示されない問題に対応するため、変数でのプロパティ管理を行う。
 
 td,
 th {
 	padding: var(--cell-p);
-	border-width: var(--bdwY) var(--bdwX);
-	border-color: var(--bdc);
-	border-style: var(--bds);
-	// border-inline: var(--bds) var(--bdwX) var(--bdc);
-	// border-block: var(--bds) var(--bdwY) var(--bdc);
 }
-
-th {
-	color: var(--th-c, inherit);
-	background-color: var(--th-bgc, transparent);
-}
-
-td {
-	color: var(--td-c, inherit);
-	background-color: var(--td-bgc, transparent);
-}
-
-thead {
-	// --th-bgc: #f8f9fa;
-	border-block-end: var(--thead-bd);
-	// --bdwY: 2px;
-	// --bdc: currentColor;
-}
-
-tfoot {
-	border-block-start: var(--tfoot-bd);
-}
-
-// tbody {
-// 	// --th-bgc: #f8f9fa;
-// 	// text-align: left; // tbody 内の th が中央寄せになるのを防ぐ？
-// }
