@@ -4,14 +4,8 @@ description: ...
 ---
 
 import { Badge, Flex, Icon, Callout } from '@lism-ui/astro';
-import {
-	Book,
-	Cat,
-	Baseball,
-} from '@phosphor-icons/react';
-import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import ImportCode from "~/components/code-template/Import.astro";
+import { Book, Cat, Baseball } from '@phosphor-icons/react';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
 
 
 バッジを表示するコンポーネントです。
@@ -186,7 +180,7 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 ### アイコンを使用する例
 
 `<Badge>`に`icon`を指定すると、アイコンを出力できます。  
-この時、`<Icon variant='inline'>`が呼び出されます。
+この時、内部で`<Icon variant='inline'>`が呼び出されます。
 
 <Callout type='info'>
 `.b--badge`には`display: inline-flex;`がデフォルトで指定されています。
@@ -196,15 +190,15 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	<PreviewTitle>`icon`の使用例</PreviewTitle>
 	<PreviewArea p='20'>
 		<Flex g='30' ai='c'>
-			<Badge bdrs='s' g='5' icon='star' ai='c'>Badge</Badge>
-			<Badge variant='fill' bdrs='s' g='5' icon={Book} ai='c'>Badge</Badge>
+			<Badge icon='star' g='5' ai='c' bdrs='s'>Badge</Badge>
+			<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='s'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 <PreviewCode slot='tab' label='JSX'>
 ```jsx
 <Flex g='30' ai='c'>
-	<Badge g='5' icon='star' ai='c' bdrs='s'>Badge</Badge>
-	<Badge variant='fill' g='5' icon={Book} ai='c' bdrs='s'>Badge</Badge>
+	<Badge icon='star' g='5' ai='c' bdrs='s'>Badge</Badge>
+	<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='s'>Badge</Badge>
 </Flex>
 ```
 </PreviewCode>

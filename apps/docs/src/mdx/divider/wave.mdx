@@ -1,6 +1,5 @@
-import { ShapeDivider, Box } from '@lism-ui/astro';
-import { DammyText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import { ShapeDivider, Box, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
 
 <Preview>
@@ -9,7 +8,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 		<Box>
 			<ShapeDivider shape='wave1' shapeFlip='xy' c='gray'/>
 			<Box hasGutter py='50'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Box>
 			<ShapeDivider shape='wave1' c='gray'/>
 		</Box>
@@ -31,7 +30,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 		<Box>
 			<ShapeDivider shape='wave1' shapeFlip='xy' level={5} stretch={1.5} offset='5%' c='gray'/>
 			<Box hasGutter py='50'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Box>
 			<ShapeDivider shape='wave1' level={5} stretch={1.5} offset='25%' c='gray'/>
 		</Box>
@@ -54,7 +53,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 		<Box>
 			<ShapeDivider shape='wave1' shapeFlip='xy' level={-4} c='gray'/>
 			<Box hasGutter py='50'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Box>
 			<ShapeDivider shape='wave1' level={-4} c='gray'/>
 		</Box>
@@ -78,7 +77,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 		<Box>
 			<ShapeDivider shape='wave2' shapeFlip='xy' c='gray'/>
 			<Box hasGutter py='50'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Box>
 			<ShapeDivider shape='wave2' c='gray' />
 		</Box>
@@ -101,7 +100,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 		<Box>
 			<ShapeDivider shape='wave3' shapeFlip='xy' c='gray' level={6} stretch={1.5} offset='20%' />
 			<Box hasGutter py='50'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Box>
 			<ShapeDivider shape='wave3' c='gray' level={6} stretch={1.5} offset='-20%' />
 		</Box>
@@ -122,7 +121,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Pr
 	<PreviewArea resize p='5'>
 		<Box bgc='gray' c='base'>
 			<ShapeDivider shape='wave3' shapeFlip='xy' isAnimation c='base'/>
-			<Box hasGutter py='50'><DammyText length='l' /></Box>
+			<Box hasGutter py='50'><Dummy length='l' /></Box>
 			<ShapeDivider shape='wave3' isAnimation c='base' />
 		</Box>
 	</PreviewArea>

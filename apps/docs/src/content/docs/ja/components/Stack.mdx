@@ -2,14 +2,10 @@
 title: 'Stack'
 description: ...
 ---
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Stack } from '@lism-ui/astro';
-import ImportCode from "~/components/code-template/Import.astro";
+import { Stack, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
 
 複数の要素をFlexレイアウトで**縦並び**に配置するコンポーネントです。
-
-`<Flex fxd="column">`と機能的には同等です。
 
 
 ## Import
@@ -64,8 +60,8 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea resize>
 		<Stack ai="center" g={30} p={40} lismState={["has--itemGuide"]}>
 			<h3 role="presentation">見出し</h3>
-			<DammyText length="s" />
-			<DammyText length="l" />
+			<Dummy length="s" />
+			<Dummy length="l" />
 		</Stack>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="JSX">

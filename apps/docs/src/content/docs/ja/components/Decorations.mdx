@@ -3,9 +3,8 @@ title: 'Decorations'
 description: ...
 ---
 
-import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Callout, Spacer } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Callout, Spacer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
 import BalloonBox from '~/components/ex/Decorations/balloon';
 import PipipiBox from '~/components/ex/Decorations/pipipi';
 
@@ -38,7 +37,7 @@ import { DecoBox } from '@lism-ui/core';
 
 {/* <Box p='30' bd uClass='is--trimHL'>
 	<h2>Call</h2>
-	<DammyText length='m' />
+	<Dummy length='m' />
 	<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 </Box> */}
 
@@ -55,7 +54,7 @@ import { DecoBox } from '@lism-ui/core';
 				mr='auto'
 			/>
 			<Box p='30'>
-				<DammyText length='m' />
+				<Dummy length='m' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -74,7 +73,7 @@ import { DecoBox } from '@lism-ui/core';
 				ml='auto'
 			/>
 			<Box p='30'>
-				<DammyText length='s' />
+				<Dummy length='s' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -95,7 +94,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right top'
 			/>
 			<FlexItem px='20' py='5'>
-				<DammyText length='s' />
+				<Dummy length='s' />
 			</FlexItem>
 			<Decorator
 				as={FlexItem}
@@ -123,7 +122,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 			/>
 			<FlexItem px='20' py='5' fxg=''>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</FlexItem>
 			<Decorator
 				as={FlexItem}
@@ -146,7 +145,7 @@ import { DecoBox } from '@lism-ui/core';
 				mr='auto'
 			/>
 			<Box p='30'>
-				<DammyText length='m' />
+				<Dummy length='m' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -165,7 +164,7 @@ import { DecoBox } from '@lism-ui/core';
 				ml='auto'
 			/>
 			<Box p='30'>
-				<DammyText length='s' />
+				<Dummy length='s' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -185,7 +184,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right top'
 			/>
 			<FlexItem px='20' py='5'>
-				<DammyText length='s' />
+				<Dummy length='s' />
 			</FlexItem>
 			<Decorator
 				as={FlexItem}
@@ -212,7 +211,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 			/>
 			<FlexItem px='20' py='5' fxg=''>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</FlexItem>
 			<Decorator
 				as={FlexItem}
@@ -235,17 +234,17 @@ import { DecoBox } from '@lism-ui/core';
 	<PreviewTitle>Kakko</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Box p='40' pos='r'>
-			<DammyText />
+			<Dummy />
 			<Decorator size='1.25em' pos='a' t='0' l='0' bd='l,t' />
 			<Decorator size='1.25em' pos='a' r='0' b='0' bd='r,b' />
 		</Box>
 		{/* <Box p='40' pos='r'>
-			<DammyText />
+			<Dummy />
 			<Decorator size='1.25em' pos='a' t='0' r='0' bd='r,t' />
 			<Decorator size='1.25em' pos='a' l='0' b='0' bd='l,b' />
 		</Box> */}
 		<Box p='40' pos='r'>
-			<DammyText />
+			<Dummy />
 			<Decorator pos='a' t='0' l='0' w='1em' h='100%' bd='l,y' />
 			<Decorator pos='a' t='0' r='0' w='1em' h='100%' bd='r,y' />
 		</Box>
@@ -253,12 +252,12 @@ import { DecoBox } from '@lism-ui/core';
 	<PreviewCode>
 	```jsx
 	<Box p='40' pos='r'>
-		<DammyText />
+		<Dummy />
 		<Decorator size='1.25em' pos='a' t='0' l='0' bd='l,t' />
 		<Decorator size='1.25em' pos='a' r='0' b='0' bd='r,b' />
 	</Box>
 	<Box p='40' pos='r'>
-		<DammyText />
+		<Dummy />
 		<Decorator pos='a' t='0' l='0' w='1em' h='100%' bd='l,y' />
 		<Decorator pos='a' t='0' r='0' w='1em' h='100%' bd='r,y' />
 	</Box>
@@ -282,7 +281,7 @@ import { DecoBox } from '@lism-ui/core';
 				bd='r'
 				bdw='.5em'
 			>
-				<DammyText />
+				<Dummy />
 			</GridItem>
 			<GridItem
 				as={Decorator}
@@ -311,7 +310,7 @@ import { DecoBox } from '@lism-ui/core';
 				bd='r'
 				bdw='.5em'
 			>
-				<DammyText />
+				<Dummy />
 			</GridItem>
 			<GridItem
 				as={Decorator}
@@ -336,16 +335,16 @@ import { DecoBox } from '@lism-ui/core';
 	<PreviewTitle>Balloon</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<BalloonBox variant='left'>
-			<DammyText />
+			<Dummy />
 		</BalloonBox>
 		<BalloonBox variant='right' keycolor='blue'>
-			<DammyText />
+			<Dummy />
 		</BalloonBox>
 		<BalloonBox variant='top' bdc='divider' bgc='base-2'>
-			<DammyText />
+			<Dummy />
 		</BalloonBox>
 		<BalloonBox variant='bottom' bdw='2px' keycolor='red'>
-			<DammyText />
+			<Dummy />
 		</BalloonBox>
 	</PreviewArea>
 	<PreviewCode>
@@ -360,10 +359,10 @@ import { DecoBox } from '@lism-ui/core';
 	<PreviewTitle>Pipipi</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<PipipiBox variant='left'>
-			<DammyText />
+			<Dummy />
 		</PipipiBox>
 		<PipipiBox variant='right'>
-			<DammyText />
+			<Dummy />
 		</PipipiBox>
 	</PreviewArea>
 	<PreviewCode>

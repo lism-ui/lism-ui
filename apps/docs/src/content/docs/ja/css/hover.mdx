@@ -6,26 +6,8 @@ sidebar:
 ---
 
 import { Flex, Button, Media, Layer, Text, Badge, Box, Center, Stack, Frame, LinkBox, Columns, Banner, Callout } from "@lism-ui/core";
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
-export const PreviewBoxs = ({hover, ...attrs}) => {
-	const DEMO_BOX = [
-		{ ariaLabel: 'グレー系のコンテンツでのテスト', bgc: 'base', bd: '-' },
-		{ ariaLabel: '黒系のコンテンツでのテスト', bgc: 'text', c: 'base' },
-	];
-	return (
-		<Columns cols={[2]} g={20}>
-			{DEMO_BOX.map((boxProps, i) => {
-				return (
-					<LinkBox key={i} href='###' hov={hover} p='30' {...boxProps} {...attrs}>
-						<Text fz='fluid'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</Text>
-					</LinkBox>
-				);
-			})}
-		</Columns>
-	);
-}
 
 
 hover時の挙動をコントロールするためのCSS設計について紹介します。

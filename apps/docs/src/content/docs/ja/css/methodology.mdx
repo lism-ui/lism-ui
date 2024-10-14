@@ -4,10 +4,8 @@ description: ...
 sidebar:
   order: 1
 ---
-
-import { Box, Callout,Flex } from "@lism-ui/astro";
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Box, Callout } from "@lism-ui/astro";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, HelpText } from "~/components";
 
 LismがどのようなCSS設計になっているかを説明します。
 
@@ -23,6 +21,7 @@ LismがどのようなCSS設計になっているかを説明します。
 ## CSSの階層構造
 
 詳細度が複雑になりがちな問題への対策として、LismではCSSの階層構造を明確に定義しています。
+
 {/* 
 |Layer|役割|最大詳細度|
 |---|---|---|
@@ -35,7 +34,7 @@ LismがどのようなCSS設計になっているかを説明します。
 |Props|CSSプロパティティに紐づいたクラス。|0-1-0 !|
 |Utility|その他の例外的なユーティリティクラス。|| */}
 
-<table className="table--solid">
+<table className="b--table" style={{'--bdwX': '1px'}}>
 	<thead>
 		<tr>
 			<th colSpan={2}>Layer</th>
@@ -48,6 +47,11 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td colSpan={2}>Settings</td>
 			<td>SASSの設定変数, mixinなど直接スタイルに吐き出されないもの。</td>
 			<td>-</td>
+		</tr>
+		<tr>
+			<td colSpan={2}>Reset</td>
+			<td>reset CSS</td>
+			<td>0-0-1</td>
 		</tr>
 		<tr>
 			<td rowSpan={3} style={{verticalAlign: 'top'}}>Base</td>
@@ -135,10 +139,10 @@ Lismでは、レイアウト・デザインの構成要素を細分化してい�
 
 |分類|形式|例|
 |---|---|---|
-|Layout<HelpText>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
-|Atom<HelpText>コンテンツの構成要素として最小単位となるようなもの</HelpText>|`.a--{atomName}`|`.a--icon`|
-|Block<HelpText>シンプルな役割を持つコンテンツ要素</HelpText>|`.b--{atomName}`|`.b--avatar`,`.b--button`|
-|Component<HelpText>その他のコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--tab`|
+|Layout<HelpText tag='small'>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
+|Atom<HelpText tag='small'>コンテンツの構成要素として最小単位となるようなもの</HelpText>|`.a--{atomName}`|`.a--icon`|
+|Block<HelpText tag='small'>シンプルな役割を持つコンテンツ要素</HelpText>|`.b--{atomName}`|`.b--avatar`,`.b--button`|
+|Component<HelpText tag='small'>その他のコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--tab`|
 
 {/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
 <small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}

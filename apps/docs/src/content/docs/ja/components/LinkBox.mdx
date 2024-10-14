@@ -2,11 +2,9 @@
 title: 'LinkBox'
 description: ...
 ---
-import { LinkBox, Link, Stack, Callout, Text, Spacer } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { LinkBox, Link, Callout, Text, Spacer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
 import { Note } from '~/components/ex/Note';
-import ImportCode from "~/components/code-template/Import.astro";
 
 ボックス全体がリンクになったモジュールです。
 
@@ -49,7 +47,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea resize p='30'>
 		<LinkBox href='#boxlink01' p='40' bgc='base' bdc='divider' bd bdrs='4'>
 			<Text fz='xl' fw='bold'>Heading text</Text>
-			<DammyText length='m' c='text-2' lh='s' mbs='20' />
+			<Dummy length='m' c='text-2' lh='s' mbs='20' />
 			<Text fz='s' c='text-2' ta='r' lh='1' mbs='10'>MORE →</Text>
 		</LinkBox>
 	</PreviewArea>
@@ -92,7 +90,7 @@ LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力�
 			<Text fz='xl' fw='bold'>
 				<Link isOverlayLink href='#boxlink02'>Heading Link</Link>
 			</Text>
-			<DammyText length='m' c='text-2' lh='s' mbs='20' />
+			<Dummy length='m' c='text-2' lh='s' mbs='20' />
 			<Text mbs='10' id='inner-link'>
 				<a href='#inner-link'>Inner Link</a>
 			</Text>
@@ -160,7 +158,7 @@ LinkBoxに`href`を指定せずに使うと、`<a>`ではなく`<div>`で出力�
 	<PreviewArea p='30'>
 		<LinkBox href='#boxlink03' setHiddenLink linkLabel='リンクだよ' p='40' bgc='base' bdc='divider' bd bdrs='4'>
 			<Text fz='xl' fw='bold'>Heading Text</Text>
-			<DammyText length='m' c='text-2' lh='s' mbs='20' />
+			<Dummy length='m' c='text-2' lh='s' mbs='20' />
 			<Text mbs='10' id='inner-link03'>
 				<a href='#inner-link03'>Inner Link</a>
 			</Text>

@@ -3,16 +3,14 @@ title: 'Button'
 description: ...
 ---
 
-import { DammyText, PropBadge } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Callout, Box, Flex, Grid, Text, Media, Button, Icon, Spacer, Center, Cluster, Layer } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
+import { Callout, Box, Flex, Grid, Text, Media, Button, Icon, Spacer, Center, Cluster, Layer, Dummy } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
 	ShoppingCartSimple,
 	ArrowCircleRight,
 } from "@phosphor-icons/react";
-import ImportCode from "~/components/code-template/Import.astro";
 
 ボタンを表示するコンポーネントです。
 
@@ -429,7 +427,7 @@ iconのサイズは、`iconScale`でも調整できます。
 		<Box p='40' pos='r' c='base'>
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer blur='4px' bgc='black:50%' z='-1'/>
-			<DammyText />
+			<Dummy />
 			<Cluster mbs={30} g='20'>
 				<Button href='###' hov='reverse' variant='fill'>Button</Button>
 				<Button href='###' hov={['reverse', { bgc:'transparent' }]} variant='fill'>Button</Button>

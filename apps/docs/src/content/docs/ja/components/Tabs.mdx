@@ -3,10 +3,8 @@ title: 'Tabs'
 description: ...
 ---
 
-import { Reference, PropBadge, MemoBadge, HelpText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { DammyText, Tabs, TabItem, Tab, TabList, TabPanel, Icon, Callout } from '@lism-ui/astro';
-import ImportCode from "~/components/code-template/Import.astro";
+import { Dummy, Tabs, TabItem, Tab, TabList, TabPanel, Icon, Callout } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
 
 
 タブ要素を作成できるコンポーネントです。  
@@ -59,10 +57,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea p={30}>
 		<Tabs>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -70,10 +68,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx
 		<Tabs>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -89,10 +87,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs>
 			<TabItem>
 				<Fragment slot='label'><Icon isInline icon='good'/> Tab <small>small text</small></Fragment>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -100,10 +98,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx {2}
 		<Tabs>
 			<TabItem label={<><Icon isInline icon='good'/> Tab <small>small text</small></>}>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -115,7 +113,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 				<Fragment slot='label'><Icon isInline icon='good'/>Tab<small>small text</small></Fragment>
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -130,10 +128,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea p={30}>
 		<Tabs ji='center'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -141,10 +139,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx "ji='center'"
 		<Tabs ji='center'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -163,10 +161,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea p={30}>
 		<Tabs keepHeight>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab text 2'>
-				<DammyText length="xl" />
+				<Dummy length="xl" />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -196,11 +194,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs defaultIndex={1}>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<p>index:1</p>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -237,19 +235,19 @@ import ImportCode from "~/components/code-template/Import.astro";
 			panelProps={{p:'40'}}
 		>
 			<TabItem label='Tab 1'>
-				<DammyText />
-				<DammyText />
+				<Dummy />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 			<TabItem label='Tab 3'>
-				<DammyText length='s'/>
-				<DammyText />
+				<Dummy length='s'/>
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 4'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -262,19 +260,19 @@ import ImportCode from "~/components/code-template/Import.astro";
 			panelProps={{p:'40'}}
 		>
 			<TabItem label='Tab 1'>
-				<DammyText />
-				<DammyText />
+				<Dummy />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 			<TabItem label='Tab 3'>
-				<DammyText length='s'/>
-				<DammyText />
+				<Dummy length='s'/>
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 4'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -294,12 +292,12 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs keepHeight isFlow='s' ji='c' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -308,12 +306,12 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs keepHeight isFlow='s' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -331,10 +329,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea p={30} resize>
 		<Tabs variant='line'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -342,10 +340,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx "variant='line'"
 		<Tabs variant='line'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -376,10 +374,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	<PreviewArea p={30} resize>
 		<Tabs variant='emboss' ji='c'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -387,10 +385,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 		```jsx "variant='emboss'"
 		<Tabs variant='emboss' ji='c'>
 			<TabItem label='Tab 1'>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -426,12 +424,12 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 	</PreviewArea>
@@ -440,12 +438,12 @@ import ImportCode from "~/components/code-template/Import.astro";
 		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
 			<TabItem label='Tab 1'>
 				<p>index:0</p>
-				<DammyText />
+				<Dummy />
 			</TabItem>
 			<TabItem label='Tab 2'>
 				<p>index:1</p>
-				<DammyText />
-				<DammyText length='l' />
+				<Dummy />
+				<Dummy length='l' />
 			</TabItem>
 		</Tabs>
 		```
@@ -468,11 +466,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 				<Tab tabID='tab-uid' index={1}><Icon isInline icon='bad'/> Tab 2</Tab>
 			</TabList>
 			<TabPanel tabID='tab-uid' isActive index={0}>
-				<DammyText length='s' />
-				<DammyText />
+				<Dummy length='s' />
+				<Dummy />
 			</TabPanel>
 			<TabPanel tabID='tab-uid' index={1}>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabPanel>
 		</Tabs>
 	</PreviewArea>
@@ -488,11 +486,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 				</Tab>
 			</TabList>
 			<TabPanel index={0}>
-				<DammyText length='s' />
-				<DammyText />
+				<Dummy length='s' />
+				<Dummy />
 			</TabPanel>
 			<TabPanel index={1}>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabPanel>
 		</Tabs>
 		```
@@ -509,11 +507,11 @@ import ImportCode from "~/components/code-template/Import.astro";
 				</Tab>
 			</TabList>
 			<TabPanel tabID='tab-uid' isActive index={0}>
-				<DammyText length='s' />
-				<DammyText />
+				<Dummy length='s' />
+				<Dummy />
 			</TabPanel>
 			<TabPanel tabID='tab-uid' index={1}>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</TabPanel>
 		</Tabs>
 		```

@@ -1,8 +1,10 @@
+/* memo: 狭いブラウザ幅での目次、文字検索した時に展開してきて邪魔になってしまうので、最大高さを低くした方がいいかも */
+
 // 以下ではデフォルトのカラム幅を広げ、ページタイトルのテキストサイズを大きくしています。
 :root {
 	--sl-content-width: 50rem;
-	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
 	--sl-sidebar-width: 15rem;
+	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
 }
 
 #starlight__sidebar {
@@ -57,12 +59,6 @@
 		// }
 	}
 
-	li:has(> ._subtitle) {
-		padding-inline-start: 0;
-		margin-top: var(--s--30);
-		margin-bottom: var(--s--10);
-	}
-
 	._subtitle {
 		display: block;
 		pointer-events: none;
@@ -74,7 +70,7 @@
 		padding-inline-start: 0.5em;
 		padding-block: 0;
 		font-size: var(--sl-text-sm);
-		border-inline-start: 1px solid;
+
 		opacity: 0.5;
 		// border-radius: var(--radii--s);
 		// background-color: var(--c--base-2);
@@ -86,6 +82,58 @@
 		> span {
 			display: block;
 			border-top: 1px solid var(--sl-color-hairline-light);
+		}
+	}
+}
+
+// stylelint-disable no-descending-specificity
+
+li[data-compgroup-label] {
+	padding-inline-start: 0;
+	margin-top: var(--s--30);
+	margin-bottom: var(--s--10);
+}
+
+// 開発環境だけ
+.sidebar[data-astro-source-file] {
+	[data-compgroup-label] {
+		border-inline-start-width: 2px;
+	}
+	[data-compgroup-label='Layouts'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--green);
+		}
+	}
+
+	[data-compgroup-label='State'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--yellow);
+		}
+	}
+	[data-compgroup-label='Atoms'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--purple);
+		}
+	}
+	[data-compgroup-label='Blocks'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--blue);
+		}
+	}
+	[data-compgroup-label='Components'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--orange);
+		}
+	}
+	[data-compgroup-label='More Examples'] {
+		&,
+		~ li:not([data-compgroup-label]) {
+			border-color: var(--gray);
 		}
 	}
 }

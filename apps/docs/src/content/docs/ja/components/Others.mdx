@@ -4,12 +4,11 @@ description: ...
 ---
 
 
-import { Grid, Text, Badge, Lism, Flex, Stack, Icon, Center, Divider, Decorator, Spacer, Button, Layer, Media, DammyText } from '@lism-ui/core';
-import { Reference, MemoBadge, HelpText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import { Grid, Text, Lism, Flex, Stack, Divider, Decorator, Button, Layer, Media, Dummy } from '@lism-ui/core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
+import { Step, StepBody, StepHead } from '~/components/ex/Step';
 import {Question,ChatCircleDots} from '@phosphor-icons/react';
 import { ArrowFatLinesDown } from '@phosphor-icons/react';
-import { Step, StepBody, StepHead } from '~/components/ex/Step';
 
 <Preview>
 	<PreviewTitle>ステップナビゲーション</PreviewTitle>
@@ -110,7 +109,7 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 			<Flex aspect='16/9'>
 				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
-					<DammyText lh='s' mb='auto' length='l'/>
+					<Dummy lh='s' mb='auto' length='l'/>
 					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>
 				</Stack>
 			</Flex>
@@ -125,7 +124,7 @@ import { Step, StepBody, StepHead } from '~/components/ex/Step';
 			<Flex aspect='16/9'>
 				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
-					<DammyText lh='s' mb='auto' length='l'/>
+					<Dummy lh='s' mb='auto' length='l'/>
 					<Button href='#button-test' keycolor='white' c='black' bdrs='full' aslf='end' mbs='30' minW='25%'>Button Text</Button>
 				</Stack>
 			</Flex>

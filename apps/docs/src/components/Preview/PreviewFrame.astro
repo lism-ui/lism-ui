@@ -1,0 +1,50 @@
+---
+import { Frame, Center, Button } from '@lism-ui/astro';
+
+interface Props {
+	[key: string]: any;
+}
+const { isInline = false, url, ...props } = Astro.props;
+---
+
+{
+	!isInline ? (
+		<>
+			<Frame aspect='4/3'>
+				<Frame
+					className='u--scalePreview'
+					aspect='4/3'
+					bxsh='1'
+					bdrs='m'
+					bd
+					bdw='3px'
+					{...props}
+				>
+					<iframe src={url} width='800' height='600' />
+				</Frame>
+			</Frame>
+			<Center mbs='40'>
+				<Button href={url} openNewTab>
+					大きい画面で見る
+				</Button>
+			</Center>
+		</>
+	) : (
+		<Frame aspect='4/3' {...props}>
+			<iframe src={url} width='800' height='600' />
+		</Frame>
+	)
+}
+
+<style is:global>
+	.u--scalePreview {
+		max-width: unset;
+		width: 160%;
+		transform: scale(0.625);
+		transform-origin: 0 0;
+	}
+	.u--scalePreview > iframe {
+		width: 100%;
+		height: 100%;
+	}
+</style>

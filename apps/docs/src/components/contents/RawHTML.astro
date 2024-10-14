@@ -1,0 +1,13 @@
+---
+// import { Lism, Flex, Stack } from '@lism-ui/astro';
+import HtmlText from './html-text.astro';
+import HtmlList from './html-list.astro';
+import HtmlTable from './html-table.astro';
+import HtmlForm from './html-form.astro';
+const { type = '' } = Astro.props;
+---
+
+{type === 'texts' && <HtmlText />}
+{type === 'list' && <HtmlList />}
+{type === 'table' && <HtmlTable />}
+{type === 'forms' && <HtmlForm />}

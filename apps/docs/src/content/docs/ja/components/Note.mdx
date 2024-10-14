@@ -2,9 +2,8 @@
 title: 'Note'
 description: ...
 ---
-import { Icon, Box, DammyText } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import { Icon, Box, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText } from "~/components";
 import {Note} from '~/components/ex/Note';
 
 
@@ -17,14 +16,14 @@ import {Note} from '~/components/ex/Note';
 	</PreviewTitle>
 	<PreviewArea p='30'>
 		<Note title='Note Title'>
-			<DammyText lang='ja' />
-			<DammyText lang='ja' length='l' offset='4'/>
+			<Dummy lang='ja' />
+			<Dummy lang='ja' length='l' offset='4'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
 	<Note title='Note Title'>
-		<DammyText lang='ja'/>
+		<Dummy lang='ja'/>
 	</Note>
 	```
 	</PreviewCode>
@@ -62,21 +61,19 @@ import {Note} from '~/components/ex/Note';
 	</PreviewTitle>
 	<PreviewArea p='30'>
 		<Note title='Heading text...' icon='star' keycolor='blue'>
-			<DammyText lang='ja'/>
+			<Dummy lang='ja'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
 		<Note title='Heading text...' icon='star' keycolor='blue'>
-			<DammyText lang='ja'/>
+			<Dummy lang='ja'/>
 		</Note>
 		```
 	</PreviewCode>
 </Preview>
 
-<HelpText>
-※: アイコンは、`title` の指定がある時のみ表示されます。
-</HelpText>
+<HelpText>※ アイコンは、`title` の指定がある時のみ表示されます。</HelpText>
 
 
 {/* <Preview>
@@ -89,7 +86,7 @@ import {Note} from '~/components/ex/Note';
 			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
 				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
 			</Icon>
-			<DammyText lang='ja'/>
+			<Dummy lang='ja'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>
@@ -99,7 +96,7 @@ import {Note} from '~/components/ex/Note';
 			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
 				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
 			</Icon>
-			<DammyText lang='ja'/>
+			<Dummy lang='ja'/>
 		</Note>
 		```
 	</PreviewCode>
@@ -113,25 +110,25 @@ import {Note} from '~/components/ex/Note';
 <Preview>
 	<PreviewArea p='30'>
 		<Note title='type="note"' type='note'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="alert"' type='alert'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="warning"' type='warning'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="point"' type='point'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="check"' type='check'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="info"' type='info'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 		<Note title='type="help"' type='help'>
-			<DammyText length='codes' lang='ja'/>
+			<Dummy length='codes' lang='ja'/>
 		</Note>
 	</PreviewArea>
 	<PreviewCode>

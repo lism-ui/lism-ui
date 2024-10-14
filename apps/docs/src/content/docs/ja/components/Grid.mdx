@@ -3,10 +3,9 @@ title: 'Grid'
 description: ...
 ---
 
-import { Callout, Grid, GridItem, Box, Center } from '@lism-ui/astro';
-import { Reference, MemoBadge, PropBadge, DammyText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import ImportCode from "~/components/code-template/Import.astro";
+import { Callout, Grid, GridItem, Box, Center, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
+
 
 コンテンツを**Gridレイアウトで配置する**ためのコンポーネントです。  
 [`<GridItem>`](/ja/components/griditem/)と組み合わせて使うとより便利です。
@@ -215,8 +214,8 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 	<PreviewArea resize p='20'>
 		<Grid variant='repeat' cols='3' g='20'>
 			<GridItem><img src='/img/img-1.jpg' alt='' /></GridItem>
-			<GridItem p='20' bgc='base-2' gc='span 2'><DammyText /></GridItem>
-			<GridItem p='20' bgc='base-2' gc='span 2'><DammyText length='l'/></GridItem>
+			<GridItem p='20' bgc='base-2' gc='span 2'><Dummy /></GridItem>
+			<GridItem p='20' bgc='base-2' gc='span 2'><Dummy length='l'/></GridItem>
 			<GridItem><img src='/img/img-2.jpg' alt='' /></GridItem>
 		</Grid>
 	</PreviewArea>
@@ -224,8 +223,8 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 		```jsx "variant='repeat'"
 		<Grid variant='repeat' cols='3' g='20'>
 			<GridItem><img src='/img/img-1.jpg' alt='' /></GridItem>
-			<GridItem p='20' bgc='base-2' gc='span 2'><DammyText /></GridItem>
-			<GridItem p='20' bgc='base-2' gc='span 2'><DammyText length='l'/></GridItem>
+			<GridItem p='20' bgc='base-2' gc='span 2'><Dummy /></GridItem>
+			<GridItem p='20' bgc='base-2' gc='span 2'><Dummy length='l'/></GridItem>
 			<GridItem><img src='/img/img-2.jpg' alt='' /></GridItem>
 		</Grid>
 		```
@@ -296,12 +295,12 @@ gc, gr もブレイクポイントに対応しています。
 	<PreviewTitle>1列 → 2列 → 幅200pxで3列かつ、中央よせ</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Grid gtc={['1fr', 'repeat(2, 1fr)', 'repeat(3, 200px)']} jc='center' g='20' className='has--itemGuide'>
-			<DammyText/>
-			<DammyText/>
-			<DammyText/>
-			<DammyText/>
-			<DammyText/>
-			<DammyText/>
+			<Dummy/>
+			<Dummy/>
+			<Dummy/>
+			<Dummy/>
+			<Dummy/>
+			<Dummy/>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode>

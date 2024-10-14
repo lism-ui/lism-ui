@@ -2,14 +2,13 @@
 title: 'Step'
 description: ...
 ---
-
-
-import { Text, Badge, Lism, Flex, Stack, Icon, Center } from '@lism-ui/core';
-import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import {Question,ChatCircleDots} from '@phosphor-icons/react';
-import { ArrowFatLinesDown } from '@phosphor-icons/react';
+import { Text, Badge, Lism, Dummy, Flex, Stack, Icon, Center } from '@lism-ui/core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
 import { Step, StepBody, StepHead } from '~/components/ex/Step';
+
+import { Question,ChatCircleDots } from '@phosphor-icons/react';
+import { ArrowFatLinesDown } from '@phosphor-icons/react';
+
 
 手順を示すレイアウトの構築例を紹介します。
 
@@ -81,8 +80,8 @@ export function StepHead({ tag = 'div', num = '1', label = '', children, ...prop
 					<>手順2のタイトル</>
 				</StepHead>
 				<StepBody>
-					<DammyText lang='ja' length='s' />
-					<DammyText lang='ja' length='codes' />
+					<Dummy lang='ja' length='s' />
+					<Dummy lang='ja' length='codes' />
 				</StepBody>
 			</Step>
 
@@ -95,7 +94,7 @@ export function StepHead({ tag = 'div', num = '1', label = '', children, ...prop
 					<>手順3のタイトル</>
 				</StepHead>
 				<StepBody>
-					<DammyText lang='ja' length='l' />
+					<Dummy lang='ja' length='l' />
 				</StepBody>
 			</Step>
 		</Stack>
@@ -127,8 +126,8 @@ import { Step, StepHead, StepBody } from './path/to/.../steps';
 				手順2のタイトル
 			</StepHead>
 			<StepBody>
-				<DammyText lang='ja' length='s' />
-				<DammyText lang='ja' length='codes' />
+				<Dummy lang='ja' length='s' />
+				<Dummy lang='ja' length='codes' />
 			</StepBody>
 		</Step>
 
@@ -141,7 +140,7 @@ import { Step, StepHead, StepBody } from './path/to/.../steps';
 				手順3のタイトル
 			</StepHead>
 			<StepBody>
-				<DammyText lang='ja' length='l' />
+				<Dummy lang='ja' length='l' />
 			</StepBody>
 		</Step>
 	</Stack>

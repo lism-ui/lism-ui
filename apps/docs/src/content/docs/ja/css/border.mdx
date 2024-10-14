@@ -4,26 +4,10 @@ description: ...
 sidebar: 
   order: 20
 ---
+import { Box, Dummy, Callout, Flex, FlexItem, Stack, Divider, Spacer } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Box, Callout, Flex, FlexItem, Stack, Divider, Spacer } from '@lism-ui/astro';
 
-export const LismBorderPreviews = ({ directions = [] }) => {
-	return (
-		<>
-			{directions.map((name) => {
-				return (
-					<Box key={name} bd={name} p="20">{name}</Box>
-				);
-			})}
-		</>
-	);
-};
-
-{/* <Box bd='solid 2px red' p='20'>
-	<DammyText length='s'/>
-</Box> */}
 
 Lismでは、border系の指定が少し特殊になっています。
 
@@ -59,22 +43,22 @@ Lismでは、border系の指定が少し特殊になっています。
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p='40'>
 		<Box bd p='20'>
-			<DammyText length='s'/>
+			<Dummy length='s'/>
 		</Box>
 		<Box bd bds='dashed' bdw='2px' bdc='red' p='20'>
-			<DammyText length='s'/>
+			<Dummy length='s'/>
 		</Box>
 		<Box bd='l' bdc='blue' bdw='0.4em' p='20'>
-			<DammyText length='s'/>
+			<Dummy length='s'/>
 		</Box>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
 		```jsx
 		<Box bd bdc='red' bds='dashed' p='20'>
-			<DammyText length='s'/>
+			<Dummy length='s'/>
 		</Box>
 		<Box bd='l' bdc='blue' bdw='0.4em' p='20'>
-			<DammyText length='s'/>
+			<Dummy length='s'/>
 		</Box>
 		```
 	</PreviewCode>
@@ -164,22 +148,23 @@ Lismでは、border系の指定が少し特殊になっています。
 <Preview>
 	<PreviewTitle>`,`区切りで複数指定</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Box bd='l,b' bdc='red' p='10'>left, bottom</Box>
+		<Box bd='is,b' bdc='red' p='10'>inline-start, bottom</Box>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
-		```jsx "bd='l,b'"
-		<Box bd='l,b' bdc='red' p='10'>left, bottom</Box>
+		```jsx "bd='is,b'"
+		<Box bd='is,b' bdc='red' p='10'>inline-start, bottom</Box>
 		```
 	</PreviewCode>
 	<PreviewCode label='HTML' slot='tab'>
 		```html
-		<div class='-bd:l -bd:b -p:10' style="--bdc:var(--red)">left, bottom</div>
+		<div class='-bd:is -bd:b -p:10' style="--bdc:var(--red)">inline-start, bottom</div>
 		```
 	</PreviewCode>
 </Preview>
 
 
 `.-bd\:`クラスが `border-style` `border-width` `border-color` を分割指定していることにより、以下のようなボーダーを出力することもできます。
+
 <Preview>
 	<PreviewTitle>`bdw`,`bds`,`bdc`それぞれの方向指定</PreviewTitle>
 	<PreviewArea resize p='40'>

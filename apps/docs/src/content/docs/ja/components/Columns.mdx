@@ -2,10 +2,8 @@
 title: 'Columns'
 description: ...
 ---
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Box, Callout, DammyText, Columns } from '@lism-ui/astro';
-import { PropBadge } from "~/components";
-import ImportCode from "~/components/code-template/Import.astro";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
+import { Box, Callout, Dummy, Columns } from '@lism-ui/astro';
 
 指定した列数でカラムレイアウトを作成します。
 
@@ -150,14 +148,14 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Columns variant='liquid' className="has--itemGuide">
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
-			<DammyText />
+			<Dummy />
+			<Dummy />
+			<Dummy />
+			<Dummy />
+			<Dummy />
+			<Dummy />
+			<Dummy />
+			<Dummy />
 		</Columns>
 	</PreviewArea>
 	<PreviewCode>
@@ -176,10 +174,10 @@ import ImportCode from "~/components/code-template/Import.astro";
 	</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Columns variant='liquid' g='20' colSize='8rem'>
-			<DammyText bgc='base-2' />
-			<DammyText bgc='base-2' />
-			<DammyText bgc='base-2' />
-			<DammyText bgc='base-2' />
+			<Dummy bgc='base-2' />
+			<Dummy bgc='base-2' />
+			<Dummy bgc='base-2' />
+			<Dummy bgc='base-2' />
 		</Columns>
 	</PreviewArea>
 	<PreviewCode>

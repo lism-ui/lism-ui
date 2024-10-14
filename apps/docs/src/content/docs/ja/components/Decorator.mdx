@@ -3,10 +3,8 @@ title: 'Decorator'
 description: ...
 ---
 
-import { Decorator, Box, Flex, FlexItem, Grid, GridItem, Spacer, DammyText } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import ImportCode from "~/components/code-template/Import.astro";
+import { Decorator, Box, Flex, FlexItem, Grid, GridItem, Spacer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, Reference } from "~/components";
 
 
 コンテンツを装飾するための空要素を出力するためのコンポーネントです。  
@@ -49,7 +47,7 @@ div.a--decorator[aria-hidden="true"]
 				transformOrigin='left bottom'
 			/>
 			<Box p='20'>
-				<DammyText />
+				<Dummy />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -69,7 +67,7 @@ div.a--decorator[aria-hidden="true"]
 				transformOrigin='left bottom'
 			/>
 			<Box p='20'>
-				<DammyText />
+				<Dummy />
 			</Box>
 			<Decorator
 				size='1.25em'

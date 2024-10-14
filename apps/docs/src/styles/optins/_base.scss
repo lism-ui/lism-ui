@@ -1,15 +1,8 @@
 :root {
-	--heading-ff: var(--ff--sans);
-	--link-c: #0c61e4;
 	// --link-underlineOffset: 0.2ex;
 
 	--focus--outlineColor: revert;
 	--focus--outlineOffset: 1px;
-
-	// --code-c: var(--c--text);
-	// --code-bgc: var(--c--base-2);
-	--code-c: currentColor;
-	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
 }
 
 // フォーカス要素
@@ -18,43 +11,16 @@
 	outline-offset: var(--focus-outlineOffset);
 }
 
-pre {
-	padding: var(--p--box);
-	background-color: var(--c--base-2);
-
-	// 横にスクロールできるように
-	// overflow-inline: auto; ← まだ使えない
-	overflow-x: auto; /* 縦書きモードにしてもこれでいける */
+small {
+	font-size: var(--fz--xs);
 }
 
-code,
-kbd {
-	font-size: 0.9em;
-	font-family: var(--ff--mono);
-	padding: 0.25em 0.375em;
-	border-radius: var(--radii--s);
-}
+// blockquote {
+// 	& > :where(footer, cite) {
+// 		margin-block-start: var(--s--20);
+// 	}
+// }
 
-code {
-	color: var(--code-c);
-	background-color: var(--code-bgc);
-}
-
-kbd {
-	border: solid 1px var(--c--divider);
-	box-shadow: 0 1px 0 var(--c--divider);
-	// color: var(--c--text);
-	// background-color: var(--c--base);
-}
-
-blockquote {
-	border-inline-start: solid 3px currentColor;
-	padding: var(--p--box--s);
-
-	& > :where(footer, cite) {
-		margin-block-start: var(--s--20);
-	}
-}
-figcaption {
-	font-size: var(--fz--s);
-}
+// figure > figcaption {
+// 	font-size: var(--fz--s);
+// }

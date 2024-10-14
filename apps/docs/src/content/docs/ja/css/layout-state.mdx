@@ -7,12 +7,9 @@ sidebar:
 
 
 import { DammyText, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Columns, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
-
-import { Desktop } from '@phosphor-icons/react';
-import { MemoBadge,HelpText,Reference } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
-import PreviewFrame from '~/components/PreviewFrame.astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame, Reference } from '~/components';
 import { Note } from '~/components/ex/Note';
+import { Desktop } from '@phosphor-icons/react';
 
 Lismでは、レイアウトを組む上で特定の役割を持ち、複数のモジュールに対してつけ外しできるような汎用性の高いセレクタを Layout State として分類しています。
 
@@ -769,7 +766,6 @@ article > * {
 <Callout type="point">
 しかし、Lismでは ② の方法を推奨しています。  
 </Callout>
-{/* <HelpText>（もちろん、どちらのアプローチも可能です。）</HelpText> */}
 
 この②のアプローチに対応するためのコンテンツ制御クラスが、`-container:`クラスです。また、②を前提として`is--wide`や`is--fullwide`クラスは設計されています。
 

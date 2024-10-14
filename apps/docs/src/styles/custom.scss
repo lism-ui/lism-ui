@@ -3,12 +3,29 @@
 @import './docs/layout';
 @import './docs/preview';
 @import './docs/code';
-@import './optins';
+
+// @import './optins/base';
+@import './optins/flex';
+@import './optins/list';
+@import './optins/tab';
+@import './optins/hov';
+@import './optins/bg';
+@import './optins/others';
+
 @import '../components/ex/Chat/style';
 @import '../components/ex/Note/style';
 
-/* memo: 狭いブラウザ幅での目次、文字検索した時に展開してきて邪魔になってしまうので、最大高さを低くした方がいいかも */
+/* ----------------------------------------
+    optin で、Docs で反映させるもの
+ ---------------------------------------- */
+:root {
+	--code-c: currentColor;
+	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
+}
 
+/* ----------------------------------------
+    guide
+ ---------------------------------------- */
 :where(.has--itemGuide > *) {
 	border: 1px dashed hsla(0, 0%, 63%, 0.4);
 	padding: 0 4px;
@@ -26,6 +43,44 @@
 		// box-sizing: border-box;
 	}
 }
+
+/* ----------------------------------------
+    content
+ ---------------------------------------- */
+code {
+	&:where(:not(.c--preview_area &)) {
+		font-family: var(--ff--mono);
+		font-size: 0.9em;
+		color: var(--code-c);
+		padding: 0.25em 0.375em;
+		border-radius: 0.25em;
+		background-color: var(--code-bgc);
+	}
+}
+
+kbd {
+	&:where(:not(.c--preview_area &)) {
+		font-size: 0.95em;
+		display: inline-block;
+		font-family: var(--ff--mono);
+		line-height: 1;
+		padding: 0.375em;
+		border-radius: 0.25em;
+		border: solid 1px var(--c--divider);
+		box-shadow: 0 2px 0 var(--c--divider);
+		translate: 0 -1px;
+
+		// color: var(--c--text);
+		// background-color: var(--c--base);
+	}
+}
+
+// スコア: 0-0-2 → code, kbd を上書きできるように
+// →→ codeの color が currentColor なので不要
+// a > code {
+// 	color: inherit;
+// 	text-decoration: inherit;
+// }
 
 .a--mdcontent {
 	> :where(p, ul, ol) code {
@@ -49,11 +104,14 @@
 	}
 }
 
-// .b--badge--subtle > code {
-// 	background-color: transparent;
-// 	font: inherit;
-// 	padding: 0;
-// }
+.b--badge--prop {
+	padding: 0 0.25em;
+	> code {
+		background-color: transparent;
+		font: inherit;
+		padding: 0;
+	}
+}
 
 // セル内のコードで、かつそれが唯一な要素であればは折り返さない
 td:first-child > code:only-child {

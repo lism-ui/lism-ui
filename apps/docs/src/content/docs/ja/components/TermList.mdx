@@ -2,9 +2,8 @@
 title: 'Terms'
 description: ...
 ---
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { Lism, Text, Stack, WithSide } from '@lism-ui/core';
+import { Lism, Dummy, Text, Stack, WithSide } from '@lism-ui/core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
 
 dl,dt,ddタグによるシンプルな用語リストの構築例を紹介します。
@@ -12,22 +11,22 @@ dl,dt,ddタグによるシンプルな用語リストの構築例を紹介しま
 
 <Preview>
 	<PreviewTitle>例 1</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea p='30'>
 		<Stack tag='dl' g='40'>
 			<div>
-				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='10'>
+				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='20'>
 					<>The term A</>
 				</Text>
-				<Lism tag='dd' mbs='5' pis='20'>
-					<DammyText />
+				<Lism tag='dd' mbs='5' pis='30'>
+					<Dummy />
 				</Lism>
 			</div>
 			<div>
-				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='10'>
+				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='20'>
 					<>The term B</>
 				</Text>
-				<Lism tag='dd' mbs='5' pis='20'>
-					<DammyText length="l" />
+				<Lism tag='dd' mbs='5' pis='30'>
+					<Dummy length="l" />
 				</Lism>
 			</div>
 		</Stack>
@@ -36,18 +35,18 @@ dl,dt,ddタグによるシンプルな用語リストの構築例を紹介しま
 		```jsx
 		<Stack tag='dl' g='40'>
 			<div>
-				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='10'>
+				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='20'>
 					The term A
 				</Text>
-				<Lism tag='dd' mbs='5' pis='20'>
+				<Lism tag='dd' mbs='5' pis='30'>
 					<p>...</p>
 				</Lism>
 			</div>
 			<div>
-				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='10'>
+				<Text tag='dt' fw='b' bd='is' bdw='2px' pis='20'>
 					The term B
 				</Text>
-				<Lism tag='dd' mbs='5' pis='20'>
+				<Lism tag='dd' mbs='5' pis='30'>
 					<p>...</p>
 				</Lism>
 			</div>
@@ -63,30 +62,30 @@ WithSide を活用して、画面サイズが広い場合に用語リストを�
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea resize p='30'>
 		<Stack tag='dl' g='40'>
 			<WithSide sideW='10rem' mainMinW='16rem' >
 				<Text isSide tag='dt' fw='b'>
 					<>The term A</>
 				</Text>
-				<Lism tag='dd' pis='20'>
-					<DammyText />
+				<Lism tag='dd' pis='30'>
+					<Dummy />
 				</Lism>
 			</WithSide>
 			<WithSide sideW='10rem' mainMinW='16rem' >
 				<Text isSide tag='dt' fw='b'>
 					<>The term B</>
 				</Text>
-				<Lism tag='dd' pis='20'>
-					<DammyText length='m' />
+				<Lism tag='dd' pis='30'>
+					<Dummy length='m' />
 				</Lism>
 			</WithSide>
 			<WithSide sideW='10rem' mainMinW='16rem' >
 				<Text isSide tag='dt' fw='b'>
 					<>The term C (長めの用語のテストです。This is ダミーテキスト).</>
 				</Text>
-				<Lism tag='dd' pis='20'>
-					<DammyText length="l" />
+				<Lism tag='dd' pis='30'>
+					<Dummy length="l" />
 				</Lism>
 			</WithSide>
 		</Stack>
@@ -98,7 +97,7 @@ WithSide を活用して、画面サイズが広い場合に用語リストを�
 				<Text isSide tag='dt' fw='b'>
 					The term A
 				</Text>
-				<Lism tag='dd' pis='20'>
+				<Lism tag='dd' pis='30'>
 					<p>...</p>
 				</Lism>
 			</WithSide>
@@ -106,7 +105,7 @@ WithSide を活用して、画面サイズが広い場合に用語リストを�
 				<Text isSide tag='dt' fw='b'>
 					The term B
 				</Text>
-				<Lism tag='dd' pis='20'>
+				<Lism tag='dd' pis='30'>
 					<p>...</p>
 				</Lism>
 			</WithSide>
@@ -114,7 +113,7 @@ WithSide を活用して、画面サイズが広い場合に用語リストを�
 				<Text isSide tag='dt' fw='b'>
 					The term C (長めの用語のテストです。This is ダミーテキスト).
 				</Text>
-				<Lism tag='dd' pis='20'>
+				<Lism tag='dd' pis='30'>
 					<p>...</p>
 				</Lism>
 			</WithSide>

@@ -4,12 +4,10 @@ description: ...
 ---
 
 import { Container, Columns, Grid, Stack, Flex, Callout, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
-import { Reference, MemoBadge, PropBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
-import presetIcons from '@lism-ui/core/components/Icon/presets';
 import { Note } from '~/components/ex/Note';
-import ImportCode from "~/components/code-template/Import.astro";
+import presetIcons from '@lism-ui/core/components/Icon/presets';
 
 export const PrestIcons = () => {
 	return <Columns variant='liquid' colSize='10rem' g='20'>

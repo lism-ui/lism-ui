@@ -1,0 +1,27 @@
+---
+import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
+import RawHTML from '~/components/contents/RawHTML.astro';
+import { Lism } from '@lism-ui/astro';
+
+// import './style.scss';
+---
+
+<DemoPageLayout>
+	<Lism isFlow hasGutter py='40' isContainer='s'>
+		<Lism isFlow='s'>
+			<RawHTML type='texts' />
+		</Lism>
+		<hr />
+		<Lism isFlow='s'>
+			<RawHTML type='list' />
+		</Lism>
+		<hr />
+		<Lism isFlow='s'>
+			<RawHTML type='table' />
+		</Lism>
+		<hr />
+		<Lism isFlow='s'>
+			<RawHTML type='forms' />
+		</Lism>
+	</Lism>
+</DemoPageLayout>

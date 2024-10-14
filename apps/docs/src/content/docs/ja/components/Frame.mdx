@@ -2,10 +2,8 @@
 title: 'Frame'
 description: ...
 ---
-import { Box, Flex, Media, Text, Layer, Frame, Center, Columns, DammyText } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import ImportCode from "~/components/code-template/Import.astro";
+import { Box, Flex, Media, Text, Layer, Frame, Center, Columns, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText } from "~/components";
 
 
 # Frame
@@ -23,7 +21,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 | `layout` | 展開したい Lismコンポーネント を指定できます。|
 {/* | `objectPosition` | 直下のメディア要素のobject-positionを指定できます。 | */}
 
-<HelpText mbs="em10">(aspect自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
+<HelpText>(aspect自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
 
 ## Import
 
@@ -154,7 +152,7 @@ import ImportCode from "~/components/code-template/Import.astro";
 			<Layer p='40' ov='auto'>
 				<Center minH='100%' g='10'>
 					<Text fz='2xl' lh='xs' fw='bold'>Heading</Text>
-					<DammyText />
+					<Dummy />
 				</Center>
 			</Layer>
 		</Frame>
@@ -250,7 +248,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='l' p='30' />
+				<Dummy length='l' p='30' />
 			</Box>
 		</Flex>
 	</PreviewArea>
@@ -261,7 +259,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='l' p='30' />
+				<Dummy length='l' p='30' />
 			</Box>
 		</Flex>
 		```
@@ -279,7 +277,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='40' />
+				<Dummy length='xl' p='40' />
 			</Box>
 		</Flex>
 	</PreviewArea>
@@ -290,7 +288,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
-				<DammyText length='xl' p='40' />
+				<Dummy length='xl' p='40' />
 			</Box>
 		</Flex>
 		```
@@ -308,13 +306,13 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewTitle>
 	<PreviewArea resize p='5'>
 		<Box aspect='2/1' ovy='auto' isFlow p='40' bgc='base'>
-			<DammyText />
-			<DammyText length="l" />
+			<Dummy />
+			<Dummy length="l" />
 			<Frame aspect='2/1' maxW='50%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
-			<DammyText length="xl" />
-			<DammyText />
+			<Dummy length="xl" />
+			<Dummy />
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>

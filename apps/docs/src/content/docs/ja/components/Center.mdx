@@ -3,10 +3,8 @@ title: 'Center'
 description: ...
 ---
 
-import { Center, Frame, Callout, Box, Text, Spacer } from '@lism-ui/astro';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import ImportCode from "~/components/code-template/Import.astro";
+import { Center, Frame, Callout, Box, Text, Spacer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
 
 **要素**を上下左右中央揃えで配置するためのモジュールです。
 
@@ -70,8 +68,8 @@ Centerが**高さを持たない**場合は、コンテンツを水平方向に�
 	<PreviewArea resize p={10}>
 		<Center p='40' g='20'>
 			<Text fz='l'>TEXT</Text>
-			<DammyText length='xs' lang='ja'/>
-			<DammyText length='m' lang='ja'/>
+			<Dummy length='xs' lang='ja'/>
+			<Dummy length='m' lang='ja'/>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -161,8 +159,8 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 	<PreviewArea resize p={10}>
 		<Center p='30' g='20' h='50vh' ji='start'>
 			<Text fz='l' fw='700'>TEXT</Text>
-			<DammyText length='xs' lang='ja'/>
-			<DammyText length='m' lang='ja'/>
+			<Dummy length='xs' lang='ja'/>
+			<Dummy length='m' lang='ja'/>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -207,16 +205,16 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewArea resize p={10}>
 		<Center px='30' py='50' g='20' h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
-			<DammyText length='l' />
-			<DammyText length='xl' />
+			<Dummy length='l' />
+			<Dummy length='xl' />
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "\<Center" "h='45vh' ovy='auto'"
 		<Center px='30' py='50' g='20' h='45vh' ovy='auto' bd>
 			<Text fz='l' fw='700'>DEMO</Text>
-			<DammyText length='l' />
-			<DammyText length='xl' />
+			<Dummy length='l' />
+			<Dummy length='xl' />
 		</Center>
 		```
 	</PreviewCode>
@@ -241,8 +239,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		<Box px='30' py='50' h='45vh' ovy='auto' bd>
 			<Center g='20' minH='100%'>
 				<Text fz='l' fw='700'>DEMO</Text>
-				<DammyText length='l' />
-				<DammyText length='xl' />
+				<Dummy length='l' />
+				<Dummy length='xl' />
 			</Center>
 		</Box>
 	</PreviewArea>
@@ -251,8 +249,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		<Box px='30' py='50' h='45vh' ovy='auto' bd>
 			<Center minH='100%' g='20'>
 				<Text fz='l' fw='700'>DEMO</Text>
-				<DammyText length='l' />
-				<DammyText length='xl' />
+				<Dummy length='l' />
+				<Dummy length='xl' />
 			</Center>
 		</Box>
 		```
@@ -267,8 +265,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
-				<DammyText length='xs' lang='ja'/>
-				<DammyText length='xl' lang='ja'/>
+				<Dummy length='xs' lang='ja'/>
+				<Dummy length='xl' lang='ja'/>
 			</Center>
 		</Frame>
 	</PreviewArea>
@@ -277,8 +275,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
-				<DammyText length='xs' lang='ja'/>
-				<DammyText length='xl' lang='ja'/>
+				<Dummy length='xs' lang='ja'/>
+				<Dummy length='xl' lang='ja'/>
 			</Center>
 		</Frame>
 		```
@@ -290,16 +288,16 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewArea resize p={10}>
 		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
-			<DammyText length='xs' lang='ja'/>
-			<DammyText length='xl' lang='ja'/>
+			<Dummy length='xs' lang='ja'/>
+			<Dummy length='xl' lang='ja'/>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
 		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
-			<DammyText length='xs' lang='ja'/>
-			<DammyText length='xl' lang='ja'/>
+			<Dummy length='xs' lang='ja'/>
+			<Dummy length='xl' lang='ja'/>
 		</Center>
 		```
 	</PreviewCode>
@@ -335,13 +333,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 			<Frame aspect="4/3" bgc='base-2'>
 				<Center h="100%" p='30'>
 					<Text fw="700">margin</Text>
-					<DammyText length='l' mbs={20}/>
+					<Dummy length='l' mbs={20}/>
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
 				<Stack ai="center" jc="center" h="100%" p='30'>
 					<Text fw="700">justify-content</Text>
-					<DammyText length='l' mbs={20}/>
+					<Dummy length='l' mbs={20}/>
 				</Stack>
 			</Frame>
 		</Columns>
@@ -387,13 +385,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 			<Frame aspect="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40} ovy="auto">
 					<Text fz='l' fw="700">ovy "auto"</Text>
-					<DammyText length='l' mbs={20} />
+					<Dummy length='l' mbs={20} />
 				</Center>
 			</Frame>
 			<Frame aspect="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40}>
 					<Text fz='l' fw="700">ovy なし</Text>
-					<DammyText length='l' mbs={20} />
+					<Dummy length='l' mbs={20} />
 				</Center>
 			</Frame>
 		</Columns>

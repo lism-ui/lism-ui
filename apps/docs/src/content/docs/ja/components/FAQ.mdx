@@ -4,9 +4,8 @@ description: ...
 ---
 
 
-import { Callout, Text, Lism, Flex, Stack, Icon, Decorator, Divider, AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/core';
-import { Reference, MemoBadge, HelpText, DammyText } from '~/components';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from '~/components/Preview';
+import { Callout, Text, Lism, Flex, Stack, Icon, Decorator, Divider, Dummy, AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 import {Question, ChatCircleDots} from '@phosphor-icons/react';
 
 Q&Aのレイアウト構築例を紹介します。
@@ -49,16 +48,16 @@ export function AccFAQ({ q, children }) {
 	<PreviewArea resize p={30}>
 		<Stack g='40'>
 			<FAQ q='Lorem ipsum, question 1'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</FAQ>
 			<Divider />
 			<FAQ q='Lorem ipsum dolor sit amet, question 2'>
-				<DammyText  />
-				<DammyText length='l' />
+				<Dummy  />
+				<Dummy length='l' />
 			</FAQ>
 			<Divider />
 			<FAQ q='Question 3'>
-				<DammyText length='m' />
+				<Dummy length='m' />
 			</FAQ>
 		</Stack>
 	</PreviewArea>
@@ -134,14 +133,14 @@ import { FAQs, FAQ } from './path/to/.../steps';
 	<PreviewArea resize p={30}>
 		<AccordionGroup g={20}>
 			<AccFAQ q='Question 1'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</AccFAQ>
 			<AccFAQ q='Question 2'>
-				<DammyText  />
-				<DammyText length='l' />
+				<Dummy  />
+				<Dummy length='l' />
 			</AccFAQ>
 			<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</AccFAQ>
 		</AccordionGroup>
 	</PreviewArea>
