@@ -95,28 +95,28 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 
 
 <Preview>
-	<PreviewTitle>`.-gtc:a1a`の利用</PreviewTitle>
+	<PreviewTitle>真ん中にメインコンテンツ</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Grid gtc='a1a' g='20'>
+		<Grid gtc='auto 1fr auto' g='20'>
 			<Center p='30' bgc='base-2'>L</Center>
-			<Center p='30' bgc='base-2'>Center</Center>
+			<Center p='30' bd>Center</Center>
 			<Center p='30' bgc='base-2'>R</Center>
 		</Grid>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Grid gtc='a1a' g='20'>
+		<Grid gtc='auto 1fr auto' g='20'>
 			<Center p='30' bgc='base-2'>L</Center>
-			<Center p='30' bgc='base-2'>Center</Center>
+			<Center p='30' bd>Center</Center>
 			<Center p='30' bgc='base-2'>R</Center>
 		</Grid>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--grid -gtc:a1a -g:20">
+		<div class="l--grid -g:20" style="--gtc:auto 1fr auto">
 			<div class="l--center -p:30 -bgc:base-2">L</div>
-			<div class="l--center -p:30 -bgc:base-2">Center</div>
+			<div class="l--center -p:30 -bd:">Center</div>
 			<div class="l--center -p:30 -bgc:base-2">R</div>
 		</div>
 		```
@@ -137,9 +137,17 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 			]}
 		>
 			<GridItem ga='left' p='20' bgc='base-2'>Left</GridItem>
-			<GridItem ga='main' p='20' bgc='base-2'>Center</GridItem>
+			<GridItem ga='main' p='20' bd>Center</GridItem>
 			<GridItem ga='right' p='20' bgc='base-2'>Right</GridItem>
 		</Grid>
+		<div
+			class="l--grid -gta@sm -gtc@sm -g:20"
+			style="--gta:'main main' 'left right';--sm-gta:'left main right';--gtc:1fr 1fr;--sm-gtc:8em 1fr 8em"
+		>
+			<div class="-p:20 -bgc:base-2 -ga:" style="--ga:left">Left</div>
+			<div class="-p:20 -bd: -ga:" style="--ga:main">Center</div>
+			<div class="-p:20 -bgc:base-2 -ga:" style="--ga:right">Right</div>
+		</div>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
@@ -151,9 +159,9 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 				`'left main right'`
 			]}
 		>
-			<GridItem ga='left' p='20'>Left</GridItem>
-			<GridItem ga='main' p='20'>Center</GridItem>
-			<GridItem ga='right' p='20'>Right</GridItem>
+			<GridItem ga='left' p='20' bgc='base-2'>Left</GridItem>
+			<GridItem ga='main' p='20' bd>Center</GridItem>
+			<GridItem ga='right' p='20' bgc='base-2'>Right</GridItem>
 		</Grid>
 		```
 	</PreviewCode>
@@ -163,9 +171,9 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/pro
 			class="l--grid -gta@sm -gtc@sm -g:20"
 			style="--gta:'main main' 'left right';--sm-gta:'left main right';--gtc:1fr 1fr;--sm-gtc:8em 1fr 8em"
 		>
-			<div class="-p:20 -ga:" style="--ga:left">Left</div>
-			<div class="-p:20 -ga:" style="--ga:main">Center</div>
-			<div class="-p:20 -ga:" style="--ga:right">Right</div>
+			<div class="-p:20 -p:30 -bgc:base-2 -ga:" style="--ga:left">Left</div>
+			<div class="-p:20 -p:30 -bd: -ga:" style="--ga:main">Center</div>
+			<div class="-p:20 -bgc:base-2 -ga:" style="--ga:right">Right</div>
 		</div>
 		```
 	</PreviewCode>

@@ -199,9 +199,9 @@ export const CONTEXT_PROPS = {
 	grid: {
 		gd: {},
 		gt: { style: 'gridTemplate' },
-		gtc: { onlyVar: 'grid', presets: 1 },
-		gtr: { onlyVar: 'grid', presets: 1 },
-		gta: { onlyVar: 'grid', presets: 1 },
+		gtc: { onlyVar: 'grid' },
+		gtr: { onlyVar: 'grid' },
+		gta: { onlyVar: 'grid' },
 		gaf: { style: 'gridAutoFlow' },
 		gar: { style: 'gridAutoRows' },
 		gac: { style: 'gridAutoColumns' },
@@ -211,7 +211,7 @@ export const CONTEXT_PROPS = {
 	},
 	gridItem: {
 		// item
-		ga: { presets: 1, style: 'gridArea' }, // grid-area
+		ga: { presets: 1 }, // grid-area
 		gc: { presets: 1 }, // grid-column
 		gcs: { presets: 1, style: 'gridColumnStart' },
 		gce: { presets: 1, style: 'gridColumnEnd' },

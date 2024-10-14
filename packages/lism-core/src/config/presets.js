@@ -77,13 +77,7 @@ export default {
 	// inset: ['c', 'cX', 'cY'], // inset は 0% だけ
 
 	// fx: ['1'],
-	gd: [
-		//'side:l', 'side:r', 'side:s', 'side:e', '3row', '3col'
-	],
 	// gt: [],
-	gtc: ['a1a'],
-	gtr: ['a1a'],
-	gta: [],
 	// gc: ['1', '2', '3', 'span2'],
 	// gr: ['1', '2', '3', 'span2'],
 	// gcs: ['1', '2', '3'],

@@ -99,18 +99,6 @@ $utilities: (
 		'100\\%': '100%',
 	),
 
-	'gtc': (
-		'a1a': 'auto 1fr auto',
-	),
-	'gtr': (
-		'a1a': 'auto 1fr auto',
-	),
-	// 'ga': (
-	// 	'side': 'side',
-	// 	's': 'start',
-	// 	'e': 'end',
-	// 	'c': 'center',
-	// ),
 	// 'gr': (
 	// 	'span2': 'span 2 / span 2',
 	// 	'full': '1 / -1',
@@ -653,7 +641,8 @@ $props: map.deep-merge(
 		),
 		'ga': (
 			prop: 'grid-area',
-			base_type: 0,
+			base_type: 1,
+			bp: 1,
 		),
 		'gr': (
 			prop: 'grid-row',
