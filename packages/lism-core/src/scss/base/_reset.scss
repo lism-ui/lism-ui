@@ -1,43 +1,44 @@
 /* 参考
-	ress https://github.com/filipelinhares/ress/blob/master/ress.css
-	https://elad2412.github.io/the-new-css-reset/
+	- https://github.com/necolas/normalize.css/blob/master/normalize.css
+	- https://github.com/filipelinhares/ress/blob/master/ress.css
+	- https://elad2412.github.io/the-new-css-reset/
 */
 
-/* 方針
-	reset.cssの段階では、できるだけブラウザの標準スタイルに従う感じで。
-	→ 主要なタグは、reset.css とは別に トークンなどを使って初期スタイルをセットする。
+/* ------------------------------------------------------------
+	基本方針: reset.cssの段階では、できるだけブラウザの標準スタイルに従う。
 
-	- box-sizing: border-box; にセット
-	- margin はすべて 0
-	- padding は そのまま
-*/
-
-// @layer lism-reset {
+	  - box-sizing: border-box; にセット
+	  - padding は ブラウザ標準スタイルのまま
+	  - margin はすべて 0 にリセット
+------------------------------------------------------------ */
 *,
 ::before,
 ::after {
 	box-sizing: border-box;
 }
 
-/* Reset `margin` of all elements */
 * {
 	margin: 0;
-	/* padding: 0; */
 }
 
-html {
-	-moz-tab-size: 4;
-	tab-size: 4;
+/* ------------------------------------------------------------
+	Texts
+------------------------------------------------------------ */
 
-	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
-	text-size-adjust: none;
-
-	/*  テキストのレンダリングを改善 → font によっては薄くなりすぎるのでナシ */
-	/* -webkit-font-smoothing: antialiased; */
+/* テキストのオーバーフローを回避 */
+:where(p, h1, h2, h3, h4, h5, h6) {
+	overflow-wrap: break-word;
 }
 
-// :where(svg,img)
-img {
+/* ルビのサイズ統一 */
+rt {
+	font-size: 50%;
+}
+
+/* ------------------------------------------------------------
+	Medias
+------------------------------------------------------------ */
+:where(img) {
 	/* 親要素をはみ出さないように */
 	max-inline-size: 100%;
 
@@ -48,49 +49,26 @@ img {
 	block-size: auto;
 }
 
-/* かつ、画像はアスペクト比を保持。 (svg に適用してしまうと width, height属性が効かない） */
-// img {
-// 	block-size: auto;
-// }
-
 /* img 以外のメディア系も飛び出さないように。 ( audio, embed, object にも必要か...? ) */
-iframe,
-audio,
-picture,
-video {
+:where(iframe, audio, picture, video) {
 	display: block;
-
-	// max-width: 100%;
 	max-inline-size: 100%;
 }
 
-iframe {
+:where(iframe) {
 	border: none;
 }
 
-/* ルビのサイズ統一 */
-rt {
-	font-size: 50%;
-}
-
-/* テキストのオーバーフローを回避 */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	overflow-wrap: break-word;
-}
-
-/* フォーム要素のフォントとカラーをリセット */
-input,
-button,
-textarea,
-select {
+/* ------------------------------------------------------------
+	Form fields
+	  - 基本要素のフォントとカラーをリセット
+	  - テキストエリアの水平リサイズを無効に
+	  - カーソルのセット
+------------------------------------------------------------ */
+:where(input, button, textarea, select) {
 	font: inherit;
 	color: inherit;
+	text-transform: none;
 }
 
 /* テキストエリアの水平リサイズを無効に */
@@ -98,29 +76,12 @@ textarea {
 	resize: vertical;
 }
 
-/* Remove the inheritance of text transform in Edge, Firefox, and IE.  */
-button,
-select {
-	text-transform: none;
-}
-
-/* rangeコントロールの位置調整　→ flexで並べて使えばよい */
-
-/* [type='range'] {vertical-align: middle;} */
-
-/*
-	カーソル pointer
-*/
-/* pointer */
+// :where([type='button'], [type='reset'], [type='submit'], [type='radio'], [type='checkbox']),
+// :where([t[role='option'], [role='button'], [aria-controls]),
 button,
 label,
 select,
-summary,
-// [type='button'],
-// [type='reset'],
-// [type='submit'],
-// :where([role='option']),
-:where([type='radio'], [type='checkbox'], [role='button'], [aria-controls]) {
+summary {
 	cursor: pointer;
 }
 

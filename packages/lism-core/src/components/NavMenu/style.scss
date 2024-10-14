@@ -1,7 +1,8 @@
 // <ul>
 .c--navMenu {
 	// トップ要素でのみ定義
-	&:where(:not(.c--navMenu .c--navMenu)) {
+	&:where(:not(& &)) {
+		--link-td: none;
 		--pass-p: var(--s--20);
 	}
 
@@ -11,10 +12,11 @@
 }
 
 .c--navMenu__link {
-	--td: none; // text-decoration: none;
+	// text-decoration: none;
 	padding: var(--pass-p);
 	outline-offset: -1px;
 }
+
 // :where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {
 // 	color: var(--hov-c);
 // 	background-color: var(--hov-bgc);

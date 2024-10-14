@@ -1,30 +1,42 @@
-@forward './tokens';
 @forward './reset';
+@forward './tokens';
 
-@forward './html/heading';
-@forward './html/table';
-@forward './html/list';
-@forward './html/texts';
-
+/* ----------------------------------------
+    デザイントークンとは別の設定値
+ ---------------------------------------- */
 :root {
 	--heading-ff: var(--ff--sans);
-	--link-c: #0c61e4;
 	// --link-underlineOffset: 0.2ex;
 
-	--cell-p: 0.5em;
-
+	// hover用
 	--hov-trsdu: 0.3s;
 	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;
 
+	// accordion用
 	--acc-trsdu: 0.3s;
 	--acc-trsprop: margin-block, padding-block, opacity, grid-template-rows; // hov:get:slide でも使用
 
 	// is--overwide で使用
 	--overwide-size: 100vw;
+
+	// :rootで初期セットしてないが定義可能な変数
+	// --heading-ff
+	// --heading-fw
+	// --link-td
 }
 
+/* ----------------------------------------
+    html, body
+ ---------------------------------------- */
 html {
 	font-size: var(--fz--root);
+	tab-size: 4;
+
+	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
+	text-size-adjust: none;
+
+	/*  テキストのレンダリングを改善 → font によっては薄くなりすぎるのでナシ */
+	/* -webkit-font-smoothing: antialiased; */
 }
 
 body {
@@ -41,8 +53,72 @@ body {
 	// container-type: inline-size;
 }
 
-// @layer lism-init {
+/* ----------------------------------------
+    Heading
+ ---------------------------------------- */
+:where(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--heading-ff, var(--ff--root));
+	font-weight: var(--heading-fw, bolder);
+	font-size: var(--fz, revert);
+	line-height: var(--lh, inherit);
+}
+h1 {
+	--fz: var(--fz--3xl);
+	--lh: var(--lh--xs);
+}
+h2 {
+	--fz: var(--fz--2xl);
+	--lh: var(--lh--xs);
+}
+h3 {
+	--fz: var(--fz--xl);
+	--lh: var(--lh--s);
+}
+h4 {
+	--fz: var(--fz--l);
+	--lh: var(--lh--s);
+}
+h5 {
+	--fz: var(--fz--m);
+	// --lh: var(--lh--s);
+}
+h6 {
+	--fz: var(--fz--s);
+}
 
+/* ----------------------------------------
+    list
+ ---------------------------------------- */
+:where(ul, ol) {
+	padding: 0;
+	list-style: none;
+
+	// classを持たない素の ul,ol のみブラウザ標準のスタイルを復活させる
+	&:not([class]) {
+		padding-inline-start: 1.375em;
+		list-style: revert;
+	}
+}
+
+/* ----------------------------------------
+    texts
+ ---------------------------------------- */
+// link
+:where(a) {
+	color: var(--c--link);
+	text-decoration: var(--link-td, underline);
+}
+
+/* ----------------------------------------
+    table
+ ---------------------------------------- */
+:where(td, th) {
+	padding: var(--cell-p, 0.5em);
+}
+
+/* ----------------------------------------
+    dialog
+ ---------------------------------------- */
 // showModal()にのみ適用するため、 dialog ではなく :modal を使用
 body:has(:modal[open]) {
 	overflow: hidden;
@@ -52,9 +128,31 @@ dialog:not([open]) {
 	pointer-events: none;
 }
 
-/* hrのスタイリング. currentColor */
-hr {
+/* ----------------------------------------
+    others
+ ---------------------------------------- */
+:where(hr) {
 	border: none;
 	border-block-start: 1px solid;
 	block-size: 0;
 }
+
+:where(blockquote) {
+	border-inline-start: solid 3px currentColor;
+	padding: var(--s--30);
+}
+
+:where(pre) {
+	padding: var(--s--30);
+	background-color: var(--c--base-2);
+
+	// 横にスクロールできるように（overflow-inline: auto; ← まだ使えない）
+	overflow-x: auto; // 縦書きモードにしてもこれでいけた
+}
+
+/* ----------------------------------------
+    Form fields
+ ---------------------------------------- */
+// :where(input[type='text'], textarea, select) {
+// 	padding: var(--s--10);
+// }

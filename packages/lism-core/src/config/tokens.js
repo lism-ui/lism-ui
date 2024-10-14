@@ -44,6 +44,7 @@ export default {
 		'text-2',
 		'text-3',
 		'divider',
+		'link',
 		'divider-2',
 		'main',
 		'accent',

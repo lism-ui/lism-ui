@@ -3,11 +3,11 @@
 // }
 
 .is--linkBox {
-	--td: none;
-	display: block;
 	position: relative;
+	display: block;
 	color: inherit;
 	pointer-events: auto;
+	text-decoration: none;
 	cursor: pointer;
 	isolation: isolate; // 内部のz-index順位と外部のz-indexを混同させない。
 
@@ -34,7 +34,7 @@
 }
 
 .is--overlayLink {
-	--td: none;
+	text-decoration: none;
 	position: static;
 	color: inherit;
 

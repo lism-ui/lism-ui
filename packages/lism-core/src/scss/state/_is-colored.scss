@@ -3,14 +3,6 @@
 */
 
 // @supports (color: color-mix(in srgb, #000, #fff)) {
-:root {
-	// --mixcolorspace: srgb
-	--colored-per--bg: 4%;
-	--colored-per--bdc: 25%;
-	--colored-per--txt: 20%;
-	// --colored-per--link: 80%;
-}
-
 /* stylelint-disable */
 
 
@@ -31,12 +23,10 @@
 @supports (color: color-mix(in srgb, #000, #fff)) {
 	// --keycolor 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
 	.is--colored{
-		--c: color-mix(in srgb, var(--c--text), var(--keycolor) var(--colored-per--txt));
-		--bgc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bg));
-		--bdc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bdc));
-		// --cbox-c--link を使いたい時もあるので、--link-c への直接セットはしない。(color-mix未対応のブラウザを考慮）
-		// --cbox-c--link: color-mix( in srgb, var(--c--text), var(--keycolor) var(--colored-per--link));
-		--link-c: var(--keycolor); // var(--cbox-c--link);
+		--c: color-mix(in srgb, var(--c--text), var(--keycolor) var(--colored-per--txt, 16% ));
+		--bgc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bg, 4% ));
+		--bdc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bdc, 25% ));
+		--c--link: var(--keycolor); // var(--cbox-c--link);
 	}
 }
 
