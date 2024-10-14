@@ -1,29 +1,5 @@
 import { Box, Text, Stack, Frame, Center, Grid, Dummy } from '@lism-ui/core';
 
-export const ColorDemos = ({ colors = [] }) => {
-	return (
-		<>
-			{colors.map((name) => {
-				return (
-					<Stack key={name} g='10'>
-						<Text bd='left' bdw='2px' lh='1.25' pl='20' fz='xs'>
-							<code>--{name}</code>
-						</Text>
-						<Grid ratio={['1', '1:2']} fz='s'>
-							<Box bgc={`var(--${name})`} p='10'>
-								&emsp;
-							</Box>
-							<Box bd='' c={`var(--${name})`} p='10'>
-								Lorem ipsum text...
-							</Box>
-						</Grid>
-					</Stack>
-				);
-			})}
-		</>
-	);
-};
-
 export const FzDemos = ({ lang = 'ja' }) => (
 	<Frame aspect='16/9' ovy='auto' isFlow='s'>
 		{['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl'].map((fz, i) => {

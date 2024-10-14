@@ -3,7 +3,7 @@ import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
 import DemoHeader from '../DemoHeader.astro';
 import DemoFooter from '../DemoFooter.astro';
 import DemoContent from '../DemoContent.astro';
-import { Box, Stack, Container, DammyText, WithSide } from '@lism-ui/astro';
+import { Box, Stack, Container, Dummy, WithSide } from '@lism-ui/astro';
 
 //  two column では、メインコンテンツ内のfullwideはスマホで見ても端っこまで広がらないことに注意。
 ---
@@ -30,7 +30,7 @@ import { Box, Stack, Container, DammyText, WithSide } from '@lism-ui/astro';
 				</Container>
 				<Container tag='aside' isSide isFlow>
 					<div>Sidebar contents...</div>
-					<DammyText />
+					<Dummy />
 				</Container>
 			</WithSide>
 		</Container>

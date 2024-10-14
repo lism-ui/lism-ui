@@ -2,7 +2,7 @@
 title: 'Callout'
 description: ...
 ---
-import { Box, Callout, Icon, Layer, DammyText } from '@lism-ui/astro';
+import { Box, Callout, Icon, Layer, Dummy } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
 import { Book } from '@phosphor-icons/react';
 
@@ -48,7 +48,7 @@ import { Book } from '@phosphor-icons/react';
 	</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Callout>
-			<DammyText lang='ja' />
+			<Dummy lang='ja' />
 		</Callout>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -79,25 +79,25 @@ import { Book } from '@phosphor-icons/react';
 	</PreviewTitle>
 	<PreviewArea p='30'>
 		<Callout type='alert' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='point' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='warning' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='check' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='info' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='help' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='note' bdrs='s'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		{/* <Callout icon={Book}>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo sunt deserunt
@@ -123,13 +123,13 @@ import { Book } from '@phosphor-icons/react';
 	</PreviewTitle>
 	<PreviewArea p='30'>
 		<Callout icon='good' keycolor='pink'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		{/* <Callout icon='bad' keycolor='blue'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout> */}
 		<Callout icon='book-open' keycolor='#185b6e'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -150,7 +150,7 @@ import { Book } from '@phosphor-icons/react';
 			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
 				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
 			</Icon>
-			<DammyText />
+			<Dummy />
 		</Callout>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='Astro'>
@@ -159,7 +159,7 @@ import { Book } from '@phosphor-icons/react';
 			<Icon tag='svg' slot='icon' viewBox="0 0 256 256">
 				<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
 			</Icon>
-			<DammyText />
+			<Dummy />
 		</Callout>
 		```
 	</PreviewCode>
@@ -177,13 +177,13 @@ import { Book } from '@phosphor-icons/react';
 	</PreviewTitle>
 	<PreviewArea resize p='30' className='is--setStyle:callout'>
 		<Callout type='alert'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='point'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 		<Callout type='warning'>
-			<DammyText lang='ja' length='codes' />
+			<Dummy lang='ja' length='codes' />
 		</Callout>
 	</PreviewArea>
 </Preview> */}

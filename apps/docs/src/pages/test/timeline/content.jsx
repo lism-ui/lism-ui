@@ -1,4 +1,4 @@
-import { Lism, Spacer, Text, Divider, DammyText } from '@lism-ui/core';
+import { Lism, Spacer, Text, Divider, Dummy } from '@lism-ui/core';
 
 import { Timelines, TimelineItem } from '~/components/ex/Timeline/index_block';
 import '~/components/ex/Timeline/style.scss';
@@ -28,16 +28,16 @@ export default function content() {
 			<Timelines>
 				<TimelineItem time='2022年5月xx日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem time='20yy年m月d日' isHighlighted>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 
 				<TimelineItem time='20yy年m月d日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 			</Timelines>
 
@@ -45,15 +45,15 @@ export default function content() {
 			<Timelines>
 				<TimelineItem time='20yy年m月d日' icon={FolderIcon}>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem time='20yy年m月d日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem isHighlighted time='20yy年m月d日' icon={FolderIcon} shapeColor='red'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 			</Timelines>
 
@@ -61,16 +61,16 @@ export default function content() {
 			<Timelines>
 				<TimelineItem isStart time='2022年5月xx日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 
 				<TimelineItem time='2022年5月xx日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem isEnd time='2022年5月xx日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 			</Timelines>
 			{/*  */}
@@ -126,15 +126,15 @@ export default function content() {
 					icon={FolderIcon}
 				>
 					<Text>開発スタート</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem variant='horizontal' isFlow='s' time='20yy年m月d日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem variant='horizontal' isFlow='s' time='20yy年m月d日'>
 					<Text>Lism 0.1.x がリリース</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 				<TimelineItem
 					variant='horizontal'
@@ -144,7 +144,7 @@ export default function content() {
 					icon={FolderIcon}
 				>
 					<Text>Lism v.2.0 へメジャーアップデート</Text>
-					<DammyText lang='ja' />
+					<Dummy lang='ja' />
 				</TimelineItem>
 			</Timelines>
 		</Lism>

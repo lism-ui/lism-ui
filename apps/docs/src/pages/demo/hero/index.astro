@@ -6,7 +6,7 @@ import {
 	Spacer,
 	Box,
 	Grid,
-	DammyText,
+	Dummy,
 	Text,
 	Container,
 	Layer,
@@ -24,7 +24,7 @@ import {
 		<Stack isFullwide minH='50vh' bgc='base-2'>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 01</Text>
-				<DammyText length='l' lang='ja' />
+				<Dummy length='l' lang='ja' />
 			</Container>
 		</Stack>
 		<Spacer bg='stripe' h='60' />
@@ -32,7 +32,7 @@ import {
 			<Box ta='c'>Header</Box>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Container>
 			<Box ta='c'>Footer</Box>
 		</Stack>
@@ -40,7 +40,7 @@ import {
 		<Stack isFullwide h='full' bgc='base-2' g='30'>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>Full Screen</Text>
-				<DammyText length='xl' />
+				<Dummy length='xl' />
 			</Container>
 			<Box ta='c'>Footer</Box>
 		</Stack>
@@ -49,7 +49,7 @@ import {
 			<ShapeDivider shape='wave3' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Container>
 			<ShapeDivider shape='wave3' c='base' />
 		</Stack>
@@ -59,7 +59,7 @@ import {
 			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Container>
 		</Stack>
 		<Spacer bg='stripe' h='60' />
@@ -69,7 +69,7 @@ import {
 			<ShapeDivider shape='slope2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide & Layers</Text>
-				<DammyText length='l' />
+				<Dummy length='l' />
 			</Container>
 			<Box z='0' ta='c'>Footer</Box>
 			<ShapeDivider shape='slope2' c='base' />
@@ -81,7 +81,7 @@ import {
 			<FlexItem layout={Grid} pos='r' fxg='1' ai='c' hasGutter>
 				<Center minH='50%' p='30' c='white' bgc='black:40%' bdrs='s' g='20'>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
-					<DammyText length='l' />
+					<Dummy length='l' />
 				</Center>
 			</FlexItem>
 		</Stack>

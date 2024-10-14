@@ -6,7 +6,7 @@ sidebar:
 ---
 
 
-import { DammyText, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Columns, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
+import { Dummy, Callout, Box, Text, Lism, Stack, Flex, Container, Frame, Button, Center, Columns, Spacer,Accordion,AccordionHeader, AccordionBody, Media } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame, Reference } from '~/components';
 import { Note } from '~/components/ex/Note';
 import { Desktop } from '@phosphor-icons/react';
@@ -43,36 +43,36 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	<PreviewTitle>`is--flow`</PreviewTitle>
 	<PreviewArea p='20' isFlow={null}>
 		<Lism isFlow className='-hov:itemGuide'>
-			<DammyText lang='ja' />
+			<Dummy lang='ja' />
 			<h2>Heading</h2>
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='l' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='l' />
 			<ul>
 				<li>Lorem ipsum, LIST content...</li>
 				<li>Lorem ipsum, LIST content...</li>
 				<li>Lorem ipsum, LIST content...</li>
 			</ul>
-			<DammyText lang='ja' />
+			<Dummy lang='ja' />
 		</Lism>
 		{/* <hr />
 		<Lism isFlow>
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
 		
 			<Lism isFlow bgc='green:8%'>
-				<DammyText lang='ja' length='s' />
-				<DammyText lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
 				<h2>Heading</h2>
 			</Lism>
 			<Lism isFlow='s' bgc='blue:8%'>
-				<DammyText lang='ja' length='s' />
-				<DammyText lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
 				<h2>Heading</h2>
 			</Lism>
 			<Lism isFlow='2.5rem' bgc='red:8%'>
-				<DammyText lang='ja' length='s' />
-				<DammyText lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
+				<Dummy lang='ja' length='s' />
 				<h2>Heading</h2>
 			</Lism>
 		</Lism> */}
@@ -107,16 +107,16 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	<PreviewTitle>`-flow:s`を併用する</PreviewTitle>
 	<PreviewArea p='20' isFlow={null}>
 		<Lism isFlow='s' className='-hov:itemGuide'>
-			<DammyText lang='ja' />
+			<Dummy lang='ja' />
 			<h2>Heading</h2>
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='l' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='l' />
 			<ul>
 				<li>Lorem ipsum, LIST content...</li>
 				<li>Lorem ipsum, LIST content...</li>
 				<li>Lorem ipsum, LIST content...</li>
 			</ul>
-			<DammyText lang='ja' />
+			<Dummy lang='ja' />
 		</Lism>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
@@ -227,9 +227,9 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	<PreviewArea p='30' className='u--flowDemo'>
 		<Box isFlow p='10' bd bdc='divider'>
 			<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='s' />
-			<DammyText lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='s' />
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
@@ -245,9 +245,9 @@ Lismでは、**メインコンテンツ間の余白を管理するためのク�
 	```jsx
 	<Box isFlow p='10' bd bdc='divider'>
 		<Text className='is--skipFlow is--hidden'>is--skipFlow...</Text>
-		<DammyText lang='ja' length='s' />
-		<DammyText lang='ja' length='s' />
-		<DammyText lang='ja' length='s' />
+		<Dummy lang='ja' length='s' />
+		<Dummy lang='ja' length='s' />
+		<Dummy lang='ja' length='s' />
 	</Box>
 	```
 	</PreviewCode>
@@ -456,9 +456,9 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Lism isColored keycolor='blue' p='30'><DammyText length='codes' /></Lism>
-		<Lism isColored keycolor='red' bd p='30'><DammyText length='codes' /></Lism>
-		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='blue' p='30'><Dummy length='codes' /></Lism>
+		<Lism isColored keycolor='red' bd p='30'><Dummy length='codes' /></Lism>
+		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><Dummy length='codes' /></Lism>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="HTML">
 		```html
@@ -469,9 +469,9 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 	</PreviewCode>
 	<PreviewCode slot="tab" label='JSX'>
 		```jsx
-		<Lism isColored keycolor='blue' p='30'><DammyText length='codes' /></Lism>
-		<Lism isColored keycolor='red' bd p='30'><DammyText length='codes' /></Lism>
-		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><DammyText length='codes' /></Lism>
+		<Lism isColored keycolor='blue' p='30'><Dummy length='codes' /></Lism>
+		<Lism isColored keycolor='red' bd p='30'><Dummy length='codes' /></Lism>
+		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><Dummy length='codes' /></Lism>
 		```
 	</PreviewCode>
 </Preview>
@@ -486,7 +486,7 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Lism isTrimHL bd p='30'>
-			<DammyText />
+			<Dummy />
 		</Lism>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="HTML">
@@ -499,7 +499,7 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 	<PreviewCode slot="tab" label='JSX'>
 		```jsx
 		<Lism isTrimHL bd p='30'>
-			<DammyText />
+			<Dummy />
 		</Lism>
 		```
 	</PreviewCode>

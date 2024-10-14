@@ -3,7 +3,7 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Text, Center, Flex, Icon, Callout, DammyText } from '@lism-ui/core';
+import { Divider, Stack, Text, Center, Flex, Icon, Callout, Dummy } from '@lism-ui/core';
 import { AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
 import { Note } from '~/components/ex/Note';
@@ -54,7 +54,7 @@ HTML で使用する場合、jsファイルが必要です。
 		<Accordion p='20'>
 			<AccordionHeader>AccordionHeader</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -63,7 +63,7 @@ HTML で使用する場合、jsファイルが必要です。
 <Accordion p='20'>
 	<AccordionHeader>AccordionHeader</AccordionHeader>
 	<AccordionBody mbs='20'>
-		<DammyText length="l" />
+		<Dummy length="l" />
 	</AccordionBody>
 </Accordion>
 ```
@@ -94,7 +94,7 @@ HTML で使用する場合、jsファイルが必要です。
 		<Accordion p='20'>
 			<AccordionHeader tag='h3'>AccordionHeader</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -125,7 +125,7 @@ HTML で使用する場合、jsファイルが必要です。
 		<Accordion p='20'>
 			<AccordionHeader fxd='rr'>AccordionHeader</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -149,7 +149,7 @@ HTML で使用する場合、jsファイルが必要です。
 				<>AccordionHeader</>
 			</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -203,7 +203,7 @@ const MyIcon = (props) => {
 				<>AccordionHeader</>
 			</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText />
+				<Dummy />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -216,7 +216,7 @@ import { Minus, Plus } from '@phosphor-icons/react';
 		Accordionヘッダー
 	</AccordionHeader>
 	<AccordionBody mbs='20'>
-		<DammyText />
+		<Dummy />
 	</AccordionBody>
 </Accordion>
 ```
@@ -246,19 +246,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 			<Accordion p='20' ov='h'>
 				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 		</AccordionGroup>
@@ -269,19 +269,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='20'>
 				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 		```
@@ -313,19 +313,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 			<Accordion bgc='base-2' bxsh='1' bdrs='m'>
 				<AccordionHeader p='30'>Accordion</AccordionHeader>
 				<AccordionBody p='30' bd='t' bdc='divider'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion bgc='base-2' bxsh='1' bdrs='m'>
 				<AccordionHeader p='30'>Accordion</AccordionHeader>
 				<AccordionBody p='30' bd='t' bdc='divider'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion bgc='base-2' bxsh='1' bdrs='m'>
 				<AccordionHeader p='30'>Accordion</AccordionHeader>
 				<AccordionBody  p='30' bd='t' bdc='divider'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 		</AccordionGroup>
@@ -364,19 +364,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 			<Accordion>
 				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 				<AccordionBody p='30'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion>
 				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 				<AccordionBody p='30'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion>
 				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 				<AccordionBody p='30'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 		</AccordionGroup>
@@ -387,19 +387,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 	<Accordion>
 		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 		<AccordionBody p='30'>
-			<DammyText length="l" />
+			<Dummy length="l" />
 		</AccordionBody>
 	</Accordion>
 	<Accordion>
 		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 		<AccordionBody p='30'>
-			<DammyText length="l" />
+			<Dummy length="l" />
 		</AccordionBody>
 	</Accordion>
 	<Accordion>
 		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
 		<AccordionBody p='30'>
-			<DammyText length="l" />
+			<Dummy length="l" />
 		</AccordionBody>
 	</Accordion>
 </AccordionGroup>
@@ -426,19 +426,19 @@ import { Minus, Plus } from '@phosphor-icons/react';
 			<Accordion p='30'>
 				<AccordionHeader>AccordionHeader</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='30'>
 				<AccordionHeader>AccordionHeader</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 			<Accordion p='30'>
 				<AccordionHeader>AccordionHeader</AccordionHeader>
 				<AccordionBody mbs='20'>
-					<DammyText length="l" />
+					<Dummy length="l" />
 				</AccordionBody>
 			</Accordion>
 		</AccordionGroup>
@@ -487,7 +487,7 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 				<AccordionIcon />
 			</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText length="l" />
+				<Dummy length="l" />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>
@@ -502,7 +502,7 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 		<AccordionIcon />
 	</AccordionHeader>
 	<AccordionBody mbs='20'>
-		<DammyText length="l" />
+		<Dummy length="l" />
 	</AccordionBody>
 </Accordion>
 ```
@@ -525,7 +525,7 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 				<>ヘッダーテキスト（<a href="#acc">ヘルプリンク</a>）</>
 			</AccordionHeader>
 			<AccordionBody mbs='20'>
-				<DammyText />
+				<Dummy />
 			</AccordionBody>
 		</Accordion>
 	</PreviewArea>

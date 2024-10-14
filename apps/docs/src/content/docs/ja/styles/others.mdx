@@ -4,10 +4,8 @@ description: ...
 sidebar: 
   order: 99
 ---
-
-import { Box, Frame, Layer, Media, Center, Columns } from '@lism-ui/core';
-import { Reference, MemoBadge, HelpText, DammyText } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
+import { Box, Dummy, Frame, Layer, Media, Center, Columns } from '@lism-ui/core';
 
 
 
@@ -89,7 +87,7 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<Center isFrame minH='25rem' p='40'>
 			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
 				<Box pos='r' z='1' bg='u:glass' p='40' bdrs='m' bxsh='3'>
-					<DammyText length='l'/>
+					<Dummy length='l'/>
 				</Box>
 		</Center>
 	</PreviewArea>
@@ -117,7 +115,7 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<Frame aspect='16/9'>
 			<Media src='/img/img-1.jpg' alt='' width='960' height='640'/>
 			<Box bg='u:glass' pos='a' inset='c' p='40' bdrs='m' bxsh='3'>
-				<DammyText />
+				<Dummy />
 			</Box>
 		</Frame>
 		```
@@ -139,10 +137,10 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 	<PreviewTitle>stripe</PreviewTitle>
 	<PreviewArea resize nogrid p='30'>
 		<Box bg='u:stripe' p='40'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		<Box bg='u:stripe' p='40' isColored keycolor='blue'>
-			<DammyText />
+			<Dummy />
 		</Box>
 	</PreviewArea>
 	<PreviewCode label='CSS' slot='tab'>
@@ -167,10 +165,10 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<PreviewCode label='JSX' slot='tab'>
 		```jsx "bg='u:stripe'"
 		<Box bg='u:stripe' p='40'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		<Box bg='u:stripe' p='40' isColored keycolor='blue'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		```
 	</PreviewCode>
@@ -191,10 +189,10 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 	<PreviewTitle>grid</PreviewTitle>
 	<PreviewArea resize nogrid p='30'>
 		<Box bg='u:grid' p='40'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		<Box bg='u:grid' p='40' isColored keycolor='green'>
-			<DammyText />
+			<Dummy />
 		</Box>
 	</PreviewArea>
 	<PreviewCode label='CSS' slot='tab'>
@@ -217,10 +215,10 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<PreviewCode label='JSX' slot='tab'>
 		```jsx "bg='u:grid'"
 		<Box bg='u:grid' p='40'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		<Box bg='u:grid' p='40' isColored keycolor='green'>
-			<DammyText />
+			<Dummy />
 		</Box>
 		```
 	</PreviewCode>

@@ -1,4 +1,10 @@
-import { Text, Badge } from '@lism-ui/core';
+import { Text, Callout, Badge } from '@lism-ui/core';
+import {
+	// Book as Book,
+	Notebook as Book,
+	// BookOpenText as Book,
+	// BookBookmark as Book,
+} from '@phosphor-icons/react';
 
 export const HelpText = ({ tag = 'p', children, ...props }) => {
 	const _props = { tag, c: 'text-2', lh: 's', fz: 's' };
@@ -14,10 +20,17 @@ export const HelpText = ({ tag = 'p', children, ...props }) => {
 		</Text>
 	);
 };
+export function Reference({ children }) {
+	return (
+		<Callout icon={Book} keycolor='purple'>
+			{children}
+		</Callout>
+	);
+}
 
 export const MemoBadge = ({ children, color = 'orange', ...props }) => {
 	return (
-		<Badge fz='xs' lh='1' p='5' keycolor={color} {...props}>
+		<Badge fz='s' lh='1' p='5' isColored keycolor={color} {...props}>
 			{children}
 		</Badge>
 	);

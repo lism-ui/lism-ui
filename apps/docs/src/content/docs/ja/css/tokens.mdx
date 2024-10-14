@@ -5,11 +5,9 @@ sidebar:
   order: 2
 ---
 
-import { MemoBadge, Reference } from "~/components";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components/Preview";
-import { ColorDemos, FzDemos, LhDemos, LtsDemos, SpacingDemos, BoxShadowDemos, RadiusDemos } from "~/mdx/tokens.jsx";
-import { Lism, Dummy, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabItem, Spacer } from '@lism-ui/astro';
-
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference } from "~/components";
+import { Lism, Dummy, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabItem } from '@lism-ui/astro';
+import { FzDemos, SpacingDemos, BoxShadowDemos, RadiusDemos } from "~/mdx/tokens.jsx";
 
 export const ColorBadge = ({color, label}) => {
 	return <span className='-d:f -ai:c -g:10'>
