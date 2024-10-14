@@ -1,6 +1,9 @@
 /*
   resetした上で、 各要素の標準スタイルを定義する
 */
+// reset
+@use './reset' as reset;
+
 // base
 @use './base/index' as base;
 

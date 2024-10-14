@@ -5,6 +5,9 @@
 
 // @layer lism-reset, lism-init, lism-module;
 
+@layer lism-reset {
+	@include meta.load-css('reset');
+}
 @layer lism-base {
 	@include meta.load-css('base');
 }

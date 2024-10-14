@@ -39,7 +39,7 @@ LismがどのようなCSS設計になっているかを説明します。
 		<tr>
 			<th colSpan={2}>Layer</th>
 			<th>役割</th>
-			<th>最大詳細度</th>
+			<th>基本詳細度</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -51,31 +51,22 @@ LismがどのようなCSS設計になっているかを説明します。
 		<tr>
 			<td colSpan={2}>Reset</td>
 			<td>reset CSS</td>
-			<td>0-0-1</td>
+			<td>~0-0-1</td>
 		</tr>
 		<tr>
-			<td rowSpan={3} style={{verticalAlign: 'top'}}>Base</td>
-			<td>Reset</td>
-			<td>reset CSS</td>
-			<td rowSpan={3}>0-0-1</td>
+			<td colSpan={2}>Base</td>
+			<td>`:root`でのトークン定義, HTML要素に対するスタイルの初期セット</td>
+			<td>~0-0-1</td>
 		</tr>
 		<tr>
-			<td>Tokens</td>
-			<td>`:root`でのトークン定義</td>
+			<td rowSpan={2} style={{verticalAlign: 'top'}}>Layout</td>
+			<td>State</td>
+			<td>レイアウト,デザインを組む上での特定の役割を持ち、複数のモジュールに対してつけ外しできるようなもの。</td>
+			<td rowSpan={2}>0-1-0</td>
 		</tr>
 		<tr>
-			<td>HTML</td>
-			<td>HTML要素に対するスタイルの初期セット</td>
-		</tr>
-		<tr>
-			<td colSpan='2'>Layout State</td>
-			<td>レイアウト・デザインを組む上で特定の役割を持つ要素。かつ、汎用性が高く複数のモジュールに対してつけ外しできるようなもの。</td>
-			<td>0-1-0</td>
-		</tr>
-		<tr>
-			<td colSpan='2'>Layouts</td>
-			<td>レイアウトを構成するための具体的な役割を持つ要素。</td>
-			<td>0-1-0</td>
+			<td>Module</td>
+			<td>基礎的なレイアウトを組むためのモジュール群。</td>
 		</tr>
 		<tr>
 			<td rowSpan={3}>Objects</td>
@@ -101,7 +92,7 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td rowSpan='2'>Utility</td>
 			<td>Props</td>
 			<td>CSSプロパティティに紐づいたクラス。</td>
-			<td rowSpan='2'>0-1-0 !</td>
+			<td rowSpan='2'>0-1-0</td>
 		</tr>
 		<tr>
 			<td>Others</td>
@@ -110,10 +101,9 @@ LismがどのようなCSS設計になっているかを説明します。
 	</tbody>
 </table>
 
-
+{/* 
 基本的に、最大詳細度を超えないようにセレクタを調整してこの順番で読み込みます。
-
-<Callout type='info'>例外的にあえて"最大詳細度"を超えてセレクタを定義する場合もあります。</Callout>
+<Callout type='info'>例外的にあえて"最大詳細度"を超えてセレクタを定義する場合もあります。</Callout> */}
 
 {/* それぞれカスケードレイヤー（`@layer`）を定義して読み込むようにすれば、詳細度をあまり気にせずに書けるようになります。*/}
 
