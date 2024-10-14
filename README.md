@@ -26,4 +26,5 @@ pnpm run dev
 
 ```
 npm i https://pkg.pr.new/lism-ui/lism-ui/@lism-ui/core@{commitID}
+npm i https://pkg.pr.new/lism-ui/lism-ui/@lism-ui/astro@{commitID}
 ```
