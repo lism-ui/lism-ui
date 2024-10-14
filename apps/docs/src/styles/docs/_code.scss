@@ -1,0 +1,74 @@
+// コードブロック
+.expressive-code {
+	--ec-frm-frameBoxShdCssVal: var(--shadow--3);
+	/* --ec-codeBg: #fff;
+	--code-background: #fff; */
+
+	> .frame {
+		--ec-frm-frameBoxShdCssVal: none;
+	}
+
+	> .frame > pre {
+		border: none !important;
+	}
+
+	> .frame > pre > code {
+		font-family: var(--ff--mono);
+		// font-size: 0.875rem;
+		line-height: 1.625;
+	}
+
+	.c--note & {
+		> .frame {
+			background: var(--code-background);
+			background: color-mix(in srgb, var(--code-background), transparent 50%);
+			box-shadow: var(--sh--i1);
+		}
+		> .frame > pre {
+			background: none;
+		}
+	}
+
+	.c--note__body > &:last-child {
+		padding-bottom: 0.5em;
+	}
+
+	.ec-line.ec-line mark {
+		--tmInlineBgCol: rgba(138, 145, 150, 0.1);
+		// --tmInlineBrdCol: #4d70bcd0;
+		--tmInlineBrdCol: hsla(207, 43%, 47%, 0.8);
+		// --ec-tm-inlMarkerBrdWd: 1.5px;
+	}
+	.ec-line.mark.mark {
+		--tmLineBgCol: rgba(147, 153, 155, 0.15);
+	}
+
+	// .ec-line mark,
+	// .ec-line ins,
+	// .ec-line del {
+	// 	--tmBrdL: var(--ec-tm-inlMarkerBrdWd);
+	// 	--tmBrdR: var(--ec-tm-inlMarkerBrdWd);
+	// 	--tmRadL: var(--ec-tm-inlMarkerBrdRad);
+	// 	--tmRadR: var(--ec-tm-inlMarkerBrdRad);
+	// 	margin-inline: 0.025rem;
+	// 	padding-inline: var(--ec-tm-inlMarkerPad);
+	// 	border-radius: var(--tmRadL) var(--tmRadR) var(--tmRadR) var(--tmRadL);
+	// 	background: var(--tmInlineBgCol);
+	// 	background-clip: padding-box;
+	// }
+
+	// 	.expressive-code .ec-line.mark,
+	// 	.expressive-code .ec-line.ins,
+	// 	.expressive-code .ec-line.del {
+	// 		position: relative;
+	// 		background: var(--tmLineBgCol);
+	// 		min-width: calc(100% - var(--ec-tm-lineMarkerAccentMarg));
+	// 		margin-inline-start: var(--ec-tm-lineMarkerAccentMarg);
+	// 		border-inline-start: var(--ec-tm-lineMarkerAccentWd) solid var(--tmLineBrdCol);
+	// 		padding-inline-start: calc(
+	// 			var(--ec-codePadInl) - var(--ec-tm-lineMarkerAccentMarg) - var(
+	// 					--ec-tm-lineMarkerAccentWd
+	// 				)
+	// 		) !important;
+	// 	}
+}

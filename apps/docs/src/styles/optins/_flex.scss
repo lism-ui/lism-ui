@@ -1,0 +1,34 @@
+// --------------------
+// variants
+// --------------------
+.l--flex--ltr {
+	flex-direction: row;
+}
+.l--flex--rtl {
+	flex-direction: row-reverse;
+}
+
+// rtlで左右を反転させないようにする
+:where([dir='rtl']) {
+	.l--flex--ltr {
+		flex-direction: row-reverse;
+	}
+	.l--flex--rtl {
+		flex-direction: row;
+	}
+}
+
+// --------------------
+// --isRowの切り替え
+// --------------------
+.-fxd\:c2r\@sm {
+	--isRow: 0;
+	flex-direction: column;
+}
+
+@container (min-width: 480px) {
+	.-fxd\:c2r\@sm {
+		--isRow: 1;
+		flex-direction: row;
+	}
+}

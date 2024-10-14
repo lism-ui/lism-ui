@@ -1,0 +1,47 @@
+@import './base';
+@import './flex';
+@import './list';
+@import './tab';
+@import './hov';
+@import './bg';
+
+// --------------------
+// bd
+// --------------------
+.-bd\:guide {
+	--bds: dashed;
+	--bdc: rgba(160, 160, 160, 0.3);
+	border: var(--bd);
+	// border: 1px dashed rgba(160, 160, 160, 0.4);
+}
+
+// --------------------
+// keycolor
+// --------------------
+// $colors: 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray';
+// @each $c in $colors {
+// 	.-keycolor\:#{$c} {
+// 		--keycolor: var(--#{$c});
+// 	}
+// }
+
+// --------------------
+// Button offset
+// --------------------
+// :where(.b--button) {
+// 	--icon-scale: 1.25;
+// 	--icon-offset: 0%;
+// }
+
+// .b--button__icon {
+// 	&:where(:first-child) {
+// 		translate: calc(0px - var(--icon-offset));
+// 	}
+// 	&:where(:last-child) {
+// 		translate: var(--icon-offset);
+// 	}
+// }
+
+// --------------------
+// ...
+// --------------------

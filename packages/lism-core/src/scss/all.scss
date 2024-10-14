@@ -16,9 +16,6 @@
 // utility
 @use './utility/index' as utility;
 
-// あとで切り分ける
-@use './rtl.scss';
-
 // [data-has-lism-error] {
 // 	color: red;
 // 	text-decoration: dashed underline;

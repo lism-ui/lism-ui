@@ -1,23 +1,30 @@
 /* https://github.com/withastro/starlight/tree/main/packages/starlight/style */
-@import './demo';
-@import './preview';
-@import './theme';
-@import './wp_theme';
-@import './tab';
+@import './docs/theme';
+@import './docs/layout';
+@import './docs/preview';
+@import './docs/code';
+@import './optins';
 @import '../components/ex/Chat/style';
 @import '../components/ex/Note/style';
-@import './ex/list';
 
-// html,
-// body {
-// 	height: 100%;
-// }
+/* memo: 狭いブラウザ幅での目次、文字検索した時に展開してきて邪魔になってしまうので、最大高さを低くした方がいいかも */
 
-// 以下ではデフォルトのカラム幅を広げ、ページタイトルのテキストサイズを大きくしています。
-:root {
-	--sl-content-width: 50rem;
-	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
-	--sl-sidebar-width: 15rem;
+:where(.has--itemGuide > *) {
+	border: 1px dashed hsla(0, 0%, 63%, 0.4);
+	padding: 0 4px;
+}
+.-hov\:itemGuide {
+	> * {
+		position: relative;
+	}
+	&:hover > *:before {
+		content: '';
+		display: block;
+		position: absolute;
+		inset: 0;
+		border: 1px dashed rgba(150, 150, 160, 0.4);
+		// box-sizing: border-box;
+	}
 }
 
 .a--mdcontent {
@@ -42,306 +49,20 @@
 	}
 }
 
-#starlight__sidebar {
-	--sl-color-bg-sidebar: transparent;
-}
-
-.site-title > span {
-	display: inline-flex;
-	gap: 0.375em;
-	align-items: center;
-	&::after {
-		content: 'β';
-		display: block;
-		line-height: 1;
-		padding: 0.25rem 0.375rem;
-		border-radius: 0.25rem;
-		font-size: 1rem;
-		background-color: var(--c--text);
-		color: var(--c--base);
-	}
-}
-// リストスタイルの除去
-.sidebar-content,
-.right-sidebar {
-	--list-pis: 0;
-	--lis: none;
-}
-
-.sidebar details ul summary span {
-	font-size: 0.9rem;
-}
-.b--badge--subtle > code {
-	background-color: transparent;
-	font: inherit;
-	padding: 0;
-}
-
-// コードブロック
-.expressive-code {
-	--ec-frm-frameBoxShdCssVal: var(--shadow--3);
-	/* --ec-codeBg: #fff;
-	--code-background: #fff; */
-
-	> .frame {
-		--ec-frm-frameBoxShdCssVal: none;
-	}
-
-	> .frame > pre {
-		border: none !important;
-	}
-
-	> .frame > pre > code {
-		font-family: var(--ff--mono);
-		// font-size: 0.875rem;
-		line-height: 1.625;
-	}
-
-	.c--note & {
-		> .frame {
-			background: var(--code-background);
-			background: color-mix(in srgb, var(--code-background), transparent 50%);
-			box-shadow: var(--sh--i1);
-		}
-		> .frame > pre {
-			background: none;
-		}
-	}
-
-	.c--note__body > &:last-child {
-		padding-bottom: 0.5em;
-	}
-
-	.ec-line.ec-line mark {
-		--tmInlineBgCol: rgba(138, 145, 150, 0.1);
-		// --tmInlineBrdCol: #4d70bcd0;
-		--tmInlineBrdCol: hsla(207, 43%, 47%, 0.8);
-		// --ec-tm-inlMarkerBrdWd: 1.5px;
-	}
-	.ec-line.mark.mark {
-		--tmLineBgCol: rgba(147, 153, 155, 0.15);
-	}
-
-	// .ec-line mark,
-	// .ec-line ins,
-	// .ec-line del {
-	// 	--tmBrdL: var(--ec-tm-inlMarkerBrdWd);
-	// 	--tmBrdR: var(--ec-tm-inlMarkerBrdWd);
-	// 	--tmRadL: var(--ec-tm-inlMarkerBrdRad);
-	// 	--tmRadR: var(--ec-tm-inlMarkerBrdRad);
-	// 	margin-inline: 0.025rem;
-	// 	padding-inline: var(--ec-tm-inlMarkerPad);
-	// 	border-radius: var(--tmRadL) var(--tmRadR) var(--tmRadR) var(--tmRadL);
-	// 	background: var(--tmInlineBgCol);
-	// 	background-clip: padding-box;
-	// }
-
-	// 	.expressive-code .ec-line.mark,
-	// 	.expressive-code .ec-line.ins,
-	// 	.expressive-code .ec-line.del {
-	// 		position: relative;
-	// 		background: var(--tmLineBgCol);
-	// 		min-width: calc(100% - var(--ec-tm-lineMarkerAccentMarg));
-	// 		margin-inline-start: var(--ec-tm-lineMarkerAccentMarg);
-	// 		border-inline-start: var(--ec-tm-lineMarkerAccentWd) solid var(--tmLineBrdCol);
-	// 		padding-inline-start: calc(
-	// 			var(--ec-codePadInl) - var(--ec-tm-lineMarkerAccentMarg) - var(
-	// 					--ec-tm-lineMarkerAccentWd
-	// 				)
-	// 		) !important;
-	// 	}
-}
+// .b--badge--subtle > code {
+// 	background-color: transparent;
+// 	font: inherit;
+// 	padding: 0;
+// }
 
 // セル内のコードで、かつそれが唯一な要素であればは折り返さない
 td:first-child > code:only-child {
 	white-space: nowrap;
 }
 
-:where(.has--itemGuide > *) {
-	border: 1px dashed hsla(0, 0%, 63%, 0.4);
-	padding: 0 4px;
-}
-
-// td > code {
-// 	display: inline-flex;
-// }
-
-/* memo: 狭いブラウザ幅での目次、文字検索した時に展開してきて邪魔になってしまうので、最大高さを低くした方がいいかも */
-
-.right-sidebar-container {
-	position: sticky;
-	z-index: var(--sl-z-index-toc);
-	top: var(--sl-nav-height);
-}
-
-.sidebar {
-	._link:not([aria-current='page']) {
-		color: inherit;
-		opacity: 0.8;
-		&:hover {
-			opacity: 1;
-			background-color: var(--c--base-2);
-		}
-	}
-	.top-level > li {
-		// > details > summary {
-		// 	border-left: 1px solid currentColor;
-		// 	padding-inline-start: 0.5em !important;
-		// }
-	}
-
-	li:has(> ._subtitle) {
-		padding-inline-start: 0;
-		margin-top: var(--s--30);
-		margin-bottom: var(--s--10);
-	}
-
-	._subtitle {
-		display: block;
-		pointer-events: none;
-		color: inherit;
-		// font-weight: bold;
-		margin-inline-start: -1px;
-		// padding: 0.75em 0 0.5em;
-		margin-top: 0.75em;
-		padding-inline-start: 0.5em;
-		padding-block: 0;
-		font-size: var(--sl-text-sm);
-		border-inline-start: 1px solid;
-		opacity: 0.5;
-		// border-radius: var(--radii--s);
-		// background-color: var(--c--base-2);
-	}
-	._divider {
-		padding-block: 0.5em;
-		padding-inline: 0.5em 0;
-
-		> span {
-			display: block;
-			border-top: 1px solid var(--sl-color-hairline-light);
-		}
-	}
-}
-
-// .sl-container {
-// 	// width: 100%;
-// 	// max-width: 100%;
-// 	border: solid 4px yellow;
-// }
-
-// .sidebar {
-// 	border: solid 4px blue;
-// }
-
-// .main-frame {
-// 	border: solid 4px pink;
-// }
-
-// .content-panel {
-// 	border: solid 4px red;
-// }
-
-.-gradient\:sunset {
-	background: linear-gradient(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
-}
-
-:root {
-	/* // グラデーション用のカラープリセット */
-	--grad--lime: #abecd6 0%, #fbed96 100%;
-	--grad--denseWater: #3ab5b0 0%, #3d99be 31%, #56317a 100%;
-}
-
-:where(.-bg\:glass) {
-	// --bxsh初期値セット（ ユーティリティと共存できるように、--bxsh を受け取るようにしている。）
-	--bxsh: 0 0 0 transparent;
-	--blur: 16px;
-}
-
-.-bg\:glass {
-	backdrop-filter: brightness(1.2) blur(var(--blur));
-
-	// 白の1pxボーダーは、透過白背景をグラデーションにするとバグるので、borderではなくshadowで表現している。
-	// shadowユーティリティに負けないように important.
-	box-shadow:
-		inset 0 0 0 1px rgb(255 255 255 / 0.2),
-		inset 10px 20px 40px -20px rgb(255 255 255 / 0.2),
-		var(--bxsh) !important;
-	// background-color: transparent;
-	// background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-}
-
-// 罫線 : Ruled paper, lined paper, rulied lines
-// 方眼 : graph paper, grid paper, squared paper
-.-bg\:grid {
-	--grid-bdc: color-mix(in srgb, currentColor, transparent 94%);
-	--grid-size: 1rem;
-	--grid-offset: calc(var(--grid-size) / 2);
-	background-image: linear-gradient(
-			transparent calc(100% - 1px),
-			var(--grid-bdc) 50%,
-			var(--grid-bdc)
-		),
-		linear-gradient(90deg, transparent calc(100% - 1px), var(--grid-bdc) 50%, var(--grid-bdc));
-	background-position: var(--grid-offset) var(--grid-offset);
-	background-size: var(--grid-size) var(--grid-size);
-}
-// .-bg\:grid.is--colored {
-// 	--grid-bdc: color-mix(in srgb, var(--keycolor), transparent 88%);
-// }
-.-bg\:stripe {
-	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);
-	--stripe-bdw: 1px;
-	--stripe-deg: -40deg;
-	--stripe-interval: 6px;
-	background-image: repeating-linear-gradient(
-		var(--stripe-deg),
-		var(--stripe-bdc),
-		var(--stripe-bdc) var(--stripe-bdw),
-		transparent var(--stripe-bdw),
-		transparent var(--stripe-interval)
-	);
-
-	background-position: center;
-}
-
-.-fxd\:c2r\@sm {
-	--isRow: 0;
-	flex-direction: column;
-}
-
-@container (min-width: 480px) {
-	.-fxd\:c2r\@sm {
-		--isRow: 1;
-		flex-direction: row;
-	}
-}
-
-// .-bd\:emphasis {
-// 	--bds: double;
-// 	--bdw: 5px;
-// 	border: var(--bd);
-// }
-.-bd\:guide {
-	--bds: dashed;
-	--bdc: rgba(160, 160, 160, 0.3);
-	border: var(--bd);
-	// border: 1px dashed rgba(160, 160, 160, 0.4);
-}
-
-.-hov\:itemGuide {
-	> * {
-		position: relative;
-	}
-	&:hover > *:before {
-		content: '';
-		display: block;
-		position: absolute;
-		inset: 0;
-		border: 1px dashed rgba(150, 150, 160, 0.4);
-		// box-sizing: border-box;
-	}
-}
-
+//--------------------
+// utility 作成例
+//--------------------
 .-hov\:get\:highlight {
 	.-hov\:pass:hover & {
 		color: var(--red);

@@ -1,0 +1,91 @@
+// 以下ではデフォルトのカラム幅を広げ、ページタイトルのテキストサイズを大きくしています。
+:root {
+	--sl-content-width: 50rem;
+	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
+	--sl-sidebar-width: 15rem;
+}
+
+#starlight__sidebar {
+	--sl-color-bg-sidebar: transparent;
+}
+
+.site-title > span {
+	display: inline-flex;
+	gap: 0.375em;
+	align-items: center;
+	&::after {
+		content: 'β';
+		display: block;
+		line-height: 1;
+		padding: 0.25rem 0.375rem;
+		border-radius: 0.25rem;
+		font-size: 1rem;
+		background-color: var(--c--text);
+		color: var(--c--base);
+	}
+}
+// リストスタイルの除去
+.sidebar-content,
+.right-sidebar {
+	--list-pis: 0;
+	--lis: none;
+}
+
+.sidebar details ul summary span {
+	font-size: 0.9rem;
+}
+
+.right-sidebar-container {
+	position: sticky;
+	z-index: var(--sl-z-index-toc);
+	top: var(--sl-nav-height);
+}
+
+.sidebar {
+	._link:not([aria-current='page']) {
+		color: inherit;
+		opacity: 0.8;
+		&:hover {
+			opacity: 1;
+			background-color: var(--c--base-2);
+		}
+	}
+	.top-level > li {
+		// > details > summary {
+		// 	border-left: 1px solid currentColor;
+		// 	padding-inline-start: 0.5em !important;
+		// }
+	}
+
+	li:has(> ._subtitle) {
+		padding-inline-start: 0;
+		margin-top: var(--s--30);
+		margin-bottom: var(--s--10);
+	}
+
+	._subtitle {
+		display: block;
+		pointer-events: none;
+		color: inherit;
+		// font-weight: bold;
+		margin-inline-start: -1px;
+		// padding: 0.75em 0 0.5em;
+		margin-top: 0.75em;
+		padding-inline-start: 0.5em;
+		padding-block: 0;
+		font-size: var(--sl-text-sm);
+		border-inline-start: 1px solid;
+		opacity: 0.5;
+		// border-radius: var(--radii--s);
+		// background-color: var(--c--base-2);
+	}
+	._divider {
+		padding-block: 0.5em;
+		padding-inline: 0.5em 0;
+
+		> span {
+			display: block;
+			border-top: 1px solid var(--sl-color-hairline-light);
+		}
+	}
+}

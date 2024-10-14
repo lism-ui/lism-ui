@@ -135,7 +135,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Flex g='20' className='has--itemGuide'>
-			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
+			<Text ovw='any'>LooooooooooooongStriiiinnnnnnnnnnngs!!!!</Text>
 			<p>AAA</p>
 			<p>BBB</p>
 			<p>CCC</p>
@@ -144,7 +144,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx
 		<Flex g='20'>
-			<Text ovw='any'>LooooooooooooongStrinnnnnnnnnnngs!!!!</Text>
+			<Text ovw='any'>LooooooooooooongStriiiinnnnnnnnnnngs!!!!</Text>
 			<Text>AAA</Text>
 			<Text>BBB</Text>
 			<Text>CCC</Text>
@@ -154,7 +154,7 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 	<PreviewCode slot='tab' label='HTML'>
 	```jsx
 	<div class="l--flex -g:20">
-		<p className="-ovw:any">LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
+		<p class="-ovw:any">LooooooooooooongStriiiinnnnnnnnnnngs!!!!</p>
 		<p>AAA</p>
 		<p>BBB</p>
 		<p>CCC</p>
@@ -215,12 +215,36 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 </Preview>
 
 
+## オプトイン
+
+CSSを追記することで実現できるバリエーション作成例を示します。
+
 ### variant: ltr,rtl
 
 ltr言語でもrtl言語でも同じ方向に揃えたい時に使えるバリエーションです。
 
-`variant="ltr"`を指定すると `.l--flex--ltr`、`variant="rtl"`を指定すると `.l--flex--rtl`がそれぞれ出力されます。  
-これらのクラスがある時、`dir="rtl"`では`flex-direction`が反転されるようになります。
+次のように、`.l--flex--ltr`、`.l--flex--rtl` のスタイルを用意します。
+
+<PreviewTitle>以下のスタイルを追記</PreviewTitle>
+```css
+.l--flex--ltr {
+	flex-direction: row;
+}
+.l--flex--rtl {
+	flex-direction: row-reverse;
+}
+
+:where([dir='rtl']) {
+	.l--flex--ltr {
+		flex-direction: row-reverse;
+	}
+	.l--flex--rtl {
+		flex-direction: row;
+	}
+}
+```
+
+これらのクラスがある時、`dir="rtl"`では`flex-direction`が反転されるようになり、言語方向がどちらの場合でも、同じ方向で要素が配置できます。
 
 
 <Callout type="info">
