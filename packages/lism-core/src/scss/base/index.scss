@@ -92,7 +92,7 @@ h6 {
 
 	// classを持たない素の ul,ol のみブラウザ標準のスタイルを復活させる
 	&:not([class]) {
-		padding-inline-start: 1.375em;
+		padding-inline-start: 1.5em;
 		list-style: revert;
 	}
 }

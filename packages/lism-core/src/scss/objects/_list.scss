@@ -2,7 +2,7 @@
 
 .b--list {
 	:where(&) {
-		--pis: 1.375em;
+		--pis: 1.5em;
 	}
 	padding-inline-start: var(--pis);
 	list-style: revert;
