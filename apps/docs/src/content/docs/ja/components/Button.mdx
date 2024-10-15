@@ -4,7 +4,7 @@ description: ...
 ---
 
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
-import { Callout, Box, Flex, Grid, Text, Media, Button, Icon, Spacer, Center, Cluster, Layer, Dummy } from '@lism-ui/astro';
+import { Callout, Box, Flex, Grid, Frame, Text, Media, Button, Icon, Spacer, Center, Cluster, Layer, Dummy } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
@@ -383,7 +383,7 @@ iconのサイズは、`iconScale`でも調整できます。
 <Preview>
 	<PreviewTitle>色が塗り粒されてしまう例とその回避方法 (ライトモードで確認してください）</PreviewTitle>
 	<PreviewArea p='20'>
-		<Box isFrame hasGutter py='50' pos='r' c='white'>
+		<Frame hasGutter py='50' pos='r' c='white'>
 			<Media isLayer src='/img/img-3.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer bgc='black:50%' z='-1'/>
 			<Cluster g='20'>
@@ -397,11 +397,11 @@ iconのサイズは、`iconScale`でも調整できます。
 				<Button href='###' keycolor='white' hov={[{ bgc:'white', c:'black' }]} variant='outline'>Button</Button>
 				<Button href='###' keycolor='white' hov={[{ bgc:'white', c:'black' }]} variant='ghost'>Button</Button>
 			</Cluster>
-		</Box>
+		</Frame>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "hov={[{ bgc:'white', c:'black' }]}"
-		<Box isFrame hasGutter py='50' pos='r' c='white'>
+		<Frame hasGutter py='50' pos='r' c='white'>
 			<Media isLayer src='/img/img-3.jpg' alt='' width='960' height='640' z='-1'/>
 			<Layer bgc='black:50%' z='-1'/>
 			<Cluster g='20'>
@@ -415,7 +415,7 @@ iconのサイズは、`iconScale`でも調整できます。
 				<Button href='###' keycolor='white' hov={[{ bgc:'white', c:'black' }]} variant='outline'>Button</Button>
 				<Button href='###' keycolor='white' hov={[{ bgc:'white', c:'black' }]} variant='ghost'>Button</Button>
 			</Cluster>
-		</Box>
+		</Frame>
 		```
 	</PreviewCode>
 </Preview>

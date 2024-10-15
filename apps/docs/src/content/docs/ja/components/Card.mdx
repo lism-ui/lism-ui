@@ -24,16 +24,6 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 radiusのデフォルト、`1`にする？ */}
 
 
-## 構築例-1
-
-{/* <Preview>
-	<PreviewTitle>表示</PreviewTitle>
-
-</Preview>
- */}
-
-
-
 
 ## Usage
 
@@ -49,7 +39,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
@@ -59,7 +49,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -72,7 +62,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
@@ -82,7 +72,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -100,7 +90,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
@@ -110,7 +100,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -123,7 +113,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
@@ -133,7 +123,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -146,7 +136,7 @@ radiusのデフォルト、`1`にする？ */}
 
 ### カードにリンクをつける
 
-`<Card>`にhrefを指定すると、カード全体が`<LinkBox>`で構成されるようになり、リンクになります。
+`<Card>`に`href`を指定すると、`tag='a'` が適用され、カード全体を`is--linkBox`でリンク化します。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
@@ -179,7 +169,7 @@ radiusのデフォルト、`1`にする？ */}
 リンク要素を一部の要素に限定したい場合や、カード全体をリンクにしつつ、別のリンクを含めたい場合、 `is--overlayLink` か `is--hiddenLink` を使用してください。
 
 <Preview>
-	<PreviewTitle>is--overlayLinkを使う例</PreviewTitle>
+	<PreviewTitle>`is--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
 		<Card isLinkBox hov='shadow'>
 			<CardMedia aspect='4/3'>
@@ -191,14 +181,14 @@ radiusのデフォルト、`1`にする？ */}
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
 				<Dummy lang='ja' fz='s' />
-				<Text aslf='end' mbs='auto' fz='s'>
+				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>
 					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
 				</Text>
 			</CardBody>
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "#inner-link" "href='#badge-link'" "\<Link isOverlayLink href=\'#card-link\'"
+		```jsx "isLinkBox" "href=" "isOverlayLink"
 		<Card isLinkBox hov='shadow'>
 			<CardMedia aspect='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
@@ -209,7 +199,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
 				<Dummy lang='ja' fz='s' />
-				<Text aslf='end' mbs='auto' fz='s'>
+				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>
 					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
 				</Text>
 			</CardBody>
@@ -219,9 +209,10 @@ radiusのデフォルト、`1`にする？ */}
 </Preview>
 
 <Preview>
-	<PreviewTitle>内部にもリンクを設置(`hiddenLink` を使う例）</PreviewTitle>
+	<PreviewTitle>`is--hiddenLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Card href='#card-hiddenlink' setHiddenLink sideW='50%' hov='shadow' >
+		<Card isLinkBox sideW='50%' hov='shadow' >
+			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
 			<CardMedia aspect='4/3' isSide>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
@@ -236,8 +227,9 @@ radiusのデフォルト、`1`にする？ */}
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "setHiddenLink" "#inner-link" "href='#badge-link'" "href='#card-hiddenlink'"
-		<Card href='#card-hiddenlink' setHiddenLink sideW='50%' hov='shadow' >
+		```jsx "isLinkBox" "setHiddenLink" "href="
+		<Card isLinkBox sideW='50%' hov='shadow' >
+			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
 			<CardMedia aspect='4/3' isSide>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
@@ -271,7 +263,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card layout='Flex' fxd='rr'>
@@ -281,7 +273,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -294,7 +286,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card layout='Flex' fxd='rr'>
@@ -304,7 +296,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -324,7 +316,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -337,7 +329,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='auto'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -355,7 +347,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' length='s' fz='s'/>
-				<Text aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
+				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -368,7 +360,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody fxg='1' g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' length='s' fz='s'/>
-				<Text aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
+				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
 			</CardBody>
 		</Card>
 		```
@@ -495,7 +487,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='10'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto' bdrs='99'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto' bdrs='99'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -508,7 +500,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='10'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' aslf='end' mbs='auto' bdrs='99'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto' bdrs='99'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -644,7 +636,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='10' bdrs='2'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='10' bdrs='2'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -657,7 +649,7 @@ radiusのデフォルト、`1`にする？ */}
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:m'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' aslf='end' mbs='10' bdrs='2'>Button</Button>
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='10' bdrs='2'>Button</Button>
 			</CardBody>
 		</Card>
 		```

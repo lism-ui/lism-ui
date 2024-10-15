@@ -1,27 +1,16 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import separateLinkProps from '@lism-ui/core/components/separateLinkProps';
 // import getProps from '@lism-ui/core/components/LinkBox/getProps';
 
 interface Props extends LismProps {}
-const { layout, setHiddenLink = false, linkLabel = '', ...props } = Astro.props || {};
+const { layout, ...props } = Astro.props || {};
 
 const hasHref = !!props.href;
-const { linkProps, otherProps } = separateLinkProps(props);
-const defaultTag = hasHref ? 'a' : 'div';
+const tag = hasHref ? 'a' : 'div';
 const LismComponent = layout || Lism;
 ---
 
-{
-	setHiddenLink ? (
-		<LismComponent isLinkBox hov='fade' tag='div' {...otherProps}>
-			<a class='is--hiddenLink is--skipFlow' aria-label={linkLabel} {...linkProps} />
-			<slot />
-		</LismComponent>
-	) : (
-		<LismComponent isLinkBox hov='fade' tag={defaultTag} {...linkProps} {...otherProps}>
-			<slot />
-		</LismComponent>
-	)
-}
+<LismComponent isLinkBox hov='fade' tag={tag} {...props}>
+	<slot />
+</LismComponent>

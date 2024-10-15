@@ -78,7 +78,7 @@ import { Lism } from '@lism-ui/astro';
 		<Text ta='c' fz='xl' lts='l'>Lorem ipsum text.</Text>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='出力されるHTML'>
+	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<p class="-ta:c -fz:xl -lts:l">Lorem ipsum text.</p>
 		```
@@ -91,24 +91,22 @@ import { Lism } from '@lism-ui/astro';
 リンク用に少し特殊な処理が加えられているコンポーネントです。
 
 - デフォルトで`<a>`タグが出力されます。
-- デフォルトで`hov='fade'`が指定されます。
-- `openNewTab`を指定すると`target="_blank"`が出力されます。
-- `target`が`"_blank"`の時、かつ`rel`属性の指定がなければ自動で `noopener noreferrer` が出力されます。
-- `isOverlayLink`で`is--overlayLink`クラス、`isHiddenLink`で`is--hiddenLink`クラスが出力されます。
+- `isOverlayLink`で`is--overlayLink`クラス、  
+`isHiddenLink`で`is--hiddenLink`クラスが出力されます。
 
 <Preview>
 	<PreviewTitle>Linkの例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<p>Lorem ipsum <Link href='###' openNewTab>link text</Link></p>
+		<p>Lorem ipsum <Link href='###'>link text</Link></p>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<p>Lorem ipsum <Link href='###' openNewTab>link text</Link></p>
+		<p>Lorem ipsum <Link href='###'>link text</Link></p>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='出力されるHTML'>
+	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<p>Lorem ipsum <a href="###" target="_blank" rel="noopener noreferrer" class="-hov:fade"> link text </a></p>
+		<p>Lorem ipsum <a href="###" class="-hov:fade"> link text </a></p>
 		```
 	</PreviewCode>
 </Preview>

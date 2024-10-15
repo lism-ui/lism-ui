@@ -1,5 +1,4 @@
 import atts from '../../lib/helper/atts';
-import separateLinkProps from '../separateLinkProps';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 export function getNavMenuProps({
 	lismClass,
@@ -40,14 +39,6 @@ export function getNavMenuItemProps(props) {
 		tag: 'li',
 	};
 
-	// if (props.href) {
-	// 	const { linkProps, otherProps } = separateLinkProps(props);
-
-	// 	return {
-	// 		liProps: Object.assign(liProps, props, otherProps),
-	// 		linkProps,
-	// 	};
-	// }
 	return Object.assign(liProps, props);
 }
 
@@ -56,16 +47,13 @@ export function getNavMenuLinkProps(props) {
 		skipState: true,
 		lismClass: 'c--navMenu__link',
 		tag: 'span',
-		// ai: 'center',
 		c: 'inherit',
 		hov: 'fade',
 	};
 
-	const { linkProps, otherProps } = separateLinkProps(props);
-	if (linkProps?.href) {
+	if (props?.href) {
 		navLinkProps.tag = 'a';
-		Object.assign(navLinkProps, linkProps);
 	}
 
-	return { ...navLinkProps, ...otherProps };
+	return { ...navLinkProps, ...props };
 }

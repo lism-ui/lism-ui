@@ -84,12 +84,12 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 <Preview>
 	<PreviewTitle>glass</PreviewTitle>
 	<PreviewArea p='20' resize>
-		<Center isFrame minH='25rem' p='40'>
+		<Frame minH='25rem' p='40' ac='c'>
 			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
-				<Box pos='r' z='1' bg='u:glass' p='40' bdrs='3' bxsh='3'>
-					<Dummy length='l'/>
-				</Box>
-		</Center>
+			<Box pos='r' z='1' bg='u:glass' p='40' bdrs='3' bxsh='3'>
+				<Dummy length='l'/>
+			</Box>
+		</Frame>
 	</PreviewArea>
 	<PreviewCode label='CSS' slot='tab'>
 ```css
@@ -112,17 +112,17 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 	</PreviewCode>
 	<PreviewCode label='JSX' slot='tab'>
 		```jsx "bg='u:glass'"
-		<Frame aspect='16/9'>
-			<Media src='/img/img-1.jpg' alt='' width='960' height='640'/>
-			<Box bg='u:glass' pos='a' inset='c' p='40' bdrs='3' bxsh='3'>
-				<Dummy />
+		<Frame minH='25rem' p='40' ac='c'>
+			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
+			<Box pos='r' z='1' bg='u:glass' p='40' bdrs='3' bxsh='3'>
+				<Dummy length='l'/>
 			</Box>
 		</Frame>
 		```
 	</PreviewCode>
 	<PreviewCode label='HTML' slot='tab'>
 		```html "-bg:glass"
-		<div class="l--center is--frame -p:40" style="min-height:25rem">
+		<div class="is--frame -p:40 -ac:c" style="min-height:25rem">
 			<img class="is--layer -z:0" src="/img/img-3.jpg" width="960" height="640">
 			<div class="l--box -pos:r -z:1 -bg:glass -p:40 -bdrs:3 -bxsh:3">
 				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident libero, eum nulla sunt, porro sed dicta. Impedit ullam eveniet obcaecati minima.</p>

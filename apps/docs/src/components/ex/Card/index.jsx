@@ -1,10 +1,15 @@
-import { Grid, Flex, Stack, Frame, FlexItem, LinkBox, WithSide } from '@lism-ui/core';
+import { Flex, Stack, Frame, FlexItem, WithSide } from '@lism-ui/core';
 
-export function Card({ layout, direction, children, ...props }) {
-	// let CardLayout = FlexItem; //isFlex ? Flex : Stack;
+export function Card({ layout, children, ...props }) {
+	const defaultProps = {
+		bgc: 'base',
+		c: 'text',
+		bdrs: '3',
+		bxsh: '2',
+		ov: 'h',
+	};
 
 	let CardLayout = layout || WithSide;
-
 	if (layout === 'Flex') {
 		CardLayout = Flex;
 	} else if (layout === 'Stack') {
@@ -12,20 +17,15 @@ export function Card({ layout, direction, children, ...props }) {
 	}
 
 	if (props.href) {
-		props.layout = CardLayout;
-		CardLayout = LinkBox;
+		defaultProps.tag = 'a';
+		defaultProps.isLinkBox = true;
 	}
 
 	return (
-		<CardLayout lismClass='c--card' bgc='base' bdrs='3' bxsh='2' ov='h' {...props}>
+		<CardLayout lismClass='c--card' {...defaultProps} {...props}>
 			{children}
 		</CardLayout>
 	);
-}
-
-// linkbox版
-export function CardLink(props) {
-	return <LinkBox layout={Card} {...props} />;
 }
 
 export function CardMedia(props) {

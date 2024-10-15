@@ -60,6 +60,7 @@ class LismPropsData {
 			isTrimHL,
 			isColored,
 			isLinkBox,
+			isSkipFlow,
 			// hasBd,
 			_context,
 			..._props
@@ -83,6 +84,9 @@ class LismPropsData {
 		}
 		if (isLinkBox) {
 			lismState.push('is--linkBox');
+		}
+		if (isSkipFlow) {
+			lismState.push('is--skipFlow');
 		}
 		if (isSide) {
 			lismState.push('is--side');

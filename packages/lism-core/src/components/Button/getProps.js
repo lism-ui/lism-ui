@@ -1,12 +1,11 @@
 import atts from '../../lib/helper/atts';
-import separateLinkProps from '../separateLinkProps';
 
 export function getButtonProps({
 	lismClass,
 	variant = 'fill',
-	// iconOffset,
-	style = {},
+	// style = {},
 	textProps = {},
+	// iconOffset,
 	...props
 }) {
 	const defaultProps = {
@@ -14,8 +13,6 @@ export function getButtonProps({
 		skipState: true,
 		tag: 'a',
 		hov: 'fade',
-		// jc: 'center',
-		// ai: 'center',
 	};
 	const defaultTextProps = {
 		tag: 'span',
@@ -23,12 +20,10 @@ export function getButtonProps({
 		skipState: true,
 	};
 
-	const { linkProps, otherProps } = separateLinkProps(props);
-
 	// if (iconOffset) {
 	// 	style['--icon-offset'] = iconOffset;
 	// }
-	otherProps.style = style;
+	// props.style = style;
 
 	// const leftIconProps = { 'data-position': 'left' };
 	// const rightIconProps = { 'data-position': 'right' };
@@ -38,7 +33,7 @@ export function getButtonProps({
 	// }
 
 	return {
-		btnProps: Object.assign(linkProps, defaultProps, otherProps),
+		btnProps: Object.assign(defaultProps, props),
 		textProps: Object.assign(defaultTextProps, textProps),
 	};
 }
