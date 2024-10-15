@@ -28,7 +28,7 @@ export default {
 	fw: ['thin', 'light', 'normal', 'medium', 'bold', 'heavy'],
 	op: ['low', 'mid', 'high'],
 	bdrs: ['1', '2', '3', '4', '5', '6', '99'],
-	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5'],
+	bxsh: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5'],
 
 	// size:['container', 'container:s', 'container:l'],
 	contentSize: ['xs', 's', 'm', 'l', 'xl'], // --size--xxx トークン

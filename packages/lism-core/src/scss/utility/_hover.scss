@@ -13,7 +13,7 @@
 	opacity: 0.6;
 }
 .-hov\:shadow:hover {
-	box-shadow: var(--sh--4);
+	box-shadow: var(--bxsh--4);
 }
 .-hov\:up:hover {
 	translate: 0 -3px;
@@ -54,21 +54,6 @@
 .-hov\:filter\::hover {
 	filter: var(--hov-filter) !important;
 }
-
-// ------------------------------------------------------------
-// shadow
-// ------------------------------------------------------------
-// .-hov\:shadow\: {
-// 	box-shadow: var(--sh--4);
-// }
-
-// .-hov\:bxsh:hover {
-// 	// shadowユーティリティに負けないように important
-// 	box-shadow: var(--hov-bxsh) !important;
-// }
-// .-hov\:shColor:hover {
-// 	--sh-color: var(--hov-sh-color);
-// }
 
 // ------------------------------------------------------------
 // hov:media:

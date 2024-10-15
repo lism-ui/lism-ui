@@ -16,7 +16,7 @@ export default function getMaybeCssVar(value, converter, propName = '') {
 				return getMaybeSizeVar(value);
 			case 'bdrs':
 				return getMaybeRadiusVar(value);
-			case 'shadow':
+			case 'bxsh':
 				return getMaybeShadowVar(value);
 			// case 'opacity':
 			// 	return getMaybeOpacityVar(value);
@@ -116,7 +116,7 @@ export function getMaybeRadiusVar(value) {
 }
 
 export function getMaybeShadowVar(value) {
-	if (isTokenValue('shadow', value)) {
+	if (isTokenValue('bxsh', value)) {
 		value = value + ''; // 数値でも渡ってくるので文字列化
 
 		// -をiに変換
@@ -125,7 +125,7 @@ export function getMaybeShadowVar(value) {
 		// 0 は none
 		if (value === '0') return 'none';
 
-		return 'var(--sh--' + value + ')';
+		return 'var(--bxsh--' + value + ')';
 	}
 
 	// 数値指定の場合
@@ -134,11 +134,11 @@ export function getMaybeShadowVar(value) {
 	// 	if (shdwVal === 0) {
 	// 		return 'none';
 	// 	} else if (shdwVal > 0) {
-	// 		const sh01 = `var(--sh-size--${shdwVal}) var(--sh-color)`;
-	// 		const sh02 = `var(--sh-size--${shdwVal + 1}) var(--sh-color)`;
+	// 		const sh01 = `var(--sh-sz--${shdwVal}) var(--sh-color)`;
+	// 		const sh02 = `var(--sh-sz--${shdwVal + 1}) var(--sh-color)`;
 	// 		return `${sh01}, ${sh02}`;
 	// 	} else if (shdwVal < 0) {
-	// 		return `inset var(--sh-size--${shdwVal * -1}), inset var(--sh-size--${shdwVal * -1 + 1})`;
+	// 		return `inset var(--sh-sz--${shdwVal * -1}), inset var(--sh-sz--${shdwVal * -1 + 1})`;
 	// 	}
 	// }
 	return value;
@@ -151,9 +151,9 @@ export function getMaybeShadowVar(value) {
 // 		if (sizeVal === 0) {
 // 			return '0 0 0';
 // 		} else if (sizeVal > 0) {
-// 			return `var(--sh-size--${sizeVal})`;
+// 			return `var(--sh-sz--${sizeVal})`;
 // 		} else if (sizeVal < 0) {
-// 			return `inset var(--sh-size--${sizeVal * -1})`;
+// 			return `inset var(--sh-sz--${sizeVal * -1})`;
 // 		}
 // 	}
 // 	return value;

@@ -225,15 +225,21 @@
 	/* ------------------------------------------------------------
 	  radius
 	------------------------------------------------------------ */
-	// 10,20, ... ?
+	// 等比
+	--bdrs--1: 0.125rem; // base
+	--bdrs--2: 0.25rem; // * 2
+	--bdrs--3: 0.5rem; // * 4
+	--bdrs--4: 1rem; // * 8
+	--bdrs--5: 2rem; // * 16
+	--bdrs--99: 99rem;
 
-	// rads
-	--bdrs--1: 0.125rem; // ≒ 2px
-	--bdrs--2: 0.25rem; // ≒ 4px
-	--bdrs--3: 0.625rem; // ≒ 8px
-	--bdrs--4: 1rem; // ≒ 12px
-	--bdrs--5: 1.75rem; // ≒ 20px
-	--bdrs--99: 9999px;
+	// 1, 2, 3, 5, 8, 13,
+	// --bdrs--1: 0.125rem;
+	// --bdrs--2: 0.25rem; // base
+	// --bdrs--3: 0.5rem; // * 2
+	// --bdrs--4: 0.75rem; // * 3
+	// --bdrs--5: 1.25rem; // * 5
+	// --bdrs--99: 99rem;
 
 	/* ------------------------------------------------------------
 	  shadow
@@ -244,39 +250,37 @@
 	// --sh-a--base: calc(var(--sh-a) - 4%);
 	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));
 
-	// shadow:
-
 	// x y blur
 	// x: 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89,
 	// y: 3 で x:y が 1:2。高い位置にあるほど比率が大きくなる。
 	// blur: y + x
-	// --sh-size--0: 1px 1px 2px 0;
-	// --sh-size--1: 2px 3px 5px 0;
-	// --sh-size--2: 3px 5px 8px 0;
-	// --sh-size--3: 5px 10px 15px 0;
-	// --sh-size--4: 8px 18px 26px 0;
-	// --sh-size--5: 13px 30px 43px 0;
+	// --sh-sz--0: 1px 1px 2px 0;
+	// --sh-sz--1: 2px 3px 5px 0;
+	// --sh-sz--2: 3px 5px 8px 0;
+	// --sh-sz--3: 5px 10px 15px 0;
+	// --sh-sz--4: 8px 18px 26px 0;
+	// --sh-sz--5: 13px 30px 43px 0;
 
-	--sh-size--0: 1px 1px 2px 0;
-	--sh-size--1: 2px 3px 5px 0;
-	--sh-size--2: 4px 7px 11px 0;
-	--sh-size--3: 7px 14px 21px 0;
-	--sh-size--4: 11px 24px 35px 0;
-	--sh-size--5: 16px 36px 52px 0;
+	--sh-sz--0: 1px 1px 2px 0;
+	--sh-sz--1: 2px 3px 5px 0;
+	--sh-sz--2: 4px 7px 11px 0;
+	--sh-sz--3: 7px 14px 21px 0;
+	--sh-sz--4: 11px 24px 35px 0;
+	--sh-sz--5: 16px 36px 52px 0;
 
-	// --sh-size--0: 1px 2px 3px 0;
-	// --sh-size--1: 2px 4px 6px 0;
-	// --sh-size--2: 3px 6px 9px 0;
-	// --sh-size--3: 5px 10px 15px 0;
-	// --sh-size--4: 8px 16px 24px 0;
-	// --sh-size--5: 13px 26px 39px 0;
+	// --sh-sz--0: 1px 2px 3px 0;
+	// --sh-sz--1: 2px 4px 6px 0;
+	// --sh-sz--2: 3px 6px 9px 0;
+	// --sh-sz--3: 5px 10px 15px 0;
+	// --sh-sz--4: 8px 16px 24px 0;
+	// --sh-sz--5: 13px 26px 39px 0;
 
-	// --sh-size--0: 0.5px 1px 2px 0;
-	// --sh-size--1: 1px 2px 4px 0;
-	// --sh-size--2: 2px 4px 8px 0;
-	// --sh-size--3: 4px 8px 16px 0;
-	// --sh-size--4: 8px 16px 32px 0;
-	// --sh-size--5: 16px 32px 64px 0;
+	// --sh-sz--0: 0.5px 1px 2px 0;
+	// --sh-sz--1: 1px 2px 4px 0;
+	// --sh-sz--2: 2px 4px 8px 0;
+	// --sh-sz--3: 4px 8px 16px 0;
+	// --sh-sz--4: 8px 16px 32px 0;
+	// --sh-sz--5: 16px 32px 64px 0;
 
 	/* ------------------------------------------------------------
 	  filter
@@ -302,13 +306,13 @@
 	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));
 	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
 	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);
-	--sh--1: var(--sh-size--0) var(--sh-color), var(--sh-size--1) var(--sh-color);
-	--sh--2: var(--sh-size--1) var(--sh-color), var(--sh-size--2) var(--sh-color);
-	--sh--3: var(--sh-size--2) var(--sh-color), var(--sh-size--3) var(--sh-color);
-	--sh--4: var(--sh-size--3) var(--sh-color), var(--sh-size--4) var(--sh-color);
-	--sh--5: var(--sh-size--4) var(--sh-color), var(--sh-size--5) var(--sh-color);
+	--bxsh--1: var(--sh-sz--0) var(--sh-color), var(--sh-sz--1) var(--sh-color);
+	--bxsh--2: var(--sh-sz--1) var(--sh-color), var(--sh-sz--2) var(--sh-color);
+	--bxsh--3: var(--sh-sz--2) var(--sh-color), var(--sh-sz--3) var(--sh-color);
+	--bxsh--4: var(--sh-sz--3) var(--sh-color), var(--sh-sz--4) var(--sh-color);
+	--bxsh--5: var(--sh-sz--4) var(--sh-color), var(--sh-sz--5) var(--sh-color);
 
-	--sh--i1: inset var(--sh-size--0) var(--sh-color), inset var(--sh-size--1) var(--sh-color);
-	--sh--i2: inset var(--sh-size--1) var(--sh-color), inset var(--sh-size--2) var(--sh-color);
-	// --sh--i3: inset var(--sh-size--2) var(--sh-color), inset var(--sh-size--3) var(--sh-color);
+	--bxsh--i1: inset var(--sh-sz--0) var(--sh-color), inset var(--sh-sz--1) var(--sh-color);
+	--bxsh--i2: inset var(--sh-sz--1) var(--sh-color), inset var(--sh-sz--2) var(--sh-color);
+	// --bxsh--i3: inset var(--sh-sz--2) var(--sh-color), inset var(--sh-sz--3) var(--sh-color);
 }

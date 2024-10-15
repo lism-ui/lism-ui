@@ -79,7 +79,7 @@ export default {
 
 	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
 
-	bxsh: { presets: ['0', ...TOKENS.shadow], converter: 'shadow' },
+	bxsh: { presets: ['0', ...TOKENS.bxsh], converter: 'bxsh' },
 	// shColor: { converter: 'color', style: '--sh-color' },
 
 	//display

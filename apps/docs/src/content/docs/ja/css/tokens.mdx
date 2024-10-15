@@ -597,14 +597,14 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 
 ## `RADIUS` トークン
 
-|トークン値|変数|クラス|
-|---|---|---|
-|`1`|`--bdrs--1`|`.-bdrs:1`|
-|`2`|`--bdrs--2`|`.-bdrs:2`|
-|`3`|`--bdrs--3`|`.-bdrs:3`|
-|`4`|`--bdrs--4`|`.-bdrs:4`|
-|`5`|`--bdrs--5`|`.-bdrs:5`|
-|`99`|`--bdrs--99`|`.-bdrs:99`|
+|トークン値|変数|クラス|初期値|	
+|---|---|---|---|
+|`1`|`--bdrs--1`|`.-bdrs:1`|`0.125rem`|
+|`2`|`--bdrs--2`|`.-bdrs:2`|`0.25rem`|
+|`3`|`--bdrs--3`|`.-bdrs:3`|`0.5rem`|
+|`4`|`--bdrs--4`|`.-bdrs:4`|`1rem`|
+|`5`|`--bdrs--5`|`.-bdrs:5`|`2rem`|
+|`99`|`--bdrs--99`|`.-bdrs:99`|`99rem`|
 
 
 <Preview>
@@ -644,7 +644,6 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 </Preview>
 
 
-
 ## `SHADOW` トークン
 
 
@@ -654,28 +653,38 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 
 |トークン値|変数|クラス|
 |---|---|---|
-|`1`|`--sh--1`|`-bxsh:1`|
-|`2`|`--sh--2`|`-bxsh:2`|
-|`3`|`--sh--3`|`-bxsh:3`|
-|`4`|`--sh--4`|`-bxsh:4`|
-|`5`|`--sh--5`|`-bxsh:5`|
-|`-1`|`--sh--i1`|`-bxsh:-1`|
-|`-2`|`--sh--i2`|`-bxsh:-2`|
-{/* |`-3`|`--sh--i3`|`-bxsh:-3`| */}
+|`1`|`--bxsh--1`|`-bxsh:1`|
+|`2`|`--bxsh--2`|`-bxsh:2`|
+|`3`|`--bxsh--3`|`-bxsh:3`|
+|`4`|`--bxsh--4`|`-bxsh:4`|
+|`5`|`--bxsh--5`|`-bxsh:5`|
+|`-1`|`--bxsh--i1`|`-bxsh:-1`|
+|`-2`|`--bxsh--i2`|`-bxsh:-2`|
+{/* |`-3`|`--bxsh--i3`|`-bxsh:-3`| */}
 
-`--sh--{token}`の値の中身は、次の変数で構成されます。
+`--bxsh--{token}`の値の中身は、次の変数で構成されます。
 
 
 |構成変数|初期値|
 |---|---|
-|`--sh-size--0`|`0.5px 1px 2px 0`|
-|`--sh-size--1`|`1px 2px 4px 0`|
-|`--sh-size--2`|`2px 4px 8px 0`|
-|`--sh-size--3`|`4px 8px 16px 0`|
-|`--sh-size--4`|`8px 16px 32px 0`|
-|`--sh-size--5`|`16px 32px 64px 0`|
-|`--sh-hsl`|`215 8% 12%`|
-|`--sh-a`|`8%`|
+|`--sh-hsl`|`210 20% 20%`|
+|`--sh-a`|`10%`|
+|`--sh-sz--0~5`||
+
+```css
+:root{
+	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));
+	--bxsh--1: var(--sh-sz--0) var(--sh-color), var(--sh-sz--1) var(--sh-color);
+	--bxsh--2: var(--sh-sz--1) var(--sh-color), var(--sh-sz--2) var(--sh-color);
+	--bxsh--3: var(--sh-sz--2) var(--sh-color), var(--sh-sz--3) var(--sh-color);
+	--bxsh--4: var(--sh-sz--3) var(--sh-color), var(--sh-sz--4) var(--sh-color);
+	--bxsh--5: var(--sh-sz--4) var(--sh-color), var(--sh-sz--5) var(--sh-color);
+
+	--bxsh--i1: inset var(--sh-sz--0) var(--sh-color), inset var(--sh-sz--1) var(--sh-color);
+	--bxsh--i2: inset var(--sh-sz--1) var(--sh-color), inset var(--sh-sz--2) var(--sh-color);
+}
+
+```
 
 {/* `bxsh`は、`1` ~ `4`, `-1` ~ `-4` までの値に対してユーティリティクラスを用意していますが、内部では2段階のshadowを組み合わせることでより立体的で美しいシャドウを表現できるようになっています。 */}
 
@@ -686,14 +695,6 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 			<BoxShadowDemos shadows={[ 1, 2, 3, 4, 5 ]}/>
 		</Columns>
 	</PreviewArea>
-	{/* <PreviewCode slot='tab' label='CSS'>
-		```css
-		.-bxsh\:1 {box-shadow: var(--sh-size--0) var(--sh-color), var(--sh-size--1) var(--sh-color)}
-		.-bxsh\:2 {box-shadow: var(--sh-size--1) var(--sh-color), var(--sh-size--2) var(--sh-color)}
-		.-bxsh\:3 {box-shadow: var(--sh-size--2) var(--sh-color), var(--sh-size--3) var(--sh-color)}
-		.-bxsh\:4 {box-shadow: var(--sh-size--3) var(--sh-color), var(--sh-size--4) var(--sh-color)}
-		```
-	</PreviewCode> */}
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div class="-bxsh:1">...</div>
@@ -707,7 +708,7 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 
 
 <Preview>
-	<PreviewTitle>Demo(inset)</PreviewTitle>
+	<PreviewTitle>Preview(inset)</PreviewTitle>
 	<PreviewArea p={50} nogrid>
 		<Columns cols={[3, 5, 5]} g={60}>
 			<BoxShadowDemos shadows={[ -1, -2 ]}/>
