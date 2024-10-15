@@ -27,9 +27,8 @@ export default {
 	ff: ['root', 'mono', 'sans', 'serif', 'emoji'],
 	fw: ['thin', 'light', 'normal', 'medium', 'bold', 'heavy'],
 	op: ['low', 'mid', 'high'],
-
-	radius: ['full', '2xl', 'xl', 'l', 'm', 's', 'xs'],
-	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5', '0'],
+	bdrs: ['1', '2', '3', '4', '5', '6', '99'],
+	shadow: ['-1', '-2', '-3', '-4', '-5', '1', '2', '3', '4', '5'],
 
 	// size:['container', 'container:s', 'container:l'],
 	contentSize: ['xs', 's', 'm', 'l', 'xl'], // --size--xxx トークン

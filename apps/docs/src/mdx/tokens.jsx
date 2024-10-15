@@ -21,7 +21,7 @@ export const BoxShadowDemos = ({ shadows = [] }) => {
 			{shadows.map((name) => {
 				return (
 					<Stack key={name} g='20'>
-						<Frame aspect='1/1' bgc='base' bxsh={name} bdrs='s'>
+						<Frame aspect='1/1' bgc='base' bxsh={name} bdrs='2'>
 							<Center h='100%' ff='mono' fz='xs' c='text-2'>
 								{name}
 							</Center>

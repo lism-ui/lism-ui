@@ -97,30 +97,30 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster g='20'>
-			<Button href='###' variant='fill' bdrs='s' keycolor='main'>Fill</Button>
-			<Button href='###' variant='outline' bdrs='s' keycolor='accent' hov='reverse'>Outline</Button>
-			<Button href='###' variant='ghost' bdrs='s' keycolor='#639d20' hov='reverse'>Ghost</Button>
+			<Button href='###' variant='fill' bdrs='2' keycolor='main'>Fill</Button>
+			<Button href='###' variant='outline' bdrs='2' keycolor='accent' hov='reverse'>Outline</Button>
+			<Button href='###' variant='ghost' bdrs='2' keycolor='#639d20' hov='reverse'>Ghost</Button>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "keycolor"
 		<Cluster g='20'>
-			<Button href='###' variant='fill' bdrs='s' keycolor='main'>Fill</Button>
-			<Button href='###' variant='outline' bdrs='s' keycolor='accent' hov='reverse'>Outline</Button>
-			<Button href='###' variant='ghost' bdrs='s' keycolor='#639d20' hov='reverse'>Ghost</Button>
+			<Button href='###' variant='fill' bdrs='2' keycolor='main'>Fill</Button>
+			<Button href='###' variant='outline' bdrs='2' keycolor='accent' hov='reverse'>Outline</Button>
+			<Button href='###' variant='ghost' bdrs='2' keycolor='#639d20' hov='reverse'>Ghost</Button>
 		</Cluster>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "--keycolor"
 		<div class="l--flex l--flex--cluster -g:20">
-			<a class="b--button b--button--fill l--flex -hov:fade -bdrs:s" style="--keycolor:var(--c--main)" href="###">
+			<a class="b--button b--button--fill l--flex -hov:fade -bdrs:2" style="--keycolor:var(--c--main)" href="###">
 				<span class="b--button__text">Fill</span>
 			</a>
-			<a class="b--button b--button--outline l--flex -hov:reverse -bdrs:s" style="--keycolor:var(--c--accent)" href="###">
+			<a class="b--button b--button--outline l--flex -hov:reverse -bdrs:2" style="--keycolor:var(--c--accent)" href="###">
 				<span class="b--button__text">Outline</span>
 			</a>
-			<a class="b--button b--button--ghost l--flex -hov:reverse -bdrs:s" style="--keycolor:#639d20" href="###">
+			<a class="b--button b--button--ghost l--flex -hov:reverse -bdrs:2" style="--keycolor:#639d20" href="###">
 				<span class="b--button__text">Ghost</span>
 			</a>
 		</div>
@@ -135,21 +135,21 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewTitle>左にアイコン</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster g='20'>
-			<Button href='###' icon={ShoppingCartSimple} bdrs='s'>Button</Button>
-			<Button href='###' icon={ShoppingCartSimple} variant='outline' bdrs='s'>Button</Button>
-			<Button href='###' icon={ShoppingCartSimple} variant='ghost' bdrs='s'>Button</Button>
+			<Button href='###' icon={ShoppingCartSimple} bdrs='2'>Button</Button>
+			<Button href='###' icon={ShoppingCartSimple} variant='outline' bdrs='2'>Button</Button>
+			<Button href='###' icon={ShoppingCartSimple} variant='ghost' bdrs='2'>Button</Button>
 		</Cluster>
 	</PreviewArea>
 <PreviewCode slot='tab' label='JSX'>
 ```jsx "icon"
 import { ShoppingCartSimple } from "@phosphor-icons/react";
 
-<Button href='###' icon={ShoppingCartSimple} bdrs='s'>Button</Button>
+<Button href='###' icon={ShoppingCartSimple} bdrs='2'>Button</Button>
 ```
 </PreviewCode>
 <PreviewCode slot='tab' label='HTML'>
 ```html {2}
-<a class="b--button b--button--fill l--flex -hov:fade -bdrs:s" href="###">
+<a class="b--button b--button--fill l--flex -hov:fade -bdrs:2" href="###">
 	<svg class="b--button__icon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 	<span class="b--button__text">Button</span>
 </a>
@@ -161,19 +161,19 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 	<PreviewTitle>アイコンを右に</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Cluster g='20'>
-			<Button href='###' endIcon={ArrowRight} bdrs='full'>Button</Button>
-			<Button href='###' endIcon={ArrowRight} variant='outline' bdrs='full'>Button</Button>
-			<Button href='###' endIcon={ArrowRight} variant='ghost' bdrs='full'>Button</Button>
+			<Button href='###' endIcon={ArrowRight} bdrs='99'>Button</Button>
+			<Button href='###' endIcon={ArrowRight} variant='outline' bdrs='99'>Button</Button>
+			<Button href='###' endIcon={ArrowRight} variant='ghost' bdrs='99'>Button</Button>
 		</Cluster>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "endIcon"
-	<Button href='###' endIcon={ArrowRight} bdrs='full'>Button</Button>
+	<Button href='###' endIcon={ArrowRight} bdrs='99'>Button</Button>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html {3}
-	<a class="b--button b--button--fill l--flex -hov:fade -bdrs:full" href="###">
+	<a class="b--button b--button--fill l--flex -hov:fade -bdrs:99" href="###">
 		<span class="b--button__text">Button</span>
 		<svg class="b--button__endIcon a--icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">...</svg>
 	</a>
@@ -255,16 +255,16 @@ import { ShoppingCartSimple } from "@phosphor-icons/react";
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Button href='###' icon={{as:ShoppingCartSimple, weight:'fill'}} w='fit' p='20' bdrs='s' /> 
+		<Button href='###' icon={{as:ShoppingCartSimple, weight:'fill'}} w='fit' p='20' bdrs='2' /> 
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Button href='###' icon={{as:ShoppingCartSimple, weight:'fill'}} w='fit' p='20' bdrs='s' /> 
+		<Button href='###' icon={{as:ShoppingCartSimple, weight:'fill'}} w='fit' p='20' bdrs='2' /> 
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<a class="b--button b--button--fill l--center -hov:fade -w:fit -p:20 -bdrs:s" href="###">
+		<a class="b--button b--button--fill l--center -hov:fade -w:fit -p:20 -bdrs:2" href="###">
 			<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" class="b--button__icon a--icon" aria-hidden="true"><path d="M239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM88,200a16,16,0,1,0,16,16A16,16,0,0,0,88,200Zm104,0a16,16,0,1,0,16,16A16,16,0,0,0,192,200Z"></path></svg>
 		</a>
 		```
@@ -283,15 +283,15 @@ iconのサイズは、`iconScale`でも調整できます。
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='20'>
 		{/* <Flex g='20'> */}
-		<Button href='###' w='fit' fz='xs' bdrs='s' endIcon={ArrowRight}>Button</Button>
-		<Button layout={Grid} href='###' maxW='25rem' py='20' px='30' bdrs='s' endIcon={ArrowRight} iconScale='1.25'>Button</Button>
-		{/* <Button href='###' w='fit' fz='xl' p='20' bdrs='s' icon={ShoppingCartSimple} /> */}
+		<Button href='###' w='fit' fz='xs' bdrs='2' endIcon={ArrowRight}>Button</Button>
+		<Button layout={Grid} href='###' maxW='25rem' py='20' px='30' bdrs='2' endIcon={ArrowRight} iconScale='1.25'>Button</Button>
+		{/* <Button href='###' w='fit' fz='xl' p='20' bdrs='2' icon={ShoppingCartSimple} /> */}
 		{/* </Flex> */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Button href='###' w='fit' fz='xs' bdrs='s' endIcon={ArrowRight}>Button</Button>
-		<Button layout={Grid} href='###' maxW='25rem' py='20' px='30' bdrs='s' endIcon={ArrowRight} iconScale='1.25'>Button</Button>
+		<Button href='###' w='fit' fz='xs' bdrs='2' endIcon={ArrowRight}>Button</Button>
+		<Button layout={Grid} href='###' maxW='25rem' py='20' px='30' bdrs='2' endIcon={ArrowRight} iconScale='1.25'>Button</Button>
 		```
 	</PreviewCode>
 </Preview>

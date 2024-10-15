@@ -660,30 +660,30 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 		<Stack gap='20'>
 			<Text> Default </Text>
 			<Flex className='reset--sh -g:40'>
-				<Box bxsh='2' p='40' bdrs='m'>Box</Box>
-				<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+				<Box bxsh='2' p='40' bdrs='3'>Box</Box>
+				<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 			</Flex>
 			<Spacer h='40' />
 			<Text> Custom </Text>
 			<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
-				<Box bxsh='2' p='40' bdrs='m'>Box</Box>
-				<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+				<Box bxsh='2' p='40' bdrs='3'>Box</Box>
+				<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 			</Flex>
 		</Stack>
 	</PreviewArea>
 		<PreviewCode slot='tab' label='HTML'>
 		```html "reset--sh"
 		<div class="reset--sh l--flex -g:40" style="--sh-hsl:200 50% 50%;--sh-a:20%">
-			<div class="l--box -bxsh:1 -p:40 -bdrs:m">Box</div>
-			<div class="l--box -bxsh:4 -p:40 -bdrs:m">Box</div>
+			<div class="l--box -bxsh:1 -p:40 -bdrs:3">Box</div>
+			<div class="l--box -bxsh:4 -p:40 -bdrs:3">Box</div>
 		</div>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "reset--sh"
 		<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
-			<Box bxsh='2' p='40' bdrs='m'>Box</Box>
-			<Box bxsh='4' p='40' bdrs='m'>Box</Box>
+			<Box bxsh='2' p='40' bdrs='3'>Box</Box>
+			<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 		</Flex>
 		```
 	</PreviewCode>

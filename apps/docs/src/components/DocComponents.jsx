@@ -49,7 +49,7 @@ export const PropBadge = ({ type = '', ...props }) => {
 			ff='mono'
 			lh='xs'
 			m='5'
-			bdrs='xs'
+			bdrs='1'
 			whs='nw'
 			isColored
 			keycolor={keycolor}

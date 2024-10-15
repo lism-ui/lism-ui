@@ -54,7 +54,7 @@ export function TimelineItem({
 	const itemProps = { className: itemClass };
 	const lineProps = { bgc: 'base-2' };
 	const timeProps = { fz: 'xs', lh: 'xs', c: 'text-2' };
-	const shapeProps = { bdrs: 'full', c: 'base', bgc: shapeColor || 'text' };
+	const shapeProps = { bdrs: '99', c: 'base', bgc: shapeColor || 'text' };
 	const bodyProps = { isFlow };
 
 	if (variant === 'horizontal') {

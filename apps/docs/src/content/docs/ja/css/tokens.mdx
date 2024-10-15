@@ -6,12 +6,12 @@ sidebar:
 ---
 
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference } from "~/components";
-import { Lism, Dummy, Box, Text, Stack, Flex, Columns, Frame, Callout, Note, Tabs, TabItem } from '@lism-ui/astro';
+import { Lism, Dummy, Box, Text, Stack, Flex, Columns, Frame, Callout, Center, Tabs, TabItem } from '@lism-ui/astro';
 import { FzDemos, SpacingDemos, BoxShadowDemos, RadiusDemos } from "~/mdx/tokens.jsx";
 
 export const ColorBadge = ({color, label}) => {
 	return <span className='-d:f -ai:c -g:10'>
-			<Lism skipState tag='span' w='1.5em' aspect='1/1' bgc={color} bdrs='s' bxsh='1' />
+			<Lism skipState tag='span' w='1.5em' aspect='1/1' bgc={color} bdrs='2' bxsh='1' />
 			<code>{label || color}</code>
 		</span>;
 }
@@ -599,29 +599,46 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 
 |トークン値|変数|クラス|
 |---|---|---|
-|`xs`|`--radii--xs`|`.-bdrs:xs`|
-|`s`|`--radii--s`|`.-bdrs:s`|
-|`m`|`--radii--m`|`.-bdrs:m`|
-|`l`|`--radii--l`|`.-bdrs:l`|
-|`xl`|`--radii--xl`|`.-bdrs:xl`|
-|`full`|`--radii--full`|`.-bdrs:full`|
+|`1`|`--bdrs--1`|`.-bdrs:1`|
+|`2`|`--bdrs--2`|`.-bdrs:2`|
+|`3`|`--bdrs--3`|`.-bdrs:3`|
+|`4`|`--bdrs--4`|`.-bdrs:4`|
+|`5`|`--bdrs--5`|`.-bdrs:5`|
+|`99`|`--bdrs--99`|`.-bdrs:99`|
 
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={50} nogrid>
 		<Columns cols={[3, 6]} g='40'>
-			<RadiusDemos />
+			<Frame aspect='1/1' bdrs='1' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>1</Center>
+			</Frame>
+			<Frame aspect='1/1' bdrs='2' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>2</Center>
+			</Frame>
+			<Frame aspect='1/1' bdrs='3' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>3</Center>
+			</Frame>
+			<Frame aspect='1/1' bdrs='4' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>4</Center>
+			</Frame>
+			<Frame aspect='1/1' bdrs='5' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>5</Center>
+			</Frame>
+			<Frame aspect='1/1' bdrs='99' bd>
+				<Center h='100%' ff='mono' fz='xs' c='text-2'>99</Center>
+			</Frame>
 		</Columns>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="-bdrs:xs">...</div>
-		<div class="-bdrs:s">...</div>
-		<div class="-bdrs:m">...</div>
-		<div class="-bdrs:l">...</div>
-		<div class="-bdrs:xl">...</div>
-		<div class="-bdrs:full">...</div>
+		<div class="-bdrs:1">...</div>
+		<div class="-bdrs:2">...</div>
+		<div class="-bdrs:3">...</div>
+		<div class="-bdrs:4">...</div>
+		<div class="-bdrs:5">...</div>
+		<div class="-bdrs:99">...</div>
 		```
 	</PreviewCode>
 </Preview>
@@ -637,7 +654,6 @@ box-shadow は少し特殊で、ユーティリティクラス内で複数のsha
 
 |トークン値|変数|クラス|
 |---|---|---|
-|`0`|-|`-bxsh:0`|
 |`1`|`--sh--1`|`-bxsh:1`|
 |`2`|`--sh--2`|`-bxsh:2`|
 |`3`|`--sh--3`|`-bxsh:3`|

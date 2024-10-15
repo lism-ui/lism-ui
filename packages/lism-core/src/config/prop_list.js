@@ -77,9 +77,9 @@ export default {
 	bds: { style: '--bds' }, // --bds のみ
 	bdc: { style: '--bdc', presets: 1, utils: 1, converter: 'color' },
 
-	bdrs: { presets: 'radius', converter: 'radius' },
+	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
 
-	bxsh: { presets: 'shadow', converter: 'shadow' },
+	bxsh: { presets: ['0', ...TOKENS.shadow], converter: 'shadow' },
 	// shColor: { converter: 'color', style: '--sh-color' },
 
 	//display
@@ -250,14 +250,14 @@ export const CONTEXT_PROPS = {
 	// },
 
 	radii: {
-		tl: { style: 'borderTopLeftRadius', utilKey: 'bdtlrs', converter: 'radius' },
-		tr: { style: 'borderTopRightRadius', utilKey: 'bdtrrs', converter: 'radius' },
-		bl: { style: 'borderBottomLeftRadius', utilKey: 'bdblrs', converter: 'radius' },
-		br: { style: 'borderBottomRightRadius', utilKey: 'bdbrrs', converter: 'radius' },
-		ss: { style: 'borderStartStartRadius', utilKey: 'bdssrs', converter: 'radius' },
-		se: { style: 'borderStartEndRadius', utilKey: 'bdsers', converter: 'radius' },
-		es: { style: 'borderEndStartRadius', utilKey: 'bdesrs', converter: 'radius' },
-		ee: { style: 'borderEndEndRadius', utilKey: 'bdeers', converter: 'radius' },
+		tl: { style: 'borderTopLeftRadius', utilKey: 'bdtlrs', converter: 'bdrs' },
+		tr: { style: 'borderTopRightRadius', utilKey: 'bdtrrs', converter: 'bdrs' },
+		bl: { style: 'borderBottomLeftRadius', utilKey: 'bdblrs', converter: 'bdrs' },
+		br: { style: 'borderBottomRightRadius', utilKey: 'bdbrrs', converter: 'bdrs' },
+		ss: { style: 'borderStartStartRadius', utilKey: 'bdssrs', converter: 'bdrs' },
+		se: { style: 'borderStartEndRadius', utilKey: 'bdsers', converter: 'bdrs' },
+		es: { style: 'borderEndStartRadius', utilKey: 'bdesrs', converter: 'bdrs' },
+		ee: { style: 'borderEndEndRadius', utilKey: 'bdeers', converter: 'bdrs' },
 	},
 
 	// borders: {

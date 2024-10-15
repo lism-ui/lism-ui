@@ -228,14 +228,12 @@
 	// 10,20, ... ?
 
 	// rads
-	// 10,20,30,..?
-	--radii--xs: 0.125rem; // ≒ 2px
-	--radii--s: 0.25rem; // ≒ 4px
-	--radii--m: 0.625rem; // ≒ 8px
-	--radii--l: 1rem; // ≒ 12px
-	--radii--xl: 1.75rem; // ≒ 20px
-	// --radii--2xl: 1.875rem; // ≒ 30px
-	--radii--full: 999px;
+	--bdrs--1: 0.125rem; // ≒ 2px
+	--bdrs--2: 0.25rem; // ≒ 4px
+	--bdrs--3: 0.625rem; // ≒ 8px
+	--bdrs--4: 1rem; // ≒ 12px
+	--bdrs--5: 1.75rem; // ≒ 20px
+	--bdrs--99: 9999px;
 
 	/* ------------------------------------------------------------
 	  shadow

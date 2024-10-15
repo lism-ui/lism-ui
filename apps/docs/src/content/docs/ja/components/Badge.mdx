@@ -29,7 +29,7 @@ span.b--badge
 ## Usage
 
 export const ColorDemos = ({variant = '',  isColored}) => {
-	const badgeProps = {variant, bdrs:'xs'};
+	const badgeProps = {variant, bdrs:'1'};
 
 	return (
 		<Flex variant='cluster' g='20'>
@@ -52,26 +52,26 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	<PreviewTitle>`<Badge>`の使用例</PreviewTitle>
 	<PreviewArea p='30' isShadow={0}>
 		<Flex variant='cluster' g='20'>
-			<Badge bdrs='s'>Badge</Badge>
-			<Badge c='blue' bdrs='s'>Badge</Badge>
-			<Badge c='#549005' bdrs='full'>Badge</Badge>
+			<Badge bdrs='2'>Badge</Badge>
+			<Badge c='blue' bdrs='2'>Badge</Badge>
+			<Badge c='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Flex variant='cluster' g='20'>
-			<Badge bdrs='s'>Badge</Badge>
-			<Badge c='blue' bdrs='s'>Badge</Badge>
-			<Badge c='#549005' bdrs='full'>Badge</Badge>
+			<Badge bdrs='2'>Badge</Badge>
+			<Badge c='blue' bdrs='2'>Badge</Badge>
+			<Badge c='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--flex l--flex--cluster -g:20">
-			<span class="b--badge -bdrs:s">Badge</span>
-			<span class="b--badge -c: -bdrs:s" style="--c:var(--blue)">Badge</span>
-			<span class="b--badge -c: -bdrs:full" style="--c:#549005;">Badge</span>
+			<span class="b--badge -bdrs:2">Badge</span>
+			<span class="b--badge -c: -bdrs:2" style="--c:var(--blue)">Badge</span>
+			<span class="b--badge -c: -bdrs:99" style="--c:#549005;">Badge</span>
 		</div>
 		```
 	</PreviewCode>
@@ -81,26 +81,26 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	<PreviewTitle>`variant='fill'`</PreviewTitle>
 	<PreviewArea p='30' isShadow={0}>
 		<Flex variant='cluster' g='20'>
-			<Badge variant='fill' bdrs='s'>Badge</Badge>
-			<Badge variant='fill' bgc='blue' bdrs='s'>Badge</Badge>
-			<Badge variant='fill' bgc='#549005' bdrs='full'>Badge</Badge>
+			<Badge variant='fill' bdrs='2'>Badge</Badge>
+			<Badge variant='fill' bgc='blue' bdrs='2'>Badge</Badge>
+			<Badge variant='fill' bgc='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Flex variant='cluster' g='20'>
-			<Badge variant='fill' bdrs='s'>Badge</Badge>
-			<Badge variant='fill' bgc='blue' bdrs='s'>Badge</Badge>
-			<Badge variant='fill' bgc='#549005' bdrs='full'>Badge</Badge>
+			<Badge variant='fill' bdrs='2'>Badge</Badge>
+			<Badge variant='fill' bgc='blue' bdrs='2'>Badge</Badge>
+			<Badge variant='fill' bgc='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--flex l--flex--cluster -g:20">
-			<span class="b--badge b--badge--fill -bdrs:s">Badge</span>
-			<span class="b--badge b--badge--fill -bgc: -bdrs:s" style="--bgc:var(--blue)">Badge</span>
-			<span class="b--badge b--badge--fill -bgc: -bdrs:full" style="--bgc:#549005;">Badge</span>
+			<span class="b--badge b--badge--fill -bdrs:2">Badge</span>
+			<span class="b--badge b--badge--fill -bgc: -bdrs:2" style="--bgc:var(--blue)">Badge</span>
+			<span class="b--badge b--badge--fill -bgc: -bdrs:99" style="--bgc:#549005;">Badge</span>
 		</div>
 		```
 	</PreviewCode>
@@ -111,23 +111,23 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	<PreviewTitle>`isColored`を使ったスタイリングの例</PreviewTitle>
 	<PreviewArea p='30' isShadow={0}>
 		<Flex variant='cluster' g='20'>
-			<Badge isColored keycolor='blue' bdrs='s'>Badge</Badge>
-			<Badge isColored keycolor='#549005' bdrs='full'>Badge</Badge>
+			<Badge isColored keycolor='blue' bdrs='2'>Badge</Badge>
+			<Badge isColored keycolor='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Flex variant='cluster' g='20'>
-			<Badge isColored keycolor='blue' bdrs='s'>Badge</Badge>
-			<Badge isColored keycolor='#549005' bdrs='full'>Badge</Badge>
+			<Badge isColored keycolor='blue' bdrs='2'>Badge</Badge>
+			<Badge isColored keycolor='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--flex l--flex--cluster -g:20">
-			<span class="b--badge is--colored -bdrs:s" style="--keycolor:var(--blue)">Badge</span>
-			<span class="b--badge is--colored -bdrs:full" style="--keycolor:#549005">Badge</span>
+			<span class="b--badge is--colored -bdrs:2" style="--keycolor:var(--blue)">Badge</span>
+			<span class="b--badge is--colored -bdrs:99" style="--keycolor:#549005">Badge</span>
 		</div>
 		```
 	</PreviewCode>
@@ -145,7 +145,7 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Badge variant='fill' bgc={color} bdrs='xs'>{color}</Badge>
+		<Badge variant='fill' bgc={color} bdrs='1'>{color}</Badge>
 		```
 	</PreviewCode>
 </Preview>
@@ -157,7 +157,7 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Badge variant='outline' c={color}  bdrs='xs'>{color}</Badge>
+		<Badge variant='outline' c={color}  bdrs='1'>{color}</Badge>
 		```
 	</PreviewCode>
 </Preview>
@@ -169,7 +169,7 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Badge isColored keycolor={color} bdrs='xs'>{color}</Badge>
+		<Badge isColored keycolor={color} bdrs='1'>{color}</Badge>
 		```
 	</PreviewCode>
 </Preview>
@@ -190,15 +190,15 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	<PreviewTitle>`icon`の使用例</PreviewTitle>
 	<PreviewArea p='20'>
 		<Flex g='30' ai='c'>
-			<Badge icon='star' g='5' ai='c' bdrs='s'>Badge</Badge>
-			<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='s'>Badge</Badge>
+			<Badge icon='star' g='5' ai='c' bdrs='2'>Badge</Badge>
+			<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='2'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 <PreviewCode slot='tab' label='JSX'>
 ```jsx
 <Flex g='30' ai='c'>
-	<Badge icon='star' g='5' ai='c' bdrs='s'>Badge</Badge>
-	<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='s'>Badge</Badge>
+	<Badge icon='star' g='5' ai='c' bdrs='2'>Badge</Badge>
+	<Badge variant='fill' icon={Book} g='5' ai='c' bdrs='2'>Badge</Badge>
 </Flex>
 ```
 </PreviewCode>
@@ -207,11 +207,11 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 <Preview>
 	<PreviewTitle>`<Icon>`を使ってももちろんOKです。</PreviewTitle>
 	<PreviewArea p='20'>
-		<Badge g='5' ai='c' bdrs='s'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
+		<Badge g='5' ai='c' bdrs='2'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 	</PreviewArea>
 <PreviewCode slot='tab' label='JSX'>
 ```jsx
-<Badge g='5' ai='c' bdrs='s'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
+<Badge g='5' ai='c' bdrs='2'><Icon icon={Cat} size='1.25em'/>Badge</Badge>
 ```
 </PreviewCode>
 </Preview>

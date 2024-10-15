@@ -1,6 +1,6 @@
 import isNumStr from './helper/isNumStr';
-import isPresetValue from './isPresetValue';
 import isTokenValue from './isTokenValue';
+// import isPresetValue from './isPresetValue';
 
 // 対応するCSS変数があれば返す
 export default function getMaybeCssVar(value, converter, propName = '') {
@@ -14,7 +14,7 @@ export default function getMaybeCssVar(value, converter, propName = '') {
 				return getMaybeColorVar(value, propName);
 			case 'size':
 				return getMaybeSizeVar(value);
-			case 'radius':
+			case 'bdrs':
 				return getMaybeRadiusVar(value);
 			case 'shadow':
 				return getMaybeShadowVar(value);
@@ -97,22 +97,22 @@ export function getMaybeColorVar(value, propType) {
 	return value;
 }
 
-export function getMaybeSizeVar(size) {
-	if (isTokenValue('contentSize', size)) {
-		return `var(--size--${size})`;
+export function getMaybeSizeVar(value) {
+	if (isTokenValue('contentSize', value)) {
+		return `var(--size--${value})`;
 	}
 	// else if (isPresetValue('size', size)) {
 	// 	return `var(--size--${size})`;
 	// }
 
-	return size;
+	return value;
 }
 
-export function getMaybeRadiusVar(radius) {
-	if (isTokenValue('radius', radius)) {
-		return 'var(--radii--' + radius + ')';
+export function getMaybeRadiusVar(value) {
+	if (isTokenValue('bdrs', value)) {
+		return 'var(--bdrs--' + value + ')';
 	}
-	return radius;
+	return value;
 }
 
 export function getMaybeShadowVar(value) {

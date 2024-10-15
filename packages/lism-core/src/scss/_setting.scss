@@ -420,12 +420,12 @@ $props: map.deep-merge(
 			bp: 1,
 			utilities: (
 				'0': '0;',
-				'xs': 'var(--radii--xs)',
-				's': 'var(--radii--s)',
-				'm': 'var(--radii--m)',
-				'l': 'var(--radii--l)',
-				'xl': 'var(--radii--xl)',
-				'full': 'var(--radii--full)',
+				'1': 'var(--bdrs--1)',
+				'2': 'var(--bdrs--2)',
+				'3': 'var(--bdrs--3)',
+				'4': 'var(--bdrs--4)',
+				'5': 'var(--bdrs--5)',
+				'99': 'var(--bdrs--99)',
 			),
 		),
 		'p': (

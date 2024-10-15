@@ -78,7 +78,7 @@ kbd {
 
 .c--callout {
 	&:where(:not(.c--preview_area &)) {
-		border-radius: var(--radii--s);
+		border-radius: var(--bdrs--2);
 	}
 }
 

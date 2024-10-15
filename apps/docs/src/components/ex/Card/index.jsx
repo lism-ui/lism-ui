@@ -17,7 +17,7 @@ export function Card({ layout, direction, children, ...props }) {
 	}
 
 	return (
-		<CardLayout lismClass='c--card' bgc='base' bdrs='m' bxsh='2' ov='h' {...props}>
+		<CardLayout lismClass='c--card' bgc='base' bdrs='3' bxsh='2' ov='h' {...props}>
 			{children}
 		</CardLayout>
 	);

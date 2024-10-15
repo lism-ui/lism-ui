@@ -1,7 +1,7 @@
 import { Lism, Flex, Stack, Badge } from '@lism-ui/core';
 
 export function Step(props) {
-	return <Stack className='c--step' g='20' p='30' bdrs='m' bxsh='3' {...props} />;
+	return <Stack className='c--step' g='20' p='30' bdrs='3' bxsh='3' {...props} />;
 }
 
 export function StepBody(props) {
@@ -11,7 +11,7 @@ export function StepBody(props) {
 export function StepHead({ tag = 'div', num = '1', label = '', children, ...props }) {
 	return (
 		<Flex className='c--stepHead' g='20' ai='c' {...props}>
-			<Badge tag='div' variant='fill' lh='1' px='20' py='5' g='5' ai='c' bdrs='full'>
+			<Badge tag='div' variant='fill' lh='1' px='20' py='5' g='5' ai='c' bdrs='99'>
 				{label && (
 					<Lism tag='span' fz='xs' fs='i'>
 						{label}

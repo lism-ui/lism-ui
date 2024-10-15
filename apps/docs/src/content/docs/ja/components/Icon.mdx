@@ -13,7 +13,7 @@ export const PrestIcons = () => {
 	return <Columns variant='liquid' colSize='10rem' g='20'>
 			{Object.keys(presetIcons).map((iconName) => {
 				return (
-					<Stack key={iconName} g='10' ai='c' bgc='base-2' bdrs='xs' p='30' lh='1'>
+					<Stack key={iconName} g='10' ai='c' bgc='base-2' bdrs='1' p='30' lh='1'>
 						<Icon icon={iconName} fz='xl' />
 						<code class='-fz:xs'>{iconName}</code>
 					</Stack>

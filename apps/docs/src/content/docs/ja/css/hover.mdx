@@ -315,34 +315,34 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`get:show`, `get:hide` を使う</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='full'>Some Text</Badge>
+			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='99'>Some Text</Badge>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
 			<Center hov='get:show' pos='a' inset='0'>
-				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='full' px='30' py='10'>View More</Text>
+				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
 			</Center>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:show'"
-		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='full'>Some Text</Badge>
+			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='99'>Some Text</Badge>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
 			<Center hov='get:show' pos='a' inset='0'>
-				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='full' px='30' py='10'>View More</Text>
+				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
 			</Center>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:show"
-		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
 			<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
 			<div class="is--layer -hov:get:show -bgc:" style="--bgc:rgb(0 0 0 / 10%);backdrop-filter:blur(6px)"></div>
 			<div class="l--center -hov:get:show -pos:a -inset:0">
-				<span class="-c:white -bgc:black -bdrs:full -px:30 -py:10">View More</span>
+				<span class="-c:white -bgc:black -bdrs:99 -px:30 -py:10">View More</span>
 			</div>
 		</a>
 		```
@@ -355,7 +355,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`-hov:get:zoom`</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox isFrame href='#banner-link' aspect='16/9' hov='pass' bdrs='l'>
+		<LinkBox isFrame href='#banner-link' aspect='16/9' hov='pass' bdrs='4'>
 			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 	</PreviewArea>
@@ -368,14 +368,14 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:zoom'"
-		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='l'>
+		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
 			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:zoom"
-		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:l" href="#banner-link">
+		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
 			<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy">
 		</a>
 		```
@@ -385,11 +385,11 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`-hov:get:highlight` を自作する</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='s' p='30'>
+		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='2' p='30'>
 			<Stack>
 				<h3>LinkBox</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='s'>View More</Text>
+				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='2'>View More</Text>
 			</Stack>
 		</LinkBox>
 	</PreviewArea>
@@ -405,11 +405,11 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov="
-		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='m' p='30'>
+		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='3' p='30'>
 			<Stack>
 				<h3>LinkBox</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='s'>View More</Text>
+				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='2'>View More</Text>
 			</Stack>
 		</LinkBox>
 		```

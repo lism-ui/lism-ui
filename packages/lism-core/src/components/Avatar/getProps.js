@@ -15,7 +15,7 @@ export default function getAvatarProps({
 	return {
 		avatarProps: {
 			lismClass: atts(lismClass, 'b--avatar', variant && `b--avatar--${variant}`),
-			bdrs: 'full',
+			bdrs: '99',
 			style,
 			...otherProps,
 		},

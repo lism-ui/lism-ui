@@ -31,7 +31,7 @@ export function Chat({
 					src={avatar}
 					alt=''
 					bgc='base'
-					bdrs='full'
+					bdrs='99'
 					width='60'
 					height='60'
 					aria-hidden='true'
@@ -66,7 +66,7 @@ export function Chat({
 					lismClass='c--chat__content'
 					lismState={['is--trimHL']}
 					isColored
-					bdrs='l'
+					bdrs='4'
 					p='30'
 					isFlow={isFlow}
 					jslf={direction}

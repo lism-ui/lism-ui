@@ -15,7 +15,7 @@ export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, chil
 		pos: 'r',
 		z: '1',
 		jslf: 'c',
-		bdrs: 'full',
+		bdrs: '99',
 		c: 'base',
 		bgc: shapeColor || 'text',
 	};
@@ -43,7 +43,7 @@ export function Timeline({ icon, isStart, isEnd, isHighlighted, shapeColor, chil
 						pos='a'
 						z='-1'
 						bgc='inherit'
-						bdrs='full'
+						bdrs='99'
 					/>
 				)}
 				{icon && <Icon icon={icon} fz='s' />}

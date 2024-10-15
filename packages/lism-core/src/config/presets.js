@@ -4,8 +4,6 @@ const spacingPresets = ['0', '5', '10', '20', '30', '40', '50'];
 
 // ユーティリティクラス化するキーワード
 export default {
-	radius: ['inner', '0', ...TOKENS.radius],
-	shadow: TOKENS.shadow,
 	fz: TOKENS.fz,
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,

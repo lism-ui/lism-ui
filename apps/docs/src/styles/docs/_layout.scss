@@ -4,7 +4,7 @@
 :root {
 	--sl-content-width: 50rem;
 	--sl-sidebar-width: 15rem;
-	--codeBlock--radius: 0 0 var(--radii--s) var(--radii--s);
+	--codeBlock--radius: 0 0 var(--bdrs--2) var(--bdrs--2);
 }
 
 #starlight__sidebar {
@@ -72,7 +72,7 @@
 		font-size: var(--sl-text-sm);
 
 		opacity: 0.5;
-		// border-radius: var(--radii--s);
+		// border-radius: var(--bdrs--2);
 		// background-color: var(--c--base-2);
 	}
 	._divider {
