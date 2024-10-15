@@ -33,12 +33,16 @@ export default {
 	// size
 	w: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
 	h: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
-	// isz: { style: 'inline-size', utils: 'size', converter: 'size' },
-	// bsz: { style: 'block-size', utils: 'size', converter: 'size' },
 	maxW: { style: 'maxWidth', presets: ['100%'], converter: 'size' },
 	maxH: { style: 'maxHeight', presets: ['100%'], converter: 'size' },
 	minW: { style: 'minWidth', presets: ['100%'], converter: 'size' },
 	minH: { style: 'minHeight', presets: ['100%'], converter: 'size' },
+	is: { style: 'inline-size', converter: 'size' },
+	bs: { style: 'block-size', converter: 'size' },
+	maxIs: { style: 'maxInlineSize', converter: 'size' },
+	maxBs: { style: 'maxBlockSize', converter: 'size' },
+	minIs: { style: 'minInlineSize', converter: 'size' },
+	minBs: { style: 'minBlockSize', converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
 	c: { presets: 1, utils: 1, converter: 'color' },

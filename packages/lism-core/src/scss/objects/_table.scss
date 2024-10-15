@@ -26,7 +26,7 @@
 
 	// insz
 	:where(td, th) {
-		min-inline-size: var(--cell-minIsz, unset);
+		min-inline-size: var(--cell-minIs, unset);
 	}
 	:where(td, th),
 	:where(td, th)::before {

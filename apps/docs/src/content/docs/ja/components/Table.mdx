@@ -165,7 +165,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/c
 	<PreviewTitle>scroll時にtheadと、1列目のセルを固定する例</PreviewTitle>
 	<PreviewArea p='30' _dir='rtl'>
 	<Frame ov='auto' maxH='20rem'>
-		<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIsz':'10rem','--bdwwX': '1px'}}>
+		<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIs':'10rem','--bdwwX': '1px'}}>
 			<thead>
 				<tr>
 					<th>Header 1</th>
@@ -232,7 +232,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/c
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "fixCol1,fixHead"
 		<Frame ov='auto' maxH='20rem'>
-			<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIsz':'10rem','--bdwwX': '1px'}}>
+			<Table variant='fixCol1,fixHead' thBgc='base-2' style={{'--cell-minIs':'10rem','--bdwwX': '1px'}}>
 				<thead>...</thead>
 				<tbody>...</tbody>
 				<tfoot>...</tfoot>
@@ -243,7 +243,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/c
 	<PreviewCode slot='tab' label='HTML'>
 		```html " b--table--fixCol1" "b--table--fixHead"
 		<div class="is--frame -ov:a" style="max-height:20rem">
-			<table class='b--table b--table--fixCol1 b--table--fixHead' style="--cell-minIsz:10rem;--bdwwX:1px;--th-bgc:var(--c--base-2)">
+			<table class='b--table b--table--fixCol1 b--table--fixHead' style="--cell-minIs:10rem;--bdwwX:1px;--th-bgc:var(--c--base-2)">
 				<thead>...</thead>
 				<tbody>...</tbody>
 				<tfoot>...</tfoot>

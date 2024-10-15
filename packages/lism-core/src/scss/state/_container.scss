@@ -5,8 +5,8 @@
 	inline-size: 100%; // gridやflex内での挙動を考慮。（container-type:inline-sizeだと横幅つぶれる）
 	// 	--wide-size: 100%;
 	> * {
-		--maxIsz: var(--item-size, 100%);
-		max-inline-size: min(100%, var(--maxIsz, 100%));
+		--maxIs: var(--item-size, 100%);
+		max-inline-size: min(100%, var(--maxIs, 100%));
 		margin-inline: auto;
 	}
 }
