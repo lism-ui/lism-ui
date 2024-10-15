@@ -43,7 +43,7 @@ export function getMaybeSpaceVar(value, propName) {
 
 	// spaceが 整数 or 整数を示す文字列 の場合
 	if (typeof value === 'number' || isNumStr(value)) {
-		return `var(--s--${value})`;
+		return `var(--s${value})`;
 	}
 
 	//
@@ -55,7 +55,7 @@ export function getMaybeSpaceVar(value, propName) {
 		// （calc(), var() 等 があれば対象外にしたい）
 		if (!value.includes('calc(') && !value.includes('var(') && !value.includes(',')) {
 			// spaceを' 'で配列化して、数値なら変数化する
-			//     ex) '20 40' → '--s--20 --s--40', '20 10px' → '--s--20 10px'
+			//     ex) '20 40' → '--s20 --s40', '20 10px' → '--s20 10px'
 			const spaceArr = value.split(' ');
 			return spaceArr.map((_s) => getMaybeSpaceVar(_s)).join(' ');
 		}

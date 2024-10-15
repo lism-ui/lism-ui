@@ -54,7 +54,7 @@
 
 	&:not(.no-bar) {
 		// JSでクラス切り替えしてスクロールバーが存在する時のみ指定するのが本当はよい?
-		padding-bottom: var(--s--10);
+		padding-bottom: var(--s10);
 	}
 
 	&.no-bar {

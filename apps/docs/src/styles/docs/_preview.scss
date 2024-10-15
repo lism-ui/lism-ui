@@ -2,10 +2,10 @@
 	padding-block: 0.5rem;
 }
 // .c--preview:not(:first-child) {
-// 	margin-top: var(--s--50);
+// 	margin-top: var(--s50);
 // }
 // :where(.c--preview) + p {
-// 	margin-top: var(--s--50);
+// 	margin-top: var(--s50);
 // }
 
 .c--preview_title {
@@ -13,7 +13,7 @@
 	align-items: center;
 
 	+ * {
-		margin-top: var(--s--10) !important;
+		margin-top: var(--s10) !important;
 	}
 
 	> .__decorator {
@@ -35,7 +35,7 @@
 	border-radius: 2px;
 
 	&:not(:first-child) {
-		margin-top: var(--s--50);
+		margin-top: var(--s50);
 	}
 
 	> * {

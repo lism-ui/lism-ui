@@ -3,7 +3,7 @@
 	// トップ要素でのみ定義
 	&:where(:not(& &)) {
 		--link-td: none;
-		--pass-p: var(--s--20);
+		--pass-p: var(--s20);
 	}
 
 	// &:where(:not([data-nest-level])) {

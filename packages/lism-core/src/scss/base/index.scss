@@ -135,11 +135,11 @@ dialog:not([open]) {
 
 :where(blockquote) {
 	border-inline-start: solid 3px currentColor;
-	padding: var(--s--30);
+	padding: var(--s30);
 }
 
 :where(pre) {
-	padding: var(--s--30);
+	padding: var(--s30);
 	background-color: var(--c--base-2);
 
 	// 横にスクロールできるように（overflow-inline: auto; ← まだ使えない）
@@ -150,5 +150,5 @@ dialog:not([open]) {
     Form fields
  ---------------------------------------- */
 // :where(input[type='text'], textarea, select) {
-// 	padding: var(--s--10);
+// 	padding: var(--s10);
 // }
