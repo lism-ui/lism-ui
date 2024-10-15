@@ -19,16 +19,24 @@ const splitByPunctuation = (content) => {
 	);
 };
 
-export default function getContent({ tag = 'p', length = 'm', lang = 'en', offset = 0 }) {
+export default function getContent({ tag = 'p', pre = '', length = 'm', lang = 'en', offset = 0 }) {
 	let content = TEXTS[lang][length] || '';
 	if (tag === 'ul' || tag === 'ol') {
 		// 句読点でsplitして、ul にして返す
 		content = splitByPunctuation(content)
 			.map((item) => `<li>${item.trim()}</li>`)
 			.join('');
-	} else if (offset) {
-		// , . で split して、offset分だけ配列削除.
-		content = splitByPunctuation(content).slice(offset).join('');
+		if (pre) {
+			content = `<li>${pre}</li>` + content;
+		}
+	} else {
+		if (offset) {
+			// , . で split して、offset分だけ配列削除.
+			content = splitByPunctuation(content).slice(offset).join('');
+		}
+		if (pre) {
+			content = pre + content;
+		}
 	}
 	return content;
 }

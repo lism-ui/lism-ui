@@ -5,8 +5,8 @@ import getContent from '@lism-ui/core/components/Dummy/getContent';
 
 // Propsの定義
 interface Props extends LismProps {}
-const { tag = 'p', length = 'm', lang = 'en', offset = 0, ...props } = Astro.props || {};
-const content = getContent({ tag, lang, length, offset });
+const { tag = 'p', pre = '', length = 'm', lang = 'en', offset = 0, ...props } = Astro.props || {};
+const content = getContent({ tag, pre, lang, length, offset });
 ---
 
 <Lism tag={tag} {...props} set:html={content} />

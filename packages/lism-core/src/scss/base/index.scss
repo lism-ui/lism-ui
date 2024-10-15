@@ -4,6 +4,8 @@
     デザイントークンとは別の設定値
  ---------------------------------------- */
 :root {
+	--root-fz: clamp(0.875rem, 0.625rem + 1vw, 1rem); // 400 - 600
+
 	// hover用
 	--hov-trsdu: 0.3s;
 	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;
@@ -25,7 +27,8 @@
     html, body
  ---------------------------------------- */
 html {
-	font-size: var(--fz--root);
+	font-size: var(--root-fz);
+
 	tab-size: 4;
 
 	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
@@ -36,14 +39,12 @@ html {
 }
 
 body {
-	// WPでは、カラー・タイポグラフィなどについては theme.json 設定によって出力される
+	font-size: 1rem;
+	font-family: var(--ff--base);
+	line-height: var(--lh--base);
+	letter-spacing: var(--lts--base);
 	background-color: var(--c--base);
 	color: var(--c--text);
-	font-size: 1rem;
-	font-family: var(--ff--root);
-	line-height: var(--lh--root);
-	// font: 1rem / var(--lh--root) var(--ff--root);
-	letter-spacing: var(--lts--root);
 	overflow-x: clip;
 	// 子孫要素の position:fixed の挙動が変わってしまうので body には使わない
 	// container-type: inline-size;
@@ -53,7 +54,7 @@ body {
     Heading
  ---------------------------------------- */
 :where(h1, h2, h3, h4, h5, h6) {
-	font-family: var(--heading-ff, var(--ff--root));
+	font-family: var(--heading-ff, inherit);
 	font-weight: var(--heading-fw, bolder);
 	font-size: var(--fz, revert);
 	line-height: var(--lh, inherit);

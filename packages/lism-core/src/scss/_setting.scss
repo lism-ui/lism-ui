@@ -265,8 +265,8 @@ $props: map.deep-merge(
 			prop: 'font-family',
 			base_type: 0,
 			utilities: (
-				'sans': 'var(--ff--sans)',
-				'serif': 'var(--ff--serif)',
+				'base': 'var(--ff--base)',
+				'accent': 'var(--ff--accent)',
 				'mono': 'var(--ff--mono)',
 				// 'emoji': 'var(--ff--emoji)',
 			),
@@ -296,7 +296,7 @@ $props: map.deep-merge(
 			//　BP対応増やしやすいように 1 でもいいかも?
 			base_type: 0,
 			utilities: (
-				'root': 'var(--lh--root)',
+				'base': 'var(--lh--base)',
 				'xs': 'var(--lh--xs)',
 				's': 'var(--lh--s)',
 				'l': 'var(--lh--l)',
@@ -308,7 +308,7 @@ $props: map.deep-merge(
 			prop: 'letter-spacing',
 			base_type: 0,
 			utilities: (
-				'root': 'var(--lts--root)',
+				'base': 'var(--lts--base)',
 				's': 'var(--lts--s)',
 				'l': 'var(--lts--l)',
 				'xl': 'var(--lts--xl)',

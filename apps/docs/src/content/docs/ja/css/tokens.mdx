@@ -254,7 +254,9 @@ export const ColorBadge = ({color, label}) => {
 
 ## `TYPO`
 
-### TYPO.SZ
+### TYPO.FZ
+
+`font-size` 用のトークンです。
 
 |トークン|変数|クラス|初期値|
 |---|---|---|---|
@@ -374,7 +376,43 @@ Lism では、フォントサイズのスケーリングには数学的に美し
 </Tabs>
 </Preview>
 
-### TYPO.FW (font-weight)
+
+### TYPO.FF
+
+`font-family` 用のトークンです。
+
+|トークン|変数|クラス|
+|---|---|---|
+|`base`|<span className='-whs:nw'>`--ff--base`</span>|<span className='-whs:nw'>`-ff:base`</span>|
+|`accent`|<span className='-whs:nw'>`--ff--accent`</span>|<span className='-whs:nw'>`-ff:accent`</span>|
+|`mono`|<span className='-whs:nw'>`--ff--mono`</span>|<span className='-whs:nw'>`-ff:mono`</span>|
+|`emoji`|<span className='-whs:nw'>`--ff--emoji`</span>|-|
+
+{/* |base|--ff--base|--ff--sans|
+|heading|--ff--heading|--ff--sans| */}
+
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<Text ff='base' fz='xl'>base: English text, 漢字ひらがな</Text>
+		<Text ff='accent' fz='xl'>accent: English text, 漢字ひらがな</Text>
+		<Text ff='mono' fz='xl'>mono: English text, 漢字ひらがな</Text>
+		<Text ff='emoji'>emoji: 💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<p class="-ff:base -fz:xl">Lorem ipsum ...</p>
+	<p class="-ff:accent -fz:xl">Lorem ipsum ...</p>
+	<p class="-ff:mono -fz:xl">Lorem ipsum ...</p>
+	<p style="font-family:var(--ff--emoji)">💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</p>
+	```
+	</PreviewCode>
+</Preview>
+
+
+### TYPO.FW 
+
+`font-weight` 用のトークンです。
 
 |トークン|変数|クラス|初期値|
 |---|---|---|---|
@@ -414,15 +452,17 @@ Lism では、フォントサイズのスケーリングには数学的に美し
 
 
 
-### TYPO.LH (line-height)
+### TYPO.LH
+
+`line-height` 用のトークンです。
 
 |トークン|変数|クラス|初期値|
 |---|---|---|---|
-|`xs`|`--lh--xs`|`.-lh:xs`|`calc({root} - 0.25)`|
-|`s`|`--lh--s`|`.-lh:s`|`calc({root} - 0.125)`|
-|`root`|`--lh--root`|`.-lh:root`|`1.75`|
-|`l`|`--lh--l`|`.-lh:l`|`calc({root} + 0.125)`|
-|`xl`|`--lh--xl`|`.-lh:xl`|`calc({root} + 0.25)`|
+|`base`|`--lh--base`|`.-lh:base`|`1.75`|
+|`xs`|`--lh--xs`|`.-lh:xs`|`calc({base} - 0.25)`|
+|`s`|`--lh--s`|`.-lh:s`|`calc({base} - 0.125)`|
+|`l`|`--lh--l`|`.-lh:l`|`calc({base} + 0.125)`|
+|`xl`|`--lh--xl`|`.-lh:xl`|`calc({base} + 0.25)`|
 
 
 <Callout type='info'>
@@ -432,17 +472,17 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={20} isFlow='s'>
-		<Dummy lh='xs' bd bds='dotted' bdc='divider' />
-		<Dummy lh='s' bd bds='dotted' bdc='divider' />
-		<Dummy lh='root' bd bds='dotted' bdc='divider' />
-		<Dummy lh='l' bd bds='dotted' bdc='divider' />
-		<Dummy lh='xl' bd bds='dotted' bdc='divider' />
+		<Dummy pre='<code class="-fz:s">xs:</code> ' lh='xs' bd bds='dotted' bdc='divider' />
+		<Dummy pre='<code class="-fz:s">s:</code> ' lh='s' bd bds='dotted' bdc='divider' />
+		<Dummy pre='<code class="-fz:s">base:</code> ' lh='base' bd bds='dotted' bdc='divider' />
+		<Dummy pre='<code class="-fz:s">l:</code> ' lh='l' bd bds='dotted' bdc='divider' />
+		<Dummy pre='<code class="-fz:s">xl:</code> ' lh='xl' bd bds='dotted' bdc='divider' />
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<p class="-lh:xs">Lorem ipsum ...</p>
 		<p class="-lh:s">Lorem ipsum ...</p>
-		<p class="-lh:root">Lorem ipsum ...</p>
+		<p class="-lh:base">Lorem ipsum ...</p>
 		<p class="-lh:l">Lorem ipsum ...</p>
 		<p class="-lh:xl">Lorem ipsum ...</p>
 		```
@@ -451,7 +491,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 		```jsx
 		<Text lh='xs'>Lorem ipsum ...</Text>
 		<Text lh='s'>Lorem ipsum ...</Text>
-		<Text lh='root'>Lorem ipsum ...</Text>
+		<Text lh='base'>Lorem ipsum ...</Text>
 		<Text lh='l'>Lorem ipsum ...</Text>
 		<Text lh='xl'>Lorem ipsum ...</Text>
 		```
@@ -477,27 +517,29 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 </Preview> */}
 
 
-### TYPO.LTS (letter spacing)
+### TYPO.LTS
+
+`letter-spacing` 用のトークンです。
 
 |トークン|変数|クラス|初期値
 |---|---|---|---|
+|`base`|`--lts--base`|`-lts:base`|`normal`|
 |`s`|`--lts--s`|`-lts:s`|`-0.025em`|
-|`root`|`--lts--root`|`-lts:root`|`normal`|
 |`l`|`--lts--l`|`-lts:l`|`0.025em`|
 |`xl`|`--lts--xl`|`-lts:xl`|`0.05em`|
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={20} isFlow='s'>
-		<Dummy length='s' lts='s' />
-		<Dummy length='s' lts='root' />
-		<Dummy length='s' lts='l' />
-		<Dummy length='s' lts='xl' />
+		<Dummy length='s' pre='<code>s:</code> ' lts='s' />
+		<Dummy length='s' pre='<code>base:</code> ' lts='base' />
+		<Dummy length='s' pre='<code>l:</code> ' lts='l' />
+		<Dummy length='s' pre='<code>xl:</code> ' lts='xl' />
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<p class="-lts:s">Lorem ipsum ...</p>
-		<p class="-lts:root">Lorem ipsum ...</p>
+		<p class="-lts:base">Lorem ipsum ...</p>
 		<p class="-lts:l">Lorem ipsum ...</p>
 		<p class="-lts:xl">Lorem ipsum ...</p>
 		```
@@ -505,7 +547,7 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Text lts='s'>Lorem ipsum ...</Text>
-		<Text lts='root'>Lorem ipsum ...</Text>
+		<Text lts='base'>Lorem ipsum ...</Text>
 		<Text lts='l'>Lorem ipsum ...</Text>
 		<Text lts='xl'>Lorem ipsum ...</Text>
 		```
@@ -514,36 +556,6 @@ base値は 日本語では `1.625`, `1.75`, `1.875` あたりがおすすめで�
 
 
 
-
-### TYPO.FF (font-family)
-
-|トークン|変数|クラス|初期値|
-|---|---|---|---|
-|`sans`|<span className='-whs:nw'>`--ff--sans`</span>|<span className='-whs:nw'>`-ff:sans`</span>|<small>`-apple-system, 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',Meiryo, sans-serif, 'Segoe UI Emoji'`</small>|
-|`serif`|<span className='-whs:nw'>`--ff--serif`</span>|<span className='-whs:nw'>`-ff:serif`</span>|<small>`serif`</small>|
-|`mono`|<span className='-whs:nw'>`--ff--mono`</span>|<span className='-whs:nw'>`-ff:mono`</span>|<small>`Menlo, Consolas, monaco, monospace`</small>|
-|`emoji`|<span className='-whs:nw'>`--ff--emoji`</span>|-|<small>`'Apple Color Emoji', 'Segoe UI Emoji', 'Android Emoji','Segoe UI Symbol'`</small>|
-
-{/* |base|--ff--base|--ff--sans|
-|heading|--ff--heading|--ff--sans| */}
-
-<Preview>
-	<PreviewTitle>Preview</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
-		<Dummy ff='sans' />
-		<Dummy ff='serif' />
-		<Dummy ff='mono' />
-		<Text ff='emoji'>💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<p class="-ff:sans">Lorem ipsum ...</p>
-	<p class="-ff:serif">Lorem ipsum ...</p>
-	<p class="-ff:mono">Lorem ipsum ...</p>
-	<p style="font-family:var(--ff--emoji)">💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</p>
-	```
-	</PreviewCode>
-</Preview>
 
 
 

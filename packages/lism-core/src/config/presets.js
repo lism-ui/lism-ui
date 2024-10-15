@@ -7,7 +7,7 @@ export default {
 	fz: TOKENS.fz,
 	lh: ['1', ...TOKENS.lh], // 検討
 	lts: TOKENS.lts,
-	ff: ['mono', 'sans', 'serif'],
+	ff: ['base', 'accent', 'mono'],
 	// fw: TOKENS.fw,
 	// tsh: ['black', 'white'],
 	c: [
