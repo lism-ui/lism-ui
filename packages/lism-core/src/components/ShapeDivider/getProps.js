@@ -11,6 +11,7 @@ export function getShapeDividerProps({
 	level = 5, // -10~10?
 	stretch, // 1~2
 	offset, // -25% ~ 25%
+	duration,
 	...props
 }) {
 	props.lismClass = atts(lismClass, 'b--shapeDivider');
@@ -57,6 +58,7 @@ export function getShapeDividerProps({
 		'--level': level || null,
 		'--offset': offset || null,
 		'--stretch': stretch || null,
+		'--duration': duration || null,
 	});
 	props.style = style;
 

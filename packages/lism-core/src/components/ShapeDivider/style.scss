@@ -19,7 +19,6 @@
 	// 高さを svg ではなく親でセットしているのは、 <Divider h='hoge'> で簡単に上書きできるようにするため。
 	// 600px時点を最小値, 1200px時点を最大値にして、clampで高さを変動させる
 	height: clamp(calc(6px * var(--level)), calc(1cqw * var(--level)), calc(12px * var(--level)));
-	max-width: 100%; // is--constrained の影響を受けないようにする
 
 	scale: var(--scaleX) var(--scaleY);
 	translate: var(--trslt);

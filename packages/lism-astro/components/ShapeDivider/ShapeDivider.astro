@@ -12,7 +12,7 @@ const { shape, props: dividerProps } = getShapeDividerProps(props);
 if (props.level === 0) return null;
 ---
 
-<Lism skipState {...dividerProps}>
+<Lism isFullwide {...dividerProps}>
 	<Lism skipState lismClass='b--shapeDivider__inner'>
 		<ShapeSVG className='b--shapeDivider__svg' shape={shape} />
 	</Lism>

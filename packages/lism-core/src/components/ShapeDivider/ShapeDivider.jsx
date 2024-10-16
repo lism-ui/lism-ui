@@ -7,7 +7,7 @@ export default function ShapeDivider(props) {
 	if (props.level === 0) return null;
 
 	return (
-		<Lism skipState {...dividerProps}>
+		<Lism isFullwide {...dividerProps}>
 			<Lism skipState lismClass='b--shapeDivider__inner'>
 				<ShapeSVG className='b--shapeDivider__svg' shape={shape} />
 			</Lism>
