@@ -35,9 +35,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, Reference 
 ## Usage
 
 <Preview>
-	<PreviewTitle>
-		使用例
-	</PreviewTitle>
+	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize p={10}>
 		<Box pos='r' py='40'>
 			<Text fz='2xl' fw='bold' ta='c' lts='l' op='0.2'>BACKGROUND</Text>
@@ -74,9 +72,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, Reference 
 Lismコンポーネントでは、`css.backdropFilter` に指定した値を`backdrop-filter`としてインラインスタイルを出力できるようになっていますが、`<Layer>`コンポーネントでは、この機能をより活用しやすいようになっています。
 
 <Preview>
-	<PreviewTitle>
-		背景にブラーをかける
-	</PreviewTitle>
+	<PreviewTitle>背景にブラーをかける</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Box pos='r' p='40'>
 			<Text fz='2xl' fw='bold' ta='c'>BACKGROUND</Text>
@@ -102,36 +98,34 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 </Preview>
 
 <Preview>
-	<PreviewTitle>
-		背景の色味を変える
-	</PreviewTitle>
+	<PreviewTitle>背景の色味を変える</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer brightness={1.2} contrast={0.8} grayscale={1}/>
 			<Text pos='a' b='0' r='0' p='20' lh='1' c='white' fz='xs' op='0.7'>Photo by xxxxxx</Text>
 		</Frame>
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer contrast='1.2' sepia='25%' />
 		</Frame>
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {3,8,12}
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer brightness={1.2} contrast={0.8} grayscale={1}/>
 			<Text pos='a' b='0' r='0' p='20' lh='1' c='white' fz='xs' op='0.7'>Photo by xxxxxx</Text>
 		</Frame>
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer contrast='1.2' sepia='25%' />
 		</Frame>
-		<Frame aspect='cinema'>
+		<Frame aspect='cinema' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>
@@ -142,41 +136,44 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 
 ### メディアレイヤー
 
-親要素に`is--frame`、直下のメディア要素に`is--layer`を指定することで、親要素のサイズに合わせたメディアレイヤーを配置することができます。
-
+`.is--layer`を使ってコンテンツの背景に画像を配置するようなレイアウトを組んでみます。
 
 <Preview>
-	<PreviewTitle>
-		例
-	</PreviewTitle>
+	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame>
-			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+		<Box hasGutter pos='r' py='50'>
+			<Frame isLayer>
+				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			</Frame>
 			<Layer bgc='black' op='0.5' />
-			<Stack hasGutter pos='r' py='50' g='40' c='white'>
+			<Stack pos='r'g='40' c='white'>
 				<Dummy/>
 				<Dummy length='l' />
 			</Stack>
-		</Frame>
+		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isLayer"
-		<Frame>
-			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+		```jsx {2-4} "\<Frame isLayer"
+		<Box hasGutter pos='r' py='50'>
+			<Frame isLayer>
+				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			</Frame>
 			<Layer bgc='black' op='0.5' />
-			<Stack hasGutter pos='r' py='50' g='40' c='white'>
+			<Stack pos='r'g='40' c='white'>
 				<Dummy/>
 				<Dummy length='l' />
 			</Stack>
-		</Frame>
+		</Box>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html {2-4}
-		<div class="is--frame">
-			<img class="is--layer" src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
+		<div class="l--box has--gutter -py:50">
+			<div class="l--frame is--layer">
+				<img src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
+			</div>
 			<div class="is--layer -bgc:black -op:0.5"></div>
-			<div class="l--stack has--gutter -pos:r -py:50 -c:white -g:40">
+			<div class="l--stack -pos:r -c:white -g:40">
 				<p>Lorem ipsum dolor sit amet...</p>
 				<p>Lorem ipsum dolor sit, amet...</p>
 			</div>
@@ -185,3 +182,41 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 	</PreviewCode>
 </Preview>
 
+↓これでも同じことができます。
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Frame hasGutter pos='r' py='50'>
+			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			<Layer bgc='black' op='0.5' />
+			<Stack pos='r' g='40' c='white'>
+				<Dummy/>
+				<Dummy length='l' />
+			</Stack>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "\<Media isLayer"
+		<Frame hasGutter pos='r' py='50'>
+			<Media isLayer src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
+			<Layer bgc='black' op='0.5' />
+			<Stack pos='r' g='40' c='white'>
+				<Dummy/>
+				<Dummy length='l' />
+			</Stack>
+		</Frame>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="l--frame has--gutter -pos:r -py:50">
+			<img class="is--layer" src="/img/img-3.jpg" width="960" height="640" loading="lazy" decoding="async">
+			<div class="is--layer -bgc:black -op:0.5"></div>
+			<div class="l--stack -pos:r -c:white -g:40">
+				<p>Lorem ipsum dolor sit amet...</p>
+				<p>Lorem ipsum dolor sit, amet...</p>
+			</div>
+		 </div>
+		```
+	</PreviewCode>
+</Preview>

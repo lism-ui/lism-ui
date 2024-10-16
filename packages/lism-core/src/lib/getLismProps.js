@@ -55,7 +55,6 @@ class LismPropsData {
 			get,
 			skipState,
 			isSide,
-			isFrame,
 			isLayer,
 			isTrimHL,
 			isColored,
@@ -72,10 +71,7 @@ class LismPropsData {
 
 		const { lismState = [], style = {}, ...others } = _props;
 
-		// isFrame, isLinkBoxは skipStateに関係なくチェック
-		if (isFrame) {
-			lismState.push('is--frame');
-		}
+		// skipStateに関係なくチェック
 		if (isTrimHL) {
 			lismState.push('is--trimHL');
 		}

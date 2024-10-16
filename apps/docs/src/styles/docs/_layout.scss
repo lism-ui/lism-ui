@@ -121,7 +121,7 @@ li[data-compgroup-label] {
 	[data-compgroup-label='Blocks'] {
 		&,
 		~ li:not([data-compgroup-label]) {
-			border-color: var(--blue);
+			border-color: var(--pink);
 		}
 	}
 	[data-compgroup-label='Components'] {

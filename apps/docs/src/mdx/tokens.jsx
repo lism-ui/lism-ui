@@ -1,4 +1,4 @@
-import { Box, Text, Stack, Frame, Center, Grid, Dummy } from '@lism-ui/core';
+import { Box, Text, Stack, Frame, Center, Dummy } from '@lism-ui/core';
 
 export const FzDemos = ({ lang = 'ja' }) => (
 	<Frame aspect='16/9' ovy='auto' isFlow='s'>
@@ -20,39 +20,25 @@ export const BoxShadowDemos = ({ shadows = [] }) => {
 		<>
 			{shadows.map((name) => {
 				return (
-					<Stack key={name} g='20'>
-						<Frame aspect='1/1' bgc='base' bxsh={name} bdrs='2'>
-							<Center h='100%' ff='mono' fz='xs' c='text-2'>
-								{name}
-							</Center>
-						</Frame>
-					</Stack>
+					<Center
+						key={name}
+						h='100%'
+						aspect='1/1'
+						bgc='base'
+						bxsh={name}
+						bdrs='2'
+						ff='mono'
+						fz='xs'
+						c='text-2'
+					>
+						{name}
+					</Center>
 				);
 			})}
 		</>
 	);
 };
 
-export const RadiusDemos = () => {
-	return (
-		<>
-			{['xs', 's', 'm', 'l', 'xl', 'full'].map((r) => {
-				return (
-					<Stack key={r} g='20'>
-						{/* <Text bd='left' bdw='2px' lh='1' pl='20' fz='xs'>
-							<code>{r}</code>
-						</Text> */}
-						<Frame aspect='1/1' bdrs={r} bd>
-							<Center h='100%' ff='mono' fz='xs' c='text-2'>
-								{r}
-							</Center>
-						</Frame>
-					</Stack>
-				);
-			})}
-		</>
-	);
-};
 export const SpacingDemos = ({ spaces, isValueLabel }) => {
 	return (
 		<>

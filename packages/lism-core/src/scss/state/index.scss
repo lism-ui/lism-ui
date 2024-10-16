@@ -1,12 +1,12 @@
 // state
 @forward './gutter';
+@forward './has-divider';
+@forward './is-colored';
 @forward './flow';
 @forward './container'; // Note: flow より後ろで読み込む
 @forward './size'; // Note: container より後ろで読み込む
-@forward './has-divider';
 @forward './linkbox';
-@forward './frame';
-@forward './is-colored';
+@forward './layer'; // Note: position の関係で、linkbox より後で読み込む
 
 // Note: dialog に影響する
 :where(.is--reset, .reset--style) {

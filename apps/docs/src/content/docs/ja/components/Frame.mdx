@@ -8,9 +8,25 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 
 # Frame
 
-[`is--frame`](/ja/css/layout-state/#is--frame)をデフォルトで出力するコンポーネントです。(`<Lism isFrame>`のエイリアスです。)
+アスペクト比や高さを指定した時、コンテンツがその高さを超えないように制限します。
 
-アスペクト比や高さを指定し、直下のメディア要素（`img`,`vieo`,`picture`,`iframe`）を `object-fit:cover` でFrameサイズいっぱいに表示することができます。
+また、直下のメディア要素（`img`,`vieo`,`picture`,`iframe`）が `object-fit:cover` でサイズいっぱいに表示されるようになっています。
+
+{/* Layerを配置しやすいように position:relative; を指定しています。 */}
+
+
+```css
+.l--frame {
+	overflow: hidden;
+
+	> :where(img, video, picture, iframe) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+```
 
 
 ## Props
@@ -30,9 +46,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 ## Usage
 
 <Preview>
-	<PreviewTitle>
-		`aspect='2/1'`を指定
-	</PreviewTitle>
+	<PreviewTitle>`aspect='2/1'`を指定</PreviewTitle>
 	<PreviewArea resize>
 		<Frame aspect='2/1'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
@@ -47,7 +61,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="is--frame -aspect:2/1">
+		<div class="l--frame -aspect:2/1">
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 		</div>
 		```
@@ -55,9 +69,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 </Preview>
 
 <Preview>
-	<PreviewTitle>
-		`figure`, `figcaption`の使用
-	</PreviewTitle>
+	<PreviewTitle>`figure`, `figcaption`の使用</PreviewTitle>
 	<PreviewArea resize>
 		<Frame tag='figure' aspect='16/9'>
 			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
@@ -74,7 +86,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<figure class="is--frame -aspect:16/9">
+		<figure class="l--frame -aspect:16/9">
 			<img src="/img/img-2.jpg" width="960" height="640">
 			<figcaption class="-pos:a -z:1 -b:0 -p:5 -w:100% -c:white -ta:c -bgc:" style="--bgc:rgb(0 0 0 / 40%)">Lorem ipsum text.</figcaption>
 		</figure>
@@ -83,9 +95,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 </Preview>
 
 <Preview>
-	<PreviewTitle>
-		`video`の使用
-	</PreviewTitle>
+	<PreviewTitle>`video`の使用</PreviewTitle>
 	<PreviewArea resize>
 		<Frame aspect='2/1'>
 			<video controls>
@@ -104,7 +114,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="is--frame -aspect:2/1">
+		<div class="l--frame -aspect:2/1">
 			<video controls>
 				<source src="/video/video-1.mp4" type="video/mp4" />
 			</video>
@@ -115,9 +125,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 
 
 <Preview>
-	<PreviewTitle>
-		`iframe`の使用
-	</PreviewTitle>
+	<PreviewTitle>`iframe`の使用</PreviewTitle>
 	<PreviewArea resize>
 		<Frame aspect='16/9'>
 			<iframe src="https://www.youtube.com/embed/gcgKUcJKxIs?si=uDa6akiLY3QmM8pK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -132,7 +140,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="is--frame -aspect:16/9">
+		<div class="l--frame -aspect:16/9">
 			<iframe src="https://www.youtube.com/embed/gcgKUcJKxIs?si=uDa6akiLY3QmM8pK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div>
 		```
@@ -142,11 +150,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 
 
 <Preview>
-	<PreviewTitle>
-		Layer系を活用する
-	</PreviewTitle>
+	<PreviewTitle>Layer系を活用する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame aspect='16/9' c='white'>
+		<Frame aspect='16/9' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -159,7 +165,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='16/9' c='white'>
+		<Frame aspect='16/9' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -173,7 +179,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, HelpText }
 	</PreviewCode>
 		<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="is--frame -aspect:16/9 -c:white">
+		<div class="l--frame -aspect:16/9 -pos:r -c:white">
 			<img src="/img/img-1.jpg" alt="" width="960" height="640">
 			<div class="is--layer -bgc:" style="--bgc:rgb(0 0 0 / 40%);backdrop-filter:blur(4px)"></div>
 			<div class="is--layer -p:40 -ov:a">
@@ -201,7 +207,7 @@ export const FrameRatios = () => {
 		<Columns cols={[1, 2]} g={20} >
 			{['gold', 'silver', 'bronze', 'ogp'].map((ratio) => {
 				return (
-					<Frame key={ratio} aspect={ratio} bgc='base-2'>
+					<Frame key={ratio} aspect={ratio} pos='r' bgc='base-2'>
 						<Text pos='a' t='50%' l='50%' fz='s' css={{translate:'-50XY'}}>
 							<code>{ratio}</code>
 						</Text>
@@ -213,9 +219,7 @@ export const FrameRatios = () => {
 }
 
 <Preview>
-	<PreviewTitle>
-		`aspect`にそれぞれ指定
-	</PreviewTitle>
+	<PreviewTitle>`aspect`にそれぞれ指定</PreviewTitle>
 	<PreviewArea p={20}>
 		<FrameRatios />
 	</PreviewArea>
@@ -239,9 +243,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 他の兄弟要素の高さの方が高い場合、そちらと同じ高さになってしまうため、それを回避したい場合は`align-items`を調整するか、Frame要素をさらにBoxで囲むなどの対処が必要です。
 
 <Preview>
-	<PreviewTitle>
-		コンテンツ側の高さと揃っている例
-	</PreviewTitle>
+	<PreviewTitle>コンテンツ側の高さと揃っている例</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Flex g={20}>
 			<Frame aspect='4/3'>
@@ -268,9 +270,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 
 {/* 
 <Preview>
-	<PreviewTitle>
-		対処例（親のFlex要素を`align-items:start;`にする）
-	</PreviewTitle>
+	<PreviewTitle>対処例（親のFlex要素を`align-items:start;`にする）</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
 			<Frame aspect='4/3'>
@@ -301,9 +301,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 `aspect`は`Box`など他のコンポーネントでも指定できる汎用的なプロパティです。
 
 <Preview>
-	<PreviewTitle>
-		Boxにaspectを指定する例
-	</PreviewTitle>
+	<PreviewTitle>Boxにaspectを指定する例</PreviewTitle>
 	<PreviewArea resize p='5'>
 		<Box aspect='2/1' ovy='auto' isFlow p='40' bgc='base'>
 			<Dummy />
@@ -326,11 +324,9 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 
 
 <Preview>
-	<PreviewTitle>
-		`aspect`はブレイクポイントで変更することも可能です。
-	</PreviewTitle>
-	<PreviewArea resize>
-		<Frame aspect={['1/1', '4/3', '16/9']}>
+	<PreviewTitle>`aspect`はブレイクポイントで変更することも可能です。</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Frame aspect={['1/1', '4/3', '16/9']} pos='r'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Box pos='a' l='0' t='0' bgc='black' c='white' p='10' lh='xs' fz='s' m='20' bdrs='2'>
 				{`比率:`}
@@ -342,7 +338,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect={['1/1', '4/3', '16/9']}>
+		<Frame aspect={['1/1', '4/3', '16/9']} pos='r'>
 			...
 		</Frame>
 		```
@@ -350,7 +346,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div
-			class="is--frame -aspect:1/1 -aspect@sm -aspect@md"
+			class="l--frame -aspect:1/1 -pos:r -aspect@sm -aspect@md"
 			style="--sm-aspect:4/3;--md-aspect:16/9"
 		>...</div>
 		```

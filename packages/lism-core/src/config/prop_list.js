@@ -32,7 +32,7 @@ const itemProps = {
 export default {
 	// size
 	w: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
-	h: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
+	h: { utils: { 'fit-content': 'fit' }, presets: ['100%', 'full'], converter: 'size' },
 	maxW: { style: 'maxWidth', presets: ['100%'], converter: 'size' },
 	maxH: { style: 'maxHeight', presets: ['100%'], converter: 'size' },
 	minW: { style: 'minWidth', presets: ['100%'], converter: 'size' },

@@ -3,7 +3,7 @@ title: 'Hero'
 description: ...
 ---
 
-import { Spacer, Box, Grid, Media, Dummy, Text, Container, Layer, Stack, FlexItem, Center, Frame, Button, ShapeDivider } from '@lism-ui/core';
+import { Spacer, Box, Grid, Media, Dummy, Text, Container, Layer, Stack, FlexItem, Center, Frame, Button, ShapeDivider } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~/components";
 
 ヒーローコンテンツの作成例を紹介します。
@@ -112,23 +112,23 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 	<PreviewTitle>With ShapeDivider</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide minH='50vh' bgc='base-2'>
-			<ShapeDivider shape='wave3' c='base' isFlip />
+			<ShapeDivider shape='wave2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
 				<Dummy length='l' />
 			</Container>
-			<ShapeDivider shape='wave3' c='base' />
+			<ShapeDivider shape='wave2' c='base' />
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "\<ShapeDivider"
 		<Stack isFullwide minH='50vh' bgc='base-2'>
-			<ShapeDivider shape='wave3' c='base' isFlip />
+			<ShapeDivider shape='wave2' c='base' isFlip />
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
 				<Dummy length='l' />
 			</Container>
-			<ShapeDivider shape='wave3' c='base' />
+			<ShapeDivider shape='wave2' c='base' />
 		</Stack>
 		```
 	</PreviewCode>
@@ -137,8 +137,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 <Preview>
 	<PreviewTitle>With Layers</PreviewTitle>
 	<PreviewArea resize>
-		<Stack isFullwide isFrame minH='50vh'>
-			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
+		<Stack isFullwide pos='r' minH='50vh'>
+			<Frame isLayer>
+				<Media src='/img.jpg' alt='' width='960' height='640'/>
+			</Frame>
 			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
 				<Text fw='bold' fz='xl'>With Layers</Text>
@@ -147,8 +149,11 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "isLayer" "\<Layer"
-		<Stack isFullwide isFrame minH='50vh'>
+		```jsx "\<Frame isLayer"
+		<Stack isFullwide pos='r' minH='50vh'>
+			<Frame isLayer>
+				<Media src='/img.jpg' alt='' width='960' height='640'/>
+			</Frame>
 			<Media isLayer src='/img.jpg' alt='' width='960' height='640'/>
 			<Layer blur='4px' bgc='black:50%' />
 			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
@@ -167,11 +172,13 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 <Preview>
 	<PreviewTitle>With ShapDivide & Layers</PreviewTitle>
 	<PreviewArea resize>
-		<Stack isFullwide isFrame minH='50vh' c='white' g='20'>
-			<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640'/>
+		<Stack isFullwide hasGutter pos='r' minH='50vh' c='white' g='20'>
+			<Frame isLayer>
+				<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640'/>
+			</Frame>
 			<Layer blur='4px' bgc='black:50%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
-			<Container size='m' hasGutter isFlow my='auto' z='0'>
+			<Container size='m' isFlow py='40' my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
 				<Dummy length='l' />
 			</Container>
@@ -180,12 +187,14 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "isFrame" "isLayer" "\<Layer" "\<ShapeDivider"
-		<Stack isFullwide isFrame minH='50vh' c='white' g='20'>
-			<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640'/>
-			<Layer blur='4px' bgc='black:40%' />
+		```jsx "\<Frame isLayer" "\<ShapeDivider"
+		<Stack isFullwide hasGutter pos='r' minH='50vh' c='white' g='20'>
+			<Frame isLayer>
+				<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640'/>
+			</Frame>
+			<Layer blur='4px' bgc='black:50%' />
 			<ShapeDivider shape='slope2' c='base' isFlip />
-			<Container size='m' hasGutter isFlow my='auto' z='0'>
+			<Container size='m' isFlow py='40' my='auto' z='0'>
 				<Text fw='bold' fz='xl'>With ShapDivide  & Layers</Text>
 				<Dummy length='l' />
 			</Container>
@@ -197,7 +206,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 </Preview>
 
 
-### HeroContent の子要素の高さに%を使う方法
+### 子要素の`minH`に`%`を使う方法
 
 {/* - l-stack(flex)の場合
 	- Heroの高さを h でセット→ HeroContent は h も minH,maxH も fxb も % が使用できる.
@@ -241,6 +250,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, PreviewFrame } from "~
 </Preview> */}
 
 
+最低限の高さを確保しつつ、ウインドウが狭い時にコンテンツに合わせて高さを伸ばしたいケースについて。
+
 Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する場合、子要素の `height` や `min-height` に%を指定しても無効になってしまいます。
 
 {/* (ウインドウ幅が広い時は特定の高さに制限したいが、ウインドウ幅が狭くなって内部のコンテンツ量がはみ出す時は高さが伸びてくれるようなレイアウトを作りたいケース。)
@@ -252,20 +263,18 @@ Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する�
 	<PreviewTitle>NG例</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide minH='400px' bgc='base-2'>
-			<Box minH='50%' my='auto' px='40'>
-				<Center minH='100%' bgc='base' bxsh='1'>
-					<Text fw='bold'>子要素のminHが50%にならない</Text>
-				</Center>
+			<Box minH='50%' my='auto' bgc='base' p='20' px='40' ac='c'>
+				<Text fw='bold'>minH:50%が効かない</Text>
+				<Dummy length='s' />
 			</Box>
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "minH='400px'" "minH='50%'"
 		<Stack isFullwide minH='400px' bgc='base-2'>
-			<Box minH='50%' my='auto' px='40'>
-				<Center minH='100%' bgc='base' bxsh='1'>
-					<Text fw='bold'>子要素のminHが50%にならない</Text>
-				</Center>
+			<Box minH='50%' my='auto' bgc='base' p='20' px='40' ac='c'>
+				<Text fw='bold'>minH:50%が効かない</Text>
+				<Dummy length='s' />
 			</Box>
 		</Stack>
 		```
@@ -279,19 +288,21 @@ Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する�
 	<PreviewTitle>改善例</PreviewTitle>
 	<PreviewArea resize>
 		<Stack isFullwide minH='400px' bgc='base-2'>
-			<FlexItem layout={Grid} fxg='1' ai='c' px='40'>
-				<Center minH='50%' bgc='base' bxsh='1'>
+			<FlexItem d='grid' fxg='1' ai='c' px='40'>
+				<Center minH='50%' bgc='base' p='30' bxsh='1'>
 					<Text fw='bold'>OK</Text>
+					<Dummy length='s' />
 				</Center>
 			</FlexItem>
 		</Stack>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx "Grid" "fxg='1' ai='c'" "minH='50%'"
+		```jsx "d='grid'" "fxg='1' ai='c'" "minH='50%'"
 		<Stack isFullwide minH='400px' bgc='base-2'>
-			<FlexItem layout={Grid} fxg='1' ai='c' px='40'>
-				<Center minH='50%' bgc='base' bxsh='1'>
+			<FlexItem d='grid' fxg='1' ai='c' px='40'>
+				<Center minH='50%' bgc='base' p='30' bxsh='1'>
 					<Text fw='bold'>OK</Text>
+					<Dummy length='s' />
 				</Center>
 			</FlexItem>
 		</Stack>
@@ -301,9 +312,10 @@ Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する�
 
 
 1. 親要素が`Stack` で構成されているので、子要素であるコンテンツの`flex-grow`を`1`にして高さを親に合わせて伸ばします。
-2. 高さがある`grid`要素で、`height`や`min-height`に`%`を使えるようにするためには以下のいずれかを指定します。
-	- grid要素に`align-items:center`などを指定する。
-	- grid要素の子要素に`margin-block:auto` か `align-self:center`を指定する。
+2. 子要素を`grid`にすることで、さらにその子要素で`height`や`min-height`に`%`を使えるようにします。  
+	（この時、その子要素を中央寄せ等にしないと`stretch`が適用されて高さが伸びることに注意してください。）
+	{/* - grid要素に`align-items:center`などを指定する。
+	- grid要素の子要素に`margin-block:auto` か `align-self:center`を指定する。 */}
 
 
 {/* `type="stretch"`を指定すると上記の工程を手軽に呼び出せます。（`as={Grid} fxg='1' ai='center'` をセットする） */}
@@ -312,11 +324,13 @@ Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する�
 <Preview>
 	<PreviewTitle>活用例</PreviewTitle>
 	<PreviewArea resize>
-		<Stack isFullwide isFrame minH='50vh'>
-			<Media isLayer src='/img/img-3.jpg' alt='' width='960' height='640'/>
-			<Layer bgc='black:20%' />
+		<Stack isFullwide pos='r' minH='50vh'>
+			<Frame isLayer>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640'/>
+			</Frame>
+			<Layer bgc='black' op='0.2' />
 			<FlexItem layout={Grid} pos='r' fxg='1' ai='c' hasGutter>
-				<Center minH='50%' p='30' c='white' bgc='black:40%' bdrs='2' g='20'>
+				<Center minH='50%' p='30' c='white' bgc='black:70%' bdrs='2' g='20'>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
 					<Dummy length='l' />
 				</Center>
@@ -325,11 +339,13 @@ Heroコンテンツの高さを `min-height` や `aspect-ratio` で指定する�
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Stack isFullwide isFrame minH='50vh'>
-			<Media isLayer src='/img/img-3.jpg' alt='' width='960' height='640'/>
-			<Layer bgc='black:20%' />
+		<Stack isFullwide pos='r' minH='50vh'>
+			<Frame isLayer>
+				<Media src='/img/img-3.jpg' alt='' width='960' height='640'/>
+			</Frame>
+			<Layer bgc='black' op='0.2' />
 			<FlexItem layout={Grid} fxg='1' ai='c' hasGutter>
-				<Center minH='50%' p='30' c='white' bgc='black:40%' bdrs='2' g='20'>
+				<Center minH='50%' p='30' c='white' bgc='black:70%' bdrs='2' g='20'>
 					<Text fw='bold' fz='xl'>min-height 50%</Text>
 					<Dummy length='l' />
 				</Center>

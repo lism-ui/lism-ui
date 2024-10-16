@@ -338,7 +338,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:show"
-		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
+		<a class="l--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
 			<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
 			<div class="is--layer -hov:get:show -bgc:" style="--bgc:rgb(0 0 0 / 10%);backdrop-filter:blur(6px)"></div>
 			<div class="l--center -hov:get:show -pos:a -inset:0">
@@ -355,8 +355,13 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`-hov:get:zoom`</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox isFrame href='#banner-link' aspect='16/9' hov='pass' bdrs='4'>
-			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+		<LinkBox href='#banner-link' ov='h' aspect='16/9' hov='pass' bdrs='4'>
+			<Frame isLayer>
+				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			</Frame>
+			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
+				<Text fz='2xl' lts='l'>LinkBox</Text>
+			</Center>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='CSS'>
@@ -368,15 +373,25 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:zoom'"
-		<LinkBox isFrame hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
-			<Media isLayer hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+		<LinkBox href='#banner-link' ov='h' aspect='16/9' hov='pass' bdrs='4'>
+			<Frame isLayer>
+				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			</Frame>
+			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
+				<Text fz='2xl' lts='l'>LinkBox</Text>
+			</Center>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:zoom"
-		<a class="is--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
-			<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy">
+		<a class="is--linkBox -hov:pass -aspect:16/9 -ov:h -bdrs:4" href="#banner-link">
+			<div class="l--frame is--layer">
+				<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy" />
+			</div>
+			<div class="l--center is--layer -c:white -bgc:" style="--bgc:rgb(0 0 0 / 40%)">
+				<span class="-fz:2xl -lts:l">LinkBox</span>
+			</div>
 		</a>
 		```
 	</PreviewCode>

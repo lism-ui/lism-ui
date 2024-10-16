@@ -133,6 +133,10 @@ export default [
 				link: '/components/center/',
 			},
 			{
+				label: 'Frame',
+				link: '/components/frame/',
+			},
+			{
 				label: 'Columns',
 				link: '/components/columns/',
 			},
@@ -152,10 +156,6 @@ export default [
 			{
 				label: 'Layer',
 				link: '/components/layer/',
-			},
-			{
-				label: 'Frame',
-				link: '/components/frame/',
 			},
 			{
 				label: 'LinkBox',

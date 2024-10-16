@@ -9,12 +9,12 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/c
 
 
 バナーリンクを表示するコンポーネントです。  
-`<LinkBox isFrame>` が内部で呼び出されます。
+`<LinkBox layout={Frame}>` が内部で呼び出されます。
 
 
 ## 構造
 ```pug
-a.b--banner.is--linkBox.is--frame
+a.b--banner.l--frame.is--linkBox
 ```
 
 
@@ -25,7 +25,6 @@ a.b--banner.is--linkBox.is--frame
 |---|---|
 |`variant`| `b--banner--{variant}` クラスを出力します。|
 
-`<Frame>`, `<LinkBox>` で使用できるプロパティも利用できます。
 
 ## Import
 
@@ -50,8 +49,8 @@ a.b--banner.is--linkBox.is--frame
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-```html "is--frame" "is--linkbox"
-<a class="b--banner is--frame is--linkBox -aspect:bronze -hov:fade" href="#banner-link">
+```html "l--frame" "is--linkBox"
+<a class="b--banner l--frame is--linkBox -aspect:bronze -hov:fade" href="#banner-link">
 	<img src="/img.jpg" alt="" width="960" height="640" loading="lazy">
 </a>
 ```
@@ -65,7 +64,7 @@ a.b--banner.is--linkBox.is--frame
 		<Banner href='#banner-link' aspect='bronze' bdrs='4'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black' op='0.5' />
-			<Stack pos='a' inset='0' jc='c' g='5' px='40' c='white' lh='s'>
+			<Stack isLayer jc='c' g='5' px='40' c='white' lh='s'>
 				<Text fz='xl' fw='bold'>Banner</Text>
 				<Dummy fz='s' lang='ja' length='s'/>
 			</Stack>
@@ -76,7 +75,7 @@ a.b--banner.is--linkBox.is--frame
 		<Banner href='#banner-link' aspect='bronze' bdrs='4'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black' op='0.5' />
-			<Stack pos='a' inset='0' jc='c' g='5' px='40' c='white' lh='s'>
+			<Stack isLayer jc='c' g='5' px='40' c='white' lh='s'>
 				<Text fz='xl' fw='bold'>Banner</Text>
 				<Dummy fz='s' lang='ja' length='s'/>
 			</Stack>
