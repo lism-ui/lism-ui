@@ -58,6 +58,7 @@ export function setEvent(modal: HTMLDialogElement): void {
 	modal.addEventListener('close', (event) => {
 		if (THE_TRIGGER) {
 			THE_TRIGGER.focus();
+			delete THE_TRIGGER.dataset.modalOpened;
 			THE_TRIGGER = null;
 		}
 		modalClose(event, modal);
@@ -67,6 +68,8 @@ export function setEvent(modal: HTMLDialogElement): void {
 	openTriggers.forEach((trigger) => {
 		trigger?.addEventListener('click', (event) => {
 			THE_TRIGGER = trigger;
+			THE_TRIGGER.dataset.modalOpened = '1';
+
 			modalOpen(event, modal);
 		});
 	});
@@ -79,15 +82,16 @@ export function setEvent(modal: HTMLDialogElement): void {
 	});
 }
 
-const setDialog = () => {
+const setModal = () => {
 	// const detailsAll = document.querySelectorAll('.c--accordion');
 	// detailsAll.forEach((details) => {
 	// 	setEvent(details);
 	// });
 	const modals = document.querySelectorAll('.d--modal');
+	console.log('modals', modals);
 
 	modals?.forEach((target) => {
 		setEvent(target as HTMLDialogElement);
 	});
 };
-export default setDialog;
+export default setModal;

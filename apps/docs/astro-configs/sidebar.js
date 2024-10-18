@@ -215,6 +215,14 @@ export default [
 				link: '/components/table/',
 			},
 			{
+				label: 'Dynamic',
+				link: '###---',
+			},
+			{
+				label: 'Modal',
+				link: '/components/modal/',
+			},
+			{
 				label: 'Components',
 				link: '###---',
 			},

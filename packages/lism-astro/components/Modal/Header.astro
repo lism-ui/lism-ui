@@ -1,0 +1,14 @@
+---
+import { LismProps } from '../types';
+import { defaultProps } from '@lism-ui/core/components/Modal/getProps';
+import { Lism } from '../Lism';
+
+// Propsの定義
+interface Props extends LismProps {}
+const { layout, ...props } = Astro.props || {};
+const Layout = layout || Lism;
+---
+
+<Layout {...defaultProps.header} {...props}>
+	<slot />
+</Layout>

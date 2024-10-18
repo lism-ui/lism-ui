@@ -31,18 +31,20 @@ export * from './Icon';
 
 export * from './LinkBox';
 
-export * from './Accordion';
 export * from './Callout';
 export * from './Badge';
 export * from './Button';
 export * from './Table';
 export * from './List';
 
+// Dynamic
+export * from './Accordion';
+export { default as Modal } from './Modal';
+export * from './Tab';
+
 // export * from './Note';
 export * from './Reel';
-export * from './Tab';
 export * from './Banner';
-
 export * from './NavMenu';
 
 export { default as Test } from './Test';

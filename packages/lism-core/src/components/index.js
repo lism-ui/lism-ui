@@ -48,7 +48,7 @@ export * from './NavMenu';
 // appルーターで use client がいるもの
 export * from './Accordion';
 export * from './Tabs';
-export { default as Dialog } from './Dialog';
+export { default as Modal } from './Modal';
 
 export { default as Test } from './Test';
 

@@ -1,14 +1,55 @@
 ---
-import { Container, Lism, Flex } from '@lism-ui/astro';
+import { Container, Lism, Flex, Center, Icon, Dummy, Text, Button } from '@lism-ui/astro';
+import { Modal } from '@lism-ui/core';
 ---
 
 <Container tag='header' size='m' py='30' hasGutter bxsh='1'>
 	<Flex jc='sb' ai='c' g='20'>
 		<Lism fz='xl' ff='mono'>Lism UI</Lism>
-		<Flex g='20'>
+		<Flex mis='auto' g='20' _d={['none', null, 'flex']}>
 			<Lism fz='m' ff='mono'>Menu 1</Lism>
 			<Lism fz='m' ff='mono'>Menu 2</Lism>
 			<Lism fz='m' ff='mono'>Menu 3</Lism>
 		</Flex>
+		<Center
+			_d={['grid', null, 'none']}
+			tag='button'
+			className='reset--style'
+			fz='xl'
+			data-modal-open='modal-01'
+		>
+			<Icon icon='menu' />
+		</Center>
 	</Flex>
+	<Modal.Root id='modal-01' p='40' style={{ '--offset': '0 100px' }}>
+		<Modal.Inner maxW='m' p='40' g='30' bdrs='3' bxsh='4'>
+			<Center pos='a' t='0' r='0' z='1' fz='xl' p='20' m='20' bdrs='99'>
+				<Modal.CloseIconBtn modalId='modal-01' />
+			</Center>
+			<Modal.Header>
+				<Text fz='l' fw='bold' lh='s'>Modal Header</Text>
+			</Modal.Header>
+			<Modal.Body isFlow>
+				<p>Greetings, one and all!</p>
+				<Flex g='20'>
+					<Lism fz='m' ff='mono'>Menu 1</Lism>
+					<Lism fz='m' ff='mono'>Menu 2</Lism>
+					<Lism fz='m' ff='mono'>Menu 3</Lism>
+				</Flex>
+				<Dummy />
+				<Dummy length='l' />
+				<Dummy length='xl' />
+				<Dummy length='xl' />
+				<Dummy length='xl' />
+			</Modal.Body>
+			<Modal.Footer d='f' jc='e'>
+				<Button tag='button' data-modal-close='modal-01' bdrs='3'>Close</Button>
+			</Modal.Footer>
+		</Modal.Inner>
+	</Modal.Root>
 </Container>
+
+<script>
+	import setModal from '@lism-ui/core/components/Modal/setModal.js';
+	setModal();
+</script>

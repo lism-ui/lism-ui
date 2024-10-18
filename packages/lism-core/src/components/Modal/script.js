@@ -1,5 +1,5 @@
-import setDialog from './setDialog.js';
+import setModal from './setModal.ts';
 
 document.addEventListener('DOMContentLoaded', function () {
-	setDialog();
+	setModal();
 });
