@@ -7,11 +7,11 @@ import { Container, Columns, Grid, Stack, Flex, Callout, Spacer, Cluster, Icon, 
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
 import { Note } from '~/components/ex/Note';
-import presetIcons from '@lism-ui/core/components/Icon/presets';
+import {phIcons, logoIcons} from '@lism-ui/core/components/Icon/presets';
 
-export const PrestIcons = () => {
+export const PresetIcons = ({icons}) => {
 	return <Columns variant='liquid' colSize='10rem' g='20'>
-			{Object.keys(presetIcons).map((iconName) => {
+			{Object.keys(icons).map((iconName) => {
 				return (
 					<Stack key={iconName} g='10' ai='c' bgc='base-2' bdrs='1' p='30' lh='1'>
 						<Icon icon={iconName} fz='xl' />
@@ -156,10 +156,14 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 `icon='icon-name'`と指定することで、それらのアイコンを呼び出すことができます。  
 （[Phosphor Icons](https://phosphoricons.com/) を使わせていただいています。）
 
-<PreviewTitle>アイコン一覧</PreviewTitle>
-
+<PreviewTitle>Phosphorアイコン一覧</PreviewTitle>
 <Container>
-<PrestIcons/>
+<PresetIcons icons={phIcons} />
+</Container>
+
+<PreviewTitle>ロゴアイコン一覧</PreviewTitle>
+<Container>
+<PresetIcons icons={logoIcons} />
 </Container>
 
 <Preview>

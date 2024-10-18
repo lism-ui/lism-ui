@@ -1,5 +1,5 @@
 // 内部のコンテンツ幅を制御する。
-.is--container {
+:where(.is--container) {
 	container-type: inline-size;
 	margin-inline: auto;
 	inline-size: 100%; // gridやflex内での挙動を考慮。（container-type:inline-sizeだと横幅つぶれる）

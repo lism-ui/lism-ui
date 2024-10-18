@@ -68,10 +68,8 @@ export function getTabProps(props, isActive) {
 	const defaultProps = {
 		skipState: true,
 		lismClass: 'c--tabs__tab',
-		lismState: ['is--reset'],
+		lismState: ['reset--style'],
 		tag: 'button',
-		// fz: 's',
-		// lh: 'xs',
 		role: 'tab',
 		'aria-selected': isActive ? 'true' : 'false',
 	};

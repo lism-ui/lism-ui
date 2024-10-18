@@ -9,7 +9,7 @@
 @forward './layer'; // Note: position の関係で、linkbox より後で読み込む
 
 // Note: dialog に影響する
-:where(.is--reset, .reset--style) {
+:where(.reset--style) {
 	color: inherit;
 	background: none;
 	border: none;

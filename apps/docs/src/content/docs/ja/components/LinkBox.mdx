@@ -71,7 +71,7 @@ import { Note } from '~/components/ex/Note';
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx {1} "<a class=\"is--linkBox"
 		<a class="is--linkBox -hov:fade -p:40 -bgc:base -bd: -bdc:divider -bdrs:4" href="#linkbox-demo01">
-			<p class="-fz:xl -fw:b">Heading text</p>
+			<p class="-fz:xl -fw:bold">Heading text</p>
 			<p class="-c:text-2 -lh:s -mbs:20">Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.</p>
 			<p class="-fz:s -c:text-2 -ta:r -lh:1 -mbs:10">MORE →</p>
 		</a>
@@ -118,7 +118,7 @@ LinkBoxに`href`を指定せず、内部のアンカー要素に`.is--overlayLin
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "is--overlayLink"
 		<div class="is--linkBox -hov:fade -p:40 -bgc:base -bd: -bdc:divider -bdrs:4">
-			<p class="-fz:xl -fw:b">
+			<p class="-fz:xl -fw:bold">
 				<a class="is--overlayLink" href="#linkbox-demo02">Heading Link</a>
 			</p>
 			<p class="-c:text-2 -lh:s -mbs:20">
@@ -186,7 +186,7 @@ LinkBoxに`href`を指定せず、内部のアンカー要素に`.is--overlayLin
 		```jsx {2,8} "is--hiddenLink"
 		<div class="is--linkBox is--flow -hov:fade -bgc:base -bd: -bdc:divider -bdrs:4 -p:40">
 			<a class="is--hiddenLink is--skipFlow" href="#linkbox-demo03" aria-label='リンクのラベルテキスト'></a>
-			<p class="-fz:xl -fw:b">Heading Text</p>
+			<p class="-fz:xl -fw:bold">Heading Text</p>
 			<p class="-c:text-2 -lh:s -mbs:20">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
 			</p>
