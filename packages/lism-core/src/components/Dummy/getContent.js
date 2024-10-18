@@ -32,7 +32,9 @@ export default function getContent({ tag = 'p', pre = '', length = 'm', lang = '
 	} else {
 		if (offset) {
 			// , . で split して、offset分だけ配列削除.
-			content = splitByPunctuation(content).slice(offset).join('');
+			content = splitByPunctuation(content).slice(offset).join('').trim();
+			//１文字目を大文字にする
+			content = content.charAt(0).toUpperCase() + content.slice(1);
 		}
 		if (pre) {
 			content = pre + content;
