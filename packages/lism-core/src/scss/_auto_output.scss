@@ -24,6 +24,14 @@
 	}
 }
 
+@mixin echoDetailValues($selector, $values) {
+	#{$selector} {
+		@each $v_p, $v_v in $values {
+			#{$v_p}: #{$v_v};
+		}
+	}
+}
+
 // 各プロパティのユーティリティクラス
 @mixin echoUtilities($key, $prop, $utilities, $base_type, $important) {
 	@each $ukey, $value in $utilities {
@@ -45,7 +53,10 @@
 			$selector: '.-#{$key}\\:#{$ukey}';
 		}
 
-		@if $base_type == 2 {
+		// valueが(prop:val)で詳細に明示されている場合
+		@if (type-of($value) == map) {
+			@include echoDetailValues($selector, $value);
+		} @else if $base_type == 2 {
 			// important は [class*=] についてるので不要
 			#{$selector} {
 				--#{$key}: #{$value};
@@ -57,16 +68,6 @@
 		}
 	}
 }
-
-// @mixin echoSpecialUtilities($key, $utilities, $important) {
-// 	@each $ukey, $value in $utilities {
-// 		$selector: '.-#{$key}\\:#{$ukey}';
-// 		$style: '#{$selector}{#{$value}}';
-
-// 		// 文字列をそのまま出力できない...
-// 		// $style;
-// 	}
-// }
 
 $bp_support_list: (); // list
 

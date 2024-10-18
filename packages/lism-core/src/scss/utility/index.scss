@@ -22,13 +22,6 @@
 @forward './filter';
 @forward './others';
 
-.-c\:i {
-	color: inherit !important;
-}
-.-bgc\:i {
-	background-color: inherit !important;
-}
-
 // c='(.*):(.+)%' で使用箇所検索
 .-c\:mix {
 	--c1-per: 50%;

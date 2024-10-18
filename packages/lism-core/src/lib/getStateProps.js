@@ -46,7 +46,6 @@ export default function getStateProps({
 	isContainer,
 	// isConstrained,
 	hasGutter,
-	hasDivider,
 	style = {},
 
 	...props
@@ -67,18 +66,6 @@ export default function getStateProps({
 	isOverwide && lismState.push('is--overwide');
 	isFullwide && lismState.push('is--fullwide');
 	isWide && lismState.push('is--wide');
-
-	if (hasDivider && typeof hasDivider === 'string') {
-		lismState.push(`has--divider:${hasDivider}`);
-	} else if (hasDivider) {
-		lismState.push('has--divider');
-	}
-
-	// if (hasCoverMedia) lismState.push('has--coverMedia');
-
-	//  else if (typeof hasDivider === 'string') {
-	// 	lismState.push(`has--divider:${hasDivider}`);
-	// }
 
 	// console.log('lismState', lismState);
 	props.lismState = [...new Set(lismState)]; // strictモードで2重レンダリングされる時の重複を削除;

@@ -1,0 +1,46 @@
+---
+title: 'Breadcrumb'
+description: ...
+---
+
+import { Flex, Badge, Icon, Spacer, Box, Callout, Lism } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge, Reference } from "~/components";
+import { FolderSimple } from "@phosphor-icons/react";
+
+
+パンくずリストの作成例を紹介します。
+
+
+## Usage
+
+<Preview>
+	<PreviewTitle>パンくずリスト</PreviewTitle>
+	<PreviewArea p='30'>
+		<Flex variant='cluster' tag='ol' hasDelimiter gap='10' style={{'--c--link': 'currentColor'}}>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<a href='#menu-1'>Menu item 1</a>
+			</Flex>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<a href='#menu-2'>Menu item 2</a>
+			</Flex>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<span>Current page titile...</span>
+			</Flex>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Flex variant='cluster' tag='ol' hasDelimiter gap='10' style={{'--c--link': 'currentColor'}}>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<a href='#menu-1'>Menu item 1</a>
+			</Flex>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<a href='#menu-2'>Menu item 2</a>
+			</Flex>
+			<Flex tag='li' ai='c' gap='inherit'>
+				<span>Current page titile...</span>
+			</Flex>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>

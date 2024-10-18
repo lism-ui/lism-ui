@@ -193,6 +193,7 @@ export const GAP_PROPS = {
 	},
 	g: {
 		presets: 'gap',
+		utils: { inherit: 'i' },
 		converter: 'space',
 	},
 	rowg: { converter: 'space' },

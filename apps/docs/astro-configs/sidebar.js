@@ -255,22 +255,13 @@ export default [
 				label: 'More Examples',
 				link: '###---',
 			},
-
-			{
-				label: 'Hero',
-				link: '/components/hero/',
-			},
-			{
-				label: 'TermList',
-				link: '/components/termlist/',
-			},
-			{
-				label: 'Decorations',
-				link: '/components/decorations/',
-			},
 			{
 				label: '---',
 				link: '###---',
+			},
+			{
+				label: 'Breadcrumb',
+				link: '/components/breadcrumb/',
 			},
 			{
 				label: 'Card',
@@ -281,6 +272,10 @@ export default [
 				link: '/components/chat/',
 			},
 			{
+				label: 'Decorations',
+				link: '/components/decorations/',
+			},
+			{
 				label: 'DividerLabel',
 				link: '/components/dividerlabel/',
 			},
@@ -289,12 +284,21 @@ export default [
 				link: '/components/faq/',
 			},
 			{
+				label: 'Hero',
+				link: '/components/hero/',
+			},
+
+			{
 				label: 'Note',
 				link: '/components/note/',
 			},
 			{
 				label: 'Step',
 				link: '/components/step/',
+			},
+			{
+				label: 'TermList',
+				link: '/components/termlist/',
 			},
 			{
 				label: 'Timeline',

@@ -72,6 +72,11 @@ $utilities: (
 		// '90': 'var(--s90)',
 	),
 	'p': (),
+	'g': (
+		'i': (
+			'gap': 'inherit',
+		),
+	),
 	'm': (
 		// '0': '0',
 		'a': 'auto',
@@ -182,12 +187,15 @@ $props: map.deep-merge(
 				'keycolor': 'var(--keycolor)',
 				'black': 'var(--black)',
 				'white': 'var(--white)',
-			),
-			special_utilities: (
 				'i': (
 					'color': 'inherit',
 				),
 			),
+			// special_utilities: (
+			// 	'i': (
+			// 		'color': 'inherit',
+			// 	),
+			// ),
 		),
 		'bgc': (
 			prop: 'background-color',
@@ -205,12 +213,10 @@ $props: map.deep-merge(
 					'keycolor': 'var(--keycolor)',
 					'black': 'var(--black)',
 					'white': 'var(--white)',
+					'i': (
+						'color': 'inherit',
+					),
 				),
-			special_utilities: (
-				'i': (
-					'background-color': 'inherit',
-				),
-			),
 		),
 		'bdc': (
 			prop: '--bdc',
@@ -538,7 +544,7 @@ $props: map.deep-merge(
 		'g': (
 			prop: 'gap',
 			base_type: 2,
-			utilities: 's',
+			utilities: 's' 'g',
 			bp: 1,
 		),
 		'colg': (

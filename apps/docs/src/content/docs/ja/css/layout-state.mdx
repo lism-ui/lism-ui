@@ -529,6 +529,80 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 }
 ```
 
+## `has--delimiter`
+
+子要素の間にデリミタを疑似要素で出力します。
+
+```css
+.has--delimiter {
+	> * + *::before {
+		content: var(--delimiter, ' / ');
+		color: var(--delimiter-c, currentColor);
+		white-space: pre;
+	}
+}
+```
+
+<Preview>
+	<PreviewTitle>`has--delimiter`</PreviewTitle>
+	<PreviewArea p='20'>
+		<Flex variant='cluster' hasDelimiter>
+			<span>Content</span>
+			<span>Content</span>
+			<span>Content</span>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class='l--flex l--flex--cluster has--delimiter'>
+			<span>Content</span>
+			<span>Content</span>
+			<span>Content</span>
+		</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Flex variant='cluster' hasDelimiter>
+			<span>Content</span>
+			<span>Content</span>
+			<span>Content</span>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+<Preview>
+	<PreviewTitle>カスタマイズ例</PreviewTitle>
+	<PreviewArea p='20'>
+		<Flex variant='cluster' hasDelimiter='>>' gap='20' style={{'--delimiter-c': 'var(--blue)'}}>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class='l--flex l--flex--cluster has--delimiter -g:20' style="--delimiter-c:var(--blue);--delimiter:'>>'">
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+		</div>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Flex variant='cluster' hasDelimiter='>>' gap='20' style={{'--delimiter-c': 'var(--blue)'}}>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+			<span className='-d:if -ai:c -g:i'>Content</span>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview>
+
 
 ## `has--divider`
 
@@ -538,7 +612,7 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 
 <Preview>
 	<PreviewTitle>`has--divider`</PreviewTitle>
-	<PreviewArea nogrid p='20'>
+	<PreviewArea p='20'>
 		<Box hasDivider>
 			<Box p='20'>Content</Box>
 			<Box p='20'>Content</Box>

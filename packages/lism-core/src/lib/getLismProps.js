@@ -60,6 +60,8 @@ class LismPropsData {
 			isColored,
 			isLinkBox,
 			isSkipFlow,
+			hasDivider,
+			hasDelimiter,
 			// hasBd,
 			_context,
 			..._props
@@ -89,6 +91,18 @@ class LismPropsData {
 		}
 		if (isColored || props.boxcolor) {
 			lismState.push('is--colored');
+		}
+		// if (hasDivider && typeof hasDivider === 'string') {
+		// 	lismState.push(`has--divider:${hasDivider}`);
+		// } else
+		if (hasDivider) {
+			lismState.push('has--divider');
+		}
+		if (hasDelimiter) {
+			lismState.push('has--delimiter');
+			if (typeof hasDelimiter === 'string') {
+				style['--delimiter'] = `"${hasDelimiter}"`;
+			}
 		}
 		// if (hasBd) {
 		// 	lismState.push('has--bd');
