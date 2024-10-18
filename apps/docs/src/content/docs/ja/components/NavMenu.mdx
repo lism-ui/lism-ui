@@ -14,13 +14,12 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 | プロパティ | 説明 |
 |---|---|
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`nestLevel` | メニューのネストレベルを指定します。 |
-| <PropBadge ml='-1px'>`<NavMenuLink>`</PropBadge><br/>`hov` | hover時のスタイルを指定できます。デフォルトは`fade`が指定されています。 |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovBgc` | `--hov-bgc`を出力します。（`.c--navMenu__link`に`.-hov:bgc:`を付けた時用）|
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`hovC` | `--hov-c`を出力します。 （`.c--navMenu__link`に`.-hov:c:`を付けた時用）|
-{/* | <PropBadge ml='-1px'>`<NavMenuItem>`</PropBadge><br/>`href` | NavMenuにhrefを指定すると、NavMenuLinkを省略できます。 | */}
-{/* | <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passVars.p` | 各メニューのpaddingを一括調整できます |
-| <PropBadge ml='-1px'>`<NavMenu>`</PropBadge><br/>`passVars.gap` | 各メニューのgapを一括調整できます | */}
+| <PropBadge>`<NavMenu>`</PropBadge><br/>`layout` | 展開したい Lismコンポーネント を指定できます。 |
+| <PropBadge>`<NavMenu>`</PropBadge><br/>`hovBgc` | `--hov-bgc`を出力します。（`.c--navMenu__link`に`.-hov:bgc:`を付けた時用）|
+| <PropBadge>`<NavMenu>`</PropBadge><br/>`hovC` | `--hov-c`を出力します。 （`.c--navMenu__link`に`.-hov:c:`を付けた時用）|
+| <PropBadge>`<NavMenuLink>`</PropBadge><br/>`hov` | hover時のスタイルを指定できます。デフォルトは`fade`が指定されています。 |
+{/* | <PropBadge>`<NavMenu>`</PropBadge><br/>`nestLevel` | ネストの深さを指定します。`[data-nest-level]`に値を出力します。<br />ただし、トップレベルでは指定しないでください。（`:not([data-nest-level])`で変数の初期値をセットするため）| */}
+
 
 
 
@@ -445,13 +444,14 @@ import { FolderSimple } from "@phosphor-icons/react";
 
 ### 横並びメニュー
 
-`<NavMenu>`に`isFlex`を指定すると、横並びになります。
+`<NavMenu>`に`layout={Flex}`を私、横並びにする例を紹介します。
+
 
 <Preview>
 	<PreviewTitle>横並びで3種類のメニュー展開</PreviewTitle>
 	<PreviewArea p='30'>
 		<Box minH="20rem">
-		<NavMenu isFlex hasDivider lh='xs' passVars={{p:'20 30'}}>
+		<NavMenu layout={Flex} hasDivider lh='xs' passVars={{p:'20 30'}}>
 			<NavMenuItem>
 				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
 			</NavMenuItem>
@@ -513,7 +513,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<NavMenu isFlex hasDivider lh='s' passVars={{p:'20 30'}}>
+		<NavMenu layout={Flex} hasDivider lh='s' passVars={{p:'20 30'}}>
 			<NavMenuItem>
 				<NavMenuLink href='#menu1'>Menu item</NavMenuLink>
 			</NavMenuItem>

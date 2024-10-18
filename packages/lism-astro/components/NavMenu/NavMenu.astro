@@ -1,16 +1,15 @@
 ---
 import { LismProps } from '../types';
 import { Stack } from '../Stack';
-import { Flex } from '../Flex';
 import { getNavMenuProps } from '@lism-ui/core/components/NavMenu/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
 
-const { isFlex, ...props } = Astro.props || {};
-const JSX = isFlex ? Flex : Stack;
+const { layout, ...props } = Astro.props || {};
+const Layout = layout || Stack;
 ---
 
-<JSX {...getNavMenuProps(props)} {...props}>
+<Layout {...getNavMenuProps(props)} {...props}>
 	<slot />
-</JSX>
+</Layout>

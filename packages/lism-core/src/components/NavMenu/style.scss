@@ -14,7 +14,7 @@
 .c--navMenu__link {
 	// text-decoration: none;
 	padding: var(--pass-p);
-	outline-offset: -1px;
+	outline-offset: -1px; // アコーディオン化した時にoutlineが一部見えなくなるのを防ぐ
 }
 
 // :where(a.c--navMenu__link, .c--navMenu .c--accordion__header:not(:has(a))):hover {

@@ -48,11 +48,11 @@ export function getNavMenuLinkProps(props) {
 		lismClass: 'c--navMenu__link',
 		tag: 'span',
 		c: 'inherit',
-		hov: 'fade',
 	};
 
 	if (props?.href) {
 		navLinkProps.tag = 'a';
+		navLinkProps.hov = 'fade';
 	}
 
 	return { ...navLinkProps, ...props };
