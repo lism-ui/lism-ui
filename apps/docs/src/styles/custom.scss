@@ -82,6 +82,12 @@ kbd {
 	}
 }
 
+.b--badge--prop {
+	td > &:first-child {
+		margin-inline-start: 0;
+	}
+}
+
 // スコア: 0-0-2 → code, kbd を上書きできるように
 // →→ codeの color が currentColor なので不要
 // a > code {

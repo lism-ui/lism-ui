@@ -199,10 +199,6 @@ export default [
 				link: '/components/button/',
 			},
 			{
-				label: 'ShapeDivider',
-				link: '/components/shapedivider/',
-			},
-			{
 				label: 'Spacer',
 				link: '/components/spacer/',
 			},
@@ -219,29 +215,34 @@ export default [
 				link: '###---',
 			},
 			{
+				label: 'Accordion',
+				link: '/components/accordion/',
+			},
+			{
 				label: 'Modal',
 				link: '/components/modal/',
+			},
+			{
+				label: 'Tabs',
+				link: '/components/tabs/',
 			},
 			{
 				label: 'Components',
 				link: '###---',
 			},
 			{
-				label: 'Accordion',
-				link: '/components/accordion/',
-			},
-			{
 				label: 'Callout',
 				link: '/components/callout/',
+			},
+			{
+				label: 'Card',
+				link: '/components/card/',
 			},
 			{
 				label: 'Reel',
 				link: '/components/reel/',
 			},
-			{
-				label: 'Tabs',
-				link: '/components/tabs/',
-			},
+
 			{
 				label: 'NavMenu',
 				link: '/components/navmenu/',
@@ -263,10 +264,7 @@ export default [
 				label: 'Breadcrumb',
 				link: '/components/breadcrumb/',
 			},
-			{
-				label: 'Card',
-				link: '/components/card/',
-			},
+
 			{
 				label: 'Chat',
 				link: '/components/chat/',
@@ -287,10 +285,13 @@ export default [
 				label: 'Hero',
 				link: '/components/hero/',
 			},
-
 			{
 				label: 'Note',
 				link: '/components/note/',
+			},
+			{
+				label: 'ShapeDivider',
+				link: '/components/shapedivider/',
 			},
 			{
 				label: 'Step',

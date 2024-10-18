@@ -1,3 +1,18 @@
+// 埋め込みコード
+.emgithub-file {
+	.emgithub-container:first-of-type > & {
+		margin-block-start: 0;
+	}
+
+	// with ❤ 消す
+	.hide-in-phone {
+		display: none;
+	}
+	.code-area > pre {
+		tab-size: 4 !important;
+	}
+}
+
 // コードブロック
 .expressive-code {
 	--ec-frm-frameBoxShdCssVal: var(--shadow--3);
