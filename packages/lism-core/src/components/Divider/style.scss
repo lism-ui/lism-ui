@@ -3,24 +3,4 @@
 // --------------------
 .a--divider {
 	--bdc: var(--c--divider);
-	--bdw: 1px;
-	--bds: solid;
-	// display: block;
-	border-block-start: var(--bdw) var(--bds) var(--bdc);
-	// place-self: stretch;
 }
-
-.a--divider--vertical {
-	border-block-start: none;
-	border-inline-start: var(--bdw) var(--bds) var(--bdc);
-	min-height: 1em;
-	// align-self: stretch;
-}
-
-// .b--divider__bd {
-// 	--bdc: inherit;
-// 	--bdw: inherit;
-// 	--bds: inherit;
-// 	// border-top: var(--bdw) var(--bds) var(--bdc);
-// 	flex: 1;
-// }
