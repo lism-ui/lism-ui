@@ -1,0 +1,9 @@
+---
+import { LinkBox, Frame } from '@lism-ui/astro';
+
+const props = Astro.props;
+---
+
+<LinkBox layout={Frame} lismClass='c--banner' {...props}>
+	<slot />
+</LinkBox>

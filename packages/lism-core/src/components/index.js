@@ -35,13 +35,12 @@ export * from './Divider';
 export * from './Avatar';
 export * from './Button';
 export * from './Badge';
-export * from './Banner';
-export * from './ShapeDivider';
 export * from './List';
 export * from './Table';
 
 // Components
-export * from './Callout';
+export * from './ShapeDivider';
+// export * from './Callout';
 // export * from './Note';
 export * from './NavMenu';
 

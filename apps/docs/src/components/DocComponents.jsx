@@ -1,4 +1,7 @@
-import { Text, Callout, Badge } from '@lism-ui/core';
+import { Lism, Text, Badge, Icon } from '@lism-ui/core';
+import Callout from '~/components/ex/Callout/index.jsx';
+import ICON_PRESETS from '~/components/ex/Callout/presets.js';
+
 import {
 	// Book as Book,
 	Notebook as Book,
@@ -20,6 +23,25 @@ export const HelpText = ({ tag = 'p', children, ...props }) => {
 		</Text>
 	);
 };
+
+export const OptinHelp = (props) => {
+	return (
+		<Callout type='info'>
+			<Text {...props}>ソースコードを手動でコピー&ペーストしてご利用ください。</Text>
+		</Callout>
+	);
+};
+
+export const IconBadge = ({ type = 'info' }) => {
+	const presetData = type ? ICON_PRESETS[type] : null;
+	return <Icon icon={presetData?.icon} variant='inline' c={presetData?.color} />;
+	// return (
+	// 	<Lism tag='span' d='if' c={c} bd bdrs='1' p='2px'>
+	// 		<Icon icon={icon} />
+	// 	</Lism>
+	// );
+};
+
 export function Reference({ children }) {
 	return (
 		<Callout icon={Book} keycolor='purple'>

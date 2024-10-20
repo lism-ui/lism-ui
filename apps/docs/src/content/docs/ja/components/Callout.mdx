@@ -2,50 +2,21 @@
 title: 'Callout'
 description: ...
 ---
-import { Box, Callout, Icon, Layer, Dummy } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
+import { Box, Icon, Layer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, OptinHelp } from '~/components';
 import { Book } from '@phosphor-icons/react';
 
-短い文言を目立たせて強調表示したい時に使えるコンポーネントです。
+import { Callout } from '~/components/ex/Callout';
 
-内部で`<WithSide>`を使用しており、コンテンツ側が`16rem`を下回るとアイコンとコンテンツが縦並びになります。
-
-## 構造
-
-```pug
-.c--callout.l--withSide.is--colored(--keycolor)
-	.c--callout__icon.l--center.is--side.-c:keycolor
-		svg.a--icon
-	.c--callout__body
-```
-
-
-## Props
-
-| プロパティ | 説明 |
-|---|---|
-|`variant`| `c--callout--{variant}` クラスを出力します。|
-|`icon`| アイコンを指定できます。デフォルトは `"alert"`です。|
-|`keycolor`| キーカラーを指定します。デフォルトは `"red"`です。(`color-mix`で色の生成をしているため、未対応ブラウザでは表示が変わります。)|
-|`type`|`keycolor`と`icon`の組み合わせを呼び出すキーワードを指定できます。初期値:`"alert"`|
-|`isFlow`|`__body`に渡されます|
-{/* | `iconProps` | アイコン（`<Icon>`）に渡すpropsを指定できます。| */}
-{/* - `variant`: `'fill'` | `'outline'` ? */}
+{/* // import Callout from '~/components/ex/Callout/index.astro'; */}
 
 
 
-## Import
-
-<ImportCode component='Callout' />
-
-
-## Usage
+短い文言を目立たせて強調表示したい時に使えるコンポーネントの作成例を紹介します。  
 
 
 <Preview>
-	<PreviewTitle>
-		デフォルト（`type='alert'`）
-	</PreviewTitle>
+	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Callout>
 			<Dummy lang='ja' />
@@ -60,8 +31,8 @@ import { Book } from '@phosphor-icons/react';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="c--callout l--withSide is--colored" style="--keycolor:var(--red)">
-			<div class="c--callout__icon l--center is--side -c:keycolor">
+		<div class="c--callout l--withSide is--colored -p:20 -bd: -bdrs:2 -g:20" style="--keycolor:var(--red)">
+			<div class="c--callout__icon l--center is--side -c:keycolor -fz:xl -p:5">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true">...</svg>
 			</div>
 			<div class="c--callout__body">
@@ -71,6 +42,28 @@ import { Book } from '@phosphor-icons/react';
 		```
 	</PreviewCode>
 </Preview>
+
+内部で`<WithSide>`を使用しており、コンテンツ側の横幅が一定値を下回ると自動で縦並びになります。
+
+## Import
+
+<OptinHelp />
+<ImportSource react='Callout/index.jsx' astro='/Callout/index.astro' />
+
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`type`|`keycolor`と`icon`の組み合わせを呼び出すキーワードを指定できます。初期値:`"alert"`|
+|`icon`| アイコンを指定できます。デフォルトは `"alert"`です。|
+|`keycolor`| キーカラーを指定します。|
+|`isFlow`|`__body`に渡されます|
+{/* | `iconProps` | アイコン（`<Icon>`）に渡すpropsを指定できます。| */}
+{/* - `variant`: `'fill'` | `'outline'` ? */}
+
+
+## Examples
 
 
 <Preview>
@@ -141,7 +134,7 @@ import { Book } from '@phosphor-icons/react';
 </Preview>
 
 
-<Preview>
+{/* <Preview>
 	<PreviewTitle>
 		Astroでアイコンをslotから指定する例
 	</PreviewTitle>
@@ -163,27 +156,5 @@ import { Book } from '@phosphor-icons/react';
 		</Callout>
 		```
 	</PreviewCode>
-</Preview>
-
-
-{/* ## デフォルトスタイルのカスタマイズ
-
-最低限のスタイリングのみになっていますので、好きに調節してください。
-
-
-<Preview>
-	<PreviewTitle>
-		Astroでアイコンをslotから指定する例
-	</PreviewTitle>
-	<PreviewArea resize p='30' className='is--setStyle:callout'>
-		<Callout type='alert'>
-			<Dummy lang='ja' length='codes' />
-		</Callout>
-		<Callout type='point'>
-			<Dummy lang='ja' length='codes' />
-		</Callout>
-		<Callout type='warning'>
-			<Dummy lang='ja' length='codes' />
-		</Callout>
-	</PreviewArea>
 </Preview> */}
+

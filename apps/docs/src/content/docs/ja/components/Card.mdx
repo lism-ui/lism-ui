@@ -4,30 +4,66 @@ description: ...
 ---
 
 import { Dummy, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, Link, Layer, Button, Columns, Media } from '@lism-ui/core';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, OptinHelp } from '~/components';
 import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
-カード型でコンテンツを表示できるコンポーネントです。 全体をリンク化することも可能です。
+
+カード型コンテンツを出力する、`<Card>`コンポーネントの作成例を紹介します。  
+全体をリンク化することにも対応しています。
 
 
-{/* ## Props
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Card sideW='50%'>
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody g='10' p='30'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<Dummy lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+			</CardBody>
+		</Card>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Card sideW='50%' >
+			<CardMedia isSide aspect='16/9'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</CardMedia>
+			<CardBody g='10' p='30'>
+				<h3 className='-fz:m'>Card Title</h3>
+				<Dummy lang='ja' fz='s' mb='10' />
+				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+			</CardBody>
+		</Card>
+		```
+	</PreviewCode>
+</Preview>
 
-- `Card`: 内部で`Stack`が使用されています。
-	- `isFlex`: 横並びにできます。`<Stack>`ではなく`<Flex>`で構成されるようになります。
-	- `href`:
-	- `hover`
-- `CardMedia`: `Frame`が内部で使用されています。
-	- `aspect`: メディア比率
-	- `w`: `isFlex`が指定されている場合、`<CardMedia>`の幅を指定できます。
-- `CardBody`
 
-radiusのデフォルト、`1`にする？ */}
+## Import
+
+<OptinHelp />
+<ImportSource react='Card/index.jsx' css='/Card/style.scss' />
 
 
+## Props
 
-## Usage
+| プロパティ | 説明 |
+|---|---|
+|`layout`| 展開するレイアウトコンポーネントを指定します。デフォルトは`<WihSide>`です。|
 
-標準では、`<Card>`は`<WihSide>`で構成されています。
+
+### Child Components
+
+- `<CardMedia>`: `<FlexItem layout={Frame}>`を呼び出します.
+- `<CardBody>`: `<FlexItem layout={Stack}>`を呼び出します.
+
+
+
+## Examples
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
@@ -129,8 +165,6 @@ radiusのデフォルト、`1`にする？ */}
 		```
 	</PreviewCode>
 </Preview>
-
-
 
 
 
@@ -251,12 +285,12 @@ radiusのデフォルト、`1`にする？ */}
 
 ### 横並び
 
-`layout='Flex'`を指定すると、`<Card>`は`<Flex>`で構成され、他にflex用のプロパティ指定が特になければ横並びで固定されます。
+`layout={Flex}`を指定して横並びで常に表示する例を紹介します。
 
 <Preview>
 	<PreviewTitle>横向きで固定</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Card layout='Flex'>
+		<Card layout={Flex}>
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -266,7 +300,7 @@ radiusのデフォルト、`1`にする？ */}
 				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
-		<Card layout='Flex' fxd='rr'>
+		<Card layout={Flex} fxd='rr'>
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -278,8 +312,8 @@ radiusのデフォルト、`1`にする？ */}
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "layout='Flex'" "fxsh='0'" "fxg='1'"
-		<Card layout='Flex'>
+		```jsx "layout={Flex}" "fxsh='0'" "fxg='1'"
+		<Card layout={Flex}>
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -289,7 +323,7 @@ radiusのデフォルト、`1`にする？ */}
 				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
-		<Card layout='Flex' fxd='rr'>
+		<Card layout={Flex} fxd='rr'>
 			<CardMedia w={['32%','40%','50%']} fxsh='0'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -340,7 +374,7 @@ radiusのデフォルト、`1`にする？ */}
  <Preview>
 	<PreviewTitle>画像のアスペクト比を指定する例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Card layout='Flex' href='###' hov='bxsh,up'>
+		<Card layout={Flex} href='###' hov='bxsh,up'>
 			<CardMedia aspect='1/1' w='36%' fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -353,7 +387,7 @@ radiusのデフォルト、`1`にする？ */}
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Card layout='Flex' href='###' hov='bxsh,up'>
+		<Card layout={Flex} href='###' hov='bxsh,up'>
 			<CardMedia aspect='1/1' w='36%' fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
@@ -389,11 +423,14 @@ radiusのデフォルト、`1`にする？ */}
 
 ### 縦並び
 
+
+`layout={Stack}`を指定して縦並びで常に表示する例を紹介します。
+
 <Preview>
-	<PreviewTitle>縦向きレイアウト</PreviewTitle>
+	<PreviewTitle>縦向きで固定</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Columns variant='liquid' g='40'>
-			<Card layout='Stack' href='#card-1'>
+			<Card layout={Stack} href='#card-1'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -403,7 +440,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
 			</Card>
-			<Card layout='Stack' href='#card-2'>
+			<Card layout={Stack} href='#card-2'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -418,7 +455,7 @@ radiusのデフォルト、`1`にする？ */}
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "href"
 		<Columns variant='liquid' g='40'>
-			<Card layout='Stack' href='#card-1'>
+			<Card layout={Stack} href='#card-1'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -428,7 +465,7 @@ radiusのデフォルト、`1`にする？ */}
 					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
 				</CardBody>
 			</Card>
-			<Card layout='Stack' href='#card-2'>
+			<Card layout={Stack} href='#card-2'>
 				<CardMedia aspect='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
@@ -506,6 +543,7 @@ radiusのデフォルト、`1`にする？ */}
 		```
 	</PreviewCode>
 </Preview>
+
 
 #### ホバーでコンテンツを出現する例
 
@@ -641,7 +679,7 @@ radiusのデフォルト、`1`にする？ */}
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "layout='Flex'"
+		```jsx "layout={Flex}"
 		<Card sideW='50%' sidePosition='start start'>
 			<CardMedia isSide aspect={['16/9', 'unset']}>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />

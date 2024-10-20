@@ -3,11 +3,10 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Text, Center, Flex, Icon, Callout, Dummy } from '@lism-ui/core';
+import { Divider, Stack, Text, Center, Flex, Icon, Dummy } from '@lism-ui/core';
 import { AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
-import { Note } from '~/components/ex/Note';
-import { Minus, Plus, X, Question, CaretDown } from "@phosphor-icons/react";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Note, Callout } from "~/components";
+import { Minus, Plus, X, Question, CaretDown, EyeClosed, Eyes } from "@phosphor-icons/react";
 
 
 アコーディオン要素を作成できるコンポーネントです。
@@ -35,7 +34,7 @@ import { Minus, Plus, X, Question, CaretDown } from "@phosphor-icons/react";
 
 ## Import
 
-<ImportCode component='Accordion, AccordionHeader, AccordionBody' />
+<ImportPackage component='Accordion, AccordionHeader, AccordionBody' />
 
 
 HTML で使用する場合、jsファイルが必要です。
@@ -187,48 +186,6 @@ const MyIcon = (props) => {
 	<AccordionHeader icon={MyIcon}>AccordionHeader</AccordionHeader>
 	<AccordionBody mbs='20'>...</AccordionBody>
 </Accordion>
-```
-	</PreviewCode>
-</Preview>
-
-#### 開閉時にアイコンを切り替える
-
-`<AccordionHeader>`に`openIcon`,`closeIcon`を指定して、開閉時にアイコンを切り替えることが可能になっています。
-
-<Preview>
-	<PreviewTitle>開閉時、アイコンを切り替える</PreviewTitle>
-	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
-				<>AccordionHeader</>
-			</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-```jsx "openIcon" "closeIcon"
-import { Minus, Plus } from '@phosphor-icons/react';
-
-<Accordion p='20'>
-	<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
-		Accordionヘッダー
-	</AccordionHeader>
-	<AccordionBody mbs='20'>
-		<Dummy />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-		<PreviewCode slot='tab' label='HTML'>
-```html "c--accordion__openIcon" "c--accordion__closeIcon"
-...
-		<span class="c--accordion__icon -d:if">
-			<svg class="c--accordion__openIcon a--icon" ...>...</svg>
-			<svg class="c--accordion__closeIcon a--icon" ...>...</svg>
-		</span>
-...
 ```
 	</PreviewCode>
 </Preview>
@@ -567,3 +524,48 @@ CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速
 }
 ```
 </Note> */}
+
+
+## Opt-in
+
+#### 開閉時にアイコンを切り替える
+
+`<AccordionHeader>`に`openIcon`,`closeIcon`を指定して、開閉時にアイコンを切り替えることが可能になっています。
+
+<Preview>
+	<PreviewTitle>開閉時、アイコンを切り替える</PreviewTitle>
+	<PreviewArea p='20'>
+		<Accordion p='20'>
+			<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
+				<>AccordionHeader</>
+			</AccordionHeader>
+			<AccordionBody mbs='20'>
+				<Dummy />
+			</AccordionBody>
+		</Accordion>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+```jsx "openIcon" "closeIcon"
+import { Minus, Plus } from '@phosphor-icons/react';
+
+<Accordion p='20'>
+	<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
+		Accordionヘッダー
+	</AccordionHeader>
+	<AccordionBody mbs='20'>
+		<Dummy />
+	</AccordionBody>
+</Accordion>
+```
+	</PreviewCode>
+		<PreviewCode slot='tab' label='HTML'>
+```html "c--accordion__openIcon" "c--accordion__closeIcon"
+...
+		<span class="c--accordion__icon -d:if">
+			<svg class="c--accordion__openIcon a--icon" ...>...</svg>
+			<svg class="c--accordion__closeIcon a--icon" ...>...</svg>
+		</span>
+...
+```
+	</PreviewCode>
+</Preview>

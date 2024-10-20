@@ -29,6 +29,23 @@ const itemProps = {
 	pslf: { style: 'placeSelf', utilKey: 'pslf', utils: 'selfPlace' },
 };
 
+export const GAP_PROPS = {
+	gap: {
+		presets: 'gap',
+		utilKey: 'g',
+		converter: 'space',
+		// gap={row, clm} の場合の処理
+		// objProcessor: (d) => `${d}g`,
+	},
+	g: {
+		presets: 'gap',
+		utils: { inherit: 'inherit' },
+		converter: 'space',
+	},
+	rowg: { converter: 'space' },
+	colg: { converter: 'space' },
+};
+
 export default {
 	// size
 	w: { utils: { 'fit-content': 'fit' }, presets: ['100%'], converter: 'size' },
@@ -172,6 +189,8 @@ export default {
 	cols: { style: '--cols' },
 	rows: { style: '--rows' },
 
+	...GAP_PROPS,
+
 	...placeProps,
 	...itemProps,
 	// insets: { map: 1 },
@@ -181,23 +200,6 @@ export default {
 	// flexItem: { map: 1 },
 	// gridItem: { map: 1 },
 	// css: { map: 1 },
-};
-
-export const GAP_PROPS = {
-	gap: {
-		presets: 'gap',
-		utilKey: 'g',
-		converter: 'space',
-		// gap={row, clm} の場合の処理
-		// objProcessor: (d) => `${d}g`,
-	},
-	g: {
-		presets: 'gap',
-		utils: { inherit: 'i' },
-		converter: 'space',
-	},
-	rowg: { converter: 'space' },
-	colg: { converter: 'space' },
 };
 
 export const CONTEXT_PROPS = {
@@ -212,7 +214,7 @@ export const CONTEXT_PROPS = {
 		gac: { style: 'gridAutoColumns' },
 
 		// autoFlow, autoRows, autoCols
-		...GAP_PROPS,
+		// ...GAP_PROPS,
 	},
 	gridItem: {
 		// item
@@ -231,7 +233,7 @@ export const CONTEXT_PROPS = {
 		// nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
 		fxw: { utils: { wrap: 'w', nowrap: 'nw' } },
 		fxd: { utils: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' } },
-		...GAP_PROPS,
+		// ...GAP_PROPS,
 	},
 
 	flexItem: {

@@ -3,10 +3,9 @@ title: 'Icon'
 description: ...
 ---
 
-import { Container, Columns, Grid, Stack, Flex, Callout, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
+import { Container, Columns, Grid, Stack, Flex, Spacer, Cluster, Icon, Center } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Note, Callout } from "~/components";
 import { Horse, Cat, WarningCircle } from "@phosphor-icons/react";
-import { Note } from '~/components/ex/Note';
 import {phIcons, logoIcons} from '@lism-ui/core/components/Icon/presets';
 
 export const PresetIcons = ({icons}) => {
@@ -57,7 +56,7 @@ span.a--icon(.a--icon--emoji|.a--icon--mask)(.a--icon--inline)
 
 ## Import
 
-<ImportCode component='Icon' />
+<ImportPackage component='Icon' />
 
 ## Usage
 

@@ -20,8 +20,8 @@
  ---------------------------------------- */
 :root {
 	--code-c: currentColor;
-	// --code-bgc: color-mix(in srgb, transparent, currentColor 4%);
-	--code-bgc: color-mix(in srgb, transparent, var(--c--base-2) 90%);
+	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
+	// --code-bgc: color-mix(in srgb, transparent, currne 90%);
 }
 
 /* ----------------------------------------
@@ -73,12 +73,6 @@ kbd {
 
 		// color: var(--c--text);
 		// background-color: var(--c--base);
-	}
-}
-
-.c--callout {
-	&:where(:not(.c--preview_area &)) {
-		border-radius: var(--bdrs--2);
 	}
 }
 

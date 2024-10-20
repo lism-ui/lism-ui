@@ -20,7 +20,7 @@ export default {
 		label: 'Check:',
 	},
 	help: {
-		icon: 'help',
+		icon: 'question',
 		color: 'purple',
 		label: 'Help:',
 	},

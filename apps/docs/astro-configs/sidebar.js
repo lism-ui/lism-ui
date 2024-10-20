@@ -170,22 +170,26 @@ export default [
 				link: '###---',
 			},
 			{
-				label: 'Divider',
-				link: '/components/divider/',
-			},
-			{
 				label: 'Decorator',
 				link: '/components/decorator/',
+			},
+			{
+				label: 'Divider',
+				link: '/components/divider/',
 			},
 			{
 				label: 'Icon',
 				link: '/components/icon/',
 			},
 			{
+				label: 'Spacer',
+				link: '/components/spacer/',
+			},
+
+			{
 				label: 'Blocks',
 				link: '###---',
 			},
-
 			{
 				label: 'Avatar',
 				link: '/components/avatar/',
@@ -195,25 +199,10 @@ export default [
 				link: '/components/badge/',
 			},
 			{
-				label: 'Banner',
-				link: '/components/banner/',
-			},
-			{
 				label: 'Button',
 				link: '/components/button/',
 			},
-			{
-				label: 'Spacer',
-				link: '/components/spacer/',
-			},
-			{
-				label: 'List',
-				link: '/components/list/',
-			},
-			{
-				label: 'Table',
-				link: '/components/table/',
-			},
+
 			{
 				label: 'Dynamic',
 				link: '###---',
@@ -234,6 +223,12 @@ export default [
 				label: 'Components',
 				link: '###---',
 			},
+
+			{
+				label: 'Banner',
+				link: '/components/banner/',
+			},
+
 			{
 				label: 'Callout',
 				link: '/components/callout/',
@@ -241,6 +236,14 @@ export default [
 			{
 				label: 'Card',
 				link: '/components/card/',
+			},
+			{
+				label: 'List',
+				link: '/components/list/',
+			},
+			{
+				label: 'Table',
+				link: '/components/table/',
 			},
 			{
 				label: 'Reel',

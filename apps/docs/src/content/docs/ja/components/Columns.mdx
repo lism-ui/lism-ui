@@ -2,8 +2,8 @@
 title: 'Columns'
 description: ...
 ---
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode, PropBadge } from "~/components";
-import { Box, Callout, Dummy, Columns } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge } from "~/components";
+import { Box, Dummy, Columns } from '@lism-ui/astro';
 
 指定した列数でカラムレイアウトを作成します。
 
@@ -20,7 +20,7 @@ import { Box, Callout, Dummy, Columns } from '@lism-ui/astro';
 
 ## Import
 
-<ImportCode component='Columns' />
+<ImportPackage component='Columns' />
 
 
 ## Usage
@@ -136,9 +136,6 @@ import { Box, Callout, Dummy, Columns } from '@lism-ui/astro';
 
 列数を指定せず、**子要素が指定した幅より小さくならないように自動で折り返しされる**カラムレイアウトを作成します。
 
-{/* <Callout type="info">
-カラムの折返しタイミングがブレイクポイントではなくコンテンツサイズに依存します。
-</Callout> */}
 
 子要素が維持する最小幅は`colSize`(`--col-size`) で指定できます。（デフォルトは`16rem`です）。
 

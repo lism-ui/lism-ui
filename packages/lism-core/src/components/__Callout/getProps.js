@@ -22,12 +22,12 @@ export default function getProps({
 	// preset 指定がある場合の処理
 	const presets = type ? CalloutPresets[type] : null;
 	if (presets) {
-		keycolor = keycolor || presets.color || null;
-		icon = icon || presets.icon || null;
+		keycolor = keycolor || presets.color;
+		icon = icon || presets.icon;
 	}
 
 	props.lismClass = atts(lismClass, 'c--callout', variant && `c--callout--${variant}`);
-	props.keycolor = keycolor;
+	props.keycolor = keycolor || 'currentColor';
 	props.isColored = true;
 
 	return { calloutProps: props, icon, iconProps, bodyProps };

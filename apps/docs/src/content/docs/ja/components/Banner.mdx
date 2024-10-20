@@ -3,59 +3,56 @@ title: 'Banner'
 description: ...
 ---
 
-import { Dummy, Banner, Text, Stack, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
+import { Dummy, Text, Stack, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, ImportSource, OptinHelp } from '~/components';
+import { Banner } from '~/components/ex/Banner';
 
 
 
-バナーリンクを表示するコンポーネントです。  
-`<LinkBox layout={Frame}>` が内部で呼び出されます。
-
-
-## 構造
-```pug
-a.b--banner.l--frame.is--linkBox
-```
+バナーリンクを表示するコンポーネントの作成例を紹介します。
 
 
 
-## Props
-
-| プロパティ | 説明 |
-|---|---|
-|`variant`| `b--banner--{variant}` クラスを出力します。|
+{/* https://picsum.photos/seed/lismcss/1200/600 */}
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Banner href='#banner-link'>
+			<img src='https://fakeimg.pl/800x200/' alt='' width='800' height='200' />
+		</Banner>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "Banner"
+		<Banner href='#banner-link'>
+			<img src='https://fakeimg.pl/800x200/' alt='' width='800' height='200' />
+		</Banner>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "l--frame" "is--linkBox"
+		<a class="c--banner l--frame is--linkBox -hov:fade" href="#banner-link">
+			<img src='https://fakeimg.pl/800x200/' alt='' width='800' height='200' />
+		</a>
+		```
+	</PreviewCode>
+</Preview>
 
 
 ## Import
 
-<ImportCode component='Banner' />
+<OptinHelp />
+<ImportSource react='Banner/index.jsx' astro='Banner/index.astro' />
+
+
+{/* ## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`variant`| `c--banner--{variant}` クラスを出力します。| */}
 
 
 
-## Usage
-
-<Preview>
-	<PreviewTitle>16:9のバナーリンク</PreviewTitle>
-	<PreviewArea p='30'>
-		<Banner href='#banner-link' aspect='bronze'>
-			<img src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy' />
-		</Banner>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-```jsx "Banner"
-<Banner href='#banner-link' aspect='bronze'>
-	<img src='/img.jpg' alt='' width='960' height='640' loading='lazy' />
-</Banner>
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-```html "l--frame" "is--linkBox"
-<a class="b--banner l--frame is--linkBox -aspect:bronze -hov:fade" href="#banner-link">
-	<img src="/img.jpg" alt="" width="960" height="640" loading="lazy">
-</a>
-```
-	</PreviewCode>
-</Preview>
+## Examples
 
 
 <Preview>
@@ -84,7 +81,8 @@ a.b--banner.l--frame.is--linkBox
 	</PreviewCode>
 </Preview>
 
-<Preview>
+
+{/* <Preview>
 	<PreviewTitle>`hover`を活用する例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='4'>
@@ -106,4 +104,4 @@ a.b--banner.l--frame.is--linkBox
 </Banner>
 ```
 </PreviewCode>
-</Preview>
+</Preview> */}

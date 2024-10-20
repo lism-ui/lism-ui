@@ -2,9 +2,8 @@
 title: 'LinkBox'
 description: ...
 ---
-import { LinkBox, Link, Callout, Text, Spacer, Dummy } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from "~/components";
-import { Note } from '~/components/ex/Note';
+import { LinkBox, Link, Text, Spacer, Dummy } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout, Note } from "~/components";
 
 ボックス全体をリンク化するコンポーネントです。  
 デフォルトでは`<Lism tag='a'>`と同じような構成となり、`a.is--linkBox` を出力します。
@@ -27,7 +26,7 @@ import { Note } from '~/components/ex/Note';
 
 ## Import
 
-<ImportCode component='LinkBox, Link' />
+<ImportPackage component='LinkBox, Link' />
 
 
 ## Usage

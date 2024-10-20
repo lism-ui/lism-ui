@@ -2,10 +2,9 @@
 title: 'Badge'
 description: ...
 ---
-
-import { Badge, Flex, Icon, Callout } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout } from '~/components';
+import { Badge, Flex, Icon } from '@lism-ui/astro';
 import { Book, Cat, Baseball } from '@phosphor-icons/react';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportCode } from '~/components';
 
 
 バッジを表示するコンポーネントです。
@@ -24,7 +23,7 @@ span.b--badge
 
 ## Import
 
-<ImportCode component='Badge' />
+<ImportPackage component='Badge' />
 
 ## Usage
 

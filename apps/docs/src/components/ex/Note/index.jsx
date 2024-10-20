@@ -1,8 +1,16 @@
 import { Lism, Flex, Stack, Icon, Center } from '@lism-ui/core';
-import notePresets from '@lism-ui/core/components/Callout/presets.js';
+import PRESETS from './presets.js';
 
-export function Note({ type = 'note', keycolor, icon, title, children, isFlow = 's', ...props }) {
-	const presets = type ? notePresets[type] : null;
+export default function Note({
+	type = 'note',
+	keycolor,
+	icon,
+	title,
+	children,
+	isFlow = 's',
+	...props
+}) {
+	const presets = type ? PRESETS[type] : null;
 	if (presets) {
 		keycolor = keycolor || presets?.color || null;
 		icon = icon || presets?.icon || null;

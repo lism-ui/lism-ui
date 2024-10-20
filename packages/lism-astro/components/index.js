@@ -31,7 +31,7 @@ export * from './Icon';
 
 export * from './LinkBox';
 
-export * from './Callout';
+// export * from './Callout';
 export * from './Badge';
 export * from './Button';
 export * from './Table';
@@ -44,7 +44,6 @@ export * from './Tab';
 
 // export * from './Note';
 export * from './Reel';
-export * from './Banner';
 export * from './NavMenu';
 
 export { default as Test } from './Test';

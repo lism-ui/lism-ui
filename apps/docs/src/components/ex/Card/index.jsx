@@ -1,43 +1,32 @@
-import { Flex, Stack, Frame, FlexItem, WithSide } from '@lism-ui/core';
+import { Stack, Frame, FlexItem, WithSide } from '@lism-ui/core';
 
-export function Card({ layout, children, ...props }) {
+export function Card({ layout, ...props }) {
+	const Layout = layout || WithSide;
+
 	const defaultProps = {
-		bgc: 'base',
+		lismClass: 'c--card',
 		c: 'text',
+		bgc: 'base',
 		bdrs: '3',
 		bxsh: '2',
 		ov: 'h',
 	};
-
-	let CardLayout = layout || WithSide;
-	if (layout === 'Flex') {
-		CardLayout = Flex;
-	} else if (layout === 'Stack') {
-		CardLayout = Stack;
-	}
 
 	if (props.href) {
 		defaultProps.tag = 'a';
 		defaultProps.isLinkBox = true;
 	}
 
-	return (
-		<CardLayout lismClass='c--card' {...defaultProps} {...props}>
-			{children}
-		</CardLayout>
-	);
+	return <Layout {...defaultProps} {...props} />;
 }
 
 export function CardMedia(props) {
-	const defaultProps = {}; // ov: 'h'
-	// fxsh='0' は、横並びにした時用。
-	// if (!props.isSide) defaultProps.fxsh = '0';
-	return <FlexItem lismClass='c--card__media' layout={Frame} {...defaultProps} {...props} />;
+	return <FlexItem layout={Frame} lismClass='c--card__media' {...props} />;
 }
 
 export function CardBody({ children, ...props }) {
 	return (
-		<FlexItem lismClass='c--card__body' layout={Stack} {...props}>
+		<FlexItem layout={Stack} lismClass='c--card__body' {...props}>
 			{children}
 		</FlexItem>
 	);
