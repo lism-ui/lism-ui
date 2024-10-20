@@ -3,7 +3,10 @@ import getBpData from '../../lib/getBpData';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
 export default function getSpacerProps({ lismClass, variant, ...props }) {
-	props.lismClass = atts(lismClass, 'b--spacer', variant && `b--spacer--${variant}`);
+	const defaultProps = {
+		lismClass: atts(lismClass, `a--spacer`, variant && `a--spacer--${variant}`),
+		'aria-hidden': 'true',
+	};
 
 	if (null != props.h) {
 		let hObj = getBpData(props.h);
@@ -28,5 +31,5 @@ export default function getSpacerProps({ lismClass, variant, ...props }) {
 		props.w = wObj;
 	}
 
-	return props;
+	return { ...defaultProps, ...props };
 }
