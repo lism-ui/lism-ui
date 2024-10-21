@@ -10,7 +10,9 @@
 
 .a--icon {
 	--scale: 1;
+	--offset: 0;
 	scale: var(--scale);
+	translate: var(--offset);
 	display: inline-flex;
 	vertical-align: middle; //下にスペースができるのを防ぐ
 	flex-shrink: 0; // Callout など、アイコンはflex直下の子要素にしたい場合も多いので、指定しておく
@@ -19,8 +21,8 @@
 }
 
 .a--icon--inline {
-	--scale: 1.125; // inlineアイコンはデフォルト状態で少し拡大表示
-	vertical-align: -0.125em;
+	--scale: 1.125; // inline時、余白でテキストより小さく見えがちなのでほんの少し拡大する
+	vertical-align: -0.125em; // scale とは無関係
 	margin-inline: calc(1em * (var(--scale) - 1) / 2);
 	// line-height: inherit;
 }

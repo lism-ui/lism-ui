@@ -3,8 +3,8 @@ title: 'Card'
 description: ...
 ---
 
-import { Dummy, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, Link, Layer, Button, Columns, Media } from '@lism-ui/core';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, OptinHelp } from '~/components';
+import { Dummy, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, Link, Layer, Columns, Media } from '@lism-ui/core';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource,Button } from '~/components';
 import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
 
@@ -13,16 +13,15 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%'>
 			<CardMedia isSide aspect='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -33,9 +32,8 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -44,9 +42,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
 
 ## Import
-
-<OptinHelp />
-<ImportSource react='Card/index.jsx' css='/Card/style.scss' />
+<ImportSource name='Card' react />
 
 
 ## Props
@@ -73,9 +69,8 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
@@ -83,9 +78,8 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -96,9 +90,8 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
@@ -106,9 +99,8 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
 			</CardBody>
 		</Card>
 		```
@@ -124,9 +116,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
@@ -134,9 +126,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -147,9 +139,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
@@ -157,9 +149,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		```
@@ -180,7 +172,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
 			</CardBody>
 		</Card>
@@ -192,7 +184,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
 			</CardBody>
 		</Card>
@@ -205,37 +197,33 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 <Preview>
 	<PreviewTitle>`is--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Card isLinkBox hov='shadow'>
-			<CardMedia aspect='4/3'>
+		<Card isLinkBox hov='shadow' sideW='50%'>
+			<CardMedia isSide aspect='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
+				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>
+				<h3 className='-fz:l'>
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
-				<Dummy lang='ja' fz='s' />
-				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Text>
+				<Dummy lang='ja' />
+				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "isLinkBox" "href=" "isOverlayLink"
-		<Card isLinkBox hov='shadow'>
-			<CardMedia aspect='4/3'>
+		<Card isLinkBox hov='shadow' sideW='50%'>
+			<CardMedia isSide aspect='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
+				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>
+				<h3 className='-fz:l'>
 					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
 				</h3>
-				<Dummy lang='ja' fz='s' />
-				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Text>
+				<Dummy lang='ja' />
+				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
 			</CardBody>
 		</Card>
 		```
@@ -247,16 +235,14 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewArea resize p='40'>
 		<Card isLinkBox sideW='50%' hov='shadow' >
 			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
-			<CardMedia aspect='4/3' isSide>
+			<CardMedia aspect='4/3' isSide pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
+				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
-				<Dummy lang='ja' fz='s' />
-				<Text ta='right' mbs='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Text>
+				<h3 className='-fz:l'>Card Title</h3>
+				<Dummy lang='ja' />
+				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -266,14 +252,12 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
 			<CardMedia aspect='4/3' isSide>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Badge tag='a' href='#badge-link' variant='fill' pos='a' z='1' bdrs='99' hov='up' t='1em' r='1em' td='n'>Category</Badge>
+				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
-				<Dummy lang='ja' fz='s' />
-				<Text ta='right' mbs='auto' fz='s'>
-					<a href='#inner-link' className='-hov:u'>Bottom Link</a>
-				</Text>
+				<h3 className='-fz:l'>Card Title</h3>
+				<Dummy lang='ja' />
+				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
 			</CardBody>
 		</Card>
 		```
@@ -295,9 +279,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		<Card layout={Flex} fxd='rr'>
@@ -305,9 +289,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -318,9 +302,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		<Card layout={Flex} fxd='rr'>
@@ -328,9 +312,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		```
@@ -348,9 +332,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -361,9 +345,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		```
@@ -379,9 +363,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
-				<Dummy lang='ja' length='s' fz='s'/>
-				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
+				<h3 className='-fz:l'>Card Title</h3>
+				<Dummy lang='ja' length='s'/>
+				<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -392,9 +376,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
-				<Dummy lang='ja' length='s' fz='s'/>
-				<Text bdrs='2' aslf='end' mbs='auto' fz='s'>Bottom Text</Text>
+				<h3 className='-fz:l'>Card Title</h3>
+				<Dummy lang='ja' length='s'/>
+				<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 			</CardBody>
 		</Card>
 		```
@@ -412,7 +396,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<Media  src='/img/img-1.jpg' alt='' width='960' height='640' />
 		</CardMedia>
 		<CardBody fxb='8rem' fxg='1' fxsh='0'>
-			<h3 className='-fz:m'>Card Title</h3>
+			<h3 className='-fz:l'>Card Title</h3>
 			<Dummy lang='ja' length='s' fz='s' />
 		</CardBody>
 	</Card>
@@ -435,9 +419,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Dummy lang='ja' fz='s' />
-					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
+					<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 				</CardBody>
 			</Card>
 			<Card layout={Stack} href='#card-2'>
@@ -445,9 +429,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Dummy lang='ja' length='s' fz='s'/>
-					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
+					<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 				</CardBody>
 			</Card>
 		</Columns>
@@ -460,9 +444,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Dummy lang='ja' fz='s' />
-					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
+					<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 				</CardBody>
 			</Card>
 			<Card layout={Stack} href='#card-2'>
@@ -470,9 +454,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Dummy lang='ja' length='s' fz='s'/>
-					<Text ta='right' mbs='auto' fz='s'>Bottom Text</Text>
+					<Text px='10' aslf='end' mbs='auto' fz='s' bd='b'>Bottom Text</Text>
 				</CardBody>
 			</Card>
 		</Columns>
@@ -522,9 +506,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='10'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto' bdrs='99'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -535,9 +519,9 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='10'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' mb='10' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='auto' bdrs='99'>Button</Button>
+				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
 			</CardBody>
 		</Card>
 		```
@@ -561,7 +545,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title</h3>
+						<h3 className='-fz:l'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
 								<Dummy py='5' fz='s' lh='xs' op='high' />
@@ -578,7 +562,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 					<Layer blur='4px' brightness='1.1'/>
 					<Box pos='relative' z='1' c='black' lh='s'>
-						<h3 className='-fz:m'>Card Title</h3>
+						<h3 className='-fz:l'>Card Title</h3>
 						<Grid hov='get:slide'>
 							<Box ov='h'>
 								<Dummy py='5' fz='s' lh='xs' op='high' />
@@ -600,7 +584,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 				<Layer blur='4px' brightness='1.1'/>
 				<Box pos='relative' z='1' c='black' lh='s'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Grid hov='get:slide'>
 						<Box ov='h'>
 							<Dummy py='5' fz='s' lh='xs' op='high' />
@@ -617,7 +601,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
 				<Layer blur='4px' brightness='1.1'/>
 				<Box pos='relative' z='1' c='black' lh='s'>
-					<h3 className='-fz:m'>Card Title</h3>
+					<h3 className='-fz:l'>Card Title</h3>
 					<Grid hov='get:slide'>
 						<Box ov='h'>
 							<Dummy py='5' fz='s' lh='xs' op='high' />
@@ -667,27 +651,25 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 <Preview>
 	<PreviewTitle>ブレイクポイントで切り替える場合</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Card sideW='50%' sidePosition='start start'>
-			<CardMedia isSide aspect={['16/9', 'unset']}>
+		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
+			<CardMedia isSide aspect={['16/9', 'unset']} pos='r' bdrs='3'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='10' bdrs='2'>Button</Button>
 			</CardBody>
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "layout={Flex}"
-		<Card sideW='50%' sidePosition='start start'>
-			<CardMedia isSide aspect={['16/9', 'unset']}>
+		```jsx
+		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
+			<CardMedia isSide aspect={['16/9', 'unset']} pos='r'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
-				<h3 className='-fz:m'>Card Title</h3>
+				<h3 className='-fz:l'>Card Title</h3>
 				<Dummy lang='ja' fz='s' />
-				<Button href='#button-link' bdrs='2' aslf='end' mbs='10' bdrs='2'>Button</Button>
 			</CardBody>
 		</Card>
 		```

@@ -1,4 +1,4 @@
-import { Lism, Badge, Layer, Text, Flex } from '@lism-ui/core';
+import { Lism, Layer, Text, Flex } from '@lism-ui/core';
 
 export function AttsLabels({ atts = '', ...props }) {
 	// attsを , で分割
@@ -51,9 +51,10 @@ export function TipCode({
 	}
 
 	return (
-		<Badge
+		<Lism
 			tag='code'
-			d='ib'
+			bd
+			d='if'
 			fz='s'
 			lh='xs'
 			px='10'
@@ -65,7 +66,7 @@ export function TipCode({
 			{...props}
 		>
 			{text || children}
-		</Badge>
+		</Lism>
 	);
 }
 

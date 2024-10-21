@@ -13,70 +13,26 @@ import { ArrowFatLinesDown } from '@phosphor-icons/react';
 手順を示すレイアウトの構築例を紹介します。
 
 
-## 構築例
-
-<Preview>
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
-<PreviewCode slot='tab' label='React'>
-```jsx
-import { Lism, Flex, Stack, Badge } from '@lism-ui/core';
-
-export function Step(props) {
-	return <Stack className='c--step' g='20' p='30' bdrs='3' bxsh='3' {...props} />;
-}
-
-export function StepBody(props) {
-	return <Lism isFlow='s' {...props} />;
-}
-
-export function StepHead({ tag = 'div', num = '1', label = '', children, ...props }) {
-	return (
-		<Flex className='c--stepHead' g='20' ai='c' {...props}>
-			<Badge tag='div' variant='fill' lh='1' px='20' py='5' g='5' ai='c' bdrs='99'>
-				{label && (
-					<Lism tag='span' fz='xs' fs='i'>
-						{label}
-					</Lism>
-				)}
-				<Lism tag='span' fz='xl' ff='mono' fs='i'>
-					{num}
-				</Lism>
-			</Badge>
-			<Lism tag={tag} f='inherit' fw='bold'>
-				{children}
-			</Lism>
-		</Flex>
-	);
-}
-```
-</PreviewCode>
-{/* <PreviewCode slot='tab' label='Astro'>
-```jsx
-```
-</PreviewCode> */}
-</Preview>
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize nogrid p='40'>
 		<Stack g='40'>
-			<Step bgc='base'>
-				<StepHead tag='h3' num='1' label='Step.'>
+			<Step>
+				<StepHead tag='h3' num='1'>
 					<>手順1のタイトル</>
 				</StepHead>
 				<StepBody>
-					<p>
-						ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。
-					</p>
+					<Dummy lang='ja' length='s' />
 				</StepBody>
 			</Step>
 
 			<Center>
-				<Icon icon={ArrowFatLinesDown} weight='fill' fz='3xl' />
+				<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 			</Center>
 
-			<Step bgc='base'>
-				<StepHead tag='h3' num='2' label='Step.'>
+			<Step>
+				<StepHead tag='h3' num='2'>
 					<>手順2のタイトル</>
 				</StepHead>
 				<StepBody>
@@ -86,11 +42,11 @@ export function StepHead({ tag = 'div', num = '1', label = '', children, ...prop
 			</Step>
 
 			<Center>
-				<Icon icon={ArrowFatLinesDown} weight='fill' fz='3xl' />
+				<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 			</Center>
 
-			<Step bgc='base'>
-				<StepHead tag='h3' num='3' label='Step.'>
+			<Step>
+				<StepHead tag='h3' num='3'>
 					<>手順3のタイトル</>
 				</StepHead>
 				<StepBody>
@@ -101,49 +57,43 @@ export function StepHead({ tag = 'div', num = '1', label = '', children, ...prop
 	</PreviewArea>
 	<PreviewCode>
 ```jsx
-import { ArrowFatLinesDown } from '@phosphor-icons/react';
-import { Stack, Center, AccordionIcon } from '@lism-ui/core';
-import { Step, StepHead, StepBody } from './path/to/.../steps';
-
 <Stack g='40'>
-		<Step>
-			<StepHead num='1' label='Step.'>
-				手順1のタイトル
-			</StepHead>
-			<StepBody>
-				<p>
-					ロレム・イプサムの座り雨、トマ好き学習エリット、しかし時と活力、そのような躍動と楽しみ、ブラインド行うにはいくつかの重要な事柄に座ります。
-				</p>
-			</StepBody>
-		</Step>
+	<Step>
+		<StepHead tag='h3' num='1'>
+			<>手順1のタイトル</>
+		</StepHead>
+		<StepBody>
+			<Dummy lang='ja' length='s' />
+		</StepBody>
+	</Step>
 
-		<Center>
-			<Icon icon={ArrowFatLinesDown} weight='fill' fz='3xl' />
-		</Center>
+	<Center>
+		<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
+	</Center>
 
-		<Step>
-			<StepHead num='2' label='Step.'>
-				手順2のタイトル
-			</StepHead>
-			<StepBody>
-				<Dummy lang='ja' length='s' />
-				<Dummy lang='ja' length='codes' />
-			</StepBody>
-		</Step>
+	<Step>
+		<StepHead tag='h3' num='2'>
+			<>手順2のタイトル</>
+		</StepHead>
+		<StepBody>
+			<Dummy lang='ja' length='s' />
+			<Dummy lang='ja' length='codes' />
+		</StepBody>
+	</Step>
 
-		<Center>
-			<Icon icon={ArrowFatLinesDown} weight='fill' fz='3xl' />
-		</Center>
+	<Center>
+		<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
+	</Center>
 
-		<Step>
-			<StepHead num='3' label='Step.'>
-				手順3のタイトル
-			</StepHead>
-			<StepBody>
-				<Dummy lang='ja' length='l' />
-			</StepBody>
-		</Step>
-	</Stack>
+	<Step>
+		<StepHead tag='h3' num='3'>
+			<>手順3のタイトル</>
+		</StepHead>
+		<StepBody>
+			<Dummy lang='ja' length='l' />
+		</StepBody>
+	</Step>
+</Stack>
 ```
 	</PreviewCode>
 </Preview>

@@ -3,7 +3,7 @@ title: 'NavMenu'
 description: ...
 ---
 
-import { Flex, Badge, Icon, Spacer, Box, NavMenu, NavMenuItem, NavMenuLink, Accordion, AccordionBody, AccordionHeader } from '@lism-ui/astro';
+import { Flex, Lism, Icon, Spacer, Box, NavMenu, NavMenuItem, NavMenuLink, Accordion, AccordionBody, AccordionHeader } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Reference, Callout } from "~/components";
 import { FolderSimple } from "@phosphor-icons/react";
 
@@ -92,14 +92,14 @@ import { NavMenu } from '@lism-ui/core';
 
 {/* テキストをspanで囲んで -fx:1 でも可 */}
 <Preview>
-	<PreviewTitle>アイコンやバッジを使った例</PreviewTitle>
+	<PreviewTitle>アイコンやバッジを表示する例</PreviewTitle>
 	<PreviewArea p='30'>
 		<NavMenu hasDivider bd>
 			<NavMenuItem>
 				<NavMenuLink href='#menu1' g='10' ai='c'>
 					<Icon icon={FolderSimple} />
 					<span>Menu item</span>
-					<Badge variant='outline' fz='xs' fw='700' mis='auto'>New</Badge>
+					<Lism tag='span' bd px='10' bdrs='2' fz='xs' fw='bold' mis='auto'>New</Lism>
 				</NavMenuLink>
 			</NavMenuItem>
 			<NavMenuItem>
@@ -125,7 +125,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 		<NavMenuLink href='#menu1' g='10' ai='c'>
 			<Icon icon={FolderSimple} />
 			<span>Menu item</span>
-			<Badge variant='outline' fz='xs' fw='700' mis='auto'>New</Badge>
+			<Lism tag='span' bd px='10' bdrs='2' fz='xs' fw='bold' mis='auto'>New</Lism>
 		</NavMenuLink>
 	</NavMenuItem>
 	<NavMenuItem>

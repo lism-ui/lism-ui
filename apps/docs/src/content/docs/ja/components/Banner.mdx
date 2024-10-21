@@ -4,7 +4,7 @@ description: ...
 ---
 
 import { Dummy, Text, Stack, Center, Layer, Media, Button, LinkBox } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, ImportSource, OptinHelp } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from '~/components';
 import { Banner } from '~/components/ex/Banner';
 
 
@@ -12,10 +12,9 @@ import { Banner } from '~/components/ex/Banner';
 バナーリンクを表示するコンポーネントの作成例を紹介します。
 
 
-
 {/* https://picsum.photos/seed/lismcss/1200/600 */}
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='30'>
 		<Banner href='#banner-link'>
 			<img src='https://fakeimg.pl/800x200/' alt='' width='800' height='200' />
@@ -39,9 +38,7 @@ import { Banner } from '~/components/ex/Banner';
 
 
 ## Import
-
-<OptinHelp />
-<ImportSource react='Banner/index.jsx' astro='Banner/index.astro' />
+<ImportSource name='Banner' react astro />
 
 
 {/* ## Props

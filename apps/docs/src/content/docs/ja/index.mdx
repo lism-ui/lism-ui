@@ -16,8 +16,8 @@ hero:
       icon: external
 ---
 
-import { Lism, Container, Button, Stack, Text, Columns, Spacer } from  '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
+import { Lism, Container, Stack, Text, Columns, Spacer } from  '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, Button } from "~/components";
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import DemoLismComponent from '~/mdx/demo-lism-component.mdx';
 
@@ -79,7 +79,7 @@ export const POINTS = [
 ];
 
 
-<Container size='m' isFlow hasGutter>
+<Container isFlow hasGutter>
 	<h2>独自のCSS設計</h2>
 
 	<Columns cols={[2, 2, 3]} g={[40,50]}>
@@ -109,6 +109,6 @@ export const POINTS = [
 	- 日本発: 日本人が開発しているので、日本語のドキュメントやサポートが充実しています。
 
 	<Spacer h='40' />
-	<Button href='ja/overview/' icon='book' bdrs='99'>ドキュメントを読む</Button>
-
+	<Button variant='fill' mx='auto' href='ja/overview/' bdrs='99'>ドキュメントを読む</Button>
+	
 </Container>

@@ -1,5 +1,6 @@
 ---
-import { Frame, Center, Button } from '@lism-ui/astro';
+import { Frame, Center } from '@lism-ui/astro';
+import Button from '~/components/ex/Button/index.astro';
 
 interface Props {
 	[key: string]: any;
@@ -10,21 +11,13 @@ const { isInline = false, url, ...props } = Astro.props;
 {
 	!isInline ? (
 		<>
-			<Frame aspect='4/3'>
-				<Frame
-					className='u--scalePreview'
-					aspect='4/3'
-					bxsh='1'
-					bdrs='3'
-					bd
-					bdw='3px'
-					{...props}
-				>
+			<Frame aspect='4/3' bxsh='1'>
+				<Frame className='u--scalePreview' aspect='4/3' bdrs='3' bd bdw='3px' {...props}>
 					<iframe src={url} width='800' height='600' />
 				</Frame>
 			</Frame>
 			<Center mbs='40'>
-				<Button href={url} target='_blank' bdrs='2'>
+				<Button href={url} variant='fill' target='_blank' bdrs='2'>
 					大きい画面で見る
 				</Button>
 			</Center>

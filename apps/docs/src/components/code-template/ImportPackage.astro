@@ -1,10 +1,8 @@
 ---
-// import { Text } from '@lism-ui/astro';
 import Expressive from './Expressive.astro';
 import { Preview, PreviewCode } from '~/components';
 
-const { component = '', ...props } = Astro.props;
-
+const { component = '' } = Astro.props;
 const getCode = (name: string) =>
 	`<span style='--0:#F97583;--1:#BF3441'>import</span>` +
 	`<span style='--0:#E1E4E8;--1:#24292E'> { ${component} } </span>` +

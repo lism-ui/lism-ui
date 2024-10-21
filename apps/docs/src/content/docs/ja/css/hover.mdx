@@ -317,7 +317,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	<PreviewArea p='30'>
 		<LinkBox layout={Frame} hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='99'>Some Text</Badge>
+			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
 			<Center hov='get:show' pos='a' inset='0'>
 				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
@@ -328,7 +328,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 		```jsx "hov='pass'" "hov='get:show'"
 		<LinkBox layout={Frame} hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Badge variant='fill' hov='get:hide' pos='a' r='0' m='20' bdrs='99'>Some Text</Badge>
+			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
 			<Center hov='get:show' pos='a' inset='0'>
 				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
@@ -430,30 +430,3 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 		```
 	</PreviewCode>
 </Preview>
-
-
-
-
-## `-hov:reverse`
-
-`--c`と`--bgc`を入れ替えます。
-
-<Preview>
-	<PreviewTitle>`hov='reverse'`</PreviewTitle>
-	<PreviewArea p='40'>
-		<LinkBox href='###' hov='reverse' c='text' bgc='base-2' p='30'>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<LinkBox href='###' hov='reverse' c='text' bgc='base-2' p='30'>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-	</LinkBox>
-	```
-	</PreviewCode>
-</Preview>
-
-<Callout type='info'>
-主に[`<Button>`（`.b--button`）](/ja/components/button)で使用されることを想定して準備されたクラスです。
-</Callout>

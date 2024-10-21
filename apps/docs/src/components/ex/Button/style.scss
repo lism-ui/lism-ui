@@ -1,0 +1,31 @@
+:where(.b--button) {
+	--c: currentColor;
+	--bgc: transparent;
+	--bdc: transparent;
+
+	display: inline-flex;
+	line-height: 1.5;
+	padding: 0.625em 1em;
+	text-decoration: none;
+}
+
+:where(.b--button--fill) {
+	--c: var(--c--base);
+	--bgc: var(--c--text); //transparent;
+	--bdc: var(--bgc);
+}
+
+:where(.b--button--outline) {
+	--c: var(--c--text);
+	--bdc: var(--c);
+}
+
+.b--button {
+	color: var(--c);
+	background-color: var(--bgc);
+	border: solid 1px var(--bdc); // 異なる variant を並べてもサイズに差が出ないようにborderを常に指定
+
+	:where(&) > .a--icon {
+		--scale: 1.125;
+	}
+}

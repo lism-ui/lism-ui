@@ -62,6 +62,7 @@ export default function getProps({
 	as,
 	tag,
 	scale,
+	offset,
 	emoji,
 	mask,
 	icon,
@@ -123,6 +124,7 @@ export default function getProps({
 
 	// 専用変数
 	if (scale) style['--scale'] = scale;
+	if (offset) style['--offset'] = offset;
 
 	props.lismClass = atts(lismClass, iconClasses);
 	props.style = style;

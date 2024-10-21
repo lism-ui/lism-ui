@@ -187,23 +187,6 @@ export default [
 			},
 
 			{
-				label: 'Blocks',
-				link: '###---',
-			},
-			{
-				label: 'Avatar',
-				link: '/components/avatar/',
-			},
-			{
-				label: 'Badge',
-				link: '/components/badge/',
-			},
-			{
-				label: 'Button',
-				link: '/components/button/',
-			},
-
-			{
 				label: 'Dynamic',
 				link: '###---',
 			},
@@ -222,6 +205,23 @@ export default [
 			{
 				label: 'Components',
 				link: '###---',
+			},
+
+			{
+				label: 'Blocks',
+				link: '###---',
+			},
+			{
+				label: 'Avatar',
+				link: '/components/avatar/',
+			},
+			{
+				label: 'Badge',
+				link: '/components/badge/',
+			},
+			{
+				label: 'Button',
+				link: '/components/button/',
 			},
 
 			{

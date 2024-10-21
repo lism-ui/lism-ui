@@ -20,7 +20,7 @@
 // 罫線 : Ruled paper, lined paper, rulied lines
 // 方眼 : graph paper, grid paper, squared paper
 .-bg\:grid {
-	--grid-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--grid-bdc: color-mix(in srgb, currentColor, transparent 95%);
 	--grid-size: 1rem;
 	--grid-offset: calc(var(--grid-size) / 2);
 	background-image: linear-gradient(
@@ -36,10 +36,10 @@
 // 	--grid-bdc: color-mix(in srgb, var(--keycolor), transparent 88%);
 // }
 .-bg\:stripe {
-	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--stripe-bdc: color-mix(in srgb, currentColor, transparent 95%);
 	--stripe-bdw: 1px;
 	--stripe-deg: -40deg;
-	--stripe-interval: 6px;
+	--stripe-interval: 0.5rem;
 	background-image: repeating-linear-gradient(
 		var(--stripe-deg),
 		var(--stripe-bdc),

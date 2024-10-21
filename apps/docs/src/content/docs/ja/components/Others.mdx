@@ -4,7 +4,7 @@ description: ...
 ---
 
 
-import { Grid, Text, Lism, Flex, Stack, Divider, Decorator, Button, Frame, Layer, Media, Dummy } from '@lism-ui/core';
+import { Grid, Text, Lism, Flex, Stack, Divider, Decorator, Link, Frame, Layer, Media, Dummy } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
 import { Step, StepBody, StepHead } from '~/components/ex/Step';
 import {Question,ChatCircleDots} from '@phosphor-icons/react';
@@ -107,10 +107,10 @@ import { ArrowFatLinesDown } from '@phosphor-icons/react';
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Frame>
 			<Flex aspect='16/9'>
-				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
+				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='40' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
 					<Dummy lh='s' mb='auto' length='l'/>
-					<Button href='#button-test' keycolor='white' c='black' bdrs='99' aslf='end' mbs='30' minW='25%'>Button Text</Button>
+					<Link href='#button-test' keycolor='white' c='inherit' bdrs='99' aslf='end' px='10' mbs='30'>Link Text</Link>
 				</Stack>
 			</Flex>
 		</Stack>
@@ -122,10 +122,10 @@ import { ArrowFatLinesDown } from '@phosphor-icons/react';
 				<Media src="/img/img-3.jpg" alt="" width='960' height='640' loading='lazy' decoding='async' />
 			</Frame>
 			<Flex aspect='16/9'>
-				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='30' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
+				<Stack flexItem={{fx:'1'}} pos='r' g='20' p='40' z='1' minH='100%' h='auto' c='white' bgc='black:50%'>
 					<h3>Card Title</h3>
 					<Dummy lh='s' mb='auto' length='l'/>
-					<Button href='#button-test' keycolor='white' c='black' bdrs='99' aslf='end' mbs='30' minW='25%'>Button Text</Button>
+					<Link href='#button-test' keycolor='white' c='inherit' bdrs='99' aslf='end' px='10' mbs='30'>Link Text</Link>
 				</Stack>
 			</Flex>
 		</Stack>

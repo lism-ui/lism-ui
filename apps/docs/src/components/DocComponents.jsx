@@ -1,5 +1,6 @@
-import { Lism, Text, Badge, Icon } from '@lism-ui/core';
+import { Text, Icon } from '@lism-ui/core';
 import Callout from '~/components/ex/Callout/index.jsx';
+import Badge from '~/components/ex/Badge/index.jsx';
 import ICON_PRESETS from '~/components/ex/Callout/presets.js';
 
 import {
@@ -21,14 +22,6 @@ export const HelpText = ({ tag = 'p', children, ...props }) => {
 		<Text {..._props} {...props}>
 			{children}
 		</Text>
-	);
-};
-
-export const OptinHelp = (props) => {
-	return (
-		<Callout type='info'>
-			<Text {...props}>ソースコードを手動でコピー&ペーストしてご利用ください。</Text>
-		</Callout>
 	);
 };
 

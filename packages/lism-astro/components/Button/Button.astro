@@ -1,27 +1,14 @@
 ---
 import { LismProps } from '../types';
 import { Lism } from '../Lism';
-import { Flex } from '../Flex';
-import { Icon } from '../Icon';
-import { getButtonProps } from '@lism-ui/core/components/Button/getProps';
+import { getProps } from '@lism-ui/core/components/Button/getProps';
 
 // Propsの定義
 interface Props extends LismProps {}
-const { layout, icon, endIcon, iconScale, ...props } = Astro.props || {};
-
-const { btnProps, textProps } = getButtonProps(props);
-const BtnComponent = layout || Flex;
-const hasSlot = !!Astro.slots.default;
+const { layout, ...props } = Astro.props || {};
+const Layout = layout || Lism;
 ---
 
-<BtnComponent {...btnProps}>
-	{icon && <Icon className='b--button__icon' icon={icon} scale={iconScale} />}
-	{
-		hasSlot && (
-			<Lism {...textProps}>
-				<slot />
-			</Lism>
-		)
-	}
-	{endIcon && <Icon className='b--button__icon' icon={endIcon} scale={iconScale} />}
-</BtnComponent>
+<Layout {...getProps(props)}>
+	<slot />
+</Layout>

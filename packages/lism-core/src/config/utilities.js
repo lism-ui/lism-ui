@@ -27,6 +27,7 @@ export default {
 		// current: 'cc',
 		// currentColor: 'cc',
 		// transparent: 't',
+		none: 'n',
 		left: 'l',
 		right: 'r',
 		top: 't',

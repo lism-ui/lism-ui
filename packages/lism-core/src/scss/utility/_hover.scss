@@ -21,17 +21,6 @@
 // .-hov\:u:hover {
 // 	text-decoration: underline !important;
 // }
-.-hov\:reverse {
-	:where(&) {
-		--hov-c: var(--bgc);
-		--hov-bgc: var(--c);
-	}
-	&:hover {
-		background-color: var(--hov-bgc) !important;
-		color: var(--hov-c) !important;
-		// --bdc: var(--hov-bdc, var(--bdc));
-	}
-}
 
 // ------------------------------------------------------------
 // 値指定

@@ -1,27 +1,27 @@
-import { Lism, Flex, Stack, Badge } from '@lism-ui/core';
+import { Lism, Flex, Stack } from '@lism-ui/core';
 
 export function Step(props) {
-	return <Stack className='c--step' g='20' p='30' bdrs='3' bxsh='3' {...props} />;
+	return <Stack lismClass='c--step' g='20' {...props} />;
 }
 
 export function StepBody(props) {
-	return <Lism isFlow='s' {...props} />;
+	return <Lism isFlow='s' pis='10' {...props} />;
 }
 
-export function StepHead({ tag = 'div', num = '1', label = '', children, ...props }) {
+export function StepHead({ tag = 'div', num = '1', label = 'Step.', children, ...props }) {
 	return (
-		<Flex className='c--stepHead' g='20' ai='c' {...props}>
-			<Badge tag='div' variant='fill' lh='1' px='20' py='5' g='5' ai='c' bdrs='99'>
+		<Flex lismClass='c--stepHead' g='20' ai='c' {...props}>
+			<Lism d='if' lh='xs' px='20' ai='c' bd bdrs='99'>
 				{label && (
 					<Lism tag='span' fz='xs' fs='i'>
 						{label}
 					</Lism>
 				)}
-				<Lism tag='span' fz='xl' ff='mono' fs='i'>
+				<Lism tag='span' fz='xl' px='2px' fs='i'>
 					{num}
 				</Lism>
-			</Badge>
-			<Lism tag={tag} f='inherit' fw='bold'>
+			</Lism>
+			<Lism tag={tag} f='inherit' fz='l' fw='bold'>
 				{children}
 			</Lism>
 		</Flex>

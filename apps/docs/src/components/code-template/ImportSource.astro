@@ -1,35 +1,35 @@
 ---
-import { Frame } from '@lism-ui/astro';
-import { Preview, PreviewCode, PreviewTitle } from '~/components';
-import Expressive from './Expressive.astro';
+import { Frame, Icon, Flex } from '@lism-ui/astro';
+import { Preview, PreviewCode, PreviewTitle, ImportPackage } from '~/components';
+// import Expressive from './Expressive.astro';
 
-const { component = '', react = '', astro = '', css = '', ...props } = Astro.props;
+const { name = '', react, astro, css, ...props } = Astro.props;
 
 // pathの例: /apps/docs/src/components/ex/ 以降を渡して使う
 // : → %3A , / → %2F
 const basePath =
-	'https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2F';
+	'https://github.com/lism-ui/lism-ui/blob/main/apps/docs/src/components/ex/' + name + '/';
 const queryMeta = 'style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on';
-
-// const getCode = (name: string) =>
-// 	`<span style='--0:#F97583;--1:#BF3441'>import</span>` +
-// 	`<span style='--0:#E1E4E8;--1:#24292E'> { ${component} } </span>` +
-// 	`<span style='--0:#F97583;--1:#BF3441'>from</span>` +
-// 	` ` +
-// 	`<span style='--0:#9ECBFF;--1:#032F62'>'~/components/${component}'</span>` +
-// 	`<span style='--0:#E1E4E8;--1:#24292E'>;</span>`;
-
-// const getCopyCode = (name: string) => `import { ${component} } from '~/components/${component}';`;
 ---
 
 <Preview>
-	<PreviewTitle>コンポーネントの作成</PreviewTitle>
+	{
+		css && (
+			<PreviewCode slot='tab' label='CSS'>
+				<Frame ovy='auto' maxH='25rem'>
+					<script
+						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'style.scss')}&${queryMeta}`}
+					/>
+				</Frame>
+			</PreviewCode>
+		)
+	}
 	{
 		react && (
 			<PreviewCode slot='tab' label='React'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
-						src={`https://emgithub.com/embed-v2.js?target=${basePath}${encodeURI(react)}&${queryMeta}`}
+						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'index.jsx')}&${queryMeta}`}
 					/>
 				</Frame>
 			</PreviewCode>
@@ -40,30 +40,16 @@ const queryMeta = 'style=default&type=code&showLineNumbers=on&showFileMeta=on&sh
 			<PreviewCode slot='tab' label='Astro'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
-						src={`https://emgithub.com/embed-v2.js?target=${basePath}${encodeURI(astro)}&${queryMeta}`}
-					/>
-				</Frame>
-			</PreviewCode>
-		)
-	}
-	{
-		css && (
-			<PreviewCode slot='tab' label='CSS'>
-				<Frame ovy='auto' maxH='25rem'>
-					<script
-						src={`https://emgithub.com/embed-v2.js?target=${basePath}${encodeURI(css)}&${queryMeta}`}
+						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'index.astro')}&${queryMeta}`}
 					/>
 				</Frame>
 			</PreviewCode>
 		)
 	}
 </Preview>
-<!-- 
-<Preview>
-	<PreviewTitle>インポート</PreviewTitle>
-	<PreviewCode>
-		<Expressive copyCode={getCopyCode('core')}
-			><Fragment set:html={getCode('core')} /></Expressive
-		>
-	</PreviewCode>
-</Preview> -->
+
+<!-- <ImportPackage component='' /> -->
+
+<Flex ai='c' mbs='10' fz='s'>
+	<Icon variant='inline' icon='note' c='blue' /> ソースコードを手動でコピー&ペーストしてご利用ください。
+</Flex>

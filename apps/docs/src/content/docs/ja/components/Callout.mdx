@@ -3,7 +3,7 @@ title: 'Callout'
 description: ...
 ---
 import { Box, Icon, Layer, Dummy } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, OptinHelp } from '~/components';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from '~/components';
 import { Book } from '@phosphor-icons/react';
 
 import { Callout } from '~/components/ex/Callout';
@@ -12,11 +12,11 @@ import { Callout } from '~/components/ex/Callout';
 
 
 
-短い文言を目立たせて強調表示したい時に使えるコンポーネントの作成例を紹介します。  
+短い文言を目立たせて強調表示したい時に使えるコンポーネントの作成例を紹介します。
 
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Callout>
 			<Dummy lang='ja' />
@@ -47,8 +47,7 @@ import { Callout } from '~/components/ex/Callout';
 
 ## Import
 
-<OptinHelp />
-<ImportSource react='Callout/index.jsx' astro='/Callout/index.astro' />
+<ImportSource name='Callout' react astro />
 
 
 ## Props

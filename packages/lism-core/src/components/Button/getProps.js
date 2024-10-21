@@ -1,10 +1,10 @@
 import atts from '../../lib/helper/atts';
 
-export function getButtonProps({
+export function getProps({
 	lismClass,
-	variant = 'fill',
+	variant = '',
 	// style = {},
-	textProps = {},
+	// textProps = {},
 	// iconOffset,
 	...props
 }) {
@@ -13,27 +13,19 @@ export function getButtonProps({
 		skipState: true,
 		tag: 'a',
 		hov: 'fade',
-	};
-	const defaultTextProps = {
-		tag: 'span',
-		lismClass: 'b--button__text',
-		skipState: true,
+		// bdrs: '1',
 	};
 
-	// if (iconOffset) {
-	// 	style['--icon-offset'] = iconOffset;
-	// }
-	// props.style = style;
+	return Object.assign(defaultProps, props);
 
-	// const leftIconProps = { 'data-position': 'left' };
-	// const rightIconProps = { 'data-position': 'right' };
+	// const defaultTextProps = {
+	// 	tag: 'span',
+	// 	lismClass: 'b--button__text',
+	// 	skipState: true,
+	// };
 
-	// if (isGrid) {
-	// 	textProps.gridItem = { gc: 2, jslf: 'c' };
-	// }
-
-	return {
-		btnProps: Object.assign(defaultProps, props),
-		textProps: Object.assign(defaultTextProps, textProps),
-	};
+	// return {
+	// 	btnProps: Object.assign(defaultProps, props),
+	// 	textProps: Object.assign(defaultTextProps, textProps),
+	// };
 }

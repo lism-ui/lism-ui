@@ -25,3 +25,21 @@
 // .-hov\:scale:hover {
 // 	scale: 1.05;
 // }
+
+// --------------------
+// reverse
+// --------------------
+.-hov\:reverse {
+	--hov-c: var(--bgc);
+	--hov-bgc: var(--c);
+	&:where(.b--button--fill) {
+		--hov-bgc: transparent;
+	}
+	&:where(.b--button--outline) {
+		--hov-c: var(--c--base);
+	}
+	&:hover {
+		background-color: var(--hov-bgc) !important;
+		color: var(--hov-c) !important;
+	}
+}
