@@ -4,32 +4,23 @@ description: ...
 ---
 
 import { Lism, Dummy, Text, Stack, Grid, Decorator } from '@lism-ui/core';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
 import { Timelines, Timeline, TimelineTime, TimelineBody } from '~/components/ex/Timeline';
 import '~/components/ex/Timeline/style.scss';
 
 タイムラインの構築例を紹介します。
 
-## 構築例
 
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2F1763302b9ba2484f42c616d940de4063c27e98db%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FTimeline%2Findex.jsx&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
-	</PreviewCode>
-	{/* <PreviewCode slot='tab' label='Astro'>
-	```jsx
-	```
-	</PreviewCode> */}
-	<PreviewCode slot='tab' label='SCSS'>
-	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FTimeline%2Fstyle.scss&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
-	</PreviewCode>
-</Preview>
+## Import
+<ImportSource name='Timeline' react css/>
+
+
+## Examples
 
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewArea resize p='30'>
 		<Timelines>
 			<Timeline>
 				<TimelineTime>20yy年m月dd日</TimelineTime>
@@ -84,6 +75,7 @@ import '~/components/ex/Timeline/style.scss';
 </Preview>
 
 
+
 ### End, Startの指定
 
 最初と最後の要素にそれぞれ`isStart`、`isEnd`を指定すると、ラインの上下のはみ出しをなくします。
@@ -91,7 +83,7 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewArea resize p='30'>
 		<Timelines>
 			<Timeline isStart>
 				<TimelineTime>20yy年m月dd日</TimelineTime>
@@ -152,7 +144,7 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewArea resize p='30'>
 		<Timelines>
 			<Timeline>
 				<TimelineTime>20yy年m月dd日</TimelineTime>
@@ -212,7 +204,7 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p={30}>
+	<PreviewArea resize p='30'>
 		<Timelines>
 			<Timeline icon='star'>
 				<TimelineTime>20yy年m月dd日</TimelineTime>

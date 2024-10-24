@@ -230,6 +230,14 @@ export default [
 				label: 'Button',
 				link: '/components/button/',
 			},
+			{
+				label: 'DividerLabel',
+				link: '/components/dividerlabel/',
+			},
+			{
+				label: 'ShapeDivider',
+				link: '/components/shapedivider/',
+			},
 
 			{
 				label: 'Components',
@@ -247,7 +255,14 @@ export default [
 				label: 'Card',
 				link: '/components/card/',
 			},
-
+			{
+				label: 'Chat',
+				link: '/components/chat/',
+			},
+			{
+				label: 'Note',
+				link: '/components/note/',
+			},
 			{
 				label: 'NavMenu',
 				link: '/components/navmenu/',
@@ -271,16 +286,8 @@ export default [
 			},
 
 			{
-				label: 'Chat',
-				link: '/components/chat/',
-			},
-			{
 				label: 'Decorations',
 				link: '/components/decorations/',
-			},
-			{
-				label: 'DividerLabel',
-				link: '/components/dividerlabel/',
 			},
 			{
 				label: 'FAQ',
@@ -290,14 +297,7 @@ export default [
 				label: 'Hero',
 				link: '/components/hero/',
 			},
-			{
-				label: 'Note',
-				link: '/components/note/',
-			},
-			{
-				label: 'ShapeDivider',
-				link: '/components/shapedivider/',
-			},
+
 			{
 				label: 'Step',
 				link: '/components/step/',

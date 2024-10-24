@@ -3,7 +3,7 @@ title: 'Note'
 description: ...
 ---
 import { Icon, Box, Dummy } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, HelpText } from "~/components";
 import { Note } from '~/components/ex/Note';
 
 
@@ -11,36 +11,45 @@ import { Note } from '~/components/ex/Note';
 
 
 <Preview>
-	<PreviewTitle>
-		使用例
-	</PreviewTitle>
-	<PreviewArea p='30'>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea resize p='30'>
 		<Note title='Note Title'>
 			<Dummy lang='ja' />
-			<Dummy lang='ja' length='l' offset='4'/>
 		</Note>
 	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<Note title='Note Title'>
-		<Dummy lang='ja'/>
-	</Note>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Note title='Note Title'>
+			<Dummy lang='ja' />
+		</Note>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="c--note l--stack is--colored -p:30 -bd:is -bdc:keycolor -bdrs: -g:20" style="--keycolor:var(--gray);--bdw:4px;--bdrs:2px">
+		<div class="c--note__head l--flex -fw:bold -ai:c -g:10">
+			<div class="c--note__icon l--center -fz:xl -c:keycolor">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true">
+					<path d="M229.66,58.34l-32-32a8,8,0,0,0-11.32,0l-96,96A8,8,0,0,0,88,128v32a8,8,0,0,0,8,8h32a8,8,0,0,0,5.66-2.34l96-96A8,8,0,0,0,229.66,58.34ZM124.69,152H104V131.31l64-64L188.69,88ZM200,76.69,179.31,56,192,43.31,212.69,64ZM224,120v88a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h88a8,8,0,0,1,0,16H48V208H208V120a8,8,0,0,1,16,0Z">
+					</path>
+				</svg>
+			</div>
+			<span class="c--note__title">Note Title</span>
+		</div>
+		<div class="c--note__body is--flow -flow:s">
+			<p> ロレムイプサムの座り雨、トマ好き学習だったエリット、しかし時と活力はそのような木々と楽しみ。ブラインド行うにはいくつかの重要な事柄が流れます。 </p>
+		</div>
+	</div>
 	```
 	</PreviewCode>
 </Preview>
 
 
-## コンポーネントの準備
-
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-	<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2F1763302b9ba2484f42c616d940de4063c27e98db%2Fapps%2Fdocs%2Fsrc%2Fcomponents%2Fex%2FNote%2Findex.jsx&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
-	</PreviewCode>
-</Preview>
+## Import
+<ImportSource name='Note' react others={['presets.js']}/>
 
 
-### Props
+## Props
 
 | プロパティ | 説明 |
 |---|---|
@@ -53,12 +62,10 @@ import { Note } from '~/components/ex/Note';
 
 
 
-### Usage
+## Examples
 
 <Preview>
-	<PreviewTitle>
-		`icon`、`keycolor`を指定
-	</PreviewTitle>
+	<PreviewTitle>`icon`、`keycolor`を指定</PreviewTitle>
 	<PreviewArea p='30'>
 		<Note title='Heading text...' icon='star' keycolor='blue'>
 			<Dummy lang='ja'/>
@@ -103,9 +110,9 @@ import { Note } from '~/components/ex/Note';
 </Preview> */}
 
 
-#### Presets
+### Presets
 
-上記の構築例では、`<Callout>`と同じように、`type`を指定できるようにしています。
+このページで紹介している構築例では、`type`を指定できるようにしています。
 
 <Preview>
 	<PreviewArea p='30'>
