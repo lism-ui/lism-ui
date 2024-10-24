@@ -1,12 +1,9 @@
 ---
-import { Lism } from '@lism-ui/astro';
+import { Frame, Media } from '@lism-ui/astro';
 
-const { variant, ...props } = Astro.props;
-
-let lismClass = 'b--badge';
-if (variant) lismClass += ` b--badge--${variant}`;
+const { size = '2em', src = '', alt = '', ...props } = Astro.props;
 ---
 
-<Lism lismClass={lismClass} tag='span' px='20' bdrs='1' {...props}>
-	<slot />
-</Lism>
+<Frame skipState lismClass='b--avatar' aspect='1/1' w={size} h='auto' bdrs='99' {...props}>
+	<Media src={src} alt={alt} width='100%' height='100%' decoding='async' />
+</Frame>

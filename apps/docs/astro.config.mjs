@@ -12,7 +12,17 @@ export default defineConfig({
 	// 	// remarkPlugins: [remarkPlugin1],
 	// 	gfm: true,
 	// },
+
 	integrations: [
+		// {
+		// 	// customCssだと順番が環境によって変わる。絶対に先に読み込みたいものはここに。
+		// 	name: 'importStyleCSS',
+		// 	hooks: {
+		// 		'astro:config:setup': ({ injectScript }) => {
+		// 			injectScript('page-ssr', `import '@lism-ui/core/scss/all.scss';`);
+		// 		},
+		// 	},
+		// },
 		react(),
 		// mdx(), // 基本はmarkdownを継承する
 		starlight({
@@ -27,11 +37,10 @@ export default defineConfig({
 			locales,
 			customCss: [
 				// '@lism-ui/core/css/all.css',
-				'@lism-ui/core/scss/all.scss',
+				// '@lism-ui/core/scss/all.scss',
 				// './src/styles/lism-custom.scss', // カスタムCSSファイルへの相対パス
-
-				// ドキュメントサイトCSS
-				'./src/styles/custom.scss',
+				'./src/styles/docs.scss',
+				'./src/styles/lism.scss',
 			],
 			sidebar,
 			social: {
@@ -62,6 +71,7 @@ export default defineConfig({
 			},
 		}),
 	],
+
 	vite: {
 		// ssr: {
 		// 	noExternal: ['@lism-ui/core'],

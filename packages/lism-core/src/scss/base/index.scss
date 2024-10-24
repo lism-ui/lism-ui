@@ -21,6 +21,11 @@
 	// --heading-ff
 	// --heading-fw
 	// --link-td
+	// --list-pis
+	// --cell-p
+	// --cell-minIs
+	// --td|th-c
+	// --td|th-bgc
 }
 
 /* ----------------------------------------
@@ -87,14 +92,15 @@ h6 {
     list
  ---------------------------------------- */
 :where(ul, ol) {
-	padding: 0;
 	list-style: none;
-
-	// classを持たない素の ul,ol のみブラウザ標準のスタイルを復活させる
-	&:not([class]) {
-		padding-inline-start: 1.5em;
-		list-style: revert;
-	}
+	padding: 0;
+	padding-inline-start: var(--list-pis, 0);
+}
+// classを持たない素の ul,ol と、.l--list はブラウザ標準のスタイルを復活させる
+:where(ul, ol):not([class]),
+.l--list {
+	--list-pis: 1.5em;
+	list-style: revert;
 }
 
 /* ----------------------------------------
@@ -111,6 +117,15 @@ h6 {
  ---------------------------------------- */
 :where(td, th) {
 	padding: var(--cell-p, 0.5em);
+	min-inline-size: var(--cell-minIs, unset);
+}
+:where(th) {
+	color: var(--th-c, inherit);
+	background-color: var(--th-bgc, transparent);
+}
+:where(td) {
+	color: var(--td-c, inherit);
+	background-color: var(--td-bgc, transparent);
 }
 
 /* ----------------------------------------

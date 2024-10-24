@@ -2,42 +2,15 @@
 title: 'Avatar'
 description: ...
 ---
-import { Flex, Avatar, Media } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
+import { Flex, Media } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
+import Avatar from '~/components/ex/Avatar/index.astro';
 
-
-アバター画像用のコンポーネントです。
-
-
-## 構造
-```pug
-div.b--avatar.l--frame(--size)
-	img
-```
-
-
-## Props
-
-| プロパティ | 説明 |
-|---|---|
-|`variant`| `b--avatar--{variant}` クラスを出力します。|
-|`size`| アバターのサイズを指定します。|
-|`src`| `src`が指定されていれば子要素にメディアを表示します。(`children`がある場合は無視されます。)|
-{/* |`mediaProps`| 上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。| */}
-
-{/* Memo: placeholder`で画像じゃなくて一文字とかで表示できるようにしたい */}
-
-
-## Import
-
-<ImportPackage component='Avatar' />
-
-
-## Usage
+アバター画像用のコンポーネントの作成例を紹介します。
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea resize p='20'>
 		<Avatar size='4rem' src='/img/avatar01.jpg' alt='Avatar of xxxx'/>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -47,26 +20,46 @@ div.b--avatar.l--frame(--size)
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="b--avatar l--frame -bdrs:99" style="--size:4rem">
+		<div class="b--avatar l--frame -aspect:1/1 -w: -h:a -bdrs:99" style="--w:4rem">
 			<img src="/img/avatar01.jpg" alt="Avatar of xxxx" width="100%" height="100%" decoding="async">
 		</div>	
 		```
 	</PreviewCode>
 </Preview>
 
+## Import
+<ImportSource name='Avatar' react astro />
+
+
+## Props
+
+| プロパティ | 説明 |
+|---|---|
+|`size`| アバターのサイズを指定します。|
+|`src`| アバター画像のパス |
+|`alt`| altテキスト |
+
+
+{/* |`mediaProps`| 上記以外にメディア側に対してプロパティを指定したい場合はこのプロパティにオブジェクト形式で指定できます。| */}
+
+
+## Examples
+
 <Preview>
-	<PreviewTitle>Avatarのsrcを使わない例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Avatar size='4rem'>
-			<Media src='/img/avatar01.jpg' alt='Avatar of xxxx' width='100%' height='100%' decoding='async'/>
-		</Avatar>
+	<PreviewTitle>影やボーダーをつける例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Avatar size='5rem' src='/img/avatar01.jpg' alt='Avatar of xxxx' bd bdw='3px' bdc='blue' bxsh='2'/>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Avatar size='4rem'>
-			<Media src='/img/avatar01.jpg' alt='Avatar of xxxx' width='100%' height='100%' decoding='async'/>
-		</Avatar>
+		<Avatar size='5rem' src='/img/avatar01.jpg' alt='Avatar of xxxx'/>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<div class="b--avatar l--frame -aspect:1/1 -w: -h:a -bdrs:99 -bd: -bxsh:2" style="--w:5rem;--bdw:3px;--bdc:var(--blue)">
+			<img src="/img/avatar01.jpg" alt="Avatar of xxxx" width="100%" height="100%" decoding="async">
+		</div>	
 		```
 	</PreviewCode>
 </Preview>
-

@@ -1,24 +1,24 @@
 @forward './table';
-@forward './list';
 
-// Atom
-@forward '../../components/Icon/style.scss';
-@forward '../../components/Decorator/style.scss';
-// @forward '../../components/Delimiter/style.scss';
+// a--
+@forward './icon.scss';
+@forward './divider.scss';
+// @forward './spacer.scss';
 
-// block
-@forward '../../components/Avatar/style.scss';
-@forward '../../components/Badge/style.scss';
-@forward '../../components/Button/style.scss';
-@forward '../../components/Divider/style.scss';
+// b--
+// @forward '../../components/Avatar/style.scss';
+// @forward '../../components/Badge/style.scss';
+// @forward '../../components/Button/style.scss';
+
 @forward '../../components/ShapeDivider/style.scss';
 
-// components
+// c--
+// @forward './list';
 // @forward '../../components/Callout/style.scss';
 @forward '../../components/NavMenu/style.scss';
 @forward '../../components/Reel/style.scss';
 
-// dialogs
+// d--
 @forward '../../components/Tabs/style.scss';
 @forward '../../components/Accordion/style.scss';
 @forward '../../components/Modal/style.scss';
@@ -31,7 +31,3 @@
 
 // デフォルトスタイル
 // コンポーネントの初期値にセットするよりCSSで一括上書きできたほうが楽そうなものをここに書く
-
-.a--spacer {
-	block-size: 1em;
-}

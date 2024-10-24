@@ -29,9 +29,22 @@ HTMLのそれぞれのタグのデフォルトスタイルを確認するため�
 	</PreviewArea>
 </Preview>
 
+<PreviewTitle>list関連のbaseスタイル</PreviewTitle>
+```css
+:where(ul, ol) {
+	list-style: none;
+	padding: 0;
+	padding-inline-start: var(--list-pis, 0);
+}
+:where(ul, ol):not([class]){
+	--list-pis: 1.5em;
+	list-style: revert;
+}
+```
+
 <Reference>
 ul,liの標準スタイルはリセットした上で、class属性を持たないリストについては、ブラウザ標準のスタイルを再適用させています。  
-[`<List>`(`b--list`クラス)](/ja/components/list) を使っても、同様に標準スタイルを再適用させることができます。
+[`<List>`(`l--list`クラス)](/ja/components/list) を使っても、同様に標準スタイルを再適用させることができます。
 </Reference>
 
 ## Table
@@ -43,9 +56,24 @@ ul,liの標準スタイルはリセットした上で、class属性を持たな�
 	</PreviewArea>
 </Preview>
 
+<PreviewTitle>table関連のbaseスタイル</PreviewTitle>
+```css
+:where(td, th) {
+	padding: var(--cell-p, 0.5em);
+	min-inline-size: var(--cell-minIs, unset);
+}
+:where(th) {
+	color: var(--th-c, inherit);
+	background-color: var(--th-bgc, transparent);
+}
+:where(td) {
+	color: var(--td-c, inherit);
+	background-color: var(--td-bgc, transparent);
+}
+```
 
 <Reference>
-[`<Table>`(`b--table`クラス)](/ja/components/table)を使うことで、最低限のスタイリングが整ったテーブルを表示できます。
+[`<Table>`(`l--table`クラス)](/ja/components/table)を使うことで、最低限のスタイリングが整ったテーブルを表示できます。
 </Reference>
 
 

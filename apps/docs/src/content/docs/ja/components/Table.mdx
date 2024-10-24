@@ -7,11 +7,24 @@ import { Frame, Table } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
 
 
-最低限のスタイルを適用した表を呼び出すコンポーネントです。
+標準的なスタイルを適用した表を呼び出すコンポーネントです。
 
+次のような変数でボーダースタイルを調整できるようになっています。
+
+```css
+:where(.l--table) {
+	--bdwY: 1px;
+	--bdwX: 1px;
+	--bds: solid;
+	--bdc: var(--c--divider);
+	--thead-bdbe: solid 2px;
+	--tfoot-bdbs: solid 2px;
+}
+```
+
+また、後述するオプトインのバリエーション（セルの固定表示）を考慮した設計になっています
 
 ## Import
-
 <ImportPackage component='Table' />
 
 
@@ -21,7 +34,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='30'>
 		<Table>
-			<caption>Caption</caption>
+			{/* <caption class=''>Caption</caption> */}
 			<thead>
 				<tr>
 					<th>Header 1</th>
@@ -72,7 +85,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<table class='b--table'>
+		<table class='l--table'>
 			<caption>Caption</caption>
 			<thead>...</thead>
 			<tbody>...</tbody>
@@ -82,7 +95,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 </Preview>
 
-`.b--table`は、次のようなCSSが適用されており、いくつかの変数でプロパティが管理されています。  
+`.l--table`は、次のようなCSSが適用されており、いくつかの変数でプロパティが管理されています。  
 これは、スクロール時に thead などを固定できるようにすることをあらかじめ考慮した設計になっています。
 
 	{/* <PreviewCode slot='tab' label='CSS'>
@@ -91,9 +104,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 
 
 <Preview>
-	<PreviewTitle>--bdwXで水平方向のボーダー太さを指定、thのカラーリングを指定する例</PreviewTitle>
+	<PreviewTitle>--bdwXで左右のボーダーをなくし、thのカラーリングを指定する例</PreviewTitle>
 	<PreviewArea p='30'>
-		<Table thBgc='base-2' bdwX='1px'>
+		<Table thBgc='base-2' bdwX='0px'>
 			<thead>
 				<tr>
 					<th>Header 1</th>
@@ -143,7 +156,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<table class='b--table' style="--bdwX:1px;--th-bgc:var(--c--base-2)">
+		<table class='l--table' style="--bdwX:1px;--th-bgc:var(--c--base-2)">
 			<thead>...</thead>
 			<tbody>...</tbody>
 			<tfoot>...</tfoot>
@@ -153,11 +166,13 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 </Preview>
 
 
-### variant
 
-2つのバリエーションクラスを用意しています。
-- セル１列目を固定する`b--table--fixCol1`
-- theadを固定する`b--table--fixHead`
+## Opt-in
+
+以下のような2つのバリエーションクラスを用意する例を紹介します。
+
+- セル１列目を固定する`l--table--fixCol1`
+- theadを固定する`l--table--fixHead`
 
 {/* // 後ろが透過してると文字がかぶるので、何かしら背景色を初期セットする
 // --th-bgc: var(--c--base); */}
@@ -229,6 +244,46 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 		</Table>
 	</Frame>
 	</PreviewArea>
+<PreviewCode slot='tab' label='追加CSS'>
+```scss
+.l--table--fixCol1 {
+	// .-nofix: rowspanの対応用クラス.
+	tr > :first-child:not(.-nofix) {
+		position: sticky;
+		left: 0;
+		z-index: 1; // 他のセルが relative だと上に来てしまうので、 z-index を少し上げておく
+
+		// スクロール時にborderが表示されない問題への対処
+		border-inline: none;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0 calc(var(--bdwX) * -1) 0 0;
+			border-block: none;
+		}
+	}
+}
+
+.l--table--fixHead {
+	> thead {
+		position: sticky;
+		top: 0;
+		z-index: 2; // fixCol1 + 1
+
+		// スクロール時にborderが表示されない問題への対処
+		border-block: none;
+	}
+	> thead::before {
+		content: '';
+		position: absolute;
+		z-index: 2;
+		inset: 0 0 calc(var(--bdwY) * -0.5) 0;
+		border-block: var(--bdwY) var(--bds) var(--bdc);
+		border-block-end: var(--thead-bdbe);
+	}
+}
+```
+</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "fixCol1,fixHead"
 		<Frame ov='auto' maxH='20rem'>
@@ -241,9 +296,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```html " b--table--fixCol1" "b--table--fixHead"
+		```html " l--table--fixCol1" "l--table--fixHead"
 		<div class="l--frame -ov:a" style="max-height:20rem">
-			<table class='b--table b--table--fixCol1 b--table--fixHead' style="--cell-minIs:10rem;--bdwwX:1px;--th-bgc:var(--c--base-2)">
+			<table class='l--table l--table--fixCol1 l--table--fixHead' style="--cell-minIs:10rem;--bdwwX:1px;--th-bgc:var(--c--base-2)">
 				<thead>...</thead>
 				<tbody>...</tbody>
 				<tfoot>...</tfoot>

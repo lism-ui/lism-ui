@@ -3,7 +3,7 @@ import { Frame, Icon, Flex } from '@lism-ui/astro';
 import { Preview, PreviewCode, PreviewTitle, ImportPackage } from '~/components';
 // import Expressive from './Expressive.astro';
 
-const { name = '', react, astro, css, ...props } = Astro.props;
+const { name = '', react, astro, css, others = [], ...props } = Astro.props;
 
 // pathの例: /apps/docs/src/components/ex/ 以降を渡して使う
 // : → %3A , / → %2F
@@ -45,6 +45,20 @@ const queryMeta = 'style=default&type=code&showLineNumbers=on&showFileMeta=on&sh
 				</Frame>
 			</PreviewCode>
 		)
+	}
+
+	{
+		others.map((path) => {
+			return (
+				<PreviewCode slot='tab' label={path} key={path}>
+					<Frame ovy='auto' maxH='25rem'>
+						<script
+							src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + path)}&${queryMeta}`}
+						/>
+					</Frame>
+				</PreviewCode>
+			);
+		})
 	}
 </Preview>
 

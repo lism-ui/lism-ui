@@ -1,19 +1,11 @@
-:where(.c--chat) {
-	--keycolor: var(--gray);
-}
-
-// --avator-size: clamp(48px, 24px + 7.5cqw, 72px); // 320:48px~640:72px
-// --avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:48px~640:64px
-// --avator-size: clamp(40px, 16px + 7.5cqw, 64px); // 320:40px~640:64px
-
 .c--chat {
 	--avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:40px~640:64px
-	--deco-size: 1.125rem; //calc(var(--avator-size) * 0.25);
+	--deco-size: 1.25rem; //calc(var(--avator-size) * 0.25);
 	--colored-per--bg: 10%;
+	--flowGap: 0.5em;
 
 	// auto のとこに --avator-size を使うと、アバターなしの時にスペースできてしまう。
 	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
-
 	gap: 0 var(--deco-size);
 }
 [data-chat-direction='end'] {
@@ -21,14 +13,12 @@
 }
 
 .c--chat__avatar {
-	--size: var(--avator-size); //  b--avatar に渡す
+	width: var(--avator-size);
 	grid-area: avatar;
 }
-
 .c--chat__name {
 	grid-area: header;
 }
-
 .c--chat__body {
 	grid-area: body;
 }
@@ -43,63 +33,18 @@
 		border-start-end-radius: 0;
 	}
 }
-// .c--chat__footer {}
 
 // decorator
 .c--chat__deco {
 	top: 0rem;
-	// background: var(--cbox-bgc, var(--gray));
 	width: var(--deco-size);
 	height: var(--deco-size);
-
-	.c--chat--think & {
-		top: 1.25rem;
-	}
 }
 .c--chat--speak .c--chat__deco {
 	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path d="M8,8L8,8C7.4,4.8,5.4,2,2.6,0.4L2,0h6V8z"/></svg>');
-	// --mask-img: url(data:image/svg+xml;base64,...);
 }
 // think
 .c--chat--think .c--chat__deco {
+	top: 1rem;
 	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><circle cx="2" cy="2" r="1.5"/><circle cx="5" cy="5" r="2.2"/></svg>');
 }
-
-// @container (max-width: 480px) {
-// 	.c--chat.l--withSide {
-// 		gap: 0;
-// 		--avator-size: 3.25rem;
-// 		--deco-size: 1rem;
-// 		.c--chat__avatar {
-// 			margin-bottom: calc(-1.25rem - var(--avator-size) / 3); //-2rem;
-// 			z-index: 1;
-// 		}
-// 		.c--chat__deco {
-// 			top: auto;
-// 			bottom: 100%;
-// 			inset-inline: calc(var(--avator-size) * 0.75); //1.25rem;
-// 			rotate: 90deg;
-// 			scale: 1 -1;
-// 		}
-// 		&[data-chat-direction='start'] {
-// 			.c--chat__name {
-// 				margin-inline-start: auto; //calc(var(--avator-size) + 1rem);
-// 			}
-// 			.c--chat__body {
-// 				margin-inline-start: calc(var(--avator-size) * 0.4);
-// 			}
-// 		}
-// 		&[data-chat-direction='end'] {
-// 			.c--chat__name {
-// 				margin-inline-end: auto; //calc(var(--avator-size) + 1rem);
-// 			}
-// 			.c--chat__body {
-// 				margin-inline-end: calc(var(--avator-size) * 0.4);
-// 			}
-// 			.c--chat__deco {
-// 				inset-inline-start: auto;
-// 				scale: 1;
-// 			}
-// 		}
-// 	}
-// }

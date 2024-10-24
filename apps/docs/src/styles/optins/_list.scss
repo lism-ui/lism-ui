@@ -9,7 +9,7 @@
 
 // icon付きリスト
 // d--icon-list--, d--icon--
-[class*='b--list--icon:'] {
+[class*='l--list--icon:'] {
 	list-style: none;
 	--icon-color: currentColor;
 	--icon-mask: unset;
@@ -37,17 +37,17 @@
 	}
 }
 
-.b--list--icon\:dot {
+.l--list--icon\:dot {
 	--icon-color: var(--blue);
 	--icon-clip: circle(0.25em at 50%);
 }
 
-.b--list--icon\:caret {
+.l--list--icon\:caret {
 	--icon-color: var(--purple);
 	--icon-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.4,14.4L12.9,7C11.6,6,9.7,7,9.7,8.6v14.8c0,1.6,1.8,2.6,3.1,1.6l10.5-7.4C24.5,16.8,24.5,15.2,23.4,14.4z"/></svg>');
 }
 
-.b--list--icon\:check {
+.l--list--icon\:check {
 	--icon-color: var(--green);
 	--icon-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M11.2 20.56l-5.92-5.92c-0.16-0.16-0.4-0.16-0.56 0l-2.8 2.8c-0.16 0.16-0.16 0.4 0 0.56l9.040 9.040c0.16 0.16 0.4 0.16 0.56 0l18.64-18.64c0.16-0.16 0.16-0.4 0-0.56l-2.8-2.8c-0.16-0.16-0.4-0.16-0.56 0l-15.6 15.52z"></path></svg>');
 }

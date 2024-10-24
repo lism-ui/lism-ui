@@ -13,11 +13,11 @@ export default function getBoxProps({
 	style = {},
 	...props
 }) {
-	props.lismClass = atts(lismClass, 'b--table');
+	props.lismClass = atts(lismClass, 'l--table');
 	if (variant) {
 		// variant を , で分割し、それぞれに対して class を追加
 		variant.split(',').forEach((v) => {
-			props.lismClass += ` b--table--${v}`;
+			props.lismClass += ` l--table--${v}`;
 		});
 	}
 

@@ -1,21 +1,16 @@
-/* https://github.com/withastro/starlight/tree/main/packages/starlight/style */
-@import './docs/theme';
-@import './docs/layout';
-@import './docs/preview';
-@import './docs/code';
-
 // @import './optins/base';
-@import './optins/flex';
-@import './optins/list';
-@import './optins/tab';
-@import './optins/hov';
-@import './optins/bg';
-@import './optins/others';
+@use './optins/flex';
+@use './optins/list';
+@use './optins/table';
+@use './optins/tab';
+@use './optins/hov';
+@use './optins/bg';
+@use './optins/others';
 
-@import '../components/ex/Badge/style';
-@import '../components/ex/Button/style';
-@import '../components/ex/Chat/style';
-@import '../components/ex/Note/style';
+@use '../components/ex/Badge/style' as badge;
+@use '../components/ex/Button/style' as button;
+@use '../components/ex/Chat/style' as chat;
+@use '../components/ex/Note/style' as note;
 
 /* ----------------------------------------
     optin で、Docs で反映させるもの

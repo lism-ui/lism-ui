@@ -7,7 +7,7 @@ import { Frame, List } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
 
 
-最低限のスタイルを適用したリストを呼び出すコンポーネントです。
+ブラウザの標準的なスタイルを持つリストレイアウトを呼び出すコンポーネントです。
 
 
 ## Import
@@ -69,7 +69,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<ul class='b--list'>
+		<ul class='l--list'>
 			<li>List item 1</li>
 			<li>
 				List item 2
@@ -142,7 +142,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<ol class='b--list'>
+		<ol class='l--list'>
 			<li>List item 1</li>
 			<li>
 				List item 2
@@ -166,7 +166,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 
 {/* 
 ### variant
-	b--list--icon
+	l--list--icon
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
@@ -231,7 +231,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<ul class='b--list'>
+		<ul class='l--list'>
 		</ul>
 		```
 	</PreviewCode>

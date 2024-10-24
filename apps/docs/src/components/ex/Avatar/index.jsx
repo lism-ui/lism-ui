@@ -1,12 +1,9 @@
-import { Lism } from '@lism-ui/core';
+import { Media, Frame } from '@lism-ui/core';
 
-export default function Badge({ variant, children, ...props }) {
-	let lismClass = 'b--badge';
-	if (variant) lismClass += ` b--badge--${variant}`;
-
+export default function Avatar({ src = '', alt = '', ...props }) {
 	return (
-		<Lism lismClass={lismClass} tag='span' px='20' bdrs='1' {...props}>
-			{children}
-		</Lism>
+		<Frame skipState lismClass='b--avatar' aspect='1/1' w='2em' h='auto' bdrs='99' {...props}>
+			<Media src={src} alt={alt} width='100%' height='100%' decoding='async' />
+		</Frame>
 	);
 }

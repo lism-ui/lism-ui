@@ -144,7 +144,14 @@ export default [
 				label: 'Columns',
 				link: '/components/columns/',
 			},
-
+			{
+				label: 'List',
+				link: '/components/list/',
+			},
+			{
+				label: 'Table',
+				link: '/components/table/',
+			},
 			{
 				label: 'WithSide',
 				link: '/components/withside/',
@@ -202,10 +209,6 @@ export default [
 				label: 'Tabs',
 				link: '/components/tabs/',
 			},
-			{
-				label: 'Components',
-				link: '###---',
-			},
 
 			{
 				label: 'Blocks',
@@ -225,10 +228,13 @@ export default [
 			},
 
 			{
+				label: 'Components',
+				link: '###---',
+			},
+			{
 				label: 'Banner',
 				link: '/components/banner/',
 			},
-
 			{
 				label: 'Callout',
 				link: '/components/callout/',
@@ -237,14 +243,7 @@ export default [
 				label: 'Card',
 				link: '/components/card/',
 			},
-			{
-				label: 'List',
-				link: '/components/list/',
-			},
-			{
-				label: 'Table',
-				link: '/components/table/',
-			},
+
 			{
 				label: 'Reel',
 				link: '/components/reel/',

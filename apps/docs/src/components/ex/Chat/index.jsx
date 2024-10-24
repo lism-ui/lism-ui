@@ -1,14 +1,14 @@
 import React from 'react';
-import { Lism, GridItem, Grid, Avatar, Decorator } from '@lism-ui/core';
+import { Lism, GridItem, Grid, Frame, Media, Decorator } from '@lism-ui/core';
 
 export function Chat({
 	variant = 'speak',
 	direction = 'start',
 	name,
 	avatar,
-	isFlow = 's',
+	isFlow = true,
 	children,
-	keycolor,
+	keycolor = 'gray',
 	...props
 }) {
 	let lismClass = `c--chat`;
@@ -25,17 +25,18 @@ export function Chat({
 			{...props}
 		>
 			{avatar && (
-				<Avatar
+				<Frame
 					lismClass='c--chat__avatar'
 					isSide
 					src={avatar}
 					alt=''
 					bgc='base'
+					aspect='1/1'
 					bdrs='99'
-					width='60'
-					height='60'
 					aria-hidden='true'
-				/>
+				>
+					<Media src={avatar} alt='' width='60' height='60' decoding='async' />
+				</Frame>
 			)}
 			{name && (
 				<Lism
