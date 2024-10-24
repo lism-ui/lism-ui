@@ -2,5 +2,9 @@ import { Flex } from '../Flex';
 import getReelProps from './getProps';
 
 export default function Reel({ children, ...props }) {
-	return <Flex {...getReelProps(props)}>{children}</Flex>;
+	return (
+		<Flex _flex='reel' {...getReelProps(props)}>
+			{children}
+		</Flex>
+	);
 }

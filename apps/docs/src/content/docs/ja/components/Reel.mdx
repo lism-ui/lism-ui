@@ -8,11 +8,11 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 コンテンツを横スクロールで表示するコンポーネントです。
 
-## 構造
+{/* ## 構造
 
 ```pug
-.c--reel.l--flex[tabindex="0"](--item-size)(--snap-align)
-```
+.l--reel[tabindex="0"]
+``` */}
 
 
 ## Import
@@ -24,9 +24,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 | プロパティ | 出力 | 説明 |
 |---|---|---|
-|`variant`| <PropBadge type="attr">`.c--reel--{variant}`</PropBadge> | バリエーションクラスを出力します。|
-| `itemSize` | <PropBadge type="cssvar">`--item-size`</PropBadge> | 各アイテムのサイズを指定できます。 |
-| `snapAlign` | <PropBadge type="cssvar">`--snap-align`</PropBadge> | 子要素に適用する scroll-snap-align の値 |
+| `itemSize` | <PropBadge type="cssvar">`--item-size`</PropBadge> | 子要素のサイズ（`flex-basis`の値)を指定できます。 |
+| `snapType` | <PropBadge type="cssvar">`--snapType`</PropBadge> | scroll-snap-type の値 |
+| `snapAlign` | <PropBadge type="cssvar">`--snapAlign`</PropBadge> | 子要素に適用する scroll-snap-align の値 |
+| `snapStop` | <PropBadge type="cssvar">`--snapStop`</PropBadge> | 子要素に適用する scroll-snap-stop の値 |
 | `unreel` | <PropBadge type="attr">`.-d@{bp}.-gtc@{bp}`</PropBadge> | 横スクロールを解除するブレイクポイントを指定できます。 |
 
 
@@ -64,9 +65,9 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	return (
 		<>
 			{Array.from({length: 6}, (v, i) => i).map((i) => {
-				const isEven = i % 2 === 0;
-				const src = isEven ? imgPath + '1.jpg' : imgPath + '2.jpg';
-				return <Frame id={hasID ? `image-${i}` : ''} aspect={aspect} key={i} {...props}>
+				let imgNum = (i + 1) % 3 || 3;
+				const src = imgPath + imgNum + '.jpg';
+				return <Frame id={hasID ? `image-${i+1}` : ''} aspect={aspect} key={i} {...props}>
 					<img src={src} alt='' loading='lazy' width='960' height='640' />
 				</Frame>
 			})}
@@ -94,7 +95,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="c--reel l--flex -g:10" tabindex="0">
+		<div class="l--reel -g:10" tabindex="0">
 			<div class="l--box -bgc:base-2 -p:40">Box</div>
 			<div class="l--box -bgc:base-2 -p:40">Box</div>
 			...
@@ -124,7 +125,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "--item-size:"
-		<div class="c--reel l--flex -g:20" style="--item-size:45%" tabindex="0">
+		<div class="l--reel -g:20" style="--item-size:45%" tabindex="0">
 			<img src="..." alt="" width="960" height="640" />
 			<img src="..." alt="" width="960" height="640" />
 			...
@@ -154,7 +155,7 @@ export const ReelImages = ({ hasID, isV, ...props }) => {
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "data-snapAlign="
-		<div class="c--reel l--flex -g:20" style="--item-size:45%" data-snapAlign="center" tabindex="0">
+		<div class="l--reel -g:20" style="--item-size:45%" data-snapAlign="center" tabindex="0">
 			<img src="..." alt="" width="960" height="640" />
 			<img src="..." alt="" width="960" height="640" />
 			...

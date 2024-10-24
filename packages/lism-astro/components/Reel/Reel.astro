@@ -7,4 +7,4 @@ interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
-<Flex {...getReelProps(props)}><slot /></Flex>
+<Flex _flex='reel' {...getReelProps(props)}><slot /></Flex>

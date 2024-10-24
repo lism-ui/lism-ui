@@ -1,17 +1,18 @@
-import atts from '../../lib/helper/atts';
 import { mergeGridContextProps } from '../Grid/getProps';
 
 export default function getReelProps({
-	lismClass,
-	variant,
 	unreel,
 	itemSize,
+	snapType,
 	snapAlign,
+	snapStop,
 	style = {},
 	...props
 }) {
 	if (undefined !== itemSize) style['--item-size'] = itemSize;
-	if (snapAlign) style['--snap-align'] = snapAlign;
+	if (snapAlign) style['--snapAlign'] = snapAlign;
+	if (snapType) style['--snapType'] = snapType;
+	if (snapStop) style['--snapStop'] = snapStop;
 	// if (showScrollbar) props['data-show-scrollbar'] = showScrollbar;
 	// if (unreel) props['data-unreel'] = unreel;
 
@@ -25,7 +26,6 @@ export default function getReelProps({
 
 	return Object.assign(
 		{
-			lismClass: atts(lismClass, 'c--reel', variant && `c--reel--${variant}`),
 			style,
 			tabIndex: '0',
 		},

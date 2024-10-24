@@ -145,6 +145,10 @@ export default [
 				link: '/components/columns/',
 			},
 			{
+				label: 'Reel',
+				link: '/components/reel/',
+			},
+			{
 				label: 'List',
 				link: '/components/list/',
 			},
@@ -242,11 +246,6 @@ export default [
 			{
 				label: 'Card',
 				link: '/components/card/',
-			},
-
-			{
-				label: 'Reel',
-				link: '/components/reel/',
 			},
 
 			{

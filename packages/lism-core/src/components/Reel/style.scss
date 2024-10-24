@@ -1,21 +1,20 @@
 // @use '../../scss/query' as query;
 
-.c--reel {
-	// --is--unreel: 1;
-	--item-size: var(--size--xs);
-	--snap-align: start;
+.l--reel {
 	--p: 0;
+	--item-size: var(--size--xs);
 	--unreel-gtc: repeat(auto-fit, minmax(min(var(--item-size), 100%), 1fr));
 
-	// display: flex;
+	display: flex;
 	overflow: auto;
-	scroll-snap-type: both mandatory;
-	scroll-behavior: smooth; // idリンクでスクロールされる
+	scroll-snap-type: var(--snapType, both mandatory);
+	scroll-behavior: smooth; // idリンクでスクロールされるように
 	scroll-padding: var(--p); // paddingと合わせる
 
 	> * {
 		flex: 0 0 var(--item-size);
-		scroll-snap-align: var(--snap-align);
+		scroll-snap-align: var(--snapAlign, start);
+		scroll-snap-stop: var(--snapStop, normal); //always
 	}
 
 	// 子要素に対してしか使えない
@@ -26,14 +25,14 @@
 
 // unreel → tileグリッドに切り替え. 別レイアウトが必要であればgtcで。
 // @include query.bp-up('sm') {
-// 	.c--reel[data-unreel='sm'] {
+// 	.l--reel[data-unreel='sm'] {
 // 		display: grid;
 // 		grid: none / var(--unreel-gtc);
 // 		// overflow-x: revert;
 // 	}
 // }
 // @include query.bp-up('md') {
-// 	.c--reel[data-unreel='md'] {
+// 	.l--reel[data-unreel='md'] {
 // 		display: grid;
 // 		grid: none / var(--unreel-gtc);
 // 		// overflow-x: revert;
@@ -42,7 +41,7 @@
 
 // スクロールバーのカスタマイズ
 /*
-.c--reel[data-scrollbar='custom'] {
+.l--reel[data-scrollbar='custom'] {
 	--scrollbar--thumb-color: #fff;
 	--scrollbar--track-color: #000;
 	--scrollbar--height: 1rem;
