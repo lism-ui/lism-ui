@@ -326,14 +326,13 @@ export const CONTEXT_PROPS = {
 		translate: { style: 1, utils: 1, utilKey: 'trslt' },
 		rotate: { style: 1, utils: 1 }, // rot?
 		scale: { style: 1, utils: 1 }, //
+		animation: { utilKey: 'anim', style: 1 },
 		// flip: { style: 1 },
 		clipPath: { style: 1 }, // cpp ?
 
 		// appearance: { style: 1, utils: { none: 'n' } },
 		objectFit: { style: 1, utilKey: 'obf', utils: { cover: 'cv', contain: 'cn' } },
 		objectPosition: { style: 1 },
-
-		// animation: { map:1, style: 1, presets: 1 },
 
 		filter: { style: 1, converter: 'filter' }, // fltr?
 		backdropFilter: { style: 1, converter: 'filter' }, // bdfltr?

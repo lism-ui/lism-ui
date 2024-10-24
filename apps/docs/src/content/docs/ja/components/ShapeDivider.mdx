@@ -3,177 +3,205 @@ title: 'ShapeDivider'
 description: ...
 ---
 
-import { Tabs, TabItem, ShapeDivider } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
+import { Box, Dummy, Frame, Spacer, Layer, Media, Tabs, TabItem } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
+import ShapeDivider from '~/components/ex/ShapeDivider/index.jsx';
 
-import SlopeDemo from '~/mdx/divider/slope.mdx';
-import ArrowDemo from '~/mdx/divider/arrow.mdx';
-import CircleDemo from '~/mdx/divider/circle.mdx';
-import WaveDemo from '~/mdx/divider/wave.mdx';
 
 
 svgで境界線を描画するコンポーネントです。
 
-## HTML構造
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea resize>
+		<ShapeDivider viewBox='0 0 10 10' level='5'><path d="M10 10V0L0 10z"/></ShapeDivider>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<ShapeDivider viewBox='0 0 10 10' level='5'><path d="M10 10V0L0 10z"/></ShapeDivider>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	</PreviewCode>
+</Preview>
 
-```pug
-.b--shapeDivider([data-flip])(--level,--stretch,--offset)
-	.b--shapeDivider__inner
-		svg.b--shapeDivider__svg
-```
+
+## Import
+<ImportSource name='ShapeDivider' css react />
 
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
-| `shape` |  形状の指定。svgで描画されます。 `slope`, `wave`, `arrow`, `circle` が指定できます。|
-| `shapeFlip` | シェイプの上下反転を指定できます。 `y`で上下反転、`x`で左右反転、`xy`で両方反転です。|
-| `level` | 高さのレベルを指定できます。 `5` がデフォルトで、コンポーネントでは正の数・負の数が指定できます。（負の数の時は出力されるsvgに関する処理が加わり、出力される変数はその絶対値になります。）|
-| `stretch` | 横方向の伸縮率。 `1` がデフォルトです。 |
-| `duration` | アニメーションの時間。 `12s` がデフォルトです。 |
-| `offset` | X方向の位置をずらす。 `stretch`と合わせて`%`単位で指定してください。（例: `stretch:1.5` なら、`offset:-25%~25%`の範囲が有効です。） |
-
-
-- `level`について
-	- `level * 1cqw` での高さが計算され、`600px`時点の値(`level * 6px`)が最小値、`1200px`時点の値(`level * 12px`)が最大値となります。
-	- `level` が マイナスの時、図形の描画方向が反転します。
-
-
-{/* - アニメーション機能、SVGにあわせて、アニメーション手法を切り替える?
-	1. 左右交互移動 (これが一番カンタン)
-	2. 一方向への無限ループ（隙間がどうしても見えてしまうので一旦なし）  
-	(参考: https://chocolat5.com/ja/tips/loop-image-animation/) */}
-
-
-## Import
-
-<ImportPackage component='ShapeDivider' />
+| `viewBox` | 出力するsvgのviewBox。|
+| `level` | シェイプの高さレベルを正の数で指定できます。 |
+| `offsetY` | 全体を上下にずらすための変数を出力します。|
+| `offsetX` | シェイプを水平方向にずらすための変数を出力します。 |
+| `stretch` | シェイプを水平方向に引き伸ばして表示するための変数を出力します。|
+| `scale` | `css.scale`に値を渡します。`-X`,`-Y`,`-XY`を指定するとユーティリティクラス化されます。|
 
 
 
-## Shapes
-
-<Tabs variant='line' panelProps={{isFlow: true}}>
-	<TabItem label='Slope'>
-		<Preview>
-			<PreviewTitle>slope1~3</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='slope1'/>
-				<ShapeDivider shape='slope2'/>
-				<ShapeDivider shape='slope3'/>
-			</PreviewArea>
-			<PreviewCode>
-			```jsx
-			<ShapeDivider shape='slope1'/>
-			<ShapeDivider shape='slope2'/>
-			<ShapeDivider shape='slope3'/>
-			```
-			</PreviewCode>
-		</Preview>
-		<Preview>
-			<PreviewTitle>with Animation</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='slope1' isAnimation/>
-				<ShapeDivider shape='slope2' isAnimation/>
-				<ShapeDivider shape='slope3' isAnimation/>
-			</PreviewArea>
-			<PreviewCode>
-				```jsx
-				<ShapeDivider shape='slope1' isAnimation/>
-				<ShapeDivider shape='slope2' isAnimation/>
-				<ShapeDivider shape='slope3' isAnimation/>
-				```
-			</PreviewCode>
-		</Preview>
-	</TabItem>
-	<TabItem label='Wave'>
-		<Preview>
-			<PreviewTitle>wave1~3</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='wave1'/>
-				<ShapeDivider shape='wave2'/>
-				<ShapeDivider shape='wave3'/>
-			</PreviewArea>
-			<PreviewCode>
-				```jsx
-				<ShapeDivider shape='wave1'/>
-				<ShapeDivider shape='wave2'/>
-				<ShapeDivider shape='wave3'/>
-				```
-			</PreviewCode>
-		</Preview>
-		<Preview>
-			<PreviewTitle>with Animation</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='wave1' isAnimation/>
-				<ShapeDivider shape='wave2' isAnimation/>
-				<ShapeDivider shape='wave3' isAnimation/>
-			</PreviewArea>
-			<PreviewCode>
-				```jsx
-				<ShapeDivider shape='wave1' isAnimation/>
-				<ShapeDivider shape='wave2' isAnimation/>
-				<ShapeDivider shape='wave3' isAnimation/>
-				```
-			</PreviewCode>
-		</Preview>
-	</TabItem>
-	<TabItem label='Arrow'>
-		<Preview>
-			<PreviewTitle>arrow1~3</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='arrow1'/>
-				<ShapeDivider shape='arrow2'/>
-				<ShapeDivider shape='arrow3'/>
-			</PreviewArea>
-			<PreviewCode>
-				```jsx
-				<ShapeDivider shape='arrow1'/>
-				<ShapeDivider shape='arrow2'/>
-				<ShapeDivider shape='arrow3'/>
-				```
-			</PreviewCode>
-		</Preview>
-
-	</TabItem>
-	<TabItem label='Circle'>
-		<Preview>
-			<PreviewTitle>circle1~3</PreviewTitle>
-			<PreviewArea resize>
-				<ShapeDivider shape='circle1'/>
-				<ShapeDivider shape='circle2'/>
-				<ShapeDivider shape='circle3'/>
-			</PreviewArea>
-			<PreviewCode>
-				```jsx
-				<ShapeDivider shape='circle1'/>
-				<ShapeDivider shape='circle2'/>
-				<ShapeDivider shape='circle3'/>
-				```
-			</PreviewCode>
-		</Preview>
-	</TabItem>
-</Tabs>
-
-- シェイプのカラーは、`ShapeDivider`の`c`(`b--shapeDivider`の`color`) で指定できます。  
-	（`.b--shapeDivider__svg` は `fill:currentColor` になっています）
+## Examples
 
 
-## Usage
+scaleで反転させることで、同じsvgを上下に利用できます。
 
-<Tabs variant='line' panelProps={{isFlow: true}}>
-	<TabItem label='Slope'>
-		<SlopeDemo />
-	</TabItem>
-	<TabItem label='Wave'>
-		<WaveDemo />
-	</TabItem>
-	<TabItem label='Arrow'>
-		<ArrowDemo />
-	</TabItem>
-	<TabItem label='Circle'>
-		<CircleDemo />
-	</TabItem>
-</Tabs>
+<Preview>
+	<PreviewTitle>Example 1</PreviewTitle>
+	<PreviewArea resize p='5' isFlow={false}>
+		<Box hasGutter py='50' bgc='text' c='base'>
+			<Dummy length='l' />
+		</Box>
+		<Box pos='r'>
+			<ShapeDivider viewBox='0 0 10 10' level='6' scale='-Y' offsetX='-0.5px'>
+				<path d="M10,10V0L0,9.5V10L10,10z"/>
+			</ShapeDivider>
+			<Box hasGutter py='50'>
+				<Dummy length='l' />
+			</Box>
+			<ShapeDivider viewBox='0 0 10 10' level='6' offsetX='0.5px'>
+				<path d="M10,10V0L0,9.5V10L10,10z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='50' bgc='text' c='base'>
+			<Dummy length='l' />
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "slope1" "shapeFlip='xy'"
+		<Box hasGutter py='50' bgc='text' c='base'>
+			<Dummy length='l' />
+		</Box>
+		<Box pos='r'>
+			<ShapeDivider viewBox='0 0 10 10' level='6' scale='-Y' offsetX='-0.5px'>
+				<path d="M10,10V0L0,9.5V10L10,10z"/>
+			</ShapeDivider>
+			<Box hasGutter py='50'>
+				<Dummy length='l' />
+			</Box>
+			<ShapeDivider viewBox='0 0 10 10' level='6' offsetX='0.5px'>
+				<path d="M10,10V0L0,9.5V10L10,10z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='50' bgc='text' c='base'>
+			<Dummy length='l' />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+SVGは、描画時にほんの少し隙間ができてしまうことがあるので、 `offsetY` で 少しだけずらして配置しています。
+
+
+<Spacer h='1rem'/>
+
+以下はアニメーションをONにした時の例です。
+<Preview>
+	<PreviewTitle>Example 2</PreviewTitle>
+	<PreviewArea resize p='5' isFlow={false}>
+		<Box pos='r' hasGutter>
+			<Spacer h='50' />
+			<Frame isLayer z='-1'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Layer bgc='black' op='0.5'/>
+			</Frame>
+			<Box py='50' c='white'>
+				<Dummy length='xl' />
+			</Box>
+			<ShapeDivider viewBox='0 0 100 10' isAnimation c='base' level='6' offsetX='-0.5px'>
+				{/* <path opacity=".3" d="M100,5.5C91.5,3,79.5,7.5,71.5,8C58,9,49,0.5,36,2c-9,1-13.5,3.5-20.5,3.5C8.5,6,0,2,0,2v8h100V5.5z"/> */}
+				<path opacity=".3" d="M100,1.5C87.8,6.6,79.3,2.1,67.8,2.6S53,6.5,42.5,5.5S23,0,15,0S1,3,0,4v6h100V1.5z"/>
+				<path d="M100,7.5C91.5,5,77.1,11.8,54,8C34.6,4.8,14.4,4.1,0,8.5V10h100V7.5z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='50'>
+			<Dummy length='l' />
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "isAnimation"
+		<Box pos='r' hasGutter>
+			<Spacer h='50' />
+			<Frame isLayer z='-1'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Layer bgc='black' op='0.5'/>
+			</Frame>
+			<Box py='50' c='white'>
+				<Dummy length='xl' />
+			</Box>
+			<ShapeDivider viewBox='0 0 100 10' isAnimation c='base' level='6' offsetX='-0.5px'>
+				<path opacity=".3" d="M100,1.5C87.8,6.6,79.3,2.1,67.8,2.6S53,6.5,42.5,5.5S23,0,15,0S1,3,0,4v6h100V1.5z"/>
+				<path d="M100,7.5C91.5,5,77.1,11.8,54,8C34.6,4.8,14.4,4.1,0,8.5V10h100V7.5z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='50'>
+			<Dummy length='l' />
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
+<Spacer h='1rem'/>
+
+上下に同じシェイプを使いまわす時、そのまま反転させると少し違和感がでてくるかもしれません。  
+そういう場合は、`stretch`,`offsetX`でsvgをずらすことで、同じシェイプでも自然な表示にすることができます。
+
+<Preview>
+	<PreviewTitle>`stretch`,`offsetX`の活用</PreviewTitle>
+	<PreviewArea resize p='5' isFlow={false}>
+		<Box hasGutter py='40'>
+			<Spacer h='20'/>
+			<Dummy length='l' />
+		</Box>
+		<Box pos='r' hasGutter>
+			<ShapeDivider viewBox='0 0 100 10' c='base' scale='-XY' level='5' stretch={1.1} offsetX='-5%' offsetY='-0.5px'>
+				<path d="M100 6C89.3 3.3 82.7 9 70 9S48.4 3 38 3 24.5 6 17 6C7.4 6 0 0 0 0v10h100V6z"/>
+			</ShapeDivider>
+			<Frame isLayer z='-1'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+				<Layer bgc='text' op='0.75'/>
+			</Frame>
+			<Box py='50' c='base'>
+				<Dummy length='xl' />
+			</Box>
+			<ShapeDivider viewBox='0 0 100 10' c='base' level='5' stretch={1.1} offsetY='0.5px'>
+				<path d="M100 6C89.3 3.3 82.7 9 70 9S48.4 3 38 3 24.5 6 17 6C7.4 6 0 0 0 0v10h100V6z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='40'>
+			<Dummy length='l' />
+			<Spacer h='20'/>
+		</Box>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "stretch=" "offsetX="
+		<Box hasGutter py='40'>
+			<Spacer h='20'/>
+			<Dummy length='l' />
+		</Box>
+		<Box pos='r' hasGutter>
+			<ShapeDivider viewBox='0 0 100 10' c='base' scale='-XY' level='5' stretch={1.1} offsetX='-5%' offsetY='-0.5px'>
+				<path d="M100 6C89.3 3.3 82.7 9 70 9S48.4 3 38 3 24.5 6 17 6C7.4 6 0 0 0 0v10h100V6z"/>
+			</ShapeDivider>
+			<Frame isLayer z='-1'>
+				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
+				<Layer bgc='text' op='0.75'/>
+			</Frame>
+			<Box py='50' c='base'>
+				<Dummy length='xl' />
+			</Box>
+			<ShapeDivider viewBox='0 0 100 10' c='base' level='5' stretch={1.1} offsetY='0.5px'>
+				<path d="M100 6C89.3 3.3 82.7 9 70 9S48.4 3 38 3 24.5 6 17 6C7.4 6 0 0 0 0v10h100V6z"/>
+			</ShapeDivider>
+		</Box>
+		<Box hasGutter py='40'>
+			<Dummy length='l' />
+			<Spacer h='20'/>
+		</Box>
+		```
+	</PreviewCode>
+</Preview>
+
 

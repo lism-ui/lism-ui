@@ -46,9 +46,9 @@ export { default as Modal } from './Modal';
 export * from './List';
 export * from './Table';
 export * from './Reel';
-export * from './ShapeDivider';
 export * from './NavMenu';
 
+// export * from './ShapeDivider';
 // export * from './Card';
 // export * from './Chat';
 // export * from './Hero';

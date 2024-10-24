@@ -7,10 +7,11 @@
 @use './optins/bg';
 @use './optins/others';
 
-@use '../components/ex/Badge/style' as badge;
-@use '../components/ex/Button/style' as button;
-@use '../components/ex/Chat/style' as chat;
-@use '../components/ex/Note/style' as note;
+@use '../components/ex/Badge/style' as Badge;
+@use '../components/ex/Button/style' as Button;
+@use '../components/ex/Chat/style' as Chat;
+@use '../components/ex/Note/style' as Note;
+@use '../components/ex/ShapeDivider/style' as ShapeDivider;
 
 /* ----------------------------------------
     optin で、Docs で反映させるもの

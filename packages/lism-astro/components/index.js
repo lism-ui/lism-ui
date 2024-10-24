@@ -48,7 +48,7 @@ export * from './Tab';
 // export * from './Chat';
 export * from './Table';
 export * from './List';
-export * from './ShapeDivider';
+// export * from './ShapeDivider';
 export * from './Reel';
 export * from './NavMenu';
 
