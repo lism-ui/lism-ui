@@ -1,52 +1,6 @@
 import presets from './presets';
 import atts from '../../lib/helper/atts';
 
-/**
- * html文字列をminify
- */
-export const minifyHtml = (html) => {
-	if (!html) return '';
-
-	// 改行先に削除
-	html = html.replace(/\r?\n/g, '');
-
-	// タブ → スペース
-	html = html.replace(/\t/g, ' ');
-
-	// 複数のスペースを１つに
-	html = html.replace(/\s\s+/g, ' ');
-
-	// タグとタグの間のスペースを削除
-	html = html.replace(/> </g, '><');
-
-	return html;
-};
-
-/**
- * svgをcssの image url に変換
- */
-export const convertSvgToImgurl = (svg, encode) => {
-	if (!svg) return '';
-
-	// minify化
-	svg = minifyHtml(svg);
-
-	if ('base64' === encode) {
-		// memo: btoa() だけだとマルチバイト文字が入った時にエラーになる。
-		// encodeURIComponent() でそれを回避できるがそれだとSVGとして描画できず、 unescape() と組み合わせることで期待する動作になった。 see: https://www.softel.co.jp/blogs/tech/archives/4133
-		// svg = window.btoa(unescape(encodeURIComponent(svg)));
-
-		// memo: Buffer 使えば非推奨な関数を使わなくてもいい see: https://hackersheet.com/naopoyo/sheets/bvtrkwt
-		svg = Buffer.from(svg).toString('base64');
-		return `url(data:image/svg+xml;base64,${svg})`;
-	} else {
-		// カラーコードの先頭の # → %23 に置換
-		svg = svg.replaceAll('="#', '="%23');
-	}
-
-	return `url('data:image/svg+xml;utf8,${svg}')`;
-};
-
 /*
 Icon の出力パターン
   - icon = 文字列の場合→preset で登録されたsvgアイコンを呼び出す
@@ -85,15 +39,7 @@ export default function getProps({
 	} else if (emoji) {
 		iconClasses.push('a--icon--emoji');
 	} else if (mask) {
-		iconClasses.push('a--icon--mask');
-
-		// maskが文字列で、かつ <svg で始まる場合
-		if (typeof mask === 'string' && mask.startsWith('<svg')) {
-			style['--icon-mask'] = convertSvgToImgurl(mask, 'base64');
-		}
-		//  else {
-		// 	iconProps['data-lism-mask'] = mask;
-		// }
+		props.hasMask = mask;
 	} else if (icon) {
 		// icon が 文字列の場合、プリセットアイコンを呼び出す
 		if (typeof icon === 'string') {

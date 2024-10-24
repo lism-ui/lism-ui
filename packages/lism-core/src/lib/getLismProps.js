@@ -8,6 +8,7 @@ import atts from './helper/atts';
 import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
 import splitWithComma from './helper/splitWithComma';
+import svg2ImgUrl from './helper/svg2ImgUrl';
 
 const getConverter = (propName) => {
 	if (propName === 'gap') return 'space';
@@ -62,6 +63,7 @@ class LismPropsData {
 			isSkipFlow,
 			hasDivider,
 			hasDelimiter,
+			hasMask,
 			// hasBd,
 			_context,
 			..._props
@@ -104,9 +106,13 @@ class LismPropsData {
 				style['--delimiter'] = `"${hasDelimiter}"`;
 			}
 		}
-		// if (hasBd) {
-		// 	lismState.push('has--bd');
-		// }
+		if (hasMask) {
+			lismState.push('has--mask');
+			// hasMask が文字列で、かつ <svg で始まる場合
+			if (typeof hasMask === 'string' && hasMask.startsWith('<svg')) {
+				style['--mask-img'] = svg2ImgUrl(hasMask, 'base64');
+			}
+		}
 
 		this.styles = style;
 

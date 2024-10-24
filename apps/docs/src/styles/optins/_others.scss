@@ -47,3 +47,17 @@
 // --------------------
 // ...
 // --------------------
+
+// .a--icon--emoji {
+// 	// emoji 考慮
+// 	font-family: var(--ff--emoji);
+// 	line-height: 1;
+// 	place-content: center; // justify-content: center;
+// 	place-items: center; // align-items: center;
+// }
+// .a--icon--mask {
+// 	width: 1em;
+// 	height: 1em;
+// 	background-color: currentColor;
+// 	mask: var(--icon-mask) no-repeat 50% 50% / contain;
+// }
