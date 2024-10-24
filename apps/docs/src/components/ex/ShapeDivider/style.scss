@@ -1,12 +1,15 @@
 // heightが.-h:で上書きできるかあとでチェック
 .b--shapeDivider {
-	--level: 0;
-	--offsetY: 0;
-	--offsetX: 0;
-	--stretch: 1;
+	:where(&) {
+		--level: 0;
+		--offsetY: 0;
+		--offsetX: 0;
+		--stretch: 1;
+		--h: clamp(calc(6px * var(--level)), calc(1cqw * var(--level)), calc(12px * var(--level)));
+	}
 
 	// 600px時点を最小値, 1200px時点を最大値にして、clampで高さを変動させる
-	height: clamp(calc(6px * var(--level)), calc(1cqw * var(--level)), calc(12px * var(--level)));
+	height: var(--h);
 
 	overflow: hidden;
 	translate: 0 var(--offsetY);

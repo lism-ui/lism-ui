@@ -3,6 +3,7 @@ import DemoPageLayout from '~/layouts/DemoPageLayout.astro';
 import {
 	Lism,
 	Frame,
+	Flex,
 	Media,
 	Spacer,
 	Box,
@@ -14,86 +15,153 @@ import {
 	Stack,
 	FlexItem,
 	Center,
-	ShapeDivider,
 } from '@lism-ui/astro';
-
+import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
+import '~/components/ex/ShapeDivider/style.scss';
 // import './style.scss';
 ---
 
 <DemoPageLayout>
-	<Lism isFlow hasGutter py={50} isContainer='s' isFullwide>
+	<Lism hasGutter py={50} isContainer='s' isFullwide>
 		<Stack isFullwide minH='50vh' bgc='base-2'>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 01</Text>
 				<Dummy length='l' lang='ja' />
 			</Container>
 		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<Stack isFullwide minH='50vh' bgc='base-2' g='30'>
-			<Box ta='c'>Header</Box>
+		<Stack isFullwide minH='70vh' g='30' c='white' pos='r'>
+			<Frame isLayer>
+				<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Layer blur='4px' bgc='black:50%' />
+			</Frame>
+			<Flex jc='sb' p='30' z='0' g='30'>
+				<Box>Header</Box>
+				<Flex g='30'>
+					<div>XXX</div>
+					<div>XXX</div>
+				</Flex>
+			</Flex>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<Dummy length='l' />
 			</Container>
-			<Box ta='c'>Footer</Box>
+			<Center p='20' z='0'>Footer</Center>
 		</Stack>
-		<Spacer bg='stripe' h='60' />
 		<Stack isFullwide h='full' bgc='base-2' g='30'>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>Full Screen</Text>
 				<Dummy length='xl' />
 			</Container>
-			<Box ta='c'>Footer</Box>
 		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<Stack isFullwide minH='50vh' bgc='base-2'>
-			<ShapeDivider shape='wave3' c='base' isFlip />
-			<Container size='m' hasGutter isFlow my='auto'>
-				<Text fw='bold' fz='xl'>With ShapeDivider</Text>
-				<Dummy length='l' />
-			</Container>
-			<ShapeDivider shape='wave3' c='base' />
-		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<Stack isFullwide pos='r' minH='50vh'>
+		<Stack isFullwide hasGutter pos='r' minH='75vh' c='white' g='20'>
+			<ShapeDivider
+				viewBox='0 0 10 10'
+				c='base-2'
+				level='6'
+				scale='-Y'
+				offsetY='-0.5px'
+				z='1'
+			>
+				<path d='M10,10V0L0,9.5V10L10,10z'></path>
+			</ShapeDivider>
 			<Frame isLayer>
-				<Media src='/img.jpg' alt='' width='960' height='640' />
+				<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640' />
+				<Layer blur='4px' bgc='black:50%' />
 			</Frame>
-			<Layer blur='4px' bgc='black:50%' />
-			<Container size='m' hasGutter isFlow my='auto' c='white' z='0'>
-				<Text fw='bold' fz='xl'>With Layers</Text>
-				<Dummy length='l' />
-			</Container>
-		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<Stack isFullwide pos='r' minH='50vh' c='white' g='20'>
-			<Frame isLayer>
-				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Layer blur='4px' bgc='black:50%' />
-			<ShapeDivider shape='slope2' c='base' isFlip />
-			<Container size='m' hasGutter isFlow my='auto' z='0'>
-				<Text fw='bold' fz='xl'>With ShapDivide & Layers</Text>
+			<Container size='m' isFlow py='40' my='auto' z='0'>
+				<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
 				<Dummy length='l' />
 			</Container>
 			<Box z='0' ta='c'>Footer</Box>
-			<ShapeDivider shape='slope2' c='base' />
+			<ShapeDivider viewBox='0 0 10 10' c='base' level='6' offsetY='0.5px' z='1'>
+				<path d='M10,10V0L0,9.5V10L10,10z'></path>
+			</ShapeDivider>
 		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<Stack isFullwide pos='r' minH='50vh'>
-			<Frame isLayer>
-				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Layer bgc='black:20%' />
-			<FlexItem layout={Grid} pos='r' fxg='1' ai='c' hasGutter>
-				<Center minH='50%' p='30' c='white' bgc='black:40%' bdrs='2' g='20'>
-					<Text fw='bold' fz='xl'>min-height 50%</Text>
+		<Spacer h='2rem' />
+
+		<Spacer h='60' />
+		<hr />
+		<Box hasGutter>
+			<Spacer h='5rem' />
+			<Dummy lh='s' mb='auto' length='l' />
+			<Spacer h='3rem' />
+		</Box>
+		<!-- clamp = min:40px/400px, max:80px/1200px.  -->
+		<Lism isFullwide style={{ '--slopeH': 'clamp(2.5rem, 1.25rem + 5vw, 5rem)' }}>
+			<Stack isFullwide hasGutter pos='r' minH='50vh' c='white' g='20'>
+				<ShapeDivider
+					viewBox='0 0 10 10'
+					c='base'
+					h='var(--slopeH)'
+					scale='-Y'
+					offsetY='-0.5px'
+					z='1'
+				>
+					<path d='M10,10V0L0,9.5V10L10,10z'></path>
+				</ShapeDivider>
+				<Frame isLayer>
+					<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640' />
+					<Layer blur='4px' bgc='black:50%' />
+				</Frame>
+				<Container size='m' isFlow py='40' pr={['0', '25%']} my='auto' z='0'>
+					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
 					<Dummy length='l' />
-				</Center>
-			</FlexItem>
-		</Stack>
-		<Spacer bg='stripe' h='60' />
-		<!-- <Spacer bg='stripe' h='60' />
-		<Spacer bg='stripe' h='60' /> -->
+				</Container>
+				<Spacer h='2rem' />
+			</Stack>
+			<Stack isFullwide hasGutter pos='r' minH='50vh' c='white'>
+				<Frame
+					isLayer
+					style={{
+						clipPath: 'polygon(0 var(--slopeH), 100% var(--slopeH), 100% 0)',
+						translate: '0 calc(0.5px - var(--slopeH))',
+					}}
+					z='1'
+					bgc='black'
+				>
+					<Media
+						src='/img/img-3.jpg'
+						alt=''
+						width='960'
+						height='640'
+						h='calc(100% + var(--slopeH))'
+						op='0.6'
+					/>
+				</Frame>
+
+				<Frame isLayer bgc='black'>
+					<Media
+						src='/img/img-3.jpg'
+						alt=''
+						width='960'
+						height='640'
+						objectPosition='50% calc(50% - var(--slopeH))'
+						h='calc(100% + var(--slopeH))'
+						op='0.6'
+					/>
+				</Frame>
+				<Container size='m' isFlow py='40' pl={['0', '25%']} my='auto' z='0'>
+					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
+					<Dummy length='l' />
+				</Container>
+				<ShapeDivider
+					viewBox='0 0 10 10'
+					c='base'
+					h='var(--slopeH)'
+					scale='-X'
+					offsetY='0.5px'
+					z='1'
+				>
+					<path d='M10,10V0L0,9.5V10L10,10z'></path>
+				</ShapeDivider>
+			</Stack>
+		</Lism>
+		<Box hasGutter>
+			<Spacer h='3rem' />
+			<Dummy lh='s' mb='auto' length='l' />
+			<Spacer h='5rem' />
+		</Box>
+		<!-- <Spacer h='60' />
+		<Spacer h='60' /> -->
 	</Lism>
 </DemoPageLayout>
