@@ -91,63 +91,64 @@ import '~/components/ex/ShapeDivider/style.scss';
 			<Stack isFullwide hasGutter pos='r' minH='50vh' c='white' g='20'>
 				<ShapeDivider
 					viewBox='0 0 10 10'
-					c='base'
 					h='var(--slopeH)'
+					c='base'
 					scale='-Y'
 					offsetY='-0.5px'
 					z='1'
 				>
 					<path d='M10,10V0L0,9.5V10L10,10z'></path>
 				</ShapeDivider>
-				<Frame isLayer>
-					<Media isLayer src='/img/img-2.jpg' alt='' width='960' height='640' />
-					<Layer blur='4px' bgc='black:50%' />
+				<Frame isLayer bgc='black'>
+					<Media
+						isLayer
+						src='/img/img-2.jpg'
+						alt=''
+						width='960'
+						height='640'
+						op='0.5'
+						blur='6px'
+					/>
 				</Frame>
-				<Container size='m' isFlow py='40' pr={['0', '25%']} my='auto' z='0'>
+				<Container size='m' isFlow py='40' pr={['0', '25%', '33%']} my='auto' z='0'>
 					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
 					<Dummy length='l' />
 				</Container>
-				<Spacer h='2rem' />
+				<Spacer h='var(--slopeH)' />
 			</Stack>
-			<Stack isFullwide hasGutter pos='r' minH='50vh' c='white'>
+			<Stack
+				isFullwide
+				hasGutter
+				pos='r'
+				minH='50vh'
+				c='white'
+				mbs='calc(0px - var(--slopeH))'
+			>
 				<Frame
 					isLayer
-					style={{
-						clipPath: 'polygon(0 var(--slopeH), 100% var(--slopeH), 100% 0)',
-						translate: '0 calc(0.5px - var(--slopeH))',
-					}}
-					z='1'
 					bgc='black'
+					style={{
+						clipPath: 'polygon(0 var(--slopeH), 0 100%, 100% 100%, 100% 0)',
+					}}
 				>
 					<Media
 						src='/img/img-3.jpg'
 						alt=''
 						width='960'
 						height='640'
-						h='calc(100% + var(--slopeH))'
-						op='0.6'
+						op='0.5'
+						blur='6px'
 					/>
 				</Frame>
-
-				<Frame isLayer bgc='black'>
-					<Media
-						src='/img/img-3.jpg'
-						alt=''
-						width='960'
-						height='640'
-						objectPosition='50% calc(50% - var(--slopeH))'
-						h='calc(100% + var(--slopeH))'
-						op='0.6'
-					/>
-				</Frame>
-				<Container size='m' isFlow py='40' pl={['0', '25%']} my='auto' z='0'>
+				<Spacer h='var(--slopeH)' />
+				<Container size='m' isFlow py='40' pl={['0', '25%', '33%']} my='auto' z='0'>
 					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
 					<Dummy length='l' />
 				</Container>
 				<ShapeDivider
 					viewBox='0 0 10 10'
-					c='base'
 					h='var(--slopeH)'
+					c='base'
 					scale='-X'
 					offsetY='0.5px'
 					z='1'
