@@ -55,7 +55,7 @@ export default [
 	// },
 
 	{
-		label: 'Components',
+		label: 'Core Components',
 		items: [
 			{
 				label: 'Lism',
@@ -213,7 +213,11 @@ export default [
 				label: 'Tabs',
 				link: '/components/tabs/',
 			},
-
+		],
+	},
+	{
+		label: 'Opt-in Components',
+		items: [
 			{
 				label: 'Blocks',
 				link: '###---',

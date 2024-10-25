@@ -4,99 +4,103 @@ description: ...
 ---
 
 import { Divider, Flex, FlexItem, Box, Stack, Text } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
-import { DividerLabel } from '~/components/ex/DividerLabel';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
+import DividerLabel from '~/components/ex/DividerLabel/index.astro';
 
 
 区切り線をラベルテキスト付きで描画するコンポーネントの作成例です。
 
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p='40'>
+		<DividerLabel>Label Text</DividerLabel>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<DividerLabel>Label Text</DividerLabel>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="b--dividerLabel l--flex -ai:c -lh:1 -c:text-2 -g:30">
+		<div class="a--divider -bd:bs -fx:1" aria-hidden="true"></div>
+		<div class="b--dividerLabel__text">Label Text</div>
+		<div class="a--divider -bd:bs -fx:1" aria-hidden="true"></div>
+	</div>
+	```
+	</PreviewCode>
+</Preview>
 
-## コンポーネントの準備
 
-```jsx
-import { Lism, Flex, Divider } from '@lism-ui/core';
+## Import
+<ImportSource name='DividerLabel' react astro/>
 
-export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bds, ...props }) {
-	const bdProps = { bdc, bdw, bds };
 
-	if (isVertical) {
-		bdProps.variant = 'vertical';
-		props.fxd = 'column';
-	}
-	return (
-		<Flex className='b--dividerLabel' ai='c' g='30' fz='s' lh='1' c='text-2' {...props}>
-			{labelPosition !== 'start' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
-			<Lism className='b--divider__label'>{children}</Lism>
-			{labelPosition !== 'end' && <Divider flexItem={{ fx: '1' }} {...bdProps} />}
-		</Flex>
-	);
-}
-```
 
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
-| `isVertical` | 区切り線を縦方向にできます |
-| `bdw`,`bds`,`bdc` | 区切り線のボーダープロパティ |
+|`textPosition`|ラベルテキストの位置。`start`,`end`を指定するとその方向にテキストが寄ります|
+| `bd`,`bdw`,`bds`,`bdc` | 区切り線のボーダープロパティ。 |
 
 
-## Usage
+## Examples
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='30' >
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+	<PreviewArea p='30' >
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 		<DividerLabel>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<DividerLabel labelPosition='start'>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<DividerLabel labelPosition='end'>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel c='text-2' textPosition='start'>Label Text</DividerLabel>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel c='blue' textPosition='end'>Label Text</DividerLabel>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {2}
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 		<DividerLabel>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 </Preview>
 
 <Preview>
 	<PreviewTitle>スタイルの変更例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<DividerLabel bds='dotted' bdw='4px' bdc='blue:50%' c='blue' fz='s'>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+	<PreviewArea p='30'>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel bds='dotted' bdw='5px' c='purple' fz='s' ff='mono'>Label Text</DividerLabel>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {2}
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
-		<DividerLabel bds='dotted' bdw='4px' bdc='blue:50%' c='blue' fz='s'>Label Text</DividerLabel>
-		<Box bgc='base-2' py='50' ta='c'>...Contents...</Box>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
+		<DividerLabel bds='dotted' bdw='5px' c='purple' fz='s' ff='mono'>Label Text</DividerLabel>
+		<Box bgc='base-2' c='text-2' py='50' ta='c'>...Contents...</Box>
 		```
 	</PreviewCode>
 </Preview>
+
 
 
 ### 縦方向
 
-
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='30' isFlow={false}>
+	<PreviewTitle>`flex-direction`を変更する</PreviewTitle>
+	<PreviewArea p='30' isFlow={false}>
 		<Flex ai='c' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical fz='s' aslf='stretch'>Label</DividerLabel>
+			<DividerLabel fxd='column' bd='is' fz='s' aslf='stretch'>Label</DividerLabel>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx {3}
+		```jsx "fxd='column' bd='is'"
 		<Flex ai='c' g='20'>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical fz='s' aslf='stretch'>Label</DividerLabel>
+			<DividerLabel fxd='column' bd='is' fz='s' aslf='stretch'>Label</DividerLabel>
 			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
 		</Flex>
 		```
@@ -104,32 +108,24 @@ export function DividerLabel({ children, labelPosition, isVertical, bdc, bdw, bd
 </Preview>
 
 <Preview>
-	<PreviewTitle>例</PreviewTitle>
+	<PreviewTitle>`writing-mode`を変更する</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='stretch' g='20'>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical labelPosition='start'>
-				<Text className='-wm:v-lr' fz='xs'>Label</Text>
-			</DividerLabel>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical labelPosition='end'>
-				<Text className='-wm:v-lr' fz='xs'>Label</Text>
-			</DividerLabel>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
+			<DividerLabel className='-wm:v-rl' fz='xs' g='20' textPosition='start'>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
+			<DividerLabel className='-wm:v-rl' fz='xs' g='20' textPosition='end'>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
-		```jsx
+		```jsx "-wm:v-rl"
 		<Flex ai='stretch' g='20'>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical labelPosition='start'>
-				<Text className='-wm:v-lr' fz='xs'>Label</Text>
-			</DividerLabel>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
-			<DividerLabel isVertical labelPosition='end'>
-				<Text className='-wm:v-lr' fz='xs'>Label</Text>
-			</DividerLabel>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Contents</FlexItem>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
+			<DividerLabel className='-wm:v-rl' fz='xs' g='20' textPosition='start'>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
+			<DividerLabel className='-wm:v-rl' fz='xs' g='20' textPosition='end'>Label</DividerLabel>
+			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>Box</FlexItem>
 		</Flex>
 		```
 	</PreviewCode>
