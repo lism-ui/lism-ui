@@ -10,10 +10,6 @@
 	--hov-trsdu: 0.3s;
 	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;
 
-	// accordion用
-	--acc-trsdu: 0.3s;
-	--acc-trsprop: margin-block, padding-block, opacity, grid-template-rows; // hov:get:slide でも使用
-
 	// is--overwide で使用
 	--overwide-size: 100vw;
 
@@ -26,6 +22,7 @@
 	// --cell-minIs
 	// --td|th-c
 	// --td|th-bgc
+	// --acc-duration
 }
 
 /* ----------------------------------------

@@ -1,17 +1,14 @@
-.c--accordion {
+.d--accordion {
 	--opened: 0;
-	--duration: var(--acc-trsdu);
 	// overflow: clip; // bdrs考慮
 }
 
 // 開いた時
-.c--accordion.-opened {
+.d--accordion.-opened {
 	--opened: 1;
 }
 
-.c--accordion__header {
-	// cursor: pointer;
-	// align-items: center;
+.d--accordion__header {
 	outline-offset: -1px; // overflow:clip|hidden; で見えなくなってしまうのを防ぐ
 	gap: 0.5em;
 
@@ -21,26 +18,26 @@
 	}
 }
 
-// .c--accordion__label {
+// .d--accordion__label {
 // 	flex: 1;
 // 	font: inherit;
 // }
 
-.c--accordion__body {
+.d--accordion__body {
 	// display: grid;
 	grid-template-rows: 1fr;
-	transition-property: var(--acc-trsprop);
-	transition-duration: var(--duration);
+	transition-property: margin-block, padding-block, opacity, grid-template-rows;
+	transition-duration: var(--acc-duration, 0.3s);
 }
 
 // ※ 正常な animation に必須
-// .c--accordion__inner {
+// .d--accordion__inner {
 // 	overflow: hidden;
 // }
 
 // 閉じている時
-.c--accordion:not(.-opened) {
-	> .c--accordion__body {
+.d--accordion:not(.-opened) {
+	> .d--accordion__body {
 		opacity: 0.1;
 		grid-template-rows: 0fr;
 		padding-block: 0 !important;
@@ -49,40 +46,29 @@
 }
 
 // アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
-:where(.c--accordion__icon) {
-	// font-size: 1.125em;
-	// display: inline-flex;
-
+:where(.d--accordion__icon) {
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
 	> .a--icon {
 		transition: rotate 0.25s;
 		rotate: calc(0deg - var(--opened) * 180deg);
+		grid-area: 1 / 1;
 	}
 }
 
-:where(.c--accordion__icon[data-role='trigger']) {
+:where(.d--accordion__icon[data-role='trigger']) {
 	padding: 0.375em;
-	background-color: transparent;
-	border: solid 1px currentColor;
-	border-radius: var(--bdrs--1);
+	// background-color: transparent;
+	// border: solid 1px currentColor;
+	// border-radius: var(--bdrs--1);
 }
 
-.c--accordion__openIcon {
-	opacity: calc(1 - var(--opened));
-}
-.c--accordion__closeIcon {
-	position: absolute;
-	opacity: calc(0 + var(--opened));
-	rotate: calc(180deg - var(--opened) * 180deg);
-}
-
-.c--accordion_header:has([data-role='trigger']) {
-	pointer-events: none;
-}
-
-.c--accordion__label > a,
-.c--accordion__icon {
+.d--accordion__label > a,
+.d--accordion__icon {
 	pointer-events: auto;
 }
-// .-opened > .c--accordion__header > .c--accordion__icon {
+// .-opened > .d--accordion__header > .d--accordion__icon {
 // 	transform: rotate(180deg);
+
+.d--accordion__header:has(> [data-role='trigger']) {
+	pointer-events: none;
+}

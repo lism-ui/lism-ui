@@ -4,39 +4,33 @@ description: ...
 ---
 
 
-import { Text, Lism, Flex, Stack, Icon, Decorator, Divider, Dummy, AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/core';
+import { Text, Lism, Flex, Stack, Icon, Decorator, Divider, Dummy, Accordions, Accordion } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 import {Question, ChatCircleDots} from '@phosphor-icons/react';
 
 Q&Aのレイアウト構築例を紹介します。
 
-export function FAQ({ q, children }) {
+export function FaqAcc({ children }) {
 	return (
-		<Stack className='c--faq' g='20'>
-			<Flex className='c--faq__Q' g='10' ai='c'>
-				<Icon icon={Question} fz='2xl' c='purple'/>
-				<Lism tag='span' fw='bold'>{q}</Lism>
-			</Flex>
-			<Lism className='c--faq__A' pis='10' isFlow='s'>
-				{children}
-			</Lism>
-		</Stack>
+		<Accordion.Root className='c--faq' p='30' bgc='base-2' bdrs='3'>
+			{children}
+		</Accordion.Root>
 	);
 }
-
-export function AccFAQ({ q, children }) {
+export function FaqAccTitle({ children }) {
 	return (
-		<Accordion className='c--faq' p='30' bgc='base-2' bdrs='3'>
-			<AccordionHeader>
-				<Flex g='10'>
-					<Icon icon={Question} fz='2xl' />
-					{q}
-				</Flex>
-			</AccordionHeader>
-			<AccordionBody mbs='30' isFlow='s'>
-				{children}
-			</AccordionBody>
-		</Accordion>
+		<Accordion.Header>
+			<Icon icon='question' fz='2xl' />
+			<Accordion.Label>{children}</Accordion.Label>
+			<Accordion.Icon />
+		</Accordion.Header>
+	);
+}
+export function FaqAccBody({ children }) {
+	return (
+		<Accordion.Body mbs='30' isFlow='s'>
+			{children}
+		</Accordion.Body>
 	);
 }
 
@@ -44,76 +38,74 @@ export function AccFAQ({ q, children }) {
 ## 構築例-1
 
 <Preview>
-	<PreviewTitle>表示</PreviewTitle>
+	<PreviewTitle>Example</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<Stack g='40'>
-			<FAQ q='Lorem ipsum, question 1'>
-				<Dummy length='l' />
-			</FAQ>
-			<Divider />
-			<FAQ q='Lorem ipsum dolor sit amet, question 2'>
-				<Dummy  />
-				<Dummy length='l' />
-			</FAQ>
-			<Divider />
-			<FAQ q='Question 3'>
-				<Dummy />
-			</FAQ>
-		</Stack>
-	</PreviewArea>
-</Preview>
-
-
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
-<Preview>
-	<PreviewCode slot='tab' label='React'>
-	```jsx
-	import { Lism, Flex, Stack, Icon } from '@lism-ui/core';
-	import { Question } from '@phosphor-icons/react';
-
-	export function FAQ({ q, children }) {
-		return (
-			<Stack className='c--faq' g='20'>
+		<Stack g='30'>
+			<Stack className='c--faq' g='20' p='5'>
 				<Flex className='c--faq__Q' g='10' ai='c'>
-					<Icon icon={Question} fz='2xl' c='purple'/>
-					<Lism tag='span' fw='bold'>{q}</Lism>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum, question 1</Text>
 				</Flex>
 				<Lism className='c--faq__A' pis='10' isFlow='s'>
-					{children}
+					<Dummy length='l' />
 				</Lism>
 			</Stack>
-		);
-	}
-	```
-	</PreviewCode>
-	{/* <PreviewCode slot='tab' label='Astro'>
-	```jsx
-	```
-	</PreviewCode> */}
-</Preview>
-
-<Preview>
-	<PreviewTitle>使用時のコード</PreviewTitle>
-	<PreviewCode>
-```jsx
-import { Divider } from '@lism-ui/core';
-import { FAQs, FAQ } from './path/to/.../steps';
-
-<FAQs>
-	<FAQ q='Lorem ipsum, question 1'>
-		<p>Answer...</p>
-	</FAQ>
-	<Divider />
-	<FAQ q='Lorem ipsum dolor sit amet, question 2'>
-		<p>Answer...</p>
-		<p>Answer...</p>
-	</FAQ>
-	<Divider />
-	<FAQ q='Question 3'>
-		<p>Answer...</p>
-	</FAQ>
-</FAQs>
-```
+			<Divider />
+			<Stack className='c--faq' g='20' p='5'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum dolor sit amet, question 2</Text>
+				</Flex>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
+					<Dummy length='l' />
+				</Lism>
+			</Stack>
+			<Divider />
+			<Stack className='c--faq' g='20' p='5'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum dolor sit amet, question 3</Text>
+				</Flex>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
+					<Dummy length='l' />
+				</Lism>
+			</Stack>
+		</Stack>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Stack g='30'>
+			<Stack className='c--faq' g='20' p='5'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum, question 1</Text>
+				</Flex>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
+					<Dummy length='l' />
+				</Lism>
+			</Stack>
+			<Divider />
+			<Stack className='c--faq' g='20' p='5'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum dolor sit amet, question 2</Text>
+				</Flex>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
+					<Dummy length='l' />
+				</Lism>
+			</Stack>
+			<Divider />
+			<Stack className='c--faq' g='20' p='5'>
+				<Flex className='c--faq__Q' g='10' ai='c'>
+					<Icon icon='question' fz='2xl' c='purple'/>
+					<Text tag='span' fw='bold'>Lorem ipsum dolor sit amet, question 3</Text>
+				</Flex>
+				<Lism className='c--faq__A' pis='10' isFlow='s'>
+					<Dummy length='l' />
+				</Lism>
+			</Stack>
+		</Stack>
+		```
 	</PreviewCode>
 </Preview>
 
@@ -122,71 +114,81 @@ import { FAQs, FAQ } from './path/to/.../steps';
 
 アコーディオンタイプの例
 
-
 <Preview>
-	<PreviewTitle>表示</PreviewTitle>
+	<PreviewTitle>Example</PreviewTitle>
 	<PreviewArea resize p={30}>
-		<AccordionGroup g={20}>
-			<AccFAQ q='Question 1'>
-				<Dummy length='l' />
-			</AccFAQ>
-			<AccFAQ q='Question 2'>
-				<Dummy  />
-				<Dummy length='l' />
-			</AccFAQ>
-			<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
-				<Dummy length='l' />
-			</AccFAQ>
-		</AccordionGroup>
+		<Stack g={20}>
+			<FaqAcc>
+				<FaqAccTitle>Question 1</FaqAccTitle>
+				<FaqAccBody>
+					<Dummy length='l' />
+				</FaqAccBody>
+			</FaqAcc>
+			<FaqAcc>
+				<FaqAccTitle>Question 2</FaqAccTitle>
+				<FaqAccBody>
+					<Dummy length='l' />
+				</FaqAccBody>
+			</FaqAcc>
+			<FaqAcc>
+				<FaqAccTitle>Question 3, Lorem ipsum dolor sit amet?</FaqAccTitle>
+				<FaqAccBody>
+					<Dummy length='l' />
+				</FaqAccBody>
+			</FaqAcc>
+		</Stack>
 	</PreviewArea>
+<PreviewCode>
+```jsx
+import { Stack } from '@lism-ui/core';
+import { FaqAcc,FaqAccTitle,FaqAccBody } from '~/.../path/to/Faq';
+
+<Stack g={20}>
+	<AccFAQ q='Lorem ipsum, question 1'>
+		<p>Answer...</p>
+	</AccFAQ>
+	<AccFAQ q='Question 2'>
+		<p>Answer...</p>
+		<p>Answer...</p>
+	</AccFAQ>
+	<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
+		<p>Answer...</p>
+	</AccFAQ>
+</Stack>
+```
+</PreviewCode>
 </Preview>
 
-<PreviewTitle>コンポーネントの準備</PreviewTitle>
+
 <Preview>
+	<PreviewTitle>コンポーネントのソースコード</PreviewTitle>
 	<PreviewCode slot='tab' label='React'>
-	```jsx
-	import { Accordion, AccordionHeader, AccordionBody, Icon } from '@lism-ui/core';
-	import { Question } from '@phosphor-icons/react';
+```jsx
+import { Accordion, Icon } from '@lism-ui/core';
 
-	function AccFAQ({ q, children }) {
-		return (
-			<Accordion className='c--faq' p='30' bgc='base-2' bdrs='3'>
-				<AccordionHeader>
-					<Flex g='10'>
-						<Icon icon={Question} fz='2xl' />
-						{q}
-					</Flex>
-				</AccordionHeader>
-				<AccordionBody mbs='30' isFlow='s'>
-					{children}
-				</AccordionBody>
-			</Accordion>
-		);
-	}
-	```
+export function FaqAcc({ children }) {
+	return (
+		<Accordion.Root className='c--faq' p='30' bgc='base-2' bdrs='3'>
+			{children}
+		</Accordion.Root>
+	);
+}
+export function FaqAccTitle({ children }) {
+	return (
+		<Accordion.Header>
+			<Icon icon='question' fz='2xl' />
+			<Accordion.Label>{children}</Accordion.Label>
+			<Accordion.Icon />
+		</Accordion.Header>
+	);
+}
+export function FaqAccBody({ children }) {
+	return (
+		<Accordion.Body mbs='30' isFlow='s'>
+			{children}
+		</Accordion.Body>
+	);
+}
+```
 	</PreviewCode>
 </Preview>
-
-<PreviewTitle>使用時のコード</PreviewTitle>
-<Preview>
-	<PreviewCode>
-	```jsx
-	import { AccordionGroup } from '@lism-ui/core';
-	import { AccFAQ } from './path/to/.../steps';
-
-	<AccordionGroup g={20}>
-		<AccFAQ q='Lorem ipsum, question 1'>
-			<p>Answer...</p>
-		</AccFAQ>
-		<AccFAQ q='Question 2'>
-			<p>Answer...</p>
-			<p>Answer...</p>
-		</AccFAQ>
-		<AccFAQ q='Question 3, Lorem ipsum dolor sit amet?'>
-			<p>Answer...</p>
-		</AccFAQ>
-	</AccordionGroup>
-	```
-	</PreviewCode>
-</Preview>
-

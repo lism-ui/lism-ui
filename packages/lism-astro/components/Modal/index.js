@@ -1,4 +1,4 @@
-import Root from './Root.astro';
+import Root from './Modal.astro';
 import Inner from './Inner.astro';
 import Body from './Body.astro';
 import CloseIconBtn from './CloseIconBtn.astro';

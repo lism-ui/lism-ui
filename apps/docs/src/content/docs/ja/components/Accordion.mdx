@@ -3,11 +3,11 @@ title: 'Accordion'
 description: ...
 ---
 
-import { Divider, Stack, Text, Center, Flex, Icon, Dummy } from '@lism-ui/core';
-import { AccordionGroup, Accordion, AccordionHeader, AccordionBody } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Note, Callout } from "~/components";
-import { Minus, Plus, X, Question, CaretDown, EyeClosed, Eyes } from "@phosphor-icons/react";
+import { Divider, Stack, Text, Center, Flex, Icon, Dummy, Accordion, Accordions } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, IconBadge, PropBadge, Note, Callout } from "~/components";
+import { Minus, Plus, X, Question, CaretDoubleDown, EyeClosed, Eyes } from "@phosphor-icons/react";
 
+{/* // import { Accordion } from '@lism-ui/core'; */}
 
 アコーディオン要素を作成できるコンポーネントです。
 
@@ -19,22 +19,68 @@ import { Minus, Plus, X, Question, CaretDown, EyeClosed, Eyes } from "@phosphor-
 </Note>
 
 
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p='20'>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+```html
+<details class="d--accordion -p:20">
+	<summary class="d--accordion__header l--flex -ai:c">
+		<span class="d--accordion__label -fx:1">Accordion.Label</span>
+		<span class="d--accordion__icon -d:if">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>
+		</span>
+	</summary>
+	<div class="d--accordion__body l--grid -mbs:20">
+		<div class="d--accordion__inner -ov:h">
+			<p>Lorem ipsum...</p>
+		</div>
+	</div>
+</details>
+```
+	</PreviewCode>
+</Preview>
+
+
 ## Props
 
-| プロパティ | 出力 | 説明 | 
-|---|---|---|
-| <PropBadge>`<AccordionGroup>`</PropBadge><br/>`duration` | <PropBadge type="cssvar">`--acc-trsdu`</PropBadge> | 開閉アニメーションの時間を指定できます。 |
-| <PropBadge>`<AccordionGroup>`</PropBadge><br/>`allowMultiple` | <PropBadge type="attr">`data-acc-multiple`</PropBadge> | 複数のアコーディオンを同時に開くことを禁止します。 |
-| <PropBadge>`<Accordion>`</PropBadge><br/>`variant` | <PropBadge type="attr">`.c--accordion--{variant}`</PropBadge> | バリエーションクラスを出力します |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`icon` || 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。 |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`tag` || アコーディオンラベルのHTMLタグを指定できます。 |
-| <PropBadge>`<AccordionHeader>`</PropBadge><br/>`trigger` | <PropBadge type="attr">`data-role="trigger"`</PropBadge> | `"icon"`を指定すると、 開閉トリガーがアイコン部分になります。|
+| プロパティ | 説明 | 
+|---|---|
+| <PropBadge>`<Accordions>`</PropBadge><br/>`variant` | <PropBadge type="attr">`.d--accordions--{variant}`</PropBadge> バリエーションクラスを出力します |
+| <PropBadge>`<Accordion.Root>`</PropBadge><br/>`variant` | <PropBadge type="attr">`.d--accordion--{variant}`</PropBadge> バリエーションクラスを出力します |
+| <PropBadge>`<Accordions>`</PropBadge>,<br/><PropBadge>`<Accordion.Root>`</PropBadge><br/>`duration` | <PropBadge type="cssvar">`--acc-duration`</PropBadge> が出力され、トランジションの時間を変更できます。 |
+| <PropBadge>`<Accordions>`</PropBadge><br/>`allowMultiple` | <PropBadge type="attr">`data-acc-multiple`</PropBadge> が出力され、複数のアコーディオンを同時に開くことを禁止します。 |
+| <PropBadge>`<Accordion.Icon>`</PropBadge><br/>`icon` | 内部で呼び出される`<Icon>` に渡す `icon` を指定できます。ただし、`<Accordion.Icon>`に子要素が配置されている場合は無視されます。 |
+| <PropBadge>`<Accordion.Icon>`</PropBadge><br/>`isTrigger` | <PropBadge type="attr">`data-role="trigger"`</PropBadge> `button`タグでの出力となり`[data-role="trigger"]`が付与されます。|
 
 
 
 ## Import
 
-<ImportPackage component='Accordion, AccordionHeader, AccordionBody' />
+<ImportPackage component='Accordions, Accordion' />
 
 
 HTML で使用する場合、jsファイルが必要です。
@@ -48,265 +94,310 @@ HTML で使用する場合、jsファイルが必要です。
 ## Usage
 
 <Preview>
-	<PreviewTitle>Accordionの例</PreviewTitle>
+	<PreviewTitle>ラベルのHTMLタグをh3タグにする</PreviewTitle>
 	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader>AccordionHeader</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy length="l" />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-```jsx
-<Accordion p='20'>
-	<AccordionHeader>AccordionHeader</AccordionHeader>
-	<AccordionBody mbs='20'>
-		<Dummy length="l" />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-```html
-<details class="c--accordion -p:20">
-	<summary class="c--accordion__header l--flex -ai:c">
-		<span class="c--accordion__label -fx:1">AccordionHeader</span>
-		<span class="c--accordion__icon -d:if">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true"> <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>
-		</span>
-	</summary>
-	<div class="c--accordion__body l--grid -mbs:20">
-		<div class="c--accordion__inner -ov:h">
-			<p>Lorem ipsum...</p>
-		</div>
-	</div>
-</details>
-```
-	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>ヘッダーのHTMLタグをh3タグにする</PreviewTitle>
-	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader tag='h3'>AccordionHeader</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy length="l" />
-			</AccordionBody>
-		</Accordion>
+		<Accordion.Root p='30'>
+			<Accordion.Header>
+				<Accordion.Label tag='h3' f='inherit'>Accordion.Label</Accordion.Label>
+				<Accordion.Icon/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "tag='h3'"
-	<Accordion p='20'>
-		<AccordionHeader tag='h3'>AccordionHeader</AccordionHeader>
-		<AccordionBody mbs='20'>...</AccordionBody>
-	</Accordion>
+	<Accordion.Root p='20'>
+		<Accordion.Header>
+			<Accordion.Label tag='h3' f='inherit'>Accordion.Label</Accordion.Label>
+			<Accordion.Icon/>
+		</Accordion.Header>
+		<Accordion.Body mbs='20'>
+			<Dummy length='l' />
+		</Accordion.Body>
+	</Accordion.Root>
 	```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html "h3" "-f:i"
-	<details class="c--accordion -p:20">
-		<summary class="c--accordion__header l--flex -ai:c">
-			<h3 class="c--accordion__label -f:i -fx:1">AccordionHeader</h3>
+	<details class="d--accordion -p:20">
+		<summary class="d--accordion__header l--flex -ai:c">
+			<h3 class="d--accordion__label -f:i -fx:1">Accordion.Label</h3>
 			...
 	```
 	</PreviewCode>
 </Preview>
 
 
-### アイコンの変更
-
 <Preview>
 	<PreviewTitle>アイコンの位置を逆にする</PreviewTitle>
 	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader fxd='rr'>AccordionHeader</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy length="l" />
-			</AccordionBody>
-		</Accordion>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Icon/>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
 	</PreviewArea>
 	<PreviewCode>
-```jsx "fxd='rr'"
-<Accordion p='20'>
-	<AccordionHeader fxd='rr'>AccordionHeader</AccordionHeader>
-	<AccordionBody mbs='20'>...</AccordionBody>
-</Accordion>
-```
+		```jsx
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Icon/>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+		```
 	</PreviewCode>
 </Preview>
 
-`<AccordionHeader>`に指定する`icon`は、内部で`<Icon>`に渡されます。
+
+### アイコンを変更する
+
+`<Accordion.Label>`に指定する`icon`は、内部で`<Icon>`に渡されます。  
+デフォルトは`'caret-down'`になっています。
 
 <Preview>
-	<PreviewTitle>外部アイコンコンポーネントを渡す</PreviewTitle>
+	<PreviewTitle>`'caret-down-fill'`を指定する</PreviewTitle>
 	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader icon={{as:CaretDown, weight:'fill'}}>
-				<>AccordionHeader</>
-			</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy length="l" />
-			</AccordionBody>
-		</Accordion>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon icon='caret-down-fill'/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "icon="
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon icon='caret-down-fill'/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+		```
+	</PreviewCode>
+</Preview>
+
+
+<Preview>
+	<PreviewTitle>外部コンポーネントを指定する</PreviewTitle>
+	<PreviewArea p='20'>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon icon={CaretDoubleDown}/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx "icon="
-import { CaretDown } from "@phosphor-icons/react";
+import { CaretDoubleDown } from "@phosphor-icons/react";
 
-<Accordion p='20'>
-	<AccordionHeader icon={{as:CaretDown, weight:'fill'}}>AccordionHeader</AccordionHeader>
-	<AccordionBody mbs='20'>...</AccordionBody>
-</Accordion>
+<Accordion.Root p='20'>
+	<Accordion.Header>
+		<Accordion.Label>Accordion.Label</Accordion.Label>
+		<Accordion.Icon icon={CaretDoubleDown}/>
+	</Accordion.Header>
+	<Accordion.Body mbs='20'>
+		<Dummy length='l' />
+	</Accordion.Body>
+</Accordion.Root>
 ```
 	</PreviewCode>
 </Preview>
 
-svgアイコンを自分で定義して`icon`に渡す場合は、`props`の受け渡しを忘れないように注意してください。
+
+
+{/* <Preview>
+	<PreviewTitle>直接子要素で`<Icon>`を呼び出す</PreviewTitle>
+	<PreviewArea>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Icon>
+					<Icon viewBox='0 0 256 256'>
+						<path d="M229.66,141.66l-96,96a8,8,0,0,1-11.32,0l-96-96A8,8,0,0,1,32,128H72V48A16,16,0,0,1,88,32h80a16,16,0,0,1,16,16v80h40a8,8,0,0,1,5.66,13.66Z"></path>
+					</Icon>
+				</Accordion.Icon>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx "\<Icon "
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Icon>
+					<Icon viewBox='0 0 256 256'>
+						<path d="M229.66,141.66l-96,96a8,8,0,0,1-11.32,0l-96-96A8,8,0,0,1,32,128H72V48A16,16,0,0,1,88,32h80a16,16,0,0,1,16,16v80h40a8,8,0,0,1,5.66,13.66Z"></path>
+					</Icon>
+				</Accordion.Icon>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+		```
+	</PreviewCode>
+</Preview> */}
+
+#### 開閉時にアイコンを変更する (Opt-in)
+
+追加で少しCSSを加える必要がありますが、開閉時にアイコンを切り替える例も紹介します。
 
 <Preview>
-	<PreviewTitle>外部アイコンコンポーネントを渡す</PreviewTitle>
-	<PreviewCode>
-```jsx "MyIcon" "props"
-const MyIcon = (props) => {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg" 
-			viewBox="0 0 24 24"
-			width='1em'
-			height='1em'
-			{...props}
-		>...</svg>
-	);
-};
-
-<Accordion>
-	<AccordionHeader icon={MyIcon}>AccordionHeader</AccordionHeader>
-	<AccordionBody mbs='20'>...</AccordionBody>
-</Accordion>
+	<PreviewTitle>Example</PreviewTitle>
+	<PreviewArea>
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon>
+					<Icon icon={{as:Plus, weight:'bold'}} />
+					<Icon icon={{as:Minus, weight:'bold'}} />
+				</Accordion.Icon>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "\<Icon "
+		<Accordion.Root p='20'>
+			<Accordion.Header>
+				<Accordion.Label>Accordion.Label</Accordion.Label>
+				<Accordion.Icon>
+					<Icon icon={{as:Plus, weight:'bold'}} />
+					<Icon icon={{as:Minus, weight:'bold'}} />
+				</Accordion.Icon>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
+				<Dummy length='l' />
+			</Accordion.Body>
+		</Accordion.Root>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='CSS'>
+```scss
+.d--accordion__icon {
+	> .a--icon:nth-last-of-type(2) {
+		opacity: calc(1 - var(--opened));
+	}
+	> .a--icon:nth-of-type(2) {
+		opacity: calc(0 + var(--opened));
+		rotate: calc(180deg - var(--opened) * 180deg);
+	}
+}
 ```
 	</PreviewCode>
 </Preview>
 
 
-
-### `<AccordionGroup>`
+### `<Accordions>`
 
 アコーディオン専用のラッパーコンポーネントです。
 
 <Preview>
-	<PreviewTitle>AccordionGroup</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={30}>
-		<AccordionGroup hasDivider bd>
-			<Accordion p='20' ov='h'>
-				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='20'>
-				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='20'>
-				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
+		<Accordions hasDivider bd>
+			<Accordion.Root p='20' ov='h'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root p='20'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root p='20'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+		</Accordions>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<AccordionGroup hasDivider bd>
-			<Accordion p='20'>
-				<AccordionHeader>Accordionヘッダー1</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='20'>
-				<AccordionHeader>Accordionヘッダー2</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='20'>
-				<AccordionHeader>Accordionヘッダー3</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
+		<Accordions hasDivider bd>
+			<Accordion.Root p='20'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root p='20'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root p='20'>
+				<Accordion.Header>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body mbs='20'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html
-<div class="c--accordionGroup l--stack has--divider -bd:">
-	<details class="c--accordion -p:20">
+<div class="d--accordions l--stack has--divider -bd:">
+	<details class="d--accordion -p:20">
 		...
 	</details>
-	<details class="c--accordion -p:20">
+	<details class="d--accordion -p:20">
 		...
 	</details>
-	<details class="c--accordion -p:20">
+	<details class="d--accordion -p:20">
 		...
 	</details>
 </div>
 ```
 	</PreviewCode>
 </Preview>
-
-
-`AccordionGroup`は`Stack`で構成されているため、`g`でアコーディオン間の`gap`を調整できます。
-
-<Preview>
-	<PreviewTitle>別の例</PreviewTitle>
-	<PreviewArea p={30}>
-		<AccordionGroup g='20'>
-			<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-				<AccordionHeader p='30'>Accordion</AccordionHeader>
-				<AccordionBody p='30' bd='t' bdc='divider'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-				<AccordionHeader p='30'>Accordion</AccordionHeader>
-				<AccordionBody p='30' bd='t' bdc='divider'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-				<AccordionHeader p='30'>Accordion</AccordionHeader>
-				<AccordionBody  p='30' bd='t' bdc='divider'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
-	</PreviewArea>
-	<PreviewCode>
-```jsx "g="
-<AccordionGroup g='20'>
-	<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-		<AccordionHeader p='30'>Accordion</AccordionHeader>
-		<AccordionBody p='30' bd='t' bdc='divider'>...</AccordionBody>
-	</Accordion>
-	<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-		<AccordionHeader p='30'>Accordion</AccordionHeader>
-		<AccordionBody p='30' bd='t' bdc='divider'>...</AccordionBody>
-	</Accordion>
-	<Accordion bgc='base-2' bxsh='1' bdrs='3'>
-		<AccordionHeader p='30'>Accordion</AccordionHeader>
-		<AccordionBody p='30' bd='t' bdc='divider'>...</AccordionBody>
-	</Accordion>
-</AccordionGroup>
-```
-	</PreviewCode>
-</Preview>
-
 
 
 #### allowMultiple
@@ -315,56 +406,66 @@ const MyIcon = (props) => {
 `allowMultiple`に`false`を指定すると `[data-acc-multiple="disallow"]`が出力され、複数のアコーディオンを同時に開くことを禁止します。
 
 <Preview>
-	<PreviewTitle>allowMultiple</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={30}>
-		<AccordionGroup hasDivider bdc='base' allowMultiple={false}>
-			<Accordion>
-				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-				<AccordionBody p='30'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-				<AccordionBody p='30'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion>
-				<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-				<AccordionBody p='30'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
+		<Accordions hasDivider bdc='base' allowMultiple={false}>
+			<Accordion.Root>
+				<Accordion.Header p='30' bgc='text' c='base'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root>
+				<Accordion.Header p='30' bgc='text' c='base'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root>
+				<Accordion.Header p='30' bgc='text' c='base'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+		</Accordions>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 ```jsx "allowMultiple={false}"
-<AccordionGroup hasDivider bdc='base' allowMultiple={false}>
-	<Accordion>
-		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-		<AccordionBody p='30'>
-			<Dummy length="l" />
-		</AccordionBody>
-	</Accordion>
-	<Accordion>
-		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-		<AccordionBody p='30'>
-			<Dummy length="l" />
-		</AccordionBody>
-	</Accordion>
-	<Accordion>
-		<AccordionHeader p='30' bgc='text' c='base'>AccordionHeader</AccordionHeader>
-		<AccordionBody p='30'>
-			<Dummy length="l" />
-		</AccordionBody>
-	</Accordion>
-</AccordionGroup>
+<Accordions hasDivider bdc='base' allowMultiple={false}>
+	<Accordion.Root>
+		<Accordion.Header p='30' bgc='text' c='base'>
+			<Accordion.Label>Accordion.Label</Accordion.Label>
+			<Accordion.Icon/>
+		</Accordion.Header>
+		<Accordion.Body p='30'>
+			<Dummy length='l' />
+		</Accordion.Body>
+	</Accordion.Root>
+	<Accordion.Root>
+		<Accordion.Header p='30' bgc='text' c='base'>
+			<Accordion.Label>Accordion.Label</Accordion.Label>
+			<Accordion.Icon/>
+		</Accordion.Header>
+		<Accordion.Body p='30'>
+			<Dummy length='l' />
+		</Accordion.Body>
+	</Accordion.Root>
+	...
+</Accordions>
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 ```html "data-acc-multiple=\"disallow\""
-<div class="c--accordionGroup l--stack" data-acc-multiple="disallow">
+<div class="d--accordions l--stack" data-acc-multiple="disallow">
 	...
 </div>
 ```
@@ -372,200 +473,147 @@ const MyIcon = (props) => {
 </Preview>
 
 
-#### duration
+### 開閉トランジションの時間を変更する
 
-`AccordionGroup`に`duration`（`--acc-trsdu`）を指定して、その子要素の`<Accordion>`の開閉速度を調整できます。
+`--acc-duration`でトランジションの秒数を管理します。
+
+`<Accordions>`,`<Accordion>`に`duration`を指定すると、（`--acc-duration`）を出力できます。
+
 
 <Preview>
-	<PreviewTitle>duration</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={30}>
-		<AccordionGroup hasDivider bd duration='.5s'>
-			<Accordion p='30'>
-				<AccordionHeader>AccordionHeader</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='30'>
-				<AccordionHeader>AccordionHeader</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-			<Accordion p='30'>
-				<AccordionHeader>AccordionHeader</AccordionHeader>
-				<AccordionBody mbs='20'>
-					<Dummy length="l" />
-				</AccordionBody>
-			</Accordion>
-		</AccordionGroup>
+		<Accordions duration='0.4s' g='30'>
+			<Accordion.Root bgc='base-2' bxsh='1' bdrs='3'>
+				<Accordion.Header p='30'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30' bd='t' bdc='divider'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root bgc='base-2' bxsh='1' bdrs='3'>
+				<Accordion.Header p='30'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30' bd='t' bdc='divider'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root bgc='base-2' bxsh='1' bdrs='3'>
+				<Accordion.Header p='30'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body  p='30' bd='t' bdc='divider'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+		</Accordions>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-```jsx "duration='.5s'"
-<AccordionGroup duration='.5s' hasDivider bd>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-	<Accordion>...</Accordion>
-</AccordionGroup>
-```
+		```jsx "duration='0.4s'"
+		<Accordions duration='0.4s' g='30'>
+			<Accordion.Root bgc='base-2' bxsh='1' bdrs='3'>
+				<Accordion.Header p='30'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30' bd='t' bdc='divider'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			<Accordion.Root bgc='base-2' bxsh='1' bdrs='3'>
+				<Accordion.Header p='30'>
+					<Accordion.Label>Accordion.Label</Accordion.Label>
+					<Accordion.Icon/>
+				</Accordion.Header>
+				<Accordion.Body p='30' bd='t' bdc='divider'>
+					<Dummy length='l' />
+				</Accordion.Body>
+			</Accordion.Root>
+			...
+		</Accordions>
+		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-```html "--acc-trsdu"
-<div class="c--accordionGroup l--stack has--divider -bd:" style="--acc-trsdu:.5s">
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
-	<details class="c--accordion">...</details>
+<PreviewCode slot='tab' label='HTML'>
+```html "--acc-duration:0.4s"
+<div class="d--accordions l--stack -g:30" style="--acc-duration:0.4s">
+	...
 </div>
 ```
-	</PreviewCode>
+</PreviewCode>
 </Preview>
 
 
 <Callout type='info'>
-CSSで`:root`の`--acc-trsdu`を上書きすると、デフォルトの開閉速度を変更できます。
+CSSで`:root`の`--acc-duration`を上書きすると、デフォルトの開閉速度を変更できます。
 </Callout>
-
-
-{/* ### isFreeMode */}
-
-{/* `<AccordionHeader>`に`isFreeMode`を指定すると、本来自動で呼び出される`<AccordionLabel>`,`<AccordionIcon>`を自由に配置できます。 */}
-
-
-{/* `<AccordionLabel>` は `<FlexItem>`で構成されており、次のように`layout`で展開するコンポーネントの指定もできます。
-
-<Preview>
-	<PreviewTitle>AccordionLabelをFlexで展開する</PreviewTitle>
-	<PreviewArea p='20'>
-		<Accordion>
-			<AccordionHeader isFreeMode>
-				<AccordionLabel layout={Flex} ai='c' g='5' tag='h3'>
-					<><Icon as={Question} fz='2xl' />AccordionHeader</>
-				</AccordionLabel>
-				<AccordionIcon />
-			</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy length="l" />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode>
-```jsx "isFreeMode" "layout="
-<Accordion>
-	<AccordionHeader isFreeMode>
-		<AccordionLabel layout={Flex} ai='c' g='5' tag='h3'>
-			<Icon as={Question} fz='2xl' />
-			アコーディオンヘッダー
-		</AccordionLabel>
-		<AccordionIcon />
-	</AccordionHeader>
-	<AccordionBody mbs='20'>
-		<Dummy length="l" />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-</Preview> */}
 
 
 
 ### アコーディオントリガーをアイコンのみにする
 
-`<AccordionHeader>` に `trigger='icon'` を指定すると、内部の `.c--accordion__icon` に `[data-role="trigger"]`が付与され、アコーディオンを開閉するための`click`イベントがヘッダー全体ではなくアイコン部分に対して登録されます。
+`<Accordion.Icon>` に `isTrigger` を指定すると、`button`タグでの出力となり`[data-role="trigger"]`が付与されます。  
+この時、アコーディオンを開閉するための`click`イベントは `summary`（アコーディオンヘッダー）全体ではなくアイコン部分に対して登録されます。
 
-これにより、**アコーディオンヘッダー内のリンクをクリックできる**ようになります。
+<IconBadge type='point' /> これにより、**アコーディオンヘッダー内にリンクを置いてもクリックできる**ようになります。
 
 <Preview>
-	<PreviewTitle>Accordionの例</PreviewTitle>
+	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader trigger='icon'>
-				<>ヘッダーテキスト（<a href="#acc">ヘルプリンク</a>）</>
-			</AccordionHeader>
-			<AccordionBody mbs='20'>
+		<Accordion.Root p='20'>
+			<Accordion.Header trigger='icon'>
+				<Accordion.Label>Labelテキスト（<a href="#acc-innerlink">ヘルプリンク</a>）</Accordion.Label>
+				<Accordion.Icon isTrigger bd bdrs='1' bgc='inherit'/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>
 				<Dummy />
-			</AccordionBody>
-		</Accordion>
+			</Accordion.Body>
+		</Accordion.Root>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-```jsx "trigger='icon'"
-<Accordion p='20'>
-	<AccordionHeader trigger='icon'>
-		ヘッダーテキスト（<a href="#acc">ヘルプリンク</a>）
-	</AccordionHeader>
-	<AccordionBody mbs='20'>...</AccordionBody>
-</Accordion>
-```
+		```jsx "trigger='icon'"
+		<Accordion.Root p='20'>
+			<Accordion.Header trigger='icon'>
+				<Accordion.Label>Labelテキスト（<a href="#acc-innerlink">ヘルプリンク</a>）</Accordion.Label>
+				<Accordion.Icon isTrigger bd bdrs='1' bgc='inherit'/>
+			</Accordion.Header>
+			<Accordion.Body mbs='20'>...</Accordion.Body>
+		</Accordion.Root>
+		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-```html "data-role=\"trigger\""
-<details class="c--accordion -p:20">
-	<summary class="c--accordion__header l--flex -ai:c">
-		<span class="c--accordion__label -fx:1">ヘッダーテキスト（<a href="#acc">ヘルプリンク</a></span>
-		<button class="c--accordion__icon -d:if" data-role="trigger">
+```html "<button" "data-role=\"trigger\""
+<details class="d--accordion -p:20">
+	<summary class="d--accordion__header l--flex -ai:c">
+		<span class="d--accordion__label -fx:1">Labelテキスト（<a href="#acc-innerlink">ヘルプリンク</a></span>
+		<button class="d--accordion__icon -d:if" data-role="trigger">
 			<svg class="a--icon"...>...</svg>
 		</button>
 	</summary>
-	<div class="c--accordion__body l--grid -mbs:20">
-		<div class="c--accordion__inner -ov:h">...</div>
+	<div class="d--accordion__body l--grid -mbs:20">
+		<div class="d--accordion__inner -ov:h">...</div>
 	</div>
 </details>
 ```
 	</PreviewCode>
 </Preview>
 
+
+<IconBadge type='warning' /> ただし、Tabキーでのカーソル操作時は、`summary`タグ全体の選択を回避できません。
+
 {/* 
 <Note title='Note:' type='note' isFlow='s'>
-`<summary>`自体が`toggle`イベントを持つため、`<AccordionHeader>`内のリンク以外のエリアをクリックしてもアコーディオンは開閉します。  
+`<summary>`自体が`toggle`イベントを持つため、`<Accordion.Header>`内のリンク以外のエリアをクリックしてもアコーディオンは開閉します。  
 これを防いでアイコンのみだけをクリッカブルにしたい場合は、以下のようにCSSを追加してください。
 
 ```css
-.c--accordion__header:has([data-role='trigger']) {
+.d--accordion__header:has([data-role='trigger']) {
 	pointer-events: none;
 }
 ```
 </Note> */}
 
-
-## Opt-in
-
-#### 開閉時にアイコンを切り替える
-
-`<AccordionHeader>`に`openIcon`,`closeIcon`を指定して、開閉時にアイコンを切り替えることが可能になっています。
-
-<Preview>
-	<PreviewTitle>開閉時、アイコンを切り替える</PreviewTitle>
-	<PreviewArea p='20'>
-		<Accordion p='20'>
-			<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
-				<>AccordionHeader</>
-			</AccordionHeader>
-			<AccordionBody mbs='20'>
-				<Dummy />
-			</AccordionBody>
-		</Accordion>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-```jsx "openIcon" "closeIcon"
-import { Minus, Plus } from '@phosphor-icons/react';
-
-<Accordion p='20'>
-	<AccordionHeader openIcon={{as:Plus, weight:'bold'}} closeIcon={{as:Minus, weight:'bold'}}>
-		Accordionヘッダー
-	</AccordionHeader>
-	<AccordionBody mbs='20'>
-		<Dummy />
-	</AccordionBody>
-</Accordion>
-```
-	</PreviewCode>
-		<PreviewCode slot='tab' label='HTML'>
-```html "c--accordion__openIcon" "c--accordion__closeIcon"
-...
-		<span class="c--accordion__icon -d:if">
-			<svg class="c--accordion__openIcon a--icon" ...>...</svg>
-			<svg class="c--accordion__closeIcon a--icon" ...>...</svg>
-		</span>
-...
-```
-	</PreviewCode>
-</Preview>

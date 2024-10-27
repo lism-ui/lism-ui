@@ -61,3 +61,16 @@
 // 	background-color: currentColor;
 // 	mask: var(--icon-mask) no-repeat 50% 50% / contain;
 // }
+
+// --------------------
+// Accordion
+// --------------------
+.d--accordion__icon {
+	> .a--icon:nth-last-of-type(2) {
+		opacity: calc(1 - var(--opened));
+	}
+	> .a--icon:nth-of-type(2) {
+		opacity: calc(0 + var(--opened));
+		rotate: calc(180deg - var(--opened) * 180deg);
+	}
+}

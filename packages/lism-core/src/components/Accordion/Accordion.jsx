@@ -1,11 +1,15 @@
 import React from 'react';
-import { setEvent } from './setAccordion';
 import getLismProps from '../../lib/getLismProps';
-import { getAccProps } from './getProps';
+import { getAccProps, defaultProps } from './getProps';
+import { setEvent } from './setAccordion';
+import { Lism } from '../Lism';
+import { Flex, FlexItem } from '../Flex';
+import { Grid } from '../Grid';
+
 // import { AccContext } from './context';
 
 // duration: [s]
-export default function Accordion({ children, ...props }) {
+export function Accordion({ children, ...props }) {
 	const ref = React.useRef(null);
 
 	React.useEffect(() => {
@@ -20,5 +24,30 @@ export default function Accordion({ children, ...props }) {
 			{/* <AccContext.Provider value={deliverState}>{children}</AccContext.Provider> */}
 			{children}
 		</details>
+	);
+}
+
+export function Header({ children, ...props }) {
+	return (
+		<Flex tag='summary' {...defaultProps.header} {...props}>
+			{children}
+		</Flex>
+	);
+}
+export function Label({ children, ...props }) {
+	return (
+		<FlexItem {...defaultProps.label} {...props}>
+			{children}
+		</FlexItem>
+	);
+}
+
+export function Body({ children, isFlow, innerProps, ...props }) {
+	return (
+		<Grid {...defaultProps.body} {...props}>
+			<Lism isFlow={isFlow} {...defaultProps.inner} {...innerProps}>
+				{children}
+			</Lism>
+		</Grid>
 	);
 }

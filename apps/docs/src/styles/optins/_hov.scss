@@ -8,7 +8,7 @@
 .-hov\:get\:slide {
 	--gtr: 0fr;
 	opacity: var(--isHover);
-	transition-property: var(--acc-trsprop);
+	transition-property: margin-block, padding-block, opacity, grid-template-rows;
 
 	// calc() で fr単位が使えない
 	.-hov\:pass:hover & {

@@ -1,4 +1,4 @@
-import Root from './Root';
+import Root from './Modal';
 import Inner from './Inner';
 import Body from './Body';
 import CloseIconBtn from './CloseIconBtn';

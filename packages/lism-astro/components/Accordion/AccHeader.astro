@@ -1,0 +1,13 @@
+---
+import { LismProps } from '../types';
+import { Flex } from '../Flex';
+import { defaultProps } from '@lism-ui/core/components/Accordion/getProps';
+
+interface Props extends LismProps {}
+
+const props = Astro.props || {};
+---
+
+<Flex tag='summary' {...defaultProps.header} {...props}>
+	<slot />
+</Flex>

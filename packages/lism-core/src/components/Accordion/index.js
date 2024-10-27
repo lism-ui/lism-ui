@@ -1,4 +1,5 @@
-export { default as AccordionGroup } from './AccordionGroup';
-export { default as Accordion } from './Accordion';
-export { default as AccordionBody } from './AccordionBody';
-export { default as AccordionHeader } from './AccordionHeader';
+import { Accordion as Root, Header, Label, Body } from './Accordion';
+import { default as Icon } from './AccIcon';
+export { default as Accordions } from './Accordions';
+
+export default { Root, Header, Label, Icon, Body };

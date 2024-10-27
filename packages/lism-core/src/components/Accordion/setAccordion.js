@@ -17,7 +17,7 @@ const clickedEvent = async (details, force = false) => {
 	if (details.dataset.animating && !force) return;
 	details.dataset.animating = '1';
 
-	const body = details.querySelector('.c--accordion__body');
+	const body = details.querySelector('.d--accordion__body');
 
 	// オープン / クローズ 処理
 	if (!details.open) {
@@ -111,7 +111,7 @@ export const setEvent = (currentRef) => {
 };
 
 const setAccordion = () => {
-	const detailsAll = document.querySelectorAll('.c--accordion');
+	const detailsAll = document.querySelectorAll('.d--accordion');
 	detailsAll.forEach((details) => {
 		setEvent(details);
 	});

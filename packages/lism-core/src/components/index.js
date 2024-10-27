@@ -31,7 +31,8 @@ export * from './Divider';
 // export * from './Delimiter';
 
 // d--
-export * from './Accordion';
+
+export { default as Accordion, Accordions } from './Accordion';
 export * from './Tabs';
 export { default as Modal } from './Modal';
 

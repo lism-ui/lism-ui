@@ -59,6 +59,7 @@ export default {
 		grid: 'g',
 		inline: 'i',
 		'inline-flex': 'if',
+		'inline-grid': 'ig',
 		'inline-block': 'ib',
 	},
 	rotate: { '45deg': '45', '-45deg': '-45', '90deg': '90', '-90deg': '-90' },

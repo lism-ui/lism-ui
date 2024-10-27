@@ -1,7 +1,7 @@
 ---
 import { LismProps } from '../types';
 import { FlexItem } from '../Flex';
-import { Icon } from '../Icon'; // .astroに書き換えたいが複雑なので後回し
+import { Icon } from '../Icon';
 import { getAccIconProps } from '@lism-ui/core/components/Accordion/getProps';
 
 // Propsの定義
@@ -11,9 +11,9 @@ interface Props extends LismProps {
 	iconProps?: Object;
 }
 
-const { icon = 'acc-btn', size, iconProps = {}, ...props } = Astro.props || {};
+const { viewBox, icon = 'caret-down', ...props } = Astro.props || {};
 ---
 
 <FlexItem {...getAccIconProps(props)}>
-	{Astro.slots.has('default') ? <slot /> : <Icon icon={icon} size={size} {...iconProps} />}
+	{Astro.slots.has('default') ? <slot /> : <Icon viewBox={viewBox} icon={icon} />}
 </FlexItem>

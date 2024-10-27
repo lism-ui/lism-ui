@@ -83,7 +83,7 @@ export function setEvent(modal: HTMLDialogElement): void {
 }
 
 const setModal = () => {
-	// const detailsAll = document.querySelectorAll('.c--accordion');
+	// const detailsAll = document.querySelectorAll('.d--accordion');
 	// detailsAll.forEach((details) => {
 	// 	setEvent(details);
 	// });

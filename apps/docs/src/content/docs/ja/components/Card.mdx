@@ -614,19 +614,19 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	</Columns>
 	```
 	</PreviewCode>
-		<PreviewCode slot='tab' label='追加CSS'>
-		```css
-		.-hov\:get\:slide {
-			--gtr: 0fr;
-			opacity: var(--isHover);
-			transition-property: var(--acc-trsprop);
+<PreviewCode slot='tab' label='追加CSS'>
+```css
+.-hov\:get\:slide {
+	--gtr: 0fr;
+	opacity: var(--isHover);
+	transition-property: margin-block, padding-block, opacity, grid-template-rows;
 
-			.-hov\:pass:hover & {
-				--gtr: 1fr;
-			}
-		}
-		```
-	</PreviewCode>
+	.-hov\:pass:hover & {
+		--gtr: 1fr;
+	}
+}
+```
+</PreviewCode>
 </Preview>
 
 {/* `'contentUp'`を指定しているので、 `.-hov:contentUp` が出力されます。
