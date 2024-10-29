@@ -3,7 +3,6 @@ import { Grid } from '../Grid';
 import Tab from './Tab';
 import TabList from './TabList';
 import TabPanel from './TabPanel';
-// import TabChildren from './TabChildren';
 import getTabsProps from './getProps';
 import { TabContext } from './context';
 

@@ -3,7 +3,7 @@ title: 'ShapeDivider'
 description: ...
 ---
 
-import { Tabs, TabItem, ShapeDivider } from '@lism-ui/astro';
+import { Tabs, ShapeDivider } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
 
 import SlopeDemo from '~/mdx/divider/slope.mdx';
@@ -54,8 +54,8 @@ svgで境界線を描画するコンポーネントです。
 
 ## Shapes
 
-<Tabs variant='line' panelProps={{isFlow: true}}>
-	<TabItem label='Slope'>
+<Tabs.Root variant='line' panelProps={{isFlow: true}}>
+	<Tabs.Item label='Slope'>
 		<Preview>
 			<PreviewTitle>slope1~3</PreviewTitle>
 			<PreviewArea resize>
@@ -86,8 +86,8 @@ svgで境界線を描画するコンポーネントです。
 				```
 			</PreviewCode>
 		</Preview>
-	</TabItem>
-	<TabItem label='Wave'>
+	</Tabs.Item>
+	<Tabs.Item label='Wave'>
 		<Preview>
 			<PreviewTitle>wave1~3</PreviewTitle>
 			<PreviewArea resize>
@@ -118,8 +118,8 @@ svgで境界線を描画するコンポーネントです。
 				```
 			</PreviewCode>
 		</Preview>
-	</TabItem>
-	<TabItem label='Arrow'>
+	</Tabs.Item>
+	<Tabs.Item label='Arrow'>
 		<Preview>
 			<PreviewTitle>arrow1~3</PreviewTitle>
 			<PreviewArea resize>
@@ -136,8 +136,8 @@ svgで境界線を描画するコンポーネントです。
 			</PreviewCode>
 		</Preview>
 
-	</TabItem>
-	<TabItem label='Circle'>
+	</Tabs.Item>
+	<Tabs.Item label='Circle'>
 		<Preview>
 			<PreviewTitle>circle1~3</PreviewTitle>
 			<PreviewArea resize>
@@ -153,8 +153,8 @@ svgで境界線を描画するコンポーネントです。
 				```
 			</PreviewCode>
 		</Preview>
-	</TabItem>
-</Tabs>
+	</Tabs.Item>
+</Tabs.Root>
 
 - シェイプのカラーは、`ShapeDivider`の`c`(`b--shapeDivider`の`color`) で指定できます。  
 	（`.b--shapeDivider__svg` は `fill:currentColor` になっています）
@@ -162,18 +162,18 @@ svgで境界線を描画するコンポーネントです。
 
 ## Usage
 
-<Tabs variant='line' panelProps={{isFlow: true}}>
-	<TabItem label='Slope'>
+<Tabs.Root variant='line' panelProps={{isFlow: true}}>
+	<Tabs.Item label='Slope'>
 		<SlopeDemo />
-	</TabItem>
-	<TabItem label='Wave'>
+	</Tabs.Item>
+	<Tabs.Item label='Wave'>
 		<WaveDemo />
-	</TabItem>
-	<TabItem label='Arrow'>
+	</Tabs.Item>
+	<Tabs.Item label='Arrow'>
 		<ArrowDemo />
-	</TabItem>
-	<TabItem label='Circle'>
+	</Tabs.Item>
+	<Tabs.Item label='Circle'>
 		<CircleDemo />
-	</TabItem>
-</Tabs>
+	</Tabs.Item>
+</Tabs.Root>
 

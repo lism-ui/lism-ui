@@ -1,23 +1,26 @@
-@use '../../scss/query' as query;
+// @use '../../scss/query' as query;
 
-:where(.c--tabs) {
+// :where(.d--tabs) {
+// 	gap: 1em;
+// }
+.d--tabs {
+	--gta: 'list' 'panel';
+	// --gtc: 100%;
+	// grid: 'list' 'panel' / 100%;
+	--gd--hz: 'list panel' auto / auto 1fr; //--gd--vt?
+
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--base);
 	--tab-bgc: var(--c--base-2);
 	--tab-bgc--active: var(--c--text);
-	gap: 1em;
-}
-.c--tabs {
-	grid: 'list' 'panel' / 100%;
-	--gd--hz: 'list panel' auto / auto 1fr; //--gd--vt?
 }
 
-// .c--tabs--default {
+// .d--tabs--default {
 // 	--tab-c--active: var(--c--base);
 // 	--tab-bgc--bgc: var(--c--text);
 // }
 
-.c--tabs__list {
+.d--tabs__list {
 	// position: relative;
 	grid-area: list;
 
@@ -26,7 +29,7 @@
 	// flex-wrap: wrap;
 }
 
-.c--tabs__tab {
+.d--tabs__tab {
 	// display: flex;
 	padding: 0.625em 0.875em;
 	line-height: 1.5;
@@ -46,7 +49,7 @@
 	// &[aria-selected='false'] {}
 }
 
-.c--tabs__panel {
+.d--tabs__panel {
 	// position: relative;
 	grid-area: panel;
 	width: 100%;
@@ -65,18 +68,3 @@
 		// transition-duration: 0s;
 	}
 }
-
-// [data-tabs-align="vertical"]
-// @include query.bp-up('sm') {
-// 	.c--tabs:where([data-tabs~='vertical']) {
-// 		grid: var(--gd--hz);
-
-// 		// 縦並びの時・ memo: rtl対応必要
-// 		// :where(.c--tabs--line)[data-tabs~='vertical'] {
-// 		// }
-// 		> .c--tabs__list {
-// 			// --shadowOfset: inset -2px 0; // .c--tabs--line用
-// 			flex-direction: column;
-// 		}
-// 	}
-// }

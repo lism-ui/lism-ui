@@ -33,7 +33,7 @@ export * from './Divider';
 // d--
 
 export { default as Accordion, Accordions } from './Accordion';
-export * from './Tabs';
+export { default as Tabs } from './Tabs';
 export { default as Modal } from './Modal';
 
 // b--

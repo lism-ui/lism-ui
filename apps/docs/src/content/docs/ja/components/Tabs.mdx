@@ -3,7 +3,7 @@ title: 'Tabs'
 description: ...
 ---
 
-import { Dummy, Tabs, TabItem, Tab, TabList, TabPanel, Icon } from '@lism-ui/astro';
+import { Dummy, Tabs, Icon } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Callout } from "~/components";
 
 
@@ -15,9 +15,11 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 | プロパティ | 説明 |
 |---|---|
-|<PropBadge>`<Tabs>`</PropBadge><br/>`variant`|`c--tabs--{variant}`クラスが出力されます。デフォルトは`"default"`です。|
-|<PropBadge>`<Tabs>`</PropBadge><br/>`keepHeight`|`[data-tabs-height="keep"]`が出力され、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。`|
-|<PropBadge>`<TabItem>`</PropBadge><br/>`label` | タブテキストを指定します。 |
+|<PropBadge>`<Tabs.Root>`</PropBadge><br/>`variant`|`d--tabs--{variant}`クラスが出力されます。デフォルトは`"default"`です。|
+|<PropBadge>`<Tabs.Root>`</PropBadge><br/>`keepHeight`|`[data-tabs-height="keep"]`が出力され、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。|
+|<PropBadge>`<Tabs.Root>`</PropBadge><br/>`defaultIndex`|最初に開いておくタブ番号を指定できます。|
+|<PropBadge>`<Tabs.Root>`</PropBadge><br/>`tabProps`,`listProps`,`panelProps`|それぞれタブボタン部分、リスト部分、パネル部分に対するpropsを指定できます。|
+|<PropBadge>`<Tabs.Item>`</PropBadge><br/>`label` | タブテキストを指定します。 |
 
 
 **ボタンカラーについて**
@@ -25,7 +27,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 平常時のカラーと、アクティブ時のカラーをそれぞれ専用の変数で管理しています。
 
 ```css
-:where(.c--tabs) {
+:where(.d--tabs) {
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--base);
 	--tab-bgc: var(--c--base-2);
@@ -34,117 +36,115 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 ```
 
 
-
-{/* - `<Tabs>`
+{/* - `<Tabs.Root>`
 	- `keepHeight` が true の場合、タブの高さを固定する（切り替えた時に高さが動かないようにする）
 	- `defaultIndex`で最初に開くタブを指定できる
 	- `tabId`: tabID.指定しなければランダム生成されます。(ページ内で一意の値の指定である必要があります。)
-- `<TabItem>`
+- `<Tabs.Item>`
 	- `index`: (必須) タブのindex番号 */}
 
 ## Import
 
-<ImportPackage component='Tabs, TabItem' />
+<ImportPackage component='Tabs' />
 
 
 ## Usage
 
 
-
-
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs>
-			<TabItem label='Tab 1'>
+	<PreviewArea p='30'>
+		<Tabs.Root g='20'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Tabs>
-			<TabItem label='Tab 1'>
+		<Tabs.Root g='20'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
 
 
-各タブテキストは`<TabItem>`の`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
+各タブテキストは`<Tabs.Item>`の`label`で指定できますが、jsx式を使いたい場合、Astroでは`slot='label'`を使ってください。
 
 <Preview>
-	<PreviewTitle>タブテキストにJSX式を渡す</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs>
-			<TabItem>
+	<PreviewTitle>タブテキストにJSX式を渡す例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Tabs.Root g='20'>
+			<Tabs.Item>
 				<Fragment slot='label'><Icon isInline icon='good'/> Tab <small>small text</small></Fragment>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
-		```jsx {2}
-		<Tabs>
-			<TabItem label={<><Icon isInline icon='good'/> Tab <small>small text</small></>}>
+		```jsx {2} "label=\{"
+		<Tabs.Root g='20'>
+			<Tabs.Item label={<><Icon isInline icon='good'/> Tab <small>small text</small></>}>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
-		```jsx {3}
-		<Tabs>
-			<TabItem>
+		```jsx {3} "slot='label'"
+		<Tabs.Root g='20'>
+			<Tabs.Item>
 				<Fragment slot='label'><Icon isInline icon='good'/>Tab<small>small text</small></Fragment>
-			</TabItem>
-			<TabItem label='Tab 2'>
+				<Dummy />
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
 
 
-`<Tabs>`に `ji='center'` を指定すると、タブボタンを中央寄せにすることができます。
+`<Tabs.Root>`に `ji='center'` を指定すると、タブボタンを中央寄せにすることができます。
 
 <Preview>
 	<PreviewTitle>タブリストの中央寄せ</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs ji='center'>
-			<TabItem label='Tab 1'>
+	<PreviewArea p='30'>
+		<Tabs.Root g='20' ji='center'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "ji='center'"
-		<Tabs ji='center'>
-			<TabItem label='Tab 1'>
+		<Tabs.Root g='20' ji='center'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
@@ -154,30 +154,30 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 ### 高さが変わらないようにする
 
 タブを切り替えた時、デフォルトでは、表示されるコンテンツ量が変わることでタブ全体の高さも変わります。  
-`<Tabs>`に `keepHeight`(`[data-tabs-height="keep"]`) を指定すると、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。
+`<Tabs.Root>`に `keepHeight`(`[data-tabs-height="keep"]`) を指定すると、タブの高さを一番コンテンツ量の多いパネルに合わせて固定することができます。
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs keepHeight>
-			<TabItem label='Tab 1'>
+	<PreviewArea p='30'>
+		<Tabs.Root keepHeight g='20'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab text 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length="xl" />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "keepHeight"
-		<Tabs keepHeight>
-			<TabItem label='Tab 1'>
+		<Tabs.Root keepHeight g='20'>
+			<Tabs.Item label='Tab 1'>
 				<p>...</p>
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>...</p>
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
@@ -185,35 +185,35 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 ### 最初に開いておくタブ番号を指定する
 
-`<Tabs>`に `defaultIndex` を指定すると、最初に開いておくタブ番号を指定できます。  
+`<Tabs.Root>`の `defaultIndex` で、最初に開いておくタブ番号を指定できます。  
 (インデックス番号は`0`から始まります。)
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea p={30}>
-		<Tabs defaultIndex={1}>
-			<TabItem label='Tab 1'>
+	<PreviewArea p='30'>
+		<Tabs.Root defaultIndex={1} g='20'>
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<Dummy length="l" />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "defaultIndex="
-		<Tabs defaultIndex={1}>
-			<TabItem label='Tab 1'>
+		<Tabs.Root defaultIndex={1} g='20'>
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<p>...</p>
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<p>...</p>
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
@@ -222,59 +222,59 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 ### Tabs 子要素に対するpropsの指定
 
-`<Tabs>`に `tabProps`,`listProps`, `panelProps` を指定でき、それぞれタブボタン部分、リスト部分、パネル部分に対するpropsを指定できます。
+`<Tabs.Root>`に `tabProps`,`listProps`, `panelProps` を指定でき、それぞれタブボタン部分、リスト部分、パネル部分に対するpropsを指定できます。
 
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='40'>
-		<Tabs bgc='base-2' bxsh='2' g='0' isFlow='s'
+		<Tabs.Root bgc='base-2' bxsh='2' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
 			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
 			listProps={{fz:'m',bd:'b'}}
 			panelProps={{p:'40'}}
 		>
-			<TabItem label='Tab 1'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-			<TabItem label='Tab 3'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 3'>
 				<Dummy length='s'/>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 4'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 4'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "tabProps" "listProps" "panelProps"
-		<Tabs bgc='base-2' bxsh='2' g='0' isFlow='s'
+		<Tabs.Root bgc='base-2' bxsh='2' isFlow='s'
 			style={{'--tab-bgc':'transparent'}}
 			tabProps={{px:'30', py:'20', fx:'1', whs:'nw', mb:'-1px'}}
 			listProps={{fz:'m',bd:'b'}}
 			panelProps={{p:'40'}}
 		>
-			<TabItem label='Tab 1'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-			<TabItem label='Tab 3'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 3'>
 				<Dummy length='s'/>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 4'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 4'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
@@ -282,89 +282,92 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 
 ### タブコンテンツを横並び配置にする
 
-`<Tabs>`(`.c--tabs`)に`grid:var(--gd--hz);` を指定すると、タブリストとコンテンツが横並びになります。
+`<Tabs.Root>`(`.d--tabs`)に`grid:var(--gd--hz);` を指定すると、タブリストとコンテンツが横並びになります。
 
-それと同時に、タブリスト(`.c--tabs__list`)のボタンを縦並び（`flex-direction:column;`）に変更すると、以下のようなレイアウトが実現できます。
+それと同時に、タブリスト(`.d--tabs__list`)のボタンを縦並び（`flex-direction:column;`）に変更すると、以下のようなレイアウトが実現できます。
 
 <Preview>
 	<PreviewTitle>`@sm`サイズより大きい場合、コンテンツを横並びにする例</PreviewTitle>
 	<PreviewArea p={30} resize>
-		<Tabs keepHeight isFlow='s' ji='c' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
-			<TabItem label='Tab 1'>
+		<Tabs.Root keepHeight colg='30' rowg='20' ji='c' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}} isFlow='s' >
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "isHorizontal"
-		<Tabs keepHeight isFlow='s' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}}>
-			<TabItem label='Tab 1'>
+		<Tabs.Root keepHeight colg='30' rowg='20' gd={[null, 'var(--gd--hz)']} listProps={{fxd: [null, 'column']}} isFlow='s' >
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
 
 <Callout type='info'>
-`<Tabs>`に`isHorizontal`を指定すると、上記の`gd`,`listProps`が自動的に適用されるようにもなっています。
+`<Tabs.Root>`に`isHorizontal`を指定すると、上記の`gd`,`listProps`が自動的に適用されるようにもなっています。
 </Callout>
 
-### variant 作成例
+## スタイルバリエーションの作成例
+
+コアではスタイルを特に持ちませんので、サイトごとにスタイルを用意してご利用ください。  
+ここでは、いくつかその例を紹介します。
 
 <Preview>
 	<PreviewTitle>`variant='line'`</PreviewTitle>
 	<PreviewArea p={30} resize>
-		<Tabs variant='line'>
-			<TabItem label='Tab 1'>
+		<Tabs.Root variant='line' g='20'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "variant='line'"
-		<Tabs variant='line'>
-			<TabItem label='Tab 1'>
-				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
-				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='CSS'>
+	<PreviewCode slot='tab' label='追加CSS'>
 ```scss
-:where(.c--tabs--line) {
+:where(.d--tabs--line) {
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
 	--tab-bgc--active: transparent;
 	--sh-size: inset 0 -2px;
 
-	.c--tabs__list {
+	.d--tabs__list {
 		box-shadow: var(--sh-size) 0 var(--c--divider);
 	}
-	.c--tabs__tab[aria-selected='true'] {
+	.d--tabs__tab[aria-selected='true'] {
 		box-shadow: var(--sh-size) 0 0 currentColor;
 	}
 }
 ```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "variant='line'"
+		<Tabs.Root variant='line' g='20'>
+			<Tabs.Item label='Tab 1'>
+				<Dummy />
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
+				<Dummy length='l' />
+			</Tabs.Item>
+		</Tabs.Root>
+		```
 	</PreviewCode>
 </Preview>
 
@@ -372,148 +375,148 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 <Preview>
 	<PreviewTitle>`variant='emboss'`</PreviewTitle>
 	<PreviewArea p={30} resize>
-		<Tabs variant='emboss' ji='c'>
-			<TabItem label='Tab 1'>
+		<Tabs.Root variant='emboss' g='20' ji='c'>
+			<Tabs.Item label='Tab 1'>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "variant='emboss'"
-		<Tabs variant='emboss' ji='c'>
-			<TabItem label='Tab 1'>
-				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
-				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='CSS'>
+	<PreviewCode slot='tab' label='追加CSS'>
 ```scss
-:where(.c--tabs--emboss) {
+:where(.d--tabs--emboss) {
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
 	--tab-bgc--active: var(--c--base);
 
-	> .c--tabs__list {
+	> .d--tabs__list {
 		background-color: var(--c--base-2);
 		padding: 4px;
 		gap: 0.5em;
 		border-radius: var(--bdrs--2);
 	}
-	.c--tabs__tab {
+	.d--tabs__tab {
 		border-radius: calc(var(--bdrs--2) - 2px);
 	}
-	.c--tabs__tab:where([aria-selected='true']) {
+	.d--tabs__tab:where([aria-selected='true']) {
 		box-shadow: var(--bxsh--1);
 	}
 }
 ```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "variant='emboss'"
+		<Tabs.Root variant='emboss' g='20' ji='c'>
+			<Tabs.Item label='Tab 1'>
+				<Dummy />
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
+				<Dummy length='l' />
+			</Tabs.Item>
+		</Tabs.Root>
+		```
 	</PreviewCode>
 </Preview>
 
 <Preview>
 	<PreviewTitle>`variant='emboss'`でisHorizontalがオン</PreviewTitle>
 	<PreviewArea p={30} resize>
-		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
-			<TabItem label='Tab 1'>
+		<Tabs.Root variant='emboss' isHorizontal keepHeight g='30' ai='s' ji='c' isFlow='s'>
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Tabs variant='emboss' isHorizontal keepHeight ai='s' ji='c' isFlow='s'>
-			<TabItem label='Tab 1'>
+		<Tabs.Root variant='emboss' isHorizontal keepHeight g='30' ai='s' ji='c' isFlow='s'>
+			<Tabs.Item label='Tab 1'>
 				<p>index:0</p>
 				<Dummy />
-			</TabItem>
-			<TabItem label='Tab 2'>
+			</Tabs.Item>
+			<Tabs.Item label='Tab 2'>
 				<p>index:1</p>
 				<Dummy />
 				<Dummy length='l' />
-			</TabItem>
-		</Tabs>
+			</Tabs.Item>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>
 
 
 
-### TabItemを使わない書き方
+## Tabs.Itemを使わない書き方
 
-より細かいprops指定が必要な場合、`<TabItem>`を使わずに、`<TabList>`,`<Tab>`,`<TabPanel>`を使って書くこともできます。
+より柔軟にタブコンテンツをカスタマイズしたい場合、`<Tabs.Item>`を使わずに、`<Tabs.List>`,`<Tabs.Tab>`,`<Tabs.Panel>`を使って書くこともできます。
 
 ただし、**ReactとAstroでは少し書き方が異なる**ので注意してください
 
 <Preview>
-	<PreviewArea p={30}>
-		<Tabs>
-			<TabList>
-				<Tab tabID='tab-uid' isActive index={0}><Icon isInline icon='good'/> Tab 1</Tab>
-				<Tab tabID='tab-uid' index={1}><Icon isInline icon='bad'/> Tab 2</Tab>
-			</TabList>
-			<TabPanel tabID='tab-uid' isActive index={0}>
+	<PreviewArea p='30'>
+		<Tabs.Root g='20'>
+			<Tabs.List>
+				<Tabs.Tab tabID='tab-uid' isActive index={0}><Icon isInline icon='good'/> Tab 1</Tabs.Tab>
+				<Tabs.Tab tabID='tab-uid' index={1}><Icon isInline icon='bad'/> Tab 2</Tabs.Tab>
+			</Tabs.List>
+			<Tabs.Panel tabID='tab-uid' isActive index={0}>
 				<Dummy length='s' />
 				<Dummy />
-			</TabPanel>
-			<TabPanel tabID='tab-uid' index={1}>
+			</Tabs.Panel>
+			<Tabs.Panel tabID='tab-uid' index={1}>
 				<Dummy length='l' />
-			</TabPanel>
-		</Tabs>
+			</Tabs.Panel>
+		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='React'>
 		```jsx "tab-uid" "defaultIndex" "index"
-		<Tabs uid='tab-uid' defaultIndex={0}>
-			<TabList>
-				<Tab index={0}>
+		<Tabs.Root uid='tab-uid' defaultIndex={0} g='20'>
+			<Tabs.List>
+				<Tabs.Tab index={0}>
 					<Icon isInline icon='good' /> Tab 1
-				</Tab>
-				<Tab index={1}>
+				</Tabs.Tab>
+				<Tabs.Tab index={1}>
 					<Icon isInline icon='bad' /> Tab 2
-				</Tab>
-			</TabList>
-			<TabPanel index={0}>
+				</Tabs.Tab>
+			</Tabs.List>
+			<Tabs.Panel index={0}>
 				<Dummy length='s' />
 				<Dummy />
-			</TabPanel>
-			<TabPanel index={1}>
+			</Tabs.Panel>
+			<Tabs.Panel index={1}>
 				<Dummy length='l' />
-			</TabPanel>
-		</Tabs>
+			</Tabs.Panel>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='Astro'>
 		```jsx "isActive" "index" "tab-uid"
-		<Tabs>
-			<TabList>
-				<Tab tabID='tab-uid' isActive index={0}>
+		<Tabs.Root g='20'>
+			<Tabs.List>
+				<Tabs.Tab tabID='tab-uid' isActive index={0}>
 					<Icon isInline icon='good' /> Tab 1
-				</Tab>
-				<Tab tabID='tab-uid' index={1}>
+				</Tabs.Tab>
+				<Tabs.Tab tabID='tab-uid' index={1}>
 					<Icon isInline icon='bad' /> Tab 2
-				</Tab>
-			</TabList>
-			<TabPanel tabID='tab-uid' isActive index={0}>
+				</Tabs.Tab>
+			</Tabs.List>
+			<Tabs.Panel tabID='tab-uid' isActive index={0}>
 				<Dummy length='s' />
 				<Dummy />
-			</TabPanel>
-			<TabPanel tabID='tab-uid' index={1}>
+			</Tabs.Panel>
+			<Tabs.Panel tabID='tab-uid' index={1}>
 				<Dummy length='l' />
-			</TabPanel>
-		</Tabs>
+			</Tabs.Panel>
+		</Tabs.Root>
 		```
 	</PreviewCode>
 </Preview>

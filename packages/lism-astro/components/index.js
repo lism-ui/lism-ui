@@ -34,7 +34,7 @@ export * from './Icon';
 // d--
 export { default as Accordion, Accordions } from './Accordion';
 export { default as Modal } from './Modal';
-export * from './Tab';
+export { default as Tabs } from './Tabs';
 
 // b--
 // export * from './Avatar';

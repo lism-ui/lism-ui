@@ -100,8 +100,11 @@
 	overflow: hidden;
 	border-radius: var(--codeBlock--radius);
 
-	&.c--tabs .expressive-code {
-		translate: 0 -0.5em;
+	&.d--tabs {
+		gap: 0 !important;
+		// .expressive-code {
+		// 	translate: 0 -0.5em;
+		// }
 	}
 
 	pre {

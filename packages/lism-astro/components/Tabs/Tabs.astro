@@ -1,8 +1,8 @@
 ---
 import { LismProps } from '../types';
 import { Grid } from '../Grid';
-import TabList from './TabList.astro';
 import Tab from './Tab.astro';
+import TabList from './TabList.astro';
 import TabPanel from './TabPanel.astro';
 import { uuidv4 } from '../helper/index.js';
 import transformTabitems from './transformTabitems.js';
@@ -69,7 +69,7 @@ const hasItems = btns.length > 0;
 <script>
 	// import setEvent from './setEvent';
 	import setEvent from '@lism-ui/core/components/Tabs/setEvent';
-	const tabsAll = document.querySelectorAll('.c--tabs');
+	const tabsAll = document.querySelectorAll('.d--tabs');
 	tabsAll.forEach((tabs) => {
 		setEvent(tabs);
 	});

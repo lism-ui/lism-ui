@@ -1,41 +1,41 @@
 // ovx='auto' の時に margin がネガティブだとアウトなので、borderではなくbox-shadowで表現する。
-:where(.c--tabs--line) {
+.d--tabs--line {
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
 	--tab-bgc--active: transparent;
 	--sh-size: inset 0 -2px;
 
-	.c--tabs__list {
+	.d--tabs__list {
 		box-shadow: var(--sh-size) 0 var(--c--divider);
 	}
-	.c--tabs__tab[aria-selected='true'] {
+	.d--tabs__tab[aria-selected='true'] {
 		box-shadow: var(--sh-size) 0 0 currentColor;
 	}
 }
 
-:where(.c--tabs--emboss) {
+.d--tabs--emboss {
 	--tab-c: var(--c--text);
 	--tab-c--active: var(--c--text);
 	--tab-bgc: transparent;
 	--tab-bgc--active: var(--c--base);
 
-	> .c--tabs__list {
+	> .d--tabs__list {
 		background-color: var(--c--base-2);
 		padding: 4px;
 		gap: 0.5em;
 		border-radius: var(--bdrs--2);
 	}
-	.c--tabs__tab {
+	.d--tabs__tab {
 		// 親のbdrs - 親のpadding/2
 		border-radius: calc(var(--bdrs--2) - 2px);
 	}
-	.c--tabs__tab:where([aria-selected='true']) {
+	.d--tabs__tab:where([aria-selected='true']) {
 		box-shadow: var(--bxsh--1);
 	}
 }
 
-.c--preview_code .c--tabs__tab {
+.c--preview_code .d--tabs__tab {
 	font-size: 0.95em;
 	padding: 0.75em 0.875em;
 }

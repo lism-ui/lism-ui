@@ -21,7 +21,7 @@ export default function getTabsProps({
 	// }
 
 	const defaultProps = {
-		lismClass: atts(lismClass, 'c--tabs', variant && `c--tabs--${variant}`),
+		lismClass: atts(lismClass, 'd--tabs', variant && `d--tabs--${variant}`),
 		style,
 	};
 
@@ -48,7 +48,7 @@ export default function getTabsProps({
 
 export function getTabListProps(props) {
 	const defaultProps = {
-		lismClass: 'c--tabs__list',
+		lismClass: 'd--tabs__list',
 		jc: 's',
 		fz: 's',
 		role: 'tablist',
@@ -58,7 +58,7 @@ export function getTabListProps(props) {
 
 export function getTabPanelProps(props, isActive) {
 	const defaultProps = {
-		lismClass: 'c--tabs__panel',
+		lismClass: 'd--tabs__panel',
 		role: 'tabpanel',
 		'aria-hidden': isActive ? 'false' : 'true',
 	};
@@ -67,7 +67,7 @@ export function getTabPanelProps(props, isActive) {
 export function getTabProps(props, isActive) {
 	const defaultProps = {
 		skipState: true,
-		lismClass: 'c--tabs__tab',
+		lismClass: 'd--tabs__tab',
 		lismState: ['reset--style'],
 		tag: 'button',
 		role: 'tab',

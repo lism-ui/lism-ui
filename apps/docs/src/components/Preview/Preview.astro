@@ -11,22 +11,15 @@ for (let index = 0; index < slotKeys.length; index++) {
 		tabs += await Astro.slots.render(slotName);
 	}
 }
-
-// Astro.slots.has('tab') && (
-// 	<Tabs className='c--preview_code' {...Astro.props}>
-// 		<TabItem>
-// 		<slot name='tab' />
-// 	</Tabs>
-// )
 ---
 
 <Lism className='c--preview' {...Astro.props}>
 	<slot />
 	{
 		Astro.slots.has('tab') && (
-			<Tabs className='c--preview_code' variant='line'>
+			<Tabs.Root className='c--preview_code' variant='line' g='20'>
 				<slot name='tab' />
-			</Tabs>
+			</Tabs.Root>
 		)
 	}
 </Lism>
