@@ -176,6 +176,23 @@ export default [
 				label: 'LinkBox',
 				link: '/components/linkbox/',
 			},
+
+			{
+				label: 'Dynamic',
+				link: '###---',
+			},
+			{
+				label: 'Accordion',
+				link: '/components/accordion/',
+			},
+			{
+				label: 'Modal',
+				link: '/components/modal/',
+			},
+			{
+				label: 'Tabs',
+				link: '/components/tabs/',
+			},
 			{
 				label: 'Atoms',
 				link: '###---',
@@ -195,23 +212,6 @@ export default [
 			{
 				label: 'Spacer',
 				link: '/components/spacer/',
-			},
-
-			{
-				label: 'Dynamic',
-				link: '###---',
-			},
-			{
-				label: 'Accordion',
-				link: '/components/accordion/',
-			},
-			{
-				label: 'Modal',
-				link: '/components/modal/',
-			},
-			{
-				label: 'Tabs',
-				link: '/components/tabs/',
 			},
 		],
 	},
