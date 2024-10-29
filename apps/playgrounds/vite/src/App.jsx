@@ -1,9 +1,9 @@
-import { Box, Flex, Container, Button, DammyText, Divider, Columns } from '@lism-ui/core';
+import { Box, Flex, Container, Link, Dummy, Divider, Columns } from '@lism-ui/core';
 
 function App() {
 	return (
 		<Container size='m' hasGutter isFlow>
-			<Flex gap='20' py='20'>
+			<Flex g='20' py='20'>
 				<img src='vite.svg' />
 				<h1>Vite + Lism UI</h1>
 			</Flex>
@@ -12,18 +12,32 @@ function App() {
 				voluptatum, ducimus temporibus accusamus exercitationem dolores id impedit corporis
 				asperiores debitis soluta, nemo iusto optio quae. Ducimus, aperiam tempora!
 			</p>
-			<Columns cols='2' gap='40'>
-				<Box bgc='base-2' p='40' bxsh='2'>
-					Box
+			<Columns cols='2' g='40'>
+				<Box bgc='base' p='40' bdrs='2' bxsh='3'>
+					Columns &gt; Box
 				</Box>
-				<Box bgc='base-2' p='40' bxsh='2'>
-					Box
+				<Box bgc='base' p='40' bdrs='2' bxsh='3'>
+					Columns &gt; Box
 				</Box>
 			</Columns>
 
-			<DammyText length='l' />
+			<Dummy length='s' />
+			<Dummy length='l' />
+
 			<Flex jc='c'>
-				<Button href='###'>Button</Button>
+				<Link
+					href='###'
+					hov='fade'
+					bgc='text'
+					lh='xs'
+					c='base'
+					px='30'
+					py='20'
+					td='n'
+					bdrs='5'
+				>
+					Link Button
+				</Link>
 			</Flex>
 			<Divider />
 		</Container>
