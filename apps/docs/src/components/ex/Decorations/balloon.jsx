@@ -5,9 +5,8 @@ export default function BalloonBox({
 	bdw = '1px',
 	bdc,
 	bgc,
-
 	keycolor,
-	bdrs = 'l',
+	bdrs = '3',
 	children,
 	...props
 }) {

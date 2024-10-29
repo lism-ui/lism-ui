@@ -1,6 +1,6 @@
 import TOKENS from './tokens';
 // import presets from './presets';
-
+const SPACE_PRESETS = ['0', '5', '10', '20', '30', '40', '50'];
 /* 
 memo: 
 	ユーティリティクラス化されない時の挙動パターン
@@ -31,15 +31,14 @@ const itemProps = {
 
 export const GAP_PROPS = {
 	gap: {
-		presets: 'gap',
 		utilKey: 'g',
+		presets: ['inherit', ...SPACE_PRESETS],
 		converter: 'space',
 		// gap={row, clm} の場合の処理
 		// objProcessor: (d) => `${d}g`,
 	},
 	g: {
-		presets: 'gap',
-		utils: { inherit: 'inherit' },
+		presets: ['inherit', ...SPACE_PRESETS],
 		converter: 'space',
 	},
 	rowg: { converter: 'space' },
@@ -62,26 +61,26 @@ export default {
 	minBs: { style: 'minBlockSize', converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
-	c: { presets: 1, utils: 1, converter: 'color' },
-	bgc: { presets: 1, utils: 1, converter: 'color' },
+	c: { presets: 1, converter: 'color' },
+	bgc: { presets: 1, converter: 'color' },
 	keycolor: { style: '--keycolor', converter: 'color' },
-	boxcolor: { _presets: 'palette', style: '--keycolor', converter: 'color' },
+	boxcolor: { _presets: TOKENS.palette, style: '--keycolor', converter: 'color' },
 	bg: { style: 'background', utils: { none: 'n' } },
 	backgrounds: { map: 1 },
 	// mask: { map: 1 },
 
 	// Typography
-	f: { style: 'font', utils: { inherit: 'i' } },
-	fz: { presets: 1, converter: 'fz' },
-	lh: { presets: 1, style: 'lineHeight' },
+	f: { style: 'font', presets: ['inherit'] },
+	fz: { presets: TOKENS.fz, converter: 'fz' },
+	lh: { presets: ['1', ...TOKENS.lh], style: 'lineHeight' },
 	fw: {
 		style: 'fontWeight',
 		presets: TOKENS.fw,
 		//presets: 1
 	},
-	ff: { style: 'fontFamily', presets: 1, converter: 1 },
-	fs: { style: 'fontStyle', utils: { italic: 'i', normal: 'n' } },
-	lts: { style: 'letterSpacing', presets: 1 },
+	ff: { style: 'fontFamily', presets: ['base', 'accent', 'mono'], converter: 1 },
+	fs: { style: 'fontStyle', utils: { italic: 'i' } },
+	lts: { style: 'letterSpacing', presets: TOKENS.lts },
 	ta: { style: 'textAlign', utils: { center: 'c', left: 'l', right: 'r' } },
 	td: { style: 'textDecoration', utils: { underline: 'u', none: 'n' } },
 	tsh: { style: 'textShadow' },
@@ -90,9 +89,9 @@ export default {
 
 	// others
 	bd: { style: 'border', utilKey: 'bd', utils: 1 },
-	bdw: { style: '--bdw', utils: 1 }, // --bdw のみ
+	bdw: { style: '--bdw', presets: ['inherit'] }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
-	bdc: { style: '--bdc', presets: 1, utils: 1, converter: 'color' },
+	bdc: { style: '--bdc', presets: 1, converter: 'color' },
 
 	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
 
@@ -151,26 +150,26 @@ export default {
 
 	// Spacing
 	p: {
-		presets: 'p',
+		presets: SPACE_PRESETS, //[...SPACE_PRESETS, ...TOKENS.p],
 		converter: 'space',
 		// {x, y, t, b, l, r, is, bs } でも指定可能にする
 		objProcessor: (d) => `p${d}`,
 	},
-	px: { presets: 'space', converter: 'space' },
-	py: { presets: 'space', converter: 'space' },
+	px: { presets: SPACE_PRESETS, converter: 'space' },
+	py: { presets: SPACE_PRESETS, converter: 'space' },
 	pl: { presets: [], converter: 'space' },
 	pr: { presets: [], converter: 'space' },
 	pt: { presets: [], converter: 'space' },
 	pb: { presets: [], converter: 'space' },
 	// pis, pbs, pin, pbl
-	pis: { presets: 'space', converter: 'space' },
+	pis: { presets: SPACE_PRESETS, converter: 'space' },
 	pbs: { presets: [], converter: 'space' },
 	// pinln, pblck
 	// pse: paddingOption,
 	// pbe: paddingOption,
 	m: {
 		utils: { auto: 'a' },
-		presets: 'space',
+		presets: SPACE_PRESETS,
 		converter: 'space',
 		// {x, y, t, b, l, r, is, bs } でも指定可能にする
 		objProcessor: (d) => `m${d}`,
@@ -182,7 +181,7 @@ export default {
 	mt: { converter: 'space' },
 	mb: { converter: 'space' },
 	mis: { utils: { auto: 'a' }, converter: 'space' },
-	mbs: { presets: 'space', utils: { auto: 'a' }, converter: 'space' },
+	mbs: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
 	// me: marginOption,
 	// mbe: marginOption,
 
@@ -316,7 +315,6 @@ export const CONTEXT_PROPS = {
 	},
 
 	mask: {},
-	// animation: {},
 
 	css: {
 		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },

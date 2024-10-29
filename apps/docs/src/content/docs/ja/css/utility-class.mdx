@@ -69,18 +69,18 @@ export const PropTable = ({data={}, ...props}) => {
 
 <Lism mbs='50' fz='l' fw='bold' px='20' bd='is'>`color`</Lism>
 <PropTable
-	data={{c: {'base':'--c--base', 'text': '--c--text', 'text-2': '--c--text-2', 'keycolor':'--keycolor', 'i':'inherit', 'mix': 'color-mix(...)'}}}
+	data={{c: {'base':'--c--base', 'text': '--c--text', 'text-2': '--c--text-2', 'keycolor':'--keycolor', 'inherit':'inherit', 'mix': 'color-mix(...)'}}}
 />
 
 
 <Lism mbs='50' fz='l' fw='bold' px='20' bd='is'>`background-color`</Lism>
 <PropTable
-	data={{bgc:{'text':'--c--text', 'base': '--c--base', 'base-2': '--c--base-2', 'keycolor':'--keycolor', 'i':'inherit', 'mix': 'color-mix(...)'}}}
+	data={{bgc:{'text':'--c--text', 'base': '--c--base', 'base-2': '--c--base-2', 'keycolor':'--keycolor', 'inherit':'inherit', 'mix': 'color-mix(...)'}}}
 />
 
 <Lism mbs='50' fz='l' fw='bold' px='20' bd='is'>`--bdc`</Lism>
 <PropTable
-	data={{bgc:{'divider':'--c--divider', 'keycolor':'--keycolor', 'i': 'inherit', 'mix': 'color-mix(...)'}}}
+	data={{bgc:{'divider':'--c--divider', 'keycolor':'--keycolor', 'inherit': 'inherit', 'mix': 'color-mix(...)'}}}
 />
 
 ### `mix` クラスについて
@@ -178,7 +178,7 @@ export const PropTable = ({data={}, ...props}) => {
 ### font
 <PropTable
 	data={{f:{
-		'i': 'inherit',
+		'inherit': 'inherit',
 	}}}
 />
 
@@ -249,8 +249,8 @@ export const PropTable = ({data={}, ...props}) => {
 <PropTable
 	data={{
 		bdc:{
-			't': '--bdc:transparent',
-			'i': '--bdc:inherit',
+			// 't': '--bdc:transparent',
+			'inherit': '--bdc:inherit',
 			'divider': '--bdc:var(--c--divider)',
 		},
 	}}

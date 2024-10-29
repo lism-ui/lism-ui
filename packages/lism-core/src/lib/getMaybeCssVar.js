@@ -1,6 +1,5 @@
 import isNumStr from './helper/isNumStr';
 import isTokenValue from './isTokenValue';
-// import isPresetValue from './isPresetValue';
 
 // 対応するCSS変数があれば返す
 export default function getMaybeCssVar(value, converter, propName = '') {
@@ -89,10 +88,6 @@ export function getMaybeColorVar(value, propType) {
 	} else if (isTokenValue('palette', value)) {
 		return `var(--${value})`;
 	}
-	//  else if (propType && isPresetValue(propType, value)) {
-	// 	// c,bgc などの各プロパティ専用トークン値の場合
-	// 	return `var(--${propType}--${value.replace(':', '--')})`;
-	// }
 
 	return value;
 }
@@ -101,9 +96,6 @@ export function getMaybeSizeVar(value) {
 	if (isTokenValue('contentSize', value)) {
 		return `var(--size--${value})`;
 	}
-	// else if (isPresetValue('size', size)) {
-	// 	return `var(--size--${size})`;
-	// }
 
 	return value;
 }

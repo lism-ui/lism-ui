@@ -14,9 +14,8 @@ const selfPlaces = {
 };
 export default {
 	// color: {},
-	c: { inherit: 'i' },
-	bgc: { none: 't', transparent: 't', currentColor: 'cc', inherit: 'i' },
-	bdc: { none: 't', transparent: 't', inherit: 'i' },
+	// bgc: { none: 't', transparent: 't', currentColor: 'cc' },
+	// bdc: { none: 't', transparent: 't' },
 	bgcp: { text: 'tx' },
 	place: places,
 	placeItems: { ...places, stretch: 'str' },
@@ -39,7 +38,6 @@ export default {
 		'block-start': 'bs',
 		'block-end': 'be',
 	},
-	bdw: { inherit: 'i' },
 	pos: {
 		relative: 'r',
 		absolute: 'a',

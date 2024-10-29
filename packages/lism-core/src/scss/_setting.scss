@@ -73,7 +73,7 @@ $utilities: (
 	),
 	'p': (),
 	'g': (
-		'i': (
+		'inherit': (
 			'gap': 'inherit',
 		),
 	),
@@ -188,7 +188,7 @@ $props: map.deep-merge(
 				'keycolor': 'var(--keycolor)',
 				'black': 'var(--black)',
 				'white': 'var(--white)',
-				'i': (
+				'inherit': (
 					'color': 'inherit',
 				),
 			),
@@ -214,7 +214,7 @@ $props: map.deep-merge(
 					'keycolor': 'var(--keycolor)',
 					'black': 'var(--black)',
 					'white': 'var(--white)',
-					'i': (
+					'inherit': (
 						'color': 'inherit',
 					),
 				),
@@ -227,7 +227,7 @@ $props: map.deep-merge(
 				'accent': 'var(--c--accent)',
 				'divider': 'var(--c--divider)',
 				'keycolor': 'var(--keycolor)',
-				'i': 'inherit',
+				'inherit': 'inherit',
 			),
 		),
 		'bds': (
@@ -240,14 +240,14 @@ $props: map.deep-merge(
 			base_type: 0,
 			bp: 1,
 			utilities: (
-				'i': 'inherit',
+				'inherit': 'inherit',
 			),
 		),
 		'f': (
 			prop: 'font',
 			base_type: 0,
 			utilities: (
-				'i': 'inherit',
+				'inherit': 'inherit',
 			),
 		),
 		'fz': (

@@ -35,9 +35,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|c|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`i`(`inherit`)|-|
-|bgc|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`i`(`inherit`)|-|
-|bdc|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`i`(`inherit`)|-|
+|c|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
+|bgc|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
+|bdc|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`inherit`|-|
 |keycolor|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
 
 
@@ -115,7 +115,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|f|`font`|-|`inherit`(`i`)|-|
+|f|`font`|-|`inherit`|-|
 |fz|`font-size`|`TYPO.FZ`|`TYPO.FZ`|○|
 |ff|`font-family`|`TYPO.FF`|`TYPO.FF`|-|
 |fw|`font-weight`|`TYPO.FW`|`TYPO.FW`|-|
@@ -429,7 +429,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |`gaf`|`grid-auto-flow`|-|-|-|
 |`gar`|`grid-auto-rows`|-|-|-|
 |`gac`|`grid-auto-columns`|-|-|-|
-|`g`|`gap`|`SPACE`|`SPACE`|○|
+|`g`|`gap`|`SPACE`|`SPACE`,`inherit`|○|
 |`rowg`|`row-gap`|`SPACE`|-|○|
 |`colg`|`column-gap`|`SPACE`|-|○|
 
@@ -495,7 +495,7 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |---|---|---|---|---|
 |`fxw`|`flex-wrap`|-|`wrap`(`w`),<br /> `nowrap`(`nw`)|○|
 |`fxd`|`flex-direction`|-|`column`(`c`),<br /> `column-reverse`(`cr`),<br /> `row`(`r`),<br /> `row-reverse`(`rr`)|○|
-|`g`|`gap`|`SPACE`|`SPACE`|○|
+|`g`|`gap`|`SPACE`|`SPACE`,`inherit`|○|
 |`rowg`|`row-gap`|`SPACE`|-|○|
 |`colg`|`column-gap`|`SPACE`|-|○|
 
