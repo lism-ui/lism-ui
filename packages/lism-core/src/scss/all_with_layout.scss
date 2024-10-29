@@ -14,6 +14,8 @@
 @layer lism-layout {
 	@include meta.load-css('state');
 	@include meta.load-css('layout');
+}
+@layer lism-object {
 	@include meta.load-css('objects');
 }
 

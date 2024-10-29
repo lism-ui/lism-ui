@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 import { Box } from "@lism-ui/astro";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, HelpText, Callout } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, HelpText, Callout, IconBadge } from "~/components";
 
 LismがどのようなCSS設計になっているかを説明します。
 
@@ -39,7 +39,7 @@ LismがどのようなCSS設計になっているかを説明します。
 		<tr>
 			<th colSpan={2}>Layer</th>
 			<th>役割</th>
-			<th>基本詳細度</th>
+			<th>`@layer`<br />基本詳細度</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -51,34 +51,36 @@ LismがどのようなCSS設計になっているかを説明します。
 		<tr>
 			<td colSpan={2}>Reset</td>
 			<td>reset CSS</td>
-			<td>~0-0-1</td>
+			<td><span class='-whs:nw'>`@lism-reset`</span><br />~0-0-1</td>
 		</tr>
 		<tr>
 			<td colSpan={2}>Base</td>
 			<td>`:root`でのトークン定義, HTML要素に対するスタイルの初期セット</td>
-			<td>~0-0-1</td>
+			<td>`@lism-base`<br />~0-0-1</td>
 		</tr>
 		<tr>
-			<td rowSpan={2} style={{verticalAlign: 'top'}}>Layout</td>
-			<td>State</td>
+			<td colSpan={2} style={{verticalAlign: 'top'}}>Layout State</td>
 			<td>レイアウト,デザインを組む上での特定の役割を持ち、複数のモジュールに対してつけ外しできるようなもの。</td>
-			<td rowSpan={2}>0-1-0</td>
+			<td rowSpan={3}><span class='-whs:nw'>`@lism-layout`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Module</td>
+			<td colSpan={2}>Layout Module</td>
 			<td>基礎的なレイアウトを組むためのモジュール群。</td>
 		</tr>
 		<tr>
-			<td rowSpan={3}>Objects</td>
-			<td>Atoms</td>
+			<td colSpan={2}>Dynamic Module</td>
+			<td>JavaScriptと組み合わせた動的な機能を持つモジュール群</td>
+		</tr>
+		<tr>
+			<td colSpan={2}>Atoms</td>
 			<td rowSpan={3}>単体で具体的な役割を持つコンポーネント群</td>
-			<td rowSpan={3}>0-1-0</td>
+			<td rowSpan={3}>`@lism-layout`<br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Blocks</td>
+			<td colSpan={2}>Blocks</td>
 		</tr>
 		<tr>
-			<td>Components</td>
+			<td colSpan={2}>Components</td>
 		</tr>
 		{/* <tr>
 			<td>Block</td>
@@ -100,6 +102,8 @@ LismがどのようなCSS設計になっているかを説明します。
 		</tr>
 	</tbody>
 </table>
+
+<IconBadge /> 詳細度の値は、`@layer`を使わない場合の目安数値です。
 
 {/* 
 基本的に、最大詳細度を超えないようにセレクタを調整してこの順番で読み込みます。
@@ -125,20 +129,33 @@ LismがどのようなCSS設計になっているかを説明します。
 Lismでは、レイアウト・デザインの構成要素を細分化していくつかの種類に分類しています。
 
 
+
+### State クラス
+
+|分類|形式|例|
+|---|---|---|
+|Layout State<HelpText>状態として付け外しできるようなデザイン機能を持つもの</HelpText>|`.is\|has--{stateName}`|`.is--flow`, `has--divider`|
+|Temporary State<HelpText>js操作等によって付け外しされるようなクラス</HelpText>|`.-{state}`|`.-active`, `.-opened`|
+
+Layout State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
+
+
+
 ### Module クラス
 
 |分類|形式|例|
 |---|---|---|
-|Layout<HelpText tag='small'>レイアウトの構成単位となるようなもの</HelpText>|`.l--{layoutName}`|`.l--grid`, `.l--columns`|
-|Atom<HelpText tag='small'>コンテンツの構成要素として最小単位となるようなもの</HelpText>|`.a--{atomName}`|`.a--icon`|
-|Block<HelpText tag='small'>シンプルな役割を持つコンテンツ要素</HelpText>|`.b--{atomName}`|`.b--avatar`,`.b--button`|
-|Component<HelpText tag='small'>その他のコンポーネント</HelpText>|`.c--{componentName}`|`.c--card`, `.c--note`|
+|Layout<HelpText tag='small'>レイアウトの構成単位となるようなモジュール</HelpText>|`.l--{name}`|`.l--grid`|
+|Dynamic<HelpText tag='small'>JSと組み合わせた動きのあるモジュール</HelpText>|`.d--{name}`|`.d--tabs`|
+|Atom<HelpText tag='small'>コンテンツの構成要素としてそれ以上分割できない要素</HelpText>|`.a--{name}`|`.a--icon`|
+|Block<HelpText tag='small'>シンプルな役割を持つ要素</HelpText>|`.b--{name}`|`.b--button`|
+|Component<HelpText tag='small'>その他のコンポーネント</HelpText>|`.c--{name}`|`.c--card`|
 
 {/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
 <small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}
 
 <Callout type="info">
-Blocks はAtom,Layoutクラスで構成されるような粒度で、Componentは Layout,Atom,Block 等で構成されるような粒度でイメージしてください。
+Blocks はAtom,Layoutクラスで構成されるような粒度（（他のBlock,Componentが内部に入らない規模）で、Componentは Layout,Atom,Block 等で構成されるような粒度でイメージしてください。
 </Callout>
 
 
@@ -159,15 +176,6 @@ Blocks はAtom,Layoutクラスで構成されるような粒度で、Component�
 
 基本的には元となる`.{pefix}--{name}`も併記し、CSSコードの重複を避けるようにして運用します。
 
-
-### State クラス
-
-|分類|形式|例|
-|---|---|---|
-|Layout State<HelpText>状態として付け外しできるようなデザイン機能を持つもの</HelpText>|`.is\|has--{stateName}`|`.is--flow`, `has--divider`|
-|Temporary State<HelpText>js操作等によって付け外しされるようなクラス</HelpText>|`.-{state}`|`.-active`, `.-opened`|
-
-Layout State はそれ単体でスタイルを持ち、Temporary State はそれ単体ではスタイルを持ちません。
 
 
 
@@ -263,10 +271,11 @@ Lismパッケージに内蔵されているクラスではありませんが、�
 |分類|形式|例|
 |---|---|---|
 |ゾーニング|`.z--{zoneName}`|`.z--header`,<br />`.z--sidebar`,<br />`.z--article`|
-|ページの分類|`.p--{type}--{id\|slug}`|`.p--front`, `.p--archive`, `.p--post--{id}`, `.p--page--{slug}`|
-|テキスト装飾|`.t--{textFormat}`|`.t--marker`|
-{/* |ユーティリティクラス|`.u--{utilityName}`|`.u--hoge`|
-|ユニーククラス|`.uq--{uniqueName}`|`.uq--hoge`| */}
+|ページの分類|`.p--{type}--{id\|slug}`|`.p--front`,<br />`.p--archive`,<br />`.p--post--{id}`,<br />`.p--page--{slug}`|
+|ユーティリティ|`.u--{utilityName}`|`.u--hoge`|
+{/* |テキスト装飾|`.t--{textFormat}`|`.t--marker`| */}
+{/* |ユニーククラス|`.uq--{uniqueName}`|`.uq--hoge`| */}
+
 
 ## コンテナクエリ
 
