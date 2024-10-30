@@ -1,5 +1,10 @@
 @use '../query' as query;
 @forward './pass-get'; // 先に読み込む
+
+@forward './positions';
+@forward './transform';
+@forward './filter';
+@forward './others';
 @forward '../auto_output';
 
 @forward './border';
@@ -15,12 +20,12 @@
 // @forward './margin';
 // @forward './padding';
 // @forward './radius';
-@forward './shadow';
-@forward './bg';
-@forward './transform';
-@forward './positions';
-@forward './filter';
-@forward './others';
+// @forward './shadow';
+
+:root {
+	// --grad-- はグラデーションの色部分だけを指定するための変数
+	--grad--toBlack: transparent, rgb(0 0 0 / 50%) 60%, rgba(0 0 0 / 90%) 100%;
+}
 
 // c='(.*):(.+)%' で使用箇所検索
 .-c\:mix {
@@ -45,32 +50,8 @@
 // とりあえずいらないか...?
 //@forward './lism';
 
-// 複雑なスタイル、一旦直書き。
-.-h\:full {
-	height: 100vh;
-	height: 100dvh;
-	// height: calc(100vw - var(--sbar))
-}
-
-.-bdrs\:inner {
-	border-radius: calc(var(--bdrs, 0) - var(--p, 0) * 0.9);
-}
-
 // --------------------
-// float
-// --------------------
-.-fl\:l {
-	float: left;
-}
-.-fl\:r {
-	float: right;
-}
-.-cl\:b {
-	clear: both;
-}
-
-// --------------------
-// Utility
+// Utility 決めうちスタイル
 // --------------------
 
 // for screen reader

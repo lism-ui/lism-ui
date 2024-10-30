@@ -45,7 +45,7 @@ export default {
 		fixed: 'f',
 		sticky: 'sticky',
 	},
-	inset: { '0%': '0' }, // inset は 0% だけ
+	i: { '0%': '0' }, // inset は 0% だけ
 	insets: { '0%': '0', '100%': '100%' }, // top,left,right,bottom 用
 	trbl: { '0%': '0', '50%': '50%', '100%': '100%' }, // top,left,right,bottom 用
 	ov: { scroll: 's', hidden: 'h', auto: 'a', clip: 'c' },

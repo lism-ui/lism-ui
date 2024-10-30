@@ -139,11 +139,11 @@ export default {
 
 	pos: { style: 'position', utils: 1 },
 	z: { style: 'zIndex', presets: ['-1', '0', '1', '2'] },
+	i: { utils: 1, style: 'inset', converter: 'space' },
 	t: { utils: 'trbl', style: 'top', converter: 'space' },
 	l: { utils: 'trbl', style: 'left', converter: 'space' },
 	r: { utils: 'trbl', style: 'right', converter: 'space' },
 	b: { utils: 'trbl', style: 'bottom', converter: 'space' },
-	inset: { style: 1, utils: 1, converter: 'space' },
 
 	// isolation
 	// flip: {},
@@ -192,7 +192,6 @@ export default {
 
 	...placeProps,
 	...itemProps,
-	// insets: { map: 1 },
 	// mask: { map: 1 },
 	// flex: { map: 1 },
 	// grid: { map: 1 },
@@ -318,7 +317,11 @@ export const CONTEXT_PROPS = {
 
 	css: {
 		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
-		boxSizing: { style: 1, utils: { 'content-box': 'cb' }, utilKey: 'bxz' },
+		boxSizing: {
+			style: 1,
+			//utils: { 'content-box': 'cb' },
+			utilKey: 'bxz',
+		},
 		transform: { style: 1, utils: 1, utilKey: 'trf' },
 		transformOrigin: { style: 1, utilKey: 'trfo', utils: 1 },
 		translate: { style: 1, utils: 1, utilKey: 'trslt' },

@@ -87,24 +87,11 @@ $utilities: (
 		'c': 'clip',
 		's': 'scroll',
 	),
-	'size': (
-		'a': 'auto',
-		'fit': 'fit-content',
-		'100\\%': '100%',
-		// '50\\%': '50%',
-	),
-	'max': (
-		'100\\%': '100%',
-	),
-	'min': (
-		'100\\%': '100%',
-	),
 	'trbl': (
 		'0': '0',
 		'50\\%': '50%',
 		'100\\%': '100%',
 	),
-
 	// 'gr': (
 	// 	'span2': 'span 2 / span 2',
 	// 	'full': '1 / -1',
@@ -132,46 +119,54 @@ $props: map.deep-merge(
 		'w': (
 			prop: 'width',
 			base_type: 1,
-
-			utilities: 'size',
+			utilities: (
+				'a': 'auto',
+				'fit': 'fit-content',
+				'100\\%': '100%',
+			),
 			bp: 1,
 		),
-
 		'h': (
 			prop: 'height',
 			base_type: 1,
-			utilities: 'size',
-			// special_utilities: (
-			// 	'full': (
-			// 		'height': '100vh',
-			// 		'height': '100dvh',
-			// 		//height: calc(100vw - var(--sbar)),
-			// 	),
-			// ),
+			utilities: (
+				'a': 'auto',
+				'fit': 'fit-content',
+				'100\\%': '100%',
+				// 'hero': 'calc(100svh - var(--offset-heroH))',
+			),
 			bp: 1,
 		),
 		'maxW': (
 			prop: 'max-width',
 			base_type: 1,
-			utilities: 'max',
+			utilities: (
+				'100\\%': '100%',
+			),
 			bp: 1,
 		),
 		'minW': (
 			prop: 'min-width',
 			base_type: 1,
-			utilities: 'min',
+			utilities: (
+				'100\\%': '100%',
+			),
 			bp: 1,
 		),
 		'maxH': (
 			prop: 'max-height',
 			base_type: 1,
-			utilities: 'max',
+			utilities: (
+				'100\\%': '100%',
+			),
 			bp: 1,
 		),
 		'minH': (
 			prop: 'min-height',
 			base_type: 1,
-			utilities: 'min',
+			utilities: (
+				'100\\%': '100%',
+			),
 			bp: 1,
 		),
 		'c': (
@@ -426,13 +421,30 @@ $props: map.deep-merge(
 			// inner などで変数使う
 			bp: 1,
 			utilities: (
-				'0': '0;',
+				'0': '0',
 				'1': 'var(--bdrs--1)',
 				'2': 'var(--bdrs--2)',
 				'3': 'var(--bdrs--3)',
 				'4': 'var(--bdrs--4)',
 				'5': 'var(--bdrs--5)',
 				'99': 'var(--bdrs--99)',
+				'inner': (
+					'border-radius': 'calc(var(--bdrs, 0) - var(--p, 0) * 0.9)',
+				),
+			),
+		),
+		'bxsh': (
+			prop: 'box-shadow',
+			base_type: 2,
+			utilities: (
+				'0': '0',
+				'1': 'var(--bxsh--1)',
+				'2': 'var(--bxsh--2)',
+				'3': 'var(--bxsh--3)',
+				'4': 'var(--bxsh--4)',
+				'5': 'var(--bxsh--5)',
+				'-1': 'var(--bxsh--i1)',
+				'-2': 'var(--bxsh--i2)',
 			),
 		),
 		'p': (
@@ -489,7 +501,7 @@ $props: map.deep-merge(
 		),
 		'm': (
 			prop: 'margin',
-			base_type: 1,
+			base_type: 2,
 			bp: 1,
 			utilities: 'm' 's',
 		),

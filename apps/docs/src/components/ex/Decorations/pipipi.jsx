@@ -37,7 +37,7 @@ export default function PipipiBox({ variant = 'left', children, ...props }) {
 	return (
 		<Flex lismClass={lismClass} ai='start' bdc='currentColor' {...parentProps} {...props}>
 			<FlexItem layout={Decorator} pos='r' size='.5em' variant='pipipi' {...decoProps}>
-				<Decorator pos='a' inset='c' />
+				<Decorator pos='a' l='50%' />
 			</FlexItem>
 			<FlexItem p='20' pb='0' lh='s' mt='10' {...bodyProps}>
 				{children}

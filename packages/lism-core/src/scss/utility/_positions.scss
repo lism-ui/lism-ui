@@ -9,8 +9,8 @@
 .-pos\:f{position: fixed;}
 .-pos\:sticky{position: sticky;}
 
-
-
+// .-i:
+.-i\:0{inset: 0;}
 // .-inset\:c {
 // 	translate: -50% -50%;
 // 	inset: 50% auto auto 50%;
@@ -23,8 +23,6 @@
 // 	translate: 0 -50%;
 // 	inset: 50% auto auto;
 // }
-
-
 
 .-t\:0{top: 0;}
 .-t\:50\%{top: 50%;}
@@ -42,8 +40,7 @@
 .-b\:50\%{bottom: 50%;}
 .-b\:100\%{bottom:100%;}
 
-// .-i:
-.-inset\:0{inset: 0;}
+
 .-iis\:0{inset-inline-start: 0;}
 .-iis\:100\%{inset-inline-start:100%;}
 .-iie\:0{inset-inline-end: 0;}
@@ -52,5 +49,8 @@
 .-ibs\:100{inset-block-start:100%;}
 .-ibe\:0{inset-block-end: 0;}
 .-ibe\:100{inset-block-end:100%;}
+
+
+
 
 

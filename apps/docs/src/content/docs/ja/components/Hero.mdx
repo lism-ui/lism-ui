@@ -99,7 +99,7 @@ import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
 
 {/* Stack直下なので、position:relativeがなくてもz-indexが効きます。 */}
 
-
+{/* 
 ### スクリーンサイズに高さを合わせる
 
 `.-h:full`クラス（`h='full'`） を活用すると、スクリーンサイズに合わせた高さになります。
@@ -107,7 +107,7 @@ import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
 <Preview>
 	<PreviewTitle>例2: top,center,bottom を使用する</PreviewTitle>
 	<PreviewArea resize>
-		<Stack isFullwide h='full' bgc='base-2' g='30'>
+		<Stack isFullwide h='100vh' bgc='base-2' g='30'>
 			<Container size='m' hasGutter isFlow my='auto' bd='u:guide'>
 				<Text fw='bold' fz='xl'>Full Screen</Text>
 				<Dummy length='xl' />
@@ -117,7 +117,7 @@ import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Stack isFullwide h='full' bgc='base-2' g='30'>
+		<Stack isFullwide h='100vh' bgc='base-2' g='30'>
 			<Container size='m' hasGutter isFlow my='auto'>
 				<Text fw='bold' fz='xl'>DEMO 03</Text>
 				<Dummy length='xl' />
@@ -126,7 +126,7 @@ import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
 		</Stack>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}
 
 
 ### `is--layer`, `ShapeDivider` との組み合わせ

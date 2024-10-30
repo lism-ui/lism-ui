@@ -20,17 +20,17 @@ Lismでは、border系の指定が少し特殊になっています。
 	--bds: solid;
 	--bdw: 1px;
 	--bdc: currentColor;
+	--bd: var(--bdw) var(--bds) var(--bdc);
 }
 .-bd\: {
 	border-style: var(--bds);
 	border-width: var(--bdw);
 	border-color: var(--bdc);
 }
-
-.-bd\:l { border-left: var(--bdw) var(--bds) var(--bdc); }
-.-bd\:t { border-top: var(--bdw) var(--bds) var(--bdc); }
-.-bd\:r { border-right: var(--bdw) var(--bds) var(--bdc); }
-.-bd\:b { border-bottom: var(--bdw) var(--bds) var(--bdc); }
+.-bd\:l { border-left: var(--bd) }
+.-bd\:r { border-right: var(--bd) }
+.-bd\:t { border-top: var(--bd) }
+.-bd\:b { border-bottom: var(--bd) }
 // ...
 ```
 
