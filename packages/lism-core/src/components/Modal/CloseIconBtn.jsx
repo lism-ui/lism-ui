@@ -18,7 +18,7 @@ export default function DialogCloseIconBtn({
 			) : (
 				<>
 					<Icon icon={icon || 'x'} />
-					<span className='is--hidden'>{srText || 'Close'}</span>
+					<span className='u--hidden'>{srText || 'Close'}</span>
 				</>
 			)}
 		</Lism>

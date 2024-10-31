@@ -21,7 +21,7 @@ important: 1 →　!important を付ける
 base_type:
 	0 →　なし（ユーティリティクラス以外は普通のインラインスタイルのみ）
 	1 →　.-d\:{display: var(--d)} 　(メリット：importantなしでbp対応できる)
-	2 → [class*='-aspect\:'] aspect-ratio: var(--aspect);}  (メリット: ユーティリティクラスもprop名を変数にできて文字数省略できる)
+	2 → [class*='-p\:'] passing: var(--p);}  (メリット: ユーティリティクラスもprop名を変数にできて文字数省略できる)
 utilities: ユーティリティクラスのセレクタと値のリスト
 special_utilities: 特殊な値をセットしたいユーティリティクラスのセレクタと値のリスト
 */
@@ -371,7 +371,7 @@ $props: map.deep-merge(
 			base_type: 0,
 			utilities: 'ov',
 		),
-		'aspect': (
+		'ar': (
 			prop: 'aspect-ratio',
 			base_type: 1,
 			bp: 1,
@@ -379,13 +379,7 @@ $props: map.deep-merge(
 				'16\\/9': '16/9',
 				'4\\/3': '4/3',
 				'3\\/2': '3/2',
-				'2\\/1': '2/1',
 				'1\\/1': '1/1',
-				'gold': '16.18/10',
-				'silver': '14.14/10',
-				'bronze': '33.03/10',
-				'ogp': '1.91/1',
-				'cinema': '2.35/1',
 			),
 		),
 		'op': (

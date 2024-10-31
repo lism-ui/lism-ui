@@ -15,7 +15,7 @@ export default function BalloonBox({
 
 	const colorProps = { bdc, bgc };
 	if (keycolor) {
-		colorProps.isColored = true;
+		colorProps.lismClass += ' u--colored';
 		colorProps.keycolor = keycolor;
 	} else {
 		colorProps.bgc = bgc || 'base';

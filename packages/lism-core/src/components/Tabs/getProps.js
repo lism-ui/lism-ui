@@ -68,7 +68,7 @@ export function getTabProps(props, isActive) {
 	const defaultProps = {
 		skipState: true,
 		lismClass: 'd--tabs__tab',
-		lismState: ['reset--style'],
+		lismState: ['re--style'],
 		tag: 'button',
 		role: 'tab',
 		'aria-selected': isActive ? 'true' : 'false',

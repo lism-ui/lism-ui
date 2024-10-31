@@ -1,7 +1,7 @@
 import { Box, Text, Stack, Frame, Center, Dummy } from '@lism-ui/core';
 
 export const FzDemos = ({ lang = 'ja' }) => (
-	<Frame aspect='16/9' ovy='auto' isFlow='s'>
+	<Frame ar='16/9' ovy='auto' isFlow='s'>
 		{['2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl'].map((fz, i) => {
 			return (
 				<Stack key={fz} g='10'>
@@ -23,7 +23,7 @@ export const BoxShadowDemos = ({ shadows = [] }) => {
 					<Center
 						key={name}
 						h='100%'
-						aspect='1/1'
+						ar='1/1'
 						bgc='base'
 						bxsh={name}
 						bdrs='2'

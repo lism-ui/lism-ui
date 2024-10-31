@@ -16,7 +16,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%'>
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -28,7 +28,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -65,7 +65,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -74,7 +74,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -86,7 +86,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -95,7 +95,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardBody>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -112,7 +112,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>ブレイクポイントで切り替える</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%' sidePosition='start start'>
-			<CardMedia isSide aspect={['16/9','4/3']} w='100%' h='100%'>
+			<CardMedia isSide ar={['16/9','4/3']} w='100%' h='100%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -122,7 +122,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
-			<CardMedia isSide aspect={['16/9','4/3']} w='100%' h='100%'>
+			<CardMedia isSide ar={['16/9','4/3']} w='100%' h='100%'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -135,7 +135,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%' sidePosition='start start'>
-			<CardMedia isSide aspect={['16/9','4/3']} w='100%' h='100%'>
+			<CardMedia isSide ar={['16/9','4/3']} w='100%' h='100%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -145,7 +145,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardBody>
 		</Card>
 		<Card sideW='50%' sidePosition='end start'>
-			<CardMedia isSide aspect={['16/9','4/3']} w='100%' h='100%'>
+			<CardMedia isSide ar={['16/9','4/3']} w='100%' h='100%'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -168,7 +168,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card href='###' sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -180,7 +180,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "href='###'"
 		<Card href='###' sideW='50%' >
-			<CardMedia isSide aspect='16/9'>
+			<CardMedia isSide ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -198,7 +198,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>`is--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
 		<Card isLinkBox hov='shadow' sideW='50%'>
-			<CardMedia isSide aspect='4/3' pos='r'>
+			<CardMedia isSide ar='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
@@ -214,7 +214,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "isLinkBox" "href=" "isOverlayLink"
 		<Card isLinkBox hov='shadow' sideW='50%'>
-			<CardMedia isSide aspect='4/3' pos='r'>
+			<CardMedia isSide ar='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
@@ -235,7 +235,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewArea resize p='40'>
 		<Card isLinkBox sideW='50%' hov='shadow' >
 			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
-			<CardMedia aspect='4/3' isSide pos='r'>
+			<CardMedia ar='4/3' isSide pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
@@ -250,7 +250,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 		```jsx "isLinkBox" "setHiddenLink" "href="
 		<Card isLinkBox sideW='50%' hov='shadow' >
 			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
-			<CardMedia aspect='4/3' isSide>
+			<CardMedia ar='4/3' isSide>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
 			</CardMedia>
@@ -328,7 +328,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>横向きで固定 Gridパターン</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card layout={Grid} gtc='40% 1fr'>
-			<CardMedia aspect='1/1' h='100%' w='100%'>
+			<CardMedia ar='1/1' h='100%' w='100%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -353,13 +353,13 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 		```
 	</PreviewCode>
 </Preview> */}
-{/* aspectは画面サイズに余裕がある時のみ有効になります。 */}
+
 
  <Preview>
 	<PreviewTitle>画像のアスペクト比を指定する例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card layout={Flex} href='###' hov='bxsh,up'>
-			<CardMedia aspect='1/1' w='36%' fxsh='0'>
+			<CardMedia ar='1/1' w='36%' fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
@@ -372,7 +372,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card layout={Flex} href='###' hov='bxsh,up'>
-			<CardMedia aspect='1/1' w='36%' fxsh='0'>
+			<CardMedia ar='1/1' w='36%' fxsh='0'>
 				<Media src='/img/img-3.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody fxg='1' g='10' p='30'>
@@ -385,7 +385,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	</PreviewCode>
 </Preview>
 
-この時、コンテンツの方が高さがでてくると、カードの高さはコンテンツの高さに合わせて伸びますが、align-itemsを変更するとaspectを維持させることもできます。
+この時、コンテンツの方が高さがでてくると、カードの高さはコンテンツの高さに合わせて伸びますが、align-itemsを変更するとaspect-ratioを維持させることもできます。
 
 
 {/* <Preview>
@@ -415,7 +415,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewArea resize p='30'>
 		<Columns variant='liquid' g='40'>
 			<Card layout={Stack} href='#card-1'>
-				<CardMedia aspect='16/9'>
+				<CardMedia ar='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
@@ -425,7 +425,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				</CardBody>
 			</Card>
 			<Card layout={Stack} href='#card-2'>
-				<CardMedia aspect='16/9'>
+				<CardMedia ar='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
@@ -440,7 +440,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 		```jsx "href"
 		<Columns variant='liquid' g='40'>
 			<Card layout={Stack} href='#card-1'>
-				<CardMedia aspect='16/9'>
+				<CardMedia ar='16/9'>
 					<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
@@ -450,7 +450,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				</CardBody>
 			</Card>
 			<Card layout={Stack} href='#card-2'>
-				<CardMedia aspect='16/9'>
+				<CardMedia ar='16/9'>
 					<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody fxg='1' p='30'>
@@ -502,7 +502,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>bdrs='inner'の活用</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='40%' p='20' g='20' bdrs='4'>
-			<CardMedia isSide aspect='16/9' bdrs='inner'>
+			<CardMedia isSide ar='16/9' bdrs='inner'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='10'>
@@ -515,7 +515,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='40%' p='20' g='20' bdrs='4'>
-			<CardMedia isSide aspect='16/9' bdrs='inner'>
+			<CardMedia isSide ar='16/9' bdrs='inner'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='10'>
@@ -539,7 +539,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewArea p='30' resize>
 		<Columns variant='liquid' colSize='20rem' g='30'>
 			<Card href='#card-a' pos='r' bdrs='2' hov='bxsh,pass'>
-				<CardMedia aspect='4/3'>
+				<CardMedia ar='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -556,7 +556,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 				</CardBody>
 			</Card>
 			<Card href='#card-b' pos='r' bdrs='2' hov='bxsh,pass'>
-				<CardMedia aspect='4/3'>
+				<CardMedia ar='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</CardMedia>
 				<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -578,7 +578,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	```jsx
 	<Columns variant='liquid' colSize='20rem' g='30'>
 		<Card href='#card-a' pos='r' bdrs='2' hov='bxsh,pass'>
-			<CardMedia aspect='4/3'>
+			<CardMedia ar='4/3'>
 				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -595,7 +595,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardBody>
 		</Card>
 		<Card href='#card-b' pos='r' bdrs='2' hov='bxsh,pass'>
-			<CardMedia aspect='4/3'>
+			<CardMedia ar='4/3'>
 				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -652,7 +652,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewTitle>ブレイクポイントで切り替える場合</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
-			<CardMedia isSide aspect={['16/9', 'unset']} pos='r' bdrs='3'>
+			<CardMedia isSide ar={['16/9', 'unset']} pos='r' bdrs='3'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>
@@ -664,7 +664,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
-			<CardMedia isSide aspect={['16/9', 'unset']} pos='r'>
+			<CardMedia isSide ar={['16/9', 'unset']} pos='r'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</CardMedia>
 			<CardBody g='10' p='30'>

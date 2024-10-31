@@ -8,8 +8,7 @@ export default function Callout({ type = 'alert', keycolor, icon, isFlow, childr
 
 	return (
 		<WithSide
-			lismClass='c--callout'
-			isColored
+			lismClass='c--callout u--colored'
 			keycolor={_color}
 			p='20'
 			g='20'

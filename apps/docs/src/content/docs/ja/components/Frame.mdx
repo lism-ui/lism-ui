@@ -33,11 +33,11 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 
 | プロパティ | 説明 |
 |---|---|
-| `aspect` | フレームの比率を指定できます。|
+| `ar` | フレームの比率を指定できます。|
 | `layout` | 展開したい Lismコンポーネント を指定できます。|
 {/* | `objectPosition` | 直下のメディア要素のobject-positionを指定できます。 | */}
 
-<HelpText>(aspect自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
+<HelpText>(`ar` 自体はどのコンポーネントにも指定できる CSS Props です。)</HelpText>
 
 ## Import
 
@@ -46,22 +46,22 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 ## Usage
 
 <Preview>
-	<PreviewTitle>`aspect='2/1'`を指定</PreviewTitle>
+	<PreviewTitle>`ar='16/9'`を指定</PreviewTitle>
 	<PreviewArea resize>
-		<Frame aspect='2/1'>
+		<Frame ar='16/9'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='2/1'>
+		<Frame ar='16/9'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 		</Frame>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--frame -aspect:2/1">
+		<div class="l--frame -ar:16/9">
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 		</div>
 		```
@@ -71,14 +71,14 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 <Preview>
 	<PreviewTitle>`figure`, `figcaption`の使用</PreviewTitle>
 	<PreviewArea resize>
-		<Frame tag='figure' aspect='16/9'>
+		<Frame tag='figure' ar='16/9'>
 			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
 			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='rgb(0 0 0 / 40%)'>Lorem ipsum text.</Text>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame tag='figure' aspect='16/9'>
+		<Frame tag='figure' ar='16/9'>
 			<Media src='/img/img-1.jpg' objectPosition='50% 70%' alt='' width='960' height='640' />
 			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' bgc='rgb(0 0 0 / 40%)'>Lorem ipsum text.</Text>
 		</Frame>
@@ -86,7 +86,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<figure class="l--frame -aspect:16/9">
+		<figure class="l--frame -ar:16/9">
 			<img src="/img/img-2.jpg" width="960" height="640">
 			<figcaption class="-pos:a -z:1 -b:0 -p:5 -w:100% -c:white -ta:c -bgc:" style="--bgc:rgb(0 0 0 / 40%)">Lorem ipsum text.</figcaption>
 		</figure>
@@ -97,7 +97,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 <Preview>
 	<PreviewTitle>`video`の使用</PreviewTitle>
 	<PreviewArea resize>
-		<Frame aspect='2/1'>
+		<Frame ar='16/9'>
 			<video controls>
 				<source src="/video/video-1.mp4" type="video/mp4" />
 			</video>
@@ -105,7 +105,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='2/1'>
+		<Frame ar='16/9'>
 			<video controls>
 				<source src="/video/video-1.mp4" type="video/mp4" />
 			</video>
@@ -114,7 +114,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--frame -aspect:2/1">
+		<div class="l--frame -ar:16/9">
 			<video controls>
 				<source src="/video/video-1.mp4" type="video/mp4" />
 			</video>
@@ -127,20 +127,20 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 <Preview>
 	<PreviewTitle>`iframe`の使用</PreviewTitle>
 	<PreviewArea resize>
-		<Frame aspect='16/9'>
+		<Frame ar='16/9'>
 			<iframe src="https://www.youtube.com/embed/gcgKUcJKxIs?si=uDa6akiLY3QmM8pK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='16/9'>
+		<Frame ar='16/9'>
 			<iframe src="https://www.youtube.com/embed/gcgKUcJKxIs?si=uDa6akiLY3QmM8pK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</Frame>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<div class="l--frame -aspect:16/9">
+		<div class="l--frame -ar:16/9">
 			<iframe src="https://www.youtube.com/embed/gcgKUcJKxIs?si=uDa6akiLY3QmM8pK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div>
 		```
@@ -152,7 +152,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 <Preview>
 	<PreviewTitle>Layer系を活用する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame aspect='16/9' pos='r' c='white'>
+		<Frame ar='16/9' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -165,7 +165,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='16/9' pos='r' c='white'>
+		<Frame ar='16/9' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -179,7 +179,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewCode>
 		<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--frame -aspect:16/9 -pos:r -c:white">
+		<div class="l--frame -ar:16/9 -pos:r -c:white">
 			<img src="/img/img-1.jpg" alt="" width="960" height="640">
 			<div class="is--layer -bgc:" style="--bgc:rgb(0 0 0 / 40%);backdrop-filter:blur(4px)"></div>
 			<div class="is--layer -p:40 -ov:a">
@@ -196,7 +196,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 
 ### 数値以外での比率指定
 
-- `gold`: 黄金比
+ユーティリティクラスをカスタムで追加して利用する例を紹介します。
+
+- `golden`: 黄金比
 - `silver`: 白銀比
 - `bronze`: 青銅比
 - `ogp`: OG Imageの比率
@@ -204,10 +206,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 
 export const FrameRatios = () => {
 	return (
-		<Columns cols={[1, 2]} g={20} >
-			{['gold', 'silver', 'bronze', 'ogp'].map((ratio) => {
+		<Columns cols={[1, 2]} g='20'>
+			{['golden', 'silver', 'bronze', 'ogp', 'cinema'].map((ratio) => {
 				return (
-					<Frame key={ratio} aspect={ratio} pos='r' bgc='base-2'>
+					<Frame key={ratio} ar={`u:${ratio}`} pos='r' bgc='base-2'>
 						<Text pos='a' t='50%' l='50%' fz='s' css={{translate:'-50XY'}}>
 							<code>{ratio}</code>
 						</Text>
@@ -219,16 +221,26 @@ export const FrameRatios = () => {
 }
 
 <Preview>
-	<PreviewTitle>`aspect`にそれぞれ指定</PreviewTitle>
+	<PreviewTitle>`ar`にそれぞれ指定</PreviewTitle>
 	<PreviewArea p={20}>
 		<FrameRatios />
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='CSS'>
+```css
+.-ar\:golden {aspect-ratio: 16.18/10;}
+.-ar\:silver {aspect-ratio: 14.14/10;}
+.-ar\:bronze {aspect-ratio: 33.03/10;}
+.-ar\:ogp {aspect-ratio: 1.91/1;}
+.-ar\:cinema {aspect-ratio: 2.35/1;}
+```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect='ogp'>...</Frame>
-		<Frame aspect='gold'>...</Frame>
-		<Frame aspect='silver'>...</Frame>
-		<Frame aspect='bronze'>...</Frame>
+		<Frame ar='u:golden'>...</Frame>
+		<Frame ar='u:silver'>...</Frame>
+		<Frame ar='u:bronze'>...</Frame>
+		<Frame ar='u:ogp'>...</Frame>
+		<Frame ar='u:cinema'>...</Frame>
 		```
 	</PreviewCode>
 </Preview>
@@ -246,7 +258,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewTitle>コンテンツ側の高さと揃っている例</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Flex g={20}>
-			<Frame aspect='4/3'>
+			<Frame ar='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
@@ -257,7 +269,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "4/3" "4/3"
 		<Flex g={20}>
-			<Frame aspect='4/3'>
+			<Frame ar='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
@@ -273,7 +285,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewTitle>対処例（親のFlex要素を`align-items:start;`にする）</PreviewTitle>
 	<PreviewArea resize p={20}>
 		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
-			<Frame aspect='4/3'>
+			<Frame ar='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
@@ -284,7 +296,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "ai='start'"
 		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
-			<Frame aspect='4/3'>
+			<Frame ar='4/3'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Box bgc='base-2'>
@@ -296,17 +308,17 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 </Preview> */}
 
 
-### aspect はどのコンポーネントにも指定できます
+### ar はどのコンポーネントにも指定できます
 
-`aspect`は`Box`など他のコンポーネントでも指定できる汎用的なプロパティです。
+`ar`は`Box`など他のコンポーネントでも指定できる汎用的なプロパティです。
 
 <Preview>
-	<PreviewTitle>Boxにaspectを指定する例</PreviewTitle>
+	<PreviewTitle>Boxにarを指定する例</PreviewTitle>
 	<PreviewArea resize p='5'>
-		<Box aspect='2/1' ovy='auto' isFlow p='40' bgc='base'>
+		<Box ar='16/9' ovy='auto' isFlow p='40' bgc='base'>
 			<Dummy />
 			<Dummy length="l" />
-			<Frame aspect='2/1' maxW='50%'>
+			<Frame ar='16/9' maxW='50%'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Dummy length="xl" />
@@ -314,8 +326,8 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "Box aspect='2/1'" "ovy='auto'"
-		<Box aspect='2/1' ovy='auto' isFlow p='40'>
+		```jsx "Box ar='16/9'" "ovy='auto'"
+		<Box ar='16/9' ovy='auto' isFlow p='40'>
 			...
 		</Box>
 		```
@@ -324,9 +336,9 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 
 
 <Preview>
-	<PreviewTitle>`aspect`はブレイクポイントで変更することも可能です。</PreviewTitle>
+	<PreviewTitle>`ar`はブレイクポイントで変更することも可能です。</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Frame aspect={['1/1', '4/3', '16/9']} pos='r'>
+		<Frame ar={['1/1', '4/3', '16/9']} pos='r'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Box pos='a' l='0' t='0' bgc='black' c='white' p='10' lh='xs' fz='s' m='20' bdrs='2'>
 				{`比率:`}
@@ -338,7 +350,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame aspect={['1/1', '4/3', '16/9']} pos='r'>
+		<Frame ar={['1/1', '4/3', '16/9']} pos='r'>
 			...
 		</Frame>
 		```
@@ -346,8 +358,8 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div
-			class="l--frame -aspect:1/1 -pos:r -aspect@sm -aspect@md"
-			style="--sm-aspect:4/3;--md-aspect:16/9"
+			class="l--frame -ar:1/1 -pos:r -ar@sm -ar@md"
+			style="--sm-ar:4/3;--md-ar:16/9"
 		>...</div>
 		```
 	</PreviewCode>

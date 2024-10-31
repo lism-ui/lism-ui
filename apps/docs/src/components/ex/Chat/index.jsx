@@ -31,7 +31,7 @@ export function Chat({
 					src={avatar}
 					alt=''
 					bgc='base'
-					aspect='1/1'
+					ar='1/1'
 					bdrs='99'
 					aria-hidden='true'
 				>
@@ -55,18 +55,15 @@ export function Chat({
 			<GridItem lismClass='c--chat__body' pos='r'>
 				{variant !== 'box' && (
 					<Decorator
-						lismClass='c--chat__deco'
+						lismClass='c--chat__deco u--colored'
 						lismState={['has--mask is--skipFlow']}
-						isColored
 						pos='a'
 						insets={direction === 'start' ? { ie: '100%' } : { is: '100%' }}
 						scale={direction === 'start' ? '' : '-X'}
 					/>
 				)}
 				<Lism
-					lismClass='c--chat__content'
-					lismState={['is--trimHL']}
-					isColored
+					lismClass='c--chat__content u--colored u--trimHL'
 					bdrs='4'
 					p='30'
 					isFlow={isFlow}

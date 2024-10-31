@@ -60,14 +60,14 @@ export const ReelContents = () => {
 }
 
 export const ReelImages = ({ hasID, isV, ...props }) => {
-	const aspect = isV ? '3/4' : '16/9';
+	const ar = isV ? '3/4' : '16/9';
 	const imgPath = isV ? '/img/img-v' : '/img/img-';
 	return (
 		<>
 			{Array.from({length: 6}, (v, i) => i).map((i) => {
 				let imgNum = (i + 1) % 3 || 3;
 				const src = imgPath + imgNum + '.jpg';
-				return <Frame id={hasID ? `image-${i+1}` : ''} aspect={aspect} key={i} {...props}>
+				return <Frame id={hasID ? `image-${i+1}` : ''} ar={ar} key={i} {...props}>
 					<img src={src} alt='' loading='lazy' width='960' height='640' />
 				</Frame>
 			})}
@@ -189,13 +189,13 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	<PreviewCode>
 		```jsx "image-1"
 		<Reel itemSize='40%' snapAlign='center' g='20'>
-			<Frame id='image-1' aspect='16/9'>
+			<Frame id='image-1' ar='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
-			<Frame id='image-2' aspect='16/9'>
+			<Frame id='image-2' ar='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
-			<Frame id='image-3' aspect='16/9'>
+			<Frame id='image-3' ar='16/9'>
 				<img src='...' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
 			...
@@ -219,18 +219,18 @@ reel要素にidを付けてアンカーリンク用意すると、ナビゲー�
 	<PreviewTitle>`fxd='column'`で縦方向に</PreviewTitle>
 	<PreviewArea resize p='20'>
 		<Box maxW='24rem' mx='a'>
-			<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='4' bgc='black' p={30} g={30}>
+			<Reel fxd='column' itemSize='auto' ar='3/4.5' bdrs='4' bgc='black' p={30} g={30}>
 				<ReelImages isV bdrs='3' />
 			</Reel> 
 		</Box>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "fxd='column'"
-		<Reel fxd='column' itemSize='auto' aspect='3/4.5' bdrs='4' bgc='black' p={30} g={30}>
-			<Frame aspect='3/4' bdrs='3'>
+		<Reel fxd='column' itemSize='auto' ar='3/4.5' bdrs='4' bgc='black' p={30} g={30}>
+			<Frame ar='3/4' bdrs='3'>
 				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
-			<Frame aspect='3/4' bdrs='3'>
+			<Frame ar='3/4' bdrs='3'>
 				<img src='/img.jpg' alt='' loading='lazy' width='960' height='640' />
 			</Frame>
 			...

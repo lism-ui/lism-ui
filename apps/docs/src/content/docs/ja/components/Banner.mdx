@@ -55,7 +55,7 @@ import { Banner } from '~/components/ex/Banner';
 <Preview>
 	<PreviewTitle>`Layer`で画像に被せてコンテンツを表示</PreviewTitle>
 	<PreviewArea p='30'>
-		<Banner href='#banner-link' aspect='bronze' bdrs='4'>
+		<Banner href='#banner-link' ar='4/1' bdrs='4'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black' op='0.5' />
 			<Stack isLayer jc='c' g='5' px='40' c='white' lh='s'>
@@ -66,7 +66,7 @@ import { Banner } from '~/components/ex/Banner';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Banner href='#banner-link' aspect='bronze' bdrs='4'>
+		<Banner href='#banner-link' ar='4/1' bdrs='4'>
 			<Media src='/img/img-3.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black' op='0.5' />
 			<Stack isLayer jc='c' g='5' px='40' c='white' lh='s'>
@@ -82,7 +82,7 @@ import { Banner } from '~/components/ex/Banner';
 {/* <Preview>
 	<PreviewTitle>`hover`を活用する例</PreviewTitle>
 	<PreviewArea p='30'>
-		<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='4'>
+		<Banner href='#banner-link' ar='16/9' hov='pass' bdrs='4'>
 			<Media src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 			<Center isLayer hov='get:show'>
@@ -92,7 +92,7 @@ import { Banner } from '~/components/ex/Banner';
 	</PreviewArea>
 <PreviewCode>
 ```jsx
-<Banner href='#banner-link' aspect='16/9' hov='pass' bdrs='4'>
+<Banner href='#banner-link' ar='16/9' hov='pass' bdrs='4'>
 	<Media src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 	<Layer bgc='black:20%' blur='4px' hov='get:show'/>
 	<Center isLayer hov='get:show'>

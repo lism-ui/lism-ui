@@ -20,6 +20,7 @@
 }
 
 @include meta.load-css('utility');
+@include meta.load-css('props');
 
 // @use './base.scss';
 // @use './elements.scss';

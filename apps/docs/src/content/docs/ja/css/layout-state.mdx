@@ -360,44 +360,6 @@ s, m, l 以外の値をセットしたい場合は、`--item-size`変数を指�
 <PreviewFrame url='/demo/content-size' />
 
 
-## `has--gutter`
-
-コンテンツの左右に余白をつけることができるクラスです。  
-サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
-
-| クラス名 | 余白量 |初期値 |
-|---|---|---|
-| `has--gutter` | `--gutter` | `--s40` |
-
-<Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='20'>
-		<Lism hasGutter>
-			<p>Lorem ipsum content...</p>
-			<p>Lorem ipsum content...</p>
-			<p>Lorem ipsum content...</p>
-		</Lism>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-	```html
-	<div class="has--gutter">
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-	</div>
-	```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-	```jsx
-	<Lism hasGutter>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-		<p>Lorem ipsum content...</p>
-	</Lism>
-	```
-	</PreviewCode>
-</Preview>
-
 
 ## `is--layer`
 
@@ -436,84 +398,43 @@ CSSは以下のようになっており、`inset:0`と`overflow:hidden`も指定
 活用例は [`<LinkBox>`](/ja/components/linkbox) を参照してください。
 </Reference>
 
-## `is--colored`
+## `has--gutter`
 
-`--keycolor`変数をベースに、`--c`, `--bgc`, `--bdc` を `color-mix()` で生成します。
+コンテンツの左右に余白をつけることができるクラスです。  
+サイト全体で統一した余白量を左右に確保するためのものとして、padding系のユーティリティとは別のクラスとして用意しています。
 
-`color`, `background-color` にそれぞれ生成された 変数がセットされますが、`--bdc`は変数定義のみになるため、ボーダーを表示する時は[`-bd:`クラス](/ja/css/border)との併用が必要です。
-
-<Preview>
-	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Lism isColored keycolor='blue' p='30'><Dummy length='codes' /></Lism>
-		<Lism isColored keycolor='red' bd p='30'><Dummy length='codes' /></Lism>
-		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><Dummy length='codes' /></Lism>
-	</PreviewArea>
-	<PreviewCode slot="tab" label="HTML">
-		```html
-		<div class='is--colored -p:30' style='--keycolor:var(--blue)'>...</div>
-		<div class='is--colored -bd: -p:30' style='--keycolor:var(--red)'>...</div>
-		<div class='is--colored -bd:is -bdc:keycolor -p:30' style='--keycolor:#688f04;--bdw:4px'>...</div>
-		```
-	</PreviewCode>
-	<PreviewCode slot="tab" label='JSX'>
-		```jsx
-		<Lism isColored keycolor='blue' p='30'><Dummy length='codes' /></Lism>
-		<Lism isColored keycolor='red' bd p='30'><Dummy length='codes' /></Lism>
-		<Lism isColored keycolor='#688f04' bd='is' bdc='keycolor' bdw='4px' p='30'><Dummy length='codes' /></Lism>
-		```
-	</PreviewCode>
-</Preview>
-
-
-## `is--trimHL`
-
-テキストのハーフレディング分の余白を調整するためのクラスです。
-
+| クラス名 | 余白量 |初期値 |
+|---|---|---|
+| `has--gutter` | `--gutter` | `--s40` |
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Lism isTrimHL bd p='30'>
-			<Dummy />
+	<PreviewArea resize p='20'>
+		<Lism hasGutter>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
+			<p>Lorem ipsum content...</p>
 		</Lism>
 	</PreviewArea>
-	<PreviewCode slot="tab" label="HTML">
-		```html
-		<div class="is--trimHL -bd: -p:30">
-			<p>...</p>
-		</div>
-		```
+	<PreviewCode slot='tab' label='HTML'>
+	```html
+	<div class="has--gutter">
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</div>
+	```
 	</PreviewCode>
-	<PreviewCode slot="tab" label='JSX'>
-		```jsx
-		<Lism isTrimHL bd p='30'>
-			<Dummy />
-		</Lism>
-		```
-	</PreviewCode>
-	<PreviewCode slot="tab" label='CSS'>
-```scss
-.is--trimHL {
-	> :where(p, h1, h2, h3, h4, h5, h6):first-child {
-		margin-block-start: calc(var(--herfLeading) * -1);
-	}
-	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
-		margin-block-end: calc(var(--herfLeading) * -1);
-	}
-}
-```
+	<PreviewCode slot='tab' label='JSX'>
+	```jsx
+	<Lism hasGutter>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+		<p>Lorem ipsum content...</p>
+	</Lism>
+	```
 	</PreviewCode>
 </Preview>
-
-
-
-## `is--hidden`
-
-要素を視覚的に隠すことができるクラスです。
-
-スクリーンリーダー用のテキストなどに利用してください。
-
 
 ## `has--mask`
 
@@ -533,16 +454,16 @@ Lism Componentsでは`hasMask`プロパティに指定した文字列が`--mask-
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea p='10'>
-	<Media src='/img/img-3.jpg' alt='' aspect='2/1' width='960' height='640' loading='lazy' hasMask='<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#FF0066" d="M170.4,25.7c16.1,14.2,23.2,38.5,24.8,61.7c1.7,23.3-1.8,45.5-12.9,62.3c-11,16.9-29.3,28.6-48.8,34.5 c-19.4,5.9-40,6.1-59.5,0.4c-19.5-5.6-37.9-17.4-51.7-34.9c-14-17.5-23.2-40.8-18-60.2c5-19.4,24.5-34.7,43.5-48.4 s37.6-25.7,59.5-29.7C129.1,7.3,154.2,11.4,170.4,25.7z" /></svg>' />
+	<Media src='/img/img-3.jpg' alt='' ar='16/9' width='960' height='640' loading='lazy' hasMask='<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#FF0066" d="M170.4,25.7c16.1,14.2,23.2,38.5,24.8,61.7c1.7,23.3-1.8,45.5-12.9,62.3c-11,16.9-29.3,28.6-48.8,34.5 c-19.4,5.9-40,6.1-59.5,0.4c-19.5-5.6-37.9-17.4-51.7-34.9c-14-17.5-23.2-40.8-18-60.2c5-19.4,24.5-34.7,43.5-48.4 s37.6-25.7,59.5-29.7C129.1,7.3,154.2,11.4,170.4,25.7z" /></svg>' />
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Media src='/img/img-3.jpg' alt='' aspect='2/1' width='960' height='640' loading='lazy' hasMask='<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#FF0066" d="M170.4,25.7c16.1,14.2,23.2,38.5,24.8,61.7c1.7,23.3-1.8,45.5-12.9,62.3c-11,16.9-29.3,28.6-48.8,34.5 c-19.4,5.9-40,6.1-59.5,0.4c-19.5-5.6-37.9-17.4-51.7-34.9c-14-17.5-23.2-40.8-18-60.2c5-19.4,24.5-34.7,43.5-48.4 s37.6-25.7,59.5-29.7C129.1,7.3,154.2,11.4,170.4,25.7z" /></svg>' />
+		<Media src='/img/img-3.jpg' alt='' ar='16/9' width='960' height='640' loading='lazy' hasMask='<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="#FF0066" d="M170.4,25.7c16.1,14.2,23.2,38.5,24.8,61.7c1.7,23.3-1.8,45.5-12.9,62.3c-11,16.9-29.3,28.6-48.8,34.5 c-19.4,5.9-40,6.1-59.5,0.4c-19.5-5.6-37.9-17.4-51.7-34.9c-14-17.5-23.2-40.8-18-60.2c5-19.4,24.5-34.7,43.5-48.4 s37.6-25.7,59.5-29.7C129.1,7.3,154.2,11.4,170.4,25.7z" /></svg>' />
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<img class="has--mask -aspect:2/1" style="--mask-img:url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjRkYwMDY2IiBkPSJNMTcwLjQsMjUuN2MxNi4xLDE0LjIsMjMuMiwzOC41LDI0LjgsNjEuN2MxLjcsMjMuMy0xLjgsNDUuNS0xMi45LDYyLjNjLTExLDE2LjktMjkuMywyOC42LTQ4LjgsMzQuNSBjLTE5LjQsNS45LTQwLDYuMS01OS41LDAuNGMtMTkuNS01LjYtMzcuOS0xNy40LTUxLjctMzQuOWMtMTQtMTcuNS0yMy4yLTQwLjgtMTgtNjAuMmM1LTE5LjQsMjQuNS0zNC43LDQzLjUtNDguNCBzMzcuNi0yNS43LDU5LjUtMjkuN0MxMjkuMSw3LjMsMTU0LjIsMTEuNCwxNzAuNCwyNS43eiIgLz48L3N2Zz4=)" src="/img/img-3.jpg" width="960" height="640" loading="lazy">
+		<img class="has--mask -ar:16/9" style="--mask-img:url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjRkYwMDY2IiBkPSJNMTcwLjQsMjUuN2MxNi4xLDE0LjIsMjMuMiwzOC41LDI0LjgsNjEuN2MxLjcsMjMuMy0xLjgsNDUuNS0xMi45LDYyLjNjLTExLDE2LjktMjkuMywyOC42LTQ4LjgsMzQuNSBjLTE5LjQsNS45LTQwLDYuMS01OS41LDAuNGMtMTkuNS01LjYtMzcuOS0xNy40LTUxLjctMzQuOWMtMTQtMTcuNS0yMy4yLTQwLjgtMTgtNjAuMmM1LTE5LjQsMjQuNS0zNC43LDQzLjUtNDguNCBzMzcuNi0yNS43LDU5LjUtMjkuN0MxMjkuMSw3LjMsMTU0LjIsMTEuNCwxNzAuNCwyNS43eiIgLz48L3N2Zz4=)" src="/img/img-3.jpg" width="960" height="640" loading="lazy">
 		```
 	</PreviewCode>
 </Preview>
@@ -730,9 +651,9 @@ Lism Componentsでは`hasMask`プロパティに指定した文字列が`--mask-
 
 
 
-## `.reset--sh`
+## `.re--sh`
 
-`.reset--sh` クラスを指定した要素で、シャドウを構成する各CSS変数が再定義されます。  
+`.re--sh` クラスを指定した要素で、シャドウを構成する各CSS変数が再定義されます。  
 
 変数を上書きすることでシャドウの色味などを調整することが可能です。 
 
@@ -741,29 +662,29 @@ Lism Componentsでは`hasMask`プロパティに指定した文字列が`--mask-
 	<PreviewArea p='40' nogrid>
 		<Stack g='20'>
 			<Text> Default </Text>
-			<Flex className='reset--sh -g:40'>
+			<Flex className='re--sh -g:40'>
 				<Box bxsh='2' p='40' bdrs='3'>Box</Box>
 				<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 			</Flex>
 			<Spacer h='40' />
 			<Text> Custom </Text>
-			<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+			<Flex className='re--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
 				<Box bxsh='2' p='40' bdrs='3'>Box</Box>
 				<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 			</Flex>
 		</Stack>
 	</PreviewArea>
 		<PreviewCode slot='tab' label='HTML'>
-		```html "reset--sh"
-		<div class="reset--sh l--flex -g:40" style="--sh-hsl:200 50% 50%;--sh-a:20%">
+		```html "re--sh"
+		<div class="re--sh l--flex -g:40" style="--sh-hsl:200 50% 50%;--sh-a:20%">
 			<div class="l--box -bxsh:1 -p:40 -bdrs:3">Box</div>
 			<div class="l--box -bxsh:4 -p:40 -bdrs:3">Box</div>
 		</div>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "reset--sh"
-		<Flex className='reset--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
+		```jsx "re--sh"
+		<Flex className='re--sh' g='40' style={{'--sh-hsl': '200 50% 50%', '--sh-a':'20%'}}>
 			<Box bxsh='2' p='40' bdrs='3'>Box</Box>
 			<Box bxsh='4' p='40' bdrs='3'>Box</Box>
 		</Flex>
@@ -771,7 +692,7 @@ Lism Componentsでは`hasMask`プロパティに指定した文字列が`--mask-
 	</PreviewCode>
 </Preview>
 
-## `.reset--style`
+## `.re--style`
 
 基本的なスタイルがリセットされます。
 `buttun`要素などをスタイリングする際に便利です。
@@ -784,19 +705,19 @@ Lism Componentsでは`hasMask`プロパティに指定した文字列が`--mask-
 			default: <button>Button</button>
 		</div>
 		<div>
-			reset: <button className='reset--style'>Button</button>
+			reset: <button className='re--style'>Button</button>
 		</div>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
-		```html "reset--sh"
+		```html "re--style"
 		<div>
-			reset: <button className='reset--style'>Button</button>
+			reset: <button className='re--style'>Button</button>
 		</div>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='CSS'>
 ```css
-:where(.reset--style) {
+:where(.re--style) {
 	color: inherit;
 	background: none;
 	border: none;

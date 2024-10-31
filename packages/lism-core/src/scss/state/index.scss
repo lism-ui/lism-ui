@@ -1,7 +1,6 @@
 // state
 @forward './gutter';
 @forward './has-divider';
-@forward './is-colored';
 @forward './flow';
 @forward './container'; // Note: flow より後ろで読み込む
 @forward './size'; // Note: container より後ろで読み込む
@@ -9,7 +8,7 @@
 @forward './layer'; // Note: position の関係で、linkbox より後で読み込む
 
 // Note: dialog に影響する
-:where(.reset--style) {
+:where(.re--style) {
 	color: inherit;
 	background: none;
 	border: none;
@@ -26,13 +25,4 @@
 
 .has--mask {
 	mask: var(--mask-img) no-repeat 50% / contain;
-}
-
-.is--trimHL {
-	> :where(p, h1, h2, h3, h4, h5, h6):first-child {
-		margin-block-start: calc(var(--herfLeading) * -1);
-	}
-	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
-		margin-block-end: calc(var(--herfLeading) * -1);
-	}
 }

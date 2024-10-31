@@ -19,13 +19,5 @@
 // utility
 @use './utility/index' as utility;
 
-// [data-has-lism-error] {
-// 	color: red;
-// 	text-decoration: dashed underline;
-// }
-
-// .is--end {
-// 	margin-block-start: auto !important;
-// 	margin-block-end: 0 !important;
-// 	place-self: end;
-// }
+// props
+@use './props/index' as props;

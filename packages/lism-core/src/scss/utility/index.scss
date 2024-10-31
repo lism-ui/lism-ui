@@ -1,61 +1,7 @@
-@use '../query' as query;
-@forward './pass-get'; // 先に読み込む
-
-@forward './positions';
-@forward './transform';
-@forward './filter';
-@forward './others';
-@forward '../auto_output';
-
-@forward './border';
-@forward './hover';
-// @forward './aspect';
-// @forward './display';
-// @forward './sizing';
-// @forward './typography';
-// @forward './gap';
-// @forward './grid-props';
-// @forward './flex-props';
-// @forward './place';
-// @forward './margin';
-// @forward './padding';
-// @forward './radius';
-// @forward './shadow';
-
-:root {
-	// --grad-- はグラデーションの色部分だけを指定するための変数
-	--grad--toBlack: transparent, rgb(0 0 0 / 50%) 60%, rgba(0 0 0 / 90%) 100%;
-}
-
-// c='(.*):(.+)%' で使用箇所検索
-.-c\:mix {
-	--c1-per: 50%;
-	--c1: currentColor;
-	--c2: transparent;
-	--c: color-mix(in srgb, var(--c1) var(--c1-per), var(--c2));
-}
-.-bgc\:mix {
-	--bgc1-per: 50%;
-	--bgc1: currentColor;
-	--bgc2: transparent;
-	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc1-per), var(--bgc2));
-}
-.-bdc\:mix {
-	--bdc1-per: 50%;
-	--bdc1: currentColor;
-	--bdc2: transparent;
-	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc1-per), var(--bdc2));
-}
-
-// とりあえずいらないか...?
-//@forward './lism';
-
-// --------------------
-// Utility 決めうちスタイル
-// --------------------
+// @use '../query' as query;
 
 // for screen reader
-.is--hidden {
+.u--hidden {
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -67,6 +13,45 @@
 	border-width: 0;
 }
 
+.u--trimHL {
+	> :where(p, h1, h2, h3, h4, h5, h6):first-child {
+		margin-block-start: calc(var(--herfLeading) * -1);
+	}
+	> :where(p, h1, h2, h3, h4, h5, h6):last-child {
+		margin-block-end: calc(var(--herfLeading) * -1);
+	}
+}
+
+/*
+    Note: c,bgc,bdc ユーティリティより前で読み込むこと。
+*/
+
+// @supports (color: color-mix(in srgb, #000, #fff)) {
+/* stylelint-disable */
+
+
+// is--cbox -cbox:red
+.u--colored{
+	// c,bdc は 変数セットのみ
+	// --c: var(--cbox-c, var(--c--text));
+	--bdc: var(--c--divider);
+	--c: var(--c--text);
+	--bgc: var(--c--base-2);
+	color: var(--c);
+	background-color: var(--bgc);
+}
+@supports (color: color-mix(in srgb, #000, #fff)) {
+	// --keycolor は 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
+	.u--colored{
+		--c: color-mix(in srgb, var(--c--text), var(--keycolor) var(--colored-per--txt, 16% ));
+		--bgc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bg, 4% ));
+		--bdc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bdc, 25% ));
+		--c--link: var(--keycolor); // var(--cbox-c--link);
+	}
+}
+
+
+
 // clear float
 // .u--cf::after {
 // 	display: block;
@@ -74,4 +59,10 @@
 // 	width: 0;
 // 	height: 0;
 // 	content: '';
+// }
+
+// .u--end {
+// 	margin-block-start: auto !important;
+// 	margin-block-end: 0 !important;
+// 	place-self: end;
 // }

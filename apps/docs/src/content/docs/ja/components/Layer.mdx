@@ -100,32 +100,32 @@ Lismコンポーネントでは、`css.backdropFilter` に指定した値を`bac
 <Preview>
 	<PreviewTitle>背景の色味を変える</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer brightness={1.2} contrast={0.8} grayscale={1}/>
 			<Text pos='a' b='0' r='0' p='20' lh='1' c='white' fz='xs' op='0.7'>Photo by xxxxxx</Text>
 		</Frame>
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer contrast='1.2' sepia='25%' />
 		</Frame>
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx {3,8,12}
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer brightness={1.2} contrast={0.8} grayscale={1}/>
 			<Text pos='a' b='0' r='0' p='20' lh='1' c='white' fz='xs' op='0.7'>Photo by xxxxxx</Text>
 		</Frame>
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer contrast='1.2' sepia='25%' />
 		</Frame>
-		<Frame aspect='cinema' pos='r'>
+		<Frame ar='2/1' pos='r'>
 			<img src='/img.jpg' alt='' width='960' height='640' />
 			<Layer mis='auto' invert='1' grayscale='20%' w='50%' />
 		</Frame>

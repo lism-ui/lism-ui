@@ -127,20 +127,20 @@ Centerに**高さやアスペクト比**が設定されている時、垂直方�
 		アスペクト比を設定した時
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' p='30' g='20'>
+		<Center ar='16/9' p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "aspect='2/1'"
-		<Center aspect='2/1' p='30' g='20'>
+		```jsx "ar='16/9'"
+		<Center ar='16/9' p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 		</Center>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx "-aspect:2/1"
-		<div class="l--center -aspect:2/1 -p:30 -g:20">
+		```jsx "-ar:16/9"
+		<div class="l--center -ar:16/9 -p:30 -g:20">
 			<p class="-fz:l">TEXT</p>
 		</div>
 		```
@@ -262,7 +262,7 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>OK</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
+		<Frame ar='16/9' ovy='auto' bd p='30' g='20'>
 			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
 				<Dummy length='xs' lang='ja'/>
@@ -271,8 +271,8 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Frame aspect='2/1' ovy='auto' bd p='30' g='20'>
+		```jsx "Center" "ar='16/9'" "ovy='auto'" "minH='100%'"
+		<Frame ar='16/9' ovy='auto' bd p='30' g='20'>
 			<Center minH='100%' g='20'>
 				<Text fz='l'>TEXT</Text>
 				<Dummy length='xs' lang='ja'/>
@@ -286,15 +286,15 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 <Preview>
 	<PreviewTitle>NG</PreviewTitle>
 	<PreviewArea resize p={10}>
-		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
+		<Center ar='16/9' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<Dummy length='xs' lang='ja'/>
 			<Dummy length='xl' lang='ja'/>
 		</Center>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "Center" "aspect='2/1'" "ovy='auto'" "minH='100%'"
-		<Center aspect='2/1' ovy='auto' bd p='30' g='20'>
+		```jsx "Center" "ar='16/9'" "ovy='auto'" "minH='100%'"
+		<Center ar='16/9' ovy='auto' bd p='30' g='20'>
 			<Text fz='l'>TEXT</Text>
 			<Dummy length='xs' lang='ja'/>
 			<Dummy length='xl' lang='ja'/>
@@ -330,13 +330,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
 		<Columns cols="2" fz="s" lh="s">
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" p='30'>
 					<Text fw="700">margin</Text>
 					<Dummy length='l' mbs={20}/>
 				</Center>
 			</Frame>
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Stack ai="center" jc="center" h="100%" p='30'>
 					<Text fw="700">justify-content</Text>
 					<Dummy length='l' mbs={20}/>
@@ -347,13 +347,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 		<PreviewCode slot='tab' label='JSX'>
 		```jsx {3, 9}
 		<Columns cols="2" fz="s" lh="s">
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" p='30'>
 					<Text fw="700">margin</Text>
 					...
 				</Center>
 			</Frame>
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Stack ai="center" jc="center" h="100%" p='30'>
 					<Text fw="700">justify-content</Text>
 					...
@@ -382,13 +382,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	</PreviewTitle>
 	<PreviewArea resize p={10}>
 		<Columns cols="2" fz="s" lh="s">
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40} ovy="auto">
 					<Text fz='l' fw="700">ovy "auto"</Text>
 					<Dummy length='l' mbs={20} />
 				</Center>
 			</Frame>
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40}>
 					<Text fz='l' fw="700">ovy なし</Text>
 					<Dummy length='l' mbs={20} />
@@ -399,13 +399,13 @@ Lismの`<Center>` は `grid` を使ってるので、この問題が発生しま
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx {3,9}
 		<Columns cols="2" fz="s" lh="s">
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40} ovy="auto">
 					<Text fz='l' fw="700">ovy "auto"</Text>
 					...
 				</Center>
 			</Frame>
-			<Frame aspect="4/3" bgc='base-2'>
+			<Frame ar="4/3" bgc='base-2'>
 				<Center h="100%" px='30' py={40}>
 					<Text fz='l' fw="700">ovy なし</Text>
 					...

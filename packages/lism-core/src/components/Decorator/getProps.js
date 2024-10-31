@@ -7,7 +7,7 @@ export default function ({ lismClass, variant, size, ...props }) {
 	props = getEffectProps(getInsetProps(props));
 
 	if (size) {
-		props.aspect = '1/1';
+		props.ar = '1/1';
 		props.w = size;
 		// style['--size'] = size;
 		// props.lismState = ['has--size'];

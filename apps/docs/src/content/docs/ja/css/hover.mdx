@@ -315,7 +315,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`get:show`, `get:hide` を使う</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox layout={Frame} hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
+		<LinkBox layout={Frame} hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
@@ -326,7 +326,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:show'"
-		<LinkBox layout={Frame} hov='pass' href='#banner-link' aspect='16/9' bdrs='4'>
+		<LinkBox layout={Frame} hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
 			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
 			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
 			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
@@ -338,7 +338,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:show"
-		<a class="l--frame is--linkBox -hov:pass -aspect:16/9 -bdrs:4" href="#banner-link">
+		<a class="l--frame is--linkBox -hov:pass -ar:16/9 -bdrs:4" href="#banner-link">
 			<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
 			<div class="is--layer -hov:get:show -bgc:" style="--bgc:rgb(0 0 0 / 10%);backdrop-filter:blur(6px)"></div>
 			<div class="l--center -hov:get:show -pos:a -i:0">
@@ -355,7 +355,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 <Preview>
 	<PreviewTitle>`-hov:get:zoom`</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox href='#banner-link' ov='h' aspect='16/9' hov='pass' bdrs='4'>
+		<LinkBox href='#banner-link' ov='h' ar='16/9' hov='pass' bdrs='4'>
 			<Frame isLayer>
 				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 			</Frame>
@@ -373,7 +373,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "hov='pass'" "hov='get:zoom'"
-		<LinkBox href='#banner-link' ov='h' aspect='16/9' hov='pass' bdrs='4'>
+		<LinkBox href='#banner-link' ov='h' ar='16/9' hov='pass' bdrs='4'>
 			<Frame isLayer>
 				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 			</Frame>
@@ -385,7 +385,7 @@ Lismコンポーネントにて、ユーティリティクラスの出力とオ�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html "-hov:pass" "-hov:get:zoom"
-		<a class="is--linkBox -hov:pass -aspect:16/9 -ov:h -bdrs:4" href="#banner-link">
+		<a class="is--linkBox -hov:pass -ar:16/9 -ov:h -bdrs:4" href="#banner-link">
 			<div class="l--frame is--layer">
 				<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy" />
 			</div>

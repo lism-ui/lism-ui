@@ -18,8 +18,7 @@ export default function Note({
 
 	return (
 		<Stack
-			lismClass='c--note'
-			isColored
+			lismClass='c--note u--colored'
 			keycolor={keycolor}
 			p='30'
 			g='20'

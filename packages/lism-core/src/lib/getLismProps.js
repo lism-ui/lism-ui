@@ -57,7 +57,6 @@ class LismPropsData {
 			skipState,
 			isSide,
 			isLayer,
-			isTrimHL,
 			isColored,
 			isLinkBox,
 			isSkipFlow,
@@ -76,9 +75,6 @@ class LismPropsData {
 		const { lismState = [], style = {}, ...others } = _props;
 
 		// skipStateに関係なくチェック
-		if (isTrimHL) {
-			lismState.push('is--trimHL');
-		}
 		if (isLayer) {
 			lismState.push('is--layer');
 		}
@@ -91,9 +87,7 @@ class LismPropsData {
 		if (isSide) {
 			lismState.push('is--side');
 		}
-		if (isColored || props.boxcolor) {
-			lismState.push('is--colored');
-		}
+
 		// if (hasDivider && typeof hasDivider === 'string') {
 		// 	lismState.push(`has--divider:${hasDivider}`);
 		// } else

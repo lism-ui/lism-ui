@@ -37,68 +37,68 @@ LismがどのようなCSS設計になっているかを説明します。
 <table className="l--table">
 	<thead>
 		<tr>
-			<th colSpan={2}>Layer</th>
+			<th>Layer</th>
 			<th>役割</th>
 			<th>`@layer`<br />基本詳細度</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td colSpan={2}>Settings</td>
+			<td>Settings</td>
 			<td>SASSの設定変数, mixinなど直接スタイルに吐き出されないもの。</td>
 			<td>-</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Reset</td>
+			<td>Reset</td>
 			<td>reset CSS</td>
 			<td><span class='-whs:nw'>`@lism-reset`</span><br />~0-0-1</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Base</td>
+			<td>Base</td>
 			<td>`:root`でのトークン定義, HTML要素に対するスタイルの初期セット</td>
 			<td>`@lism-base`<br />~0-0-1</td>
 		</tr>
 		<tr>
-			<td colSpan={2} style={{verticalAlign: 'top'}}>Layout State</td>
+			<td style={{verticalAlign: 'top'}}>Layout State</td>
 			<td>レイアウト,デザインを組む上での特定の役割を持ち、複数のモジュールに対してつけ外しできるようなもの。</td>
 			<td rowSpan={3}><span class='-whs:nw'>`@lism-layout`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Layout Module</td>
+			<td>Layout Module</td>
 			<td>基礎的なレイアウトを組むためのモジュール群。</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Dynamic Module</td>
+			<td>Dynamic Module</td>
 			<td>JavaScriptと組み合わせた動的な機能を持つモジュール群</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Atoms</td>
+			<td>Atoms</td>
 			<td rowSpan={3}>単体で具体的な役割を持つコンポーネント群</td>
 			<td rowSpan={3}>`@lism-layout`<br />0-1-0</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Blocks</td>
+			<td>Blocks</td>
 		</tr>
 		<tr>
-			<td colSpan={2}>Components</td>
+			<td>Components</td>
 		</tr>
 		{/* <tr>
 			<td>Block</td>
 		</tr> */}
 		{/* <tr>
-			<td colSpan={2}>Format</td>
+			<td>Format</td>
 			<td>書式スタイル</td>
 			<td>0-1-0</td>
 		</tr> */}
 		<tr>
-			<td rowSpan='2'>Utility</td>
-			<td>Props</td>
-			<td>CSSプロパティティに紐づいたクラス。</td>
-			<td rowSpan='2'>0-1-0</td>
+			<td>Utility Class</td>
+			<td>その他、機能やスタイルが明確なユーティリティクラス。</td>
+			<td><span class='-whs:nw'>`@lism-utility`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Others</td>
-			<td>その他のユーティリティクラス。</td>
+			<td>Props Class</td>
+			<td>単一のCSSプロパティティに紐づいたクラス。</td>
+			<td>0-1-0</td>
 		</tr>
 	</tbody>
 </table>
@@ -179,7 +179,7 @@ Blocks はAtom,Layoutクラスで構成されるような粒度（（他のBlock
 
 
 
-### Utility クラス
+### Prop クラス
 
 特定のCSSプロパティに対応するユーティリティクラスを定義しています。  
 基本的にはそれぞれのクラスが単一のCSSプロパティをコントロールするためのになっています。（一部、例外もあります。）
@@ -190,7 +190,7 @@ Blocks はAtom,Layoutクラスで構成されるような粒度（（他のBlock
 	- 汎用的な値はクラスのセットだけで完了できるように。
 	- ブレイクポイントへの対応もユーティリティクラスが重要な役割を担っています。 */}
 
-Prop Utility には以下の3種類の形式があります。
+Prop クラス には以下の3種類の形式があります。
 
 |形式|説明|例|
 |---|---|---|

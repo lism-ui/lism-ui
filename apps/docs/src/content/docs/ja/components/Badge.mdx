@@ -51,14 +51,14 @@ import Badge from '~/components/ex/Badge/index.astro';
 
 ## Usage
 
-export const ColorDemos = ({variant = '',  isColored}) => {
+export const ColorDemos = ({variant = '',  colored}) => {
 	const badgeProps = { variant };
 
 	return (
 		<Flex variant='cluster' g='20'>
 			{['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray'].map((_col) => {
-				if(isColored) {
-					badgeProps.isColored = true; badgeProps.keycolor = _col;
+				if(colored) {
+					badgeProps.className = 'u--colored'; badgeProps.keycolor = _col;
 				} else if(variant === 'outline') {
 					badgeProps.c = _col;
 				} else {
@@ -131,28 +131,29 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 	</PreviewCode>
 </Preview>
 
-### isColored
+### `u--colored` との併用
+
 <Preview>
-	<PreviewTitle>`isColored`を使ったスタイリングの例</PreviewTitle>
+	<PreviewTitle>`u--colored`クラスを使ったスタイリングの例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Flex variant='cluster' g='20'>
-			<Badge isColored keycolor='main'>Badge</Badge>
-			<Badge isColored keycolor='#549005' bdrs='99'>Badge</Badge>
+			<Badge className='u--colored' keycolor='main'>Badge</Badge>
+			<Badge className='u--colored' keycolor='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Flex variant='cluster' g='20'>
-			<Badge isColored keycolor='main'>Badge</Badge>
-			<Badge isColored keycolor='#549005' bdrs='99'>Badge</Badge>
+			<Badge className='u--colored' keycolor='main'>Badge</Badge>
+			<Badge className='u--colored' keycolor='#549005' bdrs='99'>Badge</Badge>
 		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--flex l--flex--cluster -g:20">
-			<span class="b--badge is--colored -d:if -bdrs:1 -px:20" style="--keycolor:var(--c--main)">Badge</span>
-			<span class="b--badge is--colored -d:if -bdrs:99 -px:20" style="--keycolor:#549005">Badge</span>
+			<span class="u--colored b--badge -d:if -bdrs:1 -px:20" style="--keycolor:var(--c--main)">Badge</span>
+			<span class="u--colored b--badge -d:if -bdrs:99 -px:20" style="--keycolor:#549005">Badge</span>
 		</div>
 		```
 	</PreviewCode>
@@ -210,13 +211,13 @@ export const ColorDemos = ({variant = '',  isColored}) => {
 </Preview>
 
 <Preview>
-	<PreviewTitle>`isColored`を使った場合のカラーバリエーションの例</PreviewTitle>
+	<PreviewTitle>`u--colored`を使った場合のカラーバリエーションの例</PreviewTitle>
 	<PreviewArea p='30'>
-		<ColorDemos isColored />
+		<ColorDemos colored />
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Badge isColored keycolor={color}>{color}</Badge>
+		<Badge className='u--colored' keycolor={color}>{color}</Badge>
 		```
 	</PreviewCode>
 </Preview>
