@@ -5,13 +5,13 @@ import sidebarData from '@/astro-configs/sidebar';
 const { langPath = '', props } = Astro.props;
 
 // sidebarDataをループして label が 'Components' のものを取得
-const componentMenu = sidebarData.find((item) => item.label === 'Components');
+const componentMenu = sidebarData.find((item) => item.label === 'Core Components');
 ---
 
 <!-- componentMenuをループさせて label, link を出力 -->
 <Stack g='10' {...props}>
 	{
-		componentMenu.items.map((item) => {
+		componentMenu?.items?.map((item) => {
 			if (item.link === '###---' && item.label === '---') {
 				return <Divider my='10' />;
 			} else if (item.link === '###---') {

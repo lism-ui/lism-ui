@@ -30,31 +30,15 @@ export default [
 	},
 	{
 		label: 'Lism CSS',
+		items: [],
 		autogenerate: {
 			directory: 'css',
 			collapsed: true,
 		},
-		// items: [
-		// 	{
-		// 		label: 'Tokens',
-		// 		translations: {
-		// 			ja: '概要',
-		// 		},
-		// 		autogenerate: {
-		// 			directory: 'tokens',
-		// 		},
-		// 	},
-		// ],
 	},
-	// {
-	// 	label: 'Props',
-	// 	autogenerate: {
-	// 		directory: 'props',
-	// 		collapsed: true,
-	// 	},
-	// },
 
 	{
+		// index.mdxでlabel名読み取ってるので変更時は注意
 		label: 'Core Components',
 		items: [
 			{
@@ -85,12 +69,6 @@ export default [
 				label: 'Layouts',
 				link: '###---',
 			},
-			// {
-			// 	label: 'Layout',
-			// 	autogenerate: {
-			// 		directory: 'components/layout',
-			// 	},
-			// },
 			{
 				label: 'Box',
 				link: '/components/box/',
@@ -325,46 +303,8 @@ export default [
 		],
 	},
 	{
-		label: 'Styles',
-		autogenerate: {
-			directory: 'styles',
-			collapsed: true,
-		},
-	},
-	// {
-	// 	label: 'Element Modules',
-	// 	items: [
-	// 		{
-	// 			label: 'Avatar',
-	// 			link: '/components/props/',
-	// 		},
-	// 		{
-	// 			label: 'Icon',
-	// 			link: '/components/core/',
-	// 		},
-	// 	],
-	// },
-	// {
-	// 	label: 'Component Modules',
-
-	// 	items: [
-	// 		{
-	// 			label: 'Callout',
-	// 			link: '/components/core/',
-	// 		},
-	// 		{
-	// 			label: 'Accordion',
-	// 			link: '/components/core/',
-	// 		},
-	// 		{
-	// 			label: 'Button',
-	// 			link: '/components/props/',
-	// 		},
-	// 	],
-	// },
-
-	{
 		label: 'Page Layout',
+		items: [],
 		autogenerate: {
 			directory: 'page-layout',
 		},

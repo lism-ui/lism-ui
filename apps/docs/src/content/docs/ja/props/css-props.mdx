@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Lism, Text, Dummy, Box, Grid } from "@lism-ui/astro";
+import { Lism, Text, Frame, Media, Dummy, Box, Grid } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from "~/components";
 
 
@@ -521,14 +521,31 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 - sb: space-between
  */}
 
-## backgrounds
+## Background
+
+
+Lismコンポーネントでは、`background`用のプロパティとして`bg`,`backgrounds`の2種類があります。
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`bg`|`background`|-|`"grid"`, `"stripe"`, `"glass"`|-|
-|`bgc`|`background-color`|`COLOR`|`COLOR`|-|
+|`bg`|`background`|-|-|-|
 
-さらに、以下のものは `backgrounds` オブジェクト内で指定することができます。
+<Preview>
+	<PreviewTitle>`bg`に指定</PreviewTitle>
+	<PreviewArea p='5'>
+		<Box ar='16/9' bg="url(/img.jpg) center / 50%"></Box>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg"
+		<Box ar='16/9' bg="url(/img.jpg) center / 50%"></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+以下のものは `backgrounds` オブジェクト内で指定することができます。
 
 
 |Prop|CSS|Token|To Class|BP|
@@ -537,16 +554,172 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |`image`|`background-image`|||-|
 |`size`|`background-size`|||-|
 |`position`|`background-position`|||-|
-
-{/* |gradient||||-| */}
-
-
-{/* ## insets
-
-|Prop|CSS|Token|To Class|BP|
-|---|---|---|---|---|
-|`inset`|`inset`|-|`0`,`center`|-|
+{/* |image|background-image|
+|size|background-size|
+|repeat|background-repeat|
+|position|background-position|
+|color|background-color|
+|attachment|background-attachment|
+|blendMode|background-blend-mode|
+|clip|background-clip|
+|origin|background-origin|
  */}
+
+<Preview>
+	<PreviewTitle>`backgrounds`で指定する例</PreviewTitle>
+	<PreviewArea p='5'>
+		<Box ar='16/9' backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}></Box>
+	</PreviewArea>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "backgrounds="
+		<Box ar='16/9' backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}></Box>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+
+### gradient
+
+`gradient`に指定した文字列は `background-image` に出力されます。
+
+{/* 文字列またはオブジェクト形式で指定できます。 */}
+
+{/* ### 文字列での指定
+
+`gradient`の指定が文字列の場合、下記の2パターンに分かれます。
+
+- 基本的には、インラインスタイルで `background-image` に指定された値が出力されます。
+- 登録済みのユーティリティクラス名と一致する場合、`.-gradient:{utilityName}`クラスとして出力されます。（ただし、現状コアで登録しているのは `blackToBottom` のみです。） */}
+
+<Preview>
+	<PreviewTitle>値を直書き</PreviewTitle>
+	<PreviewArea resize p='20'>	
+		<Frame ar='16/9' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
+		{/* <Frame ar='16/9' gradient='blackToBottom'/> */}
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Frame ar='16/9' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx "-gradient:blackToBottom"
+		<div class="l--frame -ar:16/9" style="background-image:linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"></div>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+### 独自ユーティリティクラスの作成例
+
+Lismのパッケージ内で用意しているクラスはありませんが、いくつか独自のユーティリティクラスを用意してそれを呼び出す例を紹介します。
+
+[ユーティリティクラスとして強制出力する方法](/ja/props/lism-props#output-utility)を活用します。
+
+
+<Preview>
+	<PreviewTitle>stripe</PreviewTitle>
+	<PreviewArea resize nogrid p='30'>
+		<Box bg='u:stripe' p='40'>
+			<Dummy />
+		</Box>
+		<Box bg='u:stripe' p='40' className='u--colored' keycolor='blue'>
+			<Dummy />
+		</Box>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+```css
+.-bg\:stripe {
+	--stripe-bdc: color-mix(in srgb, currentColor, transparent 94%);
+	--stripe-bdw: 1px;
+	--stripe-deg: -40deg;
+	--stripe-interval: 6px;
+	background-image: repeating-linear-gradient(
+		var(--stripe-deg),
+		var(--stripe-bdc),
+		var(--stripe-bdc) var(--stripe-bdw),
+		transparent var(--stripe-bdw),
+		transparent var(--stripe-interval)
+	);
+
+	background-position: center;
+}
+```
+	</PreviewCode>
+		<PreviewCode label='JSX' slot='tab'>
+		```jsx "bg='u:stripe'"
+		<Box bg='u:stripe' p='40'>
+			<Dummy />
+		</Box>
+		<Box bg='u:stripe' p='40' className='u--colored' keycolor='blue'>
+			<Dummy />
+		</Box>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```html "-bg:stripe"
+		<div class="l--box -bg:stripe -p:40">
+			<p>...</p>
+		</div>
+		<div class="l--box is--colored -bg:stripe -p:40 -keycolor:blue">
+			<p>...</p>
+		</div>
+		```
+	</PreviewCode>
+</Preview>
+
+{/* <Preview>
+	<PreviewTitle>glass</PreviewTitle>
+	<PreviewArea p='20' resize>
+		<Frame pos='r' minH='25rem' p='40' ac='c'>
+			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
+			<Box pos='r' z='1' bg='u:glass' p='40' bdrs='3' bxsh='3'>
+				<Dummy length='l'/>
+			</Box>
+		</Frame>
+	</PreviewArea>
+</Preview> */}
+
+
+{/* <Preview>
+	<PreviewTitle>grid</PreviewTitle>
+	<PreviewArea resize nogrid p='30'>
+		<Box bg='u:grid' p='40'>
+			<Dummy />
+		</Box>
+		<Box bg='u:grid' p='40' className='u--colored' keycolor='green'>
+			<Dummy />
+		</Box>
+	</PreviewArea>
+</Preview> */}
+
+
+<Preview>
+	<PreviewTitle>`gradient="u:sunset"`</PreviewTitle>
+	<PreviewArea resize p='20'>
+		<Frame ar='16/9' gradient='u:sunset'/>
+	</PreviewArea>
+	<PreviewCode label='CSS' slot='tab'>
+	```css
+	.-gradient\:sunset{
+		background: linear-gradient(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
+	}
+	```
+	</PreviewCode>
+	<PreviewCode label='JSX' slot='tab'>
+		```jsx "gradient='u:sunset'"
+		<Frame ar='16/9' gradient='u:sunset'/>
+		```
+	</PreviewCode>
+	<PreviewCode label='HTML' slot='tab'>
+		```jsx "-gradient:sunset"
+		<div class="l--frame -ar:16/9 -gradient:sunset"></div>
+		```
+	</PreviewCode>
+</Preview>
 
 
 
