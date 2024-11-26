@@ -1,6 +1,6 @@
 {
 	"name": "@lism-ui/astro",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"description": "",
 	"main": "components/index.js",
 	"type": "module",
