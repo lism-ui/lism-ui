@@ -8,6 +8,12 @@
 @function get_important($is_important) {
 	@if $is_important == 1 {
 		@return ' !important';
+	} @else if $is_important == 0 {
+		@return '';
+	}
+
+	@if setting.$default_important == 1 {
+		@return ' !important';
 	}
 	@return '';
 }
