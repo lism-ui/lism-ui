@@ -30,7 +30,7 @@ export default [
 	},
 	{
 		label: 'Lism CSS',
-		items: [],
+		// items: [],
 		autogenerate: {
 			directory: 'css',
 			collapsed: true,
@@ -304,7 +304,7 @@ export default [
 	},
 	{
 		label: 'Page Layout',
-		items: [],
+		// items: [],
 		autogenerate: {
 			directory: 'page-layout',
 		},
