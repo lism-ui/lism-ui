@@ -124,7 +124,7 @@ LismがどのようなCSS設計になっているかを説明します。
 </Reference>
 
 
-## クラス設計
+## CSSのクラス設計
 
 Lismでは、レイアウト・デザインの構成要素を細分化していくつかの種類に分類しています。
 
@@ -194,7 +194,7 @@ Prop クラス には以下の3種類の形式があります。
 
 |形式|説明|例|
 |---|---|---|
-|`.-{prop}:{token\|value}`| トークンや主要な値を利用するためのユーティリティクラス(\*1) |`.-fz:l`, `.-ta:c`|
+|`.-{prop}:{token\|value}`| 各プロパティごとの主要な値やトークンの値を利用するためのユーティリティクラス(\*1) |`.-fz:l`, `.-ta:c`|
 |`.-{prop}:`| 変数 `--{prop}:` を受け取るためのクラス(\*2) |`.-p:`, `.-fz:`|
 |`.-{prop}[:\|@bp]`| 変数 `--[bp-]{prop}` を受け取るためのクラス(\*3) |`.-p@sm`, `.-p@md`|
 
@@ -217,7 +217,9 @@ Prop クラス には以下の3種類の形式があります。
 
 ```css
 .-ta\:c { text-align: center; }
+.-ta\:l { text-align: left; }
 .-fz\:l { font-size: var(--fz--l); }
+.-fz\:3xl { font-size: var(--fz--3xl); }
 
 .-p\:{ padding: var(--p); }
 @container (min-width: 480px) {
@@ -248,7 +250,7 @@ Prop クラス には以下の3種類の形式があります。
 	</PreviewArea>
 	<PreviewCode label="HTML" slot="tab">
 ```html "-p@sm" "-p@md" "--sm-p" "--md-p"
-<div class="-p:20 sm_p: md_p: -bd:" style="--sm-p:var(--s30);--md-p:var(--s50);">
+<div class="-p:20 -p@sm -p@md -bd:" style="--sm-p:var(--s30);--md-p:var(--s50);">
 	BOX
 </div>
 ```
@@ -277,20 +279,23 @@ Lismパッケージに内蔵されているクラスではありませんが、�
 {/* |ユニーククラス|`.uq--{uniqueName}`|`.uq--hoge`| */}
 
 
-## コンテナクエリ
+## コンテナクエリ・メディアクエリ
 
-Lismは**コンテナクエリ**を標準で採用しています。
+Lismでは、デフォルトで**コンテナクエリ**を採用しています。
 
 <Callout type='point'>
-ブレイクポイントで値を切り替えるには先祖要素でコンテナ要素を定義する必要があります。
+そのため、ブレイクポイントで値を切り替えるには、その先祖要素で**コンテナ要素**を定義しておく必要があります。
 </Callout>
 
-Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`)が便利です。
+（Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`)が便利です。）
+
+また、SCSSファイルで[カスタマイズ](/ja/css/customize/)を行うことで、メディアクエリに切り替えることもできます。
 
 
 ### ブレイクポイント
 
-ブレイクポイントはモバイルファーストで定義しており、数値としては480px~1200pxまでの240px刻みで設定しています。
+ブレイクポイントは**モバイルファースト**で定義しており、数値としては480px~1200pxまでの240px刻みで設定しています。  
+（特定のデバイスサイズに依存した数値は採用していません。）
 
 |サイズ表記|デフォルトの設定値|
 |---|---|
@@ -304,7 +309,7 @@ Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`
 </Callout>
 
 
-これらの定義済みポイントは、SCSSであれば次のようにして簡単に利用できます。
+これらの定義済みポイントをあなたのプロジェクトで用意したCSSで使用する場合、`.scss`ファイルからであれば次のようにして簡単に利用できます。
 
 {/* `@use`で`@lism-ui/core/scss/query`をインポートして、`query.cq()`を使ってください。 */}
 
@@ -312,20 +317,22 @@ Lism でコンテナ要素を配置するには、`.is--container`(`<Container>`
 @use '../path/to/node_modules/@lism-ui/core/scss/query' as query;
 
 @include query.cq('sm') {
-	// your styles...
+	// Your styles for sm sizes(width >= 480px) ...
+}
+@include query.cq('md') {
+	// Your styles for md sizes(width >= 720px) ...
 }
 ```
-
-
-## 命名規則
-
-...
 
 
 ## 補足事項
 
 その他の補足事項を説明します。
 
+
+### 命名規則
+
+...
 
 ### 単語の省略について
 

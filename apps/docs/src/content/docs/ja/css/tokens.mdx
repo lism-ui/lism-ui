@@ -254,6 +254,80 @@ export const ColorBadge = ({color, label}) => {
 
 ## `TYPO`
 
+### TYPO.FF
+
+`font-family` 用のトークンです。
+
+|トークン|変数|クラス|
+|---|---|---|
+|`base`|<span className='-whs:nw'>`--ff--base`</span>|<span className='-whs:nw'>`-ff:base`</span>|
+|`accent`|<span className='-whs:nw'>`--ff--accent`</span>|<span className='-whs:nw'>`-ff:accent`</span>|
+|`mono`|<span className='-whs:nw'>`--ff--mono`</span>|<span className='-whs:nw'>`-ff:mono`</span>|
+|`emoji`|<span className='-whs:nw'>`--ff--emoji`</span>|-|
+
+{/* |base|--ff--base|--ff--sans|
+|heading|--ff--heading|--ff--sans| */}
+
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<Text ff='base' fz='xl'>base: English text, 漢字ひらがな</Text>
+		<Text ff='accent' fz='xl'>accent: English text, 漢字ひらがな</Text>
+		<Text ff='mono' fz='xl'>mono: English text, 漢字ひらがな</Text>
+		<Text ff='emoji'>emoji: 💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx
+	<p class="-ff:base -fz:xl">Lorem ipsum ...</p>
+	<p class="-ff:accent -fz:xl">Lorem ipsum ...</p>
+	<p class="-ff:mono -fz:xl">Lorem ipsum ...</p>
+	<p style="font-family:var(--ff--emoji)">💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</p>
+	```
+	</PreviewCode>
+</Preview>
+
+
+### TYPO.FW 
+
+`font-weight` 用のトークンです。
+
+|トークン|変数|クラス|初期値|
+|---|---|---|---|
+|`light`|`--fw--light`|`.-fw:light`|`300`|
+|`normal`|`--fw--normal`|`.-fw:normal`|`400`|
+|`medium`|`--fw--medium`|`.-fw:medium`|`500`|
+|`bold`|`--fw--bold`|`.-fw:bold`|`700`|
+{/* |`thin`|`--fw--thin`|`.-fw:thin`|`100`|
+|`heavy`|`--fw--heavy`|`.-fw:heavy`|`900`| */}
+
+
+<Preview>
+	<PreviewTitle>Preview</PreviewTitle>
+	<PreviewArea p={20} isFlow='s'>
+		<Dummy length='s' fw='light' />
+		<Dummy length='s' fw='normal' />
+		<Dummy length='s' fw='medium' />
+		<Dummy length='s' fw='bold' />
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html
+		<p class="-fw:light">Lorem ipsum ...</p>
+		<p class="-fw:normal">Lorem ipsum ...</p>
+		<p class="-fw:medium">Lorem ipsum ...</p>
+		<p class="-fw:bold">Lorem ipsum ...</p>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Text fw='light'>Lorem ipsum ...</Text>
+		<Text fw='normal'>Lorem ipsum ...</Text>
+		<Text fw='medium'>Lorem ipsum ...</Text>
+		<Text fw='bold'>Lorem ipsum ...</Text>
+		```
+	</PreviewCode>
+</Preview>
+
+
 ### TYPO.FZ
 
 `font-size` 用のトークンです。
@@ -374,80 +448,6 @@ Lism では、フォントサイズのスケーリングには数学的に美し
 		</PreviewCode>
 	</Tabs.Item>
 </Tabs.Root>
-</Preview>
-
-
-### TYPO.FF
-
-`font-family` 用のトークンです。
-
-|トークン|変数|クラス|
-|---|---|---|
-|`base`|<span className='-whs:nw'>`--ff--base`</span>|<span className='-whs:nw'>`-ff:base`</span>|
-|`accent`|<span className='-whs:nw'>`--ff--accent`</span>|<span className='-whs:nw'>`-ff:accent`</span>|
-|`mono`|<span className='-whs:nw'>`--ff--mono`</span>|<span className='-whs:nw'>`-ff:mono`</span>|
-|`emoji`|<span className='-whs:nw'>`--ff--emoji`</span>|-|
-
-{/* |base|--ff--base|--ff--sans|
-|heading|--ff--heading|--ff--sans| */}
-
-<Preview>
-	<PreviewTitle>Preview</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
-		<Text ff='base' fz='xl'>base: English text, 漢字ひらがな</Text>
-		<Text ff='accent' fz='xl'>accent: English text, 漢字ひらがな</Text>
-		<Text ff='mono' fz='xl'>mono: English text, 漢字ひらがな</Text>
-		<Text ff='emoji'>emoji: 💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	<p class="-ff:base -fz:xl">Lorem ipsum ...</p>
-	<p class="-ff:accent -fz:xl">Lorem ipsum ...</p>
-	<p class="-ff:mono -fz:xl">Lorem ipsum ...</p>
-	<p style="font-family:var(--ff--emoji)">💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</p>
-	```
-	</PreviewCode>
-</Preview>
-
-
-### TYPO.FW 
-
-`font-weight` 用のトークンです。
-
-|トークン|変数|クラス|初期値|
-|---|---|---|---|
-|`light`|`--fw--light`|`.-fw:light`|`300`|
-|`normal`|`--fw--normal`|`.-fw:normal`|`400`|
-|`medium`|`--fw--medium`|`.-fw:medium`|`500`|
-|`bold`|`--fw--bold`|`.-fw:bold`|`700`|
-{/* |`thin`|`--fw--thin`|`.-fw:thin`|`100`|
-|`heavy`|`--fw--heavy`|`.-fw:heavy`|`900`| */}
-
-
-<Preview>
-	<PreviewTitle>Preview</PreviewTitle>
-	<PreviewArea p={20} isFlow='s'>
-		<Dummy length='s' fw='light' />
-		<Dummy length='s' fw='normal' />
-		<Dummy length='s' fw='medium' />
-		<Dummy length='s' fw='bold' />
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<p class="-fw:light">Lorem ipsum ...</p>
-		<p class="-fw:normal">Lorem ipsum ...</p>
-		<p class="-fw:medium">Lorem ipsum ...</p>
-		<p class="-fw:bold">Lorem ipsum ...</p>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Text fw='light'>Lorem ipsum ...</Text>
-		<Text fw='normal'>Lorem ipsum ...</Text>
-		<Text fw='medium'>Lorem ipsum ...</Text>
-		<Text fw='bold'>Lorem ipsum ...</Text>
-		```
-	</PreviewCode>
 </Preview>
 
 

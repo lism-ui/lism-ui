@@ -35,10 +35,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|c|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
-|bgc|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
-|bdc|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`inherit`|-|
-|keycolor|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
+|`c`|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
+|`bgc`|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
+|`bdc`|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`inherit`|-|
+|`keycolor`|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
 
 
 
@@ -115,16 +115,16 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|f|`font`|-|`inherit`|-|
-|fz|`font-size`|`TYPO.FZ`|`TYPO.FZ`|○|
-|ff|`font-family`|`TYPO.FF`|`TYPO.FF`|-|
-|fw|`font-weight`|`TYPO.FW`|`TYPO.FW`|-|
-|lh|`line-height`|`TYPO.LH`|`TYPO.LH`|-|
-|lts|`letter-spacing`|`TYPO.LTS`|`TYPO.LTS`|-|
-|ta|`text-align`|-|`center`(`c`)<br/>`left`(`l`)<br/>`right`(`r`)|-|
-|td|`text-decoration`|-|`none`(`n`)<br/>`underline`(`u`)|-|
-|whs|`white-space`|-|`nowrap`(`nw`)|-|
-|ovw|`overflow-wrap`|-|`anywhere`(`any`)|-|
+|`f`|`font`|-|`inherit`|-|
+|`fz`|`font-size`|`TYPO.FZ`|`TYPO.FZ`|○|
+|`ff`|`font-family`|`TYPO.FF`|`TYPO.FF`|-|
+|`fw`|`font-weight`|`TYPO.FW`|`TYPO.FW`|-|
+|`lh`|`line-height`|`TYPO.LH`|`TYPO.LH`|-|
+|`lts`|`letter-spacing`|`TYPO.LTS`|`TYPO.LTS`|-|
+|`ta`|`text-align`|-|`center`(`c`)<br/>`left`(`l`)<br/>`right`(`r`)|-|
+|`td`|`text-decoration`|-|`none`(`n`)<br/>`underline`(`u`)|-|
+|`whs`|`white-space`|-|`nowrap`(`nw`)|-|
+|`ovw`|`overflow-wrap`|-|`anywhere`(`any`)|-|
 
 {/* |font?|font|inherit?|-|-|
 |td?|text-decoration|-|-|-| */}
@@ -138,12 +138,12 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS Property|Token|To Class|BP|
 |---|---|---|---|---|
-|w|width|`SIZE`|`100%`,<br/>`fit-content`(`fit`)|○|
-|h|height|`SIZE`|`100%`,<br/>`fit-content`(`fit`),<br/>`screen`|○|
-|maxW|max-width|`SIZE`|`100%`|○|
-|maxH|max-height|`SIZE`|`100%`|○|
-|minW|min-width|`SIZE`|`100%`|○|
-|minH|min-height|`SIZE`|`100%`|○|
+|`w`|width|`SIZE`|`100%`,<br/>`fit-content`(`fit`)|○|
+|`h`|height|`SIZE`|`100%`,<br/>`fit-content`(`fit`),<br/>`screen`|○|
+|`maxW`|max-width|`SIZE`|`100%`|○|
+|`maxH`|max-height|`SIZE`|`100%`|○|
+|``minW``|min-width|`SIZE`|`100%`|○|
+|`minH`|min-height|`SIZE`|`100%`|○|
 
 {/* max-widthは: s,m,l も? */}
 
@@ -153,24 +153,24 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|p|padding|`SPACE`|`SPACE.0~50`|○|
-|px|padding-inline|`SPACE`|`SPACE.0~50`|○|
-|py|padding-block|`SPACE`|`SPACE.0~50`|○|
-|pis|padding-inline-start|`SPACE`|`SPACE.0~50`|○|
-|pbs|padding-block-start|`SPACE`|-|○|
-|pl|padding-left|`SPACE`|-|○|
-|pr|padding-right|`SPACE`|-|○|
-|pt|padding-top|`SPACE`|-|○|
-|pb|padding-bottom|`SPACE`|-|○|
-|m|margin|`SPACE`|`SPACE.0~50`,`auto`|○|
-|mx|margin-inline|`SPACE`|`auto`|○|
-|my|margin-block|`SPACE`|`auto`|○|
-|mis|margin-inline-start|`SPACE`|`auto`|○|
-|mbs|margin-block-start|`SPACE`|`SPACE.0~50`, `auto`|○|
-|ml|margin-left|`SPACE`|-|○|
-|mr|margin-right|`SPACE`|-|○|
-|mt|margin-top|`SPACE`|-|○|
-|mb|margin-bottom|`SPACE`|-|○|
+|`p`|padding|`SPACE`|`SPACE.0~50`|○|
+|`px`|padding-inline|`SPACE`|`SPACE.0~50`|○|
+|`py`|padding-block|`SPACE`|`SPACE.0~50`|○|
+|`pis`|padding-inline-start|`SPACE`|`SPACE.0~50`|○|
+|`pbs`|padding-block-start|`SPACE`|-|○|
+|`pl`|padding-left|`SPACE`|-|○|
+|`pr`|padding-right|`SPACE`|-|○|
+|`pt`|padding-top|`SPACE`|-|○|
+|`pb`|padding-bottom|`SPACE`|-|○|
+|`m`|margin|`SPACE`|`SPACE.0~50`,`auto`|○|
+|`mx`|margin-inline|`SPACE`|`auto`|○|
+|`my`|margin-block|`SPACE`|`auto`|○|
+|`mis`|margin-inline-start|`SPACE`|`auto`|○|
+|`mbs`|margin-block-start|`SPACE`|`SPACE.0~50`, `auto`|○|
+|`ml`|margin-left|`SPACE`|-|○|
+|`mr`|margin-right|`SPACE`|-|○|
+|`mt`|margin-top|`SPACE`|-|○|
+|`mb`|margin-bottom|`SPACE`|-|○|
 
 {/* <Box p='40' m='40' pl='0'>
 	<Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
@@ -223,12 +223,12 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|d|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
-|v|visibility|-|`hidden`(`h`), `visible`(`v`)||
-|ov|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
-|ovx|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
-|ovy|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
-|op|opacity|`OPACITY`|`OPACITY`,`0`,`10`,`20`,...,`100`||
+|`d`|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
+|`v`|visibility|-|`hidden`(`h`), `visible`(`v`)||
+|`ov`|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
+|`ovx`|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
+|`ovy`|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
+|`op`|opacity|`OPACITY`|`OPACITY`,`0`,`10`,`20`,...,`100`||
 
 ## Styling
 

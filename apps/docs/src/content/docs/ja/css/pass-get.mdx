@@ -11,9 +11,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
 親要素から複数の子要素に対して同じプロパティを一括で管理したい場合、Lism では以下のような設計ルールを設けています。
 
-- 受け渡す値を `--pass-{prop}`変数で親要素で定義しておく
-- 親要素に`-pass:{prop}`クラスをつけて、値を直下要素すべてに適用する
-- 子孫要素に`-get:{prop}`クラスをつけて、個別に受けとる
+1. 受け渡す値を `--pass-{prop}`変数で親要素に定義しておく。
+2. どのように適用するかを選択する。
+	- 親要素に`-pass:{prop}`クラスをつけると、その直下要素すべてにその値を適用する。
+	- もしくは、個別の子孫要素に`-get:{prop}`クラスをつけて、必要な要素でのみ値を適用する。
 
 <Preview>
 	<PreviewTitle>`-pass:{prop}`の使用例</PreviewTitle>
@@ -119,5 +120,5 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode } from "~/components";
 
 ただし、Lismのコアパッケージで用意しているクラスは最低限に抑えています。必要に応じて同じ形式でCSSを追加してください
 
-<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fpackages%2Flism-core%2Fsrc%2Fscss%2Futility%2F_pass-get.scss&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Flism-ui%2Flism-ui%2Fblob%2Fmain%2Fpackages%2Flism-core%2Fsrc%2Fscss%2Fprops%2F_pass-get.scss&style=default&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
 
