@@ -1,4 +1,4 @@
-// Note: utility の最初で読み込む
+// Note: props の最初で読み込む
 
 .-get\:p,
 .-pass\:p > * {
@@ -10,7 +10,7 @@
 	min-width: var(--pass-minW);
 }
 
-// 必要に応じて以下のようにCSSを追加して利用してください。
+// 必要に応じて以下のような形式でCSSを追加してご利用してください。
 
 // .-get\:c {
 // 	color: var(--pass-c);
