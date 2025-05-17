@@ -7,22 +7,6 @@
 @forward './linkbox';
 @forward './layer'; // Note: position の関係で、linkbox より後で読み込む
 
-// Note: dialog に影響する
-:where(.re--style) {
-	color: inherit;
-	background: none;
-	border: none;
-	padding: 0;
-	margin: 0;
-	font: inherit;
-}
-
-// .is--square ?
-// .has--size {
-// 	width: var(--size);
-// 	height: var(--size);
-// }
-
 .has--mask {
 	mask: var(--mask-img) no-repeat 50% / contain;
 }
@@ -31,4 +15,10 @@
 // }
 // .-grad\:linear {
 // 	background-image: linear-gradient(var(--angle), var(--colors));
+// }
+
+// .is--square ?
+// .has--size {
+// 	width: var(--size);
+// 	height: var(--size);
 // }

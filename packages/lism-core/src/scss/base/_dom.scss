@@ -1,0 +1,139 @@
+/* ----------------------------------------
+    html, body
+ ---------------------------------------- */
+html {
+	font-size: var(--root-fz);
+
+	tab-size: 4;
+
+	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
+	text-size-adjust: none;
+
+	/*  テキストのレンダリングを改善 → font によっては薄くなりすぎるのでナシ */
+	/* -webkit-font-smoothing: antialiased; */
+}
+
+body {
+	font-size: 1rem;
+	font-family: var(--ff--base);
+	line-height: var(--lh--base);
+	letter-spacing: var(--lts--base);
+	background-color: var(--c--base);
+	color: var(--c--text);
+	overflow-x: clip;
+	// 子孫要素の position:fixed の挙動が変わってしまうので body には使わない
+	// container-type: inline-size;
+}
+
+/* ----------------------------------------
+    Heading
+ ---------------------------------------- */
+:where(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--heading-ff, inherit);
+	font-weight: var(--heading-fw, bolder);
+	font-size: var(--fz, revert);
+	line-height: var(--lh, inherit);
+}
+h1 {
+	--fz: var(--fz--3xl);
+	--lh: var(--lh--xs);
+}
+h2 {
+	--fz: var(--fz--2xl);
+	--lh: var(--lh--xs);
+}
+h3 {
+	--fz: var(--fz--xl);
+	--lh: var(--lh--s);
+}
+h4 {
+	--fz: var(--fz--l);
+	--lh: var(--lh--s);
+}
+h5 {
+	--fz: var(--fz--m);
+	// --lh: var(--lh--s);
+}
+h6 {
+	--fz: var(--fz--s);
+}
+
+/* ----------------------------------------
+    list
+ ---------------------------------------- */
+:where(ul, ol) {
+	list-style: none;
+	padding: 0;
+	padding-inline-start: var(--list-pis, 0);
+}
+// classを持たない素の ul,ol はブラウザ標準のスタイルを復活させる
+:where(ul, ol):not([class]) {
+	--list-pis: 1.5em;
+	list-style: revert;
+}
+
+/* ----------------------------------------
+    texts
+ ---------------------------------------- */
+// link
+:where(a) {
+	color: var(--c--link);
+	text-decoration: var(--link-td, underline);
+}
+
+/* ----------------------------------------
+    table
+ ---------------------------------------- */
+:where(td, th) {
+	padding: var(--cell-p, 0.5em);
+	min-inline-size: var(--cell-minIs, unset);
+}
+:where(th) {
+	color: var(--th-c, inherit);
+	background-color: var(--th-bgc, transparent);
+}
+:where(td) {
+	color: var(--td-c, inherit);
+	background-color: var(--td-bgc, transparent);
+}
+
+/* ----------------------------------------
+    dialog
+ ---------------------------------------- */
+// showModal()にのみ適用するため、 dialog ではなく :modal を使用
+body:has(:modal[open]) {
+	overflow: hidden;
+}
+
+dialog:not([open]) {
+	pointer-events: none;
+}
+
+/* ----------------------------------------
+    others
+ ---------------------------------------- */
+:where(hr) {
+	border: none;
+	border-block-start: 1px solid;
+	block-size: 0;
+}
+
+:where(blockquote) {
+	border-inline-start: solid 3px currentColor;
+	padding: var(--s30);
+}
+
+:where(pre) {
+	padding: var(--s30);
+	background-color: var(--c--base-2);
+
+	// 横にスクロールできるように（overflow-inline: auto; ← まだ使えない）
+	overflow-x: auto; // 縦書きモードにしてもこれでいけた
+}
+
+/* ----------------------------------------
+    Form fields
+ ---------------------------------------- */
+// :where(input[type='text'], textarea, select) {
+// 	padding: var(--s10);
+// }

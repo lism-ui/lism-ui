@@ -43,7 +43,7 @@ export { default as Modal } from './Modal';
 // c--
 // export * from './Callout';
 // export * from './Note';
-export * from './List';
+// export * from './List';
 export * from './Table';
 export * from './Reel';
 export * from './NavMenu';

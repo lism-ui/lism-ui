@@ -3,16 +3,17 @@ title: 'List'
 description: ...
 ---
 
-import { Frame, List } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
+import { Frame } from '@lism-ui/astro';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
+import List from '~/components/ex/List/index.jsx';
+import '~/components/ex/List/style.scss';
 
-
-ブラウザの標準的なスタイルを持つリストレイアウトを呼び出すコンポーネントです。
+アイコン部分にデザインを適用できるリストの作成例を紹介します。
 
 
 ## Import
 
-<ImportPackage component='List' />
+<ImportSource name='List' css react astro />
 
 
 ## Usage
@@ -22,203 +23,34 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 	<PreviewArea p='30'>
 		<List>
 			<li>List item 1</li>
-			<li>
-				<>List item 2</>
-				<ul>
-					<li>Nested item</li>
-					<li>
-						<>...</>
-						<ul>
-							<li>Nested item</li>
-							<li>...</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<>List item 3</>
-				<ol>
-					<li>Nested item</li>
-					<li>
-						<>...</>
-					</li>
-				</ol>
-			</li>
-		</List>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<List>
-			<li>List item 1</li>
-			<li>
-				List item 2
-				<ul>
-					<li>Nested item</li>
-					<li>...</li>
-				</ul>
-			</li>
-			<li>
-				List item 3
-				<ol>
-					<li>Nested item</li>
-					<li>...</li>
-				</ol>
-			</li>
-		</List>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<ul class='l--list'>
-			<li>List item 1</li>
-			<li>
-				List item 2
-				<ul>
-					<li>Nested item</li>
-					<li>...</li>
-				</ul>
-			</li>
-			<li>
-				List item 3
-				<ol>
-					<li>Nested item</li>
-					<li>...</li>
-				</ol>
-			</li>
-		</ul>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>Ordered List</PreviewTitle>
-	<PreviewArea p='30'>
-		<List tag='ol'>
-			<li>List item 1</li>
-			<li>
-				<>List item 2</>
-				<ol>
-					<li>Nested item</li>
-					<li>
-						<>...</>
-						<ol>
-							<li>Nested item</li>
-							<li>...</li>
-						</ol>
-					</li>
-				</ol>
-			</li>
+			<li>List item 2</li>
 			<li>
 				<>List item 3</>
 				<ul>
 					<li>Nested item</li>
-					<li>
-						<>...</>
-					</li>
+					<li>Nested item</li>
 				</ul>
 			</li>
 		</List>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<List tag='ol'>
+		<List variant='check' lh='1.5'>
 			<li>List item 1</li>
-			<li>
-				List item 2
-				<ol>
-					<li>Nested item</li>
-					<li>...</li>
-				</ol>
-			</li>
-			<li>
-				List item 3
-				<ul>
-					<li>Nested item</li>
-					<li>...</li>
-				</ul>
-			</li>
-		</List>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html
-		<ol class='l--list'>
-			<li>List item 1</li>
-			<li>
-				List item 2
-				<ol>
-					<li>Nested item</li>
-					<li>...</li>
-				</ol>
-			</li>
-			<li>
-				List item 3
-				<ul>
-					<li>Nested item</li>
-					<li>...</li>
-				</ul>
-			</li>
-		</ol>
-		```
-	</PreviewCode>
-</Preview>
-
-
-{/* 
-### variant
-	l--list--icon
-
-<Preview>
-	<PreviewTitle>Preview</PreviewTitle>
-	<PreviewArea p='30'>
-		<List variant='icon:dot' lh='2'>
-			<li>List item 1</li>
-			<li>List item 2<br />List item 2 breaked text</li>
+			<li>List item 2</li>
 			<li>
 				<>List item 3</>
 				<ul>
 					<li>Nested item</li>
-					<li>
-						<>...</>
-						<ul>
-							<li>Nested item</li>
-							<li>...</li>
-						</ul>
-					</li>
+					<li>Nested item</li>
 				</ul>
 			</li>
 		</List>
-		<List variant='icon:check' lh='1.5'>
+		<List variant='caret' lh='2'>
 			<li>List item 1</li>
-			<li>List item 2<br />List item 2 breaked text</li>
+			<li>List item 2</li>
 			<li>
 				<>List item 3</>
 				<ul>
 					<li>Nested item</li>
-					<li>
-						<>...</>
-						<ul>
-							<li>Nested item</li>
-							<li>...</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</List>
-		<List variant='icon:caret' lh='2'>
-			<li>List item 1</li>
-			<li>List item 2<br />List item 2 breaked text</li>
-			<li>
-				<>List item 3</>
-				<ul>
 					<li>Nested item</li>
-					<li>
-						<>...</>
-						<ul>
-							<li>Nested item</li>
-							<li>...</li>
-						</ul>
-					</li>
 				</ul>
 			</li>
 		</List>
@@ -235,4 +67,24 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "
 		</ul>
 		```
 	</PreviewCode>
-</Preview> */}
+</Preview>
+
+{/* ↓ lh大きくしたり改行ありのテスト */}
+
+{/* <List variant='caret' lh='2'>
+	<li>List item 1</li>
+	<li>List item 2</li>
+	<li>
+		<>List item 3</>
+		<ul>
+			<li>Nested item</li>
+			<li>Nested item</li>
+		</ul>
+	</li>
+</List>
+
+<List variant='dot' lh='2'>
+	<li>List item 1</li>
+	<li>List item 2<br />breaked text...lorem ipsum dolor sit amet</li>
+	<li>List item 3</li>
+</List> */}

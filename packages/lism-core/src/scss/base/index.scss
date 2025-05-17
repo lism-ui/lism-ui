@@ -1,5 +1,8 @@
 @forward './tokens';
 
+// 各html要素のベーススタイル
+@forward './dom';
+
 /* ----------------------------------------
     デザイントークンとは別の設定値
  ---------------------------------------- */
@@ -25,143 +28,38 @@
 	// --acc-duration
 }
 
-/* ----------------------------------------
-    html, body
- ---------------------------------------- */
-html {
-	font-size: var(--root-fz);
+:root,
+.re--sh {
+	--sh-color: hsl(var(--sh-hsl) / var(--sh-a));
+	// カラー変数込みで変数をセットしてしまうと、--sh-color がこの時点で固定されてしまう。
+	// --sh-size-1: 0.5px 1px 1px 0 var(--sh-color);
+	--bxsh--1: var(--sh-sz--0) var(--sh-color), var(--sh-sz--1) var(--sh-color);
+	--bxsh--2: var(--sh-sz--1) var(--sh-color), var(--sh-sz--2) var(--sh-color);
+	--bxsh--3: var(--sh-sz--2) var(--sh-color), var(--sh-sz--3) var(--sh-color);
+	--bxsh--4: var(--sh-sz--3) var(--sh-color), var(--sh-sz--4) var(--sh-color);
+	--bxsh--5: var(--sh-sz--4) var(--sh-color), var(--sh-sz--5) var(--sh-color);
 
-	tab-size: 4;
-
-	// iOSで横向きにした時のフォントサイズ自動調節をオフにする.
-	text-size-adjust: none;
-
-	/*  テキストのレンダリングを改善 → font によっては薄くなりすぎるのでナシ */
-	/* -webkit-font-smoothing: antialiased; */
-}
-
-body {
-	font-size: 1rem;
-	font-family: var(--ff--base);
-	line-height: var(--lh--base);
-	letter-spacing: var(--lts--base);
-	background-color: var(--c--base);
-	color: var(--c--text);
-	overflow-x: clip;
-	// 子孫要素の position:fixed の挙動が変わってしまうので body には使わない
-	// container-type: inline-size;
+	--bxsh--i1: inset var(--sh-sz--0) var(--sh-color), inset var(--sh-sz--1) var(--sh-color);
+	--bxsh--i2: inset var(--sh-sz--1) var(--sh-color), inset var(--sh-sz--2) var(--sh-color);
+	// --bxsh--i3: inset var(--sh-sz--2) var(--sh-color), inset var(--sh-sz--3) var(--sh-color);
 }
 
-/* ----------------------------------------
-    Heading
- ---------------------------------------- */
-:where(h1, h2, h3, h4, h5, h6) {
-	font-family: var(--heading-ff, inherit);
-	font-weight: var(--heading-fw, bolder);
-	font-size: var(--fz, revert);
-	line-height: var(--lh, inherit);
-}
-h1 {
-	--fz: var(--fz--3xl);
-	--lh: var(--lh--xs);
-}
-h2 {
-	--fz: var(--fz--2xl);
-	--lh: var(--lh--xs);
-}
-h3 {
-	--fz: var(--fz--xl);
-	--lh: var(--lh--s);
-}
-h4 {
-	--fz: var(--fz--l);
-	--lh: var(--lh--s);
-}
-h5 {
-	--fz: var(--fz--m);
-	// --lh: var(--lh--s);
-}
-h6 {
-	--fz: var(--fz--s);
-}
+/* -----
+プロパティリセット系クラス。
+----- */
 
-/* ----------------------------------------
-    list
- ---------------------------------------- */
-:where(ul, ol) {
-	list-style: none;
+// Note: dialog に影響する
+:where(.re--style) {
+	color: inherit;
+	background: none;
+	border: none;
 	padding: 0;
-	padding-inline-start: var(--list-pis, 0);
+	margin: 0;
+	font: inherit;
 }
-// classを持たない素の ul,ol と、.l--list はブラウザ標準のスタイルを復活させる
-:where(ul, ol):not([class]),
-.l--list {
+
+// ブラウザデフォルトのような見た目に戻す（:not([class]) と同じ）
+.re--list {
 	--list-pis: 1.5em;
 	list-style: revert;
 }
-
-/* ----------------------------------------
-    texts
- ---------------------------------------- */
-// link
-:where(a) {
-	color: var(--c--link);
-	text-decoration: var(--link-td, underline);
-}
-
-/* ----------------------------------------
-    table
- ---------------------------------------- */
-:where(td, th) {
-	padding: var(--cell-p, 0.5em);
-	min-inline-size: var(--cell-minIs, unset);
-}
-:where(th) {
-	color: var(--th-c, inherit);
-	background-color: var(--th-bgc, transparent);
-}
-:where(td) {
-	color: var(--td-c, inherit);
-	background-color: var(--td-bgc, transparent);
-}
-
-/* ----------------------------------------
-    dialog
- ---------------------------------------- */
-// showModal()にのみ適用するため、 dialog ではなく :modal を使用
-body:has(:modal[open]) {
-	overflow: hidden;
-}
-
-dialog:not([open]) {
-	pointer-events: none;
-}
-
-/* ----------------------------------------
-    others
- ---------------------------------------- */
-:where(hr) {
-	border: none;
-	border-block-start: 1px solid;
-	block-size: 0;
-}
-
-:where(blockquote) {
-	border-inline-start: solid 3px currentColor;
-	padding: var(--s30);
-}
-
-:where(pre) {
-	padding: var(--s30);
-	background-color: var(--c--base-2);
-
-	// 横にスクロールできるように（overflow-inline: auto; ← まだ使えない）
-	overflow-x: auto; // 縦書きモードにしてもこれでいけた
-}
-
-/* ----------------------------------------
-    Form fields
- ---------------------------------------- */
-// :where(input[type='text'], textarea, select) {
-// 	padding: var(--s10);
-// }

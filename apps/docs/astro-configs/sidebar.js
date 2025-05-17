@@ -122,10 +122,7 @@ export default [
 				label: 'Reel',
 				link: '/components/reel/',
 			},
-			{
-				label: 'List',
-				link: '/components/list/',
-			},
+
 			{
 				label: 'Table',
 				link: '/components/table/',
@@ -211,6 +208,10 @@ export default [
 			{
 				label: 'DividerLabel',
 				link: '/components/dividerlabel/',
+			},
+			{
+				label: 'List',
+				link: '/components/list/',
 			},
 			{
 				label: 'ShapeDivider',
