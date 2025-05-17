@@ -55,7 +55,7 @@ export default {
 
 	// getStateで必要
 	contentSize: ['xs', 's', 'm', 'l', 'xl', 'full'], // container, constrained のユーティリティクラス
-	flow: ['xs', 's', 'l'], // flowのユーティリティクラス
+	flow: ['xs', 's', 'l', 'xl'], // flowのユーティリティクラス
 	// mbs: ['s', 'm', 'l'], // --mbs--xxx トークン
 };
 
