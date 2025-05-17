@@ -44,23 +44,35 @@
 
 .z--mdcontent > h2 {
 	position: relative;
-	padding-bottom: 0.5em;
+	// padding-bottom: 0.25em;
 }
 .z--mdcontent > h2::after {
 	content: '';
 	display: block;
 	position: absolute;
-	left: -4px;
-	bottom: 0.1em;
-	width: calc(100% + 8px);
-	height: 3px;
+	// left: -4px;
+	// bottom: 0.1em;
+	// width: calc(100% + 8px);
+	// height: 4px;
+	// clip-path: polygon(0 0, 4px 100%, 100% 100%, calc(100% - 4px) 0);
+	// background: linear-gradient(
+	// 	to bottom,
+	// 	color-mix(in srgb, var(--green), transparent 85%) 0%,
+	// 	color-mix(in srgb, var(--blue), transparent 75%) 20%,
+	// 	color-mix(in srgb, var(--purple), transparent 88%) 50%,
+	// 	color-mix(in srgb, var(--pink), transparent 92%) 100%
+	// );
+	top: 0px;
+	left: calc(0px - var(--sl-content-pad-x));
+	width: 12px;
+	height: 100%;
 	background: linear-gradient(
-		to right,
-		color-mix(in srgb, currentColor, transparent 85%) 0%,
-		color-mix(in srgb, currentColor, transparent 75%) 20%,
-		color-mix(in srgb, currentColor, transparent 88%) 50%,
-		color-mix(in srgb, currentColor, transparent 95%) 100%
+		150deg,
+		color-mix(in srgb, var(--green), transparent 85%) 0%,
+		color-mix(in srgb, var(--blue), transparent 75%) 30%,
+		color-mix(in srgb, var(--purple), transparent 80%) 70%,
+		color-mix(in srgb, var(--pink), transparent 90%) 100%
 	);
-	clip-path: polygon(0 0, 4px 100%, 100% 100%, calc(100% - 4px) 0);
+	clip-path: polygon(0 0, 0% 100%, calc(100% - 4px) 100%, 100% 50%, calc(100% - 4px) 0);
 	z-index: 1;
 }
