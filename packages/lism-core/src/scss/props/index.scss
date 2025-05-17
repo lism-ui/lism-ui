@@ -46,6 +46,3 @@
 	--bdc2: transparent;
 	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc1-per), var(--bdc2));
 }
-
-// とりあえずいらないか...?
-//@forward './lism';

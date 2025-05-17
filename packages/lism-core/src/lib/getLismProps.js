@@ -113,20 +113,6 @@ class LismPropsData {
 			// lismUtil
 		);
 
-		// propリストのセット
-		// this.setPropList(useFlexProps, useGridProps, useItemProps, useLog);
-
-		// if (lismVar) {
-		// 	this.addUtil('-lismVar:');
-		// 	const { base: baseValue, ...bpValues } = getBpData(lismVar);
-		// 	if (baseValue != null) {
-		// 		this.addStyle('--lism', baseValue);
-		// 	}
-		// 	Object.keys(bpValues).forEach((bp) => {
-		// 		this.addStyle(`--${bp}-lism`, bpValues[bp]);
-		// 	});
-		// }
-
 		// propsの処理
 		if (!isEmptyObj(others)) {
 			// console.log('others', others);
