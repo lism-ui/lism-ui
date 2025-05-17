@@ -28,7 +28,6 @@ export * from './Icon';
 export * from './Spacer';
 export * from './Decorator';
 export * from './Divider';
-// export * from './Delimiter';
 
 // d--
 

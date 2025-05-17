@@ -57,11 +57,9 @@ class LismPropsData {
 			skipState,
 			isSide,
 			isLayer,
-			isColored,
 			isLinkBox,
 			isSkipFlow,
 			hasDivider,
-			hasDelimiter,
 			hasMask,
 			// hasBd,
 			_context,
@@ -94,12 +92,7 @@ class LismPropsData {
 		if (hasDivider) {
 			lismState.push('has--divider');
 		}
-		if (hasDelimiter) {
-			lismState.push('has--delimiter');
-			if (typeof hasDelimiter === 'string') {
-				style['--delimiter'] = `"${hasDelimiter}"`;
-			}
-		}
+
 		if (hasMask) {
 			lismState.push('has--mask');
 			// hasMask が文字列で、かつ <svg で始まる場合

@@ -3,7 +3,7 @@ title: 'Breadcrumb'
 description: ...
 ---
 
-import { Flex, Badge, Icon, Spacer, Box, Callout, Lism, Link } from '@lism-ui/astro';
+import { Flex, Badge, Icon, Spacer, Box, Callout, Lism, Link, Decorator } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Reference } from "~/components";
 import { FolderSimple } from "@phosphor-icons/react";
 
@@ -14,30 +14,34 @@ import { FolderSimple } from "@phosphor-icons/react";
 ## Usage
 
 <Preview>
-	<PreviewTitle>実装例-1</PreviewTitle>
+	<PreviewTitle>実装例-1: with slash</PreviewTitle>
 	<PreviewArea p='30'>
-		<Flex variant='cluster' tag='ol' hasDelimiter g='10'>
+		<Flex variant='cluster' tag='ol' g='20'>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
 				<Link href='#menu-1' c='inherit' >Menu item 1</Link>
 			</Lism>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
+				<Decorator op='mid'>/</Decorator>
 				<Link href='#menu-2' c='inherit' >Menu item 2</Link>
 			</Lism>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
+				<Decorator op='mid'>/</Decorator>
 				<span>Current page titile...</span>
 			</Lism>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Flex variant='cluster' tag='ol' hasDelimiter g='10'>
+		<Flex variant='cluster' tag='ol' g='20'>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
 				<Link href='#menu-1' c='inherit' >Menu item 1</Link>
 			</Lism>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
+				<Decorator op='mid'>/</Decorator>
 				<Link href='#menu-2' c='inherit' >Menu item 2</Link>
 			</Lism>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
+				<Decorator op='mid'>/</Decorator>
 				<span>Current page titile...</span>
 			</Lism>
 		</Flex>
@@ -46,9 +50,9 @@ import { FolderSimple } from "@phosphor-icons/react";
 </Preview>
 
 <Preview>
-	<PreviewTitle>例-2</PreviewTitle>
+	<PreviewTitle>例-2: with Icon</PreviewTitle>
 	<PreviewArea p='30'>
-		<Flex variant='cluster' tag='ol' g='10' style={{'--c--link': 'currentColor'}}>
+		<Flex variant='cluster' tag='ol' g='20' style={{'--c--link': 'currentColor'}}>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
 				<a href='#menu-1'>Menu item 1</a>
 			</Lism>
@@ -64,7 +68,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Flex variant='cluster' tag='ol' g='10' style={{'--c--link': 'currentColor'}}>
+		<Flex variant='cluster' tag='ol' g='20' style={{'--c--link': 'currentColor'}}>
 			<Lism tag='li' d='if' ai='c' g='inherit'>
 				<a href='#menu-1'>Menu item 1</a>
 			</Lism>

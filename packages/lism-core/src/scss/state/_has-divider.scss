@@ -27,12 +27,3 @@
 		border-block-end: var(--bds) calc(var(--bdw) - var(--_bdw)) var(--bdc);
 	}
 }
-
-.has--delimiter {
-	// --delimiter: '/';
-	> * + *::before {
-		content: var(--delimiter, ' / ');
-		color: var(--delimiter-c, currentColor);
-		white-space: pre;
-	}
-}

@@ -95,79 +95,11 @@ Flexは[`flex`オブジェクト内で指定できるプロパティ](/ja/props/
 
 
 
-### Flexの要素が横に飛び出してしまう場合の対処法
-
-改行位置がない長い文字列があると、画面幅が狭い時に要素が外側へはみ出してしまうことがあります。
-
-そのような場合は、原因となる要素に`.-ovw:any`（`overflow-wrap: anywhere` のユーティリティクラス）を付けてください。
-
-
-<Preview>
-	<PreviewTitle>
-		画面幅が狭い時に横にはみ出す例(resizeして確認してください)
-	</PreviewTitle>
-	<PreviewArea resize p={40}>
-		<Flex g='20' className='has--itemGuide'>
-			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
-			<p>AAA</p>
-			<p>BBB</p>
-			<p>CCC</p>
-		</Flex>
-	</PreviewArea>
-	
-	<PreviewCode>
-		```jsx
-		<Flex g='20'>
-			<p>LooooooooooooongStrinnnnnnnnnnngs!!!!</p>
-			<p>AAA</p>
-			<p>BBB</p>
-			<p>CCC</p>
-		</Flex>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>
-		はみ出す原因となるテキストに `-ovw:any` を適用
-	</PreviewTitle>
-	<PreviewArea resize p='20'>
-		<Flex g='20' className='has--itemGuide'>
-			<Text ovw='any'>LooooooooooooongStriiiinnnnnnnnnnngs!!!!</Text>
-			<p>AAA</p>
-			<p>BBB</p>
-			<p>CCC</p>
-		</Flex>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-	```jsx
-		<Flex g='20'>
-			<Text ovw='any'>LooooooooooooongStriiiinnnnnnnnnnngs!!!!</Text>
-			<Text>AAA</Text>
-			<Text>BBB</Text>
-			<Text>CCC</Text>
-		</Flex>
-	```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-	```jsx
-	<div class="l--flex -g:20">
-		<p class="-ovw:any">LooooooooooooongStriiiinnnnnnnnnnngs!!!!</p>
-		<p>AAA</p>
-		<p>BBB</p>
-		<p>CCC</p>
-	</div>
-	```
-	</PreviewCode>
-</Preview>
-
-
-
 ### variant: cluster
 
 複数の要素を横方向に連続的に並べて配置するレイアウトを作るためのバリエーションです。
 
-`variant="cluster"`を指定すると `.l--flex--cluster` が出力されます。  
+`variant="cluster"`を指定すると `.l--flex--cluster` が追加で出力されます。  
 このクラスには下記のようなCSSが適用されています。
 
 ```css

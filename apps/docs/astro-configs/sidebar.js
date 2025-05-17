@@ -309,4 +309,11 @@ export default [
 			directory: 'page-layout',
 		},
 	},
+	{
+		label: 'Others',
+		// items: [],
+		autogenerate: {
+			directory: 'others',
+		},
+	},
 ];
