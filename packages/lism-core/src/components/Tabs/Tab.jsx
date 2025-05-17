@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexItem } from '../Flex';
+import { Lism } from '../Lism';
 import { TabContext } from './context';
 import { getTabProps } from './getProps';
 
@@ -10,7 +10,7 @@ export default function Tab({ index = 0, ...props }) {
 	const controlId = `${tabId}-${index}`;
 
 	return (
-		<FlexItem
+		<Lism
 			onClick={() => setActiveIndex(index)}
 			aria-controls={controlId}
 			{...getTabProps(props, isActive)}

@@ -3,7 +3,7 @@ import getLismProps from '../../lib/getLismProps';
 import { getAccProps, defaultProps } from './getProps';
 import { setEvent } from './setAccordion';
 import { Lism } from '../Lism';
-import { Flex, FlexItem } from '../Flex';
+import { Flex } from '../Flex';
 import { Grid } from '../Grid';
 
 // import { AccContext } from './context';
@@ -36,9 +36,9 @@ export function Header({ children, ...props }) {
 }
 export function Label({ children, ...props }) {
 	return (
-		<FlexItem {...defaultProps.label} {...props}>
+		<Lism {...defaultProps.label} {...props}>
 			{children}
-		</FlexItem>
+		</Lism>
 	);
 }
 

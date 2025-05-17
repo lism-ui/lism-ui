@@ -1,6 +1,6 @@
 ---
 import { LismProps } from '../types';
-import { FlexItem } from '../Flex';
+import { Lism } from '../Lism';
 import { Icon } from '../Icon';
 import { getAccIconProps } from '@lism-ui/core/components/Accordion/getProps';
 
@@ -14,6 +14,6 @@ interface Props extends LismProps {
 const { viewBox, icon = 'caret-down', ...props } = Astro.props || {};
 ---
 
-<FlexItem {...getAccIconProps(props)}>
+<Lism {...getAccIconProps(props)}>
 	{Astro.slots.has('default') ? <slot /> : <Icon viewBox={viewBox} icon={icon} />}
-</FlexItem>
+</Lism>

@@ -1,12 +1,12 @@
 ---
 import { LismProps } from '../types';
-import { FlexItem } from '../Flex';
+import { Lism } from '../Lism';
 import { defaultProps } from '@lism-ui/core/components/Accordion/getProps';
 
 interface Props extends LismProps {}
 const props = Astro.props || {};
 ---
 
-<FlexItem {...defaultProps.label} {...props}>
+<Lism {...defaultProps.label} {...props}>
 	<slot />
-</FlexItem>
+</Lism>
