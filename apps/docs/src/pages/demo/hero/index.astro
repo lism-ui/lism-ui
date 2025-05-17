@@ -13,7 +13,6 @@ import {
 	Container,
 	Layer,
 	Stack,
-	FlexItem,
 	Center,
 } from '@lism-ui/astro';
 import ShapeDivider from '~/components/ex/ShapeDivider/index.astro';
@@ -41,7 +40,7 @@ import '~/components/ex/ShapeDivider/style.scss';
 					<div>XXX</div>
 				</Flex>
 			</Flex>
-			<Container size='m' hasGutter isFlow my='auto'>
+			<Container size='m' hasGutter isFlow my='auto' z='0'>
 				<Text fw='bold' fz='xl'>DEMO 02</Text>
 				<Dummy length='l' />
 			</Container>
@@ -100,15 +99,7 @@ import '~/components/ex/ShapeDivider/style.scss';
 					<path d='M10,10V0L0,9.5V10L10,10z'></path>
 				</ShapeDivider>
 				<Frame isLayer bgc='black'>
-					<Media
-						isLayer
-						src='/img/img-2.jpg'
-						alt=''
-						width='960'
-						height='640'
-						op='0.5'
-						blur='6px'
-					/>
+					<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' op='0.5' />
 				</Frame>
 				<Container size='m' isFlow py='40' pr={['0', '25%', '33%']} my='auto' z='0'>
 					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
@@ -131,14 +122,7 @@ import '~/components/ex/ShapeDivider/style.scss';
 						clipPath: 'polygon(0 var(--slopeH), 0 100%, 100% 100%, 100% 0)',
 					}}
 				>
-					<Media
-						src='/img/img-3.jpg'
-						alt=''
-						width='960'
-						height='640'
-						op='0.5'
-						blur='6px'
-					/>
+					<Media src='/img/img-3.jpg' alt='' width='960' height='640' op='0.5' />
 				</Frame>
 				<Spacer h='var(--slopeH)' />
 				<Container size='m' isFlow py='40' pl={['0', '25%', '33%']} my='auto' z='0'>

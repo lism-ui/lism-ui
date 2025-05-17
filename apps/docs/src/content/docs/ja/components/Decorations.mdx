@@ -3,7 +3,7 @@ title: 'Decorations'
 description: ...
 ---
 
-import { Grid, Stack, Flex, GridItem, FlexItem, Decorator, Box, Spacer, Dummy } from '@lism-ui/astro';
+import { Grid, Stack, Flex, GridItem, Decorator, Box, Spacer, Dummy } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout } from "~/components";
 import BalloonBox from '~/components/ex/Decorations/balloon';
 import PipipiBox from '~/components/ex/Decorations/pipipi';
@@ -86,18 +86,16 @@ import { DecoBox } from '@lism-ui/core';
 		<Spacer h='10' />
 		<Flex variant='ltr' className='b--callBox b--callBox--top' jc='center' ta='c'>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='top'
 				rotate='-45deg'
 				transformOrigin='right top'
 			/>
-			<FlexItem px='20' py='5'>
+			<Box px='20' py='5'>
 				<Dummy length='s' />
-			</FlexItem>
+			</Box>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='top'
@@ -114,18 +112,16 @@ import { DecoBox } from '@lism-ui/core';
 			ta='c'
 		>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='bottom'
 				rotate='45deg'
 				transformOrigin='right bottom'
 			/>
-			<FlexItem px='20' py='5' fxg=''>
+			<Box px='20' py='5' fxg=''>
 				<Dummy length='l' />
-			</FlexItem>
+			</Box>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='bottom'
@@ -176,18 +172,16 @@ import { DecoBox } from '@lism-ui/core';
 		</Grid>
 		<Flex variant='ltr' className='b--callBox b--callBox--top' jc='center' ta='c'>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='top'
 				rotate='-45deg'
 				transformOrigin='right top'
 			/>
-			<FlexItem px='20' py='5'>
+			<Box px='20' py='5'>
 				<Dummy length='s' />
-			</FlexItem>
+			</Box>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='top'
@@ -203,18 +197,16 @@ import { DecoBox } from '@lism-ui/core';
 			ta='c'
 		>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='bottom'
 				rotate='45deg'
 				transformOrigin='right bottom'
 			/>
-			<FlexItem px='20' py='5' fxg=''>
+			<Box px='20' py='5' fxg=''>
 				<Dummy length='l' />
-			</FlexItem>
+			</Box>
 			<Decorator
-				as={FlexItem}
 				fxsh='0'
 				size='1.25em'
 				bd='bottom'

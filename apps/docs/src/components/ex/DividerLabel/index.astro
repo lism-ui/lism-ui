@@ -7,7 +7,7 @@ const bdProps = { bd, bdc, bdw, bds };
 ---
 
 <Flex lismClass='b--dividerLabel' ai='c' g='30' lh='1' {...props}>
-	{textPosition !== 'start' && <Divider op='mid' flexItem={{ fx: '1' }} {...bdProps} />}
+	{textPosition !== 'start' && <Divider op='mid' fx='1' {...bdProps} />}
 	<div class='b--dividerLabel__text'><slot /></div>
-	{textPosition !== 'end' && <Divider op='mid' flexItem={{ fx: '1' }} {...bdProps} />}
+	{textPosition !== 'end' && <Divider op='mid' fx='1' {...bdProps} />}
 </Flex>

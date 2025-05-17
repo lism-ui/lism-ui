@@ -19,21 +19,20 @@ export function getFlexProps({ _flex = 'flex', variant, lismClass, ...props }) {
 	return mergeFlexContextProps(props);
 }
 
-export function getFlexItemProps(props) {
-	if (null == props.flexItem) props.flexItem = {};
+// export function getFlexItemProps(props) {
+// 	if (null == props.flexItem) props.flexItem = {};
+// 	[
+// 		'fx',
+// 		'fxg',
+// 		'fxsh',
+// 		'fxb',
+// 		//'aslf', 'jslf', 'pslf', 'ord'
+// 	].forEach((key) => {
+// 		if (null != props[key]) {
+// 			props.flexItem[key] = props[key];
+// 			delete props[key];
+// 		}
+// 	});
 
-	[
-		'fx',
-		'fxg',
-		'fxsh',
-		'fxb',
-		//'aslf', 'jslf', 'pslf', 'ord'
-	].forEach((key) => {
-		if (null != props[key]) {
-			props.flexItem[key] = props[key];
-			delete props[key];
-		}
-	});
-
-	return props;
-}
+// 	return props;
+// }

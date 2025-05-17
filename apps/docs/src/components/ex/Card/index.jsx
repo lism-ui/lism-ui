@@ -1,4 +1,4 @@
-import { Stack, Frame, FlexItem, WithSide } from '@lism-ui/core';
+import { Stack, Frame, WithSide } from '@lism-ui/core';
 
 export function Card({ layout, ...props }) {
 	const Layout = layout || WithSide;
@@ -21,13 +21,13 @@ export function Card({ layout, ...props }) {
 }
 
 export function CardMedia(props) {
-	return <FlexItem layout={Frame} lismClass='c--card__media' {...props} />;
+	return <Frame lismClass='c--card__media' {...props} />;
 }
 
 export function CardBody({ children, ...props }) {
 	return (
-		<FlexItem layout={Stack} lismClass='c--card__body' {...props}>
+		<Stack lismClass='c--card__body' {...props}>
 			{children}
-		</FlexItem>
+		</Stack>
 	);
 }

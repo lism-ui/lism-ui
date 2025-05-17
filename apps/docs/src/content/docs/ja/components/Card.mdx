@@ -3,7 +3,7 @@ title: 'Card'
 description: ...
 ---
 
-import { Dummy, Box, Flex, Stack, Grid, Frame, Badge, Text, FlexItem, LinkBox, Link, Layer, Columns, Media } from '@lism-ui/core';
+import { Dummy, Box, Flex, Stack, Grid, Frame, Badge, Text, LinkBox, Link, Layer, Columns, Media } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource,Button } from '~/components';
 import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 
@@ -45,17 +45,17 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 <ImportSource name='Card' react />
 
 
+{/* ### Child Components
+
+- `<CardMedia>`: `Frame.c--card__media`を呼び出します.
+- `<CardBody>`: `Stack.c--card__body`を呼び出します. */}
+
+
 ## Props
 
 | プロパティ | 説明 |
 |---|---|
 |`layout`| 展開するレイアウトコンポーネントを指定します。デフォルトは`<WihSide>`です。|
-
-
-### Child Components
-
-- `<CardMedia>`: `<FlexItem layout={Frame}>`を呼び出します.
-- `<CardBody>`: `<FlexItem layout={Stack}>`を呼び出します.
 
 
 
@@ -475,7 +475,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<CardBody>
 				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
 				<p>هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.</p>
-				<FlexItem fz='s' aslf='fe' mbs='auto'>النص السفلي</FlexItem>
+				<Lism fz='s' aslf='fe' mbs='auto'>النص السفلي</Lism>
 			</CardBody>
 		</Card>
 	</PreviewArea>
@@ -488,7 +488,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			<CardBody>
 				<h3 className='-fz:l'>ما هو 'لوريم إيبسوم' ؟</h3>
 				<p>هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.هذا نص وهمي أنا أكتب جمل ليس لها معنى معين.</p>
-				<FlexItem fz='s' aslf='fe' mbs='auto'>النص السفلي</FlexItem>
+				<Lism fz='s' aslf='fe' mbs='auto'>النص السفلي</Lism>
 			</CardBody>
 		</Card>
 		```
@@ -536,7 +536,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 {/* Note: PreviewAreaにresize つけると Filterの挙動変わることに注意。 */}
 <Preview>
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
-	<PreviewArea p='30' resize>
+	<PreviewArea p='30'>
 		<Columns variant='liquid' colSize='20rem' g='30'>
 			<Card href='#card-a' pos='r' bdrs='2' hov='bxsh,pass'>
 				<CardMedia ar='4/3'>

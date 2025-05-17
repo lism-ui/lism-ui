@@ -193,6 +193,13 @@ export default {
 
 	...placeProps,
 	...itemProps,
+
+	// flex-item
+	fx: { style: 'flex', utils: { '1 1 0': '1' } },
+	fxg: { name: 'fxg', presets: ['0', '1'] },
+	fxsh: { name: 'fxsh', presets: ['0', '1'] },
+	fxb: { name: 'fxb' },
+
 	// mask: { map: 1 },
 	// flex: { map: 1 },
 	// grid: { map: 1 },
@@ -235,13 +242,16 @@ export const CONTEXT_PROPS = {
 		// ...GAP_PROPS,
 	},
 
-	flexItem: {
-		fx: { style: 'flex', utils: { '1 1 0': '1' } },
-		fxg: { name: 'fxg', presets: ['0', '1'] },
-		fxsh: { name: 'fxsh', presets: ['0', '1'] },
-		fxb: { name: 'fxb' },
-		// ...itemProps,
-	},
+	// fx: {
+	// 	g,sh,b
+	// }
+
+	// flexItem: {
+	// 	fx: { style: 'flex', utils: { '1 1 0': '1' } },
+	// 	fxg: { name: 'fxg', presets: ['0', '1'] },
+	// 	fxsh: { name: 'fxsh', presets: ['0', '1'] },
+	// 	fxb: { name: 'fxb' },
+	// },
 
 	// transform: {
 	// 	// transform

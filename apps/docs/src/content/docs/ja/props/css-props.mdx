@@ -409,11 +409,47 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 |`ord`|`order`|`-1`, `0`, `1`|-|
 
 
+## Gap
 
-## Grid & Flex
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`g`|`gap`|`SPACE`|`SPACE`,`inherit`|○|
+|`rowg`|`row-gap`|`SPACE`|-|○|
+|`colg`|`column-gap`|`SPACE`|-|○|
 
-grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェクト、もしくは専用のコンポーネントのみで指定できるようになっています。
+## Flex
 
+|Prop|CSS|To Class|BP|
+|---|---|---|---|
+|`fx`|`flex`|`1`|○|
+|`fxsh`|`flex-shrink`|`0`, `1`|-|
+|`fxg`|`flex-grow`|`0`, `1`|-|
+|`fxb`|`flex-basis`|-|○|
+
+
+以下のものは `flex` オブジェクト内で指定することができます。
+
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`fxw`|`flex-wrap`|-|`wrap`(`w`),<br /> `nowrap`(`nw`)|○|
+|`fxd`|`flex-direction`|-|`column`(`c`),<br /> `column-reverse`(`cr`),<br /> `row`(`r`),<br /> `row-reverse`(`rr`)|○|
+
+
+{/* - c: center
+- s: start
+- e: end
+- fs: flex-start
+- fe: flex-end
+- str: stretch
+- sb: space-between
+ */}
+
+
+
+
+## Grid
+
+gridプロパティはそれぞれ `grid` オブジェクト、もしくはGrid系列のコンポーネントのみで指定できるようになっています。
 
 
 ### grid
@@ -429,10 +465,6 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 |`gaf`|`grid-auto-flow`|-|-|-|
 |`gar`|`grid-auto-rows`|-|-|-|
 |`gac`|`grid-auto-columns`|-|-|-|
-|`g`|`gap`|`SPACE`|`SPACE`,`inherit`|○|
-|`rowg`|`row-gap`|`SPACE`|-|○|
-|`colg`|`column-gap`|`SPACE`|-|○|
-
 {/* |`gt`|`grid-template`||-| */}
 
 
@@ -487,39 +519,6 @@ grid形、flex形のプロパティはそれぞれ `grid`, `flex` オブジェ�
 ```
 
 
-### flex
-
-以下のものは `flex` オブジェクト内で指定することができます。
-
-|Prop|CSS|Token|To Class|BP|
-|---|---|---|---|---|
-|`fxw`|`flex-wrap`|-|`wrap`(`w`),<br /> `nowrap`(`nw`)|○|
-|`fxd`|`flex-direction`|-|`column`(`c`),<br /> `column-reverse`(`cr`),<br /> `row`(`r`),<br /> `row-reverse`(`rr`)|○|
-|`g`|`gap`|`SPACE`|`SPACE`,`inherit`|○|
-|`rowg`|`row-gap`|`SPACE`|-|○|
-|`colg`|`column-gap`|`SPACE`|-|○|
-
-### flexItem
-
-以下のものは `flexItem` オブジェクト内で指定することができます。
-
-|Prop|CSS|To Class|BP|
-|---|---|---|---|
-|`fx`|`flex`|`1`|○|
-|`fxsh`|`flex-shrink`|`0`, `1`|-|
-|`fxg`|`flex-grow`|`0`, `1`|-|
-|`fxb`|`flex-basis`|-|○|
-
-
-
-{/* - c: center
-- s: start
-- e: end
-- fs: flex-start
-- fe: flex-end
-- str: stretch
-- sb: space-between
- */}
 
 ## Background
 

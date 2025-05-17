@@ -82,10 +82,6 @@ export default [
 				link: '/components/flex/',
 			},
 			{
-				label: 'FlexItem',
-				link: '/components/flexitem/',
-			},
-			{
 				label: 'Stack',
 				link: '/components/stack/',
 			},

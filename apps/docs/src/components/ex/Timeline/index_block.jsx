@@ -1,14 +1,4 @@
-import {
-	Center,
-	Flex,
-	Stack,
-	Grid,
-	FlexItem,
-	GridItem,
-	Reel,
-	Icon,
-	Decorator,
-} from '@lism-ui/core';
+import { Center, Flex, Stack, Grid, GridItem, Reel, Icon, Decorator } from '@lism-ui/core';
 
 export function Timelines({ isFlex, isReel, children, ...props }) {
 	let theClassName = 'c--timelines';
@@ -78,7 +68,7 @@ export function TimelineItem({
 	}
 
 	return (
-		<FlexItem layout={Grid} {...itemProps} {...props}>
+		<Grid {...itemProps} {...props}>
 			<GridItem layout={Decorator} className='c--timeline__line' {...lineProps} />
 			<GridItem className={shapeClass} {...shapeProps}>
 				{isHighlighted && (
@@ -92,6 +82,6 @@ export function TimelineItem({
 			<GridItem className='c--timeline__body' {...bodyProps}>
 				{children}
 			</GridItem>
-		</FlexItem>
+		</Grid>
 	);
 }

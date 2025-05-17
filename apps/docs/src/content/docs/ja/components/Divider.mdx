@@ -3,7 +3,7 @@ title: 'Divider'
 description: ...
 ---
 
-import { Divider, Flex, FlexItem, Box, Stack } from '@lism-ui/astro';
+import { Divider, Flex, Box, Stack } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
 
 区切り線を描画するコンポーネントです。
@@ -82,17 +82,17 @@ div.a--divider.-bd:[bs|is]
 	<PreviewTitle>縦方向の区切り線</PreviewTitle>
 	<PreviewArea resize p='30' isFlow={false}>
 		<Flex ai='c' g='30'>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
+			<Box fx='1' bgc='base-2' py='50' ta='c'>...Contents...</Box>
 			<Divider bd='is' aslf='stretch' />
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
+			<Box fx='1' bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx {3} "bd='is'"
 		<Flex ai='c' g='30'>
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
+			<Box fx='1' bgc='base-2' py='50' ta='c'>...Contents...</Box>
 			<Divider bd='is' aslf='stretch' />
-			<FlexItem fx='1' bgc='base-2' py='50' ta='c'>...Contents...</FlexItem>
+			<Box fx='1' bgc='base-2' py='50' ta='c'>...Contents...</Box>
 		</Flex>
 		```
 	</PreviewCode>
