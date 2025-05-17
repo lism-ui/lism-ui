@@ -41,3 +41,26 @@
 .expressive-code {
 	--ec-frm-edBg: var(--codeBlock--bgc) !important;
 }
+
+.z--mdcontent > h2 {
+	position: relative;
+	padding-bottom: 0.5em;
+}
+.z--mdcontent > h2::after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -4px;
+	bottom: 0.1em;
+	width: calc(100% + 8px);
+	height: 3px;
+	background: linear-gradient(
+		to right,
+		color-mix(in srgb, currentColor, transparent 85%) 0%,
+		color-mix(in srgb, currentColor, transparent 75%) 20%,
+		color-mix(in srgb, currentColor, transparent 88%) 50%,
+		color-mix(in srgb, currentColor, transparent 95%) 100%
+	);
+	clip-path: polygon(0 0, 4px 100%, 100% 100%, calc(100% - 4px) 0);
+	z-index: 1;
+}
