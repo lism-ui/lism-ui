@@ -1,61 +1,52 @@
-.c--timelines {
-	--shape-size: 0.75rem;
-	--icon-size: 1.5rem;
+.c--timeline {
+	// --shape-size: 0.75rem;
 	--start-space: var(--s30);
 	--end-space: var(--s30);
-	--line-size: 100%;
+	--line-len: 100%;
+	--shape-size: 1.5rem;
+	--highlight-offset: -3px;
+	--edge-offset: calc(var(--shape-size) / 2);
+	--shape-space: calc(var(--shape-size) + var(--highlight-offset) * -1);
 }
 
 // subグリッドでいい感じにできそう？
-.c--timeline {
-	gap: 0 0.75em;
-	grid:
-		'.     .' var(--start-space)
-		'shape time'
-		'.     body'
-		'.     .' var(--end-space) / calc(var(--icon-size) + 8px) 1fr;
-	align-items: center;
+.c--timeline__item {
+	grid: var(--start-space) auto auto auto var(--end-space) / var(--shape-space) 1fr;
 }
 
 .c--timeline__line {
-	height: var(--line-size);
 	width: 2px;
-	grid-column: 1;
-	grid-row: 1 / -1;
+	height: var(--line-len);
 }
 
-.c--timeline__shape {
-	--size: var(--shape-size);
-	grid-area: shape;
-	width: var(--size);
-	height: var(--size);
-
-	&:has(> .a--icon) {
-		--size: var(--icon-size);
-		font-size: var(--size);
-	}
+:where(.c--timeline__shape) {
+	font-size: var(--shape-size);
 }
-.c--timeline__shape > .a--icon {
-	--scale: 0.75;
-}
-
-// 強調
 .c--timeline__highlight {
-	inset: -3px;
-	opacity: 0.25;
+	inset: var(--highlight-offset);
 }
 
-.c--timeline__time {
-	grid-area: time;
-}
-.c--timeline__body {
-	grid-area: body;
-}
-.c--timeline.-start {
+[data-timeline='start'] {
 	--start-space: 0;
-	--line-size: calc(100% - var(--icon-size) / 2);
+	--line-len: calc(100% - var(--edge-offset));
 }
-.c--timeline.-end {
+[data-timeline='end'] {
 	--end-space: 0;
-	--line-size: calc(var(--start-space) + var(--icon-size) / 2);
+	--line-len: calc(100% - var(--edge-offset));
+}
+
+.c--timeline--horizontal {
+	--edge-offset: 50%;
+	grid-auto-flow: column;
+	grid-template-rows: var(--shape-space) auto auto auto;
+
+	.c--timeline__item {
+		grid-row: span 4;
+		grid: subgrid / var(--start-space) auto var(--end-space);
+	}
+
+	.c--timeline__line {
+		width: var(--line-len);
+		height: 2px;
+	}
 }

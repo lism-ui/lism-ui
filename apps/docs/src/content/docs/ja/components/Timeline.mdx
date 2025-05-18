@@ -5,7 +5,7 @@ description: ...
 
 import { Lism, Dummy, Text, Stack, Grid, Decorator } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
-import { Timelines, Timeline, TimelineTime, TimelineBody } from '~/components/ex/Timeline';
+import Timeline from '~/components/ex/Timeline';
 import '~/components/ex/Timeline/style.scss';
 
 タイムラインの構築例を紹介します。
@@ -20,56 +20,56 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Timelines>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
-					<Text>Lism x.y.z がリリース。</Text>
+	<PreviewArea p='30'>
+		<Timeline.Root>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
-					<Text>Lism x.y.z がリリース。</Text>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
-					<Text>Lism x.y.z がリリース。</Text>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-		</Timelines>
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx
-<Timelines>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+<Timeline.Root>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-</Timelines>
+		</Timeline.Text>
+	</Timeline.Item>
+</Timeline.Root>
 ```
 	</PreviewCode>
 </Preview>
@@ -83,56 +83,56 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Timelines>
-			<Timeline isStart>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+	<PreviewArea p='30'>
+		<Timeline.Root>
+			<Timeline.Item isStart>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline isEnd>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item isEnd>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-		</Timelines>
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx "isStart" "isEnd"
-<Timelines>
-	<Timeline isStart>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+<Timeline.Root>
+	<Timeline.Item isStart>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline isEnd>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item isEnd>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-</Timelines>
+		</Timeline.Text>
+	</Timeline.Item>
+</Timeline.Root>
 ```
 	</PreviewCode>
 </Preview>
@@ -144,56 +144,56 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Timelines>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+	<PreviewArea p='30'>
+		<Timeline.Root>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline isHighlighted shapeColor='red'>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item isHighlighted shapeColor='red'>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline isHighlighted>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item isHighlighted>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-		</Timelines>
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
 	</PreviewArea>
 	<PreviewCode>
 ```jsx "isHighlighted" "shapeColor"
-<Timelines>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+<Timeline.Root>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline isHighlighted shapeColor='red'>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item isHighlighted shapeColor='red'>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-	<Timeline>
-		<TimelineTime>20yy年m月dd日</TimelineTime>
-		<TimelineBody>
+		</Timeline.Text>
+	</Timeline.Item>
+	<Timeline.Item>
+		<Timeline.Time>20yy年m月dd日</Timeline.Time>
+		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
 			<Dummy lang='ja'/>
-		</TimelineBody>
-	</Timeline>
-</Timelines>
+		</Timeline.Text>
+	</Timeline.Item>
+</Timeline.Root>
 ```
 	</PreviewCode>
 </Preview>
@@ -204,56 +204,116 @@ import '~/components/ex/Timeline/style.scss';
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Timelines>
-			<Timeline icon='star'>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+	<PreviewArea p='30'>
+		<Timeline.Root>
+			<Timeline.Item icon='star'>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline icon='check' isHighlighted shapeColor='red'>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item icon='check' isHighlighted shapeColor='red'>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-		</Timelines>
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx "icon="
-		<Timelines>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+		<Timeline.Root>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-			<Timeline icon='check' isHighlighted shapeColor='red'>
-				<TimelineTime>20yy年m月dd日</TimelineTime>
-				<TimelineBody>
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item icon='check' isHighlighted shapeColor='red'>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
 					<Dummy lang='ja'/>
-				</TimelineBody>
-			</Timeline>
-		</Timelines>
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
 	```
 	</PreviewCode>
 </Preview>
+
+
+### 横並び
+
+<Preview>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Timeline.Root variant='horizontal'>
+				<Timeline.Item isHorizontal isStart icon='star'>
+					<Timeline.Time>20yy年m月dd日</Timeline.Time>
+					<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+					<Timeline.Text>
+						<Dummy lang='ja' />
+					</Timeline.Text>
+				</Timeline.Item>
+				<Timeline.Item isHorizontal>
+					<Timeline.Time>20yy年m月dd日</Timeline.Time>
+					<Timeline.Title>Lism x.y.z がリリース。Lism x.y.z がリリース。</Timeline.Title>
+					<Timeline.Text>
+						<Dummy lang='ja' />
+					</Timeline.Text>
+				</Timeline.Item>
+				<Timeline.Item isHorizontal isEnd isHighlighted>
+					<Timeline.Time>20yy年m月dd日</Timeline.Time>
+					<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+					<Timeline.Text>
+						<Dummy lang='ja' />
+					</Timeline.Text>
+				</Timeline.Item>
+			</Timeline.Root>
+	</PreviewArea>
+	<PreviewCode>
+	```jsx "horizontal" "isHorizontal"
+		<Timeline.Root variant='horizontal'>
+			<Timeline.Item isHorizontal isStart icon='star'>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
+					<Dummy lang='ja' />
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item isHorizontal>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
+					<Dummy lang='ja' />
+				</Timeline.Text>
+			</Timeline.Item>
+			<Timeline.Item isHorizontal isEnd isHighlighted>
+				<Timeline.Time>20yy年m月dd日</Timeline.Time>
+				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
+				<Timeline.Text>
+					<Dummy lang='ja' />
+				</Timeline.Text>
+			</Timeline.Item>
+		</Timeline.Root>
+	```
+	</PreviewCode>
+</Preview>
+		

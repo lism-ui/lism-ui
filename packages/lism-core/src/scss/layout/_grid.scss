@@ -1,7 +1,7 @@
 .l--grid {
 	// 初期値セット
-	--gtc: none;
 	--gtr: none;
+	--gtc: none;
 	--gta: none;
 	display: grid;
 	grid-template: var(--gtr) / var(--gtc);
