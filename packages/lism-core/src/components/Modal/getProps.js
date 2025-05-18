@@ -1,8 +1,8 @@
 import atts from '../../lib/helper/atts';
 
-export function getProps({ lismClass = '', variant, duration, offset, style = {}, ...props }) {
+export function getProps({ lismClass = '', duration, offset, style = {}, ...props }) {
 	const theProps = {
-		lismClass: atts(lismClass, 'd--modal', variant && `d--modal--${variant}`),
+		lismClass: atts(lismClass, 'd--modal'),
 		lismState: ['re--style'],
 	};
 	if (duration) {

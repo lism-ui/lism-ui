@@ -1,12 +1,10 @@
 ---
 import { Lism } from '@lism-ui/astro';
+import './style.css';
 
-const { variant = 'fill', ...props } = Astro.props;
-
-let lismClass = 'b--button';
-if (variant) lismClass += ` b--button--${variant}`;
+const props = Astro.props;
 ---
 
-<Lism lismClass={lismClass} tag='a' hov='fade' {...props}>
+<Lism lismClass='b--button' variant='fill' tag='a' hov='fade' {...props}>
 	<slot />
 </Lism>

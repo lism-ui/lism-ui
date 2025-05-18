@@ -21,7 +21,8 @@ export default function getTabsProps({
 	// }
 
 	const defaultProps = {
-		lismClass: atts(lismClass, 'd--tabs', variant && `d--tabs--${variant}`),
+		lismClass: atts(lismClass, 'd--tabs'),
+		variant,
 		style,
 	};
 

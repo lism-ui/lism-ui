@@ -2,7 +2,6 @@ import atts from '../../lib/helper/atts';
 import { mergeFlexContextProps } from '../Flex/getProps';
 
 export function getWithSideProps({
-	variant,
 	lismClass,
 	style = {},
 	sidePosition,
@@ -28,7 +27,7 @@ export function getWithSideProps({
 
 	return Object.assign(
 		{
-			lismClass: atts(lismClass, `l--withSide`, variant && `l--withSide--${variant}`),
+			lismClass: atts(lismClass, `l--withSide`),
 			style,
 			grid,
 		},

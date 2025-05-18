@@ -10,9 +10,6 @@ export default function BalloonBox({
 	children,
 	...props
 }) {
-	let lismClass = 'b--balloonBox';
-	if (variant) lismClass += ` b--balloonBox--${variant}`;
-
 	const colorProps = { bdc, bgc };
 	if (keycolor) {
 		colorProps.lismClass += ' u--colored';
@@ -83,7 +80,7 @@ export default function BalloonBox({
 	}
 
 	return (
-		<Flex lismClass={lismClass} {...parentProps} {...props}>
+		<Flex lismClass='b--balloonBox' variant={variant} {...parentProps} {...props}>
 			<Lism pos='r' bd p='30' w='fit-content' bdw={bdw} bdrs={bdrs} {...colorProps}>
 				{children}
 				<Decorator

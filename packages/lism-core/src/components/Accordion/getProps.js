@@ -2,13 +2,12 @@ import atts from '../../lib/helper/atts';
 
 export function getAccGroupProps({
 	lismClass,
-	variant,
 	duration,
 	allowMultiple = true,
 	style = {},
 	...props
 }) {
-	props.lismClass = atts(lismClass, 'd--accordions', variant && `d--accordions--${variant}`);
+	props.lismClass = atts(lismClass, 'd--accordions');
 
 	if (duration) {
 		style['--acc-duration'] = duration;
@@ -23,8 +22,8 @@ export function getAccGroupProps({
 }
 
 // duration: [s]
-export function getAccProps({ lismClass, variant, style = {}, duration, ...props }) {
-	props.lismClass = atts(lismClass, 'd--accordion', variant && `d--accordion--${variant}`);
+export function getAccProps({ lismClass, style = {}, duration, ...props }) {
+	props.lismClass = atts(lismClass, 'd--accordion');
 
 	if (duration) style['--acc-duration'] = duration;
 	props.style = style;

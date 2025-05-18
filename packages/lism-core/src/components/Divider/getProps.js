@@ -1,8 +1,8 @@
 import atts from '../../lib/helper/atts';
 
-export function getDividerProps({ lismClass, variant, ...props }) {
+export function getDividerProps({ lismClass, ...props }) {
 	const defaultProps = {
-		lismClass: atts(lismClass, `a--divider`, variant && `a--divider--${variant}`),
+		lismClass: atts(lismClass, `a--divider`),
 		bd: 'bs',
 		'aria-hidden': 'true',
 	};

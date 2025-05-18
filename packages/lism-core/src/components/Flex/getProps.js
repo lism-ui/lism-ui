@@ -3,7 +3,7 @@ import atts from '../../lib/helper/atts';
 export function mergeFlexContextProps(props) {
 	if (null == props.flex) props.flex = {};
 
-	['fxf', 'fxd', 'fxw', 'g', 'gap', 'rowg', 'colg'].forEach((key) => {
+	['fxf', 'fxd', 'fxw'].forEach((key) => {
 		if (null != props[key]) {
 			props.flex[key] = props[key];
 			delete props[key];
@@ -13,8 +13,8 @@ export function mergeFlexContextProps(props) {
 	return props;
 }
 
-export function getFlexProps({ _flex = 'flex', variant, lismClass, ...props }) {
-	props.lismClass = atts(lismClass, `l--${_flex}`, variant && `l--${_flex}--${variant}`);
+export function getFlexProps({ _flex = 'flex', lismClass, ...props }) {
+	props.lismClass = atts(lismClass, `l--${_flex}`);
 
 	return mergeFlexContextProps(props);
 }

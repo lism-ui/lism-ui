@@ -85,7 +85,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	<PreviewArea p='30'>
 		<Tabs.Root g='20'>
 			<Tabs.Item>
-				<Fragment slot='label'><Icon isInline icon='good'/> Tab <small>small text</small></Fragment>
+				<Fragment slot='label'><Icon variant='inline' icon='good'/> Tab <small>small text</small></Fragment>
 				<Dummy />
 			</Tabs.Item>
 			<Tabs.Item label='Tab 2'>
@@ -96,7 +96,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	<PreviewCode slot='tab' label='React'>
 		```jsx {2} "label=\{"
 		<Tabs.Root g='20'>
-			<Tabs.Item label={<><Icon isInline icon='good'/> Tab <small>small text</small></>}>
+			<Tabs.Item label={<><Icon variant='inline' icon='good'/> Tab <small>small text</small></>}>
 				<Dummy />
 			</Tabs.Item>
 			<Tabs.Item label='Tab 2'>
@@ -109,7 +109,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 		```jsx {3} "slot='label'"
 		<Tabs.Root g='20'>
 			<Tabs.Item>
-				<Fragment slot='label'><Icon isInline icon='good'/>Tab<small>small text</small></Fragment>
+				<Fragment slot='label'><Icon variant='inline' icon='good'/>Tab<small>small text</small></Fragment>
 				<Dummy />
 			</Tabs.Item>
 			<Tabs.Item label='Tab 2'>
@@ -465,8 +465,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	<PreviewArea p='30'>
 		<Tabs.Root g='20'>
 			<Tabs.List>
-				<Tabs.Tab tabID='tab-uid' isActive index={0}><Icon isInline icon='good'/> Tab 1</Tabs.Tab>
-				<Tabs.Tab tabID='tab-uid' index={1}><Icon isInline icon='bad'/> Tab 2</Tabs.Tab>
+				<Tabs.Tab tabID='tab-uid' isActive index={0}><Icon variant='inline' icon='good'/> Tab 1</Tabs.Tab>
+				<Tabs.Tab tabID='tab-uid' index={1}><Icon variant='inline' icon='bad'/> Tab 2</Tabs.Tab>
 			</Tabs.List>
 			<Tabs.Panel tabID='tab-uid' isActive index={0}>
 				<Dummy length='s' />
@@ -482,10 +482,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 		<Tabs.Root uid='tab-uid' defaultIndex={0} g='20'>
 			<Tabs.List>
 				<Tabs.Tab index={0}>
-					<Icon isInline icon='good' /> Tab 1
+					<Icon variant='inline' icon='good' /> Tab 1
 				</Tabs.Tab>
 				<Tabs.Tab index={1}>
-					<Icon isInline icon='bad' /> Tab 2
+					<Icon variant='inline' icon='bad' /> Tab 2
 				</Tabs.Tab>
 			</Tabs.List>
 			<Tabs.Panel index={0}>
@@ -503,10 +503,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 		<Tabs.Root g='20'>
 			<Tabs.List>
 				<Tabs.Tab tabID='tab-uid' isActive index={0}>
-					<Icon isInline icon='good' /> Tab 1
+					<Icon variant='inline' icon='good' /> Tab 1
 				</Tabs.Tab>
 				<Tabs.Tab tabID='tab-uid' index={1}>
-					<Icon isInline icon='bad' /> Tab 2
+					<Icon variant='inline' icon='bad' /> Tab 2
 				</Tabs.Tab>
 			</Tabs.List>
 			<Tabs.Panel tabID='tab-uid' isActive index={0}>

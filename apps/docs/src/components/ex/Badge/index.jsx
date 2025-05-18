@@ -1,11 +1,9 @@
 import { Lism } from '@lism-ui/core';
+import './style.css';
 
-export default function Badge({ variant, children, ...props }) {
-	let lismClass = 'b--badge';
-	if (variant) lismClass += ` b--badge--${variant}`;
-
+export default function Badge({ children, ...props }) {
 	return (
-		<Lism lismClass={lismClass} tag='span' px='20' bdrs='1' {...props}>
+		<Lism lismClass='b--badge' tag='span' px='20' bdrs='1' {...props}>
 			{children}
 		</Lism>
 	);

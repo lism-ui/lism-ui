@@ -11,8 +11,7 @@ Icon の出力パターン
 */
 export default function getProps({
 	lismClass,
-	isInline,
-	variant,
+	// variant,
 	as,
 	tag,
 	scale,
@@ -27,8 +26,7 @@ export default function getProps({
 }) {
 	// props.skipState = true;
 	const iconClasses = [`a--icon`];
-	if (isInline) iconClasses.push('a--icon--inline');
-	if (variant) iconClasses.push(`a--icon--${variant}`);
+	// if (variant) iconClasses.push(`a--icon--${variant}`);
 
 	let Component = tag || 'span';
 

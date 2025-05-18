@@ -3,7 +3,6 @@ import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
 export default function getBoxProps({
 	lismClass,
-	variant = '',
 	thBgc,
 	tdBgc,
 	thC,
@@ -14,12 +13,6 @@ export default function getBoxProps({
 	...props
 }) {
 	props.lismClass = atts(lismClass, 'l--table');
-	if (variant) {
-		// variant を , で分割し、それぞれに対して class を追加
-		variant.split(',').forEach((v) => {
-			props.lismClass += ` l--table--${v}`;
-		});
-	}
 
 	if (bdwX) style['--bdwX'] = bdwX;
 	if (bdwY) style['--bdwY'] = bdwY;

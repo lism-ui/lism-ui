@@ -2,7 +2,6 @@ import atts from '../../lib/helper/atts';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 export function getNavMenuProps({
 	lismClass,
-	variant,
 	nestLevel,
 	hovC,
 	hovBgc,
@@ -11,7 +10,7 @@ export function getNavMenuProps({
 	...props
 }) {
 	const theProps = {
-		lismClass: atts(lismClass, 'c--navMenu', variant && `c--navMenu--${variant}`),
+		lismClass: atts(lismClass, 'c--navMenu'),
 		tag: 'ul',
 	};
 	if (hovBgc) {

@@ -1,11 +1,8 @@
 import { Lism } from '@lism-ui/core';
 
-export default function List({ tag = 'ul', variant, children, ...props }) {
-	let lismClass = 'b--list';
-	if (variant) lismClass += ` b--list--${variant}`;
-
+export default function List({ tag = 'ul', children, ...props }) {
 	return (
-		<Lism tag={tag} lismClass={lismClass} {...props}>
+		<Lism tag={tag} lismClass='b--list' {...props}>
 			{children}
 		</Lism>
 	);

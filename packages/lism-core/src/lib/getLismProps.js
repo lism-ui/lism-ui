@@ -50,6 +50,7 @@ class LismPropsData {
 			className,
 			lismClass,
 			uClass,
+			variant,
 			// lismVar,
 			passVars,
 			pass,
@@ -103,6 +104,24 @@ class LismPropsData {
 
 		this.styles = style;
 
+		// ここで variant 処理
+		if (variant && lismClass) {
+			// lismClassをスペースで分割して配列化
+			const lismClassArr = lismClass.split(' ');
+			const baseClass = lismClassArr[0];
+
+			// variantを","で分割して配列化
+			const variantArr = variant
+				.split(',')
+				.map((v) => v.trim())
+				.filter(Boolean);
+
+			// {baseClass}--{variant} 形式でクラス名を生成
+			const variantClasses = variantArr.map((v) => `${baseClass}--${v}`);
+			// lismClassの後ろにvariantクラスを追加
+			lismClass = lismClassArr.concat(variantClasses).join(' ');
+		}
+
 		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
 		this.className = atts(
 			classFromAstro,
@@ -115,16 +134,6 @@ class LismPropsData {
 
 		// propsの処理
 		if (!isEmptyObj(others)) {
-			// console.log('others', others);
-
-			// padding, margin, border はフルネームも受け取れるように？
-			// Object.keys(PROP_FULL_NAMES).forEach((_name) => {
-			// 	if (null != others[_name]) {
-			// 		others[PROP_FULL_NAMES[_name]] = others[_name];
-			// 		delete others[_name];
-			// 	}
-			// });
-
 			this.attrs = others;
 
 			// props処理

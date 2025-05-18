@@ -11,7 +11,7 @@
 
 :where(.b--button--fill) {
 	--c: var(--c--base);
-	--bgc: var(--c--text); //transparent;
+	--bgc: var(--c--text);
 	--bdc: var(--bgc);
 }
 
@@ -23,18 +23,17 @@
 .b--button {
 	color: var(--c);
 	background-color: var(--bgc);
-	border: solid 1px var(--bdc); // 異なる variant を並べてもサイズに差が出ないようにborderを常に指定
+	border: solid 1px var(--bdc); /* 異なる variant を並べてもサイズに差が出ないようにborderを常に指定 */
+}
+.b--button:where(.-d\:g) {
+	grid-template-columns: 1em 1fr 1em;
+	justify-items: center;
 
-	:where(&) > .a--icon {
-		--scale: 1.125;
+	> span {
+		grid-column: 2;
 	}
+}
 
-	&:where(.-d\:g) {
-		grid-template-columns: 1em 1fr 1em;
-		justify-items: center;
-
-		> span {
-			grid-column: 2;
-		}
-	}
+:where(.b--button) > .a--icon {
+	--scale: 1.125;
 }

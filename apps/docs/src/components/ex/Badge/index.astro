@@ -1,12 +1,10 @@
 ---
 import { Lism } from '@lism-ui/astro';
+import './style.css';
 
-const { variant, ...props } = Astro.props;
-
-let lismClass = 'b--badge';
-if (variant) lismClass += ` b--badge--${variant}`;
+const props = Astro.props;
 ---
 
-<Lism lismClass={lismClass} tag='span' px='20' bdrs='1' {...props}>
+<Lism lismClass='b--badge' tag='span' px='20' bdrs='1' {...props}>
 	<slot />
 </Lism>
