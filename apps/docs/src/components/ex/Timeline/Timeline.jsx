@@ -1,4 +1,5 @@
 import { Center, Grid, GridItem, Icon, Decorator } from '@lism-ui/core';
+import './style.scss';
 
 export function Root({ children, ...props }) {
 	return (

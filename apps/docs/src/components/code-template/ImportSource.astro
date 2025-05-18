@@ -1,17 +1,10 @@
 ---
 import { Frame, Icon, Flex } from '@lism-ui/astro';
-import { Preview, PreviewCode, PreviewTitle, ImportPackage } from '~/components';
+import { Preview, PreviewCode, PreviewTitle } from '~/components';
 // import Expressive from './Expressive.astro';
+import ImportExComponent from './ImportExComponent.astro';
 
-const {
-	name = '',
-	hasRoot = false,
-	react,
-	astro,
-	css = 'css',
-	others = [],
-	...props
-} = Astro.props;
+const { name = '', hasRoot = false, react, astro, css, others = [], ...props } = Astro.props;
 
 // pathの例: /apps/docs/src/components/ex/ 以降を渡して使う
 // : → %3A , / → %2F
@@ -34,19 +27,8 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 		)
 	}
 	{
-		css && (
-			<PreviewCode slot='tab' label='CSS'>
-				<Frame ovy='auto' maxH='25rem'>
-					<script
-						src={`${embedUrl}?target=${encodeURI(`${basePath}style.${css}`)}&${queryMeta}`}
-					/>
-				</Frame>
-			</PreviewCode>
-		)
-	}
-	{
 		react && (
-			<PreviewCode slot='tab' label='React'>
+			<PreviewCode slot='tab' label='React (.jsx)'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
 						src={`${embedUrl}?target=${encodeURI(`${basePath}${hasRoot ? `${name}.jsx` : 'index.jsx'}`)}&${queryMeta}`}
@@ -57,7 +39,7 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 	}
 	{
 		astro && (
-			<PreviewCode slot='tab' label='Astro'>
+			<PreviewCode slot='tab' label='Astro(.astro)'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
 						src={`${embedUrl}?target=${encodeURI(`${basePath}index.astro`)}&${queryMeta}`}
@@ -66,7 +48,17 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 			</PreviewCode>
 		)
 	}
-
+	{
+		css && (
+			<PreviewCode slot='tab' label='CSS'>
+				<Frame ovy='auto' maxH='25rem'>
+					<script
+						src={`${embedUrl}?target=${encodeURI(`${basePath}style.${css}`)}&${queryMeta}`}
+					/>
+				</Frame>
+			</PreviewCode>
+		)
+	}
 	{
 		others.map((path) => {
 			return (
@@ -87,6 +79,8 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 <Flex ai='c' mbs='10' fz='s'>
 	<Icon variant='inline' icon='note' c='blue' /> ソースコードを手動でコピー&ペーストしてご利用ください。
 </Flex>
+
+<ImportExComponent component={name} react={react} astro={astro} hasRoot={hasRoot} />
 
 <!-- {
 	hasRoot && (

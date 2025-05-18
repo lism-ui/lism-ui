@@ -13,7 +13,7 @@ import '~/components/ex/List/style.scss';
 
 ## Import
 
-<ImportSource name='List' css react astro />
+<ImportSource name='List' css='scss' react astro />
 
 
 ## Usage
@@ -32,7 +32,7 @@ import '~/components/ex/List/style.scss';
 				</ul>
 			</li>
 		</List>
-		<List variant='check' lh='1.5'>
+		<List variant='check'>
 			<li>List item 1</li>
 			<li>List item 2</li>
 			<li>
@@ -43,34 +43,77 @@ import '~/components/ex/List/style.scss';
 				</ul>
 			</li>
 		</List>
-		<List variant='caret' lh='2'>
+		<List variant='caret'>
 			<li>List item 1</li>
 			<li>List item 2</li>
-			<li>
-				<>List item 3</>
-				<ul>
-					<li>Nested item</li>
-					<li>Nested item</li>
-				</ul>
-			</li>
+			<li>List item 3</li>
 		</List>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<List>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>
+				<>List item 3</>
+				<ul>
+					<li>Nested item</li>
+					<li>Nested item</li>
+				</ul>
+			</li>
+		</List>
+		<List variant='check'>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>
+				<>List item 3</>
+				<ul>
+					<li>Nested item</li>
+					<li>Nested item</li>
+				</ul>
+			</li>
+		</List>
+		<List variant='caret'>
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>List item 3</li>
 		</List>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<ul class='l--list'>
+		<ul class="b--list">
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>
+				List item 3
+				<ul>
+					<li>Nested item</li>
+					<li>Nested item</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="b--list b--list--check">
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>
+				List item 3
+				<ul>
+					<li>Nested item</li>
+					<li>Nested item</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="b--list b--list--caret">
+			<li>List item 1</li>
+			<li>List item 2</li>
+			<li>List item 3</li>
 		</ul>
 		```
 	</PreviewCode>
 </Preview>
 
 {/* ↓ lh大きくしたり改行ありのテスト */}
-
 {/* <List variant='caret' lh='2'>
 	<li>List item 1</li>
 	<li>List item 2</li>
