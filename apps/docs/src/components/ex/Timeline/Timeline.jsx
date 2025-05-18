@@ -43,16 +43,17 @@ export function Item({
 	isEnd,
 	isHighlighted,
 	icon,
+	iconProps = {},
 	shapeColor,
 	children,
 	...props
 }) {
 	let dataTimeline = null;
-	const lineProps = {
+	let lineProps = {
 		gr: isHorizontal ? '1' : '1 / -1',
 		gc: isHorizontal ? '1 / -1' : '1',
 	};
-	const shapeProps = {
+	let shapeProps = {
 		gr: isHorizontal ? '1' : '2',
 		gc: isHorizontal ? '2' : '1',
 	};
@@ -63,8 +64,10 @@ export function Item({
 	}
 	if (isEnd) {
 		dataTimeline = 'end';
-		lineProps[`${isHorizontal ? 'jslf' : 'aslf'}`] = 's';
-		if (!isHorizontal) lineProps.gr = '1 / 3';
+		lineProps = Object.assign(
+			lineProps,
+			isHorizontal ? { jslf: 's' } : { gr: '1 / 3', aslf: 's' }
+		);
 	}
 	if (!icon) {
 		shapeProps.fz = '2xs';
@@ -93,7 +96,7 @@ export function Item({
 						op='low'
 					/>
 				)}
-				{icon && <Icon icon={icon} scale='0.75' fz='s' />}
+				{icon && <Icon icon={icon} scale='0.75' fz='s' {...iconProps} />}
 			</Shape>
 			{children}
 		</Grid>

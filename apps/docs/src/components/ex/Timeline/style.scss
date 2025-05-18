@@ -1,15 +1,14 @@
 .c--timeline {
-	// --shape-size: 0.75rem;
-	--start-space: var(--s30);
-	--end-space: var(--s30);
+	--edge-space: var(--s30);
+	--start-space: var(--edge-space);
+	--end-space: var(--edge-space);
 	--line-len: 100%;
 	--shape-size: 1.5rem;
 	--highlight-offset: -3px;
-	--edge-offset: calc(var(--shape-size) / 2);
+	--edge-line-offset: calc(var(--shape-size) / 2);
 	--shape-space: calc(var(--shape-size) + var(--highlight-offset) * -1);
 }
 
-// subグリッドでいい感じにできそう？
 .c--timeline__item {
 	grid: var(--start-space) auto auto auto var(--end-space) / var(--shape-space) 1fr;
 }
@@ -28,15 +27,16 @@
 
 [data-timeline='start'] {
 	--start-space: 0;
-	--line-len: calc(100% - var(--edge-offset));
+	--line-len: calc(100% - var(--edge-line-offset));
 }
 [data-timeline='end'] {
 	--end-space: 0;
-	--line-len: calc(100% - var(--edge-offset));
+	--line-len: calc(100% - var(--edge-line-offset));
 }
 
 .c--timeline--horizontal {
-	--edge-offset: 50%;
+	--edge-space: var(--s20);
+	--edge-line-offset: calc(50% - var(--edge-space) / 2);
 	grid-auto-flow: column;
 	grid-template-rows: var(--shape-space) auto auto auto;
 

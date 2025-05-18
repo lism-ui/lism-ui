@@ -3,10 +3,19 @@ import { Frame, Icon, Flex } from '@lism-ui/astro';
 import { Preview, PreviewCode, PreviewTitle, ImportPackage } from '~/components';
 // import Expressive from './Expressive.astro';
 
-const { name = '', react, astro, css, others = [], ...props } = Astro.props;
+const {
+	name = '',
+	hasRoot = false,
+	react,
+	astro,
+	css = 'css',
+	others = [],
+	...props
+} = Astro.props;
 
 // pathの例: /apps/docs/src/components/ex/ 以降を渡して使う
 // : → %3A , / → %2F
+const embedUrl = 'https://emgithub.com/embed-v2.js';
 const basePath =
 	'https://github.com/lism-ui/lism-ui/blob/main/apps/docs/src/components/ex/' + name + '/';
 const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=on&showCopy=on';
@@ -14,11 +23,22 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 
 <Preview>
 	{
+		hasRoot && (
+			<PreviewCode slot='tab' label='index.js'>
+				<Frame ovy='auto' maxH='25rem'>
+					<script
+						src={`${embedUrl}?target=${encodeURI(basePath + 'index.js')}&${queryMeta}`}
+					/>
+				</Frame>
+			</PreviewCode>
+		)
+	}
+	{
 		css && (
 			<PreviewCode slot='tab' label='CSS'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
-						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'style.scss')}&${queryMeta}`}
+						src={`${embedUrl}?target=${encodeURI(`${basePath}style.${css}`)}&${queryMeta}`}
 					/>
 				</Frame>
 			</PreviewCode>
@@ -29,7 +49,7 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 			<PreviewCode slot='tab' label='React'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
-						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'index.jsx')}&${queryMeta}`}
+						src={`${embedUrl}?target=${encodeURI(`${basePath}${hasRoot ? `${name}.jsx` : 'index.jsx'}`)}&${queryMeta}`}
 					/>
 				</Frame>
 			</PreviewCode>
@@ -40,7 +60,7 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 			<PreviewCode slot='tab' label='Astro'>
 				<Frame ovy='auto' maxH='25rem'>
 					<script
-						src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + 'index.astro')}&${queryMeta}`}
+						src={`${embedUrl}?target=${encodeURI(`${basePath}index.astro`)}&${queryMeta}`}
 					/>
 				</Frame>
 			</PreviewCode>
@@ -53,7 +73,7 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 				<PreviewCode slot='tab' label={path} key={path}>
 					<Frame ovy='auto' maxH='25rem'>
 						<script
-							src={`https://emgithub.com/embed-v2.js?target=${encodeURI(basePath + path)}&${queryMeta}`}
+							src={`${embedUrl}?target=${encodeURI(`${basePath}${path}`)}&${queryMeta}`}
 						/>
 					</Frame>
 				</PreviewCode>
@@ -67,3 +87,11 @@ const queryMeta = 'style=github-dark&type=code&showLineNumbers=on&showFileMeta=o
 <Flex ai='c' mbs='10' fz='s'>
 	<Icon variant='inline' icon='note' c='blue' /> ソースコードを手動でコピー&ペーストしてご利用ください。
 </Flex>
+
+<!-- {
+	hasRoot && (
+		<Expressive copyCode={getCopyCode('core')}>
+			<Fragment set:html={getCode('core')} />
+		</Expressive>
+	)
+} -->

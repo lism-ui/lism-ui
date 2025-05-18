@@ -7,13 +7,18 @@ import { Lism, Dummy, Text, Stack, Grid, Decorator } from '@lism-ui/core';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
 import Timeline from '~/components/ex/Timeline';
 import '~/components/ex/Timeline/style.scss';
+import { MegaphoneSimple } from '@phosphor-icons/react';
 
 タイムラインの構築例を紹介します。
 
 
 ## Import
-<ImportSource name='Timeline' react css/>
 
+<ImportSource name='Timeline' hasRoot react css='scss'/>
+
+```jsx
+import Timeline from '~/components/Timeline/index.js';
+```
 
 ## Examples
 
@@ -76,9 +81,10 @@ import '~/components/ex/Timeline/style.scss';
 
 
 
-### End, Startの指定
+### End, Startの指定, シェイプの協調
 
-最初と最後の要素にそれぞれ`isStart`、`isEnd`を指定すると、ラインの上下のはみ出しをなくします。
+最初と最後の要素にそれぞれ`isStart`、`isEnd`を指定すると、ラインの上下のはみ出しをなくします。  
+また、`isHighlighted`でハイライト表示、`shapeColor`でシェイプの色を指定できます。
 
 
 <Preview>
@@ -99,7 +105,7 @@ import '~/components/ex/Timeline/style.scss';
 					<Dummy lang='ja'/>
 				</Timeline.Text>
 			</Timeline.Item>
-			<Timeline.Item isEnd>
+			<Timeline.Item isEnd isHighlighted shapeColor='red'>
 				<Timeline.Time>20yy年m月dd日</Timeline.Time>
 				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
@@ -109,7 +115,7 @@ import '~/components/ex/Timeline/style.scss';
 		</Timeline.Root>
 	</PreviewArea>
 	<PreviewCode>
-```jsx "isStart" "isEnd"
+```jsx "isStart" "isEnd" "isHighlighted" "shapeColor"
 <Timeline.Root>
 	<Timeline.Item isStart>
 		<Timeline.Time>20yy年m月dd日</Timeline.Time>
@@ -125,7 +131,7 @@ import '~/components/ex/Timeline/style.scss';
 			<Dummy lang='ja'/>
 		</Timeline.Text>
 	</Timeline.Item>
-	<Timeline.Item isEnd>
+	<Timeline.Item isEnd isHighlighted shapeColor='red'>
 		<Timeline.Time>20yy年m月dd日</Timeline.Time>
 		<Timeline.Text>
 			<Text>Lism x.y.z がリリース。</Text>
@@ -138,65 +144,6 @@ import '~/components/ex/Timeline/style.scss';
 </Preview>
 
 
-### シェイプの強調
-
-`isHighlighted`でハイライト表示、`shapeColor`でシェイプの色を指定できます。
-
-<Preview>
-	<PreviewTitle>使用例</PreviewTitle>
-	<PreviewArea p='30'>
-		<Timeline.Root>
-			<Timeline.Item>
-				<Timeline.Time>20yy年m月dd日</Timeline.Time>
-				<Timeline.Text>
-					<Text>Lism x.y.z がリリース。</Text>
-					<Dummy lang='ja'/>
-				</Timeline.Text>
-			</Timeline.Item>
-			<Timeline.Item isHighlighted shapeColor='red'>
-				<Timeline.Time>20yy年m月dd日</Timeline.Time>
-				<Timeline.Text>
-					<Text>Lism x.y.z がリリース。</Text>
-					<Dummy lang='ja'/>
-				</Timeline.Text>
-			</Timeline.Item>
-			<Timeline.Item isHighlighted>
-				<Timeline.Time>20yy年m月dd日</Timeline.Time>
-				<Timeline.Text>
-					<Text>Lism x.y.z がリリース。</Text>
-					<Dummy lang='ja'/>
-				</Timeline.Text>
-			</Timeline.Item>
-		</Timeline.Root>
-	</PreviewArea>
-	<PreviewCode>
-```jsx "isHighlighted" "shapeColor"
-<Timeline.Root>
-	<Timeline.Item>
-		<Timeline.Time>20yy年m月dd日</Timeline.Time>
-		<Timeline.Text>
-			<Text>Lism x.y.z がリリース。</Text>
-			<Dummy lang='ja'/>
-		</Timeline.Text>
-	</Timeline.Item>
-	<Timeline.Item isHighlighted shapeColor='red'>
-		<Timeline.Time>20yy年m月dd日</Timeline.Time>
-		<Timeline.Text>
-			<Text>Lism x.y.z がリリース。</Text>
-			<Dummy lang='ja'/>
-		</Timeline.Text>
-	</Timeline.Item>
-	<Timeline.Item>
-		<Timeline.Time>20yy年m月dd日</Timeline.Time>
-		<Timeline.Text>
-			<Text>Lism x.y.z がリリース。</Text>
-			<Dummy lang='ja'/>
-		</Timeline.Text>
-	</Timeline.Item>
-</Timeline.Root>
-```
-	</PreviewCode>
-</Preview>
 
 
 
@@ -206,7 +153,7 @@ import '~/components/ex/Timeline/style.scss';
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Timeline.Root>
-			<Timeline.Item icon='star'>
+			<Timeline.Item icon={MegaphoneSimple} iconProps={{weight:"fill"}} >
 				<Timeline.Time>20yy年m月dd日</Timeline.Time>
 				<Timeline.Text>
 					<Text>Lism x.y.z がリリース。</Text>
@@ -265,7 +212,7 @@ import '~/components/ex/Timeline/style.scss';
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Timeline.Root variant='horizontal'>
-				<Timeline.Item isHorizontal isStart icon='star'>
+				<Timeline.Item isHorizontal isStart>
 					<Timeline.Time>20yy年m月dd日</Timeline.Time>
 					<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
 					<Timeline.Text>
@@ -291,7 +238,7 @@ import '~/components/ex/Timeline/style.scss';
 	<PreviewCode>
 	```jsx "horizontal" "isHorizontal"
 		<Timeline.Root variant='horizontal'>
-			<Timeline.Item isHorizontal isStart icon='star'>
+			<Timeline.Item isHorizontal isStart>
 				<Timeline.Time>20yy年m月dd日</Timeline.Time>
 				<Timeline.Title>Lism x.y.z がリリース。</Timeline.Title>
 				<Timeline.Text>
