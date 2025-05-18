@@ -16,13 +16,27 @@ import Badge from '~/components/ex/Badge/index.astro';
 		<Flex g='20'>
 			<Badge>Badge</Badge>
 			<Badge variant='outline'>Badge</Badge>
+			{/* <Lism tag='span' px='20' bgc='text' c='base' bd bdrs='2'>
+				Badge
+			</Lism>
+			<Lism tag='span' px='20' bd bdrs='2'>
+				Badge
+			</Lism> */}
 		</Flex>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
+	<PreviewCode slot='tab' label='Component'>
 		```jsx
 		<Flex g='20'>
 			<Badge>Badge</Badge>
 			<Badge variant='outline'>Badge</Badge>
+		</Flex>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX(only core)'>
+		```jsx
+		<Flex g='20'>
+			<Lism tag='span' px='20' bgc='text' c='base' bd bdrs='2'>Badge</Lism>
+			<Lism tag='span' px='20' bd bdrs='2'>Badge</Lism>
 		</Flex>
 		```
 	</PreviewCode>

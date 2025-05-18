@@ -13,5 +13,5 @@
 .b--badge {
 	color: var(--c);
 	background-color: var(--bgc);
-	border: solid 1px var(--bdc); // 異なる variant を並べてもサイズに差が出ないようにborderを常に指定
+	border: solid 1px var(--bdc); /* 異なる variant を並べてもサイズに差が出ないようにborderを常に指定 */
 }
