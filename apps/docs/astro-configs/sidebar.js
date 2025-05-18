@@ -205,10 +205,7 @@ export default [
 				label: 'Button',
 				link: '/components/button/',
 			},
-			{
-				label: 'DividerLabel',
-				link: '/components/dividerlabel/',
-			},
+
 			{
 				label: 'List',
 				link: '/components/list/',
@@ -263,10 +260,13 @@ export default [
 				label: 'Breadcrumb',
 				link: '/components/breadcrumb/',
 			},
-
 			{
 				label: 'Decorations',
 				link: '/components/decorations/',
+			},
+			{
+				label: 'DividerLabel',
+				link: '/components/dividerlabel/',
 			},
 			{
 				label: 'FAQ',
