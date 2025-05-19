@@ -2,9 +2,9 @@ import atts from '../../lib/helper/atts';
 import getBpData from '../../lib/getBpData';
 import getMaybeCssVar from '../../lib/getMaybeCssVar';
 
-export default function getSpacerProps({ lismClass, variant, ...props }) {
+export default function getSpacerProps({ lismClass, ...props }) {
 	const defaultProps = {
-		lismClass: atts(lismClass, `a--spacer`, variant && `a--spacer--${variant}`),
+		lismClass: atts(lismClass, `l--spacer`),
 		'aria-hidden': 'true',
 	};
 

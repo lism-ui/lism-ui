@@ -24,7 +24,6 @@ export * from './Container';
 export * from './Layer';
 export * from './LinkBox';
 
-// a--
 export * from './Spacer';
 export * from './Decorator';
 export * from './Divider';

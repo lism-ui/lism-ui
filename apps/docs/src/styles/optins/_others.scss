@@ -55,14 +55,15 @@
 // ...
 // --------------------
 
-// .a--icon--emoji {
-// 	// emoji 考慮
+// emoji
+// .l--icon--emoji {
 // 	font-family: var(--ff--emoji);
 // 	line-height: 1;
 // 	place-content: center; // justify-content: center;
 // 	place-items: center; // align-items: center;
 // }
-// .a--icon--mask {
+
+// .l--icon--mask {
 // 	width: 1em;
 // 	height: 1em;
 // 	background-color: currentColor;
@@ -73,10 +74,10 @@
 // Accordion
 // --------------------
 .d--accordion__icon {
-	> .a--icon:nth-last-of-type(2) {
+	> .l--icon:nth-last-of-type(2) {
 		opacity: calc(1 - var(--opened));
 	}
-	> .a--icon:nth-of-type(2) {
+	> .l--icon:nth-of-type(2) {
 		opacity: calc(0 + var(--opened));
 		rotate: calc(180deg - var(--opened) * 180deg);
 	}

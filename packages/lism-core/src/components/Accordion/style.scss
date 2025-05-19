@@ -48,7 +48,7 @@
 // アコーディオンブロックのネスト時、別のアイコンタイプにすると表示が崩れるがそこまでは考慮しない。
 :where(.d--accordion__icon) {
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
-	> .a--icon {
+	> .l--icon {
 		transition: rotate 0.25s;
 		rotate: calc(0deg - var(--opened) * 180deg);
 		grid-area: 1 / 1;

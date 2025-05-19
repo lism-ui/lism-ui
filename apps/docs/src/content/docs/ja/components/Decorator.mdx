@@ -13,16 +13,16 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Referen
 
 ## 構造
 ```pug
-div.a--decorator[aria-hidden="true"]
+div.l--decorator[aria-hidden="true"]
 ```
 
 
 
 ## Props
 
-| プロパティ | 説明 |
+| Prop | 説明 |
 |---|---|
-|`size`| デコレーターのサイズ（横幅・高さ）を一括指定します。<br/>この指定がある場合、`ar='1'`が自動で付与され、指定したサイズは`w`に渡されます。|
+|`size`| デコレーターのサイズ（横幅・高さ）を一括指定します。<br/>この指定がある場合、指定したサイズは`w`(`width`)に渡され、`ar='1/1'`(`aspect-ratio:1/1`)が自動で付与されます。|
 
 
 
@@ -38,7 +38,7 @@ div.a--decorator[aria-hidden="true"]
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Grid ta='l'>
+		<Grid>
 			<Decorator
 				size='1.25em'
 				bd='l'
@@ -58,7 +58,7 @@ div.a--decorator[aria-hidden="true"]
 	</PreviewArea>
 	<PreviewCode slot="tab" label="JSX">
 		```jsx
-		<Grid ta='l'>
+		<Grid>
 			<Decorator
 				size='1.25em'
 				bd='l'
@@ -79,6 +79,13 @@ div.a--decorator[aria-hidden="true"]
 	</PreviewCode>
 	<PreviewCode slot="tab" label="HTML">
 	```jsx
+	<div class="l--grid">
+		<div class="l--decorator -bd:l -trfo:lb -rotate:45 -ar:1/1 -w:" style="--w:1.25em" aria-hidden="true"></div>
+			<div class="l--box -p:20">
+				<p> Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi. </p>
+			</div>
+		<div class="l--decorator -bd:l -trfo:lt -rotate:-45 -ar:1/1 -w:" style="--w:1.25em" aria-hidden="true">    </div>
+	</div>
 	```
 	</PreviewCode>
 </Preview>

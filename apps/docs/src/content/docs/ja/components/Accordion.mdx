@@ -51,7 +51,7 @@ import { Minus, Plus, X, Question, CaretDoubleDown, EyeClosed, Eyes } from "@pho
 	<summary class="d--accordion__header l--flex -ai:c">
 		<span class="d--accordion__label -fx:1">Accordion.Label</span>
 		<span class="d--accordion__icon -d:if">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="a--icon" aria-hidden="true"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="l--icon" aria-hidden="true"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>
 		</span>
 	</summary>
 	<div class="d--accordion__body l--grid -mbs:20">
@@ -298,10 +298,10 @@ import { CaretDoubleDown } from "@phosphor-icons/react";
 	<PreviewCode slot='tab' label='CSS'>
 ```scss
 .d--accordion__icon {
-	> .a--icon:nth-last-of-type(2) {
+	> .l--icon:nth-last-of-type(2) {
 		opacity: calc(1 - var(--opened));
 	}
-	> .a--icon:nth-of-type(2) {
+	> .l--icon:nth-of-type(2) {
 		opacity: calc(0 + var(--opened));
 		rotate: calc(180deg - var(--opened) * 180deg);
 	}
@@ -589,7 +589,7 @@ CSSで`:root`の`--acc-duration`を上書きすると、デフォルトの開閉
 	<summary class="d--accordion__header l--flex -ai:c">
 		<span class="d--accordion__label -fx:1">Labelテキスト（<a href="#acc-innerlink">ヘルプリンク</a></span>
 		<button class="d--accordion__icon -d:if" data-role="trigger">
-			<svg class="a--icon"...>...</svg>
+			<svg class="l--icon"...>...</svg>
 		</button>
 	</summary>
 	<div class="d--accordion__body l--grid -mbs:20">

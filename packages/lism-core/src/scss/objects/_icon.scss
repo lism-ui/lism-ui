@@ -1,14 +1,14 @@
 /* fill指定のない svg にテキストカラーを継承させる */
-:where(.a--icon:not([fill])) {
+:where(.l--icon:not([fill])) {
 	fill: currentcolor;
 }
 
-:where(.a--icon:not([width])) {
+:where(.l--icon:not([width])) {
 	width: 1em;
 	height: 1em;
 }
 
-.a--icon {
+.l--icon {
 	--scale: 1;
 	--offset: 0;
 	scale: var(--scale);
@@ -18,11 +18,11 @@
 	flex-shrink: 0; // Callout など、アイコンはflex直下の子要素にしたい場合も多いので、指定しておく
 }
 
-.a--icon:where(.has--mask) {
+.l--icon:where(.has--mask) {
 	background: currentColor;
 }
 
-.a--icon--inline {
+.l--icon--inline {
 	--scale: 1.125; // inline時、余白でテキストより小さく見えがちなのでほんの少し拡大する
 	vertical-align: -0.125em; // scale とは無関係
 	margin-inline: calc(1em * (var(--scale) - 1) / 2);

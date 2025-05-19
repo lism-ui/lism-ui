@@ -27,11 +27,7 @@ export const PresetIcons = ({icons}) => {
 
 ## 構造
 ```pug
-svg.a--icon(.a--icon--inline)
-
-or 
-
-span.a--icon(.a--icon--emoji|.a--icon--mask)(.a--icon--inline)
+svg.l--icon(.l--icon--inline)
 ```
 
 
@@ -39,18 +35,18 @@ span.a--icon(.a--icon--emoji|.a--icon--mask)(.a--icon--inline)
 
 | プロパティ | 説明 |
 |---|---|
-| `variant` | 指定すると、`.a--icon--{variant}`クラスも同時に出力されます。 |
-| `as` | 外部のアイコンコンポーネントを指定して呼び出せます。 |
-| `exProps` | 外部のアイコンコンポーネントに渡すpropsを指定できます。 |
-| `icon` | アイコンを指定できます。指定した内容によって出力が変わります。 |
-| `emoji`| emoji用のクラスを付与して、指定した絵文字をそのまま出力します。 |
-| `size` | プリセットアイコンを呼び出す場合、`width`, `height`として出力されます。|
+| `icon` | アイコンを指定できます。指定した内容によって出力処理が変わります。 |
+| `size` | プリセットアイコンを呼び出す場合に有効。`width`, `height`として出力されます。|
 | `scale` <PropBadge type="cssvar">--scale</PropBadge>| アイコンの scale を指定できます。css変数で出力されます。 |
 | `label` <PropBadge type="attr">aria-label</PropBadge>| `aria-label`として出力します。指定があれば`role="img"`が同時に出力され、指定がない場合は`aria-hidden="true"`が出力されます。 |
 
+{/* | `emoji`| emoji用のクラスを付与して、指定した絵文字をそのまま出力します。 | */}
 
-{/* | `preset` | プリセットアイコン名を指定できます。 | */}
-{/* | `as` | 使用したい外部のアイコンコンポーネントを指定できます。 | */}
+{/*
+| `variant` | 指定すると、`.l--icon--{variant}`クラスも同時に出力されます。 |
+| `as` | 外部のアイコンコンポーネントを指定して呼び出せます。 |
+| `exProps` | 外部のアイコンコンポーネントに渡すpropsを指定できます。 |
+*/}
 
 
 
@@ -63,7 +59,7 @@ span.a--icon(.a--icon--emoji|.a--icon--mask)(.a--icon--inline)
 
 ### 外部のパッケージを利用する方法
 
-`<Icon>`コンポーネントでも`as`&`exProps`が使用できます。
+Lismコンポーネントの共通プロパティ、`as`&`exProps`を使用します。
 
 これにより、`react-icons`,`@phosphor-icons/react`などのサードパーティパッケージを`<Icon>`を通して展開することができます。
 
@@ -72,7 +68,6 @@ AstroでReact製のアイコンパッケージを利用する場合は、別途A
 </Callout> */}
 
 <Spacer h={10}/>
-
 
 <Preview>
 	<PreviewTitle>外部コンポーネントを`as`に指定する</PreviewTitle>
@@ -104,31 +99,41 @@ import { Icon } from '@lism-ui/core';
 	</PreviewCode>
 </Preview>
 
-<Note type='note' title='Note'>
+{/* <Note type='note' title='Note'>
 `exProps`に私たプロパティは、Lism側で処理されなくなります。  
 現状`weight`,`size`は Lism Propsには存在しないプロパティ名なので、`exProps`を使う必要はないですが、今後のアップデートで同名のプロパティが追加された場合でも影響を受けません。
-</Note>
+</Note> */}
 
 <Spacer h={10}/>
 
+
 #### as, exProps のを icon にまとめて指定する
 
-`<Icon>`では、以下のような形式で`as`, `exProps`を指定することもできます。
+<Note type='point' title='Point'>
+`<Icon>`では、以下のような形式で`as`, `exProps`を一括指定することもできます。
 
 ```jsx
-<Icon icon={{as:Component, ...exProps}} ... />
+<Icon icon={{as:Component, exProps1, exProps2, ...}} />
 ```
+</Note>
+
 
 <Preview>
-	<PreviewTitle>`icon`に`as`, `exProps`を一括指定する</PreviewTitle>
+	<PreviewTitle>`icon`に`as`, `exProps`を一括指定する例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Icon icon={{as:Smiley, weight:'fill', size:'3em'}} c='blue' />
 	</PreviewArea>
-	<PreviewCode>
-		```jsx "icon=" "as:"
+		<PreviewCode slot='tab' label='一括'>
+		```jsx "weight:'fill', size:'3em'" "as:Smiley"
 		<Icon icon={{as:Smiley, weight:'fill', size:'3em'}} c='blue' />
 		``` 
 	</PreviewCode>
+	<PreviewCode slot='tab' label='分割'>
+		```jsx "as=" "exProps="
+		<Icon as={Smiley} exProps={{weight:'fill', size:'3em'}} c='blue' />
+		``` 
+	</PreviewCode>
+
 </Preview>
 
 
@@ -138,21 +143,22 @@ import { Icon } from '@lism-ui/core';
 {/* <Preview>
 	<PreviewTitle>アイコンを`children`に渡す</PreviewTitle>
 	<PreviewArea p='30'>
-		<Cat className="a--icon" weight="thin" size="3em" />
+		<Cat className="l--icon" weight="thin" size="3em" />
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Cat className="a--icon" weight="thin" size="3em" />
+		<Cat className="l--icon" weight="thin" size="3em" />
 		```
 	</PreviewCode>
 </Preview> */}
 
 
 
-### Lism UI に内包されたアイコンを呼び出す方法
+### プリセットアイコンを呼び出す方法
 
-Lismパッケージ内にはいくつかsvgアイコンを内包しています。  
-`icon='icon-name'`と指定することで、それらのアイコンを呼び出すことができます。  
+Lismパッケージ（`@lism-ui/core`)内にはいくつかsvgアイコンを内包しています。
+
+`icon='icon-name'`と文字列でその名前を指定することで、プリセットアイコンを呼び出すことができます。  
 （[Phosphor Icons](https://phosphoricons.com/) を使わせていただいています。）
 
 <PreviewTitle>Phosphorアイコン一覧</PreviewTitle>
@@ -166,7 +172,7 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 </Container>
 
 <Preview>
-	<PreviewTitle>プリセット指定例</PreviewTitle>
+	<PreviewTitle>プリセットアイコン呼び出し例</PreviewTitle>
 	<PreviewArea p='30'>
 		<Cluster g='20'>
 			<Icon icon='lightbulb' size='40px' />
@@ -185,7 +191,7 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 
 
 
-### svgを直接記述する
+### svgを直接記述する方法
 
 `<Icon>`は、`viewBox`の指定があれば`<svg>`で出力されます。  
 子要素にそのまま`path`などを配置してsvgを描画できます。
@@ -207,7 +213,7 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "--size:"
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="a--icon -c:" style="--c:var(--blue)">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="3em" height="3em" fill="currentColor" focusable="false" aria-label="Phosphor Icons のロゴ" role="img" class="l--icon -c:" style="--c:var(--blue)">
 			<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM80,108a12,12,0,1,1,12,12A12,12,0,0,1,80,108Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,176,108Zm-1.07,48c-10.29,17.79-27.4,28-46.93,28s-36.63-10.2-46.92-28a8,8,0,1,1,13.84-8c7.47,12.91,19.21,20,33.08,20s25.61-7.1,33.07-20a8,8,0,0,1,13.86,8Z"></path>
 		</svg>
 		```
@@ -215,12 +221,12 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 </Preview>
 
 
-### has--mask との併用
+{/* ### has--mask との併用
 
 `<Icon>`で （[`hasMask`(`.shas--mask`)](/ja/css/layout-state/#has--mask)  を使う例を紹介します。
 
 <Preview>
-	<PreviewTitle>絵文字を使う</PreviewTitle>
+	<PreviewTitle>maskを使う</PreviewTitle>
 	<PreviewArea p='30'>
 		<Icon fz='4xl' hasMask='<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM80,108a12,12,0,1,1,12,12A12,12,0,0,1,80,108Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,176,108Zm-1.07,48c-10.29,17.79-27.4,28-46.93,28s-36.63-10.2-46.92-28a8,8,0,1,1,13.84-8c7.47,12.91,19.21,20,33.08,20s25.61-7.1,33.07-20a8,8,0,0,1,13.86,8Z"></path></svg>'
 		/>
@@ -233,24 +239,24 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<span class="a--icon has--mask -fz:4xl" style="--mask-img:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0xMjgsMjRBMTA0LDEwNCwwLDEsMCwyMzIsMTI4LDEwNC4xMSwxMDQuMTEsMCwwLDAsMTI4LDI0Wm0wLDE5MmE4OCw4OCwwLDEsMSw4OC04OEE4OC4xLDg4LjEsMCwwLDEsMTI4LDIxNlpNODAsMTA4YTEyLDEyLDAsMSwxLDEyLDEyQTEyLDEyLDAsMCwxLDgwLDEwOFptOTYsMGExMiwxMiwwLDEsMS0xMi0xMkExMiwxMiwwLDAsMSwxNzYsMTA4Wm0tMS4wNyw0OGMtMTAuMjksMTcuNzktMjcuNCwyOC00Ni45MywyOHMtMzYuNjMtMTAuMi00Ni45Mi0yOGE4LDgsMCwxLDEsMTMuODQtOGM3LjQ3LDEyLjkxLDE5LjIxLDIwLDMzLjA4LDIwczI1LjYxLTcuMSwzMy4wNy0yMGE4LDgsMCwwLDEsMTMuODYsOFoiPjwvcGF0aD48L3N2Zz4=)" aria-hidden="true"></span>
+		<span class="l--icon has--mask -fz:4xl" style="--mask-img:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0xMjgsMjRBMTA0LDEwNCwwLDEsMCwyMzIsMTI4LDEwNC4xMSwxMDQuMTEsMCwwLDAsMTI4LDI0Wm0wLDE5MmE4OCw4OCwwLDEsMSw4OC04OEE4OC4xLDg4LjEsMCwwLDEsMTI4LDIxNlpNODAsMTA4YTEyLDEyLDAsMSwxLDEyLDEyQTEyLDEyLDAsMCwxLDgwLDEwOFptOTYsMGExMiwxMiwwLDEsMS0xMi0xMkExMiwxMiwwLDAsMSwxNzYsMTA4Wm0tMS4wNyw0OGMtMTAuMjksMTcuNzktMjcuNCwyOC00Ni45MywyOHMtMzYuNjMtMTAuMi00Ni45Mi0yOGE4LDgsMCwxLDEsMTMuODQtOGM3LjQ3LDEyLjkxLDE5LjIxLDIwLDMzLjA4LDIwczI1LjYxLTcuMSwzMy4wNy0yMGE4LDgsMCwwLDEsMTMuODYsOFoiPjwvcGF0aD48L3N2Zz4=)" aria-hidden="true"></span>
 		```
 	</PreviewCode>
 </Preview>
 
-※ 出力時にはbase64にエンコードされます。
+※ 出力時にはbase64にエンコードされます。 */}
 
 
 ## Variants
 
 ### `variant='inline'`
 
-`variant='inline'` を 指定すると、`.a--icon--inline`クラスも出力されます。
+`variant='inline'` を 指定すると、`.l--icon--inline`クラスも出力されます。
 
-`.a--icon--inline`に対しては次のようなCSSが適用されており、インラインで文字と並んでも見やすくなるような調整がデフォルトで入っています。
+`.l--icon--inline`に対しては次のようなCSSが適用されており、インラインで文字と並んでも見やすくなるような調整がデフォルトで入っています。
 
 ```css
-.a--icon--inline {
+.l--icon--inline {
 	--scale: 1.125; /* アイコンは小さくなりがちなので、デフォルトでほんのり拡大 */
 	vertical-align: -0.125em; /* テキストの下部付近に揃える */
 	margin-inline: calc(1em * (var(--scale) - 1) / 2); /* scaleを考慮してマージンをつける */
@@ -277,34 +283,34 @@ Lismパッケージ内にはいくつかsvgアイコンを内包しています�
 
 
 
-
-
-
-
 {/* ## Opt-in
 
 ### emoji の指定
 
-`icon`ではなく`emoji`に絵文字を指定すると、`.a--icon--emoji`クラスが付与され、絵文字用のCSSが適用されます。
+`icon`ではなく`emoji`に絵文字を指定すると、`.l--icon--emoji`クラスが付与され、絵文字用のCSSが適用されます。
 
 <Preview>
 	<PreviewTitle>絵文字を使う</PreviewTitle>
 	<PreviewArea p='30'>
 		<Flex g='20'>
-			<Icon emoji='✍️' fz='2xl' />
-			<Icon emoji='💡' fz='2xl' />
+			<Icon fz='2xl' lh='1'>✍️</Icon>
+			<Icon fz='2xl' lh='1'>💡</Icon>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Icon emoji='✍️' fz='2xl' />
-		<Icon emoji='💡' fz='2xl' />
+		<Flex g='20'>
+			<Icon fz='2xl' lh='1'>✍️</Icon>
+			<Icon fz='2xl' lh='1'>💡</Icon>
+		</Flex>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```html
-		<span class="a--icon a--icon--emoji -fz:2xl" aria-hidden="true">✍️</span>
-		<span class="a--icon a--icon--emoji -fz:2xl" aria-hidden="true">💡</span>
+		<div class="l--flex -g:20">
+			<span class="l--icon -fz:2xl -lh:1" aria-hidden="true">✍️</span>
+			<span class="l--icon -fz:2xl -lh:1" aria-hidden="true">💡</span>
+		</div>
 		```
 	</PreviewCode>
 </Preview> */}

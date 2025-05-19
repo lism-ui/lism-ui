@@ -25,8 +25,8 @@ export default function getProps({
 	...props
 }) {
 	// props.skipState = true;
-	const iconClasses = [`a--icon`];
-	// if (variant) iconClasses.push(`a--icon--${variant}`);
+	const iconClasses = [`l--icon`];
+	// if (variant) iconClasses.push(`l--icon--${variant}`);
 
 	let Component = tag || 'span';
 
@@ -35,9 +35,7 @@ export default function getProps({
 	if (props.viewBox) {
 		Component = 'svg';
 	} else if (emoji) {
-		iconClasses.push('a--icon--emoji');
-	} else if (mask) {
-		props.hasMask = mask;
+		iconClasses.push('l--icon--emoji');
 	} else if (icon) {
 		// icon が 文字列の場合、プリセットアイコンを呼び出す
 		if (typeof icon === 'string') {

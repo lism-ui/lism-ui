@@ -15,7 +15,7 @@ export default function ({ lismClass, size, ...props }) {
 	// props.style = style;
 
 	const defaultProps = {
-		lismClass: atts(lismClass, `a--decorator`),
+		lismClass: atts(lismClass, `l--decorator`),
 		skipState: true,
 		'aria-hidden': 'true',
 	};

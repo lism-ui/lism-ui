@@ -34,6 +34,6 @@
 	}
 }
 
-:where(.b--button) > .a--icon {
+:where(.b--button) > .l--icon {
 	--scale: 1.125;
 }
