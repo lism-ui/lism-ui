@@ -1,4 +1,4 @@
-.b--shapeDivider {
+.c--shapeDivider {
 	:where(&) {
 		--level: 0;
 		--offsetY: 0;
@@ -14,7 +14,7 @@
 	translate: 0 var(--offsetY);
 }
 
-.b--shapeDivider__inner {
+.c--shapeDivider__inner {
 	scale: var(--stretch) 1;
 	translate: var(--offsetX) 0;
 }

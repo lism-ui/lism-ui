@@ -8,7 +8,6 @@
 @forward './withSide';
 // @forward '../../components/WithSide/style.scss';
 
-// dynamic layout
-@forward '../../components/Accordion/style.scss';
-@forward '../../components/Modal/style.scss';
-@forward '../../components/Tabs/style.scss';
+@forward './icon.scss';
+@forward './divider.scss';
+// @forward './spacer.scss';

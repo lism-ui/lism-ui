@@ -80,7 +80,7 @@ export default function BalloonBox({
 	}
 
 	return (
-		<Flex lismClass='b--balloonBox' variant={variant} {...parentProps} {...props}>
+		<Flex lismClass='c--balloonBox' variant={variant} {...parentProps} {...props}>
 			<Lism pos='r' bd p='30' w='fit-content' bdw={bdw} bdrs={bdrs} {...colorProps}>
 				{children}
 				<Decorator

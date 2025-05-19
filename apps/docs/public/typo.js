@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// const targetParagraphs = document.querySelectorAll('.fzDemo .b--demoBox__preview :is(p,h1,h2,h3,h4,h5,h6)');
+	// const targetParagraphs = document.querySelectorAll('.fzDemo .c--demoBox__preview :is(p,h1,h2,h3,h4,h5,h6)');
 	const targetParagraphs = document.querySelectorAll('.fzDemo .is--lipsum');
 
 	// 各段落に対して処理を実行

@@ -11,15 +11,21 @@
 @layer lism-base {
 	@include meta.load-css('base');
 }
-@layer lism-layout {
+@layer lism-state {
 	@include meta.load-css('state');
+}
+@layer lism-layout {
 	@include meta.load-css('layout');
 }
-@layer lism-object {
-	@include meta.load-css('objects');
+@layer lism-dynamic {
+	@include meta.load-css('dynamic');
 }
-
-@include meta.load-css('utility');
+@layer lism-component {
+	@include meta.load-css('component');
+}
+@layer lism-utility {
+	@include meta.load-css('utility');
+}
 @include meta.load-css('props');
 
 // @use './base.scss';

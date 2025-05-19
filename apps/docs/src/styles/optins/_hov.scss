@@ -32,10 +32,10 @@
 .-hov\:reverse {
 	--hov-c: var(--bgc);
 	--hov-bgc: var(--c);
-	&:where(.b--button--fill) {
+	&:where(.c--button--fill) {
 		--hov-bgc: transparent;
 	}
-	&:where(.b--button--outline) {
+	&:where(.c--button--outline) {
 		--hov-c: var(--c--base);
 	}
 	&:hover {

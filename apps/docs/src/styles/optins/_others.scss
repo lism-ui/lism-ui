@@ -37,12 +37,12 @@
 // --------------------
 // Button offset
 // --------------------
-// :where(.b--button) {
+// :where(.c--button) {
 // 	--icon-scale: 1.25;
 // 	--icon-offset: 0%;
 // }
 
-// .b--button__icon {
+// .c--button__icon {
 // 	&:where(:first-child) {
 // 		translate: calc(0px - var(--icon-offset));
 // 	}

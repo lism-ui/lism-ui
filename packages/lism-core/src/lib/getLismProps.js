@@ -49,7 +49,6 @@ class LismPropsData {
 			class: classFromAstro,
 			className,
 			lismClass,
-			uClass,
 			variant,
 			// lismVar,
 			passVars,
@@ -124,11 +123,10 @@ class LismPropsData {
 
 		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
 		this.className = atts(
-			classFromAstro,
-			className, // ユーザー指定のクラス
 			lismClass,
 			lismState, // is, has
-			uClass
+			classFromAstro,
+			className // ユーザー指定のクラス
 			// lismUtil
 		);
 

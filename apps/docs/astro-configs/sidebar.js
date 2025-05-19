@@ -62,6 +62,22 @@ export default [
 				link: '/components/dummy/',
 			},
 			{
+				label: 'State',
+				link: '###---',
+			},
+			{
+				label: 'Container',
+				link: '/components/container/',
+			},
+			{
+				label: 'Layer',
+				link: '/components/layer/',
+			},
+			{
+				label: 'LinkBox',
+				link: '/components/linkbox/',
+			},
+			{
 				label: 'props',
 				link: '###---',
 			},
@@ -77,6 +93,7 @@ export default [
 			// 	label: 'getLismProps()',
 			// 	link: '/props/get-lism-props/',
 			// },
+
 			{
 				label: 'Layouts',
 				link: '###---',
@@ -150,22 +167,6 @@ export default [
 				label: 'Icon',
 				link: '/components/icon/',
 			},
-			{
-				label: 'State',
-				link: '###---',
-			},
-			{
-				label: 'Container',
-				link: '/components/container/',
-			},
-			{
-				label: 'Layer',
-				link: '/components/layer/',
-			},
-			{
-				label: 'LinkBox',
-				link: '/components/linkbox/',
-			},
 
 			{
 				label: 'Dynamic',
@@ -200,6 +201,7 @@ export default [
 				label: 'Button',
 				link: '/components/button/',
 			},
+
 			{
 				label: 'Banner',
 				link: '/components/banner/',
@@ -255,6 +257,10 @@ export default [
 			{
 				label: 'Breadcrumb',
 				link: '/components/breadcrumb/',
+			},
+			{
+				label: 'BalloonBox',
+				link: '/components/banner/',
 			},
 			{
 				label: 'Decorations',

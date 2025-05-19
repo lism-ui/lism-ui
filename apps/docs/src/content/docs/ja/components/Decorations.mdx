@@ -5,7 +5,6 @@ description: ...
 
 import { Grid, Stack, Flex, GridItem, Decorator, Box, Spacer, Dummy } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout } from "~/components";
-import BalloonBox from '~/components/ex/Decorations/balloon';
 
 装飾ボックスの作成例を紹介します。
 
@@ -32,17 +31,13 @@ import { DecoBox } from '@lism-ui/core';
 
 ### Call
 
-{/* <Box p='30' bd uClass='is--trimHL'>
-	<h2>Call</h2>
-	<Dummy />
-	<img src='/img/img-1.jpg' alt='' width='960' height='640' />
-</Box> */}
 
-{/* mr:auto は rtlになっても同じ方向からでるように。 */}
+`mr:auto` は rtl言語でも同じ方向になるように、left,rightの方向指定を使ってます。
+
 <Preview>
 	<PreviewTitle>Call</PreviewTitle>
-	<PreviewArea resize p='30' dir='rtr'>
-		<Grid className='b--callBox b--callBox--left' ta='l'>
+	<PreviewArea resize p='30'>
+		<Grid ta='l'>
 			<Decorator
 				size='1.25em'
 				bd='left'
@@ -50,8 +45,8 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='left bottom'
 				mr='auto'
 			/>
-			<Box p='30'>
-				<Dummy />
+			<Box p='30' mr='auto'>
+				<Dummy length='s'/>
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -61,7 +56,7 @@ import { DecoBox } from '@lism-ui/core';
 				mr='auto'
 			/>
 		</Grid>
-		<Grid className='b--callBox b--callBox--right' as={Grid} ta='r'>
+		<Grid as={Grid}>
 			<Decorator
 				size='1.25em'
 				bd='right'
@@ -69,8 +64,8 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 				ml='auto'
 			/>
-			<Box p='30'>
-				<Dummy length='s' />
+			<Box p='30' ml='auto'>
+				<Dummy length='xs' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -81,7 +76,7 @@ import { DecoBox } from '@lism-ui/core';
 			/>
 		</Grid>
 		<Spacer h='10' />
-		<Flex variant='ltr' className='b--callBox b--callBox--top' jc='center' ta='c'>
+		<Flex variant='ltr' jc='center' ta='c'>
 			<Decorator
 				fxsh='0'
 				size='1.25em'
@@ -90,7 +85,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right top'
 			/>
 			<Box px='20' py='5'>
-				<Dummy length='s' />
+				<Dummy length='xs' />
 			</Box>
 			<Decorator
 				fxsh='0'
@@ -103,7 +98,6 @@ import { DecoBox } from '@lism-ui/core';
 		<Spacer h='10' />
 		<Flex
 			variant='ltr'
-			className='b--callBox b--callBox--bottom'
 			jc='center'
 			ai='fe'
 			ta='c'
@@ -116,7 +110,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 			/>
 			<Box px='20' py='5' fxg=''>
-				<Dummy length='l' />
+				<Dummy length='s' />
 			</Box>
 			<Decorator
 				fxsh='0'
@@ -129,7 +123,7 @@ import { DecoBox } from '@lism-ui/core';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Grid className='b--callBox b--callBox--left' ta='l'>
+		<Grid ta='l'>
 			<Decorator
 				size='1.25em'
 				bd='left'
@@ -137,8 +131,8 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='left bottom'
 				mr='auto'
 			/>
-			<Box p='30'>
-				<Dummy />
+			<Box p='30' mr='auto'>
+				<Dummy length='s'/>
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -148,7 +142,7 @@ import { DecoBox } from '@lism-ui/core';
 				mr='auto'
 			/>
 		</Grid>
-		<Grid className='b--callBox b--callBox--right' as={Grid} ta='r'>
+		<Grid as={Grid}>
 			<Decorator
 				size='1.25em'
 				bd='right'
@@ -156,8 +150,8 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 				ml='auto'
 			/>
-			<Box p='30'>
-				<Dummy length='s' />
+			<Box p='30' ml='auto'>
+				<Dummy length='xs' />
 			</Box>
 			<Decorator
 				size='1.25em'
@@ -167,7 +161,8 @@ import { DecoBox } from '@lism-ui/core';
 				ml='auto'
 			/>
 		</Grid>
-		<Flex variant='ltr' className='b--callBox b--callBox--top' jc='center' ta='c'>
+		<Spacer h='10' />
+		<Flex variant='ltr' jc='center' ta='c'>
 			<Decorator
 				fxsh='0'
 				size='1.25em'
@@ -176,7 +171,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right top'
 			/>
 			<Box px='20' py='5'>
-				<Dummy length='s' />
+				<Dummy length='xs' />
 			</Box>
 			<Decorator
 				fxsh='0'
@@ -186,9 +181,9 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='left top'
 			/>
 		</Flex>
+		<Spacer h='10' />
 		<Flex
 			variant='ltr'
-			className='b--callBox b--callBox--bottom'
 			jc='center'
 			ai='fe'
 			ta='c'
@@ -201,7 +196,7 @@ import { DecoBox } from '@lism-ui/core';
 				transformOrigin='right bottom'
 			/>
 			<Box px='20' py='5' fxg=''>
-				<Dummy length='l' />
+				<Dummy length='s' />
 			</Box>
 			<Decorator
 				fxsh='0'
@@ -265,7 +260,7 @@ import { DecoBox } from '@lism-ui/core';
 				minW='8em'
 				maxW='30em'
 				bgc='base-2'
-				p='40'
+				p='30'
 				w='fit-content'
 				bd='r'
 				bdw='.5em'
@@ -294,7 +289,7 @@ import { DecoBox } from '@lism-ui/core';
 				minW='8em'
 				maxW='30em'
 				bgc='base-2'
-				p='40'
+				p='30'
 				w='fit-content'
 				bd='r'
 				bdw='.5em'
@@ -317,28 +312,3 @@ import { DecoBox } from '@lism-ui/core';
 		```
 	</PreviewCode>
 </Preview>
-
-### balloon
-
-<Preview>
-	<PreviewTitle>Balloon</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<BalloonBox variant='left'>
-			<Dummy />
-		</BalloonBox>
-		<BalloonBox variant='right' keycolor='blue'>
-			<Dummy />
-		</BalloonBox>
-		<BalloonBox variant='top' bdc='divider' bgc='base-2'>
-			<Dummy />
-		</BalloonBox>
-		<BalloonBox variant='bottom' bdw='2px' keycolor='red'>
-			<Dummy />
-		</BalloonBox>
-	</PreviewArea>
-	<PreviewCode>
-	```jsx
-	```
-	</PreviewCode>
-</Preview>
-

@@ -6,8 +6,8 @@ const { textPosition, bd = 'bs', bdc = 'currentColor', bdw, bds, ...props } = As
 const bdProps = { bd, bdc, bdw, bds };
 ---
 
-<Flex lismClass='b--dividerLabel' ai='c' g='30' lh='1' {...props}>
+<Flex lismClass='c--dividerLabel' ai='c' g='30' lh='1' {...props}>
 	{textPosition !== 'start' && <Divider op='mid' fx='1' {...bdProps} />}
-	<div class='b--dividerLabel__text'><slot /></div>
+	<div class='c--dividerLabel__text'><slot /></div>
 	{textPosition !== 'end' && <Divider op='mid' fx='1' {...bdProps} />}
 </Flex>

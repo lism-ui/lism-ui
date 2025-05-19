@@ -59,28 +59,24 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td>`@lism-base`<br />~0-0-1</td>
 		</tr>
 		<tr>
-			<td style={{verticalAlign: 'top'}}>Layout State</td>
-			<td>レイアウト,デザインを組む上での特定の役割を持ち、複数のモジュールに対してつけ外しできるようなもの。</td>
-			<td rowSpan={3}><span class='-whs:nw'>`@lism-layout`</span><br />0-1-0</td>
+			<td class='-whs:nw'>Layout State<br />`.is--{state}`<br />`.has--{state}`</td>
+			<td>レイアウトを組む上で特定の役割を持ち、複数のモジュールに対してつけ外しできるような汎用的な機能。</td>
+			<td><span class='-whs:nw'>`@lism-state`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Layout Module</td>
-			<td>基礎的なレイアウトを組むためのモジュール群。</td>
+			<td class='-whs:nw'>Layout Module<br />`.l--{name}`</td>
+			<td>基礎的なレイアウトを組むためのモジュール群。レイアウトの構成単位となるようなモジュール。</td>
+			<td><span class='-whs:nw'>`@lism-layout`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Dynamic Module</td>
-			<td>JavaScriptと組み合わせた動的な機能を持つモジュール群</td>
+			<td class='-whs:nw'>Dynamic Module<br />`.d--{name}`</td>
+			<td>動的な機能を持つ特殊なモジュール群。JavaScriptと組み合わせたものなど。</td>
+			<td><span class='-whs:nw'>`@lism-dynamic`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Atoms</td>
-			<td rowSpan={3}>単体で具体的な役割を持つコンポーネント群</td>
-			<td rowSpan={3}>`@lism-layout`<br />0-1-0</td>
-		</tr>
-		<tr>
-			<td>Blocks</td>
-		</tr>
-		<tr>
-			<td>Components</td>
+			<td>Components<br />`.c--{name}`</td>
+			<td>具体的な役割を持つコンポーネント群。他のクラスだけでは補えないコンポーネント特有のスタイルをまとめる。</td>
+			<td>`@lism-component`<br />0-1-0</td>
 		</tr>
 		{/* <tr>
 			<td>Block</td>
@@ -91,12 +87,12 @@ LismがどのようなCSS設計になっているかを説明します。
 			<td>0-1-0</td>
 		</tr> */}
 		<tr>
-			<td>Utility Class</td>
+			<td class='-whs:nw'>Utility Class<br />`.u--{name}`</td>
 			<td>その他、機能やスタイルが明確なユーティリティクラス。</td>
 			<td><span class='-whs:nw'>`@lism-utility`</span><br />0-1-0</td>
 		</tr>
 		<tr>
-			<td>Props Class</td>
+			<td class='-whs:nw'>Props Class<br />`.-{prop}:{val}`</td>
 			<td>単一のCSSプロパティティに紐づいたクラス。</td>
 			<td>0-1-0</td>
 		</tr>
@@ -149,9 +145,6 @@ Layout State はそれ単体でスタイルを持ち、Temporary State はそれ
 |Dynamic<HelpText tag='small'>JSと組み合わせた動きのあるモジュール</HelpText>|`.d--{name}`|`.d--tabs`|
 |Component<HelpText tag='small'>その他のコンポーネント</HelpText>|`.c--{name}`|`.c--card`|
 
-{/* |Atom<HelpText tag='small'>コンテンツの構成要素としてそれ以上分割できない要素</HelpText>|`.a--{name}`|`.a--icon`| */}
-{/* |Block<HelpText tag='small'>シンプルな役割を持つ要素</HelpText>|`.b--{name}`|`.b--button`| */}
-
 {/* それぞれ[CSS階層](#cssの階層構造)に沿って詳細度と読み込み順序を調整してクラスとスタイルを定義します。  
 <small>（ただし、Temporary Stateはそれ単体でスタイルを持たないので、適宜必要なところでスタイルを定義してください。）</small> */}
 
@@ -173,7 +166,7 @@ Blocks はAtom,Layoutクラスで構成されるような粒度（（他のBlock
 モジュールのバリエーションスタイルを定義する場合、BEMでの Modifier を付け加えたクラスを作成します。
 
 - 形式:`.{prefix}--{name}--{variant}`
-- 例: `.b--button--outline`
+- 例: `.c--button--outline`
 
 基本的には元となる`.{pefix}--{name}`も併記し、CSSコードの重複を避けるようにして運用します。
 
