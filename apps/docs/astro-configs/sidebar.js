@@ -46,32 +46,40 @@ export default [
 				link: '/components/lism/',
 			},
 			{
+				label: 'Text',
+				link: '/components/text/',
+			},
+			{
+				label: 'Link',
+				link: '/components/link/',
+			},
+			{
+				label: 'Media',
+				link: '/components/media/',
+			},
+			{
+				label: 'Dummy',
+				link: '/components/dummy/',
+			},
+			{
 				label: 'props',
 				link: '###---',
 			},
 			{
-				label: 'Lism Props',
-				link: '/props/lism-props/',
-			},
-			{
 				label: 'CSS Props',
-				link: '/props/css-props/',
+				link: '/components/props/css-props/',
 			},
 			{
 				label: 'Responsive Props',
-				link: '/props/responsive-props/',
+				link: '/components/props/responsive-props/',
 			},
-			{
-				label: 'getLismProps()',
-				link: '/props/get-lism-props/',
-			},
+			// {
+			// 	label: 'getLismProps()',
+			// 	link: '/props/get-lism-props/',
+			// },
 			{
 				label: 'Layouts',
 				link: '###---',
-			},
-			{
-				label: 'Box',
-				link: '/components/box/',
 			},
 			{
 				label: '---',
@@ -98,38 +106,49 @@ export default [
 				link: '/components/griditem/',
 			},
 			{
-				label: '---',
-				link: '###---',
-			},
-
-			// {
-			// 	label: '---',
-			// 	link: '###---',
-			// },
-			{
 				label: 'Center',
 				link: '/components/center/',
-			},
-			{
-				label: 'Frame',
-				link: '/components/frame/',
 			},
 			{
 				label: 'Columns',
 				link: '/components/columns/',
 			},
 			{
-				label: 'Reel',
-				link: '/components/reel/',
+				label: '---',
+				link: '###---',
 			},
-
 			{
-				label: 'Table',
-				link: '/components/table/',
+				label: 'Box',
+				link: '/components/box/',
+			},
+			{
+				label: 'Frame',
+				link: '/components/frame/',
+			},
+			{
+				label: 'Divider',
+				link: '/components/divider/',
+			},
+			{
+				label: 'Spacer',
+				link: '/components/spacer/',
 			},
 			{
 				label: 'WithSide',
 				link: '/components/withside/',
+			},
+
+			{
+				label: '---',
+				link: '###---',
+			},
+			{
+				label: 'Decorator',
+				link: '/components/decorator/',
+			},
+			{
+				label: 'Icon',
+				link: '/components/icon/',
 			},
 			{
 				label: 'State',
@@ -164,35 +183,11 @@ export default [
 				label: 'Tabs',
 				link: '/components/tabs/',
 			},
-			{
-				label: 'Atoms',
-				link: '###---',
-			},
-			{
-				label: 'Decorator',
-				link: '/components/decorator/',
-			},
-			{
-				label: 'Divider',
-				link: '/components/divider/',
-			},
-			{
-				label: 'Icon',
-				link: '/components/icon/',
-			},
-			{
-				label: 'Spacer',
-				link: '/components/spacer/',
-			},
 		],
 	},
 	{
 		label: 'Opt-in Components',
 		items: [
-			{
-				label: 'Blocks',
-				link: '###---',
-			},
 			{
 				label: 'Avatar',
 				link: '/components/avatar/',
@@ -204,20 +199,6 @@ export default [
 			{
 				label: 'Button',
 				link: '/components/button/',
-			},
-
-			{
-				label: 'List',
-				link: '/components/list/',
-			},
-			{
-				label: 'ShapeDivider',
-				link: '/components/shapedivider/',
-			},
-
-			{
-				label: 'Components',
-				link: '###---',
 			},
 			{
 				label: 'Banner',
@@ -236,6 +217,10 @@ export default [
 				link: '/components/chat/',
 			},
 			{
+				label: 'List',
+				link: '/components/list/',
+			},
+			{
 				label: 'Note',
 				link: '/components/note/',
 			},
@@ -243,7 +228,18 @@ export default [
 				label: 'NavMenu',
 				link: '/components/navmenu/',
 			},
-
+			{
+				label: 'Reel',
+				link: '/components/reel/',
+			},
+			{
+				label: 'ShapeDivider',
+				link: '/components/shapedivider/',
+			},
+			{
+				label: 'Table',
+				link: '/components/table/',
+			},
 			{
 				label: '---',
 				link: '###---',

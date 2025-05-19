@@ -1,0 +1,28 @@
+---
+title: 'Dummy'
+description: ...
+---
+import { Lism, Text, Dummy } from "@lism-ui/astro";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
+
+ダミーテキストを出力できるLismコンポーネントです。
+
+<Preview>
+	<PreviewTitle>Textの例 1</PreviewTitle>
+	<PreviewArea p='30'>
+		<Dummy lang='ja' length='xs'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='s'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='l'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='xl'>Lorem ipsum text.</Dummy>
+	</PreviewArea>
+	<PreviewCode>
+		```jsx
+		<Dummy lang='ja' length='xs'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='s'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='l'>Lorem ipsum text.</Dummy>
+		<Dummy lang='ja' length='xl'>Lorem ipsum text.</Dummy>
+		```
+	</PreviewCode>
+</Preview>

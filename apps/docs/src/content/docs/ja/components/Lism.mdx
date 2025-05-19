@@ -2,25 +2,53 @@
 title: 'Lism'
 description: ...
 ---
-import { Lism, Text, Dummy, Link, Media, Frame, Callout } from "@lism-ui/astro";
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
+import { Lism, Text, Dummy, Link, Media, Frame } from "@lism-ui/astro";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, IconBadge, Reference, ImportPackage, Callout } from "~/components";
 
-Lism Props( [CSS Props](/docs/props/css-props) 及び [State Props](/docs/props/state-props) )を受け取るための特殊なコンポーネントです。  
-何も指定がなければ、ただの`<div>`タグを返します。
-{/* 他のライブラリで作成されたコンポーネントに対して Lism Props を使用したい場合などにも利用できます。 */}
+LismのCSS設計に対応した様々なプロパティを受け取ることができるようになっている汎用的なコンポーネントです。
+
+<Callout type='info'>
+Lismで配布しているほぼ全てのコンポーネントは、この`<Lism>`がベースなっています。  
+</Callout>
 
 
-Lismで配布しているコンポーネントのほぼ全ては、この`<Lism>`がベースなっています。
+
+## Usage
+
+<Preview>
+	<PreviewTitle>`<Lism>`の出力例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Lism　p='30' fw='bold' c='blue' bgc='base-2' bdrs='3'>Lism content</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Lism　p='30' fw='bold' c='blue' bgc='base-2' bdrs='3'>Lism content</Lism>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div class="-p:30 -fw:bold -c: -bgc:base-2 -bdrs:3"> Lism content </div>
+		```
+	</PreviewCode>
+</Preview>
 
 
-## Props
-
-| プロパティ | 説明 |
-|---|---|
-|`tag`| 出力する HTMLタグを指定できます。デフォルトは`div`を返します。|
-|`as`| Lism Propsの処理後、asに指定された別コンポーネントとして展開できます。 |
-|`exProps`| Lism Propsとして処理したくないpropsを指定できます。`as`で指定した外部コンポーネントに渡したいpropsを指定するのにも便利です。|
-|`skipState`| State Props用の処理をスキップできます。|
+<Preview>
+	<PreviewTitle>何も指定がなければ、ただの`<div>`タグを返します。</PreviewTitle>
+	<PreviewArea p='30'>
+		<Lism>Lism content</Lism>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx
+		<Lism>Lism content</Lism>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='HTML'>
+		```jsx
+		<div>Lism content</div>
+		```
+	</PreviewCode>
+</Preview>
 
 
 ## Import
@@ -39,34 +67,237 @@ import { Lism } from '@lism-ui/astro';
 </Preview>
 
 
-## Usage
+
+
+
+## Lism Props
+
+`<Lism>`をベースとした`@lism/core`で提供する各コンポーネントで受け取れるプロパティを**Lism Props**と呼んでいます。
+
+Lism Propsは、主に以下の3種類に分類されます。
+
+|種別|説明|
+|---|---|
+|**Common Props**|基本的な共通プロパティ|
+|**State Props**|[Layout State](/ja/css/layout-state/) に分類されるクラスを出力するためのプロパティ|
+|**CSS Props**|[Prop Class](/ja/css/prop-class/) に分類されるクラスを出力するためのプロパティ|
+
+<IconBadge type='warning' /> `skipState`が指定されているコンポーネントでは、**State Props**は受け取れません。
+
+
+### Common Props
+
+| Prop | 説明 |
+|---|---|
+|`tag`| 出力する HTMLタグを指定できます。デフォルトは`div`を返します。|
+|`lismClass`| Lismコンポーネント名となる主要なクラス名。|
+|`variant`| lismClassに対するバリエーションクラスを出力できます。lismClass に複数クラスが指定されている場合、先頭のクラスに対してバリエーションクラスを出力します。`,`区切りで複数指定できます。|
+
+上記の他、少し複雑なものがいくつかあります。それらについては後述の[補足](#補足)で解説しています。
+
+### State Props
+
+[Layout State](/ja/css/layout-state/) クラスに対応するプロパティ群です。
+
+
+| Prop | 出力されるクラス |
+|---|---|
+| `isFlow(='{s\|l}')` | `.is--flow`+`(.-flow:{s\|l})` |
+| `isContainer(='{s\|m\|l}')` | `.is--container`+`(.-container:{s\|m\|l})` |
+| `isFrame` | `.l--frame` |
+| `isLayer` | `.is--layer` |
+| `isLinkBox` | `.is--linkBox` |
+| `isWide`,<br />`isFullwide`,<br />`isOverwide` | `.is--wide`,<br />`.is--fullwide`,<br />`.is--overwide` |
+| `hasGutter` | `.has--gutter` |
+| `hasDivider` | `.has--divider` |
+
+<Reference>
+[Layout State クラスについての解説と使用例はこちら](/ja/css/layout-state/)
+</Reference>
+
+
+### CSS Props
+
+主要なCSSプロパティに対して、それぞれ省略記法でコンポーネントに指定できるようになっています。  
+例えば、`font-size` は `fz`、`padding` は `p` で指定できます。
+
 
 <Preview>
-	<PreviewTitle>Lismの使用例</PreviewTitle>
-	<PreviewArea p='30'>
-		<Lism p='30' bgc='base-2'>
-			<p>Content...</p>
-		</Lism>
-	</PreviewArea>
+<PreviewTitle>例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism fz='l' p='20'>contents</Lism>
+↓
+<div class="-fz:l -p:20">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+この時、[Prop Class](/ja/css/prop-class/) に対応する値が指定されれば、上記のようにクラスが出力されるようになっています。
+
+<Reference>
+[指定可能なCSS Props一覧はこちら](/ja/components/props/css-props/)
+</Reference>
+
+#### 対応するProp Classがない値を指定した場合
+
+以下のどちらかで出力されます。
+
+1. 単純に`style`属性にインライン出力される。
+2. `-{prop}:` & `--{prop}` の組み合わせで出力される。
+
+<Preview>
+<PreviewTitle>1. の単純なstyle属性への出力の例</PreviewTitle>
+<PreviewCode>
+```jsx  "tsh='0 0 8px #555'" "text-shadow:0 0 8px #555"
+<Lism tsh='0 0 8px #555'>contents</Lism>
+↓
+<div style="text-shadow:0 0 8px #555">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+<Preview>
+<PreviewTitle>2. のクラスと変数の組み合わせ出力の例</PreviewTitle>
+<PreviewCode>
+```jsx "fz='20px'" "-fz:" "--fz:20px"
+<Lism fz='20px'>contents</Lism>
+↓
+<div class="-fz:" style="--fz:20px">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+ブレイクポイントでの切り替えに対応しているような主要なプロパティは、2. の`-{prop}:` & `--{prop}` で出力されます。
+
+{/* <p class='-fz:s -op:high -mbs:5'>そのほか、(変数管理できた方が利便性が高いので)主要なプロパティも変数化されるようになっています。</p> */}
+
+
+<Preview>
+<PreviewTitle>ブレイクポイントに対応したプロパティの出力例</PreviewTitle>
+<PreviewCode>
+```jsx
+<Lism fz={['20px','30px']}>contents</Lism>
+↓
+<div class="-fz: -fz@sm" style="--fz:20px;--sm-fz:30px">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+<Reference>
+[ブレイクポイントで値を切り替える書き方はこちらのページで解説しています](/ja/components/props/responsive-props/)
+</Reference>
+
+
+<div id='output-utility'></div>
+#### ユーティリティクラスとして強制的に出力する方法
+
+対応するProp Classがない場合でも、`u:`からはじめることでその後ろの文字列がユーティリティクラス名として出力されます。
+```jsx
+<Lism p='u:hoge'>...</Lism>
+
+↓
+
+<div class="-p:hoge">...</div>
+```
+
+必要に応じて独自のクラス名を定義してCSSを追加しておくと、それを活用することができます。
+
+```css
+.-p\;hoge{
+	/* ... your styles ... */
+}
+```
+
+<Callout>
+`className='-p:hoge'` としてももちろん大丈夫ですが、`u:`を使ってCSS Propとして渡すことで、Moduleクラスよりも後ろでこのクラスが出力されるようになります。
+</Callout>
+
+
+#### 変数なしで`-{prop}:`クラスのみを出力する方法
+CSS Props に対して`"-"`または`true`を指定すると、変数なしで`-{prop}:`クラスのみを出力します。
+
+<Preview>
+<PreviewTitle>例</PreviewTitle>
+<PreviewCode>
+```jsx "p='-'" "bdrs" "-p:" "-bdrs:"
+<Lism p='-' bdrs>contents</Lism>
+↓
+<div class="-p: -bdrs:">contents</div>
+```
+</PreviewCode>
+</Preview>
+
+CSS側で変数の中身を記述したい場合や、**親と同じ変数を継承したい場合**などに活用できます。
+
+
+## 補足
+
+{/* |`as`| Lism Propsの処理後、asに指定された別コンポーネントとして展開できます。 |
+|`exProps`| Lism Propsとして処理したくないpropsを指定できます。`as`で指定した外部コンポーネントに渡したいpropsを指定するのにも便利です。|
+|`skipState`| State Props用の処理をスキップできます。| */}
+
+### as
+
+`<Lism>`コンポーネントを最終的に**別の外部コンポーネント**として展開することができます。
+
+<Preview>
+	<PreviewTitle>例、Lismの`<Media>`コンポーネントをNext.jsの`<Image>`で展開する</PreviewTitle>
 	<PreviewCode>
-		```jsx
-		<Lism p='30' bgc='base-2'>
-			<p>Content...</p>
-		</Lism>
-		```
+```jsx
+import Image from 'next/image';
+
+<Media as={Image} src='...' bxsh='2' bdrs='3' />
+```
 	</PreviewCode>
 </Preview>
 
+先に Lism Props を解析して `class`, `style` を生成してから、`as`で指定したコンポーネントに渡します。  
+Lismコンポーネント以外に対しても Lism Props を使いたい時に活用してください。
+
+
+### exProps
+
+Lism Props としての処理をスキップしたいプロパティを指定できます。
+
+
+`as`で指定した外部コンポートが受け取れるプロパティと Lism Props の名前が被っている場合など、外部コンポーネント用のプロパティであることを明示的にしたい時に便利です。  
+
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewCode>
+```jsx
+<Icon as={Hoge} exProps={{size:'1em'}} p='10' fz='l'>...</Icon>
+```
+	</PreviewCode>
+</Preview>
+
+上記のようにすることで、Lismの`Icon`コンポーネントで`p`, `fz` を受け取って処理し、`Hoge`という外部コンポーネント側で確実に`size`を受け取ることができます。  
+（現在は Lism 側では `size` は処理されませんが、`exProps`で指定しておくと将来的に影響がでる心配がなくなります。）
+
+
+### pass-get
+
+[`pass-get`](/ja/css/pass-get) に関するプロパティとして、以下ものを受け取れるようになっています。
+
+- `passVars`: `--pass-{prop}` を出力します。オブジェクト形式 `{prop:value}` で指定します。
+- `pass`: `.-pass:{prop}` を出力します。文字列で指定します。複数指定する場合は`,`で区切ります。
+- `get`: `.-get:{prop}` を出力します。文字列で指定します。複数指定する場合は`,`で区切ります。
+
+
+### skipState
+
+State Props用の処理をスキップできます。`<Spacer>`や`<Divider>`、`<Text>`など、明らかに Layout Stateクラスがつかないような粒度のコンポーネントに対して内部的に指定されています。
 
 ## 派生コンポーネント
 
-`<Lism>`は汎用的すぎるので、用途に合わせた派生コンポーネントもいくつか用意されています。
+用途に合わせた派生コンポーネントもいくつか用意されています。
 
 
 ### `<Text>`
 
-テキスト用にデフォルトで`<p>`タグが出力されるようになった`<Lism>`コンポーネントです。  
-（`<Lism tag='p'>`のエイリアス）
+テキスト用に、デフォルトで`<div>`ではなく`<p>`タグが出力されるようになっただけの`<Lism>`コンポーネントです。（`<Lism tag='p'>`のエイリアス）
 
 <Preview>
 	<PreviewTitle>Textの例 1</PreviewTitle>
@@ -88,19 +319,19 @@ import { Lism } from '@lism-ui/astro';
 
 ### `<Link>`
 
-リンク用に少し特殊な処理が加えられているコンポーネントです。
+リンク用に少し特殊な処理が加えられた`<Lism>`コンポーネントです。
 
 - デフォルトで`<a>`タグが出力されます。
-- `isOverlayLink`で`is--overlayLink`クラス、  
-`isHiddenLink`で`is--hiddenLink`クラスが出力されます。
+- `isOverlayLink`で`is--overlayLink`クラスが出力されます。
+- `isHiddenLink`で`is--hiddenLink`クラスが出力されます。
 
 <Preview>
 	<PreviewTitle>Linkの例</PreviewTitle>
-	<PreviewArea resize p={20}>
+	<PreviewArea p={20}>
 		<p>Lorem ipsum <Link href='###'>link text</Link></p>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx
+		```jsx "<Link href='###'>link text</Link>"
 		<p>Lorem ipsum <Link href='###'>link text</Link></p>
 		```
 	</PreviewCode>
@@ -115,11 +346,12 @@ import { Lism } from '@lism-ui/astro';
 
 ### `<Media>`
 
-メディア用に少し特殊な処理が加えられているコンポーネントで、`<Lism>`と同様のPropsを受け取れるほか、以下のような特徴があります。
+メディア用に少し特殊な処理が加えられている`<Lism>`コンポーネントです。
 
 - デフォルトで`<img>`タグが出力されます。
-- `blur`,`contrast`,`brightness`,`grayscale`,`hueRotate`,`invert`,`saturate`,`sepia`, `dropShadow` を統合し、`css.filter`に受け渡します。
-`<Media>`には filter を指定しやすくなっていますので、それを活用する例も。
+- `<Media>`には filter系プロパティ を指定しやすくなっています。  
+    `blur`,`contrast`,`brightness`,`grayscale`,`hueRotate`,`invert`,`saturate`,`sepia`, `dropShadow` を統合し、`css.filter`に受け渡します。
+- `css.objectFit`,`css.objectPosition` を`css`プロパティを介さずにそのまま受け取れます。
 - `css.objectFit`,`css.objectPosition` を`css`プロパティを介さずにそのまま受け取れます。
 
 
@@ -127,7 +359,7 @@ import { Lism } from '@lism-ui/astro';
 	<PreviewTitle>
 		例
 	</PreviewTitle>
-	<PreviewArea resize>
+	<PreviewArea>
 		<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
@@ -138,10 +370,8 @@ import { Lism } from '@lism-ui/astro';
 </Preview>
 
 <Preview>
-	<PreviewTitle>
-		filter系のプロパティ, objectPositionの指定
-	</PreviewTitle>
-	<PreviewArea resize>
+	<PreviewTitle>filter系のプロパティ, objectPositionの指定</PreviewTitle>
+	<PreviewArea>
 		<Frame tag='figure' ar='16/9' pos='r'>
 			<Media contrast={1.1} saturate={0.2} objectPosition='50% 70%' src='/img/img-2.jpg' alt='' width='960' height='640' />
 			<Text tag='figcaption' pos='a' z='1' b='0' p='5' w='100%' c='white' ta='c' lts='l'>Lorem ipsum text.</Text>
@@ -170,7 +400,7 @@ import { Lism } from '@lism-ui/astro';
 
 #### Next.js の`<Image>`を使う方法
 
-Next.jsの`Image`は、asに渡すことができます。
+Next.jsの`Image`などは、`as`プロパティに渡すことができます。
 
 <PreviewTitle>`as`を活用してでNext.jsの`Image`を渡す</PreviewTitle>
 ```jsx "as={Image}"
@@ -182,41 +412,17 @@ import Image from 'next/image';
 
 #### Astro の`<Image>`を使う方法
 
-Astroの`<Image>`は、`as`に渡すことができません。（Astro の `<Image>` を`as`で渡そうとすると、Astro(TypeScript?)のチェックに引っかかり、「Image missing required "alt" property.」エラーが出てしまいます。）
+Astroの`<Image>`は、`as`に渡すことができません。  
+Astro(TypeScript?)のチェックに引っかかり、「Image missing required "alt" property.」エラーが出てしまいます。
 
 
-そのため、以下のように`as`に`'AstroImage'`という文字列を指定することで内部で`<Image>`が呼び出されるようにしています。
+そのため、`@lism-ui/astro`から読み込んだ`<Media>`では、以下のように`as`に`'AstroImage'`という文字列を指定することで内部で`<Image>`が呼び出されるようにしています。
 
+
+<PreviewTitle>Astroの`<Image>`を使用する例</PreviewTitle>
 ```jsx "as='AstroImage'"
 import { Media } from '@lism-ui/astro';
 import Image from 'next/image';
 
 <Media as='AstroImage' src="/img.jpg" alt="" width='960' height='640' />
 ```
-
-
-
-### `<Dummy>`
-
-テキスト用にデフォルトで`<p>`タグが出力されるようになった`<Lism>`コンポーネントです。  
-（`<Lism tag='p'>`のエイリアス）
-
-<Preview>
-	<PreviewTitle>Textの例 1</PreviewTitle>
-	<PreviewArea p='30'>
-		<Dummy lang='ja' length='xs'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='s'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='l'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='xl'>Lorem ipsum text.</Dummy>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Dummy lang='ja' length='xs'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='s'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='l'>Lorem ipsum text.</Dummy>
-		<Dummy lang='ja' length='xl'>Lorem ipsum text.</Dummy>
-		```
-	</PreviewCode>
-</Preview>
