@@ -1,5 +1,3 @@
-// @use '../query' as query;
-
 // for screen reader
 .u--hidden {
 	position: absolute;
@@ -52,17 +50,25 @@
 
 
 
-// clear float
-// .u--cf::after {
-// 	display: block;
-// 	clear: both;
-// 	width: 0;
-// 	height: 0;
-// 	content: '';
-// }
+.u--hiddenLink {
+	position: absolute;
+	inset: 0;
+}
 
-// .u--end {
-// 	margin-block-start: auto !important;
-// 	margin-block-end: 0 !important;
-// 	place-self: end;
-// }
+.u--overlayLink {
+	text-decoration: none;
+	position: static;
+	color: inherit;
+
+	&::before {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		content: '';
+	}
+}
+
+// 次の要素の mbs を 0 にする。（hidden要素 や absoluteな要素が先頭に入り込んでいる時などに活用できる。）
+.u--skipFlow + * {
+	--mbs: 0;
+}

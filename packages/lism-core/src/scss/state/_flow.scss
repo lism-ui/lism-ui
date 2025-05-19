@@ -38,9 +38,3 @@
 .is--flow > :where(:first-child) {
 	--mbs: 0;
 }
-
-// .is--skipFlow の次の要素は mbs を 0 にする。
-// hidden要素 や absoluteな要素が先頭に入り込んでいる時などに活用できる。
-.is--skipFlow + * {
-	--mbs: 0;
-}

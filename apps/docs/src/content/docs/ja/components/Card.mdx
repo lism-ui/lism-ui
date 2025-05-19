@@ -192,10 +192,10 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 	</PreviewCode>
 </Preview>
 
-リンク要素を一部の要素に限定したい場合や、カード全体をリンクにしつつ、別のリンクを含めたい場合、 `is--overlayLink` か `is--hiddenLink` を使用してください。
+リンク要素を一部の要素に限定したい場合や、カード全体をリンクにしつつ、別のリンクを含めたい場合、 `u--overlayLink` か `u--hiddenLink` を使用してください。
 
 <Preview>
-	<PreviewTitle>`is--overlayLink`を使う例</PreviewTitle>
+	<PreviewTitle>`u--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
 		<Card isLinkBox hov='shadow' sideW='50%'>
 			<CardMedia isSide ar='4/3' pos='r'>
@@ -204,7 +204,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardMedia>
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:l'>
-					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
+					<Link className='u--overlayLink' href='#card-link'>Card Title(Link)</Link>
 				</h3>
 				<Dummy lang='ja' />
 				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
@@ -212,7 +212,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 		</Card>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isLinkBox" "href=" "isOverlayLink"
+		```jsx "isLinkBox" "href=" "u--overlayLink"
 		<Card isLinkBox hov='shadow' sideW='50%'>
 			<CardMedia isSide ar='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
@@ -220,7 +220,7 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 			</CardMedia>
 			<CardBody g='10' p='30'>
 				<h3 className='-fz:l'>
-					<Link isOverlayLink href='#card-link'>Card Title(Link)</Link>
+					<Link className='u--overlayLink' href='#card-link'>Card Title(Link)</Link>
 				</h3>
 				<Dummy lang='ja' />
 				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
@@ -229,41 +229,6 @@ import { Card, CardMedia, CardBody } from '~/components/ex/Card';
 		```
 	</PreviewCode>
 </Preview>
-
-<Preview>
-	<PreviewTitle>`is--hiddenLink`を使う例</PreviewTitle>
-	<PreviewArea resize p='40'>
-		<Card isLinkBox sideW='50%' hov='shadow' >
-			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
-			<CardMedia ar='4/3' isSide pos='r'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
-			</CardMedia>
-			<CardBody g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' />
-				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
-			</CardBody>
-		</Card>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isLinkBox" "setHiddenLink" "href="
-		<Card isLinkBox sideW='50%' hov='shadow' >
-			<Link isHiddenLink href='#card-hiddenlink' aria-label='リンクの読み上げテキスト'/>
-			<CardMedia ar='4/3' isSide>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Link href='#badge-link' pos='a' z='1' hov='up' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n'>Category</Link>
-			</CardMedia>
-			<CardBody g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' />
-				<Link href='#bottom-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Bottom Link</Link>
-			</CardBody>
-		</Card>
-		```
-	</PreviewCode>
-</Preview>
-
 
 
 

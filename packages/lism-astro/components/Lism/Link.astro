@@ -1,14 +1,10 @@
 ---
 import { LismProps } from '../types';
-import getLinkProps from '@lism-ui/core/components/getLinkProps';
+import Lism from './Lism.astro';
 
-// Propsの定義
 interface Props extends LismProps {}
-const { as, exProps, ...props } = Astro.props || {};
-
-const JSX = as || 'a';
 ---
 
-<JSX {...getLinkProps(props)} {...exProps}>
+<Lism skipState tag='a' {...Astro.props || {}}>
 	<slot />
-</JSX>
+</Lism>

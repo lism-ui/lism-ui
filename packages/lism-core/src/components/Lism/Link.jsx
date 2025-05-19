@@ -1,6 +1,5 @@
-import getLinkProps from '../getLinkProps';
+import Lism from './Lism';
 
-export default function Link({ as, exProps = {}, ...props }) {
-	const JSX = as || 'a';
-	return <JSX {...getLinkProps(props)} {...exProps} />;
+export default function Link(props) {
+	return <Lism skipState tag='a' {...props} />;
 }

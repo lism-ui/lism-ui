@@ -18,10 +18,6 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout
 |`target`|target属性を指定できます。|
 |`rel`|rel属性を指定できます| */}
 
-{/* |`openNewTab`|`true`にすると、`target="_blank"`と`rel="noopener noreferrer"`が自動で付与されます。|
-|`setHiddenLink`|`true`にすると、`href`があっても`<LinkBox>`は`div`で出力され、内部に隠しリンク要素（`a.is--hiddenLink`）が出力されます。|
-|`linkLabel`|`setHiddenLink`を指定した時に、リンクの読み上げテキストを指定できます。| */}
-
 
 ## Import
 
@@ -30,25 +26,24 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout
 
 ## Usage
 
-`LinkBox`(`.is--linkBox`）は、次の3通りの使い方ができます。
+`<LinkBox>`(`.is--linkBox`）は、主に次の3通りの使い方ができます。
 
-1. `.is--linkBox`自体を`<a>`タグにする。
-2. `.is--linkBox`は`<div>`で、内部に`a.is--overlayLink`を配置する。
-3. `.is--linkBox`は`<div>`で、内部に`a.is--hiddenLink`を配置する。
+1. `<LinkBox>`(`.is--linkBox`）を`<a>`タグにしてそのままリンクにする。
+2. `<LinkBox>`(`.is--linkBox`）を`<div>`にして、内部に`a.u--overlayLink`を配置する。
+3. `<LinkBox>`(`.is--linkBox`）を`<div>`にして、内部に`a.u--hiddenLink`を配置する。
 
 <Callout type='info'>
-2, 3 では、LinkBox内部に**別のリンク**も配置できます。
+LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれかを採用してください。
 </Callout>
 
 
-
-### `<LinkBox>`自体をリンクにする
+### 1. `<LinkBox>`を`a`タグにして使う
 
 `<LinkBox>`に`href`を指定すると`<LinkBox>`自体が`<a>`タグになります。
 
 <Preview>
 	<PreviewTitle id='linkbox-demo01'>例</PreviewTitle>
-	<PreviewArea resize p='30'>
+	<PreviewArea p='30'>
 		<LinkBox href='#linkbox-demo01' p='40' bgc='base' bdc='divider' bd bdrs='4'>
 			<Text fz='xl' fw='bold'>Heading text</Text>
 			<Dummy c='text-2' lh='s' mbs='20' />
@@ -78,52 +73,49 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout
 </Preview>
 
 
-### 内部に`is--overlayLink`を配置する
+### 2. 内部に`u--overlayLink`を配置する
 
-LinkBoxに`href`を指定せず、内部のアンカー要素に`.is--overlayLink`を併用してもボックス全体をリンクにすることができます。
+内部のアンカー要素に`.u--overlayLink`を併用してもボックス全体をリンクにすることができます。
 
 この時、LinkBoxの内部に別のリンクも配置できます。
-
 
 <Preview>
 	<PreviewTitle id='linkbox-demo02'>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4'>
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' hov='shadow'>
 			<Text fz='xl' fw='bold'>
-				<Link isOverlayLink href='#linkbox-demo02'>Heading Link</Link>
+				<a className='u--overlayLink' href='#linkbox-demo02'>Heading link text</a>
 			</Text>
 			<Dummy c='text-2' lh='s' mbs='20' />
-			<Text mbs='10' id='inner-link'>
-				<a href='#inner-link'>Inner Link</a>
+			<Text id='inner-link02' mbs='10'>
+				<a href='#inner-link02' className='-hov:fade'>Inner Link</a>
 			</Text>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isOverlayLink"
-		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4'>
+		```jsx "u--overlayLink"
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' hov='shadow'>
 			<Text fz='xl' fw='bold'>
-				<Link isOverlayLink href='#linkbox-demo02'>Heading Link</Link>
+				<a className='u--overlayLink' href='#linkbox-demo02'>Heading link text</a>
 			</Text>
-			<Text c='text-2' lh='s' mbs='20'>
-				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
-			</Text>
-			<Text mbs='10' id='inner-link02'>
-				<a href='#inner-link02'>Inner Link</a>
+			<Dummy c='text-2' lh='s' mbs='20' />
+			<Text id='inner-link02' mbs='10'>
+				<a href='#inner-link02' className='-hov:fade'>Inner Link</a>
 			</Text>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx "is--overlayLink"
-		<div class="is--linkBox -hov:fade -p:40 -bgc:base -bd: -bdc:divider -bdrs:4">
+		```jsx "u--overlayLink"
+		<div class="is--linkBox -hov:shadow -p:40 -bgc:base -bd: -bdc:divider -bdrs:4">
 			<p class="-fz:xl -fw:bold">
-				<a class="is--overlayLink" href="#linkbox-demo02">Heading Link</a>
+				<a class="u--overlayLink" href="#linkbox-demo02">Heading Link</a>
 			</p>
 			<p class="-c:text-2 -lh:s -mbs:20">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
 			</p>
-			<p class="-mbs:10" id="inner-link">
-				<a href="#inner-link">Inner Link</a>
+			<p id="inner-link02" class="-mbs:10" >
+				<a href='#inner-link02' class="-hov:fade">Inner Link</a>
 			</p>
 		</div>
 		```
@@ -132,15 +124,15 @@ LinkBoxに`href`を指定せず、内部のアンカー要素に`.is--overlayLin
 
 
 <Note type='info' isFlow='s'>
-`is--overlayLink`にフォーカスした時のアウトラインをLinkBox全体に広げたい場合は、次のようなCSSを追記してください。
+`u--overlayLink`にフォーカスした時のアウトラインをLinkBox全体に広げたい場合は、次のようなCSSを追記してください。
 
 ```css
 @supports selector(:has(*)) {
-	.is--linkBox:has(.is--overlayLink:focus-visible) {
+	.is--linkBox:has(.u--overlayLink:focus-visible) {
 		outline: auto 1px;
 		outline: auto 1px -webkit-focus-ring-color;
 	}
-	.is--overlayLink:focus {
+	.u--overlayLink:focus {
 		outline: 0;
 	}
 }
@@ -148,48 +140,48 @@ LinkBoxに`href`を指定せず、内部のアンカー要素に`.is--overlayLin
 </Note>
 
 
-### 内部に`is--hiddenLink`を配置する
+### 3. 内部に`u--hiddenLink`を配置する
 
-`<LinkBox>`にhreを指定せず、直下に隠しリンク（`is--hiddenLink`）を配置しても、ボックス全体をリンクにすることができます。
+`<LinkBox>`にhreを指定せず、直下に隠しリンク（`u--hiddenLink`）を配置しても、ボックス全体をリンクにすることができます。
 
 この時、LinkBoxの内部に別のリンクも配置できます。
 
 <Preview>
 	<PreviewTitle id='linkbox-demo03'>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40'>
-			<Link isHiddenLink isSkipFlow href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'/>
+		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40' hov='shadow'>
+			<a className='u--hiddenLink u--skipFlow' href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'></a>
 			<Text fz='xl' fw='bold'>Heading Text</Text>
 			<Dummy c='text-2' lh='s' mbs='20' />
-			<Text mbs='10' id='inner-link03'>
-				<a href='#inner-link03'>Inner Link</a>
+			<Text id='inner-link03' mbs='10'>
+				<a href='#inner-link03' className="-hov:fade">Inner Link</a>
 			</Text>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "isHiddenLink"
-		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40'>
-			<Link isHiddenLink isSkipFlow href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'/>
+		```jsx "u--hiddenLink"
+		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40' hov='shadow'>
+			<a className='u--hiddenLink u--skipFlow' href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'></a>
 			<Text fz='xl' fw='bold'>Heading Text</Text>
 			<Text c='text-2' lh='s' mbs='20'>
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
 			</Text>
-			<Text mbs='10' id='inner-link03'>
-				<a href='#inner-link03'>Inner Link</a>
+			<Text id='inner-link03' mbs='10'>
+				<a href='#inner-link03' className="-hov:fade">Inner Link</a>
 			</Text>
 		</LinkBox>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-		```jsx {2,8} "is--hiddenLink"
-		<div class="is--linkBox is--flow -hov:fade -bgc:base -bd: -bdc:divider -bdrs:4 -p:40">
-			<a class="is--hiddenLink is--skipFlow" href="#linkbox-demo03" aria-label='リンクのラベルテキスト'></a>
+		```jsx {2,8} "u--hiddenLink"
+		<div class="is--linkBox is--flow -hov:shadow -bgc:base -bd: -bdc:divider -bdrs:4 -p:40">
+			<a class="u--hiddenLink u--skipFlow" href="#linkbox-demo03" aria-label='リンクのラベルテキスト'></a>
 			<p class="-fz:xl -fw:bold">Heading Text</p>
 			<p class="-c:text-2 -lh:s -mbs:20">
 				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non facere laudantium ex eos doloribus aut dolore nisi provident.
 			</p>
-			<p class="-mbs:10" id="inner-link03">
-				<a href="#inner-link03">Inner Link</a>
+			<p id="inner-link03" class="-mbs:10">
+				<a href="#inner-link03" class="-hov:fade">Inner Link</a>
 			</p>
 		</div>
 		```

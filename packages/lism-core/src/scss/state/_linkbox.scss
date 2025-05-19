@@ -22,22 +22,3 @@
 		z-index: 1;
 	}
 }
-
-.is--hiddenLink {
-	position: absolute;
-	inset: 0;
-	// z-index: 1; // is--linkbox a が適用されるので不要
-}
-
-.is--overlayLink {
-	text-decoration: none;
-	position: static;
-	color: inherit;
-
-	&::before {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		content: '';
-	}
-}
