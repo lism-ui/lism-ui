@@ -217,12 +217,3 @@ export default {
 	...phIcons,
 	...logoIcons,
 };
-
-// emoji
-// note: 'U+2712',
-// danger: 'U+1F6AB',
-// warning: 'U+26A0',
-// success: 'U+2705',
-// help: 'U+2754',
-// point: 'U+1F4A1',
-// info: 'U+2139',

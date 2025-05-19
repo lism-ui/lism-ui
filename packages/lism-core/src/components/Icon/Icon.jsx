@@ -3,7 +3,7 @@ import getProps from './getProps';
 import SVG from './SVG';
 
 export default function Icon({ children, ...props }) {
-	let { Component, emoji, lismProps, exProps } = getProps(props);
+	let { Component, lismProps, exProps } = getProps(props);
 
 	if (Component === '_SVG_') {
 		Component = SVG;
@@ -11,7 +11,7 @@ export default function Icon({ children, ...props }) {
 
 	return (
 		<Component {...getLismProps(lismProps)} {...exProps}>
-			{emoji || children}
+			{children}
 		</Component>
 	);
 }

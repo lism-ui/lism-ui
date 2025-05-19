@@ -16,8 +16,6 @@ export default function getProps({
 	tag,
 	scale,
 	offset,
-	emoji,
-	mask,
 	icon,
 	label,
 	style = {},
@@ -30,12 +28,9 @@ export default function getProps({
 
 	let Component = tag || 'span';
 
-	// icon は初期値でセットされ得るので、mask, emojiの優先度を高くする
 	// viewBoxがあれば、svg描画として扱う
 	if (props.viewBox) {
 		Component = 'svg';
-	} else if (emoji) {
-		iconClasses.push('l--icon--emoji');
 	} else if (icon) {
 		// icon が 文字列の場合、プリセットアイコンを呼び出す
 		if (typeof icon === 'string') {
@@ -71,7 +66,7 @@ export default function getProps({
 	props.lismClass = atts(lismClass, iconClasses);
 	props.style = style;
 
-	return { Component, lismProps: props, exProps, emoji };
+	return { Component, lismProps: props, exProps };
 }
 
 // 子要素に Icon を持つコンポーネントが icon, iconProps で Icon 用の props を生成する処理

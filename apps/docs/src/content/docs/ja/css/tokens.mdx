@@ -263,10 +263,7 @@ export const ColorBadge = ({color, label}) => {
 |`base`|<span className='-whs:nw'>`--ff--base`</span>|<span className='-whs:nw'>`-ff:base`</span>|
 |`accent`|<span className='-whs:nw'>`--ff--accent`</span>|<span className='-whs:nw'>`-ff:accent`</span>|
 |`mono`|<span className='-whs:nw'>`--ff--mono`</span>|<span className='-whs:nw'>`-ff:mono`</span>|
-|`emoji`|<span className='-whs:nw'>`--ff--emoji`</span>|-|
 
-{/* |base|--ff--base|--ff--sans|
-|heading|--ff--heading|--ff--sans| */}
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
@@ -274,14 +271,12 @@ export const ColorBadge = ({color, label}) => {
 		<Text ff='base' fz='xl'>base: English text, 漢字ひらがな</Text>
 		<Text ff='accent' fz='xl'>accent: English text, 漢字ひらがな</Text>
 		<Text ff='mono' fz='xl'>mono: English text, 漢字ひらがな</Text>
-		<Text ff='emoji'>emoji: 💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</Text>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
 	<p class="-ff:base -fz:xl">Lorem ipsum ...</p>
 	<p class="-ff:accent -fz:xl">Lorem ipsum ...</p>
 	<p class="-ff:mono -fz:xl">Lorem ipsum ...</p>
-	<p style="font-family:var(--ff--emoji)">💡 ✔️ ✅ 👍 ✍️ ⚡ 🚫</p>
 	```
 	</PreviewCode>
 </Preview>

@@ -24,7 +24,7 @@ export default {
 	// lh: ['10', '20', '30', '40', '50', '60', '70', '80', '90'],
 	lh: ['base', '2xs', 'xs', 's', 'l', 'xl', '2xl'],
 	lts: ['base', '2xs', 'xs', 's', 'l', 'xl', '2xl'], //['-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6', '7'],
-	ff: ['base', 'accent', 'mono', 'emoji'],
+	ff: ['base', 'accent', 'mono'],
 	fw: ['thin', 'light', 'normal', 'medium', 'bold', 'heavy'],
 	op: ['low', 'mid', 'high'],
 	bdrs: ['1', '2', '3', '4', '5', '6', '99'],
