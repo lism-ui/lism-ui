@@ -111,6 +111,10 @@ export default [
 				link: '/components/stack/',
 			},
 			{
+				label: 'Reel',
+				link: '/components/reel/',
+			},
+			{
 				label: '---',
 				link: '###---',
 			},
@@ -223,6 +227,10 @@ export default [
 				link: '/components/list/',
 			},
 			{
+				label: 'Table',
+				link: '/components/table/',
+			},
+			{
 				label: 'Note',
 				link: '/components/note/',
 			},
@@ -231,17 +239,10 @@ export default [
 				link: '/components/navmenu/',
 			},
 			{
-				label: 'Reel',
-				link: '/components/reel/',
-			},
-			{
 				label: 'ShapeDivider',
 				link: '/components/shapedivider/',
 			},
-			{
-				label: 'Table',
-				link: '/components/table/',
-			},
+
 			{
 				label: '---',
 				link: '###---',
