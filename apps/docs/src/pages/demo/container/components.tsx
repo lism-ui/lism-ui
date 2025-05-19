@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Lism, Layer, Text, Flex } from '@lism-ui/core';
 
 export function AttsLabels({ atts = '', ...props }) {
@@ -5,7 +7,7 @@ export function AttsLabels({ atts = '', ...props }) {
 	const attsArray = atts.split(',') || [];
 	return (
 		<Flex
-			className='c--attsLabels is--skipFlow'
+			className='c--attsLabels u--skipFlow'
 			w='100%'
 			maxW='100%'
 			jc='c'

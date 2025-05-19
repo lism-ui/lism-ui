@@ -56,7 +56,7 @@ export function Chat({
 				{variant !== 'box' && (
 					<Decorator
 						lismClass='c--chat__deco u--colored'
-						lismState={['has--mask is--skipFlow']}
+						lismState={['has--mask u--skipFlow']}
 						pos='a'
 						insets={direction === 'start' ? { ie: '100%' } : { is: '100%' }}
 						scale={direction === 'start' ? '' : '-X'}

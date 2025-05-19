@@ -58,7 +58,6 @@ class LismPropsData {
 			isSide,
 			isLayer,
 			isLinkBox,
-			isSkipFlow,
 			hasDivider,
 			hasMask,
 			// hasBd,
@@ -78,9 +77,6 @@ class LismPropsData {
 		}
 		if (isLinkBox) {
 			lismState.push('is--linkBox');
-		}
-		if (isSkipFlow) {
-			lismState.push('is--skipFlow');
 		}
 		if (isSide) {
 			lismState.push('is--side');
