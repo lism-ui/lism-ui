@@ -4,13 +4,14 @@ description: ...
 ---
 
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from '~/components';
-import { Modal, Lism, Dummy, Text, Flex, Stack, Button, Center, Icon, Callout, NavMenu, NavMenuItem, NavMenuLink } from '@lism-ui/astro';
+import { Modal, Lism, Dummy, Text, Flex, Stack, Button, Center, Icon, Callou } from '@lism-ui/astro';
 import {
 	ArrowFatDown,
 	ArrowRight,
 	ShoppingCartSimple,
 	ArrowCircleRight,
 } from "@phosphor-icons/react";
+import NavMenu from '~/components/ex/NavMenu';
 
 
 `dialog` タグでモーダルを表示するコンポーネントです。
@@ -158,6 +159,8 @@ dialog.d--modal
 
 ドロワーメニューの例
 
+以下では、追加インポートが必要な[`NavMenu`](/ja/components/navmenu)も併用しています。
+
 <Preview>
 	<PreviewTitle>各`variant`</PreviewTitle>
 	<PreviewArea p='20'>
@@ -180,20 +183,20 @@ dialog.d--modal
 				<Text fz='l' fw='bold' lh='s'>MENU</Text>
 			</Modal.Header>
 			<Modal.Body>
-				<NavMenu hasDivider bd='y'>
-					<NavMenuItem>
-						<NavMenuLink href='#menu-link01'>Menu item 1</NavMenuLink>
-					</NavMenuItem>
-					<NavMenuItem>
-						<NavMenuLink href='#menu-link02'>Menu item 2</NavMenuLink>
-					</NavMenuItem>
-					<NavMenuItem>
-						<NavMenuLink href='#menu-link03'>Menu item 3</NavMenuLink>
-					</NavMenuItem>
-					<NavMenuItem>
-						<NavMenuLink href='#menu-link04'>Menu item 4</NavMenuLink>
-					</NavMenuItem>
-				</NavMenu>
+				<NavMenu.Root hasDivider bd='y'>
+					<NavMenu.Item>
+						<NavMenu.Link href='#menu-link01'>Menu item 1</NavMenu.Link>
+					</NavMenu.Item>
+					<NavMenu.Item>
+						<NavMenu.Link href='#menu-link02'>Menu item 2</NavMenu.Link>
+					</NavMenu.Item>
+					<NavMenu.Item>
+						<NavMenu.Link href='#menu-link03'>Menu item 3</NavMenu.Link>
+					</NavMenu.Item>
+					<NavMenu.Item>
+						<NavMenu.Link href='#menu-link04'>Menu item 4</NavMenu.Link>
+					</NavMenu.Item>
+				</NavMenu.Root>
 			</Modal.Body>
 		</Modal.Inner>
 	</Modal.Root>
@@ -219,20 +222,20 @@ dialog.d--modal
 					<Text fz='l' fw='bold' lh='s'>MENU</Text>
 				</Modal.Header>
 				<Modal.Body>
-					<NavMenu hasDivider bd='y'>
-						<NavMenuItem>
-							<NavMenuLink href='#menu-link01'>Menu item 1</NavMenuLink>
-						</NavMenuItem>
-						<NavMenuItem>
-							<NavMenuLink href='#menu-link02'>Menu item 2</NavMenuLink>
-						</NavMenuItem>
-						<NavMenuItem>
-							<NavMenuLink href='#menu-link03'>Menu item 3</NavMenuLink>
-						</NavMenuItem>
-						<NavMenuItem>
-							<NavMenuLink href='#menu-link04'>Menu item 4</NavMenuLink>
-						</NavMenuItem>
-					</NavMenu>
+					<NavMenu.Root hasDivider bd='y'>
+						<NavMenu.Item>
+							<NavMenu.Link href='#menu-link01'>Menu item 1</NavMenu.Link>
+						</NavMenu.Item>
+						<NavMenu.Item>
+							<NavMenu.Link href='#menu-link02'>Menu item 2</NavMenu.Link>
+						</NavMenu.Item>
+						<NavMenu.Item>
+							<NavMenu.Link href='#menu-link03'>Menu item 3</NavMenu.Link>
+						</NavMenu.Item>
+						<NavMenu.Item>
+							<NavMenu.Link href='#menu-link04'>Menu item 4</NavMenu.Link>
+						</NavMenu.Item>
+					</NavMenu.Root>
 				</Modal.Body>
 			</Modal.Inner>
 		</Modal.Root>
