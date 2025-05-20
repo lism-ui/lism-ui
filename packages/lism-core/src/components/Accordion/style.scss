@@ -24,10 +24,8 @@
 // }
 
 .d--accordion__body {
-	// display: grid;
 	grid-template-rows: 1fr;
-	transition-property: margin-block, padding-block, opacity, grid-template-rows;
-	transition-duration: var(--acc-duration, 0.3s);
+	--trsp: margin-block, padding-block, opacity, grid-template-rows;
 }
 
 // ※ 正常な animation に必須
@@ -49,26 +47,7 @@
 :where(.d--accordion__icon) {
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
 	> .l--icon {
-		transition: rotate 0.25s;
-		rotate: calc(0deg - var(--opened) * 180deg);
-		grid-area: 1 / 1;
+		--trsp: rotate;
+		rotate: calc(var(--opened) * -180deg);
 	}
-}
-
-:where(.d--accordion__icon[data-role='trigger']) {
-	padding: 0.375em;
-	// background-color: transparent;
-	// border: solid 1px currentColor;
-	// border-radius: var(--bdrs--1);
-}
-
-.d--accordion__label > a,
-.d--accordion__icon {
-	pointer-events: auto;
-}
-// .-opened > .d--accordion__header > .d--accordion__icon {
-// 	transform: rotate(180deg);
-
-.d--accordion__header:has(> [data-role='trigger']) {
-	pointer-events: none;
 }

@@ -1,5 +1,3 @@
-export { default as Accordions } from './Accordions.astro';
-
 import Root from './Accordion.astro';
 import Header from './AccHeader.astro';
 import Label from './AccLabel.astro';

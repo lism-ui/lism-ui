@@ -1,8 +1,6 @@
 // open 属性付与からクラスの付与まで、ほんの少しだけ遅らせた方が動作が安定する
 const DELAY = 5;
 
-// :scope 使う？
-
 // モーダルのアニメーションが完了するのを待つ.
 const waitAnimation = (element) => {
 	return Promise.all(element.getAnimations().map((a) => a.finished));
@@ -10,10 +8,7 @@ const waitAnimation = (element) => {
 
 // animationTime: [ms]
 const clickedEvent = async (details, force = false) => {
-	// すぐに open 属性が切り替わらないようにする
-	// e.preventDefault();
-	// console.log(e.target, e.currentTarget);
-
+	// アニメーション中かどうか
 	if (details.dataset.animating && !force) return;
 	details.dataset.animating = '1';
 
@@ -66,13 +61,7 @@ export const setEvent = (currentRef) => {
 
 	if (!clickBtn) return;
 
-	// カスタムプロパティ --duration の値を取得
-	// const computedStyle = getComputedStyle(details);
-	// let durationTime = computedStyle.getPropertyValue('--duration').trim();
-	// ms単位の数値に変換
-	// durationTime = convertToMsNumber(durationTime);
-
-	// 複数展開を許可するかどうか
+	// 複数展開を許可するかどうかを、親要素の [data-acc-multiple] でチェック.
 	let allowMultiple = false;
 	const parent = details.parentNode;
 	if (null != parent) {
@@ -84,7 +73,7 @@ export const setEvent = (currentRef) => {
 		// すぐに open 属性が切り替わらないようにする
 		e.preventDefault();
 
-		// 複数展開を許可しない場合、（開く処理の直前で）他の開いているアイテムがあれば閉じる
+		// 複数展開が禁止されている場合、（開く処理の直前で）他の開いているアイテムがあれば閉じる
 		if (!allowMultiple && !details.open) {
 			const openedItem = parent.querySelector(`.-opened`);
 			if (null != openedItem) clickedEvent(openedItem, true);

@@ -15,5 +15,5 @@ const { viewBox, icon = 'caret-down', ...props } = Astro.props || {};
 ---
 
 <Lism {...getAccIconProps(props)}>
-	{Astro.slots.has('default') ? <slot /> : <Icon viewBox={viewBox} icon={icon} />}
+	{Astro.slots.has('default') ? <slot /> : <Icon trs viewBox={viewBox} icon={icon} />}
 </Lism>

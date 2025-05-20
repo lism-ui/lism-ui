@@ -5,7 +5,7 @@ import { getAccIconProps } from './getProps';
 export default function AccIcon({ icon = 'caret-down', viewBox, children = null, ...props }) {
 	return (
 		<Lism {...getAccIconProps(props)}>
-			{children || <Icon viewBox={viewBox} icon={icon} />}
+			{children || <Icon trs viewBox={viewBox} icon={icon} />}
 		</Lism>
 	);
 }

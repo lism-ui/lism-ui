@@ -17,7 +17,7 @@ const cssnano = require('cssnano');
 // const mqpacker = require('css-mqpacker');
 
 // https://www.npmjs.com/package/postcss-merge-at-rules
-const mergeAtRules = require('postcss-merge-at-rules');
+// const mergeAtRules = require('postcss-merge-at-rules');
 
 // consoleの色付け
 const COLOR = {

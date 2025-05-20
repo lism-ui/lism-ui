@@ -74,6 +74,9 @@
 // Accordion
 // --------------------
 .d--accordion__icon {
+	> .l--icon {
+		grid-area: 1 / 1;
+	}
 	> .l--icon:nth-last-of-type(2) {
 		opacity: calc(1 - var(--opened));
 	}
@@ -81,4 +84,14 @@
 		opacity: calc(0 + var(--opened));
 		rotate: calc(180deg - var(--opened) * 180deg);
 	}
+}
+
+// data-role='trigger' だけをクリッカブルにする
+.d--accordion__header:has(> [data-role='trigger']) {
+	pointer-events: none;
+}
+
+.d--accordion__label > a,
+.d--accordion__icon {
+	pointer-events: auto;
 }

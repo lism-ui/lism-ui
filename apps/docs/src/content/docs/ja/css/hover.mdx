@@ -1,122 +1,33 @@
 ---
-title: 'hover'
+title: '-hov:'
 description: ...
 sidebar: 
   order: 20
 ---
 
-import { Flex, Button, Media, Layer, Text, Badge, Box, Center, Stack, Frame, LinkBox } from "@lism-ui/core";
+import { Flex, Button, Media, Layer, Text, Spacer, Badge, Box, Center, Stack, Frame, LinkBox } from "@lism-ui/core";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, Callout } from "~/components";
-
 
 
 hover時の挙動をコントロールするためのCSS設計について紹介します。
 
-<Callout type='info'>
-Lismでは、`-hov:`という文字列で始まるクラスを活用してhover時の挙動をコントロールします。
-</Callout>
 
-以下のCSSによって、`--hov-trsp`でリストアップされた主要なプロパティ群が、`--hov-trsdu`で定義される秒数でトランジションされるような設定になっています。
+Lismでは、`-hov:`で始まるクラスを活用してhover時の挙動をコントロールします。
+
+さらに、`-trs:`クラスでトランジションの設定を行うことで、hover時の挙動をより細かくコントロールすることができます。
+
+
+## 基本的な使い方
+
+`.-hov:name` または `.-hov:{prop}:` の形式でクラスを準備します。  
+前者はhover時の値を事前に決めておくクラスで、後者はcss変数と組み合わせを前提にしたクラスです。
 
 
 ```css
-:root{
-	--hov-trsdu: 0.3s;
-	--hov-trsp: filter, opacity, visibility, box-shadow, translate, scale, border, color, background;
-}
-[class*='-hov:'] {
-	transition: var(--hov-trsp, all);
-	transition-duration: var(--hov-trsdu, 0.3s);
-}
-```
-
-
-## 基本的なユーティリティクラスの設計
-
-`.-hov:utilityName` の形式でクラスを準備します。
-
-例えば、Lism パッケージ内では次のようなクラスを準備しています。
-
-```css
+/* -hov: クラスの例 */
 .-hov\:fade:hover {
-	opacity: 0.6;
+	opacity: 0.7;
 }
-.-hov\:shadow:hover {
-	box-shadow: var(--sh--4);
-}
-.-hov\:up:hover {
-	translate: 0 -3px;
-}
-```
-
-必要に合わせて、同じ形式でクラスを追加してください。
-
-### Usage
-
-JSX形式で扱えるLismコンポーネントでは、`hov`プロパティ文字列を指定すると、自動的にクラスを出力します。  
-`,`で区切りで複数のユーティリティクラスを同時出力することもできますので、ご活用ください。
-
-<Preview>
-	<PreviewTitle>`.-hov:fade`</PreviewTitle>
-	<PreviewArea p='40'>
-		<LinkBox href='###' hov='fade' bgc='base-2' bd bdc='divider' p='30'>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:fade"
-		<a href="###" class="is--linkBox -hov:fade -bgc:base-2 -bd: -bdc:divider -p:30">
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</a>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov='fade'"
-		<LinkBox href='###' hov='fade' bgc='base-2' bd bdc='divider' p='30'>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>`.-hov:shadow` & `-hov:up`</PreviewTitle>
-	<PreviewArea p='40'>
-		<LinkBox href='###' hov='shadow,up' bd p='30'>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:shadow" "-hov:up"
-		<a href="###" class="is--linkBox -hov:shadow -hov:up -bd: -p:30">
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</a>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov='shadow,up'"
-		<LinkBox href='###' hov='shadow,up' bd p='30'>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-		```
-	</PreviewCode>
-</Preview>
-
-
-## 特定のプロパティを任意の値へ変化させる
-
-Lismでは、`.-hov:{prop}:`形式のクラスで`--hov-{prop}`という変数を受け取るようにし、任意の値へ変化させる仕組みを用意しています。
-
-`c`,`bgc`,`bdc`,`bxsh`,`op`,`filter` に対応したクラスを標準で用意しています。
-
-
-```css
 .-hov\:c\::hover {
 	color: var(--hov-c) !important;
 }
@@ -132,17 +43,45 @@ Lismでは、`.-hov:{prop}:`形式のクラスで`--hov-{prop}`という変数�
 .-hov\:bxsh\::hover {
 	box-shadow: var(--hov-bxsh);
 }
-.-hov\:filter\::hover {
-	filter: var(--hov-filter) !important;
-}
 ```
 
-必要に合わせて、同じ形式でクラスを追加してください。
+（Lismのコアパッケージには標準で上記のクラスを用意していますが、必要に合わせてこの形式でクラスを追加してください。）
+
+<Spacer h='20' />
 
 
-### Usage
+<Preview>
+	<PreviewTitle>`.-hov:fade`の使用例</PreviewTitle>
+	<PreviewArea p='40'>
+		<LinkBox href='###' hov='fade' bgc='base-2' bd p='30'>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-hov:fade"
+		<a href="###" class="is--linkBox -hov:fade -bgc:base-2 -bd: -p:30">
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</a>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "hov='fade'"
+		<LinkBox href='###' hov='fade' bgc='base-2' bd p='30'>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+		```
+	</PreviewCode>
+</Preview>
 
-JSX形式で扱えるLismコンポーネントでは、`hov={{prop:value}}`のようなオブジェクトを渡すと、`-hov:prop:`と`--hov-prop:value`のセットが出力されますので、ご活用ください。
+<Callout type='info'>
+[`<Lism>`コンポーネント](/ja/components/lism)では、`hov`プロパティに文字列を指定すると、自動的に`-hov:`クラスを出力します。
+</Callout>
+
+<Spacer h='20' />
+
 
 <Preview>
 	<PreviewTitle>`bgc`,`c`を変化させる例</PreviewTitle>
@@ -152,16 +91,8 @@ JSX形式で扱えるLismコンポーネントでは、`hov={{prop:value}}`の�
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-	```jsx "hov="
-		<LinkBox href='###' hov={{ bgc:'main', c:'white'}} bgc='base-2' p='30'>
-			<p>LinkBox.</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	```
-	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-	```html "-hov:bgc" "-hov:c" "--hov-bgc" "--hov-c"
+	```html "-hov:bgc" "-hov:c" "--hov-bgc:" "--hov-c:"
 	<a
 		class="is--linkBox -hov:bgc -hov:c -bgc:base-2 -p:30"
 		style="--hov-bgc:var(--main);--hov-c:var(--white)"
@@ -172,261 +103,289 @@ JSX形式で扱えるLismコンポーネントでは、`hov={{prop:value}}`の�
 	</a>
 	```
 	</PreviewCode>
-</Preview>
-
-{/* hsl(25 50% 50% / 20%),rgb(250 50 50 / 20%)' */}
-<Preview>
-	<PreviewTitle>bxshの強さを変化させる例</PreviewTitle>
-	<PreviewArea p='40'>
-		<LinkBox href='###' bxsh='3' hov={{ bxsh:'1'}} bd p='30'>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 	```jsx "hov="
-		<LinkBox href='###' bxsh='3' hov={{ bxsh:'1'}} bd p='30'>
-			<p>LinkBox</p>
+		<LinkBox href='###' hov={{ bgc:'main', c:'white'}} bgc='base-2' p='30'>
+			<p>LinkBox.</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	```
 	</PreviewCode>
+</Preview>
+
+<Callout type='info'>
+[`<Lism>`コンポーネント](/ja/components/lism)では、`hov={{ prop:value }}`のようなオブジェクトを渡すと、`-hov:prop:`と`--hov-prop:value`のセットが出力されます。
+</Callout>
+
+<Spacer h='20' />
+
+
+## `-trs:` でトランジションを設定する方法
+
+Lismでは、以下のような`-trs:`クラスを用意しています。
+
+```css
+.-trs\: {
+	transition-duration: var(--trsdu, 0.4s);
+	transition-property: var(--trsp, all);
+	transition-delay: var(--trsde, 0s);
+	transition-timing-function: var(--trstf, ease);
+}
+```
+
+このクラスとcss変数を組み合わせて、トランジションの設定を行うことができます。
+
+
+{/* hsl(25 50% 50% / 20%),rgb(250 50 50 / 20%)' */}
+<Preview>
+	<PreviewTitle>`-trs:`と組み合わせてbxshの強さを変化させる例</PreviewTitle>
+	<PreviewArea p='40'>
+		<LinkBox href='###' trs bxsh='1' hov={{ bxsh:'4'}} bd p='30'>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:bxsh:" "--hov-bxsh"
+		```html "-trs:" "-bxsh:1 -hov:bxsh:" "--hov-bxsh:var(--bxsh--4)"
 		<a
 			href="###"
-			class="is--linkBox -bxsh:3 -hov:bxsh: -bd: -p:30"
-			style="--hov-bxsh:var(--sh--1)"
+			class="is--linkBox -trs: -bxsh:1 -hov:bxsh: -bd: -p:30"
+			style="--hov-bxsh:var(--bxsh--4)"
 		>
 			<p>LinkBox</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</a>
 		```
 	</PreviewCode>
-</Preview>
-
-
-<Preview>
-	<PreviewTitle>不透明度を上げる例</PreviewTitle>
-	<PreviewArea p='40'>
-		<LinkBox href='###' op='low' hov={{ op:'1' }} p='30' bd>
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</LinkBox>
-	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov="
-		<LinkBox href='###' op='low' hov={{ op:'1' }} p='30' bd>
+	```jsx "trs" "bxsh='1' hov=\{\{ bxsh:'4'\}\}"
+		<LinkBox href='###' trs bxsh='1' hov={{ bxsh:'4'}} bd p='30'>
 			<p>LinkBox</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:op:" "--hov-op"
-		<a class="is--linkBox -hov:op: -op:low -p:30 -bd:" style="--hov-op:1" href="###">
-			<p>LinkBox</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</a>
 	```
 	</PreviewCode>
 </Preview>
 
+
 <Preview>
-	<PreviewTitle>ブラーをかける例</PreviewTitle>
+	<PreviewTitle>不透明度をゆっくり変化させる例</PreviewTitle>
 	<PreviewArea p='40'>
-		<LinkBox href='###' hov={{ filter:'blur(3px)' }} p='30' bd>
-			<p>LinkBox.</p>
+		<LinkBox href='###' trs trsdu='1s' op='low' hov={{ op:'1' }} p='30' bd bgc='base-2'>
+			<p>LinkBox</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-trs:" "--trsdu:1s"
+		<a
+			class="is--linkBox -hov:op: -trs: -op:low -p:30 -bd: -bgc:base-2"
+			style="--hov-op:1;--trsdu:1s" href="###"
+		>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</a>
+		```
+	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov=" "filter:'blur(3px)'"
-		<LinkBox href='###' hov={{ filter:'blur(3px)' }} p='30' bd>
+		```jsx "trs trsdu='1s'"
+		<LinkBox href='###' trs trsdu='1s' op='low' hov={{ op:'1' }} p='30' bd bgc='base-2'>
 			<p>LinkBox</p>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 		```
 	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:filter:" "--hov- "
-		<a class="is--linkBox -hov:filter: -p:30 -bd:" style="--hov-filter:blur(3px)" href="###">
-			<p>LinkBox.</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-		</a>
-		```
-	</PreviewCode>
+
 </Preview>
 
 
-### 配列での指定
-
-
+{/* ### 配列での指定
 Lismコンポーネントにて、ユーティリティクラスの出力とオブジェクト形式での細かな変化を両方指定する場合は、配列で文字列とオブジェクトを指定してください。
 
 <Preview>
-	<PreviewTitle>`'up'` に加え、オブジェクトで `c` を指定する例</PreviewTitle>
+	<PreviewTitle>`'fade'` に加え、オブジェクトで `c` を指定する例</PreviewTitle>
 	<PreviewArea p='40'>
-		<LinkBox href='###' hov={['up', { c:'red' }]} bd p='30'>
+		<LinkBox href='###' hov={['fade', { c:'red' }]} bd p='30'>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode>
 	```jsx
-		<LinkBox href='###' hov={['up', { c:'red' }]} bd p='30'>
+		<LinkBox href='###' hov={['fade', { c:'red' }]} bd p='30'>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		</LinkBox>
+	```
+	</PreviewCode>
+</Preview> */}
+
+
+
+## 子孫要素へにホバー効果を適用する方法
+
+Lism では、`-hov:pass`というクラスを定義しており、このクラスではhover時に`--isHov`変数が `0`→`1`へ変化するようになっています。  
+つまり、`-hov:pass`の子孫要素で`--isHov`変数をうまく使うことでhover時の挙動をコントロールしやすいようになっています。
+
+また、visibility変化のための`--isHovVisible`変数も用意しており、`-hov:pass`がhover時のみ、`visible`がセットされます。
+
+```css
+.-hov\:pass {
+	--isHov: 0;
+}
+@media (any-hover: hover) {
+	.-hov\:pass:hover {
+		--isHov: 1;
+		--isHovVisible: visible;
+	}
+}
+```
+
+子孫要素向けのクラスを作成する場合の命名規則は、 `-hov:get:xxx` の形式としています。  
+コアパッケージには以下のクラスを標準で用意しています。
+
+```css
+.-hov\:get\:hide {
+	opacity: calc(1 - 1 * var(--isHov));
+}
+.-hov\:get\:show {
+	opacity: var(--isHov);
+	visibility: var(--isHovVisible, hidden);
+}
+```
+
+
+
+<Preview>
+	<PreviewTitle>`get:show` を使う例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Frame isLinkBox hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
+			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer trs hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'>
+				<Center h='100%'>
+					<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
+				</Center>
+			</Layer>
+		</Frame>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-hov:pass" "-hov:get:show" "-trs:"
+		<a class="l--frame is--linkBox -hov:pass -ar:16/9 -bdrs:4" href="#banner-link">
+			<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
+			<div class="is--layer -trs: -hov:get:show -bgc:" style="--bgc:rgb(0 0 0 / 10%);backdrop-filter:blur(6px)">
+				<div class="l--center -h:100%">
+					<span class="-c:white -fz:2xl -fs:i -fw:light -lts:l -bdrs:99 -px:30 -py:10">View More</span>
+				</div>
+			</div>
+		</a>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "hov='pass'" "hov='get:show'" "trs"
+		<Frame isLinkBox hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
+			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
+			<Layer trs hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'>
+				<Center h='100%'>
+					<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
+				</Center>
+			</Layer>
+		</Frame>
+		```
+	</PreviewCode>
+</Preview>
+
+
+
+## カスタム`-hov:`クラスを自作する例
+
+<Preview>
+	<PreviewTitle>`.-hov:shadowUp`を追加</PreviewTitle>
+	<PreviewArea p='40'>
+		<LinkBox href='###' trs hov='shadowUp' bd p='30'>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-hov:shadow" "-hov:up"
+		<a href="###" class="is--linkBox -trs: -hov:shadow -hov:up -bd: -p:30">
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</a>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "hov='shadowUp'"
+		<LinkBox href='###' trs hov='shadowUp' bd p='30'>
+			<p>LinkBox</p>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+		</LinkBox>
+		```
+	</PreviewCode>
+
+	<PreviewCode slot='tab' label='追加CSS'>
+		```scss
+		@media (any-hover: hover) {
+			.-hov\:shadowUp:hover {
+				box-shadow: var(--bxsh--4);
+				translate: 0 -3px;
+			}
+		}
+		```
+	</PreviewCode>
+</Preview>
+
+<Spacer h='20' />
+
+もう一つ例として、親がhoverされたらズーム表示されるような`-hov:get:zoom`クラスと、テキストが広がるような`-hov:get:letterSpread`クラスを自作して使ってみます。
+
+<Preview>
+	<PreviewTitle>自作クラスを使う</PreviewTitle>
+	<PreviewArea p='30'>
+		<LinkBox href='#banner-link' hov='pass' ov='h' ar='16/9' bdrs='4'>
+			<Frame isLayer>
+				<Media trs hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			</Frame>
+			<Layer trs hov='get:hide' grayscale='70%'/>
+			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
+				<Text trs hov='get:letterSpread' fz='2xl'>LinkBox</Text>
+			</Center>
+		</LinkBox>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='HTML'>
+		```html "-hov:pass" "-hov:get:zoom" "-hov:get:letterSpread"
+		<a class="is--linkBox -hov:pass -ar:16/9 -ov:h -bdrs:4" href="#banner-link">
+			<div class="l--frame is--layer">
+				<img class="is--layer -trs: -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy" />
+			</div>
+			<div class="l--center is--layer -c:white -bgc:" style="--bgc:rgb(0 0 0 / 40%)">
+				<span class="-hov:get:letterSpread -fz:2xl">LinkBox</span>
+			</div>
+		</a>
+		```
+	</PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "hov='pass'" "hov='get:zoom'" "hov='get:letterSpread'"
+		<LinkBox href='#banner-link' hov='pass' ov='h' ar='16/9' bdrs='4'>
+			<Frame isLayer>
+				<Media trs hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
+			</Frame>
+			<Layer trs hov='get:hide' grayscale='70%'/>
+			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
+				<Text trs hov='get:letterSpread' fz='2xl'>LinkBox</Text>
+			</Center>
+		</LinkBox>
+		```
+	</PreviewCode>
+
+	<PreviewCode slot='tab' label='追加CSS'>
+	```css
+	.-hov\:get\:zoom {
+		scale: calc(1 + 0.1 * var(--isHov));
+	}
+	.-hov\:get\:letterSpread {
+		letter-spacing: calc(0.125em * var(--isHov));
+	}
 	```
 	</PreviewCode>
 </Preview>
 
 
-
-## 子孫要素へにホバー効果を適用する
-
-`-hov:pass`というクラスを親に指定し、子孫要素で `-hov:get:xxx` という形式のクラス名を用いるようにします。
-
-`-hov:pass`では、`--isHover`変数が `0`→`1`へ変化するようにしているので、calc処理ができるものは記述が楽になります。
-
-```css
-.-hov\:pass {
-	--isHover: 0;
-	&:hover {
-		--isHover: 1;
-	}
-}
-
-.-hov\:get\:show {
-	opacity: var(--isHover);
-	visibility: hidden;
-
-	.-hov\:pass:hover & {
-		visibility: visible;
-	}
-}
-.-hov\:get\:hide {
-	opacity: calc(1 - 1 * var(--isHover));
-}
-```
-
-
-### Usage
-
-<Preview>
-	<PreviewTitle>`get:show`, `get:hide` を使う</PreviewTitle>
-	<PreviewArea p='30'>
-		<LinkBox layout={Frame} hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
-			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
-			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
-			<Center hov='get:show' pos='a' i='0'>
-				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
-			</Center>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov='pass'" "hov='get:show'"
-		<LinkBox layout={Frame} hov='pass' href='#banner-link' ar='16/9' bdrs='4'>
-			<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' loading='lazy' />
-			<Text tag='span' hov='get:hide' pos='a' r='0' bgc='text' c='base' px='20' lh='base' m='20' bdrs='99'>Some Text</Text>
-			<Layer hov='get:show' bgc='rgb(0 0 0 / 40%)' blur='6px'/>
-			<Center hov='get:show' pos='a' i='0'>
-				<Text tag='span' c='white' fz='2xl' fs='i' fw='light' lts='l' bdrs='99' px='30' py='10'>View More</Text>
-			</Center>
-		</LinkBox>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:pass" "-hov:get:show"
-		<a class="l--frame is--linkBox -hov:pass -ar:16/9 -bdrs:4" href="#banner-link">
-			<img class="is--layer" src="/img/img-1.jpg" width="960" height="640" loading="lazy">
-			<div class="is--layer -hov:get:show -bgc:" style="--bgc:rgb(0 0 0 / 10%);backdrop-filter:blur(6px)"></div>
-			<div class="l--center -hov:get:show -pos:a -i:0">
-				<span class="-c:white -bgc:black -bdrs:full -px:30 -py:10">View More</span>
-			</div>
-		</a>
-		```
-	</PreviewCode>
-</Preview>
-
-
-#### カスタムクラスを自作する
-
-<Preview>
-	<PreviewTitle>`-hov:get:zoom`</PreviewTitle>
-	<PreviewArea p='30'>
-		<LinkBox href='#banner-link' ov='h' ar='16/9' hov='pass' bdrs='4'>
-			<Frame isLayer>
-				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
-			</Frame>
-			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
-				<Text fz='2xl' lts='l'>LinkBox</Text>
-			</Center>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='CSS'>
-		```css
-		.-hov\:get\:zoom {
-			scale: calc(1 + 0.1 * var(--isHover));
-		}
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov='pass'" "hov='get:zoom'"
-		<LinkBox href='#banner-link' ov='h' ar='16/9' hov='pass' bdrs='4'>
-			<Frame isLayer>
-				<Media hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
-			</Frame>
-			<Center isLayer c='white' bgc='rgb(0 0 0 / 40%)'>
-				<Text fz='2xl' lts='l'>LinkBox</Text>
-			</Center>
-		</LinkBox>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:pass" "-hov:get:zoom"
-		<a class="is--linkBox -hov:pass -ar:16/9 -ov:h -bdrs:4" href="#banner-link">
-			<div class="l--frame is--layer">
-				<img class="is--layer -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy" />
-			</div>
-			<div class="l--center is--layer -c:white -bgc:" style="--bgc:rgb(0 0 0 / 40%)">
-				<span class="-fz:2xl -lts:l">LinkBox</span>
-			</div>
-		</a>
-		```
-	</PreviewCode>
-</Preview>
-
-<Preview>
-	<PreviewTitle>`-hov:get:highlight` を自作する</PreviewTitle>
-	<PreviewArea p='30'>
-		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='2' p='30'>
-			<Stack>
-				<h3>LinkBox</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='2'>View More</Text>
-			</Stack>
-		</LinkBox>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='CSS'>
-		```css
-		.-hov\:get\:highlight {
-			.-hov\:pass:hover & {
-				color: var(--red);
-				background-color: rgba(255, 10, 10, 0.05);
-			}
-		}
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov="
-		<LinkBox hov='pass,shadow' href='#banner-link' bd bdrs='3' p='30'>
-			<Stack>
-				<h3>LinkBox</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-				<Text hov='get:highlight' c='text-2' mis='a' mbs='20' px='10' bdrs='2'>View More</Text>
-			</Stack>
-		</LinkBox>
-		```
-	</PreviewCode>
-</Preview>

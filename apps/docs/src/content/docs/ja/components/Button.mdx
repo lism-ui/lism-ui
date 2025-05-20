@@ -19,7 +19,7 @@ import Button from '~/components/ex/Button/index.astro';
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
-	<PreviewArea resize p='20' bg='u:stripe'>
+	<PreviewArea p='20' bg='u:stripe'>
 		<Flex variant='cluster' g='20'>
 			<Button href='###' variant='fill'>Button</Button>
 			<Button href='###' variant='outline'>Outline</Button>
@@ -74,7 +74,7 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 
 <Preview>
 	<PreviewTitle>カラー指定</PreviewTitle>
-	<PreviewArea resize p='20' bg='u:stripe'>
+	<PreviewArea p='20' bg='u:stripe'>
 		<Flex variant='cluster' g='20'>
 			{/* <Button href='###' bgc='base-2' bdc='divider'>Button</Button> */}
 			<Button href='###' variant='fill' bgc='main'>Fill</Button>
@@ -102,7 +102,7 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 
 <Preview>
 	<PreviewTitle>アイコンを使う例</PreviewTitle>
-	<PreviewArea resize p='20' bg='u:stripe'>
+	<PreviewArea p='20' bg='u:stripe'>
 		<Flex variant='cluster' g='20'>
 			<Button href='###' variant='fill' ai='c' g='10' bdrs='1'>
 				<Icon icon='cart' />
@@ -152,7 +152,7 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 
 <Preview>
 	<PreviewTitle>アイコンのみのボタン</PreviewTitle>
-	<PreviewArea resize p='20' bg='u:stripe'>
+	<PreviewArea p='20' bg='u:stripe'>
 		<Button href='###' variant='fill' w='fit' p='20' bdrs='2'>
 			<Icon icon={{as:ShoppingCartSimple, weight:'fill'}} fz='l'/>
 		</Button> 
@@ -186,7 +186,7 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 
 <Preview>
 	<PreviewTitle>サイズの調整</PreviewTitle>
-	<PreviewArea resize p='20' isFlow='s' bg='u:stripe'>
+	<PreviewArea p='20' isFlow='s' bg='u:stripe'>
 		{/* <Flex g='20'> */}
 		<Button href='###' variant='fill' ai='c' g='10' w='fit' fz='s' bdrs='2'>
 			<Icon icon='cart' />
@@ -278,23 +278,25 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 	&:where(.c--button--outline) {
 		--hov-c: var(--c--base);
 	}
-	&:hover {
-		background-color: var(--hov-bgc) !important;
-		color: var(--hov-c) !important;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--hov-bgc) !important;
+			color: var(--hov-c) !important;
+		}
 	}
 }
 ```
 
 <Preview>
 	<PreviewTitle>例</PreviewTitle>
-	<PreviewArea resize p='20' bg='u:stripe'>
+	<PreviewArea p='20' bg='u:stripe'>
 		<Flex g='20'>
 			<Button href='###' hov='reverse' variant='fill' jc='c' w='50%'>Button</Button>
 			<Button href='###' hov='reverse' variant='outline' jc='c' w='50%'>Button</Button>
 		</Flex>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-	```jsx
+	```jsx "hov='reverse'"
 	<Flex g='20'>
 		<Button href='###' hov='reverse' variant='fill' jc='c' w='50%'>Button</Button>
 		<Button href='###' hov='reverse' variant='outline' jc='c' w='50%'>Button</Button>
@@ -304,7 +306,7 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 </Preview>
 
 <Preview>
-	<PreviewTitle>color指定ありでのreverse</PreviewTitle>
+	<PreviewTitle>color指定ありでのreverseの例</PreviewTitle>
 	<PreviewArea resize p='20' bg='u:stripe'>
 		<Flex variant='cluster' g='20'>
 			<Button href='###' hov='reverse' variant='fill' bgc='main'>Button</Button>
@@ -325,6 +327,7 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 
 <br />
 
+{/* 
 #### 背景がある時の注意点
 
 `variant` が `outline` の時、ホバー時の文字色 が `var(--c--base)`へ変化します。
@@ -344,13 +347,11 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 			<Flex variant='cluster' g='20'>
 				<Text>NG:</Text>
 				<Button href='###' c='white' hov='reverse' variant='outline'>Button</Button>
-				{/* <Button href='###' c='black' bgc='white' hov='reverse' variant='fill'>Button</Button> */}
 			</Flex>
 			<Spacer h='50' />
 			<Flex variant='cluster' g='20'>
 				<Text>OK:</Text>
 				<Button href='###' c='white' hov={[{ bgc:'white', c:'black' }]} variant='outline'>Button</Button>
-				{/* <Button href='###' c='black' bgc='white' bdc='white' hov={[{ bgc:'transparent', c:'white' }]} >Button</Button> */}
 			</Flex>
 		</Frame>
 	</PreviewArea>
@@ -371,4 +372,4 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 		</Frame>
 		```
 	</PreviewCode>
-</Preview>
+</Preview> */}

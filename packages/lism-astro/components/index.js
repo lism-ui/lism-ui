@@ -28,7 +28,7 @@ export * from './Decorator';
 export * from './Divider';
 export * from './Icon';
 
-export { default as Accordion, Accordions } from './Accordion';
+export { default as Accordion } from './Accordion';
 export { default as Modal } from './Modal';
 export { default as Tabs } from './Tabs';
 

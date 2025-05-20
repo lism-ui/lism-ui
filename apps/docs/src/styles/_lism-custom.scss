@@ -17,8 +17,12 @@
  ---------------------------------------- */
 :root {
 	--code-c: currentColor;
-	--code-bgc: color-mix(in srgb, transparent, currentColor 4%);
-	// --code-bgc: color-mix(in srgb, transparent, currne 90%);
+	--code-bgc: color-mix(in srgb, #22a4d40e, currentColor 4%);
+}
+
+:is(p > code) {
+	display: inline-flex;
+	line-height: 1;
 }
 
 /* ----------------------------------------

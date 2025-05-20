@@ -59,6 +59,7 @@ export default defineConfig({
 				useStarlightDarkModeSwitch: true,
 			},
 
+			// https://starlight.astro.build/guides/overriding-components/
 			components: {
 				// デフォルトの`SocialIcons`コンポーネントをオーバーライドします。
 				// SocialIcons: './src/components/EmailLink.astro',
@@ -67,7 +68,8 @@ export default defineConfig({
 				TwoColumnContent: './src/components/starlight/TwoColumnContent.astro',
 				PageTitle: './src/components/starlight/PageTitle.astro',
 				Sidebar: './src/components/starlight/Sidebar.astro',
-				ThemeProvider: './src/components/starlight/ThemeProvider.astro',
+				// ThemeProvider: './src/components/starlight/ThemeProvider.astro',
+				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
 			},
 		}),
 	],

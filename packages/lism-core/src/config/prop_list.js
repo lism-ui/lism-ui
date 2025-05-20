@@ -88,15 +88,24 @@ export default {
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
 
 	// others
-	bd: { style: 'border', utilKey: 'bd', utils: 1 },
+	bd: { style: 'border', utils: 1 },
 	bdw: { style: '--bdw', presets: ['inherit'] }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
 	bdc: { style: '--bdc', presets: 1, converter: 'color' },
 
 	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
-
 	bxsh: { presets: ['0', ...TOKENS.bxsh], converter: 'bxsh' },
 	// shColor: { converter: 'color', style: '--sh-color' },
+
+	// transition
+	trs: { style: 'transition' },
+	trsdu: { style: '--trsdu' },
+	trsde: { style: '--trsde' },
+	trsp: { style: '--trsp' },
+	trspt: {
+		style: '--trspt',
+		utils: { 'ease-in': 'in', 'ease-out': 'out', 'ease-in-out': 'in-out', linear: 'linear' },
+	},
 
 	//display
 	d: { utils: 1 },

@@ -1,0 +1,32 @@
+// ---
+
+.-trs\: {
+	transition-duration: var(--trsdu, 0.4s);
+	transition-property: var(--trsp, all);
+	transition-delay: var(--trsde, 0s);
+	transition-timing-function: var(--trstf, ease);
+}
+
+// .-trsdu\:fast {
+// 	--trsdu: var(--trsdu--fast);
+// }
+// .-trsdu\:slow {
+// 	--trsdu: var(--trsdu--slow);
+// }
+
+// transitions
+// trsp: transition-property:prop;
+// trsde: transition-delay:time;
+
+.-trstf\:in {
+	--trstf: ease-in;
+}
+.-trstf\:out {
+	--trstf: ease-out;
+}
+.-trstf\:in-out {
+	--trstf: ease-in-out;
+}
+.-trstf\:linear {
+	--trstf: linear;
+}

@@ -82,7 +82,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 <Preview>
 	<PreviewTitle id='linkbox-demo02'>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' hov='shadow'>
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' trs hov={{bxsh:'4'}}>
 			<Text fz='xl' fw='bold'>
 				<a className='u--overlayLink' href='#linkbox-demo02'>Heading link text</a>
 			</Text>
@@ -94,7 +94,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "u--overlayLink"
-		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' hov='shadow'>
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' trs hov={{bxsh:'4'}}>
 			<Text fz='xl' fw='bold'>
 				<a className='u--overlayLink' href='#linkbox-demo02'>Heading link text</a>
 			</Text>
@@ -107,7 +107,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx "u--overlayLink"
-		<div class="is--linkBox -hov:shadow -p:40 -bgc:base -bd: -bdc:divider -bdrs:4">
+		<div class="is--linkBox -hov:bxsh: -p:40 -bgc:base -bdc:divider -bd: -bdrs:4 -trs:" style="--hov-bxsh:var(--bxsh--4)">
 			<p class="-fz:xl -fw:bold">
 				<a class="u--overlayLink" href="#linkbox-demo02">Heading Link</a>
 			</p>
@@ -149,7 +149,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 <Preview>
 	<PreviewTitle id='linkbox-demo03'>例</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40' hov='shadow'>
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' trs hov={{bxsh:'4'}}>
 			<a className='u--hiddenLink u--skipFlow' href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'></a>
 			<Text fz='xl' fw='bold'>Heading Text</Text>
 			<Dummy c='text-2' lh='s' mbs='20' />
@@ -160,7 +160,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "u--hiddenLink"
-		<LinkBox isFlow bgc='base' bdc='divider' bd bdrs='4' p='40' hov='shadow'>
+		<LinkBox p='40' bgc='base' bdc='divider' bd bdrs='4' trs hov={{bxsh:'4'}}>
 			<a className='u--hiddenLink u--skipFlow' href='#linkbox-demo03' aria-label='リンクの読み上げテキスト'></a>
 			<Text fz='xl' fw='bold'>Heading Text</Text>
 			<Text c='text-2' lh='s' mbs='20'>
@@ -174,7 +174,7 @@ LinkBox内部に**別のリンク**も配置するには、2, 3 のいずれか�
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx {2,8} "u--hiddenLink"
-		<div class="is--linkBox is--flow -hov:shadow -bgc:base -bd: -bdc:divider -bdrs:4 -p:40">
+		<div class="is--linkBox -hov:bxsh: -p:40 -bgc:base -bdc:divider -bd: -bdrs:4 -trs:" style="--hov-bxsh:var(--bxsh--4)">
 			<a class="u--hiddenLink u--skipFlow" href="#linkbox-demo03" aria-label='リンクのラベルテキスト'></a>
 			<p class="-fz:xl -fw:bold">Heading Text</p>
 			<p class="-c:text-2 -lh:s -mbs:20">
