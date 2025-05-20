@@ -33,6 +33,5 @@ export { default as Modal } from './Modal';
 export { default as Tabs } from './Tabs';
 
 export * from './Reel';
-export * from './NavMenu';
 
 // export { default as Test } from './Test';

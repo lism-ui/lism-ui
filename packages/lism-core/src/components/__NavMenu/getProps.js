@@ -19,9 +19,7 @@ export function getNavMenuProps({
 	if (hovC) {
 		style['--hov-c'] = getMaybeCssVar(hovC, 'color');
 	}
-	// if (linkP) {
-	// 	style['--link-p'] = getMaybeCssVar(linkP, 'space', 'p');
-	// }
+
 	props.style = style;
 
 	if (nestLevel) {

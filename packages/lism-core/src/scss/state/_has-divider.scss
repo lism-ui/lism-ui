@@ -18,7 +18,7 @@
 	--bdw: 1px;
 	--isRow: 0;
 	--_bdw: calc(var(--isRow, 0) * var(--bdw)); // isRow 1 なら 1px, isRow 0 なら 0px
-	&:where(.l--flex) {
+	&:where(.l--flex, .-fxd\:r) {
 		--isRow: 1;
 	}
 
