@@ -4,7 +4,7 @@ description: ...
 ---
 import { Icon, Box, Dummy } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource, HelpText } from "~/components";
-import { Note } from '~/components/ex/Note';
+import Note from '~/components/ex/Note/index.jsx';
 
 
 ブログ記事などで、重要なポイントを示すためのコンポーネントです。
@@ -26,7 +26,7 @@ import { Note } from '~/components/ex/Note';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 	```html
-	<div class="c--note l--stack is--colored -p:30 -bd:is -bdc:keycolor -bdrs: -g:20" style="--keycolor:var(--gray);--bdw:4px;--bdrs:2px">
+	<div class="c--note l--stack u--colored -p:30 -bd:is -bdc:keycolor -bdrs: -g:20" style="--keycolor:var(--gray);--bdw:4px;--bdrs:2px">
 		<div class="c--note__head l--flex -fw:bold -ai:c -g:10">
 			<div class="c--note__icon l--center -fz:xl -c:keycolor">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="l--icon" aria-hidden="true">

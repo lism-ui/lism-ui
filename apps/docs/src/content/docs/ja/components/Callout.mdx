@@ -6,7 +6,7 @@ import { Box, Icon, Layer, Dummy } from '@lism-ui/astro';
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from '~/components';
 import { Book } from '@phosphor-icons/react';
 
-import { Callout } from '~/components/ex/Callout';
+import Callout from '~/components/ex/Callout/index.jsx';
 
 {/* // import Callout from '~/components/ex/Callout/index.astro'; */}
 
@@ -31,7 +31,7 @@ import { Callout } from '~/components/ex/Callout';
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="c--callout l--withSide is--colored -p:20 -bd: -bdrs:2 -g:20" style="--keycolor:var(--red)">
+		<div class="c--callout l--withSide u--colored -p:20 -bd: -bdrs:2 -g:20" style="--keycolor:var(--red)">
 			<div class="c--callout__icon l--center is--side -c:keycolor -fz:xl -p:5">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="l--icon" aria-hidden="true">...</svg>
 			</div>
