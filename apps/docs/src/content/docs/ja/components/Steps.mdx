@@ -1,10 +1,10 @@
 ---
-title: 'Step'
+title: 'Steps'
 description: ...
 ---
 import { Text, Badge, Lism, Dummy, Flex, Stack, Icon, Center } from '@lism-ui/core';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage } from "~/components";
-import { Step, StepBody, StepHead } from '~/components/ex/Step';
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
+import Steps from '~/components/ex/Steps/index.js';
 
 import { Question,ChatCircleDots } from '@phosphor-icons/react';
 import { ArrowFatLinesDown } from '@phosphor-icons/react';
@@ -13,87 +13,93 @@ import { ArrowFatLinesDown } from '@phosphor-icons/react';
 手順を示すレイアウトの構築例を紹介します。
 
 
+## Import
+
+<ImportSource name='Steps' hasRoot react/>
+
+
+## Usage
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize nogrid p='40'>
-		<Stack g='40'>
-			<Step>
-				<StepHead tag='h3' num='1'>
+		<Steps.Root>
+			<Steps.Item>
+				<Steps.Head tag='h3' num='1'>
 					<>手順1のタイトル</>
-				</StepHead>
-				<StepBody>
+				</Steps.Head>
+				<Steps.Body>
 					<Dummy lang='ja' length='s' />
-				</StepBody>
-			</Step>
+				</Steps.Body>
+			</Steps.Item>
 
 			<Center>
 				<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 			</Center>
 
-			<Step>
-				<StepHead tag='h3' num='2'>
+			<Steps.Item>
+				<Steps.Head tag='h3' num='2'>
 					<>手順2のタイトル</>
-				</StepHead>
-				<StepBody>
+				</Steps.Head>
+				<Steps.Body>
 					<Dummy lang='ja' length='s' />
 					<Dummy lang='ja' length='codes' />
-				</StepBody>
-			</Step>
+				</Steps.Body>
+			</Steps.Item>
 
 			<Center>
 				<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 			</Center>
 
-			<Step>
-				<StepHead tag='h3' num='3'>
-					<>手順3のタイトル</>
-				</StepHead>
-				<StepBody>
+			<Steps.Item>
+				<Steps.Head tag='h3' num='3'>
+					<>手順3のタイトル.長いテキストのテスト、ステップタイトル。</>
+				</Steps.Head>
+				<Steps.Body>
 					<Dummy lang='ja' length='l' />
-				</StepBody>
-			</Step>
-		</Stack>
+				</Steps.Body>
+			</Steps.Item>
+		</Steps.Root>
 	</PreviewArea>
-	<PreviewCode>
+	<PreviewCode slot='tab' label='JSX'>
 ```jsx
-<Stack g='40'>
-	<Step>
-		<StepHead tag='h3' num='1'>
+<Steps.Root>
+	<Steps.Item>
+		<Steps.Head tag='h3' num='1'>
 			<>手順1のタイトル</>
-		</StepHead>
-		<StepBody>
+		</Steps.Head>
+		<Steps.Body>
 			<Dummy lang='ja' length='s' />
-		</StepBody>
-	</Step>
+		</Steps.Body>
+	</Steps.Item>
 
 	<Center>
 		<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 	</Center>
 
-	<Step>
-		<StepHead tag='h3' num='2'>
+	<Steps.Item>
+		<Steps.Head tag='h3' num='2'>
 			<>手順2のタイトル</>
-		</StepHead>
-		<StepBody>
+		</Steps.Head>
+		<Steps.Body>
 			<Dummy lang='ja' length='s' />
 			<Dummy lang='ja' length='codes' />
-		</StepBody>
-	</Step>
+		</Steps.Body>
+	</Steps.Item>
 
 	<Center>
 		<Icon icon={ArrowFatLinesDown} weight='fill' fz='2xl' />
 	</Center>
 
-	<Step>
-		<StepHead tag='h3' num='3'>
+	<Steps.Item>
+		<Steps.Head tag='h3' num='3'>
 			<>手順3のタイトル</>
-		</StepHead>
-		<StepBody>
+		</Steps.Head>
+		<Steps.Body>
 			<Dummy lang='ja' length='l' />
-		</StepBody>
-	</Step>
-</Stack>
+		</Steps.Body>
+	</Steps.Item>
+</Steps.Root>
 ```
 	</PreviewCode>
 </Preview>

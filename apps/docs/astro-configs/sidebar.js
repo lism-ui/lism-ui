@@ -281,8 +281,8 @@ export default [
 			},
 
 			{
-				label: 'Step',
-				link: '/components/step/',
+				label: 'Steps',
+				link: '/components/steps/',
 			},
 			{
 				label: 'TermList',
