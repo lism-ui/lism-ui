@@ -5,15 +5,14 @@ description: ...
 
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportSource } from "~/components";
 import { Lism, Dummy } from '@lism-ui/astro';
-import { Chat } from '~/components/ex/Chat';
-import '~/components/ex/Chat/style.scss';
+import Chat from '~/components/ex/Chat';
 
 チャットツールの会話のようなコンポーネントを作成する例を紹介します。
 
 
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
-	<PreviewArea resize p='20' _dir='rtl'>
+	<PreviewArea resize p='30' _dir='rtl'>
 		<Chat name='Taro' avatar='/img/avatar01.jpg'>
 			<Dummy lang='ja' />
 		</Chat>
@@ -29,8 +28,7 @@ import '~/components/ex/Chat/style.scss';
 
 
 ## Import
-<ImportSource name='Chat' css react />
-
+<ImportSource name='Chat' css='scss' react />
 
 
 ## Props
@@ -49,7 +47,7 @@ import '~/components/ex/Chat/style.scss';
 
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
-	<PreviewArea resize p='20' _dir='rtl'>
+	<PreviewArea resize p='30' _dir='rtl'>
 		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
 			<Dummy length='codes' />
 		</Chat>
@@ -57,14 +55,14 @@ import '~/components/ex/Chat/style.scss';
 			<Dummy length='codes' />
 			<Dummy length='s' />
 		</Chat>
-		<Chat avatar='/img/avatar03.jpg' keycolor='blue'>
+		{/* <Chat avatar='/img/avatar03.jpg' keycolor='blue'>
 			<Dummy length='xs' />
 			<ul>
 				<li>Lorem ipsum...</li>
 				<li>Lorem ipsum...</li>
 				<li>Lorem ipsum...</li>
 			</ul>
-		</Chat>
+		</Chat> */}
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
@@ -82,15 +80,12 @@ import '~/components/ex/Chat/style.scss';
 
 <Preview>
 	<PreviewTitle>`variant='think'`</PreviewTitle>
-	<PreviewArea resize p='20' _dir='rtl'>
+	<PreviewArea resize p='30' _dir='rtl'>
 		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
 			<Dummy length='codes' />
 		</Chat>
 		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
 			<Dummy length='codes' />
-		</Chat>
-		<Chat variant='think' avatar='/img/avatar03.jpg' keycolor='blue'>
-			<Dummy length='xs' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
@@ -105,31 +100,6 @@ import '~/components/ex/Chat/style.scss';
 	</PreviewCode>
 </Preview>
 
-{/* <Preview>
-	<PreviewTitle>`variant='box'`</PreviewTitle>
-	<PreviewArea resize p='20' _dir='rtl'>
-		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
-			<Dummy length='codes' />
-		</Chat>
-		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
-			<Dummy length='codes' />
-		</Chat>
-		<Chat variant='box' avatar='/img/avatar03.jpg' keycolor='blue'>
-			<Dummy length='xs' />
-		</Chat>
-	</PreviewArea>
-	<PreviewCode>
-		```jsx
-		<Chat variant='box' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
-			<p>Lorem ipsum...</p>
-		</Chat>
-		<Chat variant='box' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
-			<p>Lorem ipsum...</p>
-		</Chat>
-		```
-	</PreviewCode>
-</Preview> */}
-
 {/* 
 ### Astroでのslotの活用
 
@@ -137,7 +107,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 
 <Preview>
 	<PreviewTitle>`slot`の使用例</PreviewTitle>
-	<PreviewArea resize p='20'>
+	<PreviewArea resize p='30'>
 		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
 			<b slot='name'>Taro</b>
 			<Dummy length='codes' />

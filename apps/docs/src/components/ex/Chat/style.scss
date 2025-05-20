@@ -1,12 +1,10 @@
 .c--chat {
-	--avator-size: clamp(48px, 32px + 5cqw, 64px); // 320:40px~640:64px
-	--deco-size: 1.25rem; //calc(var(--avator-size) * 0.25);
-	--colored-per--bg: 10%;
-	--flowGap: 0.5em;
+	--avator-size: clamp(48px, 32px + 5cqw, 64px); /* @320px:40px ~ @640:64px */
+	--deco-size: calc(var(--avator-size) * 0.25 + 0.25rem); /* if simple: 1.25rem; */
+	--colored-per--bg: 12%;
 
-	// auto のとこに --avator-size を使うと、アバターなしの時にスペースできてしまう。
 	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
-	gap: 0 var(--deco-size);
+	gap: 0 calc(var(--deco-size) + 1px);
 }
 [data-chat-direction='end'] {
 	grid: 'header avatar' minmax(1.5rem, auto) 'body avatar' / 1fr auto;
@@ -36,11 +34,11 @@
 
 // decorator
 .c--chat__deco {
-	top: 0rem;
 	width: var(--deco-size);
 	height: var(--deco-size);
 }
 .c--chat--speak .c--chat__deco {
+	top: 0;
 	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path d="M8,8L8,8C7.4,4.8,5.4,2,2.6,0.4L2,0h6V8z"/></svg>');
 }
 // think
