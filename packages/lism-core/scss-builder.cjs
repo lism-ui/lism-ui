@@ -16,9 +16,6 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 // const mqpacker = require('css-mqpacker');
 
-// https://www.npmjs.com/package/postcss-merge-at-rules
-// const mergeAtRules = require('postcss-merge-at-rules');
-
 // consoleの色付け
 const COLOR = {
 	red: '\u001b[31m',
@@ -58,22 +55,13 @@ const COLOR = {
 
 		// dart sass コンパイル
 		try {
-			const resultCSS = sassRender(srcPath);
-			// console.log(resultCSS);
+			const compiledCSS = sassCompile(srcPath);
 
 			// postcss実行
-			postcss([
-				// mergeAtRules({
-				// 	atRulePattern: /(media|layer|supports|container)/im,
-				// 	nest: true,
-				// }),
-				autoprefixer,
-				cssnano,
-			])
-				.process(resultCSS, { from: undefined })
+			postcss([autoprefixer, cssnano])
+				.process(compiledCSS, { from: undefined })
 				.then((postcssResult) => {
 					writeCSS(distPath, postcssResult.css);
-					// if (postcssResult.map) {fs.writeFile('dest/app.css.map', postcssResult.map.toString(), () => true);}
 				});
 
 			// console.log(COLOR.green + 'Completed.');
@@ -85,16 +73,9 @@ const COLOR = {
 	}
 })();
 
-function sassRender(srcPath) {
-	// globImporter() 使うために レガシー API （ sass.renderSync ） を使う
-	// const compressed = sass.renderSync({
-	// 	file: srcPath,
-	// 	importer: globImporter(),
-	// 	outputStyle: 'compressed',
-	// });
-
+function sassCompile(srcPath) {
 	const result = sass.compile(srcPath, {
-		style: 'compressed',
+		style: 'expanded', // 圧縮はcssnanoに任せる
 	});
 
 	return result.css;
@@ -111,6 +92,5 @@ function writeCSS(filePath, css) {
 	}
 
 	// css書き出し
-	// console.log('Wrote CSS to ' + filePath);
 	fs.writeFileSync(filePath, css);
 }
