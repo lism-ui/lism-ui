@@ -19,6 +19,8 @@ import { Minus, Plus, X, Question, CaretDoubleDown, EyeClosed, Eyes } from "@pho
 </Note>
 
 
+
+
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p='20'>
@@ -86,6 +88,17 @@ HTML で使用する場合、jsファイルが必要です。
 <script src='...'></script>
 ```
 {/* <script src="index.js" type="module"></script> */}
+
+### スクリプトの処理ステップ
+
+- `d--accordion` の`summary`要素、または（`data-role="trigger"`があればその要素）にク対してリックイベント・トグルイベントを登録
+- クリック時、開閉状態に応じて、open属性と`.-opened`クラスを操作。
+    - アニメーションの終了を待ってから状態を確定する。
+	- アコーディオンが開く時、親要素に`data-accordion-multiple="disallow"` があるかチェックし、あれば他の兄弟要素を閉じる。
+- トグル時の処理
+    - open属性と`.-opened`クラスが食い違った場合に修正。
+- イベント解除(コンポーネントのアンマウント時に登録イベントを解除。)
+
 
 
 ## Usage
@@ -165,12 +178,12 @@ import { CaretDoubleDown } from "@phosphor-icons/react";
 
 ### アコーディオンの同時開閉を禁止する
 
-複数の`<Accordion.Root>`(`.d--accordion`)を含む親要素に `[data-acc-multiple="disallow"]`を指定すると、複数のアコーディオンを同時に開くことを禁止し、どれかが開くとその兄弟アコーディオンを閉じるようになります。
+複数の`<Accordion.Root>`(`.d--accordion`)を含む親要素に `[data-accordion-multiple="disallow"]`を指定すると、複数のアコーディオンを同時に開くことを禁止し、どれかが開くとその兄弟アコーディオンを閉じるようになります。
 
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea p={30}>
-		<Stack g='1px' data-acc-multiple='disallow'>
+		<Stack g='1px' data-accordion-multiple='disallow'>
 			<Accordion.Root>
 				<Accordion.Header p='30' bgc='text' c='base'>
 					<Accordion.Label>Accordion.Label</Accordion.Label>
@@ -201,8 +214,8 @@ import { CaretDoubleDown } from "@phosphor-icons/react";
 		</Stack>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-```jsx "data-acc-multiple='disallow'"
-<Stack g='1px' data-acc-multiple='disallow'>
+```jsx "data-accordion-multiple='disallow'"
+<Stack g='1px' data-accordion-multiple='disallow'>
 	<Accordion.Root>
 		<Accordion.Header p='30' bgc='text' c='base'>
 			<Accordion.Label>Accordion.Label</Accordion.Label>
@@ -226,8 +239,8 @@ import { CaretDoubleDown } from "@phosphor-icons/react";
 ```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
-```html "data-acc-multiple=\"disallow\""
-<div class="l--stack" data-acc-multiple="disallow">
+```html "data-accordion-multiple=\"disallow\""
+<div class="l--stack" data-accordion-multiple="disallow">
 	<summary class="d--accordion__header ...">...</summary>
 	<summary class="d--accordion__header ...">...</summary>
 </div>

@@ -61,11 +61,11 @@ export const setEvent = (currentRef) => {
 
 	if (!clickBtn) return;
 
-	// 複数展開を許可するかどうかを、親要素の [data-acc-multiple] でチェック.
+	// 複数展開を許可するかどうかを、親要素の [data-accordion-multiple] でチェック.
 	let allowMultiple = false;
 	const parent = details.parentNode;
 	if (null != parent) {
-		const dataMultiple = parent.dataset.accMultiple;
+		const dataMultiple = parent.dataset.accordionMultiple;
 		allowMultiple = 'disallow' !== dataMultiple;
 	}
 

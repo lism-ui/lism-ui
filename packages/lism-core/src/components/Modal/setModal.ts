@@ -88,7 +88,7 @@ const setModal = () => {
 	// 	setEvent(details);
 	// });
 	const modals = document.querySelectorAll('.d--modal');
-	console.log('modals', modals);
+	// console.log('modals', modals);
 
 	modals?.forEach((target) => {
 		setEvent(target as HTMLDialogElement);
