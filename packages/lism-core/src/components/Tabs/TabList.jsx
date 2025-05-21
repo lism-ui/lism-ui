@@ -1,5 +1,6 @@
 import { Flex } from '../Flex';
-import { getTabListProps } from './getProps';
+
 export default function TabList(props) {
-	return <Flex {...getTabListProps(props)} />;
+	// jc: 's',
+	return <Flex lismClass='d--tabs__list' role='tablist' {...props} />;
 }

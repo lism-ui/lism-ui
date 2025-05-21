@@ -1,19 +1,19 @@
 import React from 'react';
 import { Lism } from '../Lism';
-import { TabContext } from './context';
-import { getTabProps } from './getProps';
 
-export default function Tab({ index = 0, ...props }) {
-	const { tabId, activeIndex, setActiveIndex } = React.useContext(TabContext);
-
-	const isActive = activeIndex === index;
+export default function Tab({ tabId = 'tab', index = 0, isActive = false, ...props }) {
 	const controlId = `${tabId}-${index}`;
 
 	return (
 		<Lism
-			onClick={() => setActiveIndex(index)}
+			tag='button'
+			lismClass='d--tabs__tab'
+			className='re--style'
+			role='tab'
 			aria-controls={controlId}
-			{...getTabProps(props, isActive)}
+			aria-selected={isActive ? 'true' : 'false'}
+			skipState
+			{...props}
 		/>
 	);
 }

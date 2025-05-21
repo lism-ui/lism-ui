@@ -1,6 +1,7 @@
 ---
 import '@lism-ui/core/scss/all.scss';
-import { Box, Lism, Flex, Container } from '@lism-ui/core';
+import { Tabs, Box, Lism, Flex, Container, Spacer, Dummy } from '@lism-ui/astro';
+// import { Tabs } from '@lism-ui/astro';
 // import Lism from '@lism-ui/astro/Lism/Lism.astro';
 // import { Image } from 'astro:assets';
 // import getLismProps from '@lism-ui/core/lib/getLismProps';
@@ -9,19 +10,73 @@ import { Box, Lism, Flex, Container } from '@lism-ui/core';
 // @ts-ignore
 ---
 
-<p>hoge</p>
+<!-- <script type='module' src='https://cdn.jsdelivr.net/npm/@lism-ui/core/dist/scripts/tabs.js'
+></script> --><!-- <p>hoge</p> -->
 <Container size='m' hasGutter isFlow>
-	<Box p='30' bgc='base-2' bd bdw={['1px', '4px']}>Box</Box>
-	<Lism p='30' bgc='base-2' p={{ t: 20, l: 40 }}>Lism box</Lism>
-	<Lism p='30' bgc='base-2' p={[20, { t: 20, l: 40 }]}>Lism box</Lism>
-
-	<!-- fxd={['column', 'row']} -->
-	<Flex g={{ row: '40', col: '30' }}>
-		<Box bgc='red:20%' p='30' c='red'>Box</Box>
-		<Box bgc='blue:20%' p='30' c='blue'>Box</Box>
-	</Flex>
-	<Flex g={[20, { row: '40', col: '30' }]}>
-		<Box bgc='red:20%' p='30' c='red'>Box</Box>
-		<Box bgc='blue:20%' p='30' c='blue'>Box</Box>
-	</Flex>
+	<!-- <Box /> -->
+	<Spacer h='40' />
+	<!-- <Tabs.Root variant='default' g='20'>
+		<Tabs.Item label='Tab 1'>
+			<Dummy />
+		</Tabs.Item>
+		<Tabs.Item label='Tab 2'>
+			<Dummy length='l' />
+		</Tabs.Item>
+	</Tabs.Root> -->
+	<!--  <button class="d--tabs__tab re--style" role="tab" aria-controls="tab-0" aria-selected="false" _slot="tab">  Tab 1  </button> <div class="d--tabs__panel -bd:" id="tab-0" role="tabpanel" aria-hidden="true" _slot="panel">   Tabs.Panel   </div> 
+ <button class="d--tabs__tab re--style" role="tab" aria-controls="tab-0" aria-selected="false" _slot="tab">  Tab 2  </button> <div class="d--tabs__panel" id="tab-0" role="tabpanel" aria-hidden="true" _slot="panel">   Tabs.Panel 2   </div>  -->
+	<Tabs.Root g='20'>
+		<Tabs.Item isTabItem='a'>
+			<Tabs.Tab>Tab 1</Tabs.Tab>
+			<Tabs.Panel bd>Tabs.Panel</Tabs.Panel>
+		</Tabs.Item>
+		<Tabs.Item>
+			<Tabs.Tab>Tab 2</Tabs.Tab>
+			<Tabs.Panel>Tabs.Panel 2</Tabs.Panel>
+		</Tabs.Item>
+	</Tabs.Root>
+	<hr />
+	<div class='d--tabs l--grid d--tabs--default -g:20'>
+		<div class='d--tabs__list l--flex -jc:s -fz:s' role='tablist'>
+			<button
+				class='d--tabs__tab re--style'
+				aria-controls='37722465-288d-465e-bda9-8d5d5493413a-0'
+				role='tab'
+				aria-selected='true'
+			>
+				Tab 1
+			</button>
+			<button
+				class='d--tabs__tab re--style'
+				aria-controls='37722465-288d-465e-bda9-8d5d5493413a-1'
+				role='tab'
+				aria-selected='false'
+			>
+				Tab 2
+			</button>
+		</div>
+		<div
+			class='d--tabs__panel'
+			id='37722465-288d-465e-bda9-8d5d5493413a-0'
+			role='tabpanel'
+			aria-hidden='false'
+		>
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non
+				facere laudantium ex eos doloribus aut dolore nisi.
+			</p>
+		</div>
+		<div
+			class='d--tabs__panel'
+			id='37722465-288d-465e-bda9-8d5d5493413a-1'
+			role='tabpanel'
+			aria-hidden='true'
+		>
+			<p>
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit, sed do eiusmod tempor. Non
+				facere laudantium ex eos doloribus aut dolore nisi provident libero, eum nulla sunt,
+				porro sed dicta. Impedit ullam eveniet obcaecati minima.
+			</p>
+		</div>
+	</div>
 </Container>

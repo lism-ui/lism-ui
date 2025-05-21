@@ -9,17 +9,19 @@ interface Props {
 const { label, ...props } = Astro.props || {};
 ---
 
-{
-	label && (
-		<Tabs.Item label={label} {...props}>
-			<slot />
-		</Tabs.Item>
-	)
-}
-{
-	!label && (
-		<Lism className='c--preview_code' {...props}>
-			<slot />
-		</Lism>
-	)
-}
+<>
+	{
+		label ? (
+			<Tabs.Item {...props}>
+				<Tabs.Tab>{label}</Tabs.Tab>
+				<Tabs.Panel>
+					<slot />
+				</Tabs.Panel>
+			</Tabs.Item>
+		) : (
+			<Lism className='c--preview_code' {...props}>
+				<slot />
+			</Lism>
+		)
+	}
+</>

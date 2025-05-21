@@ -1,57 +1,64 @@
 import React from 'react';
 import { Grid } from '../Grid';
 import Tab from './Tab';
+import TabItem from './TabItem';
 import TabList from './TabList';
 import TabPanel from './TabPanel';
 import getTabsProps from './getProps';
-import { TabContext } from './context';
+// import { TabContext } from './context';
 
-export default function Tabs({ uid, defaultIndex, tabProps = {}, children, ...props }) {
-	const [activeIndex, setActiveIndex] = React.useState(defaultIndex || 0);
-
-	const tabId = uid || React.useId();
-
-	const { tabsProps, listProps, panelProps } = getTabsProps(props);
-
-	const deliverState = {
-		tabId,
-		activeIndex,
-		setActiveIndex,
-	};
-
-	const items = [];
+export default function Tabs({ tabId = '', defaultIndex = 1, listProps = {}, children, ...props }) {
+	const [activeIndex, setActiveIndex] = React.useState(defaultIndex);
+	const theTabId = tabId || React.useId();
+	const btns = [];
 	const panels = [];
 
-	// 直下のTabItemを処理する
+	// Tabs.Item の処理
 	React.Children.forEach(children, (child, index) => {
-		const childProps = child.props || {};
-		const { label, ...itemProps } = childProps;
+		const tabIndex = index + 1; // 1 はじまり
+		// console.log('child.type', React.isValidElement(child), child.type);
 
-		// label を持っていなければスキップ
-		if (!label) return;
-
-		items.push(
-			<Tab key={index} index={index} {...tabProps}>
-				{label}
-			</Tab>
-		);
-		panels.push(<TabPanel key={index} index={index} {...itemProps} {...panelProps} />);
-		// panels.push(React.cloneElement(child, { key: controlId, panelId: controlId, isActive }));
+		if (React.isValidElement(child) && child.type === TabItem) {
+			React.Children.forEach(child.props.children, (nestedChild) => {
+				if (React.isValidElement(nestedChild)) {
+					if (nestedChild.type === Tab) {
+						const tabProps = nestedChild.props;
+						btns.push(
+							<Tab
+								{...tabProps}
+								tabId={theTabId}
+								index={tabIndex}
+								isActive={tabIndex === activeIndex}
+								onClick={() => setActiveIndex(tabIndex)}
+							/>
+						);
+					} else if (nestedChild.type === TabPanel) {
+						const panelProps = nestedChild.props;
+						panels.push(
+							<TabPanel
+								{...panelProps}
+								tabId={theTabId}
+								index={tabIndex}
+								isActive={tabIndex === activeIndex}
+							/>
+						);
+					}
+				}
+			});
+		}
 	});
 
 	return (
-		<Grid {...tabsProps}>
-			<TabContext.Provider value={deliverState}>
-				{items.length === 0 ? (
-					// タブが生成できなかった場合（直接TabListなどを子要素に配置する場合）は、そのまま返す
-					children
-				) : (
-					<>
-						<TabList {...listProps}>{items}</TabList>
-						{panels}
-					</>
-				)}
-			</TabContext.Provider>
+		<Grid {...getTabsProps(props)}>
+			{btns.length === 0 ? (
+				// TabItemを使わず直接TabListなどを子要素に配置する場合
+				children
+			) : (
+				<>
+					<TabList {...listProps}>{btns}</TabList>
+					{panels}
+				</>
+			)}
 		</Grid>
 	);
 }

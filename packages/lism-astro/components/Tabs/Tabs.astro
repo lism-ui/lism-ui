@@ -1,9 +1,9 @@
 ---
 import { LismProps } from '../types';
 import { Grid } from '../Grid';
-import Tab from './Tab.astro';
+// import Tab from './Tab.astro';
+// import TabPanel from './TabPanel.astro';
 import TabList from './TabList.astro';
-import TabPanel from './TabPanel.astro';
 import { uuidv4 } from '../helper/index.js';
 import transformTabitems from './transformTabitems.js';
 import getTabsProps from '@lism-ui/core/components/Tabs/getProps';
@@ -17,53 +17,37 @@ interface Props extends LismProps {
 	defaultIndex?: string | number;
 }
 // propsの取得
-const { defaultIndex = 0, uid, tabProps = {}, ...props } = Astro.props || {};
+const { defaultIndex = 1, tabId = '', listProps = {}, ...props } = Astro.props || {};
 
-// 生成したhtmlを格納する配列
-const tabID = uid ? uid : uuidv4();
+// tabID生成
+const theTabID = tabId ? tabId : uuidv4();
 
-// 子要素の方から順番に処理されていくので、文字列処理でデータを抽出する。(より厳密に処理するなら、rehype などでHTMLをパースして処理を行った方がいいかも)
+// 子要素の方から順番に処理されていくので、文字列処理でデータを抽出
 const { btns, panels } = transformTabitems(
 	await Astro.slots.render('default'),
-	tabID,
+	theTabID,
 	defaultIndex
 );
-
-const { tabsProps, listProps, panelProps } = getTabsProps(props);
 
 const hasItems = btns.length > 0;
 ---
 
-<Grid {...tabsProps}>
+<Grid {...getTabsProps(props)}>
 	{
-		hasItems ? (
-			<>
-				<TabList {...listProps}>
-					{btns.map((btn, index) => {
-						return (
-							<Tab tabID={tabID} index={index} isActive={btn.isActive} {...tabProps}>
-								<Fragment set:html={btn.content} />
-							</Tab>
-						);
-					})}
-				</TabList>
-				{panels.map((panel, index) => {
-					return (
-						<TabPanel
-							tabID={tabID}
-							index={index}
-							isActive={panel.isActive}
-							{...panelProps}
-						>
-							<Fragment set:html={panel.content} />
-						</TabPanel>
-					);
+		btns && (
+			<TabList {...listProps}>
+				{btns.map((btn, index) => {
+					return <Fragment key={index} set:html={btn} />;
 				})}
-			</>
-		) : (
-			<slot />
+			</TabList>
 		)
 	}
+	{
+		panels.map((panel, index) => {
+			return <Fragment key={index} set:html={panel} />;
+		})
+	}
+	{!hasItems && <slot />}
 </Grid>
 
 <script>

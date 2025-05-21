@@ -1,17 +1,8 @@
 ---
-import { LismProps } from '../types';
-export interface Props extends LismProps {
-	label: string | number;
-}
-const { label = '' } = Astro.props;
+// memo: タブボタンが <button ~ button> で取得できることを前提にして<slot />だけにしている。
+// <slot name='tab' />,<slot name='panel' />に分け、それぞれをカスタムDOMで囲んだ方が確実にそれぞれの内容は取れるが、わざわざslot指定が必要になってしまう。
 ---
 
 <lism-placeholder-tabitem>
-	<lism-placeholder-tablabel>
-		{Astro.slots.has('label') && <slot name='label' />}
-		{!Astro.slots.has('label') && label}
-	</lism-placeholder-tablabel>
-	<lism-placeholder-tabpanel>
-		<slot />
-	</lism-placeholder-tabpanel>
+	<slot />
 </lism-placeholder-tabitem>

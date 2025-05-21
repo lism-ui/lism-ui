@@ -1,12 +1,16 @@
 import React from 'react';
 import { GridItem } from '../Grid';
-import { TabContext } from './context';
-import { getTabPanelProps } from './getProps';
 
-export default function TabPanel({ index = 0, ...props }) {
-	const { tabId, activeIndex } = React.useContext(TabContext);
-	const isActive = activeIndex === index;
+export default function TabPanel({ tabId = 'tab', isActive = false, index = 0, ...props }) {
 	const controlId = `${tabId}-${index}`;
 
-	return <GridItem id={controlId} {...getTabPanelProps(props, isActive)} />;
+	return (
+		<GridItem
+			id={controlId}
+			role='tabpanel'
+			aria-hidden={isActive ? 'false' : 'true'}
+			lismClass='d--tabs__panel'
+			{...props}
+		/>
+	);
 }
