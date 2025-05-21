@@ -131,6 +131,7 @@ export default {
 	ov: { style: 'overflow', utils: 1 },
 	ovx: { style: 'overflowX', utils: 'ov' },
 	ovy: { style: 'overflowY', utils: 'ov' },
+	// overflow-clip-margin → safariで使えない
 	ar: {
 		// style:'aspectRatio',
 		presets: [
@@ -171,9 +172,11 @@ export default {
 	pr: { presets: [], converter: 'space' },
 	pt: { presets: [], converter: 'space' },
 	pb: { presets: [], converter: 'space' },
-	// pis, pbs, pin, pbl
+	// inline,block
 	pis: { presets: SPACE_PRESETS, converter: 'space' },
-	pbs: { presets: [], converter: 'space' },
+	// pie: { converter: 'space' },
+	pbs: { converter: 'space' },
+	// pbe: { converter: 'space' },
 	// pinln, pblck
 	// pse: paddingOption,
 	// pbe: paddingOption,
@@ -191,7 +194,9 @@ export default {
 	mt: { converter: 'space' },
 	mb: { converter: 'space' },
 	mis: { utils: { auto: 'a' }, converter: 'space' },
+	// mib: { converter: 'space' },
 	mbs: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
+	// mbe: { converter: 'space' },
 	// me: marginOption,
 	// mbe: marginOption,
 

@@ -13,6 +13,8 @@ export default defineConfig({
 	// 	gfm: true,
 	// },
 
+	devToolbar: { enabled: false },
+
 	integrations: [
 		// {
 		// 	// customCssだと順番が環境によって変わる。絶対に先に読み込みたいものはここに。
