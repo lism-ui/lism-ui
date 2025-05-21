@@ -337,10 +337,16 @@ Lism では、`-hov:pass`というクラスを定義しており、このクラ�
 
 もう一つ例として、親がhoverされたらズーム表示されるような`-hov:get:zoom`クラスと、テキストが広がるような`-hov:get:letterSpread`クラスを自作して使ってみます。
 
+さらに、親要素で`--trsdu--default`を上書きして子要素のトランジション時間を一括で変更してみます。
+
 <Preview>
 	<PreviewTitle>自作クラスを使う</PreviewTitle>
 	<PreviewArea p='30'>
-		<LinkBox href='#banner-link' hov='pass' ov='h' ar='16/9' bdrs='4'>
+		<LinkBox
+			href='#banner-link'
+			hov='pass' ov='h' ar='16/9' bdrs='4'
+			style={{'--trsdu--default':'.6s'}}
+		>
 			<Frame isLayer>
 				<Media trs hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 			</Frame>
@@ -351,8 +357,12 @@ Lism では、`-hov:pass`というクラスを定義しており、このクラ�
 		</LinkBox>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='HTML'>
-		```html "-hov:pass" "-hov:get:zoom" "-hov:get:letterSpread"
-		<a class="is--linkBox -hov:pass -ar:16/9 -ov:h -bdrs:4" href="#banner-link">
+		```html "-hov:pass" "-hov:get:zoom" "-hov:get:letterSpread" "--trsdu--default"
+		<a
+			href="#banner-link"
+			class="is--linkBox -hov:pass -ar:16/9 -ov:h -bdrs:4"
+			style="--trsdu--default:.6s"
+		>
 			<div class="l--frame is--layer">
 				<img class="is--layer -trs: -hov:get:zoom" src="/img/img-2.jpg" width="960" height="640" loading="lazy" />
 			</div>
@@ -363,8 +373,12 @@ Lism では、`-hov:pass`というクラスを定義しており、このクラ�
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "hov='pass'" "hov='get:zoom'" "hov='get:letterSpread'"
-		<LinkBox href='#banner-link' hov='pass' ov='h' ar='16/9' bdrs='4'>
+		```jsx "hov='pass'" "hov='get:zoom'" "hov='get:letterSpread'" "--trsdu--default"
+		<LinkBox
+			href='#banner-link'
+			hov='pass' ov='h' ar='16/9' bdrs='4'
+			style={{'--trsdu--default':'.6s'}}
+		>
 			<Frame isLayer>
 				<Media trs hov='get:zoom' src='/img/img-2.jpg' alt='' width='960' height='640' loading='lazy'/>
 			</Frame>

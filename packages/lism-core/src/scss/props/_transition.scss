@@ -1,17 +1,21 @@
 // ---
 
 .-trs\: {
-	transition-duration: var(--trsdu, 0.4s);
-	transition-property: var(--trsp, all);
-	transition-delay: var(--trsde, 0s);
-	transition-timing-function: var(--trstf, ease);
+	:where(&) {
+		// 変数初期セット（親子関係で影響しないように)
+		--trsdu: var(--trsdu--default);
+		--trsp: all;
+		--trsde: 0s;
+		--trstf: ease;
+	}
+	transition-duration: var(--trsdu);
+	transition-property: var(--trsp);
+	transition-delay: var(--trsde);
+	transition-timing-function: var(--trstf);
 }
 
-// .-trsdu\:fast {
-// 	--trsdu: var(--trsdu--fast);
-// }
-// .-trsdu\:slow {
-// 	--trsdu: var(--trsdu--slow);
+// .-trsdu\:inherit {
+// 	--trsdu: inherit;
 // }
 
 // transitions

@@ -31,21 +31,12 @@ async function modalClose(event: Event, modal: HTMLDialogElement): Promise<void>
 export function setEvent(modal: HTMLDialogElement): void {
 	// modalがない、またはidがない場合は処理を終了
 	if (!modal || !modal.id) return;
-	console.log('modal', modal);
 
 	// モーダルを開くトリガーと閉じるトリガーを取得
 	const openTriggers: NodeListOf<HTMLElement> = document.querySelectorAll(
 		`[data-modal-open="${modal.id}"]`
 	);
 	const closeTriggers: NodeListOf<HTMLElement> = modal.querySelectorAll('[data-modal-close]');
-
-	// モーダル内のform要素を取得
-	// const form = modal.querySelector('form');
-	// form?.addEventListener('submit', (event) => {
-	// 	event.preventDefault();
-	// 	modalClose(event, modal);
-	// 	return true;
-	// });
 
 	// 自身にクローズイベントを追加
 	modal.addEventListener('click', (event) => {
@@ -83,12 +74,7 @@ export function setEvent(modal: HTMLDialogElement): void {
 }
 
 const setModal = () => {
-	// const detailsAll = document.querySelectorAll('.d--accordion');
-	// detailsAll.forEach((details) => {
-	// 	setEvent(details);
-	// });
 	const modals = document.querySelectorAll('.d--modal');
-	// console.log('modals', modals);
 
 	modals?.forEach((target) => {
 		setEvent(target as HTMLDialogElement);

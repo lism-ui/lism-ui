@@ -25,7 +25,8 @@
 
 .d--accordion__body {
 	grid-template-rows: 1fr;
-	--trsp: margin-block, padding-block, opacity, grid-template-rows;
+	transition-property: margin-block, padding-block, opacity, grid-template-rows;
+	transition-duration: var(--trsdu--acc);
 }
 
 // ※ 正常な animation に必須
@@ -47,7 +48,7 @@
 :where(.d--accordion__icon) {
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
 	> .l--icon {
-		--trsp: rotate;
+		transition-duration: var(--trsdu--acc);
 		rotate: calc(var(--opened) * -180deg);
 	}
 }

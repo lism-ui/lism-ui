@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 
 import { Lism, Layer, Text, Flex } from '@lism-ui/core';

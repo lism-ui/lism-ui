@@ -38,7 +38,7 @@ const entries = {
 	// ↓ scripts.jsのビルドと、setEvent.js もこれでビルドされる.
 	'scripts/tabs': resolve(__dirname, 'src/components/Tabs/script.js'),
 	'scripts/accordion': resolve(__dirname, 'src/components/Accordion/script.js'),
-	'scripts/dialog': resolve(__dirname, 'src/components/Modal/script.js'),
+	'scripts/modal': resolve(__dirname, 'src/components/Modal/script.js'),
 };
 
 // build.lib を設定すると でライブラリモードになる。
