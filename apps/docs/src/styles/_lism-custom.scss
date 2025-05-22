@@ -130,7 +130,7 @@ td:first-child > code:only-child {
 // utility 作成例
 //--------------------
 .-hov\:get\:highlight {
-	.-hov\:pass:hover & {
+	.-hov\:set:hover & {
 		color: var(--red);
 		background-color: rgba(255, 10, 10, 0.05);
 	}

@@ -13,23 +13,16 @@
 	}
 }
 
-// ほんとは: @container style(--isHov:1)
 .-hov\:get\:zoom {
-	scale: calc(1 + 0.1 * var(--isHov));
+	scale: var(--_isHov, 1.1);
 }
 .-hov\:get\:letterSpread {
-	letter-spacing: calc(0.125em * var(--isHov));
+	letter-spacing: var(--_isHov, 0.125em);
 }
-
 .-hov\:get\:slide {
-	--gtr: 0fr;
-	opacity: var(--isHov);
+	--gtr: var(--_isHov, 1fr) var(--_notHov, 0fr);
+	opacity: var(--_notHov, 0);
 	transition-property: margin-block, padding-block, opacity, grid-template-rows;
-
-	// calc() で fr単位が使えない
-	.-hov\:pass:hover & {
-		--gtr: 1fr;
-	}
 }
 
 // .-hov\:dark:hover {
@@ -60,4 +53,10 @@
 			color: var(--hov-c) !important;
 		}
 	}
+}
+
+.-hov\:test {
+	color: var(--_isHov, green) var(--_notHov, blue);
+	background-color: var(--_notHov, lightgray);
+	box-shadow: var(--_isHov, var(--bxsh--3));
 }

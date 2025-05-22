@@ -7,10 +7,6 @@
 
 // :where(:any-link, :enabled, summary)
 
-.-hov\:pass {
-	--isHov: 0;
-}
-
 @media (any-hover: hover) {
 	// ------------------------------------------------------------
 	// プリセット
@@ -37,21 +33,29 @@
 	.-hov\:bdc\::hover {
 		border-color: var(--hov-bdc) !important;
 	}
-	.-hov\:op\::hover {
-		opacity: var(--hov-op) !important;
-	}
 	.-hov\:bgc\::hover {
 		background-color: var(--hov-bgc) !important;
 	}
 	.-hov\:bxsh\::hover {
 		box-shadow: var(--hov-bxsh);
 	}
+
+	// .-hov\:op\::hover {
+	// 	opacity: var(--hov-op) !important;
+	// }
 	// .-hov\:filter\::hover {
 	// 	filter: var(--hov-filter) !important;
 	// }
-	.-hov\:pass:hover {
-		--isHov: 1;
-		--isHovVisible: visible;
+	.-hov\:set:hover {
+		--_notHov: ;
+	}
+	.-hov\:set:not(:hover) {
+		--_isHov: ;
+	}
+}
+@media (any-hover: none) {
+	.-hov\:set {
+		--_isHov: ;
 	}
 }
 
@@ -60,19 +64,11 @@
 // ------------------------------------------------------------
 
 .-hov\:get\:hide {
-	opacity: calc(1 - 1 * var(--isHov));
+	// opacity: calc(1 - 1 * var(--isHov));
+	opacity: var(--_isHov, 0);
 }
 
 .-hov\:get\:show {
-	opacity: var(--isHov);
-	visibility: var(--isHovVisible, hidden);
+	opacity: var(--_notHov, 0);
+	visibility: var(--_notHov, hidden);
 }
-
-// .-hov\:pass のhoverを起点に。
-// .-hov\:get\:xxx {
-// 	.-hov\:pass:hover & {
-// 		xxx: xxx;
-// 	}
-// }
-
-// ---

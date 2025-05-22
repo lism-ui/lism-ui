@@ -473,7 +473,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>コンテンツをホバーして表示</PreviewTitle>
 	<PreviewArea p='30'>
 		<Columns variant='liquid' colSize='20rem' g='30'>
-			<Card href='#card-a' pos='r' bdrs='3' hov='pass'>
+			<Card href='#card-a' pos='r' bdrs='3' hov='set'>
 				<Frame ar='4/3'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</Frame>
@@ -490,7 +490,7 @@ import Card from '~/components/ex/Card/index.jsx';
 					</Box>
 				</Stack>
 			</Card>
-			<Card href='#card-b' pos='r' bdrs='3' hov='pass'>
+			<Card href='#card-b' pos='r' bdrs='3' hov='set'>
 				<Frame ar='4/3'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</Frame>
@@ -510,9 +510,9 @@ import Card from '~/components/ex/Card/index.jsx';
 		</Columns>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-	```jsx
+	```jsx "hov='set'" "hov='get:slide'"
 	<Columns variant='liquid' colSize='20rem' g='30'>
-		<Card href='#card-a' pos='r' bdrs='2' hov='pass'>
+		<Card href='#card-a' pos='r' bdrs='2' hov='set'>
 			<Frame ar='4/3'>
 				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
@@ -529,7 +529,7 @@ import Card from '~/components/ex/Card/index.jsx';
 				</Box>
 			</Stack>
 		</Card>
-		<Card href='#card-b' pos='r' bdrs='2' hov='pass'>
+		<Card href='#card-b' pos='r' bdrs='2' hov='set'>
 			<Frame ar='4/3'>
 				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</Frame>
@@ -552,13 +552,9 @@ import Card from '~/components/ex/Card/index.jsx';
 <PreviewCode slot='tab' label='追加CSS'>
 ```css
 .-hov\:get\:slide {
-	--gtr: 0fr;
-	opacity: var(--isHov);
+	--gtr: var(--_isHov, 1fr) var(--_notHov, 0fr);
+	opacity: var(--_notHov, 0);
 	transition-property: margin-block, padding-block, opacity, grid-template-rows;
-
-	.-hov\:pass:hover & {
-		--gtr: 1fr;
-	}
 }
 ```
 </PreviewCode>
