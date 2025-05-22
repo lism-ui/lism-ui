@@ -7,14 +7,14 @@
 }
 .d--tabs__tab {
 	&[aria-selected='true'] {
-		--isActive: .;
+		--_notActive: ;
 	}
 	&[aria-selected='false'] {
-		--isDeactive: .;
+		--_isActive: ;
 	}
-	// 非アクティブの時、薄いカラーに。（--isAcriveが . なら無視され、それ以外はコールバックが適用される）
+	// 非アクティブの時、薄いカラーに
 	:where(&) {
-		color: var(--isActive, var(--c--text-2));
+		color: var(--_notActive, var(--c--text-2));
 	}
 }
 

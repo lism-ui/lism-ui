@@ -1,11 +1,11 @@
 .d--accordion {
-	--opened: 0;
 	// overflow: clip; // bdrs考慮
-}
-
-// 開いた時
-.d--accordion.-opened {
-	--opened: 1;
+	&.-opened {
+		--_notOpened: ;
+	}
+	&:not(.-opened) {
+		--_isOpened: ;
+	}
 }
 
 .d--accordion__header {
@@ -35,9 +35,9 @@
 // }
 
 // 閉じている時
-.d--accordion:not(.-opened) {
+:where(.d--accordion:not(.-opened)) {
 	> .d--accordion__body {
-		opacity: 0.1;
+		// opacity: 0.5;
 		grid-template-rows: 0fr;
 		padding-block: 0 !important;
 		margin-block: 0 !important;
@@ -49,6 +49,6 @@
 	// __icon 自体にborderつけたりすると回転が見えてしまうので、 icon自体を回転させる。
 	> .l--icon {
 		transition-duration: var(--trsdu--acc);
-		rotate: calc(var(--opened) * -180deg);
+		rotate: var(--_isOpened, -180deg);
 	}
 }

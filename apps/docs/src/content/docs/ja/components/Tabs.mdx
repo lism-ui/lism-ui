@@ -4,7 +4,7 @@ description: ...
 ---
 
 import { Dummy, Tabs, Icon } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Callout } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBadge, Callout, IconBadge } from "~/components";
 
 
 タブ要素を作成できるコンポーネントです。  
@@ -245,7 +245,11 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 ## スタイルバリエーションの作成例
 
 コアではスタイルを特に持ちませんので、サイトごとにスタイルを用意してご利用ください。  
-ここでは、いくつかその例を紹介します。
+
+`d--tabs__tab`では`--_isActive`, `--_notActive`が使えるようになっています。  
+<IconBadge type='help'/> （[`-hov:set`](/ja/css/hover#hov-set)の`--_isHov`,`--_notHov`の解説を参考にしてください。）
+
+ここではいくつかのスタイリング例を紹介します。
 
 <Preview>
 	<PreviewTitle>`variant='line'`</PreviewTitle>
@@ -277,9 +281,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	.d--tabs__tab {
 		font-size: var(--fz--s);
 		padding: 0.5em 0.875em;
-	}
-	.d--tabs__tab[aria-selected='true'] {
-		box-shadow: var(--sh-size) 0 0 currentColor;
+		box-shadow: var(--_isActive, var(--sh-size) 0 0 currentColor);
 	}
 }
 ```
@@ -329,8 +331,8 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	.d--tabs__tab {
 		padding: 0.25em 0.75em;
 		border-radius: calc(var(--bdrs--2) - 2px); /* 親の bdrs - 親のpadding / 2 */
-		background-color: var(--isDeactive, var(--c--base));
-		box-shadow: var(--isDeactive, var(--bxsh--1));
+		background-color: var(--_isActive, var(--c--base));
+		box-shadow: var(--_isActive, var(--bxsh--1));
 	}
 }
 ```

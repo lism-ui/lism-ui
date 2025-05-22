@@ -78,11 +78,10 @@
 		grid-area: 1 / 1;
 	}
 	> .l--icon:nth-last-of-type(2) {
-		opacity: calc(1 - var(--opened));
+		opacity: var(--_isOpened, 0);
 	}
 	> .l--icon:nth-of-type(2) {
-		opacity: calc(0 + var(--opened));
-		rotate: calc(180deg - var(--opened) * 180deg);
+		opacity: var(--_notOpened, 0);
 	}
 }
 
