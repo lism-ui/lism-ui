@@ -91,7 +91,7 @@ export default {
 	bd: { style: 'border', utils: 1 },
 	bdw: { style: '--bdw', presets: ['inherit'] }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
-	bdc: { style: '--bdc', presets: 1, converter: 'color' },
+	bdc: { style: '--bdc', utils: { transparent: 't' }, presets: 1, converter: 'color' },
 
 	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
 	bxsh: { presets: ['0', ...TOKENS.bxsh], converter: 'bxsh' },
