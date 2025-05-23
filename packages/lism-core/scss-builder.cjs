@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 // glob
-// const glob = require('glob');
+const glob = require('glob');
 
 // node-sass
 // const sass = require('node-sass');
@@ -31,35 +31,31 @@ const COLOR = {
 	// パス
 	let src = 'src/scss';
 	let dist = 'dist/css';
-	// const ignore = ['**/_*.scss'];
 	let files = [];
-	files = [
-		src + '/all_with_layout.scss',
-		src + '/all.scss',
-		// src + '/core-modules.scss',
-		// src + '/block-modules.scss',
+	// files = [src + '/all_with_layout.scss', src + '/all.scss', src + '/reset.scss'];
 
-		// src + '/base--wp.scss',
-		// src + '/components.scss',
-	];
-
-	// files = glob.sync(src + '/**/*.scss', { ignore });
-	// files = [src + '/base.scss', src + '/base--wp.scss', src + '/components.scss'];
+	const ignore = ['**/_*.scss'];
+	files = glob.sync(src + '/**/*.scss', { ignore });
 
 	for (const filePath of files) {
 		console.log(COLOR.green + 'Start sassRender: ' + COLOR.reset + filePath);
 
 		const fileName = filePath.replace(src + '/', '');
 		const srcPath = path.resolve(__dirname, src, fileName);
-		const distPath = path.resolve(__dirname, dist, fileName).replace('.scss', '.css');
+		const distPath = path
+			.resolve(__dirname, dist, fileName)
+			.replace('.scss', '.css')
+			.replace('/index.css', '.css');
 
 		// dart sass コンパイル
 		try {
-			const compiledCSS = sassCompile(srcPath);
+			const compiledCSS = sass.compile(srcPath, {
+				style: 'expanded', // 圧縮はcssnanoに任せる
+			});
 
 			// postcss実行
 			postcss([autoprefixer, cssnano])
-				.process(compiledCSS, { from: undefined })
+				.process(compiledCSS.css, { from: undefined })
 				.then((postcssResult) => {
 					writeCSS(distPath, postcssResult.css);
 				});
@@ -72,14 +68,6 @@ const COLOR = {
 		}
 	}
 })();
-
-function sassCompile(srcPath) {
-	const result = sass.compile(srcPath, {
-		style: 'expanded', // 圧縮はcssnanoに任せる
-	});
-
-	return result.css;
-}
 
 // 書き出し処理
 function writeCSS(filePath, css) {
