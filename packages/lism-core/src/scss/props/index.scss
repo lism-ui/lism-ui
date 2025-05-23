@@ -3,26 +3,14 @@
 
 @forward './positions';
 @forward './transform';
-@forward './filter';
 @forward './others';
+
+// 自動生成
 @forward '../auto_output';
 
 @forward './border';
 @forward './transition';
 @forward './hover';
-
-// @forward './aspect';
-// @forward './display';
-// @forward './sizing';
-// @forward './typography';
-// @forward './gap';
-// @forward './grid-props';
-// @forward './flex-props';
-// @forward './place';
-// @forward './margin';
-// @forward './padding';
-// @forward './radius';
-// @forward './shadow';
 
 :root {
 	// --grad-- はグラデーションの色部分だけを指定するための変数

@@ -14,14 +14,6 @@
 	transition-timing-function: var(--trstf);
 }
 
-// .-trsdu\:inherit {
-// 	--trsdu: inherit;
-// }
-
-// transitions
-// trsp: transition-property:prop;
-// trsde: transition-delay:time;
-
 .-trstf\:in {
 	--trstf: ease-in;
 }
