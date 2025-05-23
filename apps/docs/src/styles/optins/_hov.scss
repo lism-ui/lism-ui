@@ -60,3 +60,13 @@
 	background-color: var(--_notHov, lightgray);
 	box-shadow: var(--_isHov, var(--bxsh--3));
 }
+
+@supports selector(:has(*)) {
+	.is--linkBox:has(.u--overlayLink:focus-visible) {
+		outline: auto 1px;
+		outline: auto 1px -webkit-focus-ring-color;
+	}
+	.u--overlayLink:focus {
+		outline: 0;
+	}
+}

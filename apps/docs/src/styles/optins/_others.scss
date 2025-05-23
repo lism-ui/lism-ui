@@ -85,7 +85,9 @@
 	}
 }
 
+// --------------------
 // data-role='trigger' だけをクリッカブルにする
+// --------------------
 .d--accordion__header:has(> [data-role='trigger']) {
 	pointer-events: none;
 }
@@ -93,4 +95,13 @@
 .d--accordion__label > a,
 .d--accordion__icon {
 	pointer-events: auto;
+}
+
+// --------------------
+// linkBoxのaltKey対応
+// --------------------
+.is--linkBox.-linkoff {
+	.u--overlayLink::before {
+		content: none;
+	}
 }
