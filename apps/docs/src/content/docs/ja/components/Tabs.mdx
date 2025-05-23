@@ -121,13 +121,19 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 		</Tabs.Root>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
-		```jsx "ji='center'"
-		<Tabs.Root g='20' ji='center'>
-			<Tabs.Item label='Tab 1'>
-				<Dummy pre='Tab 01: '/>
+		```jsx "listProps"
+		<Tabs.Root g='20' ji='center' listProps={{bd: '-', bdrs: '99', p: '10', lh:'xs'}}>
+			<Tabs.Item>
+				<Tabs.Tab px='10'>Tab 1</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy pre='Tab 01: '/>
+				</Tabs.Panel>
 			</Tabs.Item>
-			<Tabs.Item label='Tab 2'>
-				<Dummy length='l' offset={1} pre='Tab 02: ' />
+			<Tabs.Item>
+				<Tabs.Tab px='10'>Tab 2</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy length='l' offset={1} pre='Tab 02: ' />
+				</Tabs.Panel>
 			</Tabs.Item>
 		</Tabs.Root>
 		```
@@ -289,11 +295,17 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "variant='line'"
 		<Tabs.Root variant='line' g='20'>
-			<Tabs.Item label='Tab 1'>
-				<Dummy />
+			<Tabs.Item>
+				<Tabs.Tab>Tab 1</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy pre='Tab 01: '/>
+				</Tabs.Panel>
 			</Tabs.Item>
-			<Tabs.Item label='Tab 2'>
-				<Dummy length='l' />
+			<Tabs.Item>
+				<Tabs.Tab>Tab 2</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy length='l' offset={1} pre='Tab 02: ' />
+				</Tabs.Panel>
 			</Tabs.Item>
 		</Tabs.Root>
 		```
@@ -340,11 +352,17 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "variant='emboss'"
 		<Tabs.Root variant='emboss' g='20' ji='c'>
-			<Tabs.Item label='Tab 1'>
-				<Dummy />
+			<Tabs.Item>
+				<Tabs.Tab>Tab 1</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy pre='Tab 01: '/>
+				</Tabs.Panel>
 			</Tabs.Item>
-			<Tabs.Item label='Tab 2'>
-				<Dummy length='l' />
+			<Tabs.Item>
+				<Tabs.Tab>Tab 2</Tabs.Tab>
+				<Tabs.Panel>
+					<Dummy length='l' offset={1} pre='Tab 02: ' />
+				</Tabs.Panel>
 			</Tabs.Item>
 		</Tabs.Root>
 		```
