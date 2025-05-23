@@ -17,18 +17,3 @@
 		flex-direction: row;
 	}
 }
-
-// --------------------
-// --isRowの切り替えクラス
-// --------------------
-.-fxd\:c2r\@sm {
-	--isRow: 0;
-	flex-direction: column;
-}
-
-@container (min-width: 480px) {
-	.-fxd\:c2r\@sm {
-		--isRow: 1;
-		flex-direction: row;
-	}
-}
