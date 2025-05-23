@@ -15,7 +15,7 @@
 	// 	z-index: 1;
 	// }
 
-	// 入れ子になる a も含めて対象にして初期値セット。hiddenLink と overlayLink 側でz-indexなど一部上書きをして調整。
+	// リンク を全てクリック可能にしておく
 	:where(&) a {
 		pointer-events: auto; // カードメディア内のタグラベルをクリックできるようにする場合などに必要
 		position: relative; // isolation: isolate;
