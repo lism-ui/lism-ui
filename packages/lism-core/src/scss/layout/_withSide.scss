@@ -1,76 +1,20 @@
-@use '../query' as query;
-
-.is--side {
-	grid-area: side;
-}
-
-// data-side-position が指定されている時、gridで配置を切り替える
-// point: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
-// memo: flex-grow は 変数指定だと挙動が変になる。
+/*
+	Note: fxgの比率を 1:でかい数 にして、fix側を広がらないようにする。
+      flex-grow は 変数指定だと挙動が変になることにも注意。
+ */
 .l--withSide {
 	--side-w: auto;
-
-	&:where([data-side-position]) {
-		--gd: '.' 'side' / auto;
-		--gd--hz: 'side .' / var(--side-w) 1fr; // 横並び (horizontal) 時のプロパティ
-		display: grid;
-		grid: var(--gd);
-	}
-
-	// "xxx start": 縦並びの時に side を上
-	&:where([data-side-position$='start']) {
-		--gd: 'side' '.' / auto;
-	}
-
-	// "end xxx": 横並びの時に side を end 方向
-	&:where([data-side-position^='end']) {
-		--gd--hz: '. side' / 1fr var(--side-w);
-	}
-
-	// &:where(.-gd\@sm) {
-	// 	--sm-gd: var(--gd--hz);
-	// }
-	// &:where(.-gd\@md) {
-	// 	--md-gd: var(--gd--hz);
-	// }
-}
-
-@include query.bp-up('sm') {
-	.l--withSide:not([class*='-gd@']) {
-		--gd: var(--gd--hz);
-	}
-}
-
-.l--withSide:where(:not([data-side-position])) {
-	--main-minW: max(var(--size--xs), 50%);
+	--main-w: max(var(--size--xs), 50%);
 	display: flex;
 	flex-wrap: wrap;
-}
-:where(.l--withSide:not([data-side-position])) {
-	// &[data-side='first'] > :first-child,
-	// &[data-side='last'] > :last-child,
-	> .is--side {
+
+	> [data-is-side] {
 		flex-basis: var(--side-w);
-		flex-grow: 1; // fxg を 0 にすると、折り返されたときに広がらないので 1 にする必要がある
+		flex-grow: 1; /* 0 だと折り返されたときに広がらない */
 	}
 
-	// &[data-side='first'] > :last-child,
-	// &[data-side='last'] > :first-child,
-	> :not(.is--side) {
-		flex-basis: 0;
-		flex-grow: 9999999; // できるだけ fix側を 指定値ピッタリに近づける
-		min-width: min(100%, var(--main-minW)); // このサイズが折り返しポイント
+	> [data-is-main] {
+		flex-grow: 9999999; /* できるだけ fix側を 指定値ピッタリに近づけるためにかなり大きな数値を指定 */
+		flex-basis: min(100%, var(--main-w)); /* このサイズが折り返しポイントの基準となる */
 	}
 }
-
-// :where(.c--card__media) {
-// 	flex-shrink: 0;
-// }
-
-// :where(.l--flex > .c--card__media) {
-// 	flex-basis: 50%;
-// }
-
-// :where(.c--card__body) {
-// 	flex-grow: 1;
-// }
