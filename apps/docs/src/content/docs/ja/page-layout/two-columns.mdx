@@ -19,11 +19,11 @@ Lismで2カラムページの全体レイアウトを組む場合の例を紹介
 		<Stack id='wrap' minH='100vh'>
 			<_Header_ />
 			<Container hasGutter size='m' py='50' fx='1'>
-				<WithSide sideW='240px' mainMinW='40em' g='50'>
+				<WithSide sideW='240px' minW='40em' g='50'>
 					<main class="is--container">
 						<_Contents_ />
 					</main>
-					<aside class='is--side is--container is--flow'>
+					<aside data-is-side class='is--container is--flow'>
 						<div>Sidebar contents...</div>
 					</aside>
 				</WithSide>

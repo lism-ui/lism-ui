@@ -16,7 +16,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%'>
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -28,7 +28,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%'>
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -41,7 +41,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="c--card l--withSide -c:text -bgc:base -bdrs:3 -bxsh:2 -ov:h" style="--side-w:50%">
-			<div class="l--frame is--side -ar:16/9">
+			<div class="l--frame -ar:16/9" data-is-side>
 				<img src="/img/img-1.jpg" width="960" height="640">
 			</div>
 			<div class="l--stack -g:10 -p:30">
@@ -79,7 +79,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>デフォルトは`<WihSide>`で構成されるので、画面サイズが小さいと縦並び、大きいと横並びになります。</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%'>
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -88,7 +88,7 @@ import Card from '~/components/ex/Card/index.jsx';
 			</Stack>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -100,7 +100,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Card sideW='50%'>
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -109,7 +109,7 @@ import Card from '~/components/ex/Card/index.jsx';
 			</Stack>
 		</Card>
 		<Card fxd='rr' sideW='50%' >
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -120,58 +120,6 @@ import Card from '~/components/ex/Card/index.jsx';
 		```
 	</PreviewCode>
 </Preview>
-
-
-<Preview>
-	<PreviewTitle>`sidePosition`（`<WithSide>`で使用できるプロパティ）を指定して並びをブレイクポイントで切り替える</PreviewTitle>
-	<PreviewArea resize p='30'>
-		<Card sideW='50%' sidePosition='start start'>
-			<Frame isSide ar={['16/9','4/3']} w='100%' h='100%'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Stack g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' fz='s' mb='10' />
-				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
-			</Stack>
-		</Card>
-		<Card sideW='50%' sidePosition='end start'>
-			<Frame isSide ar={['16/9','4/3']} w='100%' h='100%'>
-				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Stack g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' fz='s' mb='10' />
-				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
-			</Stack>
-		</Card>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "sidePosition="
-		<Card sideW='50%' sidePosition='start start'>
-			<Frame isSide ar={['16/9','4/3']} w='100%' h='100%'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Stack g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' fz='s' mb='10' />
-				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
-			</Stack>
-		</Card>
-		<Card sideW='50%' sidePosition='end start'>
-			<Frame isSide ar={['16/9','4/3']} w='100%' h='100%'>
-				<Media src='/img/img-2.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Stack g='10' p='30'>
-				<h3 className='-fz:l'>Card Title</h3>
-				<Dummy lang='ja' fz='s' mb='10' />
-				<Link href='#button-link' px='10' td='n' bd='b' aslf='end' mbs='auto'>Link Text</Link>
-			</Stack>
-		</Card>
-		```
-	</PreviewCode>
-</Preview>
-
 
 
 ### カードにリンクをつける
@@ -182,7 +130,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>例</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card href='###' sideW='50%' >
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -194,7 +142,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "href='###'"
 		<Card href='###' sideW='50%' >
-			<Frame isSide ar='16/9'>
+			<Frame data-is-side ar='16/9'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -206,13 +154,14 @@ import Card from '~/components/ex/Card/index.jsx';
 	</PreviewCode>
 </Preview>
 
+
 リンク要素を一部の要素に限定したい場合や、カード全体をリンクにしつつ、別のリンクを含めたい場合、 `u--overlayLink` を使用してください。
 
 <Preview>
 	<PreviewTitle>`u--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
 		<Card isLinkBox hov={{bxsh: '4'}} trs sideW='50%'>
-			<Frame isSide ar='4/3' pos='r'>
+			<Frame data-is-side ar='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n' hov='fade'>Category</Link>
 			</Frame>
@@ -228,7 +177,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "isLinkBox" "href=" "u--overlayLink"
 		<Card isLinkBox hov={{bxsh: '4'}} trs sideW='50%'>
-			<Frame isSide ar='4/3' pos='r'>
+			<Frame data-is-side ar='4/3' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n' hov='fade'>Category</Link>
 			</Frame>
@@ -438,7 +387,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>`bdrs='inner'`の活用</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='45%' g='20' p='20' bdrs='4'>
-			<Frame isSide ar='16/9' bdrs='inner'>
+			<Frame data-is-side ar='16/9' bdrs='inner'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='10'>
@@ -450,7 +399,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "bdrs='inner'" "p='20' bdrs='4'"
 		<Card sideW='45%' g='20' p='20' bdrs='4'>
-			<Frame isSide ar='16/9' bdrs='inner'>
+			<Frame data-is-side ar='16/9' bdrs='inner'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='10'>
@@ -586,7 +535,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>ブレイクポイントで切り替える場合</PreviewTitle>
 	<PreviewArea resize p='30'>
 		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
-			<Frame isSide ar={['16/9', 'unset']} pos='r' bdrs='3'>
+			<Frame data-is-side ar={['16/9', 'unset']} pos='r' bdrs='3'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>
@@ -598,7 +547,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "sidePosition" "ar={['16/9', 'unset']}"
 		<Card sideW='50%' sidePosition='start start' bxsh='0' bdrs='0'>
-			<Frame isSide ar={['16/9', 'unset']} pos='r'>
+			<Frame data-is-side ar={['16/9', 'unset']} pos='r'>
 				<Media pos='a' src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack g='10' p='30'>

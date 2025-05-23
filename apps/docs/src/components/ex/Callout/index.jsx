@@ -16,7 +16,7 @@ export default function Callout({ type = 'alert', keycolor, icon, isFlow, childr
 			bdrs='2'
 			{...props}
 		>
-			<Center isSide lismClass='c--callout__icon' c='keycolor' fz='xl' p='5'>
+			<Center data-is-side lismClass='c--callout__icon' c='keycolor' fz='xl' p='5'>
 				<Icon icon={_icon} />
 			</Center>
 			<Lism lismClass='c--callout__body' isFlow={isFlow}>
