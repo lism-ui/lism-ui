@@ -3,14 +3,14 @@ title: 'Frame'
 description: ...
 ---
 import { Box, Flex, Media, Text, Layer, Frame, Center, Columns, Dummy } from '@lism-ui/astro';
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpText } from "~/components";
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpText, Note } from "~/components";
 
 
 # Frame
 
 アスペクト比や高さを指定した時、コンテンツがその高さを超えないように制限します。
 
-また、直下のメディア要素（`img`,`vieo`,`picture`,`iframe`）が `object-fit:cover` でサイズいっぱいに表示されるようになっています。
+直下のメディア要素（`img`,`vieo`,`picture`,`iframe`）が `object-fit:cover` でサイズいっぱいに表示されるようにもなっています。
 
 {/* Layerを配置しやすいように position:relative; を指定しています。 */}
 
@@ -152,7 +152,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 <Preview>
 	<PreviewTitle>Layer系を活用する</PreviewTitle>
 	<PreviewArea resize p={20}>
-		<Frame ar='16/9' pos='r' c='white'>
+		<Frame ar='gold' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -165,7 +165,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame ar='16/9' pos='r' c='white'>
+		<Frame ar='gold' pos='r' c='white'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Layer blur='4px' bgc='rgb(0 0 0 / 40%)' />
 			<Layer p='40' ov='auto'>
@@ -179,7 +179,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 	</PreviewCode>
 		<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--frame -ar:16/9 -pos:r -c:white">
+		<div class="l--frame -ar:gold -pos:r -c:white">
 			<img src="/img/img-1.jpg" alt="" width="960" height="640">
 			<div class="is--layer -bgc:" style="--bgc:rgb(0 0 0 / 40%);backdrop-filter:blur(4px)"></div>
 			<div class="is--layer -p:40 -ov:a">
@@ -194,123 +194,14 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, HelpTex
 </Preview>
 
 
-### 数値以外での比率指定
-
-ユーティリティクラスをカスタムで追加して利用する例を紹介します。
-
-- `golden`: 黄金比
-- `silver`: 白銀比
-- `bronze`: 青銅比
-- `ogp`: OG Imageの比率
-- `cinema`: シネマ比率
-
-export const FrameRatios = () => {
-	return (
-		<Columns cols={[1, 2]} g='20'>
-			{['golden', 'silver', 'bronze', 'ogp', 'cinema'].map((ratio) => {
-				return (
-					<Frame key={ratio} ar={`u:${ratio}`} pos='r' bgc='base-2'>
-						<Text pos='a' t='50%' l='50%' fz='s' css={{translate:'-50XY'}}>
-							<code>{ratio}</code>
-						</Text>
-					</Frame>
-				);
-			})}
-		</Columns>
-	);
-}
-
-<Preview>
-	<PreviewTitle>`ar`にそれぞれ指定</PreviewTitle>
-	<PreviewArea p={20}>
-		<FrameRatios />
-	</PreviewArea>
-	<PreviewCode slot='tab' label='CSS'>
-```css
-.-ar\:golden {aspect-ratio: 16.18/10;}
-.-ar\:silver {aspect-ratio: 14.14/10;}
-.-ar\:bronze {aspect-ratio: 33.03/10;}
-.-ar\:ogp {aspect-ratio: 1.91/1;}
-.-ar\:cinema {aspect-ratio: 2.35/1;}
-```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx
-		<Frame ar='u:golden'>...</Frame>
-		<Frame ar='u:silver'>...</Frame>
-		<Frame ar='u:bronze'>...</Frame>
-		<Frame ar='u:ogp'>...</Frame>
-		<Frame ar='u:cinema'>...</Frame>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-
-{/* ### Flexの子要素として使用する場合の注意点
-
-Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響に注意してください。
-
-他の兄弟要素の高さの方が高い場合、そちらと同じ高さになってしまうため、それを回避したい場合は`align-items`を調整するか、Frame要素をさらにBoxで囲むなどの対処が必要です。
-
-<Preview>
-	<PreviewTitle>コンテンツ側の高さと揃っている例</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex g={20}>
-			<Frame ar='4/3'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Box bgc='base-2'>
-				<Dummy length='l' p='30' />
-			</Box>
-		</Flex>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "4/3" "4/3"
-		<Flex g={20}>
-			<Frame ar='4/3'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Box bgc='base-2'>
-				<Dummy length='l' p='30' />
-			</Box>
-		</Flex>
-		```
-	</PreviewCode>
-</Preview> */}
-
-{/* 
-<Preview>
-	<PreviewTitle>対処例（親のFlex要素を`align-items:start;`にする）</PreviewTitle>
-	<PreviewArea resize p={20}>
-		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
-			<Frame ar='4/3'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Box bgc='base-2'>
-				<Dummy length='xl' p='40' />
-			</Box>
-		</Flex>
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
-		```jsx "ai='start'"
-		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
-			<Frame ar='4/3'>
-				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
-			</Frame>
-			<Box bgc='base-2'>
-				<Dummy length='xl' p='40' />
-			</Box>
-		</Flex>
-		```
-	</PreviewCode>
-</Preview> */}
-
 
 ### ar はどのコンポーネントにも指定できます
 
-`ar`は`Box`など他のコンポーネントでも指定できる汎用的なプロパティです。
+<Note title='arで指定できる値について'>
+`ar`(`aspect-ratio`のCSS Props)は他のコンポーネントでも指定できる汎用的なプロパティです。  
+[使用できる値についてはこちらをご覧ください。](/ja/components/props/css-props#aspect-ratio)
+</Note>
+
 
 <Preview>
 	<PreviewTitle>Boxにarを指定する例</PreviewTitle>
@@ -338,19 +229,19 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 <Preview>
 	<PreviewTitle>`ar`はブレイクポイントで変更することも可能です。</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Frame ar={['1/1', '4/3', '16/9']} pos='r'>
+		<Frame ar={['1/1', '3/2', '16/9']} pos='r'>
 			<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			<Box pos='a' l='0' t='0' bgc='black' c='white' p='10' lh='xs' fz='s' m='20' bdrs='2'>
 				{`比率:`}
 				<Text tag="span" d={['inline', 'none']}>1/1</Text>
-				<Text tag="span" d={['none', 'inline', 'none']}>4/3</Text>
+				<Text tag="span" d={['none', 'inline', 'none']}>3/2</Text>
 				<Text tag="span" d={['none', null, 'inline']}>16/9</Text>
 			</Box>
 		</Frame>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame ar={['1/1', '4/3', '16/9']} pos='r'>
+		<Frame ar={['1/1', '3/2', '16/9']} pos='r'>
 			...
 		</Frame>
 		```
@@ -359,7 +250,7 @@ Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響
 		```html
 		<div
 			class="l--frame -ar:1/1 -pos:r -ar@sm -ar@md"
-			style="--sm-ar:4/3;--md-ar:16/9"
+			style="--sm-ar:3/2;--md-ar:16/9"
 		>...</div>
 		```
 	</PreviewCode>

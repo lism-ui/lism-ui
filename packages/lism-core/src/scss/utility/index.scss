@@ -72,3 +72,12 @@
 .u--skipFlow + * {
 	--mbs: 0;
 }
+
+
+
+// background-clip: text;は -webkit-
+.u--clipText{
+	color: transparent;
+	-webkit-background-clip: text !important;
+	background-clip: text !important;
+}

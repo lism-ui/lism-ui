@@ -3,7 +3,7 @@
 */
 @use 'sass:meta';
 
-// @layer lism-reset, lism-base, lism-state, lism-modules, utility;
+@layer lism-reset, lism-base, lism-state, lism-layout, lism-dynamic, lism-component, lism-utility;
 
 @layer lism-reset {
 	@include meta.load-css('reset');
@@ -21,7 +21,7 @@
 	@include meta.load-css('dynamic');
 }
 @layer lism-component {
-	@include meta.load-css('component');
+	// @include meta.load-css('component');
 }
 @layer lism-utility {
 	@include meta.load-css('utility');

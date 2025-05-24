@@ -65,8 +65,16 @@ export default {
 	bgc: { presets: 1, converter: 'color' },
 	keycolor: { style: '--keycolor', converter: 'color' },
 	// boxcolor: { _presets: TOKENS.palette, style: '--keycolor', converter: 'color' },
-	bg: { style: 'background', utils: { none: 'n' } },
-	backgrounds: { map: 1 },
+	bg: { utils: { none: 'n' } },
+	bgi: { style: 'backgroundImage' },
+	bgr: { style: 'backgroundRepeat', utils: { n: 'no-repeat' } },
+	bgp: { style: 'backgroundPosition', utils: { center: 'c' } },
+	bgsz: { style: 'backgroundSize', utils: { cover: 'cv', contain: 'ct' } },
+	// bga: { style: 'backgroundAttachment' },
+	// bgo: { style: 'backgroundOrigin' },
+	// bcp: { style: 'backgroundClip' },
+	// bbm: { style: 'backgroundBlendMode' },
+
 	// mask: { map: 1 },
 
 	// Typography
@@ -135,15 +143,17 @@ export default {
 	ar: {
 		// style:'aspectRatio',
 		presets: [
+			'21/9',
 			'16/9',
-			'4/3',
+			// '4/3',
 			'3/2',
 			// '2/1',
 			'1/1',
-			// 'gold',
+			'ogp',
+			'gold',
 			// 'silver',
 			// 'bronze',
-			// 'ogp',
+
 			// 'cinema',
 		],
 	},
@@ -300,58 +310,42 @@ export const CONTEXT_PROPS = {
 		is: {
 			style: 'insetInlineStart',
 			utilKey: 'iis',
-			utils: 'insets',
+			// utils: 'insets',
 			converter: 'space',
 		},
 		ie: {
 			style: 'insetInlineEnd',
 			utilKey: 'iie',
-			utils: 'insets',
+			// utils: 'insets',
 			converter: 'space',
 		},
 		bs: {
 			style: 'insetBlockStart',
 			utilKey: 'ibs',
-			utils: 'insets',
+			// utils: 'insets',
 			converter: 'space',
 		},
 		be: {
 			style: 'insetBlockEnd',
 			utilKey: 'ibe',
-			utils: 'insets',
+			// utils: 'insets',
 			converter: 'space',
 		},
-	},
-
-	backgrounds: {
-		// bg: { style: 'background' },
-		color: { name: 'bgc', presets: 1, utils: 1, converter: 'color' },
-		attachment: { style: 'backgroundAttachment' },
-		blendMode: { style: 'backgroundBlendMode' },
-		clip: { style: 'backgroundClip', utils: 'bgcp', utilKey: 'bgcp' },
-		image: { style: 'backgroundImage' },
-		origin: { style: 'backgroundOrigin' },
-		position: { style: 'backgroundPosition' },
-		positionX: { style: 'backgroundPositionX' },
-		positionY: { style: 'backgroundPositionY' },
-		repeat: { style: 'backgroundRepeat' },
-		size: { style: 'backgroundSize' },
 	},
 
 	mask: {},
 
 	css: {
-		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
-		boxSizing: {
-			style: 1,
-			//utils: { 'content-box': 'cb' },
-			utilKey: 'bxz',
-		},
-		transform: { style: 1, utils: 1, utilKey: 'trf' },
+		// transform系
+		transform: { style: 1 },
 		transformOrigin: { style: 1, utilKey: 'trfo', utils: 1 },
 		translate: { style: 1, utils: 1, utilKey: 'trslt' },
 		rotate: { style: 1, utils: 1 }, // rot?
 		scale: { style: 1, utils: 1 }, //
+
+		// others
+		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
+
 		animation: { utilKey: 'anim', style: 1 },
 		// flip: { style: 1 },
 		clipPath: { style: 1 }, // cpp ?

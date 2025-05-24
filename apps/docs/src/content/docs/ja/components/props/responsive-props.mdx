@@ -8,34 +8,47 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Callout } f
 import { Box } from "@lism-ui/astro";
 
 
-[CSS Props](/ja/components/props/css-props) は、次の2通りの指定方法によってレスポンシブに対応できます。
+`Lism` で使用できる [CSS Props](/ja/components/props/css-props) は、レスポンシブに対応した形式で出力できるようになっています。
 
+
+
+<Callout type="warning">
+実際に値が切り替わるかどうかは、そのプロパティがレスポンシブ対応している必要があります。  
+どのプロパティが対応してるかは[CSS Props](/ja/components/props/css-props) の **BP**（<small>ブレイクポイントの略</small>） の欄をチェックしてください。
+</Callout>
+
+デフォルトでレスポンシブ対応されていない（CSSが用意されていない）プロパティに関しては、[SCSSによるカスタマイズ](/ja/css/customize/)を行うことで対応できます。
+
+
+
+## レスポンジブ指定の方法
+
+次の2通りの書き方があります。
 
 1. 配列で順番に指定（ base → sm → md → ...）
 2. オブジェクトで直接ブレイクポイントを指定
 
-どちらも最終的に出力されるHTMLは同じで、ユーティリティクラスとカスタムプロパティのペアで出力されます。
-{/* [Prop Utility](/ja/css/utility-class/) */}
+どちらも最終的に出力されるHTMLは同じで、ユーティリティクラスとCSS変数のペア（`-{prop}@{bp}:` & `--{bp}-{prop}`）で出力されます。
 
 <Preview>
 	<PreviewTitle>例1</PreviewTitle>
-	<PreviewCode label="配列形式" slot="tab">
+	<PreviewCode label="配列での書き方" slot="tab">
 	```jsx
-	<Box p={['20', '30', '5rem']}>
+	<Lism p={['20', '30', '5rem']}>
 		...
-	</Box>
+	</Lism>
 	```
 	</PreviewCode>
-	<PreviewCode label="オブジェクト形式" slot="tab">
+	<PreviewCode label="オブジェクトでの書き方" slot="tab">
 	```jsx
-	<Box p={{ base: '20', sm: '30', md: '5rem' }}>
+	<Lism p={{ base: '20', sm: '30', md: '5rem' }}>
 		...
-	</Box>
+	</Lism>
 	```
 	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
+	<PreviewCode label="出力されるHTML" slot="tab">
 	```jsx
-	<div class="l--box -p:20 -p@sm -p@md" style="--sm-p:var(--s30);--md-p:5rem">
+	<div class="-p:20 -p@sm -p@md" style="--sm-p:var(--s30);--md-p:5rem">
 		...
 	</div>
 	```
@@ -43,55 +56,30 @@ import { Box } from "@lism-ui/astro";
 </Preview>
 
 
-途中のポイントをスキップする場合は次のようになります。
+途中のブレイクポイントをスキップする場合は次のようになります。
 
 <Preview>
 	<PreviewTitle>例2:`@md`の値のみ指定</PreviewTitle>
-	<PreviewCode label="配列形式" slot="tab">
+	<PreviewCode label="配列での書き方" slot="tab">
 	```jsx
-	<Box p={[null, null, '40']}>
+	<Lism p={[null, null, '40']}>
 		...
-	</Box>
+	</Lism>
 	```
 	</PreviewCode>
-	<PreviewCode label="オブジェクト形式" slot="tab">
+	<PreviewCode label="オブジェクトでの書き方" slot="tab">
 	```jsx
-	<Box p={{ md: '40' }}>
+	<Lism p={{ md: '40' }}>
 		...
-	</Box>
+	</Lism>
 	```
 	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
+	<PreviewCode label="出力されるHTML" slot="tab">
 	```jsx
-	<div class="l--box -p@md" style="--md-p:var(--s40)">
+	<div class="-p@md" style="--md-p:var(--s40)">
 		...
 	</div>
 	```
 	</PreviewCode>
 </Preview>
 
-
-## レスポンシブ対応プロパティについて
-
-コンポーネントの実装としては上記の書き方でどのCSS Propsにも対応していますが、実際にレスポンシブ対応のCSSが用意されているものしか切り替わりません。
-
-標準でレスポンシブ切り替えに対応されているプロパティかどうかを調べるには、[CSS Props](/ja/components/props/css-props/)の各プロパティごとの **BP**（ブレイクポイントの略） の欄を確認してください。
-
-<Callout type="alert">
-デフォルトでレスポンシブ対応されていないプロパティに関しては、[追加のカスタマイズ](/ja/css/customize/)が必要です。
-</Callout>
-
-
-
-{/* ### 方向成分を持ち、かつBP指定可能なプロパティ
-
-`p={{left, right,...}}`などの指定も可能です。
-
-BP指定との併用時における注意事項を以下に記載します。
-
-
-```
-// p={base:{pl: [20,40], pr: 30}, sm:{}} のような指定はできないルール.
-// p=[{left,right}, {left,right}] みたいな指定はできないルール.
-// p={x: [20,40], y: [30,40]} は一応処理的には問題ないが、そもそもそんな指定は非推奨
-``` */}

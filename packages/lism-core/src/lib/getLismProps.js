@@ -209,12 +209,6 @@ class LismPropsData {
 				this.setHoverProps(propVal);
 				return;
 			}
-			if (propName === 'gradient') {
-				const propVal = this.extractProp(propName);
-				this.setGradientProps(propVal);
-				return;
-			}
-
 			if (propName === 'bd') {
 				const propVal = this.extractProp(propName);
 				this.setBdProps(propVal);
@@ -511,45 +505,6 @@ class LismPropsData {
 		// }
 
 		this.analyzeProp('bd', value);
-	}
-
-	setGradientProps(gradVal) {
-		if (typeof gradVal === 'string') {
-			if (isPresetValue('gradient', gradVal)) {
-				this.addUtil('-gradient:' + gradVal);
-			} else if (gradVal.startsWith('u:')) {
-				// "u:"ではじまっている場合、それに続く文字列を取得してユーティリティ化
-				this.addUtil(`-gradient:${gradVal.replace('u:', '')}`);
-			} else {
-				this.addStyle('backgroundImage', gradVal);
-			}
-			//  else if (gradVal.includes('-gradient(')) {
-			// 	// xxx-gradient() で直接書いてる場合
-			// 	this.addUtil('-gradient:');
-			// 	this.addStyle('--gradient', gradVal);
-			// } else {
-			// 	this.addUtil('-gradient:');
-			// 	this.addStyle('--gradient', `var(--gradient--${gradVal})`);
-			// }
-		} else if (typeof gradVal === 'object') {
-			const { type = 'linear', angle, colors = '' } = gradVal;
-			if (!colors) return;
-
-			let gradient = '';
-			if (angle) {
-				gradient += `${angle}, `;
-			}
-
-			// カラー成分直書きしてるかどうかで分岐
-			if (colors.includes(',')) {
-				gradient += colors;
-			} else {
-				gradient += `var(--grad--${colors})`;
-			}
-			this.addStyle('backgroundImage', `${type}-gradient(${gradient})`);
-		}
-
-		return;
 	}
 }
 

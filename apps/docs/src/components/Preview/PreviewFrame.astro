@@ -11,8 +11,8 @@ const { isInline = false, url, ...props } = Astro.props;
 {
 	!isInline ? (
 		<>
-			<Frame ar='4/3' bxsh='1'>
-				<Frame className='u--scalePreview' ar='4/3' bdrs='3' bd bdw='3px' {...props}>
+			<Frame ar='3/2' bxsh='1'>
+				<Frame className='u--scalePreview' ar='3/2' bdrs='3' bd bdw='3px' {...props}>
 					<iframe src={url} width='800' height='600' />
 				</Frame>
 			</Frame>
@@ -23,7 +23,7 @@ const { isInline = false, url, ...props } = Astro.props;
 			</Center>
 		</>
 	) : (
-		<Frame ar='4/3' {...props}>
+		<Frame ar='3/2' {...props}>
 			<iframe src={url} width='800' height='600' />
 		</Frame>
 	)

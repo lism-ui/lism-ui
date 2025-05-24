@@ -1,27 +1,13 @@
 @use 'sass:map';
 
-// xs sm md lg xl xxl
-// 240刻み
-$breakpoints: () !default;
-$is_container_query: 1 !default;
-
-$breakpoints: map.merge(
-	(
-		'sm': '480px',
-		'md': '720px',
-		'lg': '960px',
-		'xl': '1200px',
-	),
-	$breakpoints
-);
-$support_bp: 'lg' !default;
+@use './setting' as setting;
 
 @mixin bp-up($bp_name) {
-	$bp_size: map.get($breakpoints, $bp_name);
+	$bp_size: map.get(setting.$breakpoints, $bp_name);
 
 	// サイズが 0 の時はスキップ(カスタマイズでオフにできるように）
-	@if $bp_size != 0 {
-		@if $is_container_query == 1 {
+	@if $bp_size and $bp_size != 0 {
+		@if setting.$is_container_query == 1 {
 			@container (min-width: #{$bp_size}) {
 				@content;
 			}
@@ -33,10 +19,10 @@ $support_bp: 'lg' !default;
 	}
 }
 @mixin bp-down($bp_name) {
-	$bp_size: map.get($breakpoints, $bp_name);
+	$bp_size: map.get(setting.$breakpoints, $bp_name);
 	// サイズが 0 の時はスキップ(カスタマイズでオフにできるように）
-	@if $bp_size != 0 {
-		@if $is_container_query == 1 {
+	@if $bp_size and $bp_size != 0 {
+		@if setting.$is_container_query == 1 {
 			@container not (min-width: #{$bp_size}) {
 				@content;
 			}

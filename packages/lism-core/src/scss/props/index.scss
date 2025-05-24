@@ -1,21 +1,14 @@
 @use '../query' as query;
 @forward './pass-get'; // 先に読み込む
 
-@forward './positions';
-@forward './transform';
-@forward './others';
-
 // 自動生成
 @forward '../auto_output';
 
+@forward './transform';
+@forward './others';
 @forward './border';
 @forward './transition';
 @forward './hover';
-
-:root {
-	// --grad-- はグラデーションの色部分だけを指定するための変数
-	--grad--toBlack: transparent, rgb(0 0 0 / 50%) 60%, rgba(0 0 0 / 90%) 100%;
-}
 
 // c='(.*):(.+)%' で使用箇所検索
 .-c\:mix {

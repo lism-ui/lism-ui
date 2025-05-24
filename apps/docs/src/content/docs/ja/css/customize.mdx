@@ -12,7 +12,7 @@ SCSSの変数を上書きすることで、出力するCSSのカスタマイズ�
 
 - `@lism-ui/core/scss/query`
 	- `$breakpoints`: 各ブレイクポイントのサイズを指定できます。map型
-	- `$support_bp`: どのサイズまでのブレイクポイントをサポートするかを指定できます。文字列型
+	- `$common_support_bp`: どのサイズまでのブレイクポイントをサポートするかを指定できます。文字列型
 	- `$is_container_query`: メディアクエリではなくコンテナクエリで出力するかを指定できます。数値型
 - `@lism-ui/core/scss/setting`
 	- `$props`: 各CSSプロパティに関する
@@ -25,20 +25,18 @@ $util_em_tokens: 1, 2, 3, 5, 7, 10, 15, 20, 25, 30 !default; */}
 
 ## ブレイクポイントの基本設定を変更する
 
+
+
 ↓ 設定カスタマイズの書き方と各初期値
 ```scss
-@use '../path/to/node_modules/@lism-ui/core/scss/query' with (
+@use '../path/to/node_modules/@lism-ui/core/scss/setting' with (
 	$breakpoints: (
 		'sm': '480px',
 		'md': '720px',
 		'lg': '960px',
-		'xl': '1200px',
 	),
-	$support_bp: 'lg',
+	$common_support_bp: 'lg',
 	$is_container_query: 1,
-);
-
-@use '../path/to/node_modules/@lism-ui/core/scss/setting' with (
 	$props: (
 		...
 	)
@@ -48,29 +46,37 @@ $util_em_tokens: 1, 2, 3, 5, 7, 10, 15, 20, 25, 30 !default; */}
 @use '../path/to/node_modules/@lism-ui/core/scss/all';
 ```
 
-{/* 例えば、`sm`,`md`サイズのサポートだけで良い場合は、`$support_bp`を`md`に設定することで、`lg`以降のブレイクポイントのユーティリティクラスを出力しないようにできます。 */}
+{/* 例えば、`sm`,`md`サイズのサポートだけで良い場合は、`$common_support_bp`を`md`に設定することで、`lg`以降のブレイクポイントのユーティリティクラスを出力しないようにできます。 */}
 
 
 ↓カスタマイズ例
 ```scss
-@use '../path/to/node_modules/@lism-ui/core/scss/query' with (
+// 設定カスタマイズ
+@use '../path/to/node_modules/@lism-ui/core/scss/setting' with (
 	$breakpoints: (
 		'sm': '400px', // smサイズを変更する
+		'xl': '1200px', // xlサイズを追加で定義する
 	),
-	$support_bp: 'md',  // デフォルトでは mdサイズまでのユーティリティクラス
+	$common_support_bp: 'md',  // デフォルトでは mdサイズまでのユーティリティクラスしか生成しないようにする
 	$is_container_query: 0, // media query で出力する
-);
-
-@use '../path/to/node_modules/@lism-ui/core/scss/setting' with (
 	$props: (
 		'fz': (
-			important: 1, // fzのユーティリティクラスに対して !important を出力する
+			// fzのユーティリティクラスに対して !important を出力する
+			important: 1,
 		),
-		'p': (
-			bp: 'xl', // 'p'のユーティリティクラスは、xl サイズまで出力する
+		'h': (
+			// 'h'のブレイクポイント対応クラスを出力しないようにする
+			bp: 0,
 		),
 		'fx': (
-			bp: 1, // 'fx'のユーティリティクラスもブレイクポイントに対応させる
+			// 'fx'のユーティリティクラスもブレイクポイントに対応させる
+			bp: 1, 
+		),
+		'p': (
+			// 'p'のユーティリティクラスは、xl サイズまで出力する
+			bp: 'xl', 
+			//.-p:box{padding:2em} を出力
+			utilities: ('box': '2em'),
 		),
 	)
 );
@@ -81,3 +87,7 @@ $util_em_tokens: 1, 2, 3, 5, 7, 10, 15, 20, 25, 30 !default; */}
 
 Astroの場合は`../path/to/node_modules/`は不要です。
 
+{/* <div class='is--container'>
+<Box p={['u:box', '20', '30', null, '40']} h={['auto', '1em']} bd>box</Box>
+<Box p='u:box' h={['auto', '1em']} bd>box</Box>
+</div> */}

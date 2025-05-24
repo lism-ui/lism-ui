@@ -2,7 +2,7 @@
 title: 'Lism'
 description: ...
 ---
-import { Lism, Text, Dummy, Link, Media, Frame } from "@lism-ui/astro";
+import { Lism, Text, Dummy, Link, Media, Frame, Spacer } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, IconBadge, Reference, ImportPackage, Callout } from "~/components";
 
 LismのCSS設計に対応した様々なプロパティを受け取ることができるようになっている汎用的なコンポーネントです。
@@ -121,30 +121,49 @@ Lism Propsは、主に以下の3種類に分類されます。
 主要なCSSプロパティに対して、それぞれ省略記法でコンポーネントに指定できるようになっています。  
 例えば、`font-size` は `fz`、`padding` は `p` で指定できます。
 
+この時、[Prop Class](/ja/css/prop-class/) に対応する値が指定されれば、下記のようにLismで用意しているユーティリティクラスが出力されるようになっています。
 
 <Preview>
 <PreviewTitle>例</PreviewTitle>
 <PreviewCode>
 ```jsx
 <Lism fz='l' p='20'>contents</Lism>
-↓
+
+// ↓ 出力されるHTML
 <div class="-fz:l -p:20">contents</div>
 ```
 </PreviewCode>
 </Preview>
 
-この時、[Prop Class](/ja/css/prop-class/) に対応する値が指定されれば、上記のようにクラスが出力されるようになっています。
 
 <Reference>
 [指定可能なCSS Props一覧はこちら](/ja/components/props/css-props/)
 </Reference>
 
+<Spacer h='20'/>
+
+トークン値ではなく各プロパティの主要なキーワード値に対応したクラスをする場合、値を省略してもしなくても出力されます。
+
+例：`text-align:center`用の `-ta:c` クラスや、`position:relative`用の `-pos:r` クラスは、以下のどちらの書き方でも出力されます。
+
+```jsx
+<Lism ta="center" pos="relative">...</Lism>
+<Lism ta="c" pos="r">...</Lism>
+
+// ↓ どちらも次のような出力になります
+
+<div class="-ta:c -pos:r">...</div>
+```
+
+
+
 #### 対応するProp Classがない値を指定した場合
 
-以下のどちらかで出力されます。
+ユーティリティクラスに変換されない値を指定した場合、以下のいずれかで出力されます。
 
 1. 単純に`style`属性にインライン出力される。
 2. `-{prop}:` & `--{prop}` の組み合わせで出力される。
+3. `--{prop}`だけ出力されるもの（特殊）
 
 <Preview>
 <PreviewTitle>1. の単純なstyle属性への出力の例</PreviewTitle>
@@ -162,31 +181,36 @@ Lism Propsは、主に以下の3種類に分類されます。
 <PreviewCode>
 ```jsx "fz='20px'" "-fz:" "--fz:20px"
 <Lism fz='20px'>contents</Lism>
-↓
+// ↓　出力
 <div class="-fz:" style="--fz:20px">contents</div>
 ```
 </PreviewCode>
 </Preview>
 
-ブレイクポイントでの切り替えに対応しているような主要なプロパティは、2. の`-{prop}:` & `--{prop}` で出力されます。
+ブレイクポイントでの切り替えに対応しているような主要なプロパティは、この`-{prop}:` & `--{prop}` で出力されます。
 
 {/* <p class='-fz:s -op:high -mbs:5'>そのほか、(変数管理できた方が利便性が高いので)主要なプロパティも変数化されるようになっています。</p> */}
 
 
+<Reference>
+[ブレイクポイントで値を切り替える書き方はこちらのページで解説しています](/ja/components/props/responsive-props/)
+</Reference>
+
+
+<Spacer h='10' />
 <Preview>
-<PreviewTitle>ブレイクポイントに対応したプロパティの出力例</PreviewTitle>
+<PreviewTitle>3. の変数のみ出力される例</PreviewTitle>
 <PreviewCode>
 ```jsx
-<Lism fz={['20px','30px']}>contents</Lism>
-↓
-<div class="-fz: -fz@sm" style="--fz:20px;--sm-fz:30px">contents</div>
+<Lism bd bdc="#000" bdw="2px">...</Lism>
+
+// ↓　出力
+<div class="bd:" style="--bdc:#000;--bdw:2px">...</div>
 ```
 </PreviewCode>
 </Preview>
 
-<Reference>
-[ブレイクポイントで値を切り替える書き方はこちらのページで解説しています](/ja/components/props/responsive-props/)
-</Reference>
+<p class='-mbs:5'>`-bd:`や`-trs:`と併用するようなプロパティがこれに当てはまります。</p>
 
 
 <div id='output-utility'></div>

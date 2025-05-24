@@ -89,38 +89,15 @@ $bp_support_list: (); // list
 
 	// utilityクラスのリストをまずは $data から取得
 	$utilities: map.get($data, utilities);
-	@if $utilities {
-		// 文字列の場合はそれをキーとして別マップから取得
-		@if (type-of($utilities) == string) {
-			$utilities: map.get(setting.$utilities, $utilities);
-		}
-
-		// リストの場合はそれぞれをキーとして別マップから取得
-		@if (type-of($utilities) == list) {
-			$merged_utilities: ();
-			@each $utilkey in $utilities {
-				$merged_utilities: map.merge(
-					$merged_utilities,
-					map.get(setting.$utilities, $utilkey)
-				);
-			}
-			$utilities: $merged_utilities;
-		}
-	} @else {
-		// $data.utilities の指定がない場合は、setting.$utilities から $key で探してみる。
-		$utilities: map.get(setting.$utilities, $key);
-	}
+	// @if not $utilities {
+	// 	// $data.utilities の指定がない場合は、setting.$utilities から $key で探してみる。
+	// 	$utilities: map.get(setting.$utilities, $key);
+	// }
 
 	// ユーティリティクラスのリストが取得できていれば出力
 	@if $utilities {
 		@include echoUtilities($key, $prop, $utilities, $base_type, $important);
 	}
-
-	// 少し特殊・複雑なユーティリティクラス→一旦直書き。
-	// $special_utilities: map.get($data, special_utilities);
-	// @if $special_utilities {
-	// 	@include echoSpecialUtilities($key, $special_utilities, $important);
-	// }
 
 	// BPクラスを出力するプロパティのリストを作成
 	$bp_support: map.get($data, bp);
@@ -132,8 +109,8 @@ $bp_support_list: (); // list
 }
 // @debug $bp_support_list;
 
-// query.$breakpoints のキーだけを抽出したリストを取得
-$bp_names: map.keys(query.$breakpoints);
+// setting.$breakpoints のキーだけを抽出したリストを取得
+$bp_names: map.keys(setting.$breakpoints);
 $bp_outputs: (
 	'sm': [],
 	'md': [],
@@ -153,10 +130,10 @@ $bp_outputs: (
 @each $key in $bp_support_list {
 	$prop_data: map.get(setting.$props, $key);
 	$prop_bp_data: map.get($prop_data, bp);
-	$support_bp: query.$support_bp;
+	$support_bp: setting.$common_support_bp;
 
 	@if (type-of($prop_bp_data) == string) {
-		// サポートするブレイクポイントの上書き指定があれば
+		// サポートするブレイクポイントの上書き指定があればそれをセット
 		$support_bp: $prop_bp_data;
 	}
 	//  @else if ($prop_bp_data == 0) {

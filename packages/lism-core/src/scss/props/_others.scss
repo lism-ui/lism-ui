@@ -1,17 +1,13 @@
 /* stylelint-disable */
 
 
-.-lis\:n{list-style: none;}
-
 // float
 .-fl\:l { float: left }
 .-fl\:r { float: right }
 .-cl\:b { clear: both }
 
-
 // .-bxz\:cb{box-sizing: content-box;}
 // .-bxz\:bb{box-sizing: border-box;}
-
 
 // ※ ovw は emmetの正式定義ではない.
 .-ovw\:any{overflow-wrap: anywhere;} // 単語中でも折り返しさせる 
@@ -28,23 +24,9 @@
 .-obf\:cv{object-fit: cover;}
 
 
-
 // writing-mode
 // .-wm\:h-tb{writing-mode: horizontal-tb;}
 // .-wm\:v-lr{writing-mode: vertical-lr;}
-.-wm\:v-rl{writing-mode: vertical-rl;}
-
-
-
-// あとでかんがえる
-// .-tov\:ell{text-overflow: ellipsis;}
-
-
-// background-clip: text;は -webkit-
-// u--
-.-bgcp\:tx {
-	:where(&){color: transparent;}
-
-	-webkit-background-clip: text;
-	background-clip: text;
+.-wm\:v-rl {
+	writing-mode: vertical-rl;
 }

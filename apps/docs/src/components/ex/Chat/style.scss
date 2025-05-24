@@ -6,6 +6,9 @@
 	grid: 'avatar header' minmax(1.5rem, auto) 'avatar body' / auto 1fr;
 	gap: 0 calc(var(--deco-size) + 1px);
 }
+[data-chat-direction='start'] {
+	--_dirEnd: ;
+}
 [data-chat-direction='end'] {
 	grid: 'header avatar' minmax(1.5rem, auto) 'body avatar' / 1fr auto;
 }
@@ -23,11 +26,10 @@
 .c--chat__content {
 	max-width: 640px;
 
-	// .c--chat--speak[data-chat-direction='start'] &
-	.c--chat--speak.-ji\:s & {
+	.c--chat--speak[data-chat-direction='start'] > div > & {
 		border-start-start-radius: 0;
 	}
-	.c--chat--speak.-ji\:e & {
+	.c--chat--speak[data-chat-direction='end'] > div > & {
 		border-start-end-radius: 0;
 	}
 }
@@ -36,6 +38,13 @@
 .c--chat__deco {
 	width: var(--deco-size);
 	height: var(--deco-size);
+
+	[data-chat-direction='start'] > div > & {
+		inset-inline-end: calc(100% - 1px);
+	}
+	[data-chat-direction='end'] > div > & {
+		inset-inline-start: calc(100% - 1px);
+	}
 }
 .c--chat--speak .c--chat__deco {
 	top: 0;
@@ -43,6 +52,6 @@
 }
 // think
 .c--chat--think .c--chat__deco {
-	top: 1rem;
-	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><circle cx="2" cy="2" r="1.5"/><circle cx="5" cy="5" r="2.2"/></svg>');
+	top: 1.25rem;
+	--mask-img: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><circle cx="2.5" cy="2" r="1.6"/><circle cx="7" cy="5" r="2.75"/></svg>');
 }

@@ -12,9 +12,6 @@ export default function Chat({
 	children,
 	...props
 }) {
-	// let lismClass = `c--chat`;
-	// if (variant) lismClass += ` c--chat--${variant}`;
-
 	return (
 		<Grid
 			lismClass='c--chat'
@@ -59,7 +56,6 @@ export default function Chat({
 					className='u--colored u--skipFlow'
 					hasMask
 					pos='a'
-					insets={direction === 'start' ? { ie: '100%' } : { is: '100%' }}
 					scale={direction === 'start' ? '' : '-X'}
 				/>
 				<Lism

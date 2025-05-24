@@ -73,12 +73,7 @@ export default {
 		'0% 100%': 'lb',
 		'100% 100%': 'rb',
 	},
-
-	transform: {
-		// 'scaleX(-1)': 'flipX',
-		// 'scaleY(-1)': 'flipY',
-		// 'scaleX(-1) scaleY(-1)': 'flipXY',
-	},
+	// transform: {},
 	scale: {
 		'-1 1': '-X',
 		'1 -1': '-Y',

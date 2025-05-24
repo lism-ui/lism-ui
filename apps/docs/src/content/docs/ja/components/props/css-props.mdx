@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 3
 ---
-import { Lism, Text, Frame, Media, Dummy, Box, Grid } from "@lism-ui/astro";
+import { Lism, Text, Frame, Layer, Media, Dummy, Box, Grid } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from "~/components";
 
 
@@ -225,10 +225,22 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |---|---|---|---|---|
 |`d`|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
 |`v`|visibility|-|`hidden`(`h`), `visible`(`v`)||
+|`op`|opacity|[`OPACITY`](/ja/css/tokens/#opacity)|`OPACITY`,`0`,`0.1`,`0.2`,...,`1`||
+
+### Overflow
+
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
 |`ov`|overflow|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |`ovx`|overflow-x|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
 |`ovy`|overflow-y|-|`hidden`(`h`),`auto`(`a`),`clip`(`c`)|
-|`op`|opacity|`OPACITY`|`OPACITY`,`0`,`10`,`20`,...,`100`||
+
+### Aspect Ratio
+|Prop|CSS|Token|To Class|BP|
+|---|---|---|---|---|
+|`ar`|aspect-ratio|-|`21/9`,`16/9`,`3/2`,`1/1`,<br />`ogp`(`1.91/1`),<br />`gold`(`16.18/10`)|○|
+
+
 
 ## Styling
 
@@ -273,17 +285,17 @@ borderに関する仕様は少し特殊になっています。詳しくは[bord
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`pos`|`position`|-|`r`(`relative`),<br />`a`(`absolute`),<br />`s`(`static`),<br />`f`(`fixed`),<br />`sticky`|-|
+|`pos`|`position`|-|`r`(`relative`),<br />`a`(`absolute`),<br />`s`(`static`),<br />`f`(`fixed`),<br />`sti`(`sticky`)|-|
 |`z`|`z-index`|-|`-1`, `0`, `1`, `2`|-|
 |`inset`|`inset`|`SPACE`|`0`|-|
 |`t`|`top`|`SPACE`|`0`,`50%`,`100%`|-|
 |`l`|`left`|`SPACE`|`0`,`50%`,`100%`|-|
 |`r`|`right`|`SPACE`|`0`,`50%`,`100%`|-|
 |`b`|`bottom`|`SPACE`|`0`,`50%`,`100%`|-|
-|`insets.is`|`inset-inline-start`|`SPACE`|`0`,`100%`|-|
-|`insets.ie`|`inset-inline-end`|`SPACE`|`0`,`100%`|-|
-|`insets.bs`|`inset-block-start`|`SPACE`,`100%`|-|-|
-|`insets.be`|`inset-block-end`|`SPACE`,`100%`|-|-|
+|`insets.is`|`inset-inline-start`|`SPACE`|-|-|
+|`insets.ie`|`inset-inline-end`|`SPACE`|-|-|
+|`insets.bs`|`inset-block-start`|`SPACE`|-|-|
+|`insets.be`|`inset-block-end`|`SPACE`|-|-|
 
 
 `position:absolute`で要素を配置する例をいくつか紹介します。
@@ -523,92 +535,42 @@ gridプロパティはそれぞれ `grid` オブジェクト、もしくはGrid�
 ## Background
 
 
-Lismコンポーネントでは、`background`用のプロパティとして`bg`,`backgrounds`の2種類があります。
-
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
 |`bg`|`background`|-|-|-|
+|`bgi`|`background-image`|-|-|-|
+|`bgr`|`background-repeat`|-|`n`(`no-repeat`)|-|
+|`bgp`|`background-position`|-|`c`(`center`)|-|
+|`bgsz`|`background-size`|-|`cv`(`cover`),`ct`(`contain`)|-|
+
 
 <Preview>
-	<PreviewTitle>`bg`に指定</PreviewTitle>
-	<PreviewArea p='5'>
-		<Box ar='16/9' bg="url(/img.jpg) center / 50%"></Box>
+	<PreviewTitle>使用例</PreviewTitle>
+	<PreviewArea p='30'>
+		<Frame ar='21/9' bg="url(/img/img-2.jpg) center / 50%"></Frame>
+		<Frame ar='21/9' bgi='url(/img/img-2.jpg)' bgp='center' bgsz='cover'></Frame>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
 		```jsx "bg"
-		<Box ar='16/9' bg="url(/img.jpg) center / 50%"></Box>
+		<Frame ar='21/9' bg="url(/img/img-2.jpg) center / 50%"></Frame>
+		<Frame ar='21/9' bgi='url(/img/img-2.jpg)' bgp='center' bgsz='cover'></Frame>
 		```
 	</PreviewCode>
 </Preview>
 
 
-
-
-以下のものは `backgrounds` オブジェクト内で指定することができます。
-
-
-|Prop|CSS|Token|To Class|BP|
-|---|---|---|---|---|
-|`color`|`background-color`|||-|
-|`image`|`background-image`|||-|
-|`size`|`background-size`|||-|
-|`position`|`background-position`|||-|
-{/* |image|background-image|
-|size|background-size|
-|repeat|background-repeat|
-|position|background-position|
-|color|background-color|
-|attachment|background-attachment|
-|blendMode|background-blend-mode|
-|clip|background-clip|
-|origin|background-origin|
- */}
-
 <Preview>
-	<PreviewTitle>`backgrounds`で指定する例</PreviewTitle>
-	<PreviewArea p='5'>
-		<Box ar='16/9' backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}></Box>
+	<PreviewTitle>グラデーション</PreviewTitle>
+	<PreviewArea p='30'>
+		<Frame ar='21/9' bgi='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'></Frame>
 	</PreviewArea>
 	<PreviewCode label='JSX' slot='tab'>
-		```jsx "backgrounds="
-		<Box ar='16/9' backgrounds={{image: 'url(/img.jpg)', position: 'center', size: '50%'}}></Box>
-		```
-	</PreviewCode>
-</Preview>
-
-
-
-
-### gradient
-
-`gradient`に指定した文字列は `background-image` に出力されます。
-
-{/* 文字列またはオブジェクト形式で指定できます。 */}
-
-{/* ### 文字列での指定
-
-`gradient`の指定が文字列の場合、下記の2パターンに分かれます。
-
-- 基本的には、インラインスタイルで `background-image` に指定された値が出力されます。
-- 登録済みのユーティリティクラス名と一致する場合、`.-gradient:{utilityName}`クラスとして出力されます。（ただし、現状コアで登録しているのは `blackToBottom` のみです。） */}
-
-<Preview>
-	<PreviewTitle>値を直書き</PreviewTitle>
-	<PreviewArea resize p='20'>	
-		<Frame ar='16/9' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
-		{/* <Frame ar='16/9' gradient='blackToBottom'/> */}
-	</PreviewArea>
-	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Frame ar='16/9' gradient='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'/>
-		```
-	</PreviewCode>
-	<PreviewCode slot='tab' label='HTML'>
-		```jsx "-gradient:blackToBottom"
-		<div class="l--frame -ar:16/9" style="background-image:linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"></div>
+		<Frame ar='16/9' bgi='linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'></Frame>
 		```
 	</PreviewCode>
 </Preview>
+
 
 
 
@@ -670,52 +632,28 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 	</PreviewCode>
 </Preview>
 
-{/* <Preview>
-	<PreviewTitle>glass</PreviewTitle>
-	<PreviewArea p='20' resize>
-		<Frame pos='r' minH='25rem' p='40' ac='c'>
-			<Media isLayer z='0' src='/img/img-3.jpg' alt='' width='960' height='640'/>
-			<Box pos='r' z='1' bg='u:glass' p='40' bdrs='3' bxsh='3'>
-				<Dummy length='l'/>
-			</Box>
-		</Frame>
-	</PreviewArea>
-</Preview> */}
-
-
-{/* <Preview>
-	<PreviewTitle>grid</PreviewTitle>
-	<PreviewArea resize nogrid p='30'>
-		<Box bg='u:grid' p='40'>
-			<Dummy />
-		</Box>
-		<Box bg='u:grid' p='40' className='u--colored' keycolor='green'>
-			<Dummy />
-		</Box>
-	</PreviewArea>
-</Preview> */}
-
 
 <Preview>
-	<PreviewTitle>`gradient="u:sunset"`</PreviewTitle>
+	<PreviewTitle>`bg="u:sunset"`</PreviewTitle>
 	<PreviewArea resize p='20'>
-		<Frame ar='16/9' gradient='u:sunset'/>
+		<Frame ar='16/9' bg='u:sunset'/>
 	</PreviewArea>
+
 	<PreviewCode label='CSS' slot='tab'>
 	```css
-	.-gradient\:sunset{
-		background: linear-gradient(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
+	.-bg\:sunset{
+		background: linear-bg(to top, #ddb672 5%, #e67a44 60%, #d16834 95%);
 	}
 	```
 	</PreviewCode>
 	<PreviewCode label='JSX' slot='tab'>
-		```jsx "gradient='u:sunset'"
-		<Frame ar='16/9' gradient='u:sunset'/>
+		```jsx "bg='u:sunset'"
+		<Frame ar='16/9' bg='u:sunset'/>
 		```
 	</PreviewCode>
 	<PreviewCode label='HTML' slot='tab'>
-		```jsx "-gradient:sunset"
-		<div class="l--frame -ar:16/9 -gradient:sunset"></div>
+		```jsx "-bg:sunset"
+		<div class="l--frame -ar:16/9 -bg:sunset"></div>
 		```
 	</PreviewCode>
 </Preview>
@@ -761,141 +699,4 @@ clipPath: { style: 1 }, // cpp ?
 filter: { style: 1, converter: 'filter' },
 backdropFilter: { style: 1, utilKey: 'bdFilter', presets: ['blur'], converter: 'filter' }
 */}
-
-## 対応トークンとユーティリティクラスでの出力について
-
-各プロパティごとに、指定した値によってはユーティリティクラスとして出力される場合があります。
-
-<Preview>
-	<PreviewCode>
-	```jsx
-	<Box p={20} bxsh="2" ta="center" fz="xl">...</Box>
-	```
-	</PreviewCode>
-</Preview>
-出力結果は次のようになります。
-
-```jsx
-<div class="l--box -p:20 -bxsh:2 -ta:l">...</div>
-```
-
-具体的にどの値をユーティリティ化するかどうかの詳細は`/src/config/presets`,`/src/config/utilities`で定義しています。
-
-utilities側で定義しているものは、キーと省略形のどちらを指定してもユーティリティクラスとして出力されます。
-
-たとえば、`text-align:center`用の `-ta:c` クラスは、以下のどちらの書き方でも出力されます。
-```jsx
-<Box ta="center">...</Box>
-<Box ta="c">...</Box>
-```
-
-
-### ユーティリティクラス化されない時の出力パターンについて
-
-ユーティリティクラスとして出力されない時、3パターンの出力方式に分かれます。
-
-{/* - memo...
-- 1のメリット
-    - 何かしらそのpropを持つかどうかがクラスで判定できる。
-	- 子要素に変数の受け渡しをすることで、親では何も適用せずにinheritさせるみたいなことができる。
-    - 優先度的な問題を緩和できる。
-		- インラインセットは優先度が強いが、プロパティのセットはCSSファイル側で 0-1-0　の優先度で行われる。
-		- 一括指定プロパティとサイドプロパティの優先度の関係をコントロールできる
-    - →HTML側の文字数が少なくなる(ほんの少し)
-- 1,2の判断基準どうする？
-	- utility以外を使うことが珍しいか（自由な数値で値をとれるか）どうか?
-	- ブレイクポイントで切り替えるかどうかで判断すればいいのでは？ */}
-
-#### 1. `-prop:`クラスと`--prop`変数の組み合わせで出力される
-
-
-<Preview>
-	<PreviewCode label="例" slot="tab">
-	```jsx
-	<Box mb={40} fz='2em'>...</Box>
-	```
-	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
-	```jsx
-	<div class="l--box -mb: -fz:" style="--mb:var(--s40);--fz:2em">...</div>
-	```
-	</PreviewCode>
-</Preview>
-
-
-- ブレイクポイント対応のプロパティ（ベース値を上書きする必要があるため、インラインで直接プロパティを出力せずクラスと変数で優先度の問題をなくす）
-- ユーティリティクラスが多く`[class*='-prop:']`にすると文字数の省略になりそうなもの
-- `-{prop}:`クラスによって何か値を指定していることが分かったほうが便利なケースがありそうなプロパティ
-
-**`-prop:`クラスだけを出力する方法**
-
-このパターン1での出力がされるLism Propsに対して `"-"` または `true` を指定することで、`.-{prop}:` クラスだけの出力が可能です。
-
-CSSファイル側で具体的な値を指定したい場合などに活用できたり、一部、`-{prop}:`クラスがスタイルを持っている特殊なケースもあります。
-
-<Preview>
-	<PreviewCode label="例" slot="tab">
-	```jsx "bd" "'-'"
-	<Box bd w='-' p={['-', '-']}>...</Box>
-	```
-	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
-	```html "-bd:" "-w:" "-p:" "-p@sm"
-	<div class="l--box -bd: -w: -p: -p@sm">...</div>
-	```
-	</PreviewCode>
-</Preview>
-
-
-このように、`-{prop}:`クラスだけ出力されてCSS変数は何も出力されません。
-#### 2. 単純にstyleとして出力されるもの
-
-
-<Preview>
-	<PreviewCode label="例" slot="tab">
-	```jsx
-	<Box z="10">...</Box>
-	```
-	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
-	```jsx
-	<div class="l--box" style="z-index:10">...</div>
-	```
-	</PreviewCode>
-</Preview>
-
-
-#### 3. `--prop`だけ出力されるもの
-
-このケースが一番稀です。
-
-<Preview>
-	<PreviewCode label="例" slot="tab">
-	```jsx
-	<Box bd bdc="#000" bdw="2px">...</Box>
-	```
-	</PreviewCode>
-	<PreviewCode label="出力" slot="tab">
-	```jsx
-	<div class="l--box bd:" style="--bdc:#000;--bdw:2px">...</div>
-	```
-	</PreviewCode>
-</Preview>
-
-
-- `--bdc`,`--bdw`,`--bds` のborder系
-{/* - `--keycolor` など、利用する場面が限定されているもの。 */}
-
-
-## ユーティリティクラスとして強制的に出力する方法
-
-`u:`からはじめると、その後ろの文字列がユーティリティクラス名として出力されます。
-
-```jsx
-<Box p='u:hoge'>...</Box>
-
-↓
-
-<div class="l--box -p:hoge">...</div>
-```
 

@@ -4,7 +4,7 @@ description: ...
 sidebar:
   order: 5
 ---
-import { Lism, Box, Dummy, Flex } from "@lism-ui/astro";
+import { Lism, Center, Box, Dummy, Media, Flex } from "@lism-ui/astro";
 import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Callout } from "~/components";
 
 
@@ -43,6 +43,35 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Callout } f
 	</PreviewCode>
 </Preview>
 
+
+## `u--clipText`
+
+テキストで背景をクリッピングします
+
+```css
+.u--clipText{
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+```
+
+<Preview>
+	<PreviewTitle>例</PreviewTitle>
+	<PreviewArea resize p='30'>
+		<Center className='u--clipText' bgi='linear-gradient(to right, blue, red)' p='30'>
+			<Lism fz='5em' fw='bold' lts='xl'>TEXT</Lism>
+		</Center>
+	</PreviewArea>
+	<PreviewCode slot="tab" label="HTML">
+		```html
+		```
+	</PreviewCode>
+	<PreviewCode slot="tab" label='JSX'>
+		```jsx
+		```
+	</PreviewCode>
+</Preview>
 
 
 ## `u--trimHL`

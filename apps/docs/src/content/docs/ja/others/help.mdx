@@ -77,3 +77,66 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, Callout
 </Preview>
 
 
+
+
+
+
+{/* ### Flexの子要素として使用する場合の注意点
+
+Flexの子要素でFrameを使用する場合、 `align-items:stretch;`の影響に注意してください。
+
+他の兄弟要素の高さの方が高い場合、そちらと同じ高さになってしまうため、それを回避したい場合は`align-items`を調整するか、Frame要素をさらにBoxで囲むなどの対処が必要です。
+
+<Preview>
+	<PreviewTitle>コンテンツ側の高さと揃っている例</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Flex g={20}>
+			<Frame ar='3/2'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</Frame>
+			<Box bgc='base-2'>
+				<Dummy length='l' p='30' />
+			</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "3/2" "3/2"
+		<Flex g={20}>
+			<Frame ar='3/2'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</Frame>
+			<Box bgc='base-2'>
+				<Dummy length='l' p='30' />
+			</Box>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview> */}
+
+{/* 
+<Preview>
+	<PreviewTitle>対処例（親のFlex要素を`align-items:start;`にする）</PreviewTitle>
+	<PreviewArea resize p={20}>
+		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
+			<Frame ar='3/2'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</Frame>
+			<Box bgc='base-2'>
+				<Dummy length='xl' p='40' />
+			</Box>
+		</Flex>
+	</PreviewArea>
+	<PreviewCode slot='tab' label='JSX'>
+		```jsx "ai='start'"
+		<Flex ai='start' g={20} fxw={['wrap', 'nowrap']}>
+			<Frame ar='3/2'>
+				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
+			</Frame>
+			<Box bgc='base-2'>
+				<Dummy length='xl' p='40' />
+			</Box>
+		</Flex>
+		```
+	</PreviewCode>
+</Preview> */}
+

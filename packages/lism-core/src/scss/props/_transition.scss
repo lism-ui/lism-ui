@@ -14,15 +14,7 @@
 	transition-timing-function: var(--trstf);
 }
 
-.-trstf\:in {
-	--trstf: ease-in;
-}
-.-trstf\:out {
-	--trstf: ease-out;
-}
-.-trstf\:in-out {
-	--trstf: ease-in-out;
-}
-.-trstf\:linear {
-	--trstf: linear;
-}
+// .-trstf\:in {--trstf: ease-in;}
+// .-trstf\:out {--trstf: ease-out;}
+// .-trstf\:in-out {--trstf: ease-in-out;}
+// .-trstf\:linear {--trstf: linear;}

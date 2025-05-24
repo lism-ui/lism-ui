@@ -161,7 +161,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewTitle>`u--overlayLink`を使う例</PreviewTitle>
 	<PreviewArea resize p='40'>
 		<Card isLinkBox hov={{bxsh: '4'}} trs sideW='50%'>
-			<Frame data-is-side ar='4/3' pos='r'>
+			<Frame data-is-side ar='16/9' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n' hov='fade'>Category</Link>
 			</Frame>
@@ -177,7 +177,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx "isLinkBox" "href=" "u--overlayLink"
 		<Card isLinkBox hov={{bxsh: '4'}} trs sideW='50%'>
-			<Frame data-is-side ar='4/3' pos='r'>
+			<Frame data-is-side ar='16/9' pos='r'>
 				<Media src='/img/img-1.jpg' alt='' width='960' height='640' />
 				<Link href='#badge-link' pos='a' z='1' t='0' r='0' fz='s' bgc='black' c='white' m='20' px='20' bdrs='99' td='n' hov='fade'>Category</Link>
 			</Frame>
@@ -423,7 +423,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	<PreviewArea p='30'>
 		<Columns variant='liquid' colSize='20rem' g='30'>
 			<Card href='#card-a' pos='r' bdrs='3' hov='set'>
-				<Frame ar='4/3'>
+				<Frame ar='3/2'>
 					<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 				</Frame>
 				<Stack pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -440,7 +440,7 @@ import Card from '~/components/ex/Card/index.jsx';
 				</Stack>
 			</Card>
 			<Card href='#card-b' pos='r' bdrs='3' hov='set'>
-				<Frame ar='4/3'>
+				<Frame ar='3/2'>
 					<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 				</Frame>
 				<Stack pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -462,7 +462,7 @@ import Card from '~/components/ex/Card/index.jsx';
 	```jsx "hov='set'" "hov='get:slide'"
 	<Columns variant='liquid' colSize='20rem' g='30'>
 		<Card href='#card-a' pos='r' bdrs='2' hov='set'>
-			<Frame ar='4/3'>
+			<Frame ar='3/2'>
 				<img src='/img/img-1.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack pos='a' b='0' w='100%' p='20' bgc='white:50%'>
@@ -479,7 +479,7 @@ import Card from '~/components/ex/Card/index.jsx';
 			</Stack>
 		</Card>
 		<Card href='#card-b' pos='r' bdrs='2' hov='set'>
-			<Frame ar='4/3'>
+			<Frame ar='3/2'>
 				<img src='/img/img-2.jpg' alt='' width='960' height='640' />
 			</Frame>
 			<Stack pos='a' b='0' w='100%' p='20' bgc='white:50%'>

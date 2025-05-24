@@ -171,11 +171,3 @@ export function getMaybeFilterVar(filter) {
 
 	return filter;
 }
-
-// export function getMaybeGradientVar(value) {
-// 	if (value?.includes('gradient:')) {
-// 		const gradKeys = value.split(':');
-// 		return `var(--gradient--${gradKeys[1]})`;
-// 	}
-// 	return value;
-// }
