@@ -26,6 +26,7 @@
 
 /* stylelint-disable */
 .-bd\:n { border: none }
+.-bd\:inherit{ border: inherit}
 
 // 方向指定
 .-bd\:l { border-left: var(--bd) }

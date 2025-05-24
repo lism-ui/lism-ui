@@ -4,14 +4,23 @@
 /*
 prop:CSSプロパティ名
 important: 1 →　!important を付ける
+utilities: ユーティリティクラスのセレクタと値のリスト
+  'key': 'value'の配列。
+  'valueがさらに配列の場合は、その中身を順番にそのまま出力（プロパティ名からかけるので--cではなくcolorにしたい場合や、複数のプロパティが必要なケースで使う）
 base_type:
 	0 →　なし（ユーティリティクラス以外は普通のインラインスタイルのみ）
 	1 →　.-d\:{display: var(--d)} 　(メリット：importantなしでbp対応できる)
-	2 → [class*='-p\:'] passing: var(--p);}  (メリット: ユーティリティクラスもprop名を変数にできて文字数省略できる)
-utilities: ユーティリティクラスのセレクタと値のリスト
+	2 → [class*='-p\:'] {padding: var(--p);} のように出力される
+	    トークンが定義されているような主要なプロパティは基本これ。
+	    メリット: ユーティリティクラスも変数を使えるので、数が多ければ文字数省略できる
+	        全て変数で出力されるようになるので、他の処理と絡ませることがしやすい。
+	    デメリット: *= は処理負荷が高い。
+
+
+bp:1 は基本 base_type:1. --bdw などは base_type:0.
 */
 
-$space_utility_values: (
+$space_values: (
 	'0': '0',
 	'5': 'var(--s5)',
 	'10': 'var(--s10)',
@@ -153,7 +162,6 @@ $props: (
 	),
 	'bg': (
 		prop: 'background',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'n': 'none',
@@ -161,21 +169,18 @@ $props: (
 	),
 	'bgr': (
 		prop: 'background-repeat',
-		base_type: 0,
 		utilities: (
 			'n': 'no-repeat',
 		),
 	),
 	'bgp': (
 		prop: 'background-position',
-		base_type: 0,
 		utilities: (
 			'c': 'center',
 		),
 	),
 	'bgsz': (
 		prop: 'background-size',
-		base_type: 0,
 		utilities: (
 			'cv': 'cover',
 			'ct': 'contain',
@@ -184,7 +189,6 @@ $props: (
 
 	'bdc': (
 		prop: '--bdc',
-		base_type: 0,
 		utilities: (
 			'main': 'var(--c--main)',
 			'accent': 'var(--c--accent)',
@@ -196,20 +200,15 @@ $props: (
 	),
 	'bds': (
 		prop: '--bds',
-		base_type: 0,
 		// utilities: 'bds',
 	),
 	'bdw': (
 		prop: '--bdw',
 		base_type: 0,
 		bp: 1,
-		utilities: (
-			'inherit': 'inherit',
-		),
 	),
 	'f': (
 		prop: 'font',
-		base_type: 0,
 		utilities: (
 			'inherit': 'inherit',
 		),
@@ -234,7 +233,6 @@ $props: (
 	),
 	'ff': (
 		prop: 'font-family',
-		base_type: 0,
 		utilities: (
 			'base': 'var(--ff--base)',
 			'accent': 'var(--ff--accent)',
@@ -243,7 +241,6 @@ $props: (
 	),
 	'fw': (
 		prop: 'font-weight',
-		base_type: 0,
 		utilities: (
 			// 'thin': 'var(--fw--thin)',
 			'light': 'var(--fw--light)',
@@ -255,7 +252,6 @@ $props: (
 	),
 	'fs': (
 		prop: 'font-style',
-		base_type: 0,
 		utilities: (
 			// 'n': 'normal',
 			'i': 'italic',
@@ -264,19 +260,18 @@ $props: (
 	'lh': (
 		prop: 'line-height',
 		//　BP対応増やしやすいように 1 でもいいかも?
-		base_type: 0,
-		utilities: (
-			'base': 'var(--lh--base)',
-			'xs': 'var(--lh--xs)',
-			's': 'var(--lh--s)',
-			'l': 'var(--lh--l)',
-			'xl': 'var(--lh--xl)',
-			'1': '1',
-		),
+		utilities:
+			(
+				'base': 'var(--lh--base)',
+				'xs': 'var(--lh--xs)',
+				's': 'var(--lh--s)',
+				'l': 'var(--lh--l)',
+				'xl': 'var(--lh--xl)',
+				'1': '1',
+			),
 	),
 	'lts': (
 		prop: 'letter-spacing',
-		base_type: 0,
 		utilities: (
 			'base': 'var(--lts--base)',
 			's': 'var(--lts--s)',
@@ -286,7 +281,6 @@ $props: (
 	),
 	'ta': (
 		prop: 'text-align',
-		base_type: 0,
 		utilities: (
 			'l': 'left',
 			'r': 'right',
@@ -295,7 +289,6 @@ $props: (
 	),
 	'td': (
 		prop: 'text-decoration',
-		base_type: 0,
 		utilities: (
 			'n': 'none',
 			'u': 'underline',
@@ -303,7 +296,6 @@ $props: (
 	),
 	'd': (
 		prop: 'display',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'n': 'none',
@@ -318,7 +310,6 @@ $props: (
 	),
 	'v': (
 		prop: 'visibility',
-		base_type: 0,
 		utilities: (
 			'h': 'hidden',
 			'v': 'visible',
@@ -326,22 +317,18 @@ $props: (
 	),
 	'ov': (
 		prop: 'overflow',
-		base_type: 0,
 		utilities: $ov_values,
 	),
 	'ovx': (
 		prop: 'overflow-x',
-		base_type: 0,
 		utilities: $ov_values,
 	),
 	'ovy': (
 		prop: 'overflow-y',
-		base_type: 0,
 		utilities: $ov_values,
 	),
 	'ar': (
 		prop: 'aspect-ratio',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'21\\/9': '21/9',
@@ -354,7 +341,6 @@ $props: (
 	),
 	'op': (
 		prop: 'opacity',
-		base_type: 0,
 		utilities: (
 			'low': 'var(--op--low)',
 			'mid': 'var(--op--mid)',
@@ -409,50 +395,47 @@ $props: (
 		prop: 'padding',
 		base_type: 2,
 		bp: 1,
-		utilities: $space_utility_values,
+		utilities: $space_values,
 	),
 	'px': (
 		prop: 'padding-inline',
 		base_type: 2,
 		bp: 1,
-		utilities: $space_utility_values,
+		utilities: $space_values,
 	),
 	'py': (
 		prop: 'padding-block',
 		base_type: 2,
 		bp: 1,
-		utilities: $space_utility_values,
+		utilities: $space_values,
 	),
 	'pt': (
 		prop: 'padding-top',
-		base_type: 1,
 		bp: 1,
 	),
 	'pr': (
 		prop: 'padding-right',
-		base_type: 1,
 		bp: 1,
 	),
 	'pb': (
 		prop: 'padding-bottom',
-		base_type: 1,
 		bp: 1,
 	),
 	'pl': (
 		prop: 'padding-left',
-		base_type: 1,
 		bp: 1,
 	),
 	'pis': (
 		prop: 'padding-inline-start',
 		base_type: 2,
 		bp: 1,
-		utilities: $space_utility_values,
+		utilities: $space_values,
 	),
 	'pbs': (
 		prop: 'padding-block-start',
-		base_type: 1,
+		base_type: 2,
 		bp: 1,
+		utilities: $space_values,
 		// utilities: (
 		// 	'0': '0',
 		// ),
@@ -461,55 +444,49 @@ $props: (
 		prop: 'margin',
 		base_type: 2,
 		bp: 1,
-		utilities: map.merge($m_values, $space_utility_values),
+		utilities: map.merge($m_values, $space_values),
 	),
 	'mx': (
 		prop: 'margin-inline',
-		base_type: 1,
 		bp: 1,
 		utilities: $m_values,
 	),
 	'my': (
 		prop: 'margin-block',
-		base_type: 1,
 		bp: 1,
 		utilities: $m_values,
 	),
 	'mt': (
 		prop: 'margin-top',
-		base_type: 1,
 		bp: 1,
-		// utilities: $m_values,
+		utilities: $m_values,
 	),
 	'mr': (
 		prop: 'margin-right',
-		base_type: 1,
 		bp: 1,
-		// utilities: $m_values,
+		utilities: $m_values,
 	),
 	'mb': (
 		prop: 'margin-bottom',
-		base_type: 1,
 		bp: 1,
-		// utilities: $m_values,
+		utilities: $m_values,
 	),
 	'ml': (
 		prop: 'margin-left',
-		base_type: 1,
 		bp: 1,
-		// utilities: $m_values,
+		utilities: $m_values,
 	),
 	'mis': (
 		prop: 'margin-inline-start',
-		base_type: 1,
+		base_type: 2,
 		bp: 1,
-		utilities: $m_values,
+		utilities: map.merge($m_values, $space_values),
 	),
 	'mbs': (
 		prop: 'margin-block-start',
 		base_type: 2,
 		bp: 1,
-		utilities: map.merge($m_values, $space_utility_values),
+		utilities: map.merge($m_values, $space_values),
 	),
 
 	'g': (
@@ -517,7 +494,7 @@ $props: (
 		base_type: 2,
 		utilities:
 			map.merge(
-				$space_utility_values,
+				$space_values,
 				(
 					'inherit': (
 						'gap': 'inherit',
@@ -528,17 +505,14 @@ $props: (
 	),
 	'colg': (
 		prop: 'column-gap',
-		base_type: 1,
 		bp: 1,
 	),
 	'rowg': (
 		prop: 'row-gap',
-		base_type: 1,
 		bp: 1,
 	),
 	'pos': (
 		prop: 'position',
-		base_type: 0,
 		utilities: (
 			'r': 'relative',
 			'a': 'absolute',
@@ -549,34 +523,28 @@ $props: (
 	),
 	'inset': (
 		prop: 'inset',
-		base_type: 0,
 		utilities: (
 			'0': 0,
 		),
 	),
 	'l': (
 		prop: 'left',
-		base_type: 0,
 		utilities: $percents_0_50_100,
 	),
 	't': (
 		prop: 'top',
-		base_type: 0,
 		utilities: $percents_0_50_100,
 	),
 	'r': (
 		prop: 'right',
-		base_type: 0,
 		utilities: $percents_0_50_100,
 	),
 	'b': (
 		prop: 'bottom',
-		base_type: 0,
 		utilities: $percents_0_50_100,
 	),
 	'z': (
 		prop: 'z-index',
-		base_type: 0,
 		utilities: (
 			'2': 2,
 			'1': 1,
@@ -586,7 +554,6 @@ $props: (
 	),
 	'ord': (
 		prop: 'order',
-		base_type: 0,
 		utilities: (
 			// '2': 2,
 			'1': 1,
@@ -596,7 +563,6 @@ $props: (
 	),
 	'fxw': (
 		prop: 'flex-wrap',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'w': 'wrap',
@@ -605,7 +571,6 @@ $props: (
 	),
 	'fxd': (
 		prop: 'flex-direction',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'c': 'column',
@@ -616,7 +581,6 @@ $props: (
 	),
 	'fx': (
 		prop: 'flex',
-		base_type: 1,
 		bp: 1,
 		utilities: (
 			'1': '1',
@@ -624,91 +588,155 @@ $props: (
 	),
 	'fxsh': (
 		prop: 'flex-shrink',
-		base_type: 0,
 		utilities: (
 			'0': '0',
 		),
 	),
 	'fxg': (
 		prop: 'flex-grow',
-		base_type: 0,
 		utilities: (
 			'1': '1',
 		),
 	),
 	'fxb': (
 		prop: 'flex-basis',
-		base_type: 1,
 		bp: 1,
 	),
 	'gd': (
 		prop: 'grid',
-		base_type: 1,
 		bp: 1,
 	),
 	'gta': (
 		prop: 'grid-template-areas',
-		base_type: 1,
 		bp: 1,
 	),
 	'gtc': (
 		prop: 'grid-template-columns',
-		base_type: 1,
 		bp: 1,
 	),
 	'gtr': (
 		prop: 'grid-template-rows',
-		base_type: 1,
 		bp: 1,
 	),
 	'ga': (
 		prop: 'grid-area',
-		base_type: 1,
 		bp: 1,
 	),
 	'gr': (
 		prop: 'grid-row',
-		base_type: 1,
 		bp: 1,
 	),
 	'gc': (
 		prop: 'grid-column',
-		base_type: 1,
 		bp: 1,
 	),
 	'ai': (
 		prop: 'align-items',
-		base_type: 1,
 		bp: 1,
 		utilities: map.get($place_utils, 'items'),
 	),
 	'ac': (
 		prop: 'align-content',
-		base_type: 1,
 		bp: 1,
 		utilities: map.get($place_utils, 'content'),
 	),
 	'ji': (
 		prop: 'justify-items',
-		base_type: 1,
 		bp: 1,
 		utilities: map.get($place_utils, 'items'),
 	),
 	'jc': (
 		prop: 'justify-content',
-		base_type: 1,
 		bp: 1,
 		utilities: map.get($place_utils, 'content'),
 	),
 	'aslf': (
 		prop: 'align-self',
-		base_type: 0,
 		utilities: map.get($place_utils, 'self'),
 	),
 	'jslf': (
 		prop: 'justify-self',
-		base_type: 0,
 		utilities: map.get($place_utils, 'self'),
+	),
+
+	'trslt': (
+		prop: 'translate',
+		utilities: (
+			'-50X': '-50% 0',
+			'-50Y': '0 -50%',
+			'-50XY': '-50% -50%',
+		),
+	),
+	'scale': (
+		prop: 'scale',
+		utilities: (
+			'-X': '-1 1',
+			'-Y': '1 -1',
+			'-XY': '-1 -1',
+		),
+	),
+	'rotate': (
+		prop: 'rotate',
+		utilities: (
+			'45': '45deg',
+			'-45': '-45deg',
+			'90': '90deg',
+			'-90': '-90deg',
+			'180': '180deg',
+		),
+	),
+	'trfo': (
+		prop: 'transform-origin',
+		utilities: (
+			'lt': '0% 0%',
+			'rt': '100% 0%',
+			'lb': '0% 100%',
+			'rb': '100% 100%',
+		),
+	),
+	'fl': (
+		prop: 'float',
+		utilities: (
+			'l': 'left',
+			'r': 'right',
+		),
+	),
+	'cl': (
+		prop: 'clear',
+		utilities: (
+			'b': 'both',
+		),
+	),
+
+	'ovw': (
+		prop: 'overflow-wrap',
+		utilities: (
+			'any': 'anywhere',
+		),
+	),
+	'whs': (
+		prop: 'white-space',
+		utilities: (
+			'nw': 'nowrap',
+			// 'pre': 'pre',
+			// 'pw': 'pre-wrap',
+			// 'pl': 'pre-line',
+		),
+	),
+	'obf': (
+		prop: 'object-fit',
+		utilities: (
+			'cn': 'contain',
+			'cv': 'cover',
+		),
+	),
+	'wm': (
+		prop: 'writing-mode',
+		utilities: (
+			'v-rl': 'vertical-rl',
+			// 'v-lr': 'vertical-lr',
+			// 'h-tb': 'horizontal-tb',
+		),
 	),
 	'cols': (
 		prop: '--cols',
@@ -720,7 +748,7 @@ $props: (
 		base_type: 0,
 		bp: 1,
 	),
-)
+);
 
 // 'grs': (
 // 	prop: 'grid-row-start',

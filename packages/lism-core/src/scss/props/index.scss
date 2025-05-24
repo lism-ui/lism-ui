@@ -1,31 +1,12 @@
 @use '../query' as query;
 @forward './pass-get'; // 先に読み込む
 
+// 特殊
+@forward './color';
+@forward './border';
+@forward './transition';
+
 // 自動生成
 @forward '../auto_output';
 
-@forward './transform';
-@forward './others';
-@forward './border';
-@forward './transition';
 @forward './hover';
-
-// c='(.*):(.+)%' で使用箇所検索
-.-c\:mix {
-	--c1-per: 50%;
-	--c1: currentColor;
-	--c2: transparent;
-	--c: color-mix(in srgb, var(--c1) var(--c1-per), var(--c2));
-}
-.-bgc\:mix {
-	--bgc1-per: 50%;
-	--bgc1: currentColor;
-	--bgc2: transparent;
-	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc1-per), var(--bgc2));
-}
-.-bdc\:mix {
-	--bdc1-per: 50%;
-	--bdc1: currentColor;
-	--bdc2: transparent;
-	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc1-per), var(--bdc2));
-}

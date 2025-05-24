@@ -30,13 +30,6 @@ const itemProps = {
 };
 
 export const GAP_PROPS = {
-	gap: {
-		utilKey: 'g',
-		presets: ['inherit', ...SPACE_PRESETS],
-		converter: 'space',
-		// gap={row, clm} の場合の処理
-		// objProcessor: (d) => `${d}g`,
-	},
 	g: {
 		presets: ['inherit', ...SPACE_PRESETS],
 		converter: 'space',
@@ -97,7 +90,7 @@ export default {
 
 	// others
 	bd: { style: 'border', utils: 1 },
-	bdw: { style: '--bdw', presets: ['inherit'] }, // --bdw のみ
+	bdw: { style: '--bdw' }, // --bdw のみ
 	bds: { style: '--bds' }, // --bds のみ
 	bdc: { style: '--bdc', utils: { transparent: 't' }, presets: 1, converter: 'color' },
 
@@ -184,8 +177,8 @@ export default {
 	pb: { presets: [], converter: 'space' },
 	// inline,block
 	pis: { presets: SPACE_PRESETS, converter: 'space' },
+	pbs: { presets: SPACE_PRESETS, converter: 'space' },
 	// pie: { converter: 'space' },
-	pbs: { converter: 'space' },
 	// pbe: { converter: 'space' },
 	// pinln, pblck
 	// pse: paddingOption,
@@ -199,13 +192,13 @@ export default {
 	},
 	mx: { utils: { auto: 'a' }, converter: 'space' },
 	my: { utils: { auto: 'a' }, converter: 'space' },
-	ml: { converter: 'space' },
-	mr: { converter: 'space' },
-	mt: { converter: 'space' },
-	mb: { converter: 'space' },
-	mis: { utils: { auto: 'a' }, converter: 'space' },
-	// mib: { converter: 'space' },
+	ml: { utils: { auto: 'a' }, converter: 'space' },
+	mr: { utils: { auto: 'a' }, converter: 'space' },
+	mt: { utils: { auto: 'a' }, converter: 'space' },
+	mb: { utils: { auto: 'a' }, converter: 'space' },
+	mis: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
 	mbs: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
+	// mib: { converter: 'space' },
 	// mbe: { converter: 'space' },
 	// me: marginOption,
 	// mbe: marginOption,
@@ -354,8 +347,8 @@ export const CONTEXT_PROPS = {
 		objectFit: { style: 1, utilKey: 'obf', utils: { cover: 'cv', contain: 'cn' } },
 		objectPosition: { style: 1 },
 
-		filter: { style: 1, converter: 'filter' }, // fltr?
-		backdropFilter: { style: 1, converter: 'filter' }, // bdfltr?
+		filter: { style: 1 }, // fltr?
+		backdropFilter: { style: 1 }, // bdfltr?
 	},
 
 	// hov: { c, bgc, bdc, bxsh },

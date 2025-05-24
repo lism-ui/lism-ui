@@ -261,7 +261,7 @@ export default [
 			},
 			{
 				label: 'BalloonBox',
-				link: '/components/banner/',
+				link: '/components/balloonbox/',
 			},
 			{
 				label: 'Decorations',

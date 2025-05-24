@@ -45,7 +45,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea p={20}>
-		<Box c='main' bgc='base-2' bd bdc='divider' p='30'>
+		<Box c='main' bgc='base-2' mb='20px' bd bdc='divider' p='30'>
 			<Dummy />
 		</Box>
 		<Box c='white' bgc='black' p='30'>
@@ -249,7 +249,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |`bxsh`|`box-shadow`|`SHADOW`|`SHADOW`|-|
 |`bdrs`|`border-radius`|`RADIUS`|`RADIUS`|○|
 |`bd`|`border`|-|`n`(`none`),<br />`l`,`r`,`t`,`b`,<br />`is`,`ie`,`bs`,`be`,<br /> `x`,`y`|-|
-|`bdc`|`--bdc`|`COLOR.PALETTE`, `COLOR.BD`|`divider`,`i`,`keycolor`|-|
+|`bdc`|`--bdc`|`COLOR`,`PALETTE`|`divider`,`i`,`keycolor`|-|
 |`bdw`|`--bdw`|-|-|○|
 |`bds`|`--bds`|-|-|-|
 {/* |`bdl`|`border-left`|-|-|-|

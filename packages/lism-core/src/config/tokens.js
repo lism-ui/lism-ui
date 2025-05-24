@@ -62,7 +62,7 @@ export default {
 		'white',
 		'black',
 	],
-	filter: ['blur', 'blur:s', 'blur:l', 'darken', 'lighten'],
+	// filter: ['blur', 'blur:s', 'blur:l', 'darken', 'lighten'],
 };
 
 // ユーティリティ化しないけど、変数を用意しておくもの

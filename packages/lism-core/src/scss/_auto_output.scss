@@ -5,14 +5,13 @@
 @use './query' as query;
 @use './setting' as setting;
 
-@function get_important($is_important) {
-	@if $is_important == 1 {
-		@return ' !important';
-	} @else if $is_important == 0 {
-		@return '';
-	}
+@function map_get_with_default($map, $key, $default) {
+	$value: map.get($map, $key);
+	@return if($value != null, $value, $default);
+}
 
-	@if setting.$default_important == 1 {
+@function get_important_str($is_important) {
+	@if $is_important == 1 {
 		@return ' !important';
 	}
 	@return '';
@@ -21,11 +20,11 @@
 @mixin echoBaseUtil($key, $prop, $base_type, $important) {
 	@if $base_type == 2 {
 		[class*='-#{$key}:'] {
-			#{$prop}: var(--#{$key}) #{$important};
+			#{$prop}: var(--#{$key}) #{get_important_str($important)};
 		}
 	} @else if $base_type == 1 {
 		.-#{$key}\: {
-			#{$prop}: var(--#{$key}) #{$important};
+			#{$prop}: var(--#{$key}) #{get_important_str($important)};
 		}
 	}
 }
@@ -69,7 +68,7 @@
 			}
 		} @else {
 			#{$selector} {
-				#{$prop}: #{$value} #{$important};
+				#{$prop}: #{$value} #{get_important_str($important)};
 			}
 		}
 	}
@@ -79,13 +78,16 @@ $bp_support_list: (); // list
 
 @each $key, $data in setting.$props {
 	$prop: map.get($data, prop); // 対応するCSSプロパティ名
-	$base_type: map.get($data, base_type); // 基本セレクタの種類
-	$is_important: map.get($data, important);
+	$bp_support: map_get_with_default($data, bp, 0);
+	$important: map_get_with_default($data, important, setting.$default_important);
 
-	$important: get_important($is_important); //を付けるかどうか;
+	// baseセレクタタイプ: 基本は0, BPサポートオンなら 1がデフォ。
+	$base_type: map_get_with_default($data, base_type, if($bp_support != 0, 1, 0));
 
 	// ベースセレクタの出力
-	@include echoBaseUtil($key, $prop, $base_type, $important);
+	@if $base_type != 0 {
+		@include echoBaseUtil($key, $prop, $base_type, $important);
+	}
 
 	// utilityクラスのリストをまずは $data から取得
 	$utilities: map.get($data, utilities);
@@ -100,9 +102,9 @@ $bp_support_list: (); // list
 	}
 
 	// BPクラスを出力するプロパティのリストを作成
-	$bp_support: map.get($data, bp);
 
-	// $bp_support が 1 または 文字列か
+	// $bp_support が 1 または 文字列（'sm','md','lg'などかどうか）
+	// Memo: 文字列がくるのは、ユーザーカスタマイズでプロパティ個別にサポートするブレイクポイントを変更したい時。
 	@if $bp_support == 1 or type-of($bp_support) == string {
 		$bp_support_list: list.append($bp_support_list, $key);
 	}
@@ -156,12 +158,6 @@ $bp_outputs: (
 			)
 		);
 
-		// @include query.bp-up($bp) {
-		// 	.-#{$key}\@#{$bp} {
-		// 		#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
-		// 	}
-		// }
-
 		// サポートするBPまで辿り着いたら終了
 		@if $bp == $support_bp or $i == list.length($bp_names) {
 			$flag: false;
@@ -169,14 +165,6 @@ $bp_outputs: (
 
 		$i: $i + 1;
 	}
-
-	// $support_bp と一致する list番号 を取得
-	// $bp_index: list.index($bp_names, $support_bp);
-	// @if $bp_index {
-	// 	@for $i from 1 through list.length($bp_names) {
-	// 		$bp: list.nth($bp_names, $i);
-	// 	}
-	// }
 }
 
 // @debug $bp_outputs;
@@ -187,16 +175,18 @@ $bp_outputs: (
 		@each $key in $data {
 			$prop_data: map.get(setting.$props, $key);
 			$prop_name: map.get($prop_data, prop);
-			$base_type: map.get($prop_data, base_type);
-			$is_important: map.get($prop_data, important);
+			$important: map_get_with_default($prop_data, important, setting.$default_important);
+
+			// ここにきているものは デフォで 1
+			$base_type: map_get_with_default($prop_data, base_type, 1);
 
 			// memo: Note: base_type: 0  の時、かつBPサポートが有効な場合、変数がインラインスタイルで出力されるのでBPクラスにimportantが必要（現状はそのような組み合わせは存在しないが）
 			@if $base_type == 0 {
-				$is_important: 1;
+				$important: 1;
 			}
 
 			.-#{$key}\@#{$bp} {
-				#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important($is_important)};
+				#{$prop_name}: var(--#{$bp}-#{$key}) #{get_important_str($important)};
 			}
 		}
 	}
