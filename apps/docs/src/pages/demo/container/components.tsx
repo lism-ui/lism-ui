@@ -65,8 +65,8 @@ export function TipCode({
 			bdrs='1'
 			whs='nw'
 			// isColored
-			className='u--colored'
-			keycolor={color}
+			className='u--colbox'
+			keycol={color}
 			{...props}
 		>
 			{text || children}

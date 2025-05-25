@@ -35,10 +35,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`c`|`color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`text`,`text-2`,<br />`base`,<br />`keycolor`,`mix`,<br />`inherit`|-|
-|`bgc`|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`base`,`base-2`,<br />`text`,<br />`keycolor`,`mix`,<br />`inherit`|-|
-|`bdc`|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`divider`,<br />`keycolor`,`mix`,<br />`inherit`,<br />`t`(`transparent`)|-|
-|`keycolor`|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
+|`c`|`color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`text`,`text-2`,<br />`base`,<br />`keycol`,`mix`,<br />`inherit`|-|
+|`bgc`|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`base`,`base-2`,<br />`text`,<br />`keycol`,`mix`,<br />`inherit`|-|
+|`bdc`|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`divider`,<br />`keycol`,`mix`,<br />`inherit`,<br />`t`(`transparent`)|-|
+|`keycol`|`--keycol`|[`COLOR`](/ja/css/tokens/#color)|-|-|
 
 
 
@@ -92,7 +92,7 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 		```html
 		<div
 			className='-bgc:mix -c:mix -p:30'
-			style='--bgc1:var(--blue);--bgc1-per:10%;--c1:var(--blue);--c2:currentColor;--c1-per:40%'
+			style='--bgc1:var(--blue);--bgc-pct:10%;--c1:var(--blue);--c2:currentColor;--c-pct:40%'
 		>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		</div>
@@ -240,7 +240,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |`bxsh`|`box-shadow`|`SHADOW`|`SHADOW`|-|
 |`bdrs`|`border-radius`|`RADIUS`|`RADIUS`|○|
 |`bd`|`border`|-|`n`(`none`),<br />`l`,`r`,`t`,`b`,<br />`is`,`ie`,`bs`,`be`,<br /> `x`,`y`|-|
-|`bdc`|`--bdc`|`COLOR`,`PALETTE`|`divider`,`i`,`keycolor`|-|
+|`bdc`|`--bdc`|`COLOR`,`PALETTE`|`divider`,`i`,`keycol`|-|
 |`bdw`|`--bdw`|-|-|○|
 |`bds`|`--bds`|-|-|-|
 {/* |`bdl`|`border-left`|-|-|-|
@@ -251,7 +251,6 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |`bdbs`|`border-block-start`|-|-|-| */}
 
 {/* さらに、以下のものを `borders` オブジェクト内で指定することができます。
-
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
 |`l`|`border-left`||- |-|
@@ -577,7 +576,7 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<Box bg='u:stripe' p='40'>
 			<Dummy />
 		</Box>
-		<Box bg='u:stripe' p='40' className='u--colored' keycolor='blue'>
+		<Box bg='u:stripe' p='40' className='u--colbox' keycol='blue'>
 			<Dummy />
 		</Box>
 	</PreviewArea>
@@ -605,7 +604,7 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<Box bg='u:stripe' p='40'>
 			<Dummy />
 		</Box>
-		<Box bg='u:stripe' p='40' className='u--colored' keycolor='blue'>
+		<Box bg='u:stripe' p='40' className='u--colbox' keycol='blue'>
 			<Dummy />
 		</Box>
 		```
@@ -615,7 +614,7 @@ Lismのパッケージ内で用意しているクラスはありませんが、�
 		<div class="l--box -bg:stripe -p:40">
 			<p>...</p>
 		</div>
-		<div class="l--box u--colored -bg:stripe -p:40 -keycolor:blue">
+		<div class="l--box u--colbox -bg:stripe -p:40 -keycol:blue">
 			<p>...</p>
 		</div>
 		```

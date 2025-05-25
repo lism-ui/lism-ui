@@ -132,7 +132,6 @@ $props: (
 			'base': 'var(--c--base)',
 			'text': 'var(--c--text)',
 			'text-2': 'var(--c--text-2)',
-			'keycolor': 'var(--keycolor)',
 			'inherit': (
 				'color': 'inherit',
 			),
@@ -150,7 +149,6 @@ $props: (
 				'base': 'var(--c--base)',
 				'base-2': 'var(--c--base-2)',
 				'text': 'var(--c--text)',
-				'keycolor': 'var(--keycolor)',
 				'inherit': (
 					'background-color': 'inherit',
 				),
@@ -189,7 +187,6 @@ $props: (
 			'main': 'var(--c--main)',
 			'accent': 'var(--c--accent)',
 			'divider': 'var(--c--divider)',
-			'keycolor': 'var(--keycolor)',
 			'inherit': 'inherit',
 			't': 'transparent',
 		),

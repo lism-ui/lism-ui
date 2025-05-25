@@ -391,11 +391,11 @@ class LismPropsData {
 					const [color1, color2, mixper] = mixdata;
 					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
 					this.addStyle(`--${name}2`, getMaybeCssVar(color2, 'color', name));
-					this.addStyle(`--${name}1-per`, mixper);
+					this.addStyle(`--${name}-pct`, mixper);
 				} else if (mixdata.length === 2) {
 					const [color1, mixper] = mixdata;
 					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
-					this.addStyle(`--${name}1-per`, mixper);
+					this.addStyle(`--${name}-pct`, mixper);
 				}
 				// [color1, mixper]
 				this.addUtil(`-${name}:mix`);

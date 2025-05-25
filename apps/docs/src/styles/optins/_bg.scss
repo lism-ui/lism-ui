@@ -32,8 +32,8 @@
 	background-position: var(--grid-offset) var(--grid-offset);
 	background-size: var(--grid-size) var(--grid-size);
 }
-// .-bg\:grid.u--colored {
-// 	--grid-bdc: color-mix(in srgb, var(--keycolor), transparent 88%);
+// .-bg\:grid.u--colbox {
+// 	--grid-bdc: color-mix(in srgb, var(--keycol), transparent 88%);
 // }
 .-bg\:stripe {
 	--stripe-bdc: color-mix(in srgb, currentColor, transparent 95%);

@@ -5,15 +5,15 @@ export default function BalloonBox({
 	bdw = '1px',
 	bdc,
 	bgc,
-	keycolor,
+	keycol,
 	bdrs = '3',
 	children,
 	...props
 }) {
 	const colorProps = { bdc, bgc };
-	if (keycolor) {
-		colorProps.lismClass += ' u--colored';
-		colorProps.keycolor = keycolor;
+	if (keycol) {
+		colorProps.lismClass += ' u--colbox';
+		colorProps.keycol = keycol;
 	} else {
 		colorProps.bgc = bgc || 'base';
 		colorProps.bdc = bdc || 'currentColor';

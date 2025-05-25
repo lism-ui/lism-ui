@@ -26,10 +26,13 @@
 	// --c--divider: hsl(225 4% 75%); //hsl(200, 12%, 92%);
 
 	// color mix
-	--cbox-per--bg: 12%;
-	--cbox-per--bdc: 40%;
-	--cbox-per--txt: 0%;
-	--cbox-per--link: 25%;
+	--colbox-pct--c: 0%;
+	--colbox-pct--bg: 12%;
+	--colbox-pct--bdc: 40%;
+
+	.c--chat {
+		--colbox-pct--bg: 25%;
+	}
 
 	// other colors
 	--link-c: #50a2ff;

@@ -59,6 +59,7 @@ export default {
 		'gray',
 		'white',
 		'black',
+		'keycol',
 	],
 	// filter: ['blur', 'blur:s', 'blur:l', 'darken', 'lighten'],
 };

@@ -8,7 +8,7 @@ export default function Chat({
 	name,
 	avatar,
 	isFlow,
-	keycolor = 'gray',
+	keycol = 'gray',
 	children,
 	...props
 }) {
@@ -16,7 +16,7 @@ export default function Chat({
 		<Grid
 			lismClass='c--chat'
 			variant={variant}
-			keycolor={keycolor}
+			keycol={keycol}
 			bg='none'
 			data-chat-direction={direction}
 			ji={direction}
@@ -53,14 +53,14 @@ export default function Chat({
 			<GridItem lismClass='c--chat__body' pos='r'>
 				<Decorator
 					lismClass='c--chat__deco'
-					className='u--colored u--skipFlow'
+					className='u--colbox u--skipFlow'
 					hasMask
 					pos='a'
 					scale={direction === 'start' ? '' : '-X'}
 				/>
 				<Lism
 					lismClass='c--chat__content'
-					className='u--colored u--trimHL'
+					className='u--colbox u--trimHL'
 					bdrs='4'
 					p='30'
 					isFlow={isFlow}

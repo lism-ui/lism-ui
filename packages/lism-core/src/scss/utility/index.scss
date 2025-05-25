@@ -28,23 +28,21 @@
 /* stylelint-disable */
 
 
-// is--cbox -cbox:red
-.u--colored{
-	// c,bdc は 変数セットのみ
-	// --c: var(--cbox-c, var(--c--text));
-	--bdc: var(--c--divider);
+// 優先度的な考慮をすると state より utility の方がいい
+// --kc keyc
+.u--colbox{
 	--c: var(--c--text);
 	--bgc: var(--c--base-2);
 	color: var(--c);
 	background-color: var(--bgc);
 }
 @supports (color: color-mix(in srgb, #000, #fff)) {
-	// --keycolor は 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
-	.u--colored{
-		--c: color-mix(in srgb, var(--c--text), var(--keycolor) var(--colored-per--txt, 16% ));
-		--bgc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bg, 4% ));
-		--bdc: color-mix(in srgb, var(--c--base), var(--keycolor) var(--colored-per--bdc, 25% ));
-		--c--link: var(--keycolor); // var(--cbox-c--link);
+	// --keycol は 必須. 親から引き継ぎたいこともあるかもしれないので、初期セットはしない
+	.u--colbox{
+		--c: color-mix(in srgb, var(--c--text), var(--keycol) var(--colbox-pct--c, 16% ));
+		--bgc: color-mix(in srgb, var(--c--base), var(--keycol) var(--colbox-pct--bg, 5% ));
+		--bdc: color-mix(in srgb, var(--c--base), var(--keycol) var(--colbox-pct--bdc, 25% ));
+		--c--link: var(--keycol);
 	}
 }
 

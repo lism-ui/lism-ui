@@ -39,7 +39,7 @@ import Chat from '~/components/ex/Chat';
 | `name` | チャットに表示する名前を指定します。 |
 | `variant` | チャットタイプを指定できます。`speak` または `think` を例では用意しています。|
 | `direction` | チャットの表示位置を指定します。`start`または`end`を指定します。 |
-| `keycolor` | チャットボックスのキーカラーを指定します。|
+| `keycol` | チャットボックスのキーカラーを指定します。|
 {/* | `footer` | チャット本文の下に表示するフッターテキストを指定できます。 | */}
 
 
@@ -48,14 +48,14 @@ import Chat from '~/components/ex/Chat';
 <Preview>
 	<PreviewTitle>`variant='speak'`</PreviewTitle>
 	<PreviewArea resize p='30' _dir='rtl'>
-		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' keycol='green' footer='Footer text...'>
 			<Dummy length='codes' />
 		</Chat>
-		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycolor='red' footer='Footer text...'>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycol='red' footer='Footer text...'>
 			<Dummy length='codes' />
 			<Dummy length='s' />
 		</Chat>
-		{/* <Chat avatar='/img/avatar03.jpg' keycolor='blue'>
+		{/* <Chat avatar='/img/avatar03.jpg' keycol='blue'>
 			<Dummy length='xs' />
 			<ul>
 				<li>Lorem ipsum...</li>
@@ -66,11 +66,11 @@ import Chat from '~/components/ex/Chat';
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat name='Taro' avatar='/img/avatar01.jpg' keycolor='green' footer='Footer text...'>
+		<Chat name='Taro' avatar='/img/avatar01.jpg' keycol='green' footer='Footer text...'>
 			<Dummy length='codes' />
 			<Dummy length='s' />
 		</Chat>
-		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycolor='red' footer='Footer text...'>
+		<Chat direction='end' name='Hanako' avatar='/img/avatar02.jpg' keycol='red' footer='Footer text...'>
 			<Dummy length='codes' />
 		</Chat>
 		```
@@ -81,19 +81,19 @@ import Chat from '~/components/ex/Chat';
 <Preview>
 	<PreviewTitle>`variant='think'`</PreviewTitle>
 	<PreviewArea resize p='30' _dir='rtl'>
-		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycol='blue'>
 			<Dummy length='codes' />
 		</Chat>
-		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycol='purple'>
 			<Dummy length='codes' />
 		</Chat>
 	</PreviewArea>
 	<PreviewCode>
 		```jsx
-		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycolor='blue'>
+		<Chat variant='think' name='Name B' avatar='/img/avatar01.jpg' keycol='blue'>
 			<p>Lorem ipsum...</p>
 		</Chat>
-		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycolor='purple'>
+		<Chat variant='think' direction='end' name='Name B' avatar='/img/avatar02.jpg' keycol='purple'>
 			<p>Lorem ipsum...</p>
 		</Chat>
 		```
@@ -108,7 +108,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 <Preview>
 	<PreviewTitle>`slot`の使用例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
+		<Chat name='Name A' avatar='/img/avatar01.jpg' keycol='green'>
 			<b slot='name'>Taro</b>
 			<Dummy length='codes' />
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>
@@ -116,7 +116,7 @@ Astroでは、name,footerをslotで指定することが可能です。
 	</PreviewArea>
 	<PreviewCode>
 		```jsx "slot='name'" "slot='footer'"
-		<Chat name='Name A' avatar='/img/avatar01.jpg' keycolor='green'>
+		<Chat name='Name A' avatar='/img/avatar01.jpg' keycol='green'>
 			<b slot='name'>Taro</b>
 			<p>Lorem ipsum...</p>
 			<Fragment slot='footer'>time:<b>20:10</b></Fragment>

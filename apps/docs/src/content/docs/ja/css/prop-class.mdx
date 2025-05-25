@@ -75,19 +75,19 @@ export const PropTable = ({data={}, ...props}) => {
 .-c\:base{ --c: var(--c--base) }
 .-c\:text{ --c: var(--c--text) }
 .-c\:text-2{ --c: var(--c--text-2) }
-.-c\:keycolor{ --c: var(--keycolor) }
+.-c\:keycol{ --c: var(--keycol) }
 .-c\:inherit{ color: inherit }
 
 /* for background-color */
 .-bgc\:text{ --bgc: var(--c--text) }
 .-bgc\:base{ --bgc: var(--c--base) }
 .-bgc\:base-2{ --bgc: var(--c--base-2) }
-.-bgc\:keycolor{ --bgc: var(--keycolor) }
+.-bgc\:keycol{ --bgc: var(--keycol) }
 .-bgc\:inherit{ background-color: inherit }
 
 /* for border-color (--bdc) */
 .-bdc\:divider{ --bdc: var(--c--divider) }
-.-bdc\:keycolor{ --bdc: var(--keycolor) }
+.-bdc\:keycol{ --bdc: var(--keycol) }
 .-bdc\:inherit{ --bdc: inherit }
 ```
 
@@ -99,36 +99,33 @@ export const PropTable = ({data={}, ...props}) => {
 
 ```css
 .-c\:mix {
-	--c1-per: 50%;
 	--c1: currentColor;
 	--c2: transparent;
-	--c: color-mix(in srgb, var(--c1) var(--c1-per), var(--c2));
+	--c: color-mix(in srgb, var(--c1) var(--c-pct, 50%), var(--c2));
 }
 .-bgc\:mix {
-	--bgc1-per: 50%;
 	--bgc1: currentColor;
 	--bgc2: transparent;
-	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc1-per), var(--bgc2));
+	--bgc: color-mix(in srgb, var(--bgc1) var(--bgc-pct, 50%), var(--bgc2));
 }
 .-bdc\:mix {
-	--bdc1-per: 50%;
 	--bdc1: currentColor;
 	--bdc2: transparent;
-	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc1-per), var(--bdc2));
+	--bdc: color-mix(in srgb, var(--bdc1) var(--bdc-pct, 50%), var(--bdc2));
 }
 ```
 
 <Preview>
 	<PreviewTitle>使用例</PreviewTitle>
 	<PreviewArea resize p='30'>
-		<div className='-bgc:mix -p:30' style={{'--bgc1': 'var(--blue)', '--bgc1-per': '10%'}}>
-			<p className='-c:mix' style={{'--c1': 'var(--blue)', '--c1-per': '40%', '--c2': 'currentColor'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+		<div className='-bgc:mix -p:30' style={{'--bgc1': 'var(--blue)', '--bgc-pct': '10%'}}>
+			<p className='-c:mix' style={{'--c1': 'var(--blue)', '--c-pct': '40%', '--c2': 'currentColor'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		</div>
 	</PreviewArea>
 	<PreviewCode slot="tab" label="HTML">
 		```html "-bgc:mix" "-c:mix"
-		<div className='-bgc:mix -p:30' style='--bgc1:var(--blue);--bgc1-per:10%'>
-			<p className='-c:mix' style='--c1:var(--blue);--c1-per:40%;--c2:currentColor'>
+		<div className='-bgc:mix -p:30' style='--bgc1:var(--blue);--bgc-pct:10%'>
+			<p className='-c:mix' style='--c1:var(--blue);--c-pct:40%;--c2:currentColor'>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</p>
 		</div>

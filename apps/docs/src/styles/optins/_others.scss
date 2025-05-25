@@ -19,12 +19,12 @@
 }
 
 // --------------------
-// keycolor
+// keycol
 // --------------------
 // $colors: 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'gray';
 // @each $c in $colors {
-// 	.-keycolor\:#{$c} {
-// 		--keycolor: var(--#{$c});
+// 	.-keycol\:#{$c} {
+// 		--keycol: var(--#{$c});
 // 	}
 // }
 
