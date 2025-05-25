@@ -35,9 +35,9 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 
 |Prop|CSS|Token|To Class|BP|
 |---|---|---|---|---|
-|`c`|`color`|[`COLOR`](/ja/css/tokens/#color)|`text`,`text-2`,`base`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
-|`bgc`|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`base`,`base-2`,`text`,`keycolor`,`mix`,<br />`white`,`black`,<br />`inherit`|-|
-|`bdc`|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`divider`,`keycolor`,`mix`,<br />`inherit`|-|
+|`c`|`color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`text`,`text-2`,<br />`base`,<br />`keycolor`,`mix`,<br />`inherit`|-|
+|`bgc`|`background-color`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`base`,`base-2`,<br />`text`,<br />`keycolor`,`mix`,<br />`inherit`|-|
+|`bdc`|`--bdc`|[`COLOR`](/ja/css/tokens/#color)|`main`,`accent`<br />`divider`,<br />`keycolor`,`mix`,<br />`inherit`,<br />`t`(`transparent`)|-|
 |`keycolor`|`--keycolor`|[`COLOR`](/ja/css/tokens/#color)|-|-|
 
 
@@ -48,16 +48,10 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 		<Box c='main' bgc='base-2' mb='20px' bd bdc='divider' p='30'>
 			<Dummy />
 		</Box>
-		<Box c='white' bgc='black' p='30'>
-			<Dummy />
-		</Box>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Box c='main' bgc='base-2' bd bdc='divider' p='30'>
-			<Dummy />
-		</Box>
-		<Box c='white' bgc='black' p='30'>
 			<Dummy />
 		</Box>
 		```
@@ -65,9 +59,6 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Note } from
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--box -c:main -bgc:base-2 -bd: -bdc:divider -p:30">
-			<p>Lorem ipsum ...</p>
-		</div>
-		<div class="l--box -c:white -bgc:black -p:30">
 			<p>Lorem ipsum ...</p>
 		</div>
 		```
@@ -225,7 +216,7 @@ end方向はX,Yとstartの併用で擬似的に指定できるので、現状は
 |---|---|---|---|---|
 |`d`|display|-|`n`,`b`,`f`,`g`,`i`,`ib`,`if`,`ig`|○|
 |`v`|visibility|-|`hidden`(`h`), `visible`(`v`)||
-|`op`|opacity|[`OPACITY`](/ja/css/tokens/#opacity)|`OPACITY`,`0`,`0.1`,`0.2`,...,`1`||
+|`op`|opacity|[`OPACITY`](/ja/css/tokens/#opacity)|`OPACITY`,`0`||
 
 ### Overflow
 

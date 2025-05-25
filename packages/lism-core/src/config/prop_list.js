@@ -174,20 +174,7 @@ export default {
 	},
 	op: {
 		style: 'opacity',
-		presets: [
-			...TOKENS.op,
-			'0',
-			'0.1',
-			'0.2',
-			'0.3',
-			'0.4',
-			'0.5',
-			'0.6',
-			'0.7',
-			'0.8',
-			'0.9',
-			'1',
-		],
+		presets: [...TOKENS.op, '0'],
 		converter: 1,
 	}, // op
 	v: { style: 'visibility', utils: { hidden: 'h', visible: 'v' } },

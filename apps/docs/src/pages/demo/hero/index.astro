@@ -7,6 +7,7 @@ import {
 	Media,
 	Spacer,
 	Box,
+	Divider,
 	Grid,
 	Dummy,
 	Text,
@@ -28,30 +29,6 @@ import '~/components/ex/ShapeDivider/style.scss';
 				<Dummy length='l' lang='ja' />
 			</Container>
 		</Stack>
-		<Stack isFullwide minH='70vh' g='30' c='white' pos='r'>
-			<Frame isLayer>
-				<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' />
-				<Layer blur='4px' bgc='black:50%' />
-			</Frame>
-			<Flex jc='sb' p='30' z='0' g='30'>
-				<Box>Header</Box>
-				<Flex g='30'>
-					<div>XXX</div>
-					<div>XXX</div>
-				</Flex>
-			</Flex>
-			<Container size='m' hasGutter isFlow my='auto' z='0'>
-				<Text fw='bold' fz='xl'>DEMO 02</Text>
-				<Dummy length='l' />
-			</Container>
-			<Center p='20' z='0'>Footer</Center>
-		</Stack>
-		<!-- <Stack isFullwide h='full' bgc='base-2' g='30'>
-			<Container size='m' hasGutter isFlow my='auto'>
-				<Text fw='bold' fz='xl'>Full Screen</Text>
-				<Dummy length='xl' />
-			</Container>
-		</Stack> -->
 		<Stack isFullwide hasGutter pos='r' minH='75vh' c='white' g='20'>
 			<ShapeDivider
 				viewBox='0 0 10 10'
@@ -76,17 +53,53 @@ import '~/components/ex/ShapeDivider/style.scss';
 				<path d='M10,10V0L0,9.5V10L10,10z'></path>
 			</ShapeDivider>
 		</Stack>
-		<Spacer h='2rem' />
 
-		<Spacer h='60' />
-		<hr />
-		<Box hasGutter>
-			<Spacer h='5rem' />
+		<Spacer h='6rem' />
+		<Divider />
+		<Box hasGutter py='50'>
 			<Dummy lh='s' mb='auto' length='l' />
-			<Spacer h='3rem' />
 		</Box>
+		<Divider />
+		<Spacer h='6rem' />
+		<Stack isFullwide minH='70vh' g='30' c='white' pos='r'>
+			<Frame isLayer>
+				<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' />
+				<Layer blur='4px' bgc='black:50%' />
+			</Frame>
+			<Flex jc='sb' p='30' z='0' g='30'>
+				<Box>Header</Box>
+				<Flex g='30'>
+					<div>XXX</div>
+					<div>XXX</div>
+				</Flex>
+			</Flex>
+			<Container size='m' hasGutter isFlow my='auto' z='0'>
+				<Text fw='bold' fz='xl'>DEMO 02</Text>
+				<Dummy length='l' />
+			</Container>
+			<Center p='20' z='0'>Footer</Center>
+		</Stack>
+		<!-- <Stack isFullwide h='full' bgc='base-2' g='30'>
+			<Container size='m' hasGutter isFlow my='auto'>
+				<Text fw='bold' fz='xl'>Full Screen</Text>
+				<Dummy length='xl' />
+			</Container>
+		</Stack> -->
+		<!-- <Box hasGutter>
+			<Spacer h='6rem' />
+			<Dummy lh='s' mb='auto' length='l' />
+			<Spacer h='6rem' />
+		</Box> -->
+
+		<Spacer h='6rem' />
+		<Divider />
+		<Box hasGutter py='50'>
+			<Dummy lh='s' mb='auto' length='l' />
+		</Box>
+		<Divider />
+		<Spacer h='6rem' />
 		<!-- clamp = min:40px/400px, max:80px/1200px.  -->
-		<Lism isFullwide style={{ '--slopeH': 'clamp(2.5rem, 1.25rem + 5vw, 5rem)' }}>
+		<Box isFullwide style={{ '--slopeH': 'clamp(2.5rem, 1.25rem + 5cqw, 5rem)' }}>
 			<Stack isFullwide hasGutter pos='r' minH='50vh' c='white' g='20'>
 				<ShapeDivider
 					viewBox='0 0 10 10'
@@ -98,8 +111,9 @@ import '~/components/ex/ShapeDivider/style.scss';
 				>
 					<path d='M10,10V0L0,9.5V10L10,10z'></path>
 				</ShapeDivider>
-				<Frame isLayer bgc='black'>
-					<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' op='0.5' />
+				<Frame isLayer>
+					<Media isLayer src='/img/img-1.jpg' alt='' width='960' height='640' />
+					<Layer bgc='black:50%' />
 				</Frame>
 				<Container size='m' isFlow py='40' pr={['0', '25%', '33%']} my='auto' z='0'>
 					<Text fw='bold' fz='xl'>ShapDivider & Layers</Text>
@@ -117,12 +131,12 @@ import '~/components/ex/ShapeDivider/style.scss';
 			>
 				<Frame
 					isLayer
-					bgc='black'
 					style={{
 						clipPath: 'polygon(0 var(--slopeH), 0 100%, 100% 100%, 100% 0)',
 					}}
 				>
-					<Media src='/img/img-3.jpg' alt='' width='960' height='640' op='0.5' />
+					<Media isLayer src='/img/img-3.jpg' alt='' width='960' height='640' />
+					<Layer bgc='black:50%' />
 				</Frame>
 				<Spacer h='var(--slopeH)' />
 				<Container size='m' isFlow py='40' pl={['0', '25%', '33%']} my='auto' z='0'>
@@ -140,11 +154,11 @@ import '~/components/ex/ShapeDivider/style.scss';
 					<path d='M10,10V0L0,9.5V10L10,10z'></path>
 				</ShapeDivider>
 			</Stack>
-		</Lism>
+		</Box>
 		<Box hasGutter>
-			<Spacer h='3rem' />
+			<Spacer h='6rem' />
 			<Dummy lh='s' mb='auto' length='l' />
-			<Spacer h='5rem' />
+			<Spacer h='6rem' />
 		</Box>
 		<!-- <Spacer h='60' />
 		<Spacer h='60' /> -->
