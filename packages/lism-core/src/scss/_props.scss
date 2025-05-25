@@ -419,9 +419,6 @@ $props: (
 		base_type: 2,
 		bp: 1,
 		utilities: $space_values,
-		// utilities: (
-		// 	'0': '0',
-		// ),
 	),
 	'm': (
 		prop: 'margin',
@@ -442,22 +439,22 @@ $props: (
 	'mt': (
 		prop: 'margin-top',
 		bp: 1,
-		// utilities: $auto,
+		utilities: $auto,
 	),
 	'mr': (
 		prop: 'margin-right',
 		bp: 1,
-		// utilities: $auto,
+		utilities: $auto,
 	),
 	'mb': (
 		prop: 'margin-bottom',
 		bp: 1,
-		// utilities: $auto,
+		utilities: $auto,
 	),
 	'ml': (
 		prop: 'margin-left',
 		bp: 1,
-		// utilities: $auto,
+		utilities: $auto,
 	),
 	'mis': (
 		prop: 'margin-inline-start',
@@ -668,16 +665,6 @@ $props: (
 			'180': '180deg',
 		),
 	),
-	'trfo': (
-		prop: 'transform-origin',
-		utilities: (
-			'lt': '0% 0%',
-			'rt': '100% 0%',
-			'lb': '0% 100%',
-			'rb': '100% 100%',
-		),
-	),
-
 	'ovw': (
 		prop: 'overflow-wrap',
 		utilities: (
@@ -706,6 +693,13 @@ $props: (
 			'v-rl': 'vertical-rl',
 			// 'v-lr': 'vertical-lr',
 			// 'h-tb': 'horizontal-tb',
+		),
+	),
+	'bxz': (
+		prop: 'box-sizing',
+		utilities: (
+			'cb': 'content-box',
+			// 'bb': 'border-box',
 		),
 	),
 	'cols': (
@@ -748,5 +742,15 @@ $props: (
 // 	prop: 'clear',
 // 	utilities: (
 // 		'b': 'both',
+// 	),
+// ),
+
+// 'trfo': (
+// 	prop: 'transform-origin',
+// 	utilities: (
+// 		'lt': '0% 0%',
+// 		'rt': '100% 0%',
+// 		'lb': '0% 100%',
+// 		'rb': '100% 100%',
 // 	),
 // ),

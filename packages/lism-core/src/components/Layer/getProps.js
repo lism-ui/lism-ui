@@ -1,4 +1,3 @@
-// import getEffectProps from '../getEffectProps';
 import getInsetProps from '../getInsetProps';
 import getFilterProps from '../getFilterProps';
 
@@ -8,7 +7,6 @@ export function getLayerProps(props) {
 
 	let layerProps = getInsetProps(props); // l,r,t,b などのコンテキストpropsのマージ
 	layerProps = getFilterProps(layerProps, 'backdropFilter'); // filter系propsのマージ
-	// layerProps = getEffectProps(layerProps); // effect系propsのマージ
 
 	return layerProps;
 }

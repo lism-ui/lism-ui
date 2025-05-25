@@ -1,10 +1,10 @@
 import atts from '../../lib/helper/atts';
 
-import getEffectProps from '../getEffectProps';
+import getTransformProps from '../getTransformProps';
 import getInsetProps from '../getInsetProps';
 
 export default function ({ lismClass, size, ...props }) {
-	props = getEffectProps(getInsetProps(props));
+	props = getTransformProps(getInsetProps(props));
 
 	if (size) {
 		props.ar = '1/1';

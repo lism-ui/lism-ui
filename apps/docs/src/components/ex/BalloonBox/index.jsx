@@ -28,12 +28,9 @@ export default function BalloonBox({
 			decoProps = {
 				t: '50%',
 				l: '0',
-				css: {
-					boxSizing: 'cb',
-					rotate: '45deg',
-					translate: '-50% -50%',
-					clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
-				},
+				rotate: '45deg',
+				translate: '-50% -50%',
+				clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%)',
 			};
 			break;
 		case 'right':
@@ -41,12 +38,9 @@ export default function BalloonBox({
 			decoProps = {
 				t: '50%',
 				l: '100%',
-				css: {
-					boxSizing: 'cb',
-					rotate: '-45deg',
-					translate: '-50% -50%',
-					clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%)',
-				},
+				rotate: '-45deg',
+				translate: '-50% -50%',
+				clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%)',
 			};
 			break;
 		case 'top':
@@ -54,12 +48,9 @@ export default function BalloonBox({
 			decoProps = {
 				t: '0',
 				l: '50%',
-				css: {
-					boxSizing: 'cb',
-					rotate: '45deg',
-					translate: '-50% -50%',
-					clipPath: 'polygon(0% 0%, 0% 100%, 100% 0%)',
-				},
+				rotate: '45deg',
+				translate: '-50% -50%',
+				clipPath: 'polygon(0% 0%, 0% 100%, 100% 0%)',
 			};
 			break;
 		case 'bottom':
@@ -67,12 +58,9 @@ export default function BalloonBox({
 			decoProps = {
 				t: '100%',
 				l: '50%',
-				css: {
-					boxSizing: 'cb',
-					rotate: '45deg',
-					translate: '-50% -50%',
-					clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
-				},
+				rotate: '45deg',
+				translate: '-50% -50%',
+				clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
 			};
 			break;
 		default:
@@ -83,7 +71,14 @@ export default function BalloonBox({
 		<Flex lismClass='c--balloonBox' variant={variant} {...parentProps} {...props}>
 			<Lism pos='r' bd p='30' w='fit-content' bdw={bdw} bdrs={bdrs} {...colorProps}>
 				{children}
-				<Decorator pos='a' size='0.875em' bd='inherit' bgc='inherit' {...decoProps} />
+				<Decorator
+					className='-bxz:cb'
+					pos='a'
+					size='0.875em'
+					bd='inherit'
+					bgc='inherit'
+					{...decoProps}
+				/>
 			</Lism>
 		</Flex>
 	);

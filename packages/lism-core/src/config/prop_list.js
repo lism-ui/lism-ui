@@ -250,10 +250,10 @@ export default {
 	},
 	mx: { utils: auto, converter: 'space' },
 	my: { utils: auto, converter: 'space' },
-	ml: { converter: 'space' },
-	mr: { converter: 'space' },
-	mt: { converter: 'space' },
-	mb: { converter: 'space' },
+	ml: { utils: auto, converter: 'space' },
+	mr: { utils: auto, converter: 'space' },
+	mt: { utils: auto, converter: 'space' },
+	mb: { utils: auto, converter: 'space' },
 	mis: { presets: SPACE_PRESETS, utils: auto, converter: 'space' },
 	mbs: { presets: SPACE_PRESETS, utils: auto, converter: 'space' },
 	// mib: { converter: 'space' },
@@ -393,23 +393,6 @@ export const CONTEXT_PROPS = {
 
 	css: {
 		// transform系
-		transform: { style: 1 },
-		transformOrigin: {
-			style: 1,
-			utilKey: 'trfo',
-			utils: {
-				center: 'c',
-				'left top': 'lt',
-				'right top': 'rt',
-				'left bottom': 'lb',
-				'right bottom': 'rb',
-				'50%': 'c',
-				'0% 0%': 'lt',
-				'100% 0%': 'rt',
-				'0% 100%': 'lb',
-				'100% 100%': 'rb',
-			},
-		},
 		translate: {
 			style: 1,
 			utilKey: 'trslt',
@@ -433,19 +416,14 @@ export const CONTEXT_PROPS = {
 			},
 		},
 
-		// others
-		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
-
-		animation: { utilKey: 'anim', style: 1 },
-		// flip: { style: 1 },
-		clipPath: { style: 1 }, // cpp ?
-
-		// appearance: { style: 1, utils: { none: 'n' } },
-		objectFit: { style: 1, utilKey: 'obf', utils: { cover: 'cv', contain: 'cn' } },
-		objectPosition: { style: 1 },
-
-		filter: { style: 1 }, // fltr?
-		backdropFilter: { style: 1 }, // bdfltr?
+		// Memo: その他、コアの処理このcssに入り得るものは以下の通り.(将来的に何か処理を追加するかもしれないもの)
+		// transform,
+		// transformOrigin,
+		// clipPath: { style: 1 }, // cpp ?
+		// objectFit: { style: 1, utilKey: 'obf', utils: { cover: 'cv', contain: 'cn' } },
+		// objectPosition: { style: 1 },
+		// filter: { style: 1 }, // fltr?
+		// backdropFilter: { style: 1, presets:[] },
 	},
 
 	// hov: { c, bgc, bdc, bxsh },

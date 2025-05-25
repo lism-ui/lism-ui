@@ -55,7 +55,6 @@ class LismPropsData {
 			pass,
 			get,
 			skipState,
-			isSide,
 			isLayer,
 			isLinkBox,
 			hasDivider,
@@ -77,9 +76,6 @@ class LismPropsData {
 		}
 		if (isLinkBox) {
 			lismState.push('is--linkBox');
-		}
-		if (isSide) {
-			lismState.push('is--side');
 		}
 
 		// if (hasDivider && typeof hasDivider === 'string') {
@@ -167,10 +163,15 @@ class LismPropsData {
 
 		Object.keys(values).forEach((propName) => {
 			const propData = contextProps[propName];
-			const propValue = values[propName];
+			if (propData) {
+				const propValue = values[propName];
 
-			// console.log(propName, propValue, propData);
-			this.analyzeProp(propName, propValue, propData);
+				// console.log(propName, propValue, propData);
+				this.analyzeProp(propName, propValue, propData);
+			} else if (name === 'css') {
+				// cssオブジェクトに入ってきたが、Lism側で一致するデータがないものはそのままstyleへ流す
+				this.addStyle(propName, values[propName]);
+			}
 		});
 	}
 

@@ -1,16 +1,28 @@
-import isEmptyObj from '../lib/helper/isEmptyObj';
-import filterEmptyObj from '../lib/helper/filterEmptyObj';
 import getFilterProps from './getFilterProps';
+import atts from '../lib/helper/atts';
 
-export default function getMediaProps({ objectFit, objectPosition, ...props }) {
-	const mediaProps = filterEmptyObj({
-		objectFit,
-		objectPosition,
-	});
-
-	if (!isEmptyObj(mediaProps)) {
-		props.css = Object.assign({}, props.css || {}, mediaProps);
+export default function getMediaProps({
+	className = '',
+	objectFit,
+	objectPosition,
+	style = {},
+	...props
+}) {
+	if (objectFit) {
+		if (objectFit === 'cover' || objectFit === 'cv') {
+			className = atts(className, '-obf:cv');
+		} else if (objectFit === 'contain' || objectFit === 'cn') {
+			className = atts(className, '-obf:cn');
+		} else {
+			style.objectFit = objectFit;
+		}
 	}
+	if (objectPosition) {
+		style.objectPosition = objectPosition;
+	}
+
+	props.className = className;
+	props.style = style;
 
 	return getFilterProps(props);
 }
