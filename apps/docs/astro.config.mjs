@@ -75,6 +75,10 @@ export default defineConfig({
 				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
 			},
 		}),
+		// tailwind({
+		// 	// デフォルトのベーススタイルを無効にする
+		// 	applyBaseStyles: false,
+		// }),
 		// purgecss(),
 	],
 	vite: {
