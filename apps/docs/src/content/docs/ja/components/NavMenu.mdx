@@ -374,14 +374,14 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon isTrigger bd bgc='inherit' p='10' />
 					</Accordion.Header>
 					<Accordion.Body>
-						<NavMenu.Root pis='30'>
+						<NavMenu.Nest>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Nested item</NavMenu.Link>
 							</NavMenu.Item>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu2'>Nested item</NavMenu.Link>
 							</NavMenu.Item>
-						</NavMenu.Root>
+						</NavMenu.Nest>
 					</Accordion.Body>
 				</Accordion.Root>
 			</NavMenu.Item>
@@ -402,14 +402,14 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon isTrigger bd bgc='inherit' p='10' />
 					</Accordion.Header>
 					<Accordion.Body>
-						<NavMenu.Root pis='30'>
+						<NavMenu.Nest>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Nested item</NavMenu.Link>
 							</NavMenu.Item>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu2'>Nested item</NavMenu.Link>
 							</NavMenu.Item>
-						</NavMenu.Root>
+						</NavMenu.Nest>
 					</Accordion.Body>
 				</Accordion.Root>
 			</NavMenu.Item>
@@ -436,7 +436,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 				<NavMenu.Link href='#menu3' d='f' ai='c'>
 					<>Hover Menu Item <Icon icon='caret-down' css={{translate:'40%'}} /></>
 				</NavMenu.Link>
-				<NavMenu.Nest hov='get:show' pos='a' t='100%' pis='0' lh='s' bgc='base' bxsh='2' bdrs='1' hasDivider>
+				<NavMenu.Nest hov='get:show' pos='a' t='100%' mis='0' lh='s' bgc='base' bxsh='2' bdrs='1' hasDivider>
 					<NavMenu.Item>
 						<NavMenu.Link href='#child-menu1'>Nested item</NavMenu.Link>
 					</NavMenu.Item>
@@ -461,7 +461,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 				<NavMenu.Link href='#menu3' d='f' ai='c'>
 					<>Hover Menu Item <Icon icon='caret-down' css={{translate:'40%'}} /></>
 				</NavMenu.Link>
-				<NavMenu.Nest hov='get:show' pos='a' t='100%' pis='0' lh='s' bgc='base' bxsh='2' bdrs='1' hasDivider>
+				<NavMenu.Nest hov='get:show' pos='a' t='100%' mis='0' lh='s' bgc='base' bxsh='2' bdrs='1' hasDivider>
 					<NavMenu.Item>
 						<NavMenu.Link href='#child-menu1'>Nested item</NavMenu.Link>
 					</NavMenu.Item>
@@ -495,7 +495,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon />
 					</Accordion.Header>
 					<Accordion.Body pos='a' bxsh='2' bgc='base' w='100%'>
-						<NavMenu.Nest pis='' hasDivider>
+						<NavMenu.Nest hasDivider mis='0'>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Child item</NavMenu.Link>
 							</NavMenu.Item>
@@ -516,7 +516,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon isTrigger bd bgc='inherit' p='5'/>
 					</Accordion.Header>
 					<Accordion.Body pos='a' bxsh='2' bgc='base' w='100%'>
-						<NavMenu.Nest pis='' hasDivider>
+						<NavMenu.Nest hasDivider mis='0'>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Child item</NavMenu.Link>
 							</NavMenu.Item>
@@ -547,7 +547,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon />
 					</Accordion.Header>
 					<Accordion.Body pos='a' bxsh='2' bgc='base' w='100%'>
-						<NavMenu.Nest pis='' hasDivider>
+						<NavMenu.Nest hasDivider mis='0'>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Child item</NavMenu.Link>
 							</NavMenu.Item>
@@ -568,7 +568,7 @@ import { FolderSimple } from "@phosphor-icons/react";
 						<Accordion.Icon isTrigger bd bgc='inherit' p='5'/>
 					</Accordion.Header>
 					<Accordion.Body pos='a' bxsh='2' bgc='base' w='100%'>
-						<NavMenu.Nest pis='' hasDivider>
+						<NavMenu.Nest hasDivider mis='0'>
 							<NavMenu.Item>
 								<NavMenu.Link href='#child-menu1'>Child item</NavMenu.Link>
 							</NavMenu.Item>

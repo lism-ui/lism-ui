@@ -42,7 +42,7 @@ $ov_values: (
 	's': 'scroll',
 );
 
-$m_values: (
+$auto: (
 	// '0': '0',
 	'a': 'auto'
 );
@@ -444,49 +444,49 @@ $props: (
 		prop: 'margin',
 		base_type: 2,
 		bp: 1,
-		utilities: map.merge($m_values, $space_values),
+		utilities: map.merge($auto, $space_values),
 	),
 	'mx': (
 		prop: 'margin-inline',
 		bp: 1,
-		utilities: $m_values,
+		utilities: $auto,
 	),
 	'my': (
 		prop: 'margin-block',
 		bp: 1,
-		utilities: $m_values,
+		utilities: $auto,
 	),
 	'mt': (
 		prop: 'margin-top',
 		bp: 1,
-		utilities: $m_values,
+		// utilities: $auto,
 	),
 	'mr': (
 		prop: 'margin-right',
 		bp: 1,
-		utilities: $m_values,
+		// utilities: $auto,
 	),
 	'mb': (
 		prop: 'margin-bottom',
 		bp: 1,
-		utilities: $m_values,
+		// utilities: $auto,
 	),
 	'ml': (
 		prop: 'margin-left',
 		bp: 1,
-		utilities: $m_values,
+		// utilities: $auto,
 	),
 	'mis': (
 		prop: 'margin-inline-start',
 		base_type: 2,
 		bp: 1,
-		utilities: map.merge($m_values, $space_values),
+		utilities: map.merge($auto, $space_values),
 	),
 	'mbs': (
 		prop: 'margin-block-start',
 		base_type: 2,
 		bp: 1,
-		utilities: map.merge($m_values, $space_values),
+		utilities: map.merge($auto, $space_values),
 	),
 
 	'g': (
@@ -546,6 +546,7 @@ $props: (
 	'z': (
 		prop: 'z-index',
 		utilities: (
+			'99': 99,
 			'2': 2,
 			'1': 1,
 			'0': 0,
@@ -563,7 +564,6 @@ $props: (
 	),
 	'fxw': (
 		prop: 'flex-wrap',
-		bp: 1,
 		utilities: (
 			'w': 'wrap',
 			'nw': 'nowrap',
@@ -694,19 +694,6 @@ $props: (
 			'rb': '100% 100%',
 		),
 	),
-	'fl': (
-		prop: 'float',
-		utilities: (
-			'l': 'left',
-			'r': 'right',
-		),
-	),
-	'cl': (
-		prop: 'clear',
-		utilities: (
-			'b': 'both',
-		),
-	),
 
 	'ovw': (
 		prop: 'overflow-wrap',
@@ -765,4 +752,18 @@ $props: (
 // 'gce': (
 // 	prop: 'grid-column-end',
 // 	base_type: 0,
+// ),
+
+// 'fl': (
+// 	prop: 'float',
+// 	utilities: (
+// 		'l': 'left',
+// 		'r': 'right',
+// 	),
+// ),
+// 'cl': (
+// 	prop: 'clear',
+// 	utilities: (
+// 		'b': 'both',
+// 	),
 // ),

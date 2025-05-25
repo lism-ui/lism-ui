@@ -1,6 +1,7 @@
 import TOKENS from './tokens';
 // import presets from './presets';
 const SPACE_PRESETS = ['0', '5', '10', '20', '30', '40', '50'];
+const auto = { auto: 'a' };
 /* 
 memo: 
 	ユーティリティクラス化されない時の挙動パターン
@@ -101,11 +102,10 @@ export default {
 	// transition
 	trs: { style: 'transition' },
 	trsdu: { style: '--trsdu' },
-	trsde: { style: '--trsde' },
 	trsp: { style: '--trsp' },
 	trspt: {
 		style: '--trspt',
-		utils: { 'ease-in': 'in', 'ease-out': 'out', 'ease-in-out': 'in-out', linear: 'linear' },
+		// utils: { 'ease-in': 'in', 'ease-out': 'out', 'ease-in-out': 'in-out', linear: 'linear' },
 	},
 
 	//display
@@ -152,7 +152,7 @@ export default {
 	},
 
 	pos: { style: 'position', utils: 1 },
-	z: { style: 'zIndex', presets: ['-1', '0', '1', '2'] },
+	z: { style: 'zIndex', presets: ['-1', '0', '1', '2', '99'] },
 	i: { utils: 1, style: 'inset', converter: 'space' },
 	t: { utils: 'trbl', style: 'top', converter: 'space' },
 	l: { utils: 'trbl', style: 'left', converter: 'space' },
@@ -184,20 +184,20 @@ export default {
 	// pse: paddingOption,
 	// pbe: paddingOption,
 	m: {
-		utils: { auto: 'a' },
+		utils: auto,
 		presets: SPACE_PRESETS,
 		converter: 'space',
 		// {x, y, t, b, l, r, is, bs } でも指定可能にする
 		objProcessor: (d) => `m${d}`,
 	},
-	mx: { utils: { auto: 'a' }, converter: 'space' },
-	my: { utils: { auto: 'a' }, converter: 'space' },
-	ml: { utils: { auto: 'a' }, converter: 'space' },
-	mr: { utils: { auto: 'a' }, converter: 'space' },
-	mt: { utils: { auto: 'a' }, converter: 'space' },
-	mb: { utils: { auto: 'a' }, converter: 'space' },
-	mis: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
-	mbs: { presets: SPACE_PRESETS, utils: { auto: 'a' }, converter: 'space' },
+	mx: { utils: auto, converter: 'space' },
+	my: { utils: auto, converter: 'space' },
+	ml: { converter: 'space' },
+	mr: { converter: 'space' },
+	mt: { converter: 'space' },
+	mb: { converter: 'space' },
+	mis: { presets: SPACE_PRESETS, utils: auto, converter: 'space' },
+	mbs: { presets: SPACE_PRESETS, utils: auto, converter: 'space' },
 	// mib: { converter: 'space' },
 	// mbe: { converter: 'space' },
 	// me: marginOption,
