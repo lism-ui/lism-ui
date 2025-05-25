@@ -1,14 +1,17 @@
-.c--badge {
+:where(.c--badge) {
 	--c: var(--c--base);
 	--bgc: var(--c--text);
 	--bdc: transparent;
-	color: var(--c);
-	background-color: var(--bgc);
-	border: solid 1px var(--bdc); /* 異なる variant を並べてもサイズに差が出ないようにborderを常に指定 */
 }
 
-.c--badge--outline {
+:where(.c--badge--outline) {
 	--c: var(--c--text);
 	--bgc: transparent;
 	--bdc: currentColor;
+}
+
+.c--badge {
+	color: var(--c);
+	background-color: var(--bgc);
+	border: solid 1px var(--bdc); /* 異なる variant を並べてもサイズに差が出ないようにborderを常に指定 */
 }
