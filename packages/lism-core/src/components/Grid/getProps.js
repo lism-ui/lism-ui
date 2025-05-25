@@ -23,10 +23,9 @@ export function mergeGridContextProps(props) {
 
 export function getGridProps({ _grid = 'grid', lismClass, ...props }) {
 	// grid 系の props をまとめる
-	let returnProps = mergeGridContextProps(props);
-	returnProps._context = 'grid'; //getGridContext(props?.grid);
-	returnProps.lismClass = atts(lismClass, `l--${_grid}`);
-	return returnProps;
+	props = mergeGridContextProps(props);
+	props.lismClass = atts(lismClass, `l--${_grid}`);
+	return props;
 }
 
 export function getGridItemProps(props) {

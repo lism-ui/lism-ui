@@ -60,11 +60,8 @@ class LismPropsData {
 			hasDivider,
 			hasMask,
 			// hasBd,
-			_context,
 			..._props
 		} = props;
-
-		this.context = _context || null;
 
 		_props = skipState ? _props : getStateProps(_props);
 
@@ -366,12 +363,7 @@ class LismPropsData {
 		}
 
 		// 以下、ユーティリティクラス化できない場合の処理
-		let { style, converter, onlyVar } = options;
-
-		// コンテキストによって --prop だけ出力する特殊なもの
-		if (onlyVar && this.context === 'grid') {
-			style = '--' + name;
-		}
+		let { style, converter } = options;
 
 		// .-prop: だけ出力するケース
 		// if ((!style && true === val) || '-' === val) {

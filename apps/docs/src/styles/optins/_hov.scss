@@ -20,8 +20,8 @@
 	letter-spacing: var(--_isHov, 0.125em);
 }
 .-hov\:get\:slide {
-	--gtr: var(--_isHov, 1fr) var(--_notHov, 0fr);
 	opacity: var(--_notHov, 0);
+	grid-template-rows: var(--_isHov, 1fr) var(--_notHov, 0fr);
 	transition-property: margin-block, padding-block, opacity, grid-template-rows;
 }
 

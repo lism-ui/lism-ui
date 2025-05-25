@@ -10,34 +10,6 @@ import { Preview, PreviewArea, PreviewTitle, PreviewCode, ImportPackage, PropBad
 コンテンツを**Gridレイアウトで配置する**ためのコンポーネントです。  
 [`<GridItem>`](/ja/components/griditem/)と組み合わせて使うとより便利です。
 
-{/* `<Grid>` は `<Box>`に[`isGrid`](/docs/layout-system/is-grid)を指定した状態のコンポーネントで、`<Box isGrid>`と同等です。 */}
-
-`<Grid>`に使用されるクラス`.l--grid`は、次のようになっており、簡単なレイアウトであれば変数セットだけで調整ができるようにもなっています。
-
-```css
-.l--grid {
-	--gtc: none;
-	--gtr: none;
-	--gta: none;
-	display: grid;
-	grid-template: var(--gtr) / var(--gtc);
-	grid-template-areas: var(--gta);
-}
-```
-
-{/* ただし、HTMLを直接書く場合は次の点に注意してください。 */}
-
-{/* <Callout type='alert'>
-`--gt`を指定すると`--gtc`, `--gtr`を上書きする形になってしまうので、基本的には、`--gt`を使うときは`--gtc`, `--gtr`は使わないでください。  
-（どうしても両方指定したい場合は、`.-gtc:`、`-gtr:`、`-gta:`クラスも併用してください。）
-</Callout> */}
-
-
-{/* `<Grid>`コンポーネントを使用する際は気にしなくて大丈夫です。 */}
-
-<Callout type='good'>
-コンポーネントでは、`gtc`、`gtr`、`gta`は基本的には変数のみが出力されます。
-</Callout>
 
 
 ## Import
@@ -56,6 +28,9 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/com
 |`gta`|`grid-template-gta`|
 |`gtc`|`grid-template-gtc`|
 |`gtr`|`grid-template-rows`|
+|`gaf`|`grid-auto-flow`|
+|`gar`|`grid-auto-rows`|
+|`gac`|`grid-auto-columns`|
 
 
 
@@ -72,14 +47,14 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/com
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Grid gtc='1fr 2fr'>
-			<div>A</div>
-			<div>B</div>
+			<Box px='10' bgc='blue:20%'>A</Box>
+			<Box px='10' bgc='purple:10%'>B</Box>
 		</Grid>
 		```
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--grid" style="--gtc:1fr 2fr">
+		<div class="l--grid -gtc:" style="--gtc:1fr 2fr">
 			<div>A</div>
 			<div>B</div>
 		</div>
@@ -108,7 +83,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/com
 	</PreviewCode>
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
-		<div class="l--grid -g:20" style="--gtc:auto 1fr auto">
+		<div class="l--grid -g:20 -gtc:" style="--gtc:auto 1fr auto">
 			<div class="l--center -p:30 -bgc:base-2">L</div>
 			<div class="l--center -p:30 -bd:">Center</div>
 			<div class="l--center -p:30 -bgc:base-2">R</div>
@@ -134,14 +109,6 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/com
 			<GridItem ga='main' p='20' bd>Center</GridItem>
 			<GridItem ga='right' p='20' bgc='base-2'>Right</GridItem>
 		</Grid>
-		<div
-			class="l--grid -gta@sm -gtc@sm -g:20"
-			style="--gta:'main main' 'left right';--sm-gta:'left main right';--gtc:1fr 1fr;--sm-gtc:8em 1fr 8em"
-		>
-			<div class="-p:20 -bgc:base-2 -ga:" style="--ga:left">Left</div>
-			<div class="-p:20 -bd: -ga:" style="--ga:main">Center</div>
-			<div class="-p:20 -bgc:base-2 -ga:" style="--ga:right">Right</div>
-		</div>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
@@ -162,7 +129,7 @@ Gridは、[`grid`オブジェクト内で指定できるプロパティ](/ja/com
 	<PreviewCode slot='tab' label='HTML'>
 		```jsx
 		<div
-			class="l--grid -gta@sm -gtc@sm -g:20"
+			class="l--grid -gta: -gta@sm -gtc: -gtc@sm -g:20"
 			style="--gta:'main main' 'left right';--sm-gta:'left main right';--gtc:1fr 1fr;--sm-gtc:8em 1fr 8em"
 		>
 			<div class="-p:20 -p:30 -bgc:base-2 -ga:" style="--ga:left">Left</div>

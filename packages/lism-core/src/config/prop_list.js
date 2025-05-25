@@ -298,9 +298,9 @@ export const CONTEXT_PROPS = {
 	grid: {
 		gd: {},
 		gt: { style: 'gridTemplate' },
-		gtc: { onlyVar: 'grid' },
-		gtr: { onlyVar: 'grid' },
-		gta: { onlyVar: 'grid' },
+		gtc: {},
+		gtr: {},
+		gta: {},
 		gaf: { style: 'gridAutoFlow' },
 		gar: { style: 'gridAutoRows' },
 		gac: { style: 'gridAutoColumns' },

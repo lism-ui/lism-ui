@@ -1,5 +1,6 @@
 .d--tabs {
-	--gta: 'list' 'panel';
+	display: grid;
+	grid: 'list' 'panel';
 }
 .d--tabs__list {
 	grid-area: list;

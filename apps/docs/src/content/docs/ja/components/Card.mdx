@@ -501,29 +501,15 @@ import Card from '~/components/ex/Card/index.jsx';
 <PreviewCode slot='tab' label='追加CSS'>
 ```css
 .-hov\:get\:slide {
-	--gtr: var(--_isHov, 1fr) var(--_notHov, 0fr);
 	opacity: var(--_notHov, 0);
+	grid-template-rows: var(--_isHov, 1fr) var(--_notHov, 0fr);
 	transition-property: margin-block, padding-block, opacity, grid-template-rows;
 }
 ```
 </PreviewCode>
 </Preview>
 
-{/* `'contentUp'`を指定しているので、 `.-hov:contentUp` が出力されます。
-このクラスに対して、下記のCSSを追加して上記のDEMOを実装しています。
 
-```scss
-.c--card.-hov\:contentUp .c--card__hiddenArea{
-	--gtr: 0fr;
-	opacity: 0;
-	transition: opacity .25s, grid-template-rows .25s;
-}
-
-.c--card.-hov\:contentUp:hover .c--card__hiddenArea{
-	--gtr: 1fr;
-	opacity: 1;
-}
-``` */}
 
 
 ### 横並びの時はコンテンツ側の高さにあわせ、縦並びの時はアスペクト比を維持
