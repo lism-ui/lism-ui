@@ -16,6 +16,8 @@
     "@lism-ui/core": "workspace:*",
     "@phosphor-icons/react": "^2.0.10",
     "astro": "^4.0.1",
+    "astro-purgecss": "^5.2.2",
+    "purgecss": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",

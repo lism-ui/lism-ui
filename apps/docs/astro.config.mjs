@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 // import markdoc from '@astrojs/markdoc';
 import sidebar from './astro-configs/sidebar';
 import locales from './astro-configs/locales';
+// import purgecss from 'astro-purgecss';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,8 +14,9 @@ export default defineConfig({
 	// 	gfm: true,
 	// },
 
-	devToolbar: { enabled: false },
-
+	devToolbar: {
+		enabled: false,
+	},
 	integrations: [
 		// {
 		// 	// customCssだと順番が環境によって変わる。絶対に先に読み込みたいものはここに。
@@ -60,7 +62,6 @@ export default defineConfig({
 				themes: ['github-dark', 'github-light'],
 				useStarlightDarkModeSwitch: true,
 			},
-
 			// https://starlight.astro.build/guides/overriding-components/
 			components: {
 				// デフォルトの`SocialIcons`コンポーネントをオーバーライドします。
@@ -74,8 +75,8 @@ export default defineConfig({
 				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
 			},
 		}),
+		// purgecss(),
 	],
-
 	vite: {
 		// ssr: {
 		// 	noExternal: ['@lism-ui/core'],
