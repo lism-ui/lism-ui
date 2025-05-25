@@ -1,10 +1,7 @@
-// const spacingPresets = ['0', '5', '10', '15', '20', '30', '40', '50'];
+// const spacingTokens = ['0', '5', '10', '15', '20', '30', '40', '50'];
 
-// PRESETS
 export default {
-	p: [
-		//'box', 'box:s', 'box:l'
-	],
+	// p: ['box', 'box:s', 'box:l'],
 	fz: [
 		'root',
 		'5xl',
@@ -32,6 +29,7 @@ export default {
 
 	// size:['container', 'container:s', 'container:l'],
 	contentSize: ['xs', 's', 'm', 'l', 'xl'], // --size--xxx トークン
+	flow: ['xs', 's', 'l', 'xl'], // getFlowDataで使う
 	size: [],
 
 	// --変数化できるキーワード
@@ -64,8 +62,3 @@ export default {
 	],
 	// filter: ['blur', 'blur:s', 'blur:l', 'darken', 'lighten'],
 };
-
-// ユーティリティ化しないけど、変数を用意しておくもの
-// export const VAR_PRESETS = {
-// 	color: ['bg', 'text', 'link', 'headline'],
-// };

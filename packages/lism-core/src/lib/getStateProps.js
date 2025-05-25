@@ -1,4 +1,4 @@
-import isPresetValue from './isPresetValue';
+import isTokenValue from './isTokenValue';
 import getMaybeCssVar from './getMaybeCssVar';
 
 // 特殊な処理が必要なレイアウトステート
@@ -10,11 +10,11 @@ export function getContainerData(value) {
 	if (value === true) {
 		className = 'is--container';
 	} else if (value) {
-		if (isPresetValue('contentSize', value)) {
+		if (isTokenValue('contentSize', value)) {
 			className = `is--container -container:${value}`;
 		} else {
 			className = `is--container`;
-			style = { '--item-size': getMaybeCssVar(value, 'space') };
+			style = { '--item-size': getMaybeCssVar(value, 'size') };
 		}
 	}
 	return { className, style };
@@ -27,7 +27,7 @@ export function getFlowData(value) {
 	if (value === true) {
 		className = 'is--flow';
 	} else if (value) {
-		if (isPresetValue('flow', value)) {
+		if (isTokenValue('flow', value)) {
 			className = `is--flow -flow:${value}`;
 		} else {
 			className = `is--flow -flow:`;

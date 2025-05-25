@@ -1,5 +1,4 @@
 import TOKENS from './tokens';
-// import presets from './presets';
 const SPACE_PRESETS = ['0', '5', '10', '20', '30', '40', '50'];
 const auto = { auto: 'a' };
 /* 
@@ -14,30 +13,22 @@ memo:
 	styleを持っていて BP:1 
 */
 
-// pi,pc
-const placeProps = {
-	pi: { style: 'placeItems' },
-	pc: { style: 'placeContent' },
-	ai: { style: 'alignItems', utils: 'placeItems' },
-	ac: { style: 'alignContent', utils: 'placeContent' },
-	ji: { style: 'justifyItems', utils: 'placeItems' },
-	jc: { style: 'justifyContent', utils: 'placeContent' },
-};
-const itemProps = {
-	ord: { style: 'order', utilKey: 'ord', presets: ['0', '-1', '1'] },
-	aslf: { style: 'alignSelf', utilKey: 'aslf', utils: 'selfPlace' },
-	jslf: { style: 'justifySelf', utilKey: 'jslf', utils: 'selfPlace' },
-	pslf: { style: 'placeSelf', utilKey: 'pslf', utils: 'selfPlace' },
+const places = {
+	center: 'c',
+	start: 's',
+	end: 'e',
+	'flex-start': 'fs',
+	'flex-end': 'fe',
 };
 
-export const GAP_PROPS = {
-	g: {
-		presets: ['inherit', ...SPACE_PRESETS],
-		converter: 'space',
-	},
-	rowg: { converter: 'space' },
-	colg: { converter: 'space' },
+const selfPlaces = {
+	center: 'c',
+	start: 's',
+	end: 'e',
+	stretch: 'str',
 };
+
+const trblUtils = { '0%': '0', '50%': '50%', '100%': '100%' };
 
 export default {
 	// size
@@ -55,9 +46,74 @@ export default {
 	minBs: { style: 'minBlockSize', converter: 'size' },
 
 	// is: inline-size, bs: block-size, maxI, maxB, minIs, minBs
-	c: { presets: 1, converter: 'color' },
-	bgc: { presets: 1, converter: 'color' },
+	c: {
+		presets: [
+			'inherit',
+			'base',
+			'text',
+			'text-2',
+			'keycolor',
+			'mix',
+			'main',
+			'accent',
+			// 'black',
+			// 'white',
+		],
+		converter: 'color',
+	},
+	bgc: {
+		presets: [
+			'inherit',
+			'main',
+			'accent',
+			'base',
+			'base-2',
+			'base-3',
+			'text',
+			'keycolor',
+			'mix',
+			// 'black',
+			// 'white',
+		],
+		converter: 'color',
+	},
 	keycolor: { style: '--keycolor', converter: 'color' },
+
+	bd: {
+		style: 'border',
+		utils: {
+			none: 'n',
+			inherit: 'inherit',
+			left: 'l',
+			right: 'r',
+			top: 't',
+			bottom: 'b',
+			inline: 'x',
+			block: 'y',
+			'inline-start': 'is',
+			'inline-end': 'ie',
+			'block-start': 'bs',
+			'block-end': 'be',
+		},
+	},
+	bdw: { style: '--bdw' }, // --bdw のみ
+	bds: { style: '--bds' }, // --bds のみ
+	bdc: {
+		style: '--bdc',
+		utils: { transparent: 't' },
+		presets: [
+			'inherit',
+			'main',
+			'accent',
+			'mix',
+			'divider',
+			'keycolor',
+			'mix',
+			// 'cbox',
+		],
+		converter: 'color',
+	},
+
 	// boxcolor: { _presets: TOKENS.palette, style: '--keycolor', converter: 'color' },
 	bg: { utils: { none: 'n' } },
 	bgi: { style: 'backgroundImage' },
@@ -78,7 +134,6 @@ export default {
 	fw: {
 		style: 'fontWeight',
 		presets: TOKENS.fw,
-		//presets: 1
 	},
 	ff: { style: 'fontFamily', presets: ['base', 'accent', 'mono'], converter: 1 },
 	fs: { style: 'fontStyle', utils: { italic: 'i' } },
@@ -90,10 +145,6 @@ export default {
 	ovw: { style: 'overflowWrap', utils: { anywhere: 'any' } },
 
 	// others
-	bd: { style: 'border', utils: 1 },
-	bdw: { style: '--bdw' }, // --bdw のみ
-	bds: { style: '--bds' }, // --bds のみ
-	bdc: { style: '--bdc', utils: { transparent: 't' }, presets: 1, converter: 'color' },
 
 	bdrs: { presets: ['inner', '0', ...TOKENS.bdrs], converter: 'bdrs' },
 	bxsh: { presets: ['0', ...TOKENS.bxsh], converter: 'bxsh' },
@@ -109,7 +160,18 @@ export default {
 	},
 
 	//display
-	d: { utils: 1 },
+	d: {
+		utils: {
+			none: 'n',
+			block: 'b',
+			flex: 'f',
+			grid: 'g',
+			inline: 'i',
+			'inline-flex': 'if',
+			'inline-grid': 'ig',
+			'inline-block': 'ib',
+		},
+	},
 	op: {
 		style: 'opacity',
 		presets: [
@@ -128,8 +190,8 @@ export default {
 		],
 		converter: 1,
 	}, // op
-	v: { style: 'visibility', utils: 'visibility' },
-	ov: { style: 'overflow', utils: 1 },
+	v: { style: 'visibility', utils: { hidden: 'h', visible: 'v' } },
+	ov: { style: 'overflow', utils: { scroll: 's', hidden: 'h', auto: 'a', clip: 'c' } },
 	ovx: { style: 'overflowX', utils: 'ov' },
 	ovy: { style: 'overflowY', utils: 'ov' },
 	// overflow-clip-margin → safariで使えない
@@ -151,13 +213,22 @@ export default {
 		],
 	},
 
-	pos: { style: 'position', utils: 1 },
+	pos: {
+		style: 'position',
+		utils: {
+			relative: 'r',
+			absolute: 'a',
+			static: 's',
+			fixed: 'f',
+			sticky: 'sticky',
+		},
+	},
 	z: { style: 'zIndex', presets: ['-1', '0', '1', '2', '99'] },
-	i: { utils: 1, style: 'inset', converter: 'space' },
-	t: { utils: 'trbl', style: 'top', converter: 'space' },
-	l: { utils: 'trbl', style: 'left', converter: 'space' },
-	r: { utils: 'trbl', style: 'right', converter: 'space' },
-	b: { utils: 'trbl', style: 'bottom', converter: 'space' },
+	i: { style: 'inset', utils: { '0%': '0' }, converter: 'space' },
+	t: { style: 'top', utils: trblUtils, converter: 'space' },
+	l: { style: 'left', utils: trblUtils, converter: 'space' },
+	r: { style: 'right', utils: trblUtils, converter: 'space' },
+	b: { style: 'bottom', utils: trblUtils, converter: 'space' },
 
 	// isolation
 	// flip: {},
@@ -202,14 +273,25 @@ export default {
 	// mbe: { converter: 'space' },
 	// me: marginOption,
 	// mbe: marginOption,
-
+	g: {
+		presets: ['inherit', ...SPACE_PRESETS],
+		converter: 'space',
+	},
+	rowg: { converter: 'space' },
+	colg: { converter: 'space' },
 	cols: { style: '--cols' },
 	rows: { style: '--rows' },
 
-	...GAP_PROPS,
-
-	...placeProps,
-	...itemProps,
+	pi: { style: 'placeItems' },
+	pc: { style: 'placeContent' },
+	ai: { style: 'alignItems', utils: { ...places, stretch: 'str' } },
+	ac: { style: 'alignContent', utils: { ...places, 'space-between': 'sb' } },
+	ji: { style: 'justifyItems', utils: { ...places, stretch: 'str' } },
+	jc: { style: 'justifyContent', utils: { ...places, 'space-between': 'sb' } },
+	aslf: { style: 'alignSelf', utilKey: 'aslf', utils: selfPlaces },
+	jslf: { style: 'justifySelf', utilKey: 'jslf', utils: selfPlaces },
+	pslf: { style: 'placeSelf', utilKey: 'pslf', utils: selfPlaces },
+	ord: { style: 'order', utilKey: 'ord', presets: ['0', '-1', '1'] },
 
 	// flex-item
 	fx: { style: 'flex', utils: { '1 1 0': '1' } },
@@ -237,7 +319,6 @@ export const CONTEXT_PROPS = {
 		gac: { style: 'gridAutoColumns' },
 
 		// autoFlow, autoRows, autoCols
-		// ...GAP_PROPS,
 	},
 	gridItem: {
 		// item
@@ -256,7 +337,6 @@ export const CONTEXT_PROPS = {
 		// nowrap → Emmet は n だが、nw にしている. (whs と揃えている)
 		fxw: { utils: { wrap: 'w', nowrap: 'nw' } },
 		fxd: { utils: { column: 'c', row: 'r', 'column-reverse': 'cr', 'row-reverse': 'rr' } },
-		// ...GAP_PROPS,
 	},
 
 	// fx: {
@@ -303,25 +383,21 @@ export const CONTEXT_PROPS = {
 		is: {
 			style: 'insetInlineStart',
 			utilKey: 'iis',
-			// utils: 'insets',
 			converter: 'space',
 		},
 		ie: {
 			style: 'insetInlineEnd',
 			utilKey: 'iie',
-			// utils: 'insets',
 			converter: 'space',
 		},
 		bs: {
 			style: 'insetBlockStart',
 			utilKey: 'ibs',
-			// utils: 'insets',
 			converter: 'space',
 		},
 		be: {
 			style: 'insetBlockEnd',
 			utilKey: 'ibe',
-			// utils: 'insets',
 			converter: 'space',
 		},
 	},
@@ -331,10 +407,44 @@ export const CONTEXT_PROPS = {
 	css: {
 		// transform系
 		transform: { style: 1 },
-		transformOrigin: { style: 1, utilKey: 'trfo', utils: 1 },
-		translate: { style: 1, utils: 1, utilKey: 'trslt' },
-		rotate: { style: 1, utils: 1 }, // rot?
-		scale: { style: 1, utils: 1 }, //
+		transformOrigin: {
+			style: 1,
+			utilKey: 'trfo',
+			utils: {
+				center: 'c',
+				'left top': 'lt',
+				'right top': 'rt',
+				'left bottom': 'lb',
+				'right bottom': 'rb',
+				'50%': 'c',
+				'0% 0%': 'lt',
+				'100% 0%': 'rt',
+				'0% 100%': 'lb',
+				'100% 100%': 'rb',
+			},
+		},
+		translate: {
+			style: 1,
+			utilKey: 'trslt',
+			utils: {
+				'-50% -50%': '-50XY',
+				'-50%': '-50X',
+				'-50% 0': '-50X',
+				'0 -50%': '-50Y',
+			},
+		},
+		rotate: {
+			style: 1,
+			utils: { '45deg': '45', '-45deg': '-45', '90deg': '90', '-90deg': '-90' },
+		},
+		scale: {
+			style: 1,
+			utils: {
+				'-1 1': '-X',
+				'1 -1': '-Y',
+				'-1 -1': '-XY',
+			},
+		},
 
 		// others
 		listStyle: { style: 'listStyle', utilKey: 'lis', utils: { none: 'n' } },
