@@ -17,3 +17,9 @@
 		flex-direction: row;
 	}
 }
+
+.l--icon--inline {
+	--scale: 1.125; // inline時、余白でテキストより小さく見えがちなのでほんの少し拡大する
+	vertical-align: -0.125em; // scale とは無関係
+	margin-inline: calc(1em * (var(--scale) - 1) / 2);
+}

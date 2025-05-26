@@ -246,19 +246,22 @@ Lismパッケージ（`@lism-ui/core`)内にはいくつかsvgアイコンを内
 ※ 出力時にはbase64にエンコードされます。 */}
 
 
-## Variants
+## Opt-in
 
 ### `variant='inline'`
 
-`variant='inline'` を 指定すると、`.l--icon--inline`クラスも出力されます。
+アイコンをインラインで文字と並んでも見やすくなるような調整を追加したようなバリエーションクラスの追加例を紹介します。
+
 
 `.l--icon--inline`に対しては次のようなCSSが適用されており、インラインで文字と並んでも見やすくなるような調整がデフォルトで入っています。
 
+
+<PreviewTitle>追加CSS</PreviewTitle>
 ```css
 .l--icon--inline {
 	--scale: 1.125; /* アイコンは小さくなりがちなので、デフォルトでほんのり拡大 */
 	vertical-align: -0.125em; /* テキストの下部付近に揃える */
-	margin-inline: calc(1em * (var(--scale) - 1) / 2); /* scaleを考慮してマージンをつける */
+	margin-inline: calc(1em * (var(--scale) - 1) / 2); /* scaleを考慮し、マージンを確保 */
 }
 ```
 
