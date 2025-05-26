@@ -54,7 +54,6 @@ export default function Chat({
 				<Decorator
 					lismClass='c--chat__deco'
 					className='u--colbox u--skipFlow'
-					hasMask
 					pos='a'
 					scale={direction === 'start' ? '' : '-X'}
 				/>

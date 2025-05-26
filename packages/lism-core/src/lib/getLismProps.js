@@ -53,11 +53,13 @@ class LismPropsData {
 			lismClass,
 			lismState = [],
 			variant,
-			hasMask,
+			// hasMask,
 			// lismVar,
 			passVars,
 			pass,
 			get,
+			// mask,
+			// maskImg,
 			style = {},
 
 			// hasBd,
@@ -69,14 +71,6 @@ class LismPropsData {
 		this.styles = style;
 
 		let others = this.getStateProps(otherProps);
-
-		if (hasMask) {
-			this.lismState.push('has--mask');
-			// hasMask が文字列で、かつ <svg で始まる場合
-			if (typeof hasMask === 'string' && hasMask.startsWith('<svg')) {
-				this.styles['--mask-img'] = svg2ImgUrl(hasMask, 'base64');
-			}
-		}
 
 		// ここで variant 処理
 		if (variant && lismClass) {
