@@ -1,9 +1,9 @@
 import { PROPS, CONTEXT_PROPS } from '../config';
 import isPresetValue from './isPresetValue';
+import isTokenValue from './isTokenValue';
 import getMaybeUtilValue from './getMaybeUtilValue';
 import getMaybeCssVar from './getMaybeCssVar';
 import getBpData from './getBpData';
-import getStateProps from './getStateProps';
 import atts from './helper/atts';
 import isEmptyObj from './helper/isEmptyObj';
 import filterEmptyObj from './helper/filterEmptyObj';
@@ -32,65 +32,51 @@ class LismPropsData {
 	// propList = {};
 	// styles = {};
 	// className = '';
-	// utilityClasses = []; // props解析処理で追加される
+	// uClasses = []; // props解析処理で追加される
 	// attrs = {};
 
-	constructor(props) {
+	constructor(allProps) {
 		// 初期化
 		// this.propList = {};
 		this.styles = {};
 		this.className = '';
-		this.utilityClasses = []; // props解析処理で追加される
+		this.uClasses = []; // props解析処理で追加される
 		this.attrs = {};
+		this.lismClass = '';
+		this.lismState = [];
 
 		// 受け取るpropsとそうでないpropsを分ける
-		let {
+		const {
 			forwardedRef,
 			class: classFromAstro,
 			className,
 			lismClass,
+			lismState = [],
 			variant,
+			hasMask,
 			// lismVar,
 			passVars,
 			pass,
 			get,
-			skipState,
-			isLayer,
-			isLinkBox,
-			hasDivider,
-			hasMask,
+			style = {},
+
 			// hasBd,
-			..._props
-		} = props;
+			...otherProps
+		} = allProps;
 
-		_props = skipState ? _props : getStateProps(_props);
+		this.lismClass = lismClass;
+		this.lismState = lismState;
+		this.styles = style;
 
-		const { lismState = [], style = {}, ...others } = _props;
-
-		// skipStateに関係なくチェック
-		if (isLayer) {
-			lismState.push('is--layer');
-		}
-		if (isLinkBox) {
-			lismState.push('is--linkBox');
-		}
-
-		// if (hasDivider && typeof hasDivider === 'string') {
-		// 	lismState.push(`has--divider:${hasDivider}`);
-		// } else
-		if (hasDivider) {
-			lismState.push('has--divider');
-		}
+		let others = this.getStateProps(otherProps);
 
 		if (hasMask) {
-			lismState.push('has--mask');
+			this.lismState.push('has--mask');
 			// hasMask が文字列で、かつ <svg で始まる場合
 			if (typeof hasMask === 'string' && hasMask.startsWith('<svg')) {
-				style['--mask-img'] = svg2ImgUrl(hasMask, 'base64');
+				this.styles['--mask-img'] = svg2ImgUrl(hasMask, 'base64');
 			}
 		}
-
-		this.styles = style;
 
 		// ここで variant 処理
 		if (variant && lismClass) {
@@ -107,17 +93,11 @@ class LismPropsData {
 			// {baseClass}--{variant} 形式でクラス名を生成
 			const variantClasses = variantArr.map((v) => `${baseClass}--${v}`);
 			// lismClassの後ろにvariantクラスを追加
-			lismClass = lismClassArr.concat(variantClasses).join(' ');
+			this.lismClass = lismClassArr.concat(variantClasses).join(' ');
 		}
 
-		// use=['layout', 'color', 'bd' ...]とかで使うprop指定?
-		this.className = atts(
-			lismClass,
-			lismState, // is, has
-			classFromAstro,
-			className // ユーザー指定のクラス
-			// lismUtil
-		);
+		// クラスの結合
+		this.className = atts(this.lismClass, this.lismState, classFromAstro, className);
 
 		// propsの処理
 		if (!isEmptyObj(others)) {
@@ -171,30 +151,6 @@ class LismPropsData {
 			}
 		});
 	}
-
-	// setPropList(useFlex, useGrid, useItem, useLog) {
-	// 	let thePropList = {};
-
-	// 	if (useFlex) {
-	// 		thePropList = Object.assign(
-	// 			{},
-	// 			PROPS.common,
-	// 			// PROPS.useFlexGrid,
-	// 			PROPS.useFlex
-	// 		);
-	// 	} else if (useGrid) {
-	// 		thePropList = Object.assign(
-	// 			{},
-	// 			PROPS.common,
-	// 			// PROPS.useFlexGrid,
-	// 			PROPS.useGrid
-	// 		);
-	// 	} else {
-	// 		thePropList = Object.assign({}, PROPS.common);
-	// 	}
-
-	// 	this.propList = thePropList;
-	// }
 
 	// prop解析
 	analyzeProps(attrs) {
@@ -284,10 +240,10 @@ class LismPropsData {
 	}
 
 	addUtil(util) {
-		this.utilityClasses.push(util);
+		this.uClasses.push(util);
 	}
 	addUtils(utils) {
-		this.utilityClasses.push(...utils);
+		this.uClasses.push(...utils);
 	}
 	// addState(state) {
 	// 	this.stateClasses.push(state);
@@ -379,20 +335,7 @@ class LismPropsData {
 			// bgc='col1:(colo2:)mix%'
 			// color が ":数値%" で終わるかどうか
 			if (val.endsWith('%')) {
-				const mixdata = val.split(':');
-				if (mixdata.length === 3) {
-					const [color1, color2, mixper] = mixdata;
-					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
-					this.addStyle(`--${name}2`, getMaybeCssVar(color2, 'color', name));
-					this.addStyle(`--${name}-pct`, mixper);
-				} else if (mixdata.length === 2) {
-					const [color1, mixper] = mixdata;
-					this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
-					this.addStyle(`--${name}-pct`, mixper);
-				}
-				// [color1, mixper]
-				this.addUtil(`-${name}:mix`);
-
+				this.setMixColor(name, val);
 				return;
 			}
 		}
@@ -413,6 +356,22 @@ class LismPropsData {
 		// .-prop: & --prop で 出力
 		this.addUtil(utilName);
 		this.addStyle(styleName, val);
+	}
+
+	setMixColor(name, val) {
+		const mixdata = val.split(':');
+		if (mixdata.length === 3) {
+			const [color1, color2, mixper] = mixdata;
+			this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
+			this.addStyle(`--${name}2`, getMaybeCssVar(color2, 'color', name));
+			this.addStyle(`--${name}-pct`, mixper);
+		} else if (mixdata.length === 2) {
+			const [color1, mixper] = mixdata;
+			this.addStyle(`--${name}1`, getMaybeCssVar(color1, 'color', name));
+			this.addStyle(`--${name}-pct`, mixper);
+		}
+		// [color1, mixper]
+		this.addUtil(`-${name}:mix`);
 	}
 
 	setPassProps(passVars) {
@@ -492,12 +451,76 @@ class LismPropsData {
 			}
 		}
 
-		// {c,w,s}で指定できるようにする場合の追加処理（BP指定用のオブジェクトかどうかは考慮していないことに注意）
-		// if (null != value && typeof value === 'object') {
-		// 	this.addUtil('-bd:');
-		// }
-
 		this.analyzeProp('bd', value);
+	}
+
+	getStateProps({
+		skipState,
+		isOverwide,
+		isFullwide,
+		isWide,
+		isFlow,
+		isContainer,
+		hasGutter,
+
+		isLayer,
+		isLinkBox,
+		hasDivider,
+		// hasMask,
+		...props
+	}) {
+		if (!skipState) {
+			if (isContainer) {
+				this.setContainerData(isContainer);
+			}
+			if (isFlow) {
+				this.setFlowData(isFlow);
+			}
+
+			isOverwide && this.lismState.push('is--overwide');
+			isFullwide && this.lismState.push('is--fullwide');
+			isWide && this.lismState.push('is--wide');
+			hasGutter && this.lismState.push('has--gutter');
+		}
+
+		// skipStateに関係なくチェック
+		if (isLayer) {
+			this.lismState.push('is--layer');
+		}
+		if (isLinkBox) {
+			this.lismState.push('is--linkBox');
+		}
+		if (hasDivider) {
+			this.lismState.push('has--divider');
+		}
+
+		return props;
+	}
+
+	setContainerData(value) {
+		if (value === true) {
+			this.lismState.push('is--container');
+		} else if (value) {
+			if (isTokenValue('contentSize', value)) {
+				this.lismState.push(`is--container -container:${value}`);
+			} else {
+				this.lismState.push(`is--container`);
+				this.addStyle(`--item-size`, getMaybeCssVar(value, 'size'));
+			}
+		}
+	}
+
+	setFlowData(value) {
+		if (value === true) {
+			this.lismState.push('is--flow');
+		} else if (value) {
+			if (isTokenValue('flow', value)) {
+				this.lismState.push(`is--flow -flow:${value}`);
+			} else {
+				this.lismState.push(`is--flow -flow:`);
+				this.addStyle(`--flowGap`, getMaybeCssVar(value, 'space'));
+			}
+		}
 	}
 }
 
@@ -524,7 +547,7 @@ export default function getLismProps(props, options = {}) {
 	// if (theTime > 0) console.log('TIME ' + theTime + ' ms');
 
 	return filterEmptyObj({
-		className: atts(propObj.className, propObj.utilityClasses),
+		className: atts(propObj.className, propObj.uClasses),
 		style: filterEmptyObj(propObj.styles), //filterEmptyObj(styles), // filterEmptyObj は最後にかける
 		...propObj.attrs, // 処理されずに残っているprops
 	});
