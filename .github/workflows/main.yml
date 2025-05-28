@@ -26,12 +26,4 @@ jobs:
         run: |
           pnpm install
           pnpm build:core
-          pnpx pkg-pr-new publish './packages/lism-core' || true
-
-      - name: Publish lism-astro
-        # if: contains(github.event.head_commit.message, '[astro]')
-        run: pnpx pkg-pr-new publish './packages/lism-astro' || true
-
-      - name: Publish lism-next
-        # if: contains(github.event.head_commit.message, '[next]')
-        run: pnpx pkg-pr-new publish './packages/lism-next' || true
+          pnpx pkg-pr-new publish './packages/lism-core'
