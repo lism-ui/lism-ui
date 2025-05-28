@@ -1,5 +1,6 @@
 'use client';
-import Accordion from '../../dist/components/Accordion';
+import Accordion from '../../../dist/components/Accordion';
+// import 'style';
 
 export function Root(props) {
 	return <Accordion.Root {...props} />;

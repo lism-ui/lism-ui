@@ -24,8 +24,9 @@
 	},
 	"files": [
 		"dist",
-		"src/scss",
-		"src/**/style.scss"
+		"nexe-js",
+		"astro",
+		"src/scss"
 	],
 	"type": "module",
 	"main": "./dist/index.js",
@@ -34,9 +35,9 @@
 		"./*": "./dist/*",
 		"./css/*": "./dist/css/*",
 		"./scss/*": "./src/scss/*",
-		"./react/*": "./dist/components/*",
-		"./next-js/*": "./next-js/*",
-		"./svg/*": "./src/svg/*"
+		"./next-js/*": "./packages/next-js/*",
+		"./astro": "./packages/astro/index.js",
+		"./astro/*": "./packages/astro/*"
 	},
 	"homepage": "https://www.lism.style",
 	"repository": {

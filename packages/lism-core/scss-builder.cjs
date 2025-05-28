@@ -27,10 +27,20 @@ const COLOR = {
 // const envTYPE = process.env.TYPE || '';
 // const TARGET_DIR = process.argv[2] || '';
 
-(async () => {
+(() => {
 	// パス
 	let src = 'src/scss';
 	let dist = 'dist/css';
+	compileSCSS(src, dist);
+
+	// component
+	src = 'src/components';
+	dist = 'dist/components';
+	compileSCSS(src, dist);
+})();
+
+// scssファイル処理
+async function compileSCSS(src, dist) {
 	let files = [];
 	// files = [src + '/all_with_layout.scss', src + '/all.scss', src + '/reset.scss'];
 
@@ -67,7 +77,7 @@ const COLOR = {
 			console.log(COLOR.red + '========== / ERROR ========== \n' + COLOR.reset);
 		}
 	}
-})();
+}
 
 // 書き出し処理
 function writeCSS(filePath, css) {
