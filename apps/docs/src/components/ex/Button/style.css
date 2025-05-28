@@ -24,6 +24,7 @@
 	color: var(--c);
 	background-color: var(--bgc);
 	border: solid 1px var(--bdc); /* 異なる variant を並べてもサイズに差が出ないようにborderを常に指定 */
+	align-items: center;
 }
 .c--button:where(.-d\:g) {
 	grid-template-columns: 1em 1fr 1em;

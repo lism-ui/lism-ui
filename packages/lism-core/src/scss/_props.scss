@@ -32,7 +32,7 @@ $space_values: (
 	// '60': 'var(--s60)',
 	// '70': 'var(--s70)',
 	// '80': 'var(--s80)',
-	// '90': 'var(--s90)',
+	 // '90': 'var(--s90)',
 );
 
 $ov_values: (
@@ -142,8 +142,7 @@ $props: (
 		// 主要カラーは変数をhoverやcolor-mixで活用するので、変数管理
 		base_type: 2,
 		// base_type: 2 で inherit すると 変数の引き継ぎになr
-		utilities:
-			(
+		utilities: (
 				'main': 'var(--c--main)',
 				'accent': 'var(--c--accent)',
 				'base': 'var(--c--base)',
@@ -252,16 +251,14 @@ $props: (
 	),
 	'lh': (
 		prop: 'line-height',
-		//　BP対応増やしやすいように 1 でもいいかも?
-		utilities:
-			(
-				'base': 'var(--lh--base)',
-				'xs': 'var(--lh--xs)',
-				's': 'var(--lh--s)',
-				'l': 'var(--lh--l)',
-				'xl': 'var(--lh--xl)',
-				'1': '1',
-			),
+		utilities: (
+			'base': 'var(--lh--base)',
+			'xs': 'var(--lh--xs)',
+			's': 'var(--lh--s)',
+			'l': 'var(--lh--l)',
+			'xl': 'var(--lh--xl)',
+			'1': '1',
+		),
 	),
 	'lts': (
 		prop: 'letter-spacing',
@@ -472,8 +469,7 @@ $props: (
 	'g': (
 		prop: 'gap',
 		base_type: 2,
-		utilities:
-			map.merge(
+		utilities: map.merge(
 				$space_values,
 				(
 					'inherit': (
@@ -677,7 +673,7 @@ $props: (
 			'nw': 'nowrap',
 			// 'pre': 'pre',
 			// 'pw': 'pre-wrap',
-			// 'pl': 'pre-line',
+			 // 'pl': 'pre-line',
 		),
 	),
 	'obf': (
@@ -692,7 +688,7 @@ $props: (
 		utilities: (
 			'v-rl': 'vertical-rl',
 			// 'v-lr': 'vertical-lr',
-			// 'h-tb': 'horizontal-tb',
+			 // 'h-tb': 'horizontal-tb',
 		),
 	),
 	'bxz': (

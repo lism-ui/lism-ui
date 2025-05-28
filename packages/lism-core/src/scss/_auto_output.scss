@@ -1,3 +1,4 @@
+@use 'sass:meta';
 @use 'sass:map';
 @use 'sass:list';
 @use 'sass:string';
@@ -59,7 +60,7 @@
 		}
 
 		// valueが(prop:val)で詳細に明示されている場合
-		@if (type-of($value) == map) {
+		@if (meta.type-of($value) == map) {
 			@include echoDetailValues($selector, $value);
 		} @else if $base_type == 2 {
 			// important は [class*=] についてるので不要
@@ -105,7 +106,7 @@ $bp_support_list: (); // list
 
 	// $bp_support が 1 または 文字列（'sm','md','lg'などかどうか）
 	// Memo: 文字列がくるのは、ユーザーカスタマイズでプロパティ個別にサポートするブレイクポイントを変更したい時。
-	@if $bp_support == 1 or type-of($bp_support) == string {
+	@if $bp_support == 1 or meta.type-of($bp_support) == string {
 		$bp_support_list: list.append($bp_support_list, $key);
 	}
 }
@@ -134,7 +135,7 @@ $bp_outputs: (
 	$prop_bp_data: map.get($prop_data, bp);
 	$support_bp: setting.$common_support_bp;
 
-	@if (type-of($prop_bp_data) == string) {
+	@if (meta.type-of($prop_bp_data) == string) {
 		// サポートするブレイクポイントの上書き指定があればそれをセット
 		$support_bp: $prop_bp_data;
 	}

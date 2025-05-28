@@ -1,12 +1,6 @@
 .c--preview {
 	padding-block: 0.5rem;
 }
-// .c--preview:not(:first-child) {
-// 	margin-top: var(--s50);
-// }
-// :where(.c--preview) + p {
-// 	margin-top: var(--s50);
-// }
 
 .c--preview_title {
 	display: flex;
@@ -17,22 +11,22 @@
 	}
 
 	> .__decorator {
-		background-color: var(--c--base-2);
-		box-shadow: var(--sh-sz--0) var(--sh-color);
-		height: 1.5em;
 		width: 1.5em;
+		height: 1.5em;
+		background-color: var(--c--base-2);
 		border-radius: 2px;
+		box-shadow: var(--sh-sz--0) var(--sh-color);
 	}
 }
 
 .c--preview_area {
 	--bdc: var(--codeBlock--bgc);
-	transition: none !important;
 
 	position: relative;
-	container-type: inline-size;
 	border: solid 4px var(--bdc);
 	border-radius: 2px;
+	transition: none !important;
+	container-type: inline-size;
 
 	&:not(:first-child) {
 		margin-top: var(--s50);
@@ -52,22 +46,22 @@
 	&.is--resize {
 		min-width: min(100%, 360px);
 		max-width: 100%;
+		margin: 0 auto;
 		overflow-y: auto;
 		resize: horizontal;
-		margin: 0 auto;
 		// box-shadow: inset 0 0 8px -2px var(--preview--resize-bdc);
 
 		&:after {
 			position: absolute;
-			bottom: 0;
 			right: 0;
+			bottom: 0;
+			display: block;
 			width: 14px;
 			height: 14px;
-			display: block;
-			border-inline-start: 1px dotted var(--preview--resize-bdc);
 			border-top: 1px dotted var(--preview--resize-bdc);
-			border-start-start-radius: 12px;
 			content: '';
+			border-inline-start: 1px dotted var(--preview--resize-bdc);
+			border-start-start-radius: 12px;
 		}
 	}
 }
@@ -77,34 +71,26 @@
 	z-index: 1;
 	margin: 0.875em;
 	font-size: 11px;
-	backdrop-filter: blur(2px);
 	background-color: var(--preview--help-bg);
 	border: 1px solid var(--preview--resize-bdc);
-
-	// .c--demoBox:has(.c--demoBox__code) & {
-	// 	transform: translateY(100%);
-	// }
-
-	opacity: 0;
 	visibility: hidden;
+	opacity: 0;
+	backdrop-filter: blur(2px);
 
 	.c--preview_inner:hover & {
-		opacity: 1;
 		visibility: visible;
+		opacity: 1;
 	}
 }
 
 .c--preview_area + .c--preview_code {
-	margin-block-start: -4px;
-	background-color: var(--codeBlock--bgc);
 	overflow: hidden;
+	background-color: var(--codeBlock--bgc);
 	border-radius: var(--codeBlock--radius);
+	margin-block-start: -4px;
 
 	&.d--tabs {
 		gap: 0 !important;
-		// .expressive-code {
-		// 	translate: 0 -0.5em;
-		// }
 	}
 
 	pre {

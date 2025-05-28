@@ -55,8 +55,9 @@
 	// --ff--sans: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
 	// --ff--serif: serif;
 
-	--ff--base: -apple-system, 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans',
-		Meiryo, sans-serif, 'Segoe UI Emoji';
+	--ff--base:
+		-apple-system, 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+		sans-serif, 'Segoe UI Emoji';
 
 	// Optima, Georgia, Garamond, Baskerville;
 	--ff--accent: 'Garamond', 'Baskerville', 'Times New Roman', serif;
@@ -200,9 +201,12 @@
 	// --c--base-3: hsl(220 8% 86%); // border用
 
 	// text
-	--c--text: hsl(224 4% 8%);
+	--c--text-hsl: 224 4% 8%; // shadowにも使う
+	--c--text: hsl(var(--c--text-hsl));
 	--c--text-2: hsl(224 4% 40%);
 	// --text-3: hsl(224, 4%, 50%); //hsl(200, 12%, 92%);
+
+	// --sh-hsl
 
 	// divider (border-color)
 	--c--divider: hsl(224 4% 82%);
@@ -248,8 +252,9 @@
 	/* ------------------------------------------------------------
 	  shadow
 	------------------------------------------------------------ */
-	--sh-hsl: 220 20% 20%;
-	--sh-a: 10%;
+	// --sh-hsl: 220 20% 20%;
+	--sh-hsl: var(--c--text-hsl);
+	--sh-a: 6%;
 
 	// --sh-a--base: calc(var(--sh-a) - 4%);
 	// --sh-color--base: hsl(var(--sh-hsl) / var(--sh-a--base));

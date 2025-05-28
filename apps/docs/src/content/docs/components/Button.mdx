@@ -104,11 +104,11 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewTitle>アイコンを使う例</PreviewTitle>
 	<PreviewArea p='20' bg='u:stripe'>
 		<Flex variant='cluster' g='20'>
-			<Button href='###' variant='fill' ai='c' g='10' bdrs='1'>
+			<Button href='###' variant='fill' g='10' bdrs='1'>
 				<Icon icon='cart' />
 				<span>Button</span>
 			</Button>
-			<Button href='###' variant='outline' ai='c' g='5' bdrs='1'>
+			<Button href='###' variant='outline' g='5' bdrs='1'>
 				<span>Button</span>
 				<Icon icon={ArrowRight} offset='20% 0'/>
 			</Button>
@@ -117,11 +117,11 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
 		<Flex variant='cluster' g='20'>
-			<Button href='###' variant='fill' ai='c' g='10' bdrs='1'>
+			<Button href='###' variant='fill' g='10' bdrs='1'>
 				<Icon icon='cart' />
 				<span>Button</span>
 			</Button>
-			<Button href='###' variant='outline' ai='c' g='5' bdrs='1'>
+			<Button href='###' variant='outline' g='5' bdrs='1'>
 				<span>Button</span>
 				<Icon icon={ArrowRight} offset='20% 0'/>
 			</Button>
@@ -131,13 +131,13 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewCode slot='tab' label='HTML'>
 		```html
 		<div class="l--flex l--flex--cluster -g:20">
-			<a class="c--button c--button--fill -hov:fade -ai:c -g:10 -bdrs:1" href="###">
+			<a class="c--button c--button--fill -hov:fade -g:10 -bdrs:1" href="###">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" focusable="false" class="l--icon" aria-hidden="true" data-astro-source-file="/Users/ryo/DEV/Library/Lism-UI/lism-ui/packages/lism-astro/components/Icon/SVG.astro" data-astro-source-loc="27:2">
 					<path d="M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Zm4-74.57A8,8,0,0,1,196.1,136H77.22L65.59,72H214.41Z" data-astro-source-file="/Users/ryo/DEV/Library/Lism-UI/lism-ui/packages/lism-astro/components/Icon/SVG.astro" data-astro-source-loc="28:12"></path>
 				</svg>
 				<span>Button</span>
 			</a>
-			<a class="c--button c--button--outline -hov:fade -ai:c -g:5 -bdrs:1" href="###">
+			<a class="c--button c--button--outline -hov:fade -g:5 -bdrs:1" href="###">
 				<span>Button</span>
 				<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" class="l--icon" style="--offset:20% 0" aria-hidden="true">
 					<path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
@@ -188,22 +188,22 @@ Common Props の `w`, `h` ではなく、`width`, `height` を使ってくださ
 	<PreviewTitle>サイズの調整</PreviewTitle>
 	<PreviewArea p='20' isFlow='s' bg='u:stripe'>
 		{/* <Flex g='20'> */}
-		<Button href='###' variant='fill' ai='c' g='10' w='fit' fz='s' bdrs='2'>
+		<Button href='###' variant='fill' g='10' w='fit' fz='s' bdrs='2'>
 			<Icon icon='cart' />
 			<span>Button</span>
 		</Button>
-		<Button href='###' variant='fill' d='f' maxW='25rem' ai='c' jc='c' g='10' fz='l' py='20' px='30' bdrs='2'>
+		<Button href='###' variant='fill' d='f' maxW='25rem' jc='c' g='10' fz='l' py='20' px='30' bdrs='2'>
 			<Icon icon='cart' />
 			<span>Button</span>
 		</Button>
 	</PreviewArea>
 	<PreviewCode slot='tab' label='JSX'>
 		```jsx
-		<Button href='###' variant='fill' ai='c' g='10' w='fit' fz='s' bdrs='2'>
+		<Button href='###' variant='fill' g='10' w='fit' fz='s' bdrs='2'>
 			<Icon icon='cart' />
 			<span>Button</span>
 		</Button>
-		<Button href='###' variant='fill' d='f' maxW='25rem' ai='c' jc='c' g='10' fz='l' py='20' px='30' bdrs='2'>
+		<Button href='###' variant='fill' d='f' maxW='25rem' jc='c' g='10' fz='l' py='20' px='30' bdrs='2'>
 			<Icon icon='cart' />
 			<span>Button</span>
 		</Button>
@@ -226,15 +226,15 @@ gridレイアウト（`.-d:g`クラス）を使用し、アイコンを端に寄
 <Preview>
 	<PreviewTitle>Preview</PreviewTitle>
 	<PreviewArea resize p='20' isFlow='20'>
-		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' ai='c' g='10' maxW='25rem'>
+		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' g='10' maxW='25rem'>
 			<Icon icon='cart'/>
 			<span>Button</span>
 		</Button>
-		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' ai='c' g='10' maxW='25rem'>
+		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' g='10' maxW='25rem'>
 			<GridItem gc='2'>Button</GridItem>
 			<Icon icon={ArrowRight}/>
 		</Button>
-		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' ai='c' g='10' maxW='25rem'>
+		<Button href='###' variant='fill' d='g' gtc='1em 1fr 1em' g='10' maxW='25rem'>
 			<Icon icon='cart'/>
 			<span>Button</span>
 			<Icon icon={ArrowRight}/>

@@ -19,6 +19,7 @@
 		"build": "vite build && npm run build:css",
 		"build:vite": "vite build",
 		"build:css": "node scss-builder.cjs",
+		"lint:style": "stylelint '**/*.{css,scss}'",
 		"preview": "vite preview"
 	},
 	"files": [

@@ -1,22 +1,23 @@
-// 埋め込みコード
-.emgithub-file {
-	margin-block-end: 0 !important;
-	.emgithub-container:first-of-type > & {
-		margin-block-start: 0;
-	}
-
-	// with ❤ 消す
-	.hide-in-phone {
-		display: none;
-	}
-	.code-area > pre {
-		tab-size: 4 !important;
+.expressive-code {
+	--ec-frm-edBg: var(--codeBlock--bgc) !important;
+}
+// 画面サイズ小さめの時に目次サイドバーがはみ出す問題への対処。
+// div.code がくるのは １列のコードの時だけ？ width:0 にしても特にコード表示に問題はなかった。
+.expressive-code .ec-line div.code {
+	width: 0;
+	&::after {
+		content: '';
+		display: inline-block;
+		width: calc(2rem + var(--ec-codePadInl));
 	}
 }
+// .expressive-code .ec-line {
+// 	padding-inline-end: calc(2rem + var(--ec-codePadInl));
+// }
 
 // コードブロック
 .expressive-code {
-	--ec-frm-frameBoxShdCssVal: var(--shadow--3);
+	// --ec-frm-frameBoxShdCssVal: var(--bxsh--3);
 	/* --ec-codeBg: #fff;
 	--code-background: #fff; */
 
@@ -26,12 +27,27 @@
 
 	> .frame > pre {
 		border: none !important;
+		padding: 0;
+		// background: none;
+		// max-width: calc(var(--sl-content-width) - var(--sl-content-pad-x));
+		// width: 100%;
 	}
 
 	> .frame > pre > code {
 		font-family: var(--ff--mono);
 		// font-size: 0.875rem;
 		line-height: 1.625;
+		padding: var(--ec-codePadBlk) 0;
+
+		// all: unset;
+		// display: block;
+		// flex: 1 0 100%;
+
+		// color: var(--ec-codeFg);
+		// font-family: var(--ec-codeFontFml);
+		// font-size: var(--ec-codeFontSize);
+		// font-weight: var(--ec-codeFontWg);
+		// line-height: var(--ec-codeLineHt);
 	}
 
 	.c--note & {
@@ -58,33 +74,19 @@
 	.ec-line.mark.mark {
 		--tmLineBgCol: rgba(147, 153, 155, 0.15);
 	}
+}
+// 埋め込みコード
+.emgithub-file {
+	margin-block-end: 0 !important;
+	.emgithub-container:first-of-type > & {
+		margin-block-start: 0;
+	}
 
-	// .ec-line mark,
-	// .ec-line ins,
-	// .ec-line del {
-	// 	--tmBrdL: var(--ec-tm-inlMarkerBrdWd);
-	// 	--tmBrdR: var(--ec-tm-inlMarkerBrdWd);
-	// 	--tmRadL: var(--ec-tm-inlMarkerBrdRad);
-	// 	--tmRadR: var(--ec-tm-inlMarkerBrdRad);
-	// 	margin-inline: 0.025rem;
-	// 	padding-inline: var(--ec-tm-inlMarkerPad);
-	// 	border-radius: var(--tmRadL) var(--tmRadR) var(--tmRadR) var(--tmRadL);
-	// 	background: var(--tmInlineBgCol);
-	// 	background-clip: padding-box;
-	// }
-
-	// 	.expressive-code .ec-line.mark,
-	// 	.expressive-code .ec-line.ins,
-	// 	.expressive-code .ec-line.del {
-	// 		position: relative;
-	// 		background: var(--tmLineBgCol);
-	// 		min-width: calc(100% - var(--ec-tm-lineMarkerAccentMarg));
-	// 		margin-inline-start: var(--ec-tm-lineMarkerAccentMarg);
-	// 		border-inline-start: var(--ec-tm-lineMarkerAccentWd) solid var(--tmLineBrdCol);
-	// 		padding-inline-start: calc(
-	// 			var(--ec-codePadInl) - var(--ec-tm-lineMarkerAccentMarg) - var(
-	// 					--ec-tm-lineMarkerAccentWd
-	// 				)
-	// 		) !important;
-	// 	}
+	// with ❤ 消す
+	.hide-in-phone {
+		display: none;
+	}
+	.code-area > pre {
+		tab-size: 4 !important;
+	}
 }

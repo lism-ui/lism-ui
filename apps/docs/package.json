@@ -7,24 +7,19 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "lint:style": "stylelint '**/*.{css,scss}'",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.0",
-    "@astrojs/starlight": "^0.15.0",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/starlight": "^0.34.3",
     "@lism-ui/astro": "workspace:*",
     "@lism-ui/core": "workspace:*",
     "@phosphor-icons/react": "^2.0.10",
-    "astro": "^4.0.1",
+    "astro": "^5.8.0",
     "astro-purgecss": "^5.2.2",
     "purgecss": "^7.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
-    "sharp": "^0.32.5"
-  },
-  "devDependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/react-fontawesome": "^0.2.2"
+    "react-dom": "^18.2.0"
   }
 }

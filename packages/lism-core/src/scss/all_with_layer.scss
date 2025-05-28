@@ -1,5 +1,6 @@
 /*
   @layer 使う
 */
-@use './with_layer.scss';
+@use './with_layer';
+@use './utility';
 @use './props/index' as props;

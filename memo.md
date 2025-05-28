@@ -12,7 +12,7 @@ rm -rf .next/cache
 next.js 13 以降の app ルーター使用時、Reat Hook を使ったコンポーネントを使う際に "use client"; の記述が必要。
 
 ※ "@lism-ui/test/components" から直接インポートしてもらうようにすると Lism 側で書いておけば必要なくなる?
-→ビルド時にエラーがでた。が、無視しても問題なさそう...？
+→ ビルド時にエラーがでた。が、無視しても問題なさそう...？
 
 ただし、/components から直接ソース読み込む場合、`next.config.js` で下記の設定が必要だった
 
@@ -20,42 +20,36 @@ next.js 13 以降の app ルーター使用時、Reat Hook を使ったコンポ
 transpilePackages: ['@lism-ui/test'],
 ```
 
-# Prettier と Eslint についてのメモ
+# Prettier と Eslint,Stylelint についてのメモ
 
-## 目標：
+## 現状
 
--   html、js のコード保存時、自動で prettier が動いて整形されるようにする。
--   eslint にエラー表示をしてもらう
+- コード整形は prettier が担当。
+- eslint にエラー表示をしてもらう
+- stylelintの自動整形はvscodeプラグインのコメント解析不具合により断念。フォーマットはprettierに任せ、Taskでlintを動かす。
 
-### 必要だった npm package
+## 必要な VSCode の拡張機能
 
--   "prettier",
--   "eslint",
--   "eslint-config-prettier",
--   "eslint-config-standard",
+- Prettier
+- ESLint (ファイル開いてる時にエラー表示)
 
-### 必要な VSCode の拡張機能
-
--   ESLint,
--   Prettier (projcet でのみ有効化中)
-
-### vs code に必要な設定
-
-(html, js に対する vscode 側のデフォルトフォーマット機能をオフにし、Eslint プラグイン側の format もオフにすることで、保存時に prettier が動くようになる。)
+## vscode の settings
 
 ```
-{
-	"html.format.enable": false,
-	"javascript.format.enable": false,
-	"eslint.format.enable": false
-}
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 ```
 
-## lintファイルについて
+(prettierはscssも標準対応してるはずだが、明示的に書かないと動かなかった)
 
-.editorconfig や lint設定ファイルは基本的にルートに置いておくだけでよさそう。
-astroプロジェクトはprettierrc上書きするためにそれぞれ用意したりする。
+## モノレポにおけるlint ファイルについて
+
+.editorconfig や lint系設定ファイルは、基本的にルートに置いておくだけでよさそう。
+astro プロジェクトは prettierrc 上書きするためにそれぞれ用意したりする。
 
 ## stylelint
 
-stylelint 16 にすると保存するたびにバグる
+stylelint 16 にすると、vscodeのstylelintプラグインで自動整形させると保存するたびにバグる.

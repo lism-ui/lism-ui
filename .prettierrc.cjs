@@ -8,4 +8,14 @@ module.exports = {
 	semi: true, //末尾にセミコロンをつけるかどうか。
 	bracketSpacing: true, //オブジェクトの{}の内側にスペースをいれるかどうか。
 	arrowParens: 'always', //アロー関数の () を省略しない
+
+	plugins: ['prettier-plugin-astro'],
+	overrides: [
+		{
+			files: '*.astro',
+			options: {
+				parser: 'astro',
+			},
+		},
+	],
 };

@@ -47,9 +47,9 @@ export default defineConfig({
 				'./src/styles/lism.scss',
 			],
 			sidebar,
-			social: {
-				github: 'https://github.com/lism-ui/lism-ui',
-			},
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/lism-ui/lism-ui' },
+			],
 			editLink: {
 				baseUrl: 'https://github.com/lism-ui/lism-ui/tree/main/apps/docs',
 			},
@@ -66,13 +66,9 @@ export default defineConfig({
 			components: {
 				// デフォルトの`SocialIcons`コンポーネントをオーバーライドします。
 				// SocialIcons: './src/components/EmailLink.astro',
-				MarkdownContent: './src/components/starlight/MarkdownContent.astro',
-				// PageFrame: './src/components/starlight/PageFrame.astro',
-				TwoColumnContent: './src/components/starlight/TwoColumnContent.astro',
-				PageTitle: './src/components/starlight/PageTitle.astro',
-				Sidebar: './src/components/starlight/Sidebar.astro',
-				// ThemeProvider: './src/components/starlight/ThemeProvider.astro',
-				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
+				MarkdownContent: './src/starlight/MarkdownContent.astro',
+				ThemeSelect: './src/starlight/ThemeSelect.astro',
+				Hero: './src/starlight/Hero.astro',
 			},
 		}),
 		// tailwind({
