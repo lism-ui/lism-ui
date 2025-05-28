@@ -49,20 +49,15 @@
 		"url": "https://github.com/ddryo/lism-test/issues"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.23.9",
-		"@babel/core": "^7.23.9",
-		"@babel/preset-env": "^7.23.2",
-		"@babel/preset-react": "^7.22.15",
+		"@babel/cli": "^7.27.2",
+		"@babel/core": "^7.27.3",
+		"@babel/preset-env": "^7.27.2",
+		"@babel/preset-react": "^7.27.1",
 		"@rollup/plugin-babel": "^6.0.4",
-		"@svgr/rollup": "^8.0.1",
-		"@vitejs/plugin-react": "^4.2.1",
-		"@vitejs/plugin-react-refresh": "^1.3.6",
-		"@vitejs/plugin-react-swc": "^3.6.0",
+		"@vitejs/plugin-react-swc": "^3.10.0",
 		"glob": "^11.0.2",
-		"rollup": "^4.12.0",
-		"vite": "^4.3.9",
-		"vite-plugin-svgr": "^3.2.0",
-		"vite-react-jsx": "^1.1.2"
+		"rollup": "^4.41.1",
+		"vite": "^6.3.5"
 	},
 	"peerDependencies": {
 		"react": ">=18.0.0"

@@ -4,9 +4,8 @@ import { defineConfig } from 'vite';
 // import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // import {useRef} from 'react'; とかした時に、React is not defined 言われないように
-// import react from '@vitejs/plugin-react';
 import react from '@vitejs/plugin-react-swc';
-import svgr from 'vite-plugin-svgr'; // svg を React Component として import できるようにする
+// import svgr from 'vite-plugin-svgr'; // svg を React Component として import できるようにする
 // import reactJsx from 'vite-react-jsx';
 // import { terser } from 'rollup-plugin-terser'
 
@@ -44,20 +43,13 @@ const entries = {
 // build.lib を設定すると でライブラリモードになる。
 // https://ja.vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
-	plugins: [react(), svgr()],
+	plugins: [react()],
 	resolve: {
 		// ここでこれやると外部からの import でエラーになる
 		// alias: [{ find: '@/', replacement: '/src/' }],
-		// alias: {
-		// 	fs: 'rollup-plugin-node-polyfills/polyfills/empty',
-		// 	path: 'rollup-plugin-node-polyfills/polyfills/path',
-		// },
 	},
 	build: {
 		// target: 'es2015',
-		// watch: {
-		// 	// https://rollupjs.org/configuration-options/#watch
-		// },
 		lib: {
 			// 複数のエントリーポイントのディクショナリや配列にもできます
 			entry: entries,
