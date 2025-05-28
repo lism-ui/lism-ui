@@ -2,24 +2,21 @@
 title: 'Responsive Props'
 description: ...
 sidebar:
-  order: 4
+    order: 4
 ---
-import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Callout } from "~/components";
-import { Box } from "@lism-ui/astro";
 
+import { Preview, PreviewArea, PreviewTitle, PreviewCode, Reference, Callout } from '~/components';
+import { Box } from '@lism-ui/astro';
 
-`Lism` で使用できる [CSS Props](/ja/components/props/css-props) は、レスポンシブに対応した形式で出力できるようになっています。
+`Lism` で使用できる [CSS Props](/components/props/css-props) は、レスポンシブに対応した形式で出力できるようになっています。
 
-
-
-<Callout type="warning">
-実際に値が切り替わるかどうかは、そのプロパティがレスポンシブ対応している必要があります。  
-どのプロパティが対応してるかは[CSS Props](/ja/components/props/css-props) の **BP**（<small>ブレイクポイントの略</small>） の欄をチェックしてください。
+<Callout type='warning'>
+	実際に値が切り替わるかどうかは、そのプロパティがレスポンシブ対応している必要があります。
+	どのプロパティが対応してるかは[CSS Props](/components/props/css-props) の **BP**（
+	<small>ブレイクポイントの略</small>） の欄をチェックしてください。
 </Callout>
 
-デフォルトでレスポンシブ対応されていない（CSSが用意されていない）プロパティに関しては、[SCSSによるカスタマイズ](/ja/css/customize/)を行うことで対応できます。
-
-
+デフォルトでレスポンシブ対応されていない（CSSが用意されていない）プロパティに関しては、[SCSSによるカスタマイズ](/css/customize/)を行うことで対応できます。
 
 ## レスポンジブ指定の方法
 
@@ -32,54 +29,44 @@ import { Box } from "@lism-ui/astro";
 
 <Preview>
 	<PreviewTitle>例1</PreviewTitle>
-	<PreviewCode label="配列での書き方" slot="tab">
-	```jsx
-	<Lism p={['20', '30', '5rem']}>
-		...
-	</Lism>
-	```
+	<PreviewCode label='配列での書き方' slot='tab'>
+		```jsx
+		<Lism p={['20', '30', '5rem']}>...</Lism>
+		```
 	</PreviewCode>
-	<PreviewCode label="オブジェクトでの書き方" slot="tab">
-	```jsx
-	<Lism p={{ base: '20', sm: '30', md: '5rem' }}>
-		...
-	</Lism>
-	```
+	<PreviewCode label='オブジェクトでの書き方' slot='tab'>
+		```jsx
+		<Lism p={{ base: '20', sm: '30', md: '5rem' }}>...</Lism>
+		```
 	</PreviewCode>
-	<PreviewCode label="出力されるHTML" slot="tab">
-	```jsx
-	<div class="-p:20 -p@sm -p@md" style="--sm-p:var(--s30);--md-p:5rem">
-		...
-	</div>
-	```
+	<PreviewCode label='出力されるHTML' slot='tab'>
+		```jsx
+		<div class='-p:20 -p@sm -p@md' style='--sm-p:var(--s30);--md-p:5rem'>
+			...
+		</div>
+		```
 	</PreviewCode>
 </Preview>
-
 
 途中のブレイクポイントをスキップする場合は次のようになります。
 
 <Preview>
 	<PreviewTitle>例2:`@md`の値のみ指定</PreviewTitle>
-	<PreviewCode label="配列での書き方" slot="tab">
-	```jsx
-	<Lism p={[null, null, '40']}>
-		...
-	</Lism>
-	```
+	<PreviewCode label='配列での書き方' slot='tab'>
+		```jsx
+		<Lism p={[null, null, '40']}>...</Lism>
+		```
 	</PreviewCode>
-	<PreviewCode label="オブジェクトでの書き方" slot="tab">
-	```jsx
-	<Lism p={{ md: '40' }}>
-		...
-	</Lism>
-	```
+	<PreviewCode label='オブジェクトでの書き方' slot='tab'>
+		```jsx
+		<Lism p={{ md: '40' }}>...</Lism>
+		```
 	</PreviewCode>
-	<PreviewCode label="出力されるHTML" slot="tab">
-	```jsx
-	<div class="-p@md" style="--md-p:var(--s40)">
-		...
-	</div>
-	```
+	<PreviewCode label='出力されるHTML' slot='tab'>
+		```jsx
+		<div class='-p@md' style='--md-p:var(--s40)'>
+			...
+		</div>
+		```
 	</PreviewCode>
 </Preview>
-
