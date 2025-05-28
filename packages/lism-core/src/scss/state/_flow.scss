@@ -36,5 +36,7 @@
 
 // :first-child への上書きのほうが優先度高くなるように。
 .is--flow > :where(:first-child) {
-	--mbs: 0;
+	// --mbs への上書きが気軽に書けるよう、明示的に margin-block-start をここでは 0 に。
+	// --mbs: 0;
+	margin-block-start: 0;
 }

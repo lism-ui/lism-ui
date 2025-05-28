@@ -74,6 +74,10 @@
 		// display: flex;
 		// align-items: center;
 		// gap: 0.5em;
+		--mbs: var(--flowGap--h);
+		&.level-h2 {
+			--mbs: 4rem;
+		}
 		> :first-child {
 			display: inline;
 			padding-inline-end: var(--sl-anchor-icon-space);
