@@ -1,23 +1,23 @@
 {
-  "name": "astro-playground",
-  "type": "module",
-  "main": "index.js",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "_build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.5.5",
-    "@astrojs/react": "^3.0.0",
-    "@lism-ui/astro": "workspace:*",
-    "@lism-ui/core": "workspace:*",
-    "astro": "^4.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.3.3"
-  }
+	"name": "astro-playground",
+	"type": "module",
+	"main": "index.js",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.5.5",
+		"@astrojs/react": "^3.0.0",
+		"@lism-ui/astro": "workspace:*",
+		"@lism-ui/core": "workspace:*",
+		"astro": "^4.0.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"typescript": "^5.3.3"
+	}
 }
