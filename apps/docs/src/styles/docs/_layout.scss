@@ -75,6 +75,31 @@ main-frame
 			background-color: var(--c--base-2);
 		}
 	}
+
+	.top-level > li > details {
+		margin-top: 1em;
+	}
+
+	._subtitle {
+		display: block;
+		pointer-events: none;
+		color: inherit;
+		margin-inline-start: -1px;
+		margin-top: 0.75em;
+		padding-inline-start: 0.5em;
+		padding-block: 0;
+		font-size: var(--sl-text-sm);
+		opacity: 0.5;
+	}
+	._divider {
+		padding-block: 0.5em;
+		padding-inline: 0.5em 0;
+
+		> span {
+			display: block;
+			border-top: 1px solid var(--sl-color-hairline-light);
+		}
+	}
 }
 
 header {

@@ -68,6 +68,8 @@ export default defineConfig({
 				// SocialIcons: './src/components/EmailLink.astro',
 				MarkdownContent: './src/starlight/MarkdownContent.astro',
 				ThemeSelect: './src/starlight/ThemeSelect.astro',
+				Sidebar: './src/starlight/Sidebar.astro',
+				// SidebarSublist: './src/starlight/SidebarSublist.astro',
 				Hero: './src/starlight/Hero.astro',
 			},
 		}),
